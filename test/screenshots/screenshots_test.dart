@@ -150,6 +150,16 @@ void main() {
     await shoot(t, 'tasks_android_dark', location: '/today/tasks', platform: TargetPlatform.android, dark: true);
   }, skip: !_enabled);
 
+  testWidgets('tools', (t) async {
+    await shoot(t, 'tools_ios', location: '/tools');
+    await shoot(t, 'tools_android_dark', location: '/tools', platform: TargetPlatform.android, dark: true);
+    await shoot(t, 'calendar', location: '/tools/calendar');
+    await shoot(t, 'qibla', location: '/tools/qibla');
+    await shoot(t, 'ramadan', location: '/tools/ramadan');
+    await shoot(t, 'adhkar_evening', location: '/adhkar/evening');
+    await shoot(t, 'adhkar_morning_dark', location: '/adhkar/morning', dark: true);
+  }, skip: !_enabled);
+
   testWidgets('expense sheet', (t) async {
     await shoot(t, 'expense', act: (t) async {
       final ctx = t.element(find.byType(Scaffold).first);

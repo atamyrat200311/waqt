@@ -10,6 +10,7 @@ import 'package:waqt/data/settings/settings_controller.dart';
 import 'package:waqt/data/settings/settings_repository.dart';
 import 'package:waqt/features/notifications/application/notification_scheduler.dart';
 import 'package:waqt/features/notifications/application/notification_service.dart';
+import 'package:waqt/features/tools/application/tools_providers.dart';
 
 import 'test_db.dart';
 
@@ -55,6 +56,7 @@ List<Override> settingsOverrides(AppSettings settings, {DateTime? now}) {
     }),
     notificationServiceProvider.overrideWithValue(FakeNotificationService()),
     notificationSchedulerProvider.overrideWith((ref) {}),
+    compassProvider.overrideWith((ref) => Stream.value(const CompassReading(heading: 200, accuracy: 10))),
   ];
 }
 

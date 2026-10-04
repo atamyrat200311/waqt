@@ -2,11 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../data/db/enums.dart';
 import '../../data/settings/settings_controller.dart';
+import '../../features/adhkar/presentation/adhkar_reader.dart';
+import '../../features/calendar/presentation/calendar_screen.dart';
 import '../../features/me/presentation/me_screen.dart';
 import '../../features/qada/presentation/qada_screen.dart';
+import '../../features/ramadan/presentation/ramadan_screen.dart';
 import '../../features/tasks/presentation/tasks_screen.dart';
 import '../../features/today/presentation/today_screen.dart';
+import '../../features/tools/presentation/qibla_screen.dart';
 import '../../features/tools/presentation/tools_screen.dart';
 import 'app_shell.dart';
 import 'routes.dart';
@@ -51,7 +56,15 @@ final appRouterProvider = Provider<GoRouter>((ref) {
             ),
           ]),
           StatefulShellBranch(routes: [
-            GoRoute(path: Routes.tools, builder: (context, state) => const ToolsScreen()),
+            GoRoute(
+              path: Routes.tools,
+              builder: (context, state) => const ToolsScreen(),
+              routes: [
+                GoRoute(path: _child(Routes.calendar), builder: (context, state) => const CalendarScreen()),
+                GoRoute(path: _child(Routes.qiblaFull), builder: (context, state) => const QiblaScreen()),
+                GoRoute(path: _child(Routes.ramadan), builder: (context, state) => const RamadanScreen()),
+              ],
+            ),
           ]),
           StatefulShellBranch(routes: [
             GoRoute(path: Routes.me, builder: (context, state) => const MeScreen()),
@@ -59,6 +72,13 @@ final appRouterProvider = Provider<GoRouter>((ref) {
           // TODO(quran): add a 4th StatefulShellBranch here and a ShellTab in
           // app_shell.dart (`shellTabs`) when the Quran reader is built.
         ],
+      ),
+      GoRoute(
+        path: Routes.adhkarPattern,
+        parentNavigatorKey: rootNavigatorKey,
+        builder: (context, state) => AdhkarReader(
+          set: state.pathParameters['set'] == 'evening' ? AdhkarSet.evening : AdhkarSet.morning,
+        ),
       ),
       GoRoute(
         path: Routes.onboarding,

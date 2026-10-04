@@ -232,6 +232,18 @@ sounds are fixed once a channel exists → bump the channel id in `notification_
 - Screenshots for visual review: `WAQT_SCREENSHOTS=1 flutter test test/screenshots` → `build/screenshots/`.
   Widget tests must enable reduce motion (looping sun glow / caret never settle).
 
+## Phase 6 notes
+
+- Routes: `/adhkar/:set` (root navigator, full screen), `/tools/calendar`, `/tools/qibla`, `/tools/ramadan`.
+- Qibla: `compassProvider` (autoDispose → sensor stops off-screen). flutter_compass heading is
+  magnetic on Android; no declination correction (would need a geomagnetic model) → may be off by a
+  few degrees. No sensor → dial stays north-up with the bearing text.
+- Tasbih: pure `TasbihState` (preset 33·33·34 or custom phrase/goal); sessions saved on complete/reset.
+- Calendar: tap a day → fast sheet (type auto: Ramadan > white days > Mon/Thu > voluntary).
+- Ramadan screen (no artboard — built from the style guide): mode segmented, today's fast, month grid, reminders.
+- Shared: `segmented.dart`, `rows.dart` (WaqtRow, ToggleRow with brand-coloured adaptive switch),
+  `progress_ring.dart` (ProgressRing, TapRipple).
+
 ## Phase checklist
 
 - [x] 1. Project setup, theme, fonts, l10n, router with adaptive 3-tab shell (APK builds; iOS config written, not built — no Xcode here)
@@ -239,6 +251,6 @@ sounds are fixed once a channel exists → bump the channel id in `notification_
 - [x] 3. Prayer engine, location, notifications, workmanager + tests
 - [x] 4. Home screen (hero, day arc, chips, mark sheet, timeline)
 - [x] 5. Qada, Expenses, Tasks
-- [ ] 6. Adhkar, Hijri calendar, Ramadan mode, Qibla, Tasbih, Tools hub
+- [x] 6. Adhkar, Hijri calendar, Ramadan mode, Qibla, Tasbih, Tools hub
 - [ ] 7. Me (stats), Settings, Onboarding
 - [ ] 8. Widgets (iOS + Android) + polish

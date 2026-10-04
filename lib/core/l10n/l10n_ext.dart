@@ -111,6 +111,9 @@ extension L10nNames on AppLocalizations {
   String hijriMonthName(int month, {bool long = false}) =>
       long ? hijriMonthLong('m$month') : hijriMonth('m$month');
 
+  /// "22 Rabīʿ II".
+  String dayMonthHijri(int day, int month) => dateDayMonth('$day', hijriMonth('m$month'));
+
   /// "22 Rabīʿ II 1448".
   String hijriFull(int day, int month, int year) =>
       hijriDate('$day', hijriMonth('m$month'), '$year');
