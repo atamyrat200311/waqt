@@ -114,7 +114,7 @@ void main() {
       await t.tap(counter);
       await settle(t);
       final counts = await t.runAsync(
-        () => c.read(adhkarRepositoryProvider).watchDay(DayKey('2026-10-04'), AdhkarSet.evening).first,
+        () => c.read(adhkarRepositoryProvider).watchDay(const DayKey('2026-10-04'), AdhkarSet.evening).first,
       );
       expect(counts!['e01'], 1);
       expect(find.text('Complete'), findsOneWidget);
@@ -148,10 +148,10 @@ void main() {
       await t.tap(find.text('Fasted'));
       await settle(t);
       final fasts = await t.runAsync(
-        () => c.read(fastRepositoryProvider).watchRange(DayKey('2026-10-04'), DayKey('2026-10-04')).first,
+        () => c.read(fastRepositoryProvider).watchRange(const DayKey('2026-10-04'), const DayKey('2026-10-04')).first,
       );
-      expect(fasts![DayKey('2026-10-04')]!.status, FastStatus.fasted);
-      expect(fasts[DayKey('2026-10-04')]!.type, FastType.other);
+      expect(fasts![const DayKey('2026-10-04')]!.status, FastStatus.fasted);
+      expect(fasts[const DayKey('2026-10-04')]!.type, FastType.other);
       await close(t);
     });
   });

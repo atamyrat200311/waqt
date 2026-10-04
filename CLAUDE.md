@@ -244,6 +244,20 @@ sounds are fixed once a channel exists → bump the channel id in `notification_
 - Shared: `segmented.dart`, `rows.dart` (WaqtRow, ToggleRow with brand-coloured adaptive switch),
   `progress_ring.dart` (ProgressRing, TapRipple).
 
+## Phase 7 notes
+
+- Stats (pure, `features/me/domain/stats.dart`): streak per CLAUDE rules (today pending never breaks;
+  all-excused days skipped; empty days break), best run, 14-day bar, per-prayer consistency for the
+  month (excused + not-yet-started prayers excluded), on-time share, adhkar streak. Weakest prayer
+  gets the brass bar + its tip.
+- Settings: location, method, Asr, mosque stepper (tap row → per-prayer sheet), Hijri ±2, alerts
+  per prayer + permission/exact-alarm banners, adhkar reminders, language, currency, Ramadan mode,
+  period mode, appearance, widgets help, privacy footer. `appVersion` const in settings_screen.dart.
+- `/location` is a root route (opened from Home's chip and from Settings). City search is offline;
+  GPS name = nearest bundled city; manual coordinates use the device time zone.
+- Onboarding (no artboard): language → location (+ region method preset, "Advanced" pickers) →
+  notifications → Android battery (opens app settings; no plugin for the exemption dialog) → Start.
+
 ## Phase checklist
 
 - [x] 1. Project setup, theme, fonts, l10n, router with adaptive 3-tab shell (APK builds; iOS config written, not built — no Xcode here)
@@ -252,5 +266,5 @@ sounds are fixed once a channel exists → bump the channel id in `notification_
 - [x] 4. Home screen (hero, day arc, chips, mark sheet, timeline)
 - [x] 5. Qada, Expenses, Tasks
 - [x] 6. Adhkar, Hijri calendar, Ramadan mode, Qibla, Tasbih, Tools hub
-- [ ] 7. Me (stats), Settings, Onboarding
+- [x] 7. Me (stats), Settings, Onboarding
 - [ ] 8. Widgets (iOS + Android) + polish

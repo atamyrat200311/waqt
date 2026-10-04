@@ -11,7 +11,8 @@ abstract final class Routes {
 
   static const me = '/me';
   static const settings = '/me/settings';
-  static const location = '/me/settings/location';
+  /// Above the shell so Home's location chip and Settings both open it in place.
+  static const location = '/location';
   static const widgetsHelp = '/me/settings/widgets';
 
   /// Full-screen reader, above the shell. `/adhkar/morning` or `/adhkar/evening`.

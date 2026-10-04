@@ -25,8 +25,22 @@ void main() {
       child: const WaqtApp(),
     ));
     await tester.pumpAndSettle();
-    expect(find.text('Start'), findsOneWidget);
+    expect(find.text('Choose your language'), findsOneWidget);
 
+    await tester.tap(find.text('English'));
+    await tester.pumpAndSettle();
+    expect(find.text('Where do you pray?'), findsOneWidget);
+    expect(find.text('Muslim World League · Hanafi Asr'), findsOneWidget);
+    await tester.tap(find.text('Continue'));
+    await tester.pumpAndSettle();
+    expect(find.text('Never miss a prayer'), findsOneWidget);
+    await tester.tap(find.text('Allow notifications'));
+    await tester.pumpAndSettle();
+    expect(find.text('Notifications are on'), findsOneWidget);
+    await tester.tap(find.text('Continue'));
+    await tester.pumpAndSettle();
+    // Android (test default platform) adds the battery step.
+    expect(find.text('Keep alerts on time'), findsOneWidget);
     await tester.tap(find.text('Start'));
     await tester.pumpAndSettle();
     expect(find.text('Today'), findsWidgets);

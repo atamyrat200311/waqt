@@ -36,7 +36,14 @@ final testNow = DateTime.utc(2026, 10, 4, 11);
 
 /// Notification service that never touches the platform.
 class FakeNotificationService extends NotificationService {
-  final reminders = <String>[];
+  bool enabled = true;
+
+  @override
+  Future<NotificationPermissions> permissions() async =>
+      NotificationPermissions(enabled: enabled, exactAlarms: true);
+
+  @override
+  Future<bool> requestPermission() async => enabled = true;
 }
 
 /// Overrides for widget tests: in-memory settings + DB, frozen clock, no

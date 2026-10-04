@@ -7,8 +7,12 @@ import '../../data/settings/settings_controller.dart';
 import '../../features/adhkar/presentation/adhkar_reader.dart';
 import '../../features/calendar/presentation/calendar_screen.dart';
 import '../../features/me/presentation/me_screen.dart';
+import '../../features/onboarding/presentation/onboarding_screen.dart';
 import '../../features/qada/presentation/qada_screen.dart';
 import '../../features/ramadan/presentation/ramadan_screen.dart';
+import '../../features/settings/presentation/location_picker.dart';
+import '../../features/settings/presentation/settings_screen.dart';
+import '../../features/settings/presentation/widgets_help_screen.dart';
 import '../../features/tasks/presentation/tasks_screen.dart';
 import '../../features/today/presentation/today_screen.dart';
 import '../../features/tools/presentation/qibla_screen.dart';
@@ -67,7 +71,19 @@ final appRouterProvider = Provider<GoRouter>((ref) {
             ),
           ]),
           StatefulShellBranch(routes: [
-            GoRoute(path: Routes.me, builder: (context, state) => const MeScreen()),
+            GoRoute(
+              path: Routes.me,
+              builder: (context, state) => const MeScreen(),
+              routes: [
+                GoRoute(
+                  path: _child(Routes.settings),
+                  builder: (context, state) => const SettingsScreen(),
+                  routes: [
+                    GoRoute(path: _child(Routes.widgetsHelp), builder: (context, state) => const WidgetsHelpScreen()),
+                  ],
+                ),
+              ],
+            ),
           ]),
           // TODO(quran): add a 4th StatefulShellBranch here and a ShellTab in
           // app_shell.dart (`shellTabs`) when the Quran reader is built.
@@ -81,26 +97,15 @@ final appRouterProvider = Provider<GoRouter>((ref) {
         ),
       ),
       GoRoute(
+        path: Routes.location,
+        parentNavigatorKey: rootNavigatorKey,
+        builder: (context, state) => const LocationScreen(),
+      ),
+      GoRoute(
         path: Routes.onboarding,
         parentNavigatorKey: rootNavigatorKey,
-        builder: (context, state) => const _OnboardingPlaceholder(),
+        builder: (context, state) => const OnboardingScreen(),
       ),
     ],
   );
 });
-
-class _OnboardingPlaceholder extends ConsumerWidget {
-  const _OnboardingPlaceholder();
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    return Scaffold(
-      body: Center(
-        child: FilledButton(
-          onPressed: () => ref.read(settingsProvider.notifier).setOnboardingDone(),
-          child: const Text('Start'),
-        ),
-      ),
-    );
-  }
-}

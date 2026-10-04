@@ -160,6 +160,18 @@ void main() {
     await shoot(t, 'adhkar_morning_dark', location: '/adhkar/morning', dark: true);
   }, skip: !_enabled);
 
+  testWidgets('me & settings', (t) async {
+    await shoot(t, 'me', location: '/me');
+    await shoot(t, 'me_dark_android', location: '/me', platform: TargetPlatform.android, dark: true);
+    await shoot(t, 'settings', location: '/me/settings');
+    await shoot(t, 'settings_android', location: '/me/settings', platform: TargetPlatform.android);
+    await shoot(t, 'location', location: '/location');
+    await shoot(t, 'onboarding_language', settings: const AppSettings());
+    await shoot(t, 'onboarding_location', settings: const AppSettings(), act: (t) async {
+      await t.tap(find.text('English'));
+    });
+  }, skip: !_enabled);
+
   testWidgets('expense sheet', (t) async {
     await shoot(t, 'expense', act: (t) async {
       final ctx = t.element(find.byType(Scaffold).first);
