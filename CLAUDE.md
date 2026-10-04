@@ -216,13 +216,29 @@ sounds are fixed once a channel exists → bump the channel id in `notification_
   `testNow` = 4 Oct 2026 16:00 Ashgabat, in-memory DB, fake notifications).
 - This environment can't reach dl.google.com, so Android builds were not run after phase 1.
 
+## Phase 4–5 notes
+
+- Shared kit: `shared/widgets/` → `waqt_card.dart` (WaqtCard, WaqtGroup), `buttons.dart` (PillButton,
+  BigButton, CircleIconButton), `status_marks.dart` (Done/Current/Upcoming/Missed/Excused marks,
+  `popCurve`), `layout.dart` (Kicker, IconTile, SectionTitle, SubScreen = iOS back link + large
+  title / Android app bar), `dashed_border.dart`. `MotionSize` (adaptive.dart) instead of raw
+  AnimatedSize (zero-duration AnimatedSize asserts under reduce motion).
+- Today: `features/today/domain/today_logic.dart` (pure: chip states, adhkar "up next", hero target
+  incl. Ramadan iftar, countdown rounding, task windows) + `application/today_providers.dart`.
+- Fonts: Fraunces/Jakarta lack `ʿ ʾ ﷺ` → `WaqtType` falls back to Amiri. **No bundled font has
+  Cyrillic**; Russian UI uses the system font (consider bundling a Cyrillic-capable face).
+- `assets/adhkar/adhkar.json`: 12 morning + 12 evening items (`id, ar, translit, text{en,tk,tr,ru},
+  count, source`). Written from memory of Ḥiṣn al-Muslim → owner must verify (see TODOs).
+- Screenshots for visual review: `WAQT_SCREENSHOTS=1 flutter test test/screenshots` → `build/screenshots/`.
+  Widget tests must enable reduce motion (looping sun glow / caret never settle).
+
 ## Phase checklist
 
 - [x] 1. Project setup, theme, fonts, l10n, router with adaptive 3-tab shell (APK builds; iOS config written, not built — no Xcode here)
 - [x] 2. Database, repositories, settings service + tests
 - [x] 3. Prayer engine, location, notifications, workmanager + tests
-- [ ] 4. Home screen (hero, day arc, chips, mark sheet, timeline)
-- [ ] 5. Qada, Expenses, Tasks
+- [x] 4. Home screen (hero, day arc, chips, mark sheet, timeline)
+- [x] 5. Qada, Expenses, Tasks
 - [ ] 6. Adhkar, Hijri calendar, Ramadan mode, Qibla, Tasbih, Tools hub
 - [ ] 7. Me (stats), Settings, Onboarding
 - [ ] 8. Widgets (iOS + Android) + polish

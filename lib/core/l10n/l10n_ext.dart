@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 
 import '../../data/db/enums.dart';
+import '../../features/calendar/domain/hijri_service.dart';
 import '../utils/dates.dart';
 import 'gen/app_localizations.dart';
 
@@ -77,6 +78,21 @@ extension L10nNames on AppLocalizations {
         FastStatus.fasted => fastFasted,
         FastStatus.missed => fastMissed,
         FastStatus.excused => fastExcused,
+      };
+
+  String event(IslamicEvent e) => switch (e) {
+        IslamicEvent.newYear => evNewYear,
+        IslamicEvent.ashura => evAshura,
+        IslamicEvent.mawlid => evMawlid,
+        IslamicEvent.rajab => evRajab,
+        IslamicEvent.miraj => evMiraj,
+        IslamicEvent.baraah => evBaraah,
+        IslamicEvent.ramadan => evRamadan,
+        IslamicEvent.lastTen => evLastTen,
+        IslamicEvent.qadr => evQadr,
+        IslamicEvent.eidFitr => evEidFitr,
+        IslamicEvent.arafah => evArafah,
+        IslamicEvent.eidAdha => evEidAdha,
       };
 
   // ---- dates ----

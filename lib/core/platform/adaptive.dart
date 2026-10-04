@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -45,13 +47,17 @@ abstract final class Adaptive {
       ),
       builder: (ctx) {
         final child = builder(ctx);
-        return Column(
+        final column = Column(
           mainAxisSize: expand ? MainAxisSize.max : MainAxisSize.min,
           children: [
             SheetGrabber(cupertino: cupertino),
             if (expand) Expanded(child: child) else Flexible(child: child),
           ],
         );
+        // Tall sheets (expense) leave the top of the screen visible, as in
+        // the design (sheet top at 118 of 844 ≈ 86 %).
+        if (!expand) return column;
+        return FractionallySizedBox(heightFactor: 0.86, child: column);
       },
     );
   }
@@ -81,8 +87,23 @@ class SheetGrabber extends StatelessWidget {
 
 /// Haptic vocabulary used across the app.
 abstract final class Haptics {
-  static Future<void> tap() => HapticFeedback.selectionClick();
-  static Future<void> light() => HapticFeedback.lightImpact();
-  static Future<void> success() => HapticFeedback.mediumImpact();
-  static Future<void> goal() => HapticFeedback.heavyImpact();
+  static void tap() => unawaited(HapticFeedback.selectionClick());
+  static void light() => unawaited(HapticFeedback.lightImpact());
+  static void success() => unawaited(HapticFeedback.mediumImpact());
+  static void goal() => unawaited(HapticFeedback.heavyImpact());
+}
+
+/// [AnimatedSize] that is skipped entirely under reduce motion (a zero
+/// duration makes AnimatedSize re-dirty itself during layout).
+class MotionSize extends StatelessWidget {
+  const MotionSize({super.key, required this.child, this.ms = 250, this.alignment = Alignment.topCenter});
+  final Widget child;
+  final int ms;
+  final Alignment alignment;
+
+  @override
+  Widget build(BuildContext context) {
+    if (Adaptive.reduceMotion(context)) return child;
+    return AnimatedSize(duration: Duration(milliseconds: ms), alignment: alignment, child: child);
+  }
 }

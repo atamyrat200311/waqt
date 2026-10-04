@@ -4,12 +4,17 @@ import 'package:go_router/go_router.dart';
 
 import '../../data/settings/settings_controller.dart';
 import '../../features/me/presentation/me_screen.dart';
+import '../../features/qada/presentation/qada_screen.dart';
+import '../../features/tasks/presentation/tasks_screen.dart';
 import '../../features/today/presentation/today_screen.dart';
 import '../../features/tools/presentation/tools_screen.dart';
 import 'app_shell.dart';
 import 'routes.dart';
 
 final rootNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'root');
+
+/// Last path segment of a full route ('/today/qada' → 'qada').
+String _child(String full) => full.substring(full.lastIndexOf('/') + 1);
 
 final appRouterProvider = Provider<GoRouter>((ref) {
   // Rebuild redirects only when onboarding completes, not on every setting.
@@ -39,6 +44,10 @@ final appRouterProvider = Provider<GoRouter>((ref) {
                 markPrayer: state.uri.queryParameters['mark'],
                 markDay: state.uri.queryParameters['day'],
               ),
+              routes: [
+                GoRoute(path: _child(Routes.qada), builder: (context, state) => const QadaScreen()),
+                GoRoute(path: _child(Routes.tasks), builder: (context, state) => const TasksScreen()),
+              ],
             ),
           ]),
           StatefulShellBranch(routes: [

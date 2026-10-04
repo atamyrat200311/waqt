@@ -10,6 +10,10 @@ abstract final class WaqtType {
 
   static const _tabular = [FontFeature.tabularFigures()];
 
+  /// Fraunces and Jakarta lack ʿ ʾ (transliteration) and ﷺ; Amiri has them.
+  /// Cyrillic is in none of the bundled fonts and uses the system font.
+  static const _fallback = [arabicFamily];
+
   /// Fraunces display style. [tracking] is in em, like the CSS in the design.
   static TextStyle serif(
     double size, {
@@ -21,6 +25,7 @@ abstract final class WaqtType {
   }) {
     return TextStyle(
       fontFamily: serifFamily,
+      fontFamilyFallback: _fallback,
       fontSize: size,
       fontWeight: _weight(weight),
       letterSpacing: tracking * size,
@@ -47,6 +52,7 @@ abstract final class WaqtType {
   }) {
     return TextStyle(
       fontFamily: sansFamily,
+      fontFamilyFallback: _fallback,
       fontSize: size,
       fontWeight: _weight(weight),
       letterSpacing: tracking * size,
