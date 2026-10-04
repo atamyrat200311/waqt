@@ -871,6 +871,24 @@
   "widgetsHelpIos": "Touch and hold an empty area of the Home Screen, tap +, search for Waqt and choose the small, medium or lock-screen widget.",
   "widgetsHelpAndroid": "Touch and hold an empty area of the home screen, tap Widgets, find Waqt and drag the widget onto the screen. Its button marks the current prayer.",
   "widgetsHelpData": "Widgets show the next seven days of times even if you don't open the app.",
+  "widgetNext": "Next",
+  "widgetWindowOpen": "{prayer} · window open",
+  "@widgetWindowOpen": {
+    "placeholders": {
+      "prayer": {
+        "type": "String"
+      }
+    }
+  },
+  "widgetMarkPrayed": "Mark as prayed",
+  "widgetMarked": "{prayer} marked",
+  "@widgetMarked": {
+    "placeholders": {
+      "prayer": {
+        "type": "String"
+      }
+    }
+  },
   "locationTitle": "Location",
   "locationUseCurrent": "Use my location",
   "locationSearch": "Search a city",

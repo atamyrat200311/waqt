@@ -191,6 +191,15 @@ adhkar reminders, suhoor/iftar reminders.
 - [ ] Review tk/tr/ru ARB strings marked `"REVIEW"` in their `@` descriptions.
 - [ ] Replace placeholder adhan audio (see "Adhan sound" below).
 - [ ] iOS: install Xcode + CocoaPods (this machine had neither, so iOS was not built here).
+- [ ] iOS widget target (once, in Xcode): File ▸ New ▸ Target ▸ Widget Extension, name `WaqtWidget`,
+      bundle id `tm.ofis.waqt.WaqtWidget`, no Live Activity / no configuration intent, deployment
+      target iOS 16. Delete the generated Swift file, add `ios/WaqtWidget/WaqtWidget.swift` +
+      `Info.plist` to the target, set its entitlements to `ios/WaqtWidget/WaqtWidget.entitlements`.
+      Add the App Group `group.tm.ofis.waqt` capability to Runner (entitlements file already wired)
+      and WaqtWidget in the developer portal.
+- [ ] Android: run `flutter build apk` once — Glance/Compose Gradle changes and the widget Kotlin
+      were written without network access to Google's Maven (dl.google.com blocked here).
+- [ ] Consider bundling a Cyrillic-capable font (Fraunces/Jakarta have no Cyrillic; ru uses system font).
 
 ## Adhan sound
 
@@ -258,6 +267,24 @@ sounds are fixed once a channel exists → bump the channel id in `notification_
 - Onboarding (no artboard): language → location (+ region method preset, "Advanced" pickers) →
   notifications → Android battery (opens app settings; no plugin for the exemption dialog) → Start.
 
+## Widgets (phase 8)
+
+- Dart builds a 7-day JSON payload (`features/widgets/domain/widget_payload.dart`, key `waqt_widget`)
+  → `home_widget` shared storage (App Group `group.tm.ofis.waqt` on iOS). Native code derives
+  next prayer / open window / countdown from it, so widgets stay right for a week offline.
+- Pushed by `widgetSyncProvider` (engine, today's marks, language changes), by the workmanager
+  refresh (`runBackgroundRefresh` → `refreshWidgetsFromDisk`) and after widget actions.
+- Android (Glance): `android/app/src/main/kotlin/tm/ofis/waqt/widget/` (`WaqtWidgetReceiver`,
+  `WidgetData` logic), `res/xml/waqt_widget_info.xml` (4×2). "Mark as prayed" → broadcast →
+  Dart `widgetInteraction` (background isolate) marks on time and refreshes. Refreshes are
+  scheduled at prayer times + every 15 min for 6 h (`HomeWidget.scheduleWidgetUpdates`).
+- iOS (WidgetKit): `ios/WaqtWidget/WaqtWidget.swift` — small (hero), medium (5 columns),
+  lock-screen rectangular; minute entries for 3 h + state changes. Taps open
+  `waqt://today?homeWidget[&mark=…&day=…]` (URL scheme `waqt` in Runner/Info.plist).
+- Drift DB opens with `shareAcrossIsolates: true` so background writes reach the app's streams.
+- `core/platform/system_settings.dart` uses MainActivity's `waqt/system` channel (battery list,
+  notification settings).
+
 ## Phase checklist
 
 - [x] 1. Project setup, theme, fonts, l10n, router with adaptive 3-tab shell (APK builds; iOS config written, not built — no Xcode here)
@@ -267,4 +294,4 @@ sounds are fixed once a channel exists → bump the channel id in `notification_
 - [x] 5. Qada, Expenses, Tasks
 - [x] 6. Adhkar, Hijri calendar, Ramadan mode, Qibla, Tasbih, Tools hub
 - [x] 7. Me (stats), Settings, Onboarding
-- [ ] 8. Widgets (iOS + Android) + polish
+- [x] 8. Widgets (iOS + Android) + polish — code written; Android/iOS builds not run here (see TODOs)

@@ -3,15 +3,12 @@ import 'package:flutter/widgets.dart';
 import 'package:workmanager/workmanager.dart';
 
 import '../../data/settings/settings_repository.dart';
+import '../widgets/application/widget_sync.dart';
 import 'application/notification_service.dart';
 
 /// Must match `AppDelegate.rescheduleTaskId` and
 /// `BGTaskSchedulerPermittedIdentifiers` in ios/Runner/Info.plist.
 const kRescheduleTaskId = 'tm.ofis.waqt.reschedule';
-
-/// Hook for other background work (home-screen widgets) run by the same task.
-typedef BackgroundHook = Future<void> Function();
-final List<BackgroundHook> backgroundHooks = [];
 
 /// Entry point of the workmanager isolate. Keeps the 7-day notification
 /// window topped up even if the app is not opened for days.
@@ -29,15 +26,13 @@ void callbackDispatcher() {
   });
 }
 
-/// Reschedules notifications from the persisted settings, then runs hooks.
+/// Reschedules notifications from the persisted settings and refreshes the
+/// home-screen widgets' 7-day data.
 Future<void> runBackgroundRefresh() async {
   final settings = await SettingsRepository(SharedPrefsStore()).load();
-  if (settings.onboardingDone) {
-    await rescheduleNotifications(NotificationService(), settings);
-  }
-  for (final hook in backgroundHooks) {
-    await hook();
-  }
+  if (!settings.onboardingDone) return;
+  await rescheduleNotifications(NotificationService(), settings);
+  await refreshWidgetsFromDisk();
 }
 
 /// Registers the periodic task (Android: every 6 h; iOS registers it natively

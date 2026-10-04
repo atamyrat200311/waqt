@@ -12,6 +12,7 @@ import 'data/settings/settings_controller.dart';
 import 'features/notifications/application/notification_scheduler.dart';
 import 'features/notifications/application/notification_taps.dart';
 import 'features/prayer/application/period_mode_sync.dart';
+import 'features/widgets/application/widget_sync.dart';
 
 class WaqtApp extends ConsumerWidget {
   const WaqtApp({super.key});
@@ -22,6 +23,7 @@ class WaqtApp extends ConsumerWidget {
     ref.watch(notificationSchedulerProvider);
     ref.watch(periodModeSyncProvider);
     ref.watch(notificationTapRouterProvider);
+    ref.watch(widgetSyncProvider);
     final router = ref.watch(appRouterProvider);
     final theme = ref.watch(settingsProvider.select((s) => s.theme));
     final language = ref.watch(settingsProvider.select((s) => s.language));

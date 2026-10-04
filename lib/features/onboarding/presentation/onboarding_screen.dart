@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:geolocator/geolocator.dart';
 
 import '../../../core/l10n/l10n_ext.dart';
 import '../../../core/platform/adaptive.dart';
+import '../../../core/platform/system_settings.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_typography.dart';
 import '../../../data/db/enums.dart';
@@ -358,9 +358,9 @@ class _BatteryStep extends StatelessWidget {
           height: 52,
           radius: 16,
           expand: true,
-          // App settings → Battery (no plugin can open the exemption dialog
-          // without the REQUEST_IGNORE_BATTERY_OPTIMIZATIONS permission).
-          onPressed: Geolocator.openAppSettings,
+          // Battery optimisation list (no REQUEST_IGNORE_BATTERY_OPTIMIZATIONS
+          // permission needed); falls back to the app's settings page.
+          onPressed: SystemSettings.openBattery,
         ),
       ],
     );

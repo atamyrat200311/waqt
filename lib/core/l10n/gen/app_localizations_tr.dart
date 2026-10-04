@@ -1244,6 +1244,22 @@ class AppLocalizationsTr extends AppLocalizations {
       'Widget\'lar uygulamayı açmasanız da sonraki yedi günün vakitlerini gösterir.';
 
   @override
+  String get widgetNext => 'Sıradaki';
+
+  @override
+  String widgetWindowOpen(String prayer) {
+    return '$prayer · vakit girdi';
+  }
+
+  @override
+  String get widgetMarkPrayed => 'Kılındı olarak işaretle';
+
+  @override
+  String widgetMarked(String prayer) {
+    return '$prayer işaretlendi';
+  }
+
+  @override
   String get locationTitle => 'Konum';
 
   @override

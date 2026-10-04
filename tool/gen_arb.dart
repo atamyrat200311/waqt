@@ -616,6 +616,15 @@ const Map<String, List<String>> s = {
     'Widget\'lar uygulamayı açmasanız da sonraki yedi günün vakitlerini gösterir.',
     'Виджеты показывают время на семь дней вперёд, даже если приложение не открыто.',
   ],
+  'widgetNext': ['Next', 'Indiki', 'Sıradaki', 'Далее'],
+  'widgetWindowOpen': [
+    '{prayer} · window open',
+    '?{prayer} · wagty girdi',
+    '{prayer} · vakit girdi',
+    '{prayer} · время наступило',
+  ],
+  'widgetMarkPrayed': ['Mark as prayed', '?Okaldy diýip belle', 'Kılındı olarak işaretle', 'Отметить как совершённый'],
+  'widgetMarked': ['{prayer} marked', '?{prayer} bellendi', '{prayer} işaretlendi', '{prayer} отмечен'],
 
   // ------------------------------------------------------------- location
   'locationTitle': ['Location', 'Ýerleşýän ýeri', 'Konum', 'Местоположение'],

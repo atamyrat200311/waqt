@@ -461,6 +461,19 @@
   "@widgetsHelpData": {
     "description": "REVIEW"
   },
+  "widgetNext": "Indiki",
+  "widgetWindowOpen": "{prayer} · wagty girdi",
+  "@widgetWindowOpen": {
+    "description": "REVIEW"
+  },
+  "widgetMarkPrayed": "Okaldy diýip belle",
+  "@widgetMarkPrayed": {
+    "description": "REVIEW"
+  },
+  "widgetMarked": "{prayer} bellendi",
+  "@widgetMarked": {
+    "description": "REVIEW"
+  },
   "locationTitle": "Ýerleşýän ýeri",
   "locationUseCurrent": "Meniň ýerimi ulan",
   "locationSearch": "Şäher gözle",

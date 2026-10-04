@@ -1266,6 +1266,22 @@ class AppLocalizationsRu extends AppLocalizations {
       'Виджеты показывают время на семь дней вперёд, даже если приложение не открыто.';
 
   @override
+  String get widgetNext => 'Далее';
+
+  @override
+  String widgetWindowOpen(String prayer) {
+    return '$prayer · время наступило';
+  }
+
+  @override
+  String get widgetMarkPrayed => 'Отметить как совершённый';
+
+  @override
+  String widgetMarked(String prayer) {
+    return '$prayer отмечен';
+  }
+
+  @override
   String get locationTitle => 'Местоположение';
 
   @override

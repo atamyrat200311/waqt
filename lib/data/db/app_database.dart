@@ -46,5 +46,10 @@ class AppDatabase extends _$AppDatabase {
         },
       );
 
-  static QueryExecutor _openConnection() => driftDatabase(name: 'waqt');
+  /// Shared across isolates (widget actions and background work run in their
+  /// own isolates) so writes there reach the app's live queries.
+  static QueryExecutor _openConnection() => driftDatabase(
+        name: 'waqt',
+        native: const DriftNativeOptions(shareAcrossIsolates: true),
+      );
 }

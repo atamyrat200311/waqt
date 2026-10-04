@@ -1253,6 +1253,22 @@ class AppLocalizationsEn extends AppLocalizations {
       'Widgets show the next seven days of times even if you don\'t open the app.';
 
   @override
+  String get widgetNext => 'Next';
+
+  @override
+  String widgetWindowOpen(String prayer) {
+    return '$prayer · window open';
+  }
+
+  @override
+  String get widgetMarkPrayed => 'Mark as prayed';
+
+  @override
+  String widgetMarked(String prayer) {
+    return '$prayer marked';
+  }
+
+  @override
   String get locationTitle => 'Location';
 
   @override

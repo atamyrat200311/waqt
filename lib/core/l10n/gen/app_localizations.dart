@@ -2004,6 +2004,30 @@ abstract class AppLocalizations {
   /// **'Widgets show the next seven days of times even if you don\'t open the app.'**
   String get widgetsHelpData;
 
+  /// No description provided for @widgetNext.
+  ///
+  /// In en, this message translates to:
+  /// **'Next'**
+  String get widgetNext;
+
+  /// No description provided for @widgetWindowOpen.
+  ///
+  /// In en, this message translates to:
+  /// **'{prayer} · window open'**
+  String widgetWindowOpen(String prayer);
+
+  /// No description provided for @widgetMarkPrayed.
+  ///
+  /// In en, this message translates to:
+  /// **'Mark as prayed'**
+  String get widgetMarkPrayed;
+
+  /// No description provided for @widgetMarked.
+  ///
+  /// In en, this message translates to:
+  /// **'{prayer} marked'**
+  String widgetMarked(String prayer);
+
   /// No description provided for @locationTitle.
   ///
   /// In en, this message translates to:

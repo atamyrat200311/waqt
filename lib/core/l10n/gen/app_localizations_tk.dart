@@ -1243,6 +1243,22 @@ class AppLocalizationsTk extends AppLocalizations {
       'Widžetler programmany açmasaňyz hem indiki ýedi günüň wagtlaryny görkezýär.';
 
   @override
+  String get widgetNext => 'Indiki';
+
+  @override
+  String widgetWindowOpen(String prayer) {
+    return '$prayer · wagty girdi';
+  }
+
+  @override
+  String get widgetMarkPrayed => 'Okaldy diýip belle';
+
+  @override
+  String widgetMarked(String prayer) {
+    return '$prayer bellendi';
+  }
+
+  @override
   String get locationTitle => 'Ýerleşýän ýeri';
 
   @override

@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../../core/l10n/l10n_ext.dart';
 import '../../../core/platform/adaptive.dart';
+import '../../../core/platform/system_settings.dart';
 import '../../../core/router/routes.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_typography.dart';
@@ -136,7 +137,9 @@ class SettingsScreen extends ConsumerWidget {
               text: l.notifPermissionOff,
               action: l.obAllowNotif,
               onAction: () async {
-                await ref.read(notificationServiceProvider).requestPermission();
+                final ok = await ref.read(notificationServiceProvider).requestPermission();
+                // Permanently denied: the system won't ask again, open settings.
+                if (!ok) await SystemSettings.openNotifications();
                 ref.invalidate(notificationPermissionsProvider);
               },
             )
