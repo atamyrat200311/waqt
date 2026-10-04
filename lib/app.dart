@@ -9,12 +9,19 @@ import 'core/router/app_router.dart';
 import 'core/theme/app_theme.dart';
 import 'data/db/enums.dart';
 import 'data/settings/settings_controller.dart';
+import 'features/notifications/application/notification_scheduler.dart';
+import 'features/notifications/application/notification_taps.dart';
+import 'features/prayer/application/period_mode_sync.dart';
 
 class WaqtApp extends ConsumerWidget {
   const WaqtApp({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    // App-wide background sync (no UI): notification schedule, period mode.
+    ref.watch(notificationSchedulerProvider);
+    ref.watch(periodModeSyncProvider);
+    ref.watch(notificationTapRouterProvider);
     final router = ref.watch(appRouterProvider);
     final theme = ref.watch(settingsProvider.select((s) => s.theme));
     final language = ref.watch(settingsProvider.select((s) => s.language));

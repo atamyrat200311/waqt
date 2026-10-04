@@ -42,8 +42,8 @@ void main() {
   group('TaskRepository', () {
     test('overdue tasks can be moved to today keeping their window', () async {
       final repo = TaskRepository(db);
-      final yesterday = DayKey('2026-10-03');
-      final today = DayKey('2026-10-04');
+      const yesterday = DayKey('2026-10-03');
+      const today = DayKey('2026-10-04');
       final a = await repo.add('Pay bill', yesterday, TaskWindow.beforeDhuhr);
       final b = await repo.add('Done already', yesterday, TaskWindow.afterAsr);
       await repo.setDone(b, true);
@@ -59,7 +59,7 @@ void main() {
 
     test('sort order increments within a window', () async {
       final repo = TaskRepository(db);
-      final day = DayKey('2026-10-04');
+      const day = DayKey('2026-10-04');
       await repo.add('one', day, TaskWindow.afterAsr);
       await repo.add('two', day, TaskWindow.afterAsr);
       final tasks = await repo.watchDay(day).first;
@@ -69,7 +69,7 @@ void main() {
 
   test('AdhkarRepository upserts per (date, set, item)', () async {
     final repo = AdhkarRepository(db);
-    final day = DayKey('2026-10-04');
+    const day = DayKey('2026-10-04');
     await repo.setCount(day, AdhkarSet.evening, 'e1', 1);
     await repo.setCount(day, AdhkarSet.evening, 'e1', 3);
     expect(await repo.watchDay(day, AdhkarSet.evening).first, {'e1': 3});
@@ -77,7 +77,7 @@ void main() {
 
   test('FastRepository set and clear', () async {
     final repo = FastRepository(db);
-    final day = DayKey('2026-10-05');
+    const day = DayKey('2026-10-05');
     await repo.set(day, FastType.monThu, FastStatus.fasted);
     expect((await repo.watchRange(day, day).first)[day]?.status, FastStatus.fasted);
     await repo.set(day, FastType.monThu, null);

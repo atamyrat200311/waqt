@@ -36,7 +36,7 @@ void main() {
 
   group('PrayerRepository (sqlite in memory)', () {
     late PrayerRepository repo;
-    final day = DayKey('2026-10-04');
+    const day = DayKey('2026-10-04');
 
     setUp(() => repo = PrayerRepository(memoryDb()));
 
@@ -97,8 +97,8 @@ void main() {
       final byDay = await repo
           .watchMadeUpByDay(DateTime(2026, 10, 1), DateTime(2026, 10, 8))
           .first;
-      expect(byDay[DayKey('2026-10-04')], 1);
-      expect(byDay[DayKey('2026-10-05')], 1);
+      expect(byDay[const DayKey('2026-10-04')], 1);
+      expect(byDay[const DayKey('2026-10-05')], 1);
     });
   });
 }

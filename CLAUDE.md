@@ -192,11 +192,35 @@ adhkar reminders, suhoor/iftar reminders.
 - [ ] Replace placeholder adhan audio (see "Adhan sound" below).
 - [ ] iOS: install Xcode + CocoaPods (this machine had neither, so iOS was not built here).
 
+## Adhan sound
+
+`assets/sounds/adhan.wav` is a **placeholder** (a short synthesized chime, not an adhan).
+Copies: `android/app/src/main/res/raw/adhan.wav` (kept in release by `res/raw/keep.xml`) and
+`ios/Runner/adhan.wav` (in the Runner target's Resources phase). To replace: drop a real
+recording (≤ 30 s for iOS, wav/caf) into both places with the same name. Android channel
+sounds are fixed once a channel exists → bump the channel id in `notification_service.dart`
+(`Channels.adhan`, `…v1` → `…v2`) when the file changes.
+
+## Phase 3 notes
+
+- `features/prayer/application/prayer_providers.dart`: `prayerEngineProvider`, `prayerNowProvider`
+  (minute tick), `todayKeyProvider`, `ensureTimeZones()` / `locationFor(id)`.
+- `features/notifications/domain/notification_plan.dart`: pure planner (60 max, 7 days, ids
+  `dayIndex*10+slot`, reminders ≥ 900000 survive reschedules, period mode pauses prayers/Ramadan
+  alerts, iftar replaces the Maghrib alert in Ramadan). Payloads `mark:<prayer>:<day>`, `adhkar:<set>`, `today`.
+- `notification_service.dart` talks to the plugin; `notification_scheduler.dart` reschedules on
+  relevant settings changes + app resume; `notification_taps.dart` routes taps;
+  `background.dart` = workmanager (Android periodic 6 h, iOS BGTask registered in AppDelegate).
+- `period_mode_sync.dart`: auto-excuses passed prayers (≤ 14 days back) while period mode is on.
+- Widget tests: use `settingsOverrides()` from `test/helpers/test_app.dart` (frozen clock
+  `testNow` = 4 Oct 2026 16:00 Ashgabat, in-memory DB, fake notifications).
+- This environment can't reach dl.google.com, so Android builds were not run after phase 1.
+
 ## Phase checklist
 
 - [x] 1. Project setup, theme, fonts, l10n, router with adaptive 3-tab shell (APK builds; iOS config written, not built — no Xcode here)
-- [ ] 2. Database, repositories, settings service + tests
-- [ ] 3. Prayer engine, location, notifications, workmanager + tests
+- [x] 2. Database, repositories, settings service + tests
+- [x] 3. Prayer engine, location, notifications, workmanager + tests
 - [ ] 4. Home screen (hero, day arc, chips, mark sheet, timeline)
 - [ ] 5. Qada, Expenses, Tasks
 - [ ] 6. Adhkar, Hijri calendar, Ramadan mode, Qibla, Tasbih, Tools hub
