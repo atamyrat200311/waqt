@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet><style>@keyframes wqRipple{from{transform:scale(.85);opacity:.5}to{transform:scale(1.25);opacity:0}}</style></helmet>
+<div style="width:390px;height:844px;background:var(--bg);color:var(--ink);position:relative;overflow:hidden;display:flex;flex-direction:column">
+<dc-import name="Waqt Status" time="16:02" hint-size="390px,50px"></dc-import>
+<div style="display:flex;align-items:center;justify-content:space-between;height:44px;padding:0 20px 0 10px;flex:none">
+<div onClick="{{ back }}" style="display:flex;align-items:center;color:var(--acc);font-size:17px;font-weight:500;cursor:pointer;height:44px"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"></path></svg>Today</div>
+<span style="font-size:14px;color:var(--mu);font-weight:600">{{ pos }} of 12</span>
+</div>
+<div style="margin:4px 20px 0;height:4px;border-radius:2px;background:var(--ln);overflow:hidden;flex:none"><div style="{{ progS }}"></div></div>
+<div style="flex:1;overflow-y:auto;scrollbar-width:none;padding:18px 16px 0;display:flex;flex-direction:column">
+<div style="font-family:var(--serif);font-size:28px;letter-spacing:-.015em;padding:0 4px 14px">Evening adhkar</div>
+<div style="border-radius:28px;background:var(--card);border:1px solid var(--ln);padding:24px 22px 18px">
+<div dir="rtl" lang="ar" style="{{ arS }}">{{ ar }}</div>
+<div style="height:1px;background:var(--ln);margin:16px 0 14px"></div>
+<div style="font-size:15px;line-height:1.5;color:var(--mu);font-style:italic;text-wrap:pretty">{{ tr }}</div>
+<div style="font-size:15px;line-height:1.5;margin-top:8px;text-wrap:pretty">{{ en }}</div>
+<div style="display:flex;justify-content:space-between;align-items:center;margin-top:16px"><span style="height:30px;padding:0 12px;border-radius:999px;background:var(--brs);color:var(--bri);display:flex;align-items:center;font-size:13px;font-weight:700">Recite {{ n }}×</span><span style="font-size:12px;color:var(--mu)">{{ src }}</span></div>
+</div>
+<div style="flex:1;min-height:200px;display:flex;align-items:center;justify-content:center;padding:14px 0">
+<div onClick="{{ tap }}" style="position:relative;width:184px;height:184px;border-radius:50%;cursor:pointer;user-select:none;display:flex;align-items:center;justify-content:center;background:var(--card);border:1px solid var(--ln);transition:transform .09s" style-active="transform:scale(.95)">
+<svg width="184" height="184" viewBox="0 0 184 184" style="position:absolute;inset:-1px;transform:rotate(-90deg)"><circle cx="92" cy="92" r="84" fill="none" stroke-width="5" style="stroke:var(--fill)"></circle><circle cx="92" cy="92" r="84" fill="none" stroke-width="5" stroke-linecap="round" stroke-dasharray="527.8" style="{{ ringS }}"></circle></svg>
+<span key="{{ count }}" style="position:absolute;inset:6px;border-radius:50%;border:2px solid var(--br);animation:wqRipple .5s ease-out forwards;opacity:0"></span>
+<div style="display:flex;flex-direction:column;align-items:center"><span style="font-family:var(--serif);font-size:60px;line-height:1;letter-spacing:-.03em">{{ count }}</span><span style="font-size:14px;color:var(--mu);margin-top:4px">{{ countSub }}</span></div>
+</div>
+</div>
+</div>
+<div style="display:flex;gap:10px;padding:8px 16px 34px;flex:none">
+<div onClick="{{ prev }}" style="width:56px;height:56px;border-radius:18px;border:1px solid var(--ln);display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--ink);flex:none"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"></path></svg></div>
+<div onClick="{{ next }}" style="{{ nextS }}">{{ nextLabel }}<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"></path></svg></div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:390,&quot;height&quot;:844},&quot;nav&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;(s:string)=&gt;void&quot;}}">
+class Component extends DCLogic {
+  state = { i: 2, c: [1, 3, 37, 0] };
+  D = [
+    { ar: 'أَمْسَيْنَا وَأَمْسَى الْمُلْكُ لِلَّهِ، وَالْحَمْدُ لِلَّهِ، لَا إِلَٰهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ', tr: 'Amsaynā wa amsal-mulku lillāh, wal-ḥamdu lillāh, lā ilāha illallāhu waḥdahu lā sharīka lah', en: 'We have entered the evening, and all sovereignty belongs to Allah. All praise is for Allah. There is no god but Allah alone, without partner.', n: 1, src: 'Muslim 2723' },
+    { ar: 'بِسْمِ اللَّهِ الَّذِي لَا يَضُرُّ مَعَ اسْمِهِ شَيْءٌ فِي الْأَرْضِ وَلَا فِي السَّمَاءِ وَهُوَ السَّمِيعُ الْعَلِيمُ', tr: 'Bismillāhil-ladhī lā yaḍurru maʿasmihī shayʾun fil-arḍi wa lā fis-samāʾ, wa huwas-samīʿul-ʿalīm', en: 'In the name of Allah, with whose name nothing on earth or in the heavens can cause harm. He is the All-Hearing, the All-Knowing.', n: 3, src: 'Abū Dāwūd 5088' },
+    { ar: 'سُبْحَانَ اللَّهِ وَبِحَمْدِهِ', tr: 'Subḥānallāhi wa bi-ḥamdih', en: 'Glory be to Allah, and praise be to Him.', n: 100, src: 'Muslim 2692' },
+    { ar: 'أَعُوذُ بِكَلِمَاتِ اللَّهِ التَّامَّاتِ مِنْ شَرِّ مَا خَلَقَ', tr: 'Aʿūdhu bi-kalimātillāhit-tāmmāti min sharri mā khalaq', en: 'I seek refuge in the perfect words of Allah from the evil of what He has created.', n: 3, src: 'Muslim 2709' }
+  ];
+  renderVals() {
+    const st = this.state, P = this.props, d = this.D[st.i], cnt = st.c[st.i], done = cnt >= d.n, last = st.i === this.D.length - 1;
+    const set = (i, v) => { const c = [...st.c]; c[i] = v; return c; };
+    return { ...d, pos: st.i + 1, count: cnt, countSub: done ? 'Complete' : '/ ' + d.n,
+      arS: { fontFamily: 'var(--ar)', fontSize: d.ar.length > 60 ? 28 : 42, lineHeight: 1.9, textAlign: 'center', color: 'var(--ink)' },
+      progS: { height: '100%', width: ((st.i + Math.min(cnt / d.n, 1)) / 12 * 100) + '%', background: 'var(--br)', borderRadius: 2, transition: 'width .3s' },
+      ringS: { stroke: done ? 'var(--br)' : 'var(--acc)', strokeDashoffset: 527.8 * (1 - Math.min(cnt / d.n, 1)), transition: 'stroke-dashoffset .25s ease-out, stroke .3s' },
+      tap: () => { if (!done) this.setState({ c: set(st.i, cnt + 1) }); },
+      prev: () => st.i > 0 && this.setState({ i: st.i - 1 }),
+      next: () => last ? (P.nav && P.nav('home')) : this.setState({ i: st.i + 1 }),
+      nextLabel: last ? 'Finish' : done ? 'Next dhikr' : 'Next',
+      nextS: { flex: 1, height: 56, borderRadius: 18, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6, fontSize: 16, fontWeight: 600, cursor: 'pointer', background: done ? 'var(--pri)' : 'var(--mint)', color: done ? 'var(--onp)' : 'var(--mink)', transition: 'background .2s' },
+      back: () => P.nav && P.nav('home') };
+  }
+}
+</script>
+</body>
+</html>

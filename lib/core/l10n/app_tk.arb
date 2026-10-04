@@ -1,0 +1,538 @@
+{
+  "@@locale": "tk",
+  "appName": "Waqt",
+  "tabToday": "Şu gün",
+  "tabTools": "Gurallar",
+  "tabMe": "Men",
+  "add": "Goş",
+  "save": "Ýatda sakla",
+  "cancel": "Ýatyr",
+  "done": "Taýýar",
+  "close": "Ýap",
+  "back": "Yza",
+  "next": "Indiki",
+  "skip": "Geç",
+  "continueLabel": "Dowam et",
+  "notNow": "Häzir däl",
+  "edit": "Üýtget",
+  "delete": "Poz",
+  "undo": "Yzyna al",
+  "reset": "Täzeden",
+  "today": "Şu gün",
+  "yesterday": "Düýn",
+  "pickDate": "Sene saýla",
+  "listAnd": "{a} we {b}",
+  "errorGeneric": "Bir zat ýalňyş gitdi.",
+  "tryAgain": "Gaýtadan synanyş",
+  "prayerFajr": "Ertir",
+  "prayerSunrise": "Gün dogşy",
+  "prayerDhuhr": "Öýle",
+  "prayerAsr": "Ikindi",
+  "prayerMaghrib": "Agşam",
+  "prayerIsha": "Ýassy",
+  "weekdayName": "{day, select, mon{Duşenbe} tue{Sişenbe} wed{Çarşenbe} thu{Penşenbe} fri{Anna} sat{Şenbe} other{Ýekşenbe}}",
+  "weekdayShort": "{day, select, mon{Duş} tue{Siş} wed{Çar} thu{Pen} fri{Ann} sat{Şen} other{Ýek}}",
+  "weekdayInitial": "{day, select, mon{D} tue{S} wed{Ç} thu{P} fri{A} sat{Ş} other{Ý}}",
+  "monthName": "{month, select, jan{ýanwar} feb{fewral} mar{mart} apr{aprel} may{maý} jun{iýun} jul{iýul} aug{awgust} sep{sentýabr} oct{oktýabr} nov{noýabr} other{dekabr}}",
+  "monthShort": "{month, select, jan{ýan} feb{few} mar{mar} apr{apr} may{maý} jun{iýn} jul{iýl} aug{awg} sep{sen} oct{okt} nov{noý} other{dek}}",
+  "monthStandalone": "{month, select, jan{Ýanwar} feb{Fewral} mar{Mart} apr{Aprel} may{Maý} jun{Iýun} jul{Iýul} aug{Awgust} sep{Sentýabr} oct{Oktýabr} nov{Noýabr} other{Dekabr}}",
+  "dateLong": "{day}-nji {month}, {weekday}",
+  "@dateLong": {
+    "description": "REVIEW"
+  },
+  "dateDayMonth": "{day}-nji {month}",
+  "dateShortWeekday": "{day} {month}, {weekday}",
+  "hijriMonth": "{month, select, m1{Muharram} m2{Sapar} m3{Rebiulewwel} m4{Rebiulahyr} m5{Jumadel-ewwel} m6{Jumadel-ahyr} m7{Rejep} m8{Şagban} m9{Remezan} m10{Şawwal} m11{Zülkaáde} other{Zülhijje}}",
+  "@hijriMonth": {
+    "description": "REVIEW"
+  },
+  "hijriMonthLong": "{month, select, m1{Muharram} m2{Sapar} m3{Rebiulewwel} m4{Rebiulahyr} m5{Jumadel-ewwel} m6{Jumadel-ahyr} m7{Rejep} m8{Şagban} m9{Remezan} m10{Şawwal} m11{Zülkaáde} other{Zülhijje}}",
+  "@hijriMonthLong": {
+    "description": "REVIEW"
+  },
+  "hijriDate": "{day} {month} {year}",
+  "unitH": "s",
+  "unitM": "m",
+  "unitS": "sek",
+  "durationHM": "{h} s {m} min",
+  "durationM": "{m} min",
+  "minutesShort": "{m} min",
+  "inDuration": "{d} soň",
+  "daysCount": "{n, plural, other{{n} gün}}",
+  "daysUnit": "{n, plural, other{gün}}",
+  "eventCountdown": "{name} {days, plural, =0{şu gün} =1{ertir} other{{days} günden}}",
+  "@eventCountdown": {
+    "description": "REVIEW"
+  },
+  "homeNextPrayer": "Indiki namaz",
+  "homeIn": "",
+  "homeInAfter": "soň",
+  "homeRamadanKicker": "Remezan · Agyz açmak",
+  "homeIftar": "Agyz açmak",
+  "homeMaghribAt": "Agşam {time}",
+  "homeSuhoorLine": "Sähri {time}-da gutarýar · Agyz {n}/{total}",
+  "@homeSuhoorLine": {
+    "description": "REVIEW"
+  },
+  "homeAfterIshaKicker": "Ýassydan soň · {time}",
+  "homeYourDay": "Siziň günüňiz",
+  "homeUpNext": "Indiki",
+  "homeStart": "Başla",
+  "homeMarkDone": "Taýýar",
+  "homeAdhkarAfter": "{window} · {min} min",
+  "homeTaraweeh": "Terawih",
+  "homeTaraweehSub": "Metjitde · ýatlatma {time}",
+  "@homeTaraweehSub": {
+    "description": "REVIEW"
+  },
+  "homeSpentToday": "Şu günki çykdajy",
+  "homeInclSadaqa": "{amount} sadaka bilen",
+  "@homeInclSadaqa": {
+    "description": "REVIEW"
+  },
+  "homeTasks": "Işler",
+  "homeTasksOf": "/ {total}",
+  "homeQadaRemaining": "{count, plural, other{{count} kaza galdy}}",
+  "@homeQadaRemaining": {
+    "description": "REVIEW"
+  },
+  "homeMakeUp": "Kaza et",
+  "homeUnmarkedTitle": "Düýn {prayers} bellenmedi",
+  "@homeUnmarkedTitle": {
+    "description": "REVIEW"
+  },
+  "homeUnmarkedBody": "Siz saýlamasaňyz, kaza hiç zat goşulmaýar.",
+  "@homeUnmarkedBody": {
+    "description": "REVIEW"
+  },
+  "homeUnmarkedAllPrayed": "Hemmesi okaldy",
+  "homeAddExpense": "Çykdajy goş",
+  "homeSetLocation": "Ýeri saýla",
+  "markClosedAtSunrise": "gün dogşy bilen gutardy",
+  "markClosedAt": "{time}-da gutardy",
+  "markLeft": "{d} galdy",
+  "markOpensAt": "{time}-da başlaýar",
+  "markOnTime": "Wagtynda okaldy",
+  "markOnTimeSub": "{prayer} wagtynyň içinde",
+  "markCongregation": "Jemagat bilen",
+  "markCongregationSub": "Jemagat bilen, wagtynda",
+  "markLate": "Gijä galyp okaldy",
+  "markLateSub": "Wagty geçenden soň",
+  "markMissed": "Galdy, kaza goş",
+  "markMissedSub": "Bir zat goşulmazdan öň tassyklarsyňyz",
+  "@markMissedSub": {
+    "description": "REVIEW"
+  },
+  "markExcused": "Ötünçli",
+  "markExcusedSub": "Aýbaşy tertibi açyk — kaza ýok, yzygiderlik saklanýar",
+  "@markExcusedSub": {
+    "description": "REVIEW"
+  },
+  "markConfirmTitle": "Kaza 1 {prayer} goşulsynmy?",
+  "@markConfirmTitle": {
+    "description": "REVIEW"
+  },
+  "markConfirmBody": "Ony islän wagtyňyz kaza edip bilersiňiz. Tassyklamasaňyz hiç zat goşulmaýar.",
+  "@markConfirmBody": {
+    "description": "REVIEW"
+  },
+  "markAddToQada": "Kaza goş",
+  "markAdded": "Kaza goşuldy. Mümkin bolanda kaza ediň.",
+  "@markAdded": {
+    "description": "REVIEW"
+  },
+  "markRemind": "15 minutdan ýatlat",
+  "markReminderSet": "Ýatlatma {time}-a goýuldy",
+  "markClear": "Belligi aýyr",
+  "markNotStarted": "Bu namazyň wagty heniz girmedi.",
+  "@markNotStarted": {
+    "description": "REVIEW"
+  },
+  "qadaTitle": "Kaza",
+  "qadaLeft": "kaza edilmeli\nnamaz",
+  "@qadaLeft": {
+    "description": "REVIEW"
+  },
+  "qadaMadeUpSince": "Başlanyňyzdan bäri {count} kaza etdiňiz",
+  "@qadaMadeUpSince": {
+    "description": "REVIEW"
+  },
+  "qadaThisWeek": "Şu hepde",
+  "qadaWeekMadeUp": "{count} kaza edildi",
+  "qadaMadeUp": "Kaza etdim",
+  "qadaAllDone": "Hemmesi",
+  "qadaAddOlder": "Öňki galan namazlary goş",
+  "qadaTip": "Birden kaza etmek ýeterlik. Köpler her parz namaz bilen bir kaza okaýar.",
+  "@qadaTip": {
+    "description": "REVIEW"
+  },
+  "qadaAddOlderTitle": "Öňki galan namazlar",
+  "qadaAddOlderBody": "Her namazdan näçesi galandygyny giriziň. Olar häzirki sanlara goşular.",
+  "@qadaAddOlderBody": {
+    "description": "REVIEW"
+  },
+  "qadaAddCount": "{count, plural, =0{Kaza goş} other{Kaza {count} goş}}",
+  "qadaEmpty": "Kaza ýok. Öňki galan namazlaryňyz bar bolsa, şu ýere goşuň.",
+  "@qadaEmpty": {
+    "description": "REVIEW"
+  },
+  "expenseAdd": "Çykdajy goş",
+  "expenseAddNote": "Bellik goş",
+  "expenseNoteHint": "Bellik",
+  "catGroceries": "Azyk",
+  "catTransport": "Ulag",
+  "catFood": "Nahar",
+  "catBills": "Tölegler",
+  "catSadaqa": "Sadaka",
+  "catOther": "Beýleki",
+  "expenseSave": "{amount} {currency} ýatda sakla",
+  "expenseSaveSadaqa": "{amount} {currency} sadaka hökmünde sakla",
+  "@expenseSaveSadaqa": {
+    "description": "REVIEW"
+  },
+  "expenseEnterAmount": "Möçberi giriziň",
+  "expenseSaved": "Saklandy",
+  "expenseTodayList": "Şu günki ýazgylar",
+  "expenseDeleted": "Çykdajy pozuldy",
+  "tasksTitle": "Işler",
+  "tasksDoneOf": "{total} işden {done} taýýar",
+  "tasksAddHint": "Iş goş…",
+  "tasksAddA11y": "Iş goş",
+  "winBeforeFajr": "Ertirden öň",
+  "winAfterFajr": "Ertirden soň",
+  "winBeforeDhuhr": "Öýläden öň",
+  "winAfterDhuhr": "Öýläden soň",
+  "winAfterAsr": "Ikindiden soň",
+  "winAfterMaghrib": "Agşamdan soň",
+  "winAfterIsha": "Ýassydan soň",
+  "winAnytime": "Islendik wagt",
+  "winUntil": "{time}-a çenli",
+  "winFrom": "{time}-dan",
+  "winRange": "{a} – {b}",
+  "tasksOverdue": "{count, plural, other{Öňki günlerden {count} gutarylmadyk iş}}",
+  "@tasksOverdue": {
+    "description": "REVIEW"
+  },
+  "tasksMoveToday": "Şu güne geçir",
+  "tasksEmpty": "Entek hiç zat meýilleşdirilmedi. Namaz wagtyna iş goşuň.",
+  "@tasksEmpty": {
+    "description": "REVIEW"
+  },
+  "tasksDeleted": "Iş pozuldy",
+  "tasksAllDone": "Şu günlük hemmesi taýýar",
+  "adhkarMorning": "Ertirki zikirler",
+  "adhkarEvening": "Agşamky zikirler",
+  "adhkarPosOf": "{pos} / {total}",
+  "adhkarRecite": "{n}× okaň",
+  "adhkarComplete": "Tamam",
+  "adhkarOf": "/ {n}",
+  "adhkarNext": "Indiki",
+  "adhkarNextDhikr": "Indiki zikir",
+  "adhkarFinish": "Tamamla",
+  "adhkarPrev": "Öňki zikir",
+  "adhkarTapToCount": "Sanamak üçin basyň",
+  "adhkarSetDone": "Alla kabul etsin.",
+  "@adhkarSetDone": {
+    "description": "REVIEW"
+  },
+  "adhkarTranslationNote": "Terjime takmynan.",
+  "@adhkarTranslationNote": {
+    "description": "REVIEW"
+  },
+  "calendarTitle": "Hijri senenamasy",
+  "calendarRange": "{year} · {start} – {end}",
+  "calendarWhiteDays": "Ak günler 13–15",
+  "calendarMonThu": "Duş we Pen oraza",
+  "calendarUpcoming": "Ýakyn günler",
+  "calendarMoonNote": "Seneler ýerli Aý görülişine baglylykda bir gün süýşüp biler.",
+  "@calendarMoonNote": {
+    "description": "REVIEW"
+  },
+  "calendarPrevMonth": "Öňki aý",
+  "calendarNextMonth": "Indiki aý",
+  "calendarEveningOf": "{date} agşamy",
+  "evRajab": "Rejep aýy başlaýar",
+  "evMiraj": "Miraç gijesi",
+  "evBaraah": "Beraat gijesi",
+  "evRamadan": "Remezan başlaýar",
+  "evQadr": "Gadyr gijesi",
+  "evEidFitr": "Oraza baýramy",
+  "evArafah": "Arafat güni",
+  "evEidAdha": "Gurban baýramy",
+  "evNewYear": "Hijri täze ýyly",
+  "evAshura": "Aşyr güni",
+  "evMawlid": "Mewlit",
+  "evLastTen": "Soňky on gije başlaýar",
+  "fastLogTitle": "Oraza · {date}",
+  "fastFasted": "Oraza tutdum",
+  "fastMissed": "Galdy",
+  "fastExcused": "Ötünçli",
+  "fastClear": "Arassala",
+  "fastTypeRamadan": "Remezan orazasy",
+  "fastTypeMonThu": "Duşenbe/Penşenbe orazasy",
+  "fastTypeWhiteDays": "Ak gün orazasy",
+  "fastTypeOther": "Nepil oraza",
+  "ramadanTitle": "Remezan",
+  "ramadanMode": "Remezan tertibi",
+  "ramadanAuto": "Awtomatik",
+  "ramadanOn": "Açyk",
+  "ramadanOff": "Ýapyk",
+  "ramadanInDays": "{days} günden",
+  "ramadanDayOf": "{total} günden {n}-nji",
+  "ramadanSuhoorReminder": "Sähri ýatlatmasy",
+  "ramadanSuhoorBefore": "Ertirden {min} min öň",
+  "ramadanIftarReminder": "Agşamda agyz açmak",
+  "ramadanTaraweehReminder": "Terawih ýatlatmasy",
+  "ramadanFasts": "Şu Remezandaky orazalar",
+  "ramadanTodayFast": "Şu günki oraza",
+  "ramadanNotNow": "Remezan tertibi 1 Remezanda özi açylýar.",
+  "@ramadanNotNow": {
+    "description": "REVIEW"
+  },
+  "toolsTitle": "Gurallar",
+  "qibla": "Kybla",
+  "qiblaTurn": "Ok ýokary görkezýänçä öwrüliň",
+  "qiblaFacing": "Siz Kybla tarap",
+  "qiblaCalibrate": "Kompas sazlamaly — telefony 8 şekilinde aýlaň.",
+  "@qiblaCalibrate": {
+    "description": "REVIEW"
+  },
+  "qiblaNoSensor": "Bu enjamda kompas ýok. Kybla demirgazykdan sagat ugruna {deg}°.",
+  "@qiblaNoSensor": {
+    "description": "REVIEW"
+  },
+  "qiblaFromNorth": "demirgazykdan {deg}°",
+  "qiblaDistance": "Mekgä çenli {km} km",
+  "qiblaOpen": "Kompasy aç",
+  "tasbih": "Täsbih",
+  "tasbihOf": "/ {n}",
+  "tasbihComplete": "Tamam · {n}",
+  "tasbihTapAgain": "Täzeden başlamak üçin basyň",
+  "tasbihCustom": "Öz täsbihiňiz",
+  "tasbihPreset": "Namazdan soňky täsbih (33 · 33 · 34)",
+  "tasbihPhrase": "Söz",
+  "tasbihGoal": "Maksat",
+  "tasbihCount": "San",
+  "tasbihTapA11y": "Bir sana",
+  "toolsAdhkar": "Zikirler",
+  "toolsMorningDue": "Ertirki wagty",
+  "toolsEveningDue": "Agşamky wagty",
+  "toolsAdhkarDone": "Şu gün taýýar",
+  "toolsCalendar": "Hijri senenamasy",
+  "toolsRamadan": "Remezan",
+  "toolsRamadanNow": "{n}-nji gün",
+  "meTitle": "Men",
+  "meAll5": "Bäş wagt namaz",
+  "meDaysInRow": "{n, plural, other{gün yzygiderli}}",
+  "me2WeeksAgo": "2 hepde öň",
+  "meBest": "Iň gowy: {n} gün",
+  "meOnTime": "Wagtynda",
+  "meThisMonth": "şu aý",
+  "meAdhkarStreak": "Zikir yzygiderligi",
+  "meDays": "gün",
+  "meMorningEvening": "ertir we agşam",
+  "meConsistency": "Yzygiderlik",
+  "meFasts": "Şu aýdaky orazalar",
+  "meFastsNone": "Entek bellenmedi",
+  "meFastMonThu": "{n} Duş/Pen",
+  "meFastWhite": "{n} ak gün",
+  "meFastRamadan": "{n} Remezan",
+  "meFastOther": "{n} nepil",
+  "meSadaqa": "Sadaka",
+  "meSpending": "Çykdajylar",
+  "meNoSpending": "Şu aý entek çykdajy ýok.",
+  "meNoPrayerData": "Yzygiderligi görmek üçin namazlaryňyzy «Şu gün» sahypasynda belläň.",
+  "@meNoPrayerData": {
+    "description": "REVIEW"
+  },
+  "meSettingsA11y": "Sazlamalar",
+  "tipFajrTitle": "Ertir iň köp galýan namaz.",
+  "@tipFajrTitle": {
+    "description": "REVIEW"
+  },
+  "tipFajrBody": "Azandan on minut öň budilnik we ýanyňyzda suw köplere kömek edýär.",
+  "@tipFajrBody": {
+    "description": "REVIEW"
+  },
+  "tipDhuhrTitle": "Öýle işde ýatdan çykýar.",
+  "@tipDhuhrTitle": {
+    "description": "REVIEW"
+  },
+  "tipDhuhrBody": "Azandan soň on minuty senenamaňyzda belläň.",
+  "@tipDhuhrBody": {
+    "description": "REVIEW"
+  },
+  "tipAsrTitle": "Ikindi aňsat galýar.",
+  "@tipAsrTitle": {
+    "description": "REVIEW"
+  },
+  "tipAsrBody": "Eşiden badyňyza, öýlänki işlerden öň okaň.",
+  "@tipAsrBody": {
+    "description": "REVIEW"
+  },
+  "tipMaghribTitle": "Agşamyň wagty gysga.",
+  "@tipMaghribTitle": {
+    "description": "REVIEW"
+  },
+  "tipMaghribBody": "Ilki namaz, soň saçak.",
+  "@tipMaghribBody": {
+    "description": "REVIEW"
+  },
+  "tipIshaTitle": "Ýassy gijä süýşýär.",
+  "@tipIshaTitle": {
+    "description": "REVIEW"
+  },
+  "tipIshaBody": "Çaýdan we ekrandan öň okaň, soň dynç alyň.",
+  "@tipIshaBody": {
+    "description": "REVIEW"
+  },
+  "settingsTitle": "Sazlamalar",
+  "secPrayerTimes": "Namaz wagtlary",
+  "calcMethod": "Hasaplama usuly",
+  "asr": "Ikindi",
+  "asrStandard": "Standart",
+  "asrHanafi": "Hanafy",
+  "matchMosque": "Metjidime laýyklaşdyr",
+  "matchMosqueSub": "Ähli wagtlary onuň tertibine süýşür",
+  "perPrayerOffsets": "Her namazy sazla",
+  "offsetMinutes": "{value} min",
+  "secAlerts": "Duýduryşlar",
+  "alertAdhan": "Azan",
+  "alertSilent": "Sessiz",
+  "alertOff": "Öçük",
+  "secGeneral": "Umumy",
+  "language": "Dil",
+  "languageSystem": "Ulgam",
+  "currency": "Pul birligi",
+  "location": "Ýerleşýän ýeri",
+  "periodMode": "Aýbaşy tertibi",
+  "periodModeSub": "Namaz duýduryşlaryny togtadýar. Yzygiderlik saklanýar.",
+  "@periodModeSub": {
+    "description": "REVIEW"
+  },
+  "appearance": "Görnüş",
+  "themeLight": "Ýagty",
+  "themeDark": "Garaňky",
+  "themeAuto": "Awto",
+  "widgets": "Widžetler",
+  "privacyNote": "Hasap ýok, mahabat ýok. Hemme zat şu telefonda galýar.",
+  "@privacyNote": {
+    "description": "REVIEW"
+  },
+  "versionLabel": "Waqt {version}",
+  "hijriAdjust": "Hijri senesi",
+  "hijriAdjustSub": "Ýerli Aý görlüşine laýyklaşdyr",
+  "hijriAdjustNone": "Düzediş ýok",
+  "adhkarReminders": "Zikir ýatlatmalary",
+  "adhkarRemindersSub": "Ertir namazdan soň, agşam ikindiden soň",
+  "secRamadan": "Remezan",
+  "secNotifications": "Bildirişler",
+  "notifPermissionOff": "Waqt üçin bildirişler öçük. Ulgam sazlamalarynda açyň.",
+  "@notifPermissionOff": {
+    "description": "REVIEW"
+  },
+  "exactAlarmOff": "Takyk duýduryşlar öçük, şonuň üçin duýduryşlar birnäçe minut gijä galyp biler.",
+  "@exactAlarmOff": {
+    "description": "REVIEW"
+  },
+  "allowExact": "Takyk duýduryşlara rugsat ber",
+  "methodMwl": "Musulman Dünýä Ligasy",
+  "methodEgyptian": "Müsür umumy edarasy",
+  "methodKarachi": "Karaçi Yslam ylymlary uniwersiteti",
+  "methodUmmAlQura": "Umm al-Kura, Mekge",
+  "methodDubai": "Dubaý",
+  "methodMoonSighting": "Aý görüş komiteti",
+  "methodNorthAmerica": "ISNA (Demirgazyk Amerika)",
+  "methodKuwait": "Kuweýt",
+  "methodQatar": "Katar",
+  "methodSingapore": "Singapur",
+  "methodTurkey": "Diýanet (Türkiýe)",
+  "methodTehran": "Tähran",
+  "widgetsHelpTitle": "Baş ekran widžetleri",
+  "widgetsHelpIos": "Baş ekranyň boş ýerine basyp saklaň, + basyň, Waqt gözläň we kiçi, orta ýa-da gulp ekrany widžetini saýlaň.",
+  "@widgetsHelpIos": {
+    "description": "REVIEW"
+  },
+  "widgetsHelpAndroid": "Baş ekranyň boş ýerine basyp saklaň, Widžetler basyň, Waqt tapyň we widžeti ekrana süýräň. Onuň düwmesi häzirki namazy belleýär.",
+  "@widgetsHelpAndroid": {
+    "description": "REVIEW"
+  },
+  "widgetsHelpData": "Widžetler programmany açmasaňyz hem indiki ýedi günüň wagtlaryny görkezýär.",
+  "@widgetsHelpData": {
+    "description": "REVIEW"
+  },
+  "locationTitle": "Ýerleşýän ýeri",
+  "locationUseCurrent": "Meniň ýerimi ulan",
+  "locationSearch": "Şäher gözle",
+  "locationCoordinates": "Koordinatlary girizmek",
+  "locationLatitude": "Giňlik",
+  "locationLongitude": "Uzaklyk",
+  "locationName": "Ýeriň ady",
+  "locationLocating": "Ýeriňiz kesgitlenýär…",
+  "locationDenied": "Ýer rugsady berilmedi. Ýerine şäher saýlaň.",
+  "@locationDenied": {
+    "description": "REVIEW"
+  },
+  "locationFailed": "Ýeriňizi kesgitläp bolmady. Şäher saýlaň.",
+  "@locationFailed": {
+    "description": "REVIEW"
+  },
+  "locationNearby": "{city} golaýynda",
+  "locationInvalid": "Dogry giňlik we uzaklyk giriziň.",
+  "locationPrivacy": "Ýeriňiz diňe namaz wagtlaryny we Kyblany hasaplamak üçin ulanylýar. Ol bu telefondan çykmaýar.",
+  "@locationPrivacy": {
+    "description": "REVIEW"
+  },
+  "obGreeting": "Essalawmaleýkim",
+  "obLanguageTitle": "Diliňizi saýlaň",
+  "obLanguageSub": "Soňra Sazlamalarda üýtgedip bilersiňiz.",
+  "obLocationTitle": "Siz nirede namaz okaýarsyňyz?",
+  "obMethodLine": "{method} · {madhab} ikindi",
+  "obAdvanced": "Giňişleýin",
+  "obNotifTitle": "Namazy hiç wagt sypdyrmaň",
+  "obNotifBody": "Her namaz wagtynda ýumşak duýduryş alyň. Soňra her namaz üçin azan, sessiz ýa-da öçük saýlaň.",
+  "@obNotifBody": {
+    "description": "REVIEW"
+  },
+  "obAllowNotif": "Bildirişlere rugsat ber",
+  "obNotifAllowed": "Bildirişler açyk",
+  "obBatteryTitle": "Duýduryşlar wagtynda bolsun",
+  "obBatteryBody": "Käbir Android telefonlar batareýany tygşytlamak üçin programmalary saklaýar. Azan gijä galmazlygy üçin Waqt-y batareýa sazlamalarynda «Çäklendirilmedik» ediň.",
+  "@obBatteryBody": {
+    "description": "REVIEW"
+  },
+  "obOpenBattery": "Batareýa sazlamalaryny aç",
+  "obStart": "Başla",
+  "obPrivacy": "Hasap ýok. Mahabat ýok. Hemme zat şu telefonda.",
+  "@obPrivacy": {
+    "description": "REVIEW"
+  },
+  "notifPrayerTitle": "{prayer} · {time}",
+  "notifPrayerBody": "{place}: {prayer} namazynyň wagty geldi.",
+  "@notifPrayerBody": {
+    "description": "REVIEW"
+  },
+  "notifRemindTitle": "Ýatlatma · {prayer}",
+  "notifRemindBody": "{prayer} namazyny ýatlatmagy haýyş etdiňiz.",
+  "@notifRemindBody": {
+    "description": "REVIEW"
+  },
+  "notifMorningBody": "Güne birnäçe minutlyk zikir bilen başlaň.",
+  "@notifMorningBody": {
+    "description": "REVIEW"
+  },
+  "notifEveningBody": "Agşamdan öň birnäçe minutlyk zikir.",
+  "@notifEveningBody": {
+    "description": "REVIEW"
+  },
+  "notifSuhoorTitle": "Sähri {time}-da gutarýar",
+  "notifSuhoorBody": "Ertire {min} minut galdy.",
+  "notifIftarTitle": "Agyz açmak wagty",
+  "notifIftarBody": "{place}: agşam girdi. Alla orazaňyzy kabul etsin.",
+  "@notifIftarBody": {
+    "description": "REVIEW"
+  },
+  "chanAdhan": "Namaz wagtlary · azan",
+  "chanStandard": "Namaz wagtlary · adaty ses",
+  "chanReminders": "Ýatlatmalar"
+}

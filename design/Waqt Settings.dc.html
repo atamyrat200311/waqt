@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<div style="width:390px;height:844px;background:var(--bg);color:var(--ink);position:relative;overflow:hidden;display:flex;flex-direction:column">
+<dc-import name="Waqt Status" time="14:46" hint-size="390px,50px"></dc-import>
+<div style="flex:1;overflow-y:auto;scrollbar-width:none;padding-bottom:104px">
+<div onClick="{{ back }}" style="display:flex;align-items:center;height:44px;padding:0 10px;color:var(--acc);font-size:17px;font-weight:500;cursor:pointer;width:max-content"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"></path></svg>Me</div>
+<div style="padding:4px 20px 6px;font-family:var(--serif);font-size:34px;letter-spacing:-.015em">Settings</div>
+<div style="padding:18px 32px 8px;font-size:12px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--mu)">Prayer times</div>
+<div style="margin:0 16px;border-radius:20px;background:var(--card);border:1px solid var(--ln);overflow:hidden">
+<div style="display:flex;align-items:center;gap:12px;min-height:56px;padding:8px 14px 8px 18px"><span style="flex:1;font-size:16px">Calculation method</span><span style="font-size:15px;color:var(--mu);text-align:right">Muslim World League</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--mu);flex:none"><path d="m9 18 6-6-6-6"></path></svg></div>
+<div style="display:flex;align-items:center;gap:12px;min-height:56px;padding:8px 14px 8px 18px;border-top:1px solid var(--ln)"><span style="flex:1;font-size:16px">Asr</span><div style="display:flex;padding:3px;border-radius:12px;background:var(--fill)"><sc-for list="{{ asrSeg }}" as="o" hint-placeholder-count="2"><div onClick="{{ o.pick }}" style="{{ o.s }}">{{ o.l }}</div></sc-for></div></div>
+<div style="display:flex;align-items:center;gap:12px;min-height:64px;padding:8px 14px 8px 18px;border-top:1px solid var(--ln)"><div style="flex:1;min-width:0"><div style="font-size:16px">Match my mosque</div><div style="font-size:13px;color:var(--mu);margin-top:2px">Shift all times to its timetable</div></div>
+<div style="display:flex;align-items:center;border-radius:12px;background:var(--fill)"><div onClick="{{ minus }}" style="width:40px;height:40px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:20px">−</div><span style="min-width:58px;text-align:center;font-size:15px;font-weight:600">{{ mosque }}</span><div onClick="{{ plus }}" style="width:40px;height:40px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:20px">+</div></div></div>
+</div>
+<div style="padding:22px 32px 8px;font-size:12px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--mu)">Alerts</div>
+<div style="margin:0 16px;border-radius:20px;background:var(--card);border:1px solid var(--ln);overflow:hidden">
+<sc-for list="{{ alerts }}" as="a" hint-placeholder-count="5"><div style="display:flex;align-items:center;gap:12px;min-height:56px;padding:6px 10px 6px 18px;border-top:1px solid var(--ln);margin-top:-1px"><span style="flex:1;font-size:16px">{{ a.n }}</span><div style="display:flex;padding:3px;border-radius:12px;background:var(--fill)"><sc-for list="{{ a.segs }}" as="o" hint-placeholder-count="3"><div onClick="{{ o.pick }}" style="{{ o.s }}">{{ o.l }}</div></sc-for></div></div></sc-for>
+</div>
+<div style="padding:22px 32px 8px;font-size:12px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--mu)">General</div>
+<div style="margin:0 16px;border-radius:20px;background:var(--card);border:1px solid var(--ln);overflow:hidden">
+<sc-for list="{{ rows }}" as="r" hint-placeholder-count="3"><div style="display:flex;align-items:center;gap:12px;min-height:56px;padding:8px 14px 8px 18px;border-top:1px solid var(--ln);margin-top:-1px"><span style="flex:1;font-size:16px">{{ r.n }}</span><span style="font-size:15px;color:var(--mu);text-align:right">{{ r.v }}</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--mu);flex:none"><path d="m9 18 6-6-6-6"></path></svg></div></sc-for>
+<div style="display:flex;align-items:center;gap:12px;min-height:64px;padding:8px 14px 8px 18px;border-top:1px solid var(--ln)"><div style="flex:1;min-width:0"><div style="font-size:16px">Period mode</div><div style="font-size:13px;color:var(--mu);margin-top:2px">Pauses prayer alerts. Streaks stay intact.</div></div><div onClick="{{ togglePeriod }}" style="{{ swS }}"><span style="{{ knobS }}"></span></div></div>
+<div style="display:flex;align-items:center;gap:12px;min-height:56px;padding:8px 10px 8px 18px;border-top:1px solid var(--ln)"><span style="flex:1;font-size:16px">Appearance</span><div style="display:flex;padding:3px;border-radius:12px;background:var(--fill)"><sc-for list="{{ appSeg }}" as="o" hint-placeholder-count="3"><div onClick="{{ o.pick }}" style="{{ o.s }}">{{ o.l }}</div></sc-for></div></div>
+<div style="display:flex;align-items:center;gap:12px;min-height:56px;padding:8px 14px 8px 18px;border-top:1px solid var(--ln)"><span style="flex:1;font-size:16px">Widgets</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--mu);flex:none"><path d="m9 18 6-6-6-6"></path></svg></div>
+</div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:8px;padding:30px 40px 0;text-align:center;color:var(--mu)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path></svg><span style="font-size:13px;line-height:1.5">No account, no ads. Everything stays on this phone.</span><span style="font-size:12px;opacity:.8">Waqt 1.0</span></div>
+</div>
+<dc-import name="Waqt TabBar" active="me" nav="{{ nav }}" hint-size="390px,84px" style="position:absolute;left:0;bottom:0"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:390,&quot;height&quot;:844},&quot;nav&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;(s:string)=&gt;void&quot;}}">
+class Component extends DCLogic {
+  state = { asr: 'Standard', mosque: 2, alerts: { Fajr: 'Adhan', Dhuhr: 'Silent', Asr: 'Adhan', Maghrib: 'Adhan', Isha: 'Silent' }, period: false, app: 'Auto' };
+  seg(opts, val, set) {
+    return opts.map(l => ({ l, pick: () => set(l), s: { height: 34, padding: '0 11px', borderRadius: 9, display: 'flex', alignItems: 'center', fontSize: 13, fontWeight: 600, cursor: 'pointer', transition: 'background .15s', background: val === l ? 'var(--card)' : 'transparent', color: val === l ? 'var(--ink)' : 'var(--mu)', boxShadow: val === l ? '0 1px 3px rgba(0,0,0,.12)' : 'none' } }));
+  }
+  renderVals() {
+    const st = this.state, P = this.props, m = st.mosque;
+    return {
+      asrSeg: this.seg(['Standard', 'Hanafi'], st.asr, v => this.setState({ asr: v })),
+      mosque: (m > 0 ? '+' : m < 0 ? '−' : '±') + Math.abs(m) + ' min',
+      minus: () => this.setState({ mosque: Math.max(-15, m - 1) }), plus: () => this.setState({ mosque: Math.min(15, m + 1) }),
+      alerts: Object.keys(st.alerts).map(n => ({ n, segs: this.seg(['Adhan', 'Silent', 'Off'], st.alerts[n], v => this.setState({ alerts: { ...st.alerts, [n]: v } })) })),
+      rows: [['Language', 'English'], ['Currency', 'TMT · manat'], ['Ramadan mode', 'Automatic']].map(([n, v]) => ({ n, v })),
+      togglePeriod: () => this.setState({ period: !st.period }),
+      swS: { width: 52, height: 32, borderRadius: 16, padding: 3, boxSizing: 'border-box', cursor: 'pointer', flex: 'none', background: st.period ? 'var(--pri)' : 'var(--ln)', transition: 'background .2s' },
+      knobS: { display: 'block', width: 26, height: 26, borderRadius: '50%', background: '#fff', boxShadow: '0 1px 3px rgba(0,0,0,.2)', transform: st.period ? 'translateX(20px)' : 'none', transition: 'transform .2s' },
+      appSeg: this.seg(['Light', 'Dark', 'Auto'], st.app, v => this.setState({ app: v })),
+      back: () => P.nav && P.nav('me'), nav: P.nav
+    };
+  }
+}
+</script>
+</body>
+</html>

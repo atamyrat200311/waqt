@@ -1,0 +1,987 @@
+{
+  "@@locale": "en",
+  "appName": "Waqt",
+  "tabToday": "Today",
+  "tabTools": "Tools",
+  "tabMe": "Me",
+  "add": "Add",
+  "save": "Save",
+  "cancel": "Cancel",
+  "done": "Done",
+  "close": "Close",
+  "back": "Back",
+  "next": "Next",
+  "skip": "Skip",
+  "continueLabel": "Continue",
+  "notNow": "Not now",
+  "edit": "Edit",
+  "delete": "Delete",
+  "undo": "Undo",
+  "reset": "Reset",
+  "today": "Today",
+  "yesterday": "Yesterday",
+  "pickDate": "Pick a date",
+  "listAnd": "{a} and {b}",
+  "@listAnd": {
+    "placeholders": {
+      "a": {
+        "type": "String"
+      },
+      "b": {
+        "type": "String"
+      }
+    }
+  },
+  "errorGeneric": "Something went wrong.",
+  "tryAgain": "Try again",
+  "prayerFajr": "Fajr",
+  "prayerSunrise": "Sunrise",
+  "prayerDhuhr": "Dhuhr",
+  "prayerAsr": "Asr",
+  "prayerMaghrib": "Maghrib",
+  "prayerIsha": "Isha",
+  "weekdayName": "{day, select, mon{Monday} tue{Tuesday} wed{Wednesday} thu{Thursday} fri{Friday} sat{Saturday} other{Sunday}}",
+  "@weekdayName": {
+    "placeholders": {
+      "day": {
+        "type": "String"
+      }
+    }
+  },
+  "weekdayShort": "{day, select, mon{Mon} tue{Tue} wed{Wed} thu{Thu} fri{Fri} sat{Sat} other{Sun}}",
+  "@weekdayShort": {
+    "placeholders": {
+      "day": {
+        "type": "String"
+      }
+    }
+  },
+  "weekdayInitial": "{day, select, mon{M} tue{T} wed{W} thu{T} fri{F} sat{S} other{S}}",
+  "@weekdayInitial": {
+    "placeholders": {
+      "day": {
+        "type": "String"
+      }
+    }
+  },
+  "monthName": "{month, select, jan{January} feb{February} mar{March} apr{April} may{May} jun{June} jul{July} aug{August} sep{September} oct{October} nov{November} other{December}}",
+  "@monthName": {
+    "placeholders": {
+      "month": {
+        "type": "String"
+      }
+    }
+  },
+  "monthShort": "{month, select, jan{Jan} feb{Feb} mar{Mar} apr{Apr} may{May} jun{Jun} jul{Jul} aug{Aug} sep{Sep} oct{Oct} nov{Nov} other{Dec}}",
+  "@monthShort": {
+    "placeholders": {
+      "month": {
+        "type": "String"
+      }
+    }
+  },
+  "monthStandalone": "{month, select, jan{January} feb{February} mar{March} apr{April} may{May} jun{June} jul{July} aug{August} sep{September} oct{October} nov{November} other{December}}",
+  "@monthStandalone": {
+    "placeholders": {
+      "month": {
+        "type": "String"
+      }
+    }
+  },
+  "dateLong": "{weekday}, {day} {month}",
+  "@dateLong": {
+    "placeholders": {
+      "weekday": {
+        "type": "String"
+      },
+      "day": {
+        "type": "String"
+      },
+      "month": {
+        "type": "String"
+      }
+    }
+  },
+  "dateDayMonth": "{day} {month}",
+  "@dateDayMonth": {
+    "placeholders": {
+      "day": {
+        "type": "String"
+      },
+      "month": {
+        "type": "String"
+      }
+    }
+  },
+  "dateShortWeekday": "{weekday} {day} {month}",
+  "@dateShortWeekday": {
+    "placeholders": {
+      "weekday": {
+        "type": "String"
+      },
+      "day": {
+        "type": "String"
+      },
+      "month": {
+        "type": "String"
+      }
+    }
+  },
+  "hijriMonth": "{month, select, m1{Muḥarram} m2{Ṣafar} m3{Rabīʿ I} m4{Rabīʿ II} m5{Jumādā I} m6{Jumādā II} m7{Rajab} m8{Shaʿbān} m9{Ramaḍān} m10{Shawwāl} m11{Dhū al-Qaʿdah} other{Dhū al-Ḥijjah}}",
+  "@hijriMonth": {
+    "placeholders": {
+      "month": {
+        "type": "String"
+      }
+    }
+  },
+  "hijriMonthLong": "{month, select, m1{Muḥarram} m2{Ṣafar} m3{Rabīʿ al-Awwal} m4{Rabīʿ al-Thānī} m5{Jumādā al-Ūlā} m6{Jumādā al-Ākhirah} m7{Rajab} m8{Shaʿbān} m9{Ramaḍān} m10{Shawwāl} m11{Dhū al-Qaʿdah} other{Dhū al-Ḥijjah}}",
+  "@hijriMonthLong": {
+    "placeholders": {
+      "month": {
+        "type": "String"
+      }
+    }
+  },
+  "hijriDate": "{day} {month} {year}",
+  "@hijriDate": {
+    "placeholders": {
+      "day": {
+        "type": "String"
+      },
+      "month": {
+        "type": "String"
+      },
+      "year": {
+        "type": "String"
+      }
+    }
+  },
+  "unitH": "h",
+  "@unitH": {
+    "description": "Hour unit shown next to the big hero countdown."
+  },
+  "unitM": "m",
+  "@unitM": {
+    "description": "Minute unit shown next to the big hero countdown."
+  },
+  "unitS": "s",
+  "durationHM": "{h}h {m}m",
+  "@durationHM": {
+    "placeholders": {
+      "h": {
+        "type": "String"
+      },
+      "m": {
+        "type": "String"
+      }
+    }
+  },
+  "durationM": "{m}m",
+  "@durationM": {
+    "placeholders": {
+      "m": {
+        "type": "String"
+      }
+    }
+  },
+  "minutesShort": "{m} min",
+  "@minutesShort": {
+    "placeholders": {
+      "m": {
+        "type": "String"
+      }
+    }
+  },
+  "inDuration": "in {d}",
+  "@inDuration": {
+    "placeholders": {
+      "d": {
+        "type": "String"
+      }
+    }
+  },
+  "daysCount": "{n, plural, =1{1 day} other{{n} days}}",
+  "@daysCount": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "daysUnit": "{n, plural, =1{day} other{days}}",
+  "@daysUnit": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "eventCountdown": "{name} {days, plural, =0{today} =1{tomorrow} other{in {days} days}}",
+  "@eventCountdown": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "homeNextPrayer": "Next prayer",
+  "homeIn": "in",
+  "@homeIn": {
+    "description": "Word before the countdown on the hero card (\"in 1h 12m\"). Empty if the language puts it after."
+  },
+  "homeInAfter": "",
+  "@homeInAfter": {
+    "description": "Word after the countdown for languages that put it after the number (\"1 sa 12 dk sonra\")."
+  },
+  "homeRamadanKicker": "Ramadan · Iftar",
+  "homeIftar": "Iftar",
+  "homeMaghribAt": "Maghrib {time}",
+  "@homeMaghribAt": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "homeSuhoorLine": "Suhoor ends {time} · Fast {n} of {total}",
+  "@homeSuhoorLine": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      },
+      "n": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      }
+    }
+  },
+  "homeAfterIshaKicker": "After Isha · {time}",
+  "@homeAfterIshaKicker": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "homeYourDay": "Your day",
+  "homeUpNext": "Up next",
+  "homeStart": "Start",
+  "homeMarkDone": "Done",
+  "homeAdhkarAfter": "{window} · {min} min",
+  "@homeAdhkarAfter": {
+    "placeholders": {
+      "window": {
+        "type": "String"
+      },
+      "min": {
+        "type": "String"
+      }
+    }
+  },
+  "homeTaraweeh": "Taraweeh",
+  "homeTaraweehSub": "At the mosque · reminder {time}",
+  "@homeTaraweehSub": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "homeSpentToday": "Spent today",
+  "homeInclSadaqa": "incl. {amount} sadaqa",
+  "@homeInclSadaqa": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "homeTasks": "Tasks",
+  "homeTasksOf": "of {total}",
+  "@homeTasksOf": {
+    "placeholders": {
+      "total": {
+        "type": "String"
+      }
+    }
+  },
+  "homeQadaRemaining": "{count, plural, =1{1 qada remaining} other{{count} qada remaining}}",
+  "@homeQadaRemaining": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "homeMakeUp": "Make up",
+  "homeUnmarkedTitle": "You didn't mark {prayers} yesterday",
+  "@homeUnmarkedTitle": {
+    "placeholders": {
+      "prayers": {
+        "type": "String"
+      }
+    }
+  },
+  "homeUnmarkedBody": "Nothing is added to qada unless you choose.",
+  "homeUnmarkedAllPrayed": "All prayed",
+  "homeAddExpense": "Add expense",
+  "homeSetLocation": "Set location",
+  "markClosedAtSunrise": "closed at sunrise",
+  "markClosedAt": "closed at {time}",
+  "@markClosedAt": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "markLeft": "{d} left",
+  "@markLeft": {
+    "placeholders": {
+      "d": {
+        "type": "String"
+      }
+    }
+  },
+  "markOpensAt": "opens at {time}",
+  "@markOpensAt": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "markOnTime": "Prayed on time",
+  "markOnTimeSub": "Within the {prayer} window",
+  "@markOnTimeSub": {
+    "placeholders": {
+      "prayer": {
+        "type": "String"
+      }
+    }
+  },
+  "markCongregation": "In congregation",
+  "markCongregationSub": "With the jamāʿah, on time",
+  "markLate": "Prayed late",
+  "markLateSub": "After the window closed",
+  "markMissed": "Missed, add to qada",
+  "markMissedSub": "You confirm before anything is added",
+  "markExcused": "Excused",
+  "markExcusedSub": "Period mode is on — no qada, streak kept",
+  "markConfirmTitle": "Add 1 {prayer} to your qada?",
+  "@markConfirmTitle": {
+    "placeholders": {
+      "prayer": {
+        "type": "String"
+      }
+    }
+  },
+  "markConfirmBody": "You can make it up at any time. Nothing is added until you confirm.",
+  "markAddToQada": "Add to qada",
+  "markAdded": "Added to qada. Make it up whenever you can.",
+  "markRemind": "Remind me in 15 min",
+  "markReminderSet": "Reminder set for {time}",
+  "@markReminderSet": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "markClear": "Clear mark",
+  "markNotStarted": "This prayer's time hasn't started yet.",
+  "qadaTitle": "Qada",
+  "qadaLeft": "prayers left\nto make up",
+  "@qadaLeft": {
+    "description": "Two lines next to the huge qada number."
+  },
+  "qadaMadeUpSince": "You've made up {count} since you started",
+  "@qadaMadeUpSince": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "qadaThisWeek": "This week",
+  "qadaWeekMadeUp": "{count} made up",
+  "@qadaWeekMadeUp": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "qadaMadeUp": "Made up",
+  "qadaAllDone": "All done",
+  "qadaAddOlder": "Add older missed prayers",
+  "qadaTip": "One at a time is enough. Many people pair one qada with each daily prayer.",
+  "qadaAddOlderTitle": "Older missed prayers",
+  "qadaAddOlderBody": "Enter how many of each prayer you still owe. They are added to your current counts.",
+  "qadaAddCount": "{count, plural, =0{Add to qada} other{Add {count} to qada}}",
+  "@qadaAddCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "qadaEmpty": "No qada recorded. If you have older missed prayers, add them here.",
+  "expenseAdd": "Add expense",
+  "expenseAddNote": "Add a note",
+  "expenseNoteHint": "Note",
+  "catGroceries": "Groceries",
+  "catTransport": "Transport",
+  "catFood": "Food",
+  "catBills": "Bills",
+  "catSadaqa": "Sadaqa",
+  "catOther": "Other",
+  "expenseSave": "Save {amount} {currency}",
+  "@expenseSave": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      },
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "expenseSaveSadaqa": "Save {amount} {currency} as sadaqa",
+  "@expenseSaveSadaqa": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      },
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "expenseEnterAmount": "Enter an amount",
+  "expenseSaved": "Saved",
+  "expenseTodayList": "Today's entries",
+  "expenseDeleted": "Expense deleted",
+  "tasksTitle": "Tasks",
+  "tasksDoneOf": "{done} of {total} done",
+  "@tasksDoneOf": {
+    "placeholders": {
+      "done": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      }
+    }
+  },
+  "tasksAddHint": "Add a task…",
+  "tasksAddA11y": "Add task",
+  "winBeforeFajr": "Before Fajr",
+  "winAfterFajr": "After Fajr",
+  "winBeforeDhuhr": "Before Dhuhr",
+  "winAfterDhuhr": "After Dhuhr",
+  "winAfterAsr": "After Asr",
+  "winAfterMaghrib": "After Maghrib",
+  "winAfterIsha": "After Isha",
+  "winAnytime": "Anytime",
+  "winUntil": "until {time}",
+  "@winUntil": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "winFrom": "from {time}",
+  "@winFrom": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "winRange": "{a} – {b}",
+  "@winRange": {
+    "placeholders": {
+      "a": {
+        "type": "String"
+      },
+      "b": {
+        "type": "String"
+      }
+    }
+  },
+  "tasksOverdue": "{count, plural, =1{1 unfinished task from earlier} other{{count} unfinished tasks from earlier}}",
+  "@tasksOverdue": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "tasksMoveToday": "Move to today",
+  "tasksEmpty": "Nothing planned yet. Add a task to a prayer window.",
+  "tasksDeleted": "Task deleted",
+  "tasksAllDone": "All done for today",
+  "adhkarMorning": "Morning adhkar",
+  "adhkarEvening": "Evening adhkar",
+  "adhkarPosOf": "{pos} of {total}",
+  "@adhkarPosOf": {
+    "placeholders": {
+      "pos": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      }
+    }
+  },
+  "adhkarRecite": "Recite {n}×",
+  "@adhkarRecite": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "adhkarComplete": "Complete",
+  "adhkarOf": "/ {n}",
+  "@adhkarOf": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "adhkarNext": "Next",
+  "adhkarNextDhikr": "Next dhikr",
+  "adhkarFinish": "Finish",
+  "adhkarPrev": "Previous dhikr",
+  "adhkarTapToCount": "Tap to count",
+  "adhkarSetDone": "May Allah accept it from you.",
+  "adhkarTranslationNote": "Translation is approximate.",
+  "calendarTitle": "Hijri calendar",
+  "calendarRange": "{year} · {start} – {end}",
+  "@calendarRange": {
+    "placeholders": {
+      "year": {
+        "type": "String"
+      },
+      "start": {
+        "type": "String"
+      },
+      "end": {
+        "type": "String"
+      }
+    }
+  },
+  "calendarWhiteDays": "White days 13–15",
+  "calendarMonThu": "Mon & Thu fasts",
+  "calendarUpcoming": "Upcoming",
+  "calendarMoonNote": "Dates may shift by a day depending on the local moon sighting.",
+  "calendarPrevMonth": "Previous month",
+  "calendarNextMonth": "Next month",
+  "calendarEveningOf": "evening of {date}",
+  "@calendarEveningOf": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "evRajab": "Rajab begins",
+  "evMiraj": "Laylat al-Miʿrāj",
+  "evBaraah": "Laylat al-Barāʾah",
+  "evRamadan": "Ramadan begins",
+  "evQadr": "Laylat al-Qadr",
+  "evEidFitr": "Eid al-Fitr",
+  "evArafah": "Day of Arafah",
+  "evEidAdha": "Eid al-Adha",
+  "evNewYear": "Islamic New Year",
+  "evAshura": "Ashura",
+  "evMawlid": "Mawlid",
+  "evLastTen": "Last ten nights begin",
+  "fastLogTitle": "Fast · {date}",
+  "@fastLogTitle": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "fastFasted": "Fasted",
+  "fastMissed": "Missed",
+  "fastExcused": "Excused",
+  "fastClear": "Clear",
+  "fastTypeRamadan": "Ramadan fast",
+  "fastTypeMonThu": "Monday/Thursday fast",
+  "fastTypeWhiteDays": "White day fast",
+  "fastTypeOther": "Voluntary fast",
+  "ramadanTitle": "Ramadan",
+  "ramadanMode": "Ramadan mode",
+  "ramadanAuto": "Automatic",
+  "ramadanOn": "On",
+  "ramadanOff": "Off",
+  "ramadanInDays": "in {days} days",
+  "@ramadanInDays": {
+    "placeholders": {
+      "days": {
+        "type": "String"
+      }
+    }
+  },
+  "ramadanDayOf": "Day {n} of {total}",
+  "@ramadanDayOf": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      }
+    }
+  },
+  "ramadanSuhoorReminder": "Suhoor reminder",
+  "ramadanSuhoorBefore": "{min} min before Fajr",
+  "@ramadanSuhoorBefore": {
+    "placeholders": {
+      "min": {
+        "type": "String"
+      }
+    }
+  },
+  "ramadanIftarReminder": "Iftar at Maghrib",
+  "ramadanTaraweehReminder": "Taraweeh reminder",
+  "ramadanFasts": "Fasts this Ramadan",
+  "ramadanTodayFast": "Today's fast",
+  "ramadanNotNow": "Ramadan mode turns on by itself on 1 Ramaḍān.",
+  "toolsTitle": "Tools",
+  "qibla": "Qibla",
+  "qiblaTurn": "Turn until the arrow points up",
+  "qiblaFacing": "You're facing the Qibla",
+  "qiblaCalibrate": "Compass needs calibration — move your phone in a figure 8.",
+  "qiblaNoSensor": "This device has no compass. The Qibla is {deg}° clockwise from true north.",
+  "@qiblaNoSensor": {
+    "placeholders": {
+      "deg": {
+        "type": "String"
+      }
+    }
+  },
+  "qiblaFromNorth": "{deg}° from north",
+  "@qiblaFromNorth": {
+    "placeholders": {
+      "deg": {
+        "type": "String"
+      }
+    }
+  },
+  "qiblaDistance": "{km} km to Makkah",
+  "@qiblaDistance": {
+    "placeholders": {
+      "km": {
+        "type": "String"
+      }
+    }
+  },
+  "qiblaOpen": "Open compass",
+  "tasbih": "Tasbih",
+  "tasbihOf": "of {n}",
+  "@tasbihOf": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "tasbihComplete": "Complete · {n}",
+  "@tasbihComplete": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "tasbihTapAgain": "Tap to start again",
+  "tasbihCustom": "Custom tasbih",
+  "tasbihPreset": "After-prayer tasbih (33 · 33 · 34)",
+  "tasbihPhrase": "Phrase",
+  "tasbihGoal": "Goal",
+  "tasbihCount": "Count",
+  "tasbihTapA11y": "Count one",
+  "toolsAdhkar": "Adhkar",
+  "toolsMorningDue": "Morning due",
+  "toolsEveningDue": "Evening due",
+  "toolsAdhkarDone": "Done today",
+  "toolsCalendar": "Hijri calendar",
+  "toolsRamadan": "Ramadan",
+  "toolsRamadanNow": "Day {n}",
+  "@toolsRamadanNow": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "meTitle": "Me",
+  "meAll5": "All 5 prayers",
+  "meDaysInRow": "{n, plural, =1{day in a row} other{days in a row}}",
+  "@meDaysInRow": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "me2WeeksAgo": "2 weeks ago",
+  "meBest": "Best: {n} days",
+  "@meBest": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "meOnTime": "On time",
+  "meThisMonth": "this month",
+  "meAdhkarStreak": "Adhkar streak",
+  "meDays": "days",
+  "meMorningEvening": "morning & evening",
+  "meConsistency": "Consistency",
+  "meFasts": "Fasts this month",
+  "meFastsNone": "None logged yet",
+  "meFastMonThu": "{n} Mon/Thu",
+  "@meFastMonThu": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "meFastWhite": "{n} white days",
+  "@meFastWhite": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "meFastRamadan": "{n} Ramadan",
+  "@meFastRamadan": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "meFastOther": "{n} voluntary",
+  "@meFastOther": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "meSadaqa": "Sadaqa",
+  "meSpending": "Spending",
+  "meNoSpending": "No expenses this month yet.",
+  "meNoPrayerData": "Mark your prayers on Today to see your consistency here.",
+  "meSettingsA11y": "Settings",
+  "tipFajrTitle": "Fajr is the quietest.",
+  "tipFajrBody": "An alarm ten minutes before adhan, with water by the bed, helps many people.",
+  "tipDhuhrTitle": "Dhuhr slips at work.",
+  "tipDhuhrBody": "Block ten minutes in your calendar right after the adhan.",
+  "tipAsrTitle": "Asr is easy to miss.",
+  "tipAsrBody": "Pray as soon as you hear it, before the afternoon errands.",
+  "tipMaghribTitle": "Maghrib's window is short.",
+  "tipMaghribBody": "Pray first, then set the table.",
+  "tipIshaTitle": "Isha drifts late.",
+  "tipIshaBody": "Pray it before tea and screens, then rest.",
+  "settingsTitle": "Settings",
+  "secPrayerTimes": "Prayer times",
+  "calcMethod": "Calculation method",
+  "asr": "Asr",
+  "asrStandard": "Standard",
+  "asrHanafi": "Hanafi",
+  "matchMosque": "Match my mosque",
+  "matchMosqueSub": "Shift all times to its timetable",
+  "perPrayerOffsets": "Adjust each prayer",
+  "offsetMinutes": "{value} min",
+  "@offsetMinutes": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "secAlerts": "Alerts",
+  "alertAdhan": "Adhan",
+  "alertSilent": "Silent",
+  "alertOff": "Off",
+  "secGeneral": "General",
+  "language": "Language",
+  "languageSystem": "System",
+  "currency": "Currency",
+  "location": "Location",
+  "periodMode": "Period mode",
+  "periodModeSub": "Pauses prayer alerts. Streaks stay intact.",
+  "appearance": "Appearance",
+  "themeLight": "Light",
+  "themeDark": "Dark",
+  "themeAuto": "Auto",
+  "widgets": "Widgets",
+  "privacyNote": "No account, no ads. Everything stays on this phone.",
+  "versionLabel": "Waqt {version}",
+  "@versionLabel": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "hijriAdjust": "Hijri date",
+  "hijriAdjustSub": "Match your local moon sighting",
+  "hijriAdjustNone": "No adjustment",
+  "adhkarReminders": "Adhkar reminders",
+  "adhkarRemindersSub": "Morning after Fajr, evening after Asr",
+  "secRamadan": "Ramadan",
+  "secNotifications": "Notifications",
+  "notifPermissionOff": "Notifications are off for Waqt. Turn them on in system settings.",
+  "exactAlarmOff": "Exact alarms are off, so alerts may arrive a few minutes late.",
+  "allowExact": "Allow exact alarms",
+  "methodMwl": "Muslim World League",
+  "methodEgyptian": "Egyptian General Authority",
+  "methodKarachi": "University of Islamic Sciences, Karachi",
+  "methodUmmAlQura": "Umm al-Qura, Makkah",
+  "methodDubai": "Dubai",
+  "methodMoonSighting": "Moonsighting Committee",
+  "methodNorthAmerica": "ISNA (North America)",
+  "methodKuwait": "Kuwait",
+  "methodQatar": "Qatar",
+  "methodSingapore": "Singapore",
+  "methodTurkey": "Diyanet (Turkey)",
+  "methodTehran": "Tehran",
+  "widgetsHelpTitle": "Home-screen widgets",
+  "widgetsHelpIos": "Touch and hold an empty area of the Home Screen, tap +, search for Waqt and choose the small, medium or lock-screen widget.",
+  "widgetsHelpAndroid": "Touch and hold an empty area of the home screen, tap Widgets, find Waqt and drag the widget onto the screen. Its button marks the current prayer.",
+  "widgetsHelpData": "Widgets show the next seven days of times even if you don't open the app.",
+  "locationTitle": "Location",
+  "locationUseCurrent": "Use my location",
+  "locationSearch": "Search a city",
+  "locationCoordinates": "Enter coordinates",
+  "locationLatitude": "Latitude",
+  "locationLongitude": "Longitude",
+  "locationName": "Place name",
+  "locationLocating": "Finding you…",
+  "locationDenied": "Location permission was denied. Choose a city instead.",
+  "locationFailed": "Couldn't get your location. Choose a city instead.",
+  "locationNearby": "Near {city}",
+  "@locationNearby": {
+    "placeholders": {
+      "city": {
+        "type": "String"
+      }
+    }
+  },
+  "locationInvalid": "Enter a valid latitude and longitude.",
+  "locationPrivacy": "Your location is used only to calculate prayer times and the Qibla. It never leaves this phone.",
+  "obGreeting": "As-salāmu ʿalaykum",
+  "obLanguageTitle": "Choose your language",
+  "obLanguageSub": "You can change it later in Settings.",
+  "obLocationTitle": "Where do you pray?",
+  "obMethodLine": "{method} · {madhab} Asr",
+  "@obMethodLine": {
+    "placeholders": {
+      "method": {
+        "type": "String"
+      },
+      "madhab": {
+        "type": "String"
+      }
+    }
+  },
+  "obAdvanced": "Advanced",
+  "obNotifTitle": "Never miss a prayer",
+  "obNotifBody": "Get a gentle alert at each prayer time. Choose adhan, silent or off for each prayer later.",
+  "obAllowNotif": "Allow notifications",
+  "obNotifAllowed": "Notifications are on",
+  "obBatteryTitle": "Keep alerts on time",
+  "obBatteryBody": "Some Android phones pause apps to save battery. Set Waqt to \"Unrestricted\" in battery settings so the adhan is never late.",
+  "obOpenBattery": "Open battery settings",
+  "obStart": "Start",
+  "obPrivacy": "No account. No ads. Everything stays on this phone.",
+  "notifPrayerTitle": "{prayer} · {time}",
+  "@notifPrayerTitle": {
+    "placeholders": {
+      "prayer": {
+        "type": "String"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "notifPrayerBody": "It's time for {prayer} in {place}.",
+  "@notifPrayerBody": {
+    "placeholders": {
+      "prayer": {
+        "type": "String"
+      },
+      "place": {
+        "type": "String"
+      }
+    }
+  },
+  "notifRemindTitle": "Reminder · {prayer}",
+  "@notifRemindTitle": {
+    "placeholders": {
+      "prayer": {
+        "type": "String"
+      }
+    }
+  },
+  "notifRemindBody": "You asked to be reminded to pray {prayer}.",
+  "@notifRemindBody": {
+    "placeholders": {
+      "prayer": {
+        "type": "String"
+      }
+    }
+  },
+  "notifMorningBody": "A few minutes of remembrance to start the day.",
+  "notifEveningBody": "A few minutes of remembrance before evening.",
+  "notifSuhoorTitle": "Suhoor ends at {time}",
+  "@notifSuhoorTitle": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "notifSuhoorBody": "{min} minutes until Fajr.",
+  "@notifSuhoorBody": {
+    "placeholders": {
+      "min": {
+        "type": "String"
+      }
+    }
+  },
+  "notifIftarTitle": "Iftar time",
+  "notifIftarBody": "Maghrib has come in {place}. May Allah accept your fast.",
+  "@notifIftarBody": {
+    "placeholders": {
+      "place": {
+        "type": "String"
+      }
+    }
+  },
+  "chanAdhan": "Prayer times · adhan",
+  "chanStandard": "Prayer times · standard sound",
+  "chanReminders": "Reminders"
+}

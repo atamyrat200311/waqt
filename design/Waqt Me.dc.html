@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<div style="width:390px;height:844px;background:var(--bg);color:var(--ink);position:relative;overflow:hidden;display:flex;flex-direction:column">
+<dc-import name="Waqt Status" time="14:46" hint-size="390px,50px"></dc-import>
+<div style="flex:1;overflow-y:auto;scrollbar-width:none;padding-bottom:104px">
+<div style="padding:4px 16px 0 20px;display:flex;justify-content:flex-end;height:44px;align-items:center"><div onClick="{{ goSettings }}" style="width:44px;height:44px;border-radius:50%;background:var(--card);border:1px solid var(--ln);box-sizing:border-box;display:flex;align-items:center;justify-content:center;color:var(--ink);cursor:pointer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h9M17 6h3M4 12h3M11 12h9M4 18h11M19 18h1"></path><circle cx="15" cy="6" r="2"></circle><circle cx="9" cy="12" r="2"></circle><circle cx="17" cy="18" r="2"></circle></svg></div></div>
+<div style="padding:0 20px 16px;font-family:var(--serif);font-size:34px;letter-spacing:-.015em">Me</div>
+<div style="margin:0 16px;padding:20px;border-radius:var(--r,28px);background:var(--hero);color:var(--hink)">
+<div style="font-size:12px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--hmu)">All 5 prayers</div>
+<div style="display:flex;align-items:baseline;gap:8px;margin-top:6px"><span style="font-family:var(--serif);font-size:72px;line-height:1;letter-spacing:-.04em;font-weight:350">12</span><span style="font-size:18px;color:var(--hmu)">days in a row</span></div>
+<div style="display:grid;grid-template-columns:repeat(14,minmax(0,1fr));gap:4px;margin-top:16px"><sc-for list="{{ streak }}" as="s" hint-placeholder-count="14"><span style="{{ s }}"></span></sc-for></div>
+<div style="display:flex;justify-content:space-between;font-size:12px;color:var(--hmu);margin-top:8px"><span>2 weeks ago</span><span>Best: 19 days</span></div>
+</div>
+<div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px;margin:10px 16px 0">
+<div style="padding:16px;border-radius:var(--r,24px);background:var(--card);border:1px solid var(--ln)"><div style="font-size:13px;color:var(--mu);font-weight:500">On time</div><div style="font-family:var(--serif);font-size:34px;margin-top:10px;letter-spacing:-.02em">86<span style="font-size:20px">%</span></div><div style="font-size:12px;color:var(--mu);margin-top:2px">this month</div></div>
+<div style="padding:16px;border-radius:var(--r,24px);background:var(--card);border:1px solid var(--ln)"><div style="font-size:13px;color:var(--mu);font-weight:500">Adhkar streak</div><div style="font-family:var(--serif);font-size:34px;margin-top:10px;letter-spacing:-.02em">9 <span style="font-size:16px;font-family:'Plus Jakarta Sans',sans-serif;color:var(--mu);font-weight:500">days</span></div><div style="font-size:12px;color:var(--mu);margin-top:2px">morning &amp; evening</div></div>
+</div>
+<div style="margin:10px 16px 0;padding:18px;border-radius:var(--r,24px);background:var(--card);border:1px solid var(--ln)">
+<div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-size:15px;font-weight:600">Consistency</span><span style="font-size:13px;color:var(--mu)">October</span></div>
+<div style="display:flex;flex-direction:column;gap:12px;margin-top:14px">
+<sc-for list="{{ bars }}" as="b" hint-placeholder-count="5">
+<div style="display:grid;grid-template-columns:64px minmax(0,1fr) 40px;align-items:center;gap:10px"><span style="{{ b.ns }}">{{ b.n }}</span><span style="display:block;height:8px;border-radius:4px;background:var(--fill);overflow:hidden"><span style="{{ b.fs }}"></span></span><span style="{{ b.ps }}">{{ b.p }}%</span></div>
+</sc-for>
+</div>
+<div style="margin-top:14px;padding:12px 14px;border-radius:16px;background:var(--brs);color:var(--bri);font-size:13px;line-height:1.5;text-wrap:pretty"><b style="font-weight:700">Fajr is the quietest.</b> An alarm ten minutes before adhan, with water by the bed, helps many people.</div>
+</div>
+<div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px;margin:10px 16px 0">
+<div style="padding:16px;border-radius:var(--r,24px);background:var(--card);border:1px solid var(--ln)"><div style="font-size:13px;color:var(--mu);font-weight:500">Fasts this month</div><div style="font-family:var(--serif);font-size:34px;margin-top:10px">3</div><div style="font-size:12px;color:var(--mu);margin-top:2px">2 Mondays, 1 Thursday</div></div>
+<div style="padding:16px;border-radius:var(--r,24px);background:var(--card);border:1px solid var(--ln)"><div style="display:flex;align-items:center;gap:6px;font-size:13px;color:var(--mu);font-weight:500"><svg width="13" height="13" viewBox="0 0 24 24" stroke-width="2" stroke-linejoin="round" style="fill:var(--br);stroke:var(--br)"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></svg>Sadaqa</div><div style="font-family:var(--serif);font-size:34px;margin-top:10px">180 <span style="font-size:13px;font-family:'Plus Jakarta Sans',sans-serif;color:var(--mu);font-weight:600">TMT</span></div><div style="font-size:12px;color:var(--mu);margin-top:2px">this month</div></div>
+</div>
+<div style="margin:10px 16px 0;padding:18px;border-radius:var(--r,24px);background:var(--card);border:1px solid var(--ln)">
+<div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-size:15px;font-weight:600">Spending</span><span style="font-size:13px;color:var(--mu)">October</span></div>
+<div style="font-family:var(--serif);font-size:40px;letter-spacing:-.03em;margin-top:8px">4 860 <span style="font-size:14px;font-family:'Plus Jakarta Sans',sans-serif;color:var(--mu);font-weight:600;letter-spacing:0">TMT</span></div>
+<div style="display:flex;gap:3px;height:12px;margin-top:14px"><sc-for list="{{ spend }}" as="s" hint-placeholder-count="6"><span style="{{ s.bar }}"></span></sc-for></div>
+<div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px 16px;margin-top:16px"><sc-for list="{{ spend }}" as="s" hint-placeholder-count="6"><div style="display:flex;align-items:center;gap:8px;font-size:13px"><span style="{{ s.dot }}"></span><span style="flex:1;color:var(--mu)">{{ s.n }}</span><span style="font-weight:600">{{ s.v }}</span></div></sc-for></div>
+</div>
+</div>
+<dc-import name="Waqt TabBar" active="me" nav="{{ nav }}" hint-size="390px,84px" style="position:absolute;left:0;bottom:0"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:390,&quot;height&quot;:844},&quot;nav&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;(s:string)=&gt;void&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const P = this.props;
+    const streak = Array.from({ length: 14 }, (_, i) => ({ display: 'block', height: 22, borderRadius: 6, background: i >= 2 ? 'var(--br)' : 'rgba(255,255,255,.14)', opacity: i >= 2 ? .55 + (i / 14) * .45 : 1 }));
+    const bars = [['Fajr', 71], ['Dhuhr', 94], ['Asr', 90], ['Maghrib', 97], ['Isha', 88]].map(([n, p]) => {
+      const weak = n === 'Fajr';
+      return { n, p, ns: { fontSize: 14, fontWeight: 600, color: weak ? 'var(--bri)' : 'var(--ink)' }, ps: { fontSize: 13, textAlign: 'right', fontWeight: 600, color: weak ? 'var(--bri)' : 'var(--mu)' }, fs: { display: 'block', height: '100%', width: p + '%', borderRadius: 4, background: weak ? 'var(--br)' : 'var(--acc)' } };
+    });
+    const spend = [['Groceries', 1840, 'var(--pri)'], ['Food', 1060, '#4F8A71'], ['Bills', 890, '#8FB8A2'], ['Transport', 690, '#C4D8CC'], ['Other', 200, 'var(--ln)'], ['Sadaqa', 180, 'var(--br)']].map(([n, v, c]) => ({ n, v: v.toLocaleString('en').replace(',', ' '), bar: { display: 'block', flex: v, borderRadius: 3, background: c }, dot: { display: 'block', width: 8, height: 8, borderRadius: 2, background: c, flex: 'none' } }));
+    return { streak, bars, spend, goSettings: () => P.nav && P.nav('settings'), nav: P.nav };
+  }
+}
+</script>
+</body>
+</html>

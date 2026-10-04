@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<div style="width:1100px;box-sizing:border-box;padding:44px;background:#F7F4EE;color:#14201B;font-family:'Plus Jakarta Sans',sans-serif;border-radius:28px;font-variant-numeric:tabular-nums">
+<div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-family:'Fraunces',serif;font-size:40px;letter-spacing:-.02em">Emerald &amp; brass</span><span style="font-size:13px;color:#56635C">Waqt style guide · v1</span></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:32px">
+<div>
+<div style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#56635C;margin-bottom:12px">Light</div>
+<div style="display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px">
+<sc-for list="{{ light }}" as="c" hint-placeholder-count="10"><div style="display:flex;flex-direction:column;gap:6px"><span style="{{ c.s }}"></span><span style="font-size:12px;font-weight:600">{{ c.n }}</span><span style="font:500 11px ui-monospace,Menlo,monospace;color:#56635C">{{ c.h }}</span></div></sc-for>
+</div>
+</div>
+<div style="padding:20px;margin:-20px;border-radius:24px;background:#0A1310;color:#F0ECE3">
+<div style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#A3AFA8;margin-bottom:12px">Dark · Fajr &amp; Isha</div>
+<div style="display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px">
+<sc-for list="{{ dark }}" as="c" hint-placeholder-count="10"><div style="display:flex;flex-direction:column;gap:6px"><span style="{{ c.s }}"></span><span style="font-size:12px;font-weight:600">{{ c.n }}</span><span style="font:500 11px ui-monospace,Menlo,monospace;color:#A3AFA8">{{ c.h }}</span></div></sc-for>
+</div>
+</div>
+</div>
+<div style="height:1px;background:#E7E1D5;margin:40px 0 28px"></div>
+<div style="display:grid;grid-template-columns:1.1fr 1fr;gap:48px">
+<div>
+<div style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#56635C;margin-bottom:14px">Type</div>
+<div style="display:flex;flex-direction:column;gap:14px">
+<div style="display:flex;align-items:baseline;gap:16px"><span style="width:110px;flex:none;font:500 11px ui-monospace,Menlo,monospace;color:#56635C">Hero · Fraunces 66/350</span><span style="font-family:'Fraunces',serif;font-size:66px;font-weight:350;letter-spacing:-.035em;line-height:1;font-variation-settings:'opsz' 144">1h 12m</span></div>
+<div style="display:flex;align-items:baseline;gap:16px"><span style="width:110px;flex:none;font:500 11px ui-monospace,Menlo,monospace;color:#56635C">Title · Fraunces 34</span><span style="font-family:'Fraunces',serif;font-size:34px;letter-spacing:-.015em">Sunday, 4 October</span></div>
+<div style="display:flex;align-items:baseline;gap:16px"><span style="width:110px;flex:none;font:500 11px ui-monospace,Menlo,monospace;color:#56635C">Section · Fraunces 24</span><span style="font-family:'Fraunces',serif;font-size:24px">Your day</span></div>
+<div style="display:flex;align-items:baseline;gap:16px"><span style="width:110px;flex:none;font:500 11px ui-monospace,Menlo,monospace;color:#56635C">Item · Jakarta 17/600</span><span style="font-size:17px;font-weight:600">Evening adhkar</span></div>
+<div style="display:flex;align-items:baseline;gap:16px"><span style="width:110px;flex:none;font:500 11px ui-monospace,Menlo,monospace;color:#56635C">Body · Jakarta 15</span><span style="font-size:15px;color:#56635C">After Asr · 4 min</span></div>
+<div style="display:flex;align-items:baseline;gap:16px"><span style="width:110px;flex:none;font:500 11px ui-monospace,Menlo,monospace;color:#56635C">Kicker · 12/700 caps</span><span style="font-size:12px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:#0F4C3A">Next prayer</span></div>
+<div style="display:flex;align-items:baseline;gap:16px"><span style="width:110px;flex:none;font:500 11px ui-monospace,Menlo,monospace;color:#56635C">Arabic · Amiri 42</span><span dir="rtl" lang="ar" style="font-family:'Amiri',serif;font-size:42px;line-height:1.5">سُبْحَانَ اللَّهِ وَبِحَمْدِهِ</span></div>
+</div>
+</div>
+<div>
+<div style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#56635C;margin-bottom:14px">Components</div>
+<div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center">
+<span style="height:52px;padding:0 24px;border-radius:18px;background:#0F4C3A;color:#fff;display:flex;align-items:center;font-size:15px;font-weight:600">Save 45 TMT</span>
+<span style="height:44px;padding:0 20px;border-radius:999px;background:#DFECE4;color:#0F4C3A;display:flex;align-items:center;font-size:15px;font-weight:600">Made up</span>
+<span style="height:44px;padding:0 20px;border-radius:999px;background:#8A6324;color:#fff;display:flex;align-items:center;font-size:15px;font-weight:600">Add to qada</span>
+<span style="height:44px;padding:0 18px;border-radius:999px;border:1px solid #E7E1D5;display:flex;align-items:center;font-size:15px;font-weight:600">Not now</span>
+</div>
+<div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:14px">
+<span style="height:40px;padding:0 15px;border-radius:999px;background:#0F4C3A;color:#fff;display:flex;align-items:center;font-size:14px;font-weight:600">Groceries</span>
+<span style="height:40px;padding:0 15px;border-radius:999px;background:#fff;border:1px solid #E7E1D5;display:flex;align-items:center;font-size:14px;font-weight:600;box-sizing:border-box">Transport</span>
+<span style="height:40px;padding:0 15px;border-radius:999px;background:#F4EAD6;color:#8A6324;display:flex;align-items:center;gap:6px;font-size:14px;font-weight:600"><svg width="14" height="14" viewBox="0 0 24 24" fill="#B88A3E" stroke="#B88A3E" stroke-width="2" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></svg>Sadaqa</span>
+</div>
+<div style="display:flex;gap:6px;margin-top:16px;padding:10px;border-radius:24px;background:#0F4C3A;color:#F7F4EE;width:max-content">
+<div style="width:62px;display:flex;flex-direction:column;align-items:center;gap:6px;padding:10px 0;border-radius:18px;background:rgba(255,255,255,.06)"><span style="width:26px;height:26px;border-radius:50%;background:#B88A3E;display:flex;align-items:center;justify-content:center"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#0F4C3A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></span><span style="font-size:12px;font-weight:600">Done</span></div>
+<div style="width:62px;display:flex;flex-direction:column;align-items:center;gap:6px;padding:10px 0;border-radius:18px;background:rgba(255,255,255,.14)"><span style="width:26px;height:26px;border-radius:50%;border:2px solid #B88A3E;box-sizing:border-box;display:flex;align-items:center;justify-content:center"><span style="width:8px;height:8px;border-radius:50%;background:#B88A3E"></span></span><span style="font-size:12px;font-weight:600">Current</span></div>
+<div style="width:62px;display:flex;flex-direction:column;align-items:center;gap:6px;padding:10px 0;border-radius:18px;background:rgba(255,255,255,.06);opacity:.74"><span style="width:26px;height:26px;border-radius:50%;border:1.5px dashed rgba(247,244,238,.74);box-sizing:border-box"></span><span style="font-size:12px;font-weight:600">Upcoming</span></div>
+</div>
+<div style="display:flex;align-items:center;gap:12px;min-height:56px;padding:0 16px;margin-top:16px;border-radius:24px;background:#F4EAD6;color:#8A6324;font-size:15px;font-weight:600;max-width:360px">14 qada remaining<span style="margin-left:auto;font-size:14px">Make up ›</span></div>
+<div style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#56635C;margin:26px 0 12px">Icons · 24px, 2px stroke, round caps</div>
+<div style="display:flex;gap:18px;color:#14201B">
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M4.9 7.9 7 10M19.1 7.9 17 10M2 18h20M7 18a5 5 0 0 1 10 0"></path></svg>
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7.5" height="7.5" rx="2"></rect><rect x="13.5" y="3" width="7.5" height="7.5" rx="2"></rect><rect x="3" y="13.5" width="7.5" height="7.5" rx="2"></rect><rect x="13.5" y="13.5" width="7.5" height="7.5" rx="2"></rect></svg>
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"></circle><path d="M4 21a8 8 0 0 1 16 0"></path></svg>
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4h6a4 4 0 0 1 4 4v13a3 3 0 0 0-3-3H2z"></path><path d="M22 4h-6a4 4 0 0 0-4 4v13a3 3 0 0 1 3-3h7z"></path></svg>
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg>
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="3"></rect><path d="M3 10h18M8 3v4M16 3v4"></path></svg>
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"></path><path d="M3 3v5h5"></path></svg>
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"></path><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"></path></svg>
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path></svg>
+</div>
+<div style="font-size:12px;line-height:1.6;color:#56635C;margin-top:22px;max-width:420px">Cards 24px (Android 28px) · chips pill · shadows only on sheets and FAB · brass for checks, sun and streaks only · touch targets ≥44px · states differ by shape, not just color.</div>
+</div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1100,&quot;height&quot;:900}}">
+class Component extends DCLogic {
+  renderVals() {
+    const sw = (arr, edge) => arr.map(([n, h]) => ({ n, h, s: { display: 'block', height: 56, borderRadius: 14, background: h, boxShadow: 'inset 0 0 0 1px ' + edge } }));
+    return {
+      light: sw([['Background', '#F7F4EE'], ['Card', '#FFFFFF'], ['Ink', '#14201B'], ['Muted', '#56635C'], ['Hairline', '#E7E1D5'], ['Emerald', '#0F4C3A'], ['Mint', '#DFECE4'], ['Brass', '#B88A3E'], ['Brass text', '#8A6324'], ['Soft brass', '#F4EAD6']], 'rgba(0,0,0,.08)'),
+      dark: sw([['Background', '#0A1310'], ['Card', '#121D18'], ['Text', '#F0ECE3'], ['Muted', '#A3AFA8'], ['Hairline', '#22302A'], ['Hero', '#143F32'], ['Highlight', '#173328'], ['Accent', '#6CC9A1'], ['Brass', '#E0BD78'], ['Soft brass', '#2A2418']], 'rgba(255,255,255,.1)')
+    };
+  }
+}
+</script>
+</body>
+</html>

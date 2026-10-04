@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<div style="display:flex;gap:40px;align-items:flex-start;flex-wrap:wrap">
+<div style="{{ phoneS }}">
+<sc-if value="{{ is.home }}" hint-placeholder-val="{{ true }}"><dc-import name="Waqt Home" mode="{{ mode }}" marked="{{ marked }}" on-chip="{{ onChip }}" spent="{{ spent }}" sadaqa="{{ sadaqa }}" qada="{{ qada }}" tasks-done="{{ td }}" tasks-total="{{ tt }}" nav="{{ nav }}" hint-size="390px,844px"></dc-import></sc-if>
+<sc-if value="{{ is.mark }}" hint-placeholder-val="{{ false }}"><dc-import name="Waqt Mark" prayer="{{ prayer }}" marked="{{ marked }}" on-done="{{ onDone }}" nav="{{ nav }}" hint-size="390px,844px"></dc-import></sc-if>
+<sc-if value="{{ is.expense }}" hint-placeholder-val="{{ false }}"><dc-import name="Waqt Expense" on-save="{{ onSave }}" nav="{{ nav }}" hint-size="390px,844px"></dc-import></sc-if>
+<sc-if value="{{ is.qada }}" hint-placeholder-val="{{ false }}"><dc-import name="Waqt Qada" added="{{ added }}" on-change="{{ onQada }}" nav="{{ nav }}" hint-size="390px,844px"></dc-import></sc-if>
+<sc-if value="{{ is.tasks }}" hint-placeholder-val="{{ false }}"><dc-import name="Waqt Tasks" on-change="{{ onTasks }}" nav="{{ nav }}" hint-size="390px,844px"></dc-import></sc-if>
+<sc-if value="{{ is.adhkar }}" hint-placeholder-val="{{ false }}"><dc-import name="Waqt Adhkar" nav="{{ nav }}" hint-size="390px,844px"></dc-import></sc-if>
+<sc-if value="{{ is.tools }}" hint-placeholder-val="{{ false }}"><dc-import name="Waqt Tools" nav="{{ nav }}" hint-size="390px,844px"></dc-import></sc-if>
+<sc-if value="{{ is.calendar }}" hint-placeholder-val="{{ false }}"><dc-import name="Waqt Calendar" nav="{{ nav }}" hint-size="390px,844px"></dc-import></sc-if>
+<sc-if value="{{ is.me }}" hint-placeholder-val="{{ false }}"><dc-import name="Waqt Me" nav="{{ nav }}" hint-size="390px,844px"></dc-import></sc-if>
+<sc-if value="{{ is.settings }}" hint-placeholder-val="{{ false }}"><dc-import name="Waqt Settings" nav="{{ nav }}" hint-size="390px,844px"></dc-import></sc-if>
+</div>
+<div style="width:300px;display:flex;flex-direction:column;gap:22px;padding-top:8px;font-family:'Plus Jakarta Sans',sans-serif;color:#14201B">
+<div><div style="font-family:'Fraunces',serif;font-size:26px;letter-spacing:-.01em">Try it</div>
+<div style="font-size:13px;line-height:1.65;color:#56635C;margin-top:8px">Tap the Dhuhr chip to mark it · “Start” opens adhkar · tiles open Expense and Tasks · the brass banner opens Qada · the calendar row opens the Hijri month · tabs switch Today, Tools, Me · the gear in Me opens Settings. Changes carry back to Today.</div></div>
+<div><div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#56635C;margin-bottom:8px">Theme</div><div style="display:flex;padding:3px;border-radius:12px;background:#DDD8CE;width:max-content"><sc-for list="{{ themeSeg }}" as="o" hint-placeholder-count="2"><div onClick="{{ o.pick }}" style="{{ o.s }}">{{ o.l }}</div></sc-for></div></div>
+<div><div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#56635C;margin-bottom:8px">Season</div><div style="display:flex;padding:3px;border-radius:12px;background:#DDD8CE;width:max-content"><sc-for list="{{ modeSeg }}" as="o" hint-placeholder-count="2"><div onClick="{{ o.pick }}" style="{{ o.s }}">{{ o.l }}</div></sc-for></div></div>
+<div><div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#56635C;margin-bottom:8px">Jump to</div><div style="display:flex;flex-wrap:wrap;gap:6px"><sc-for list="{{ jumps }}" as="j" hint-placeholder-count="10"><div onClick="{{ j.go }}" style="{{ j.s }}">{{ j.l }}</div></sc-for></div></div>
+<div onClick="{{ reset }}" style="font-size:13px;font-weight:600;color:#0F4C3A;cursor:pointer;width:max-content;padding:6px 0">Reset prototype</div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:760,&quot;height&quot;:844},&quot;dark&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  init = { s: 'home', mode: 'normal', marked: ['fajr'], prayer: 'dhuhr', spent: 240, sadaqa: 20, qada: 14, added: {}, td: 2, tt: 5 };
+  state = { ...this.init, dark: null };
+  renderVals() {
+    const st = this.state, dark = st.dark ?? !!this.props.dark;
+    const base = { width: 390, height: 844, borderRadius: 44, overflow: 'hidden', flex: 'none', fontVariantNumeric: 'tabular-nums', '--serif': "'Fraunces',Georgia,serif", '--ar': "'Amiri',serif" };
+    const L = { '--bg': '#F7F4EE', '--card': '#FFFFFF', '--ink': '#14201B', '--mu': '#56635C', '--ln': '#E7E1D5', '--hero': '#0F4C3A', '--hink': '#F7F4EE', '--hmu': 'rgba(247,244,238,.74)', '--mint': '#DFECE4', '--mink': '#0F4C3A', '--br': '#B88A3E', '--bri': '#8A6324', '--brs': '#F4EAD6', '--onbr': '#FFFFFF', '--pri': '#0F4C3A', '--onp': '#FFFFFF', '--acc': '#0F4C3A', '--fill': '#F0ECE4', '--dim': 'rgba(20,32,27,.44)', color: '#14201B', boxShadow: '0 40px 80px -40px rgba(20,32,27,.45),0 0 0 1px rgba(0,0,0,.06)' };
+    const D = { '--bg': '#0A1310', '--card': '#121D18', '--ink': '#F0ECE3', '--mu': '#A3AFA8', '--ln': '#22302A', '--hero': '#143F32', '--hink': '#F0ECE3', '--hmu': 'rgba(240,236,227,.74)', '--mint': '#173328', '--mink': '#6CC9A1', '--br': '#E0BD78', '--bri': '#E0BD78', '--brs': '#2A2418', '--onbr': '#0A1310', '--pri': '#6CC9A1', '--onp': '#0A1310', '--acc': '#6CC9A1', '--fill': '#17231E', '--dim': 'rgba(0,0,0,.6)', color: '#F0ECE3', boxShadow: '0 40px 80px -40px rgba(0,0,0,.6),0 0 0 1px rgba(0,0,0,.2)' };
+    const nav = k => k === 'ramadan' ? this.setState({ s: 'home', mode: 'ramadan' }) : this.setState({ s: k });
+    const screens = ['home', 'mark', 'expense', 'qada', 'tasks', 'adhkar', 'tools', 'calendar', 'me', 'settings'];
+    const is = {}; screens.forEach(k => is[k] = st.s === k);
+    const seg = (opts, val, set) => opts.map(([l, v]) => ({ l, pick: () => set(v), s: { height: 34, padding: '0 14px', borderRadius: 9, display: 'flex', alignItems: 'center', fontSize: 13, fontWeight: 600, cursor: 'pointer', background: val === v ? '#fff' : 'transparent', color: val === v ? '#14201B' : '#56635C', boxShadow: val === v ? '0 1px 3px rgba(0,0,0,.12)' : 'none' } }));
+    const ram = st.mode === 'ramadan';
+    return {
+      phoneS: { ...base, ...(dark ? D : L) }, is, mode: st.mode, prayer: st.prayer,
+      marked: ram ? undefined : st.marked, onChip: ram ? undefined : k => this.setState({ s: 'mark', prayer: k }),
+      spent: st.spent, sadaqa: st.sadaqa, qada: st.qada, added: st.added, td: st.td, tt: st.tt, nav,
+      onDone: (k, status) => {
+        if (status === 'missed') this.setState({ s: 'home', qada: st.qada + 1, added: { ...st.added, [k]: (st.added[k] || 0) + 1 } });
+        else this.setState({ s: 'home', marked: st.marked.includes(k) ? st.marked : [...st.marked, k] });
+      },
+      onSave: (amt, cat) => this.setState({ s: 'home', spent: Math.round((st.spent + amt) * 100) / 100, sadaqa: cat === 'Sadaqa' ? st.sadaqa + amt : st.sadaqa }),
+      onQada: total => this.setState({ qada: total }),
+      onTasks: (d, t) => this.setState({ td: d, tt: t }),
+      themeSeg: seg([['Light', false], ['Dark', true]], dark, v => this.setState({ dark: v })),
+      modeSeg: seg([['Everyday', 'normal'], ['Ramadan', 'ramadan']], st.mode, v => this.setState({ mode: v, s: 'home' })),
+      jumps: [['Today', 'home'], ['Mark', 'mark'], ['Expense', 'expense'], ['Qada', 'qada'], ['Tasks', 'tasks'], ['Adhkar', 'adhkar'], ['Tools', 'tools'], ['Calendar', 'calendar'], ['Me', 'me'], ['Settings', 'settings']].map(([l, k]) => ({ l, go: () => this.setState({ s: k }), s: { height: 32, padding: '0 12px', borderRadius: 999, display: 'flex', alignItems: 'center', fontSize: 12, fontWeight: 600, cursor: 'pointer', background: st.s === k ? '#0F4C3A' : 'rgba(0,0,0,.06)', color: st.s === k ? '#fff' : '#14201B' } })),
+      reset: () => this.setState({ ...this.init })
+    };
+  }
+}
+</script>
+</body>
+</html>

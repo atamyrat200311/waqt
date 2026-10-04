@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet><style>@keyframes wqBump{0%{transform:scale(1)}40%{transform:scale(.92)}100%{transform:scale(1)}}</style></helmet>
+<div style="width:390px;height:844px;background:var(--bg);color:var(--ink);position:relative;overflow:hidden;display:flex;flex-direction:column">
+<dc-import name="Waqt Status" time="14:46" hint-size="390px,50px"></dc-import>
+<div style="flex:1;overflow-y:auto;scrollbar-width:none;padding-bottom:110px">
+<div onClick="{{ back }}" style="display:flex;align-items:center;height:44px;padding:0 10px;color:var(--acc);font-size:17px;font-weight:500;cursor:pointer;width:max-content"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"></path></svg>Today</div>
+<div style="padding:4px 20px 0;font-family:var(--serif);font-size:34px;letter-spacing:-.015em">Qada</div>
+<div style="padding:18px 20px 0;display:flex;align-items:flex-end;gap:14px">
+<span style="font-family:var(--serif);font-size:112px;line-height:.82;letter-spacing:-.05em;font-weight:300;font-variation-settings:'opsz' 144">{{ total }}</span>
+<span style="font-size:15px;color:var(--mu);padding-bottom:6px;line-height:1.35">prayers left<br>to make up</span>
+</div>
+<div style="margin:18px 20px 0;display:inline-flex;align-items:center;gap:8px;padding:9px 14px 9px 10px;border-radius:999px;background:var(--brs);color:var(--bri);font-size:14px;font-weight:600"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>You've made up {{ made }} since you started</div>
+<div style="margin:22px 16px 0;padding:18px 18px 14px;border-radius:var(--r,24px);background:var(--card);border:1px solid var(--ln)">
+<div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-size:15px;font-weight:600">This week</span><span style="font-size:13px;color:var(--mu)">{{ weekTotal }} made up</span></div>
+<div style="display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px;margin-top:14px;align-items:end;height:84px">
+<sc-for list="{{ week }}" as="w" hint-placeholder-count="7"><div style="display:flex;flex-direction:column;align-items:center;gap:6px;justify-content:flex-end;height:100%"><span style="{{ w.bar }}"></span><span style="{{ w.lab }}">{{ w.d }}</span></div></sc-for>
+</div>
+</div>
+<div style="margin:12px 16px 0;border-radius:var(--r,24px);background:var(--card);border:1px solid var(--ln);overflow:hidden">
+<sc-for list="{{ rows }}" as="r" hint-placeholder-count="5">
+<div style="display:flex;align-items:center;gap:12px;min-height:64px;padding:0 12px 0 18px;border-top:1px solid var(--ln);margin-top:-1px">
+<span style="flex:1;font-size:16px;font-weight:600">{{ r.n }}</span>
+<span style="{{ r.cs }}">{{ r.c }}</span>
+<div onClick="{{ r.dec }}" style="{{ r.bs }}">{{ r.bl }}</div>
+</div>
+</sc-for>
+</div>
+<div style="margin:12px 16px 0;height:54px;border-radius:var(--r,24px);border:1.5px dashed var(--ln);display:flex;align-items:center;justify-content:center;gap:8px;font-size:15px;font-weight:600;color:var(--acc);cursor:pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg>Add older missed prayers</div>
+<div style="padding:14px 28px 0;font-size:13px;color:var(--mu);text-align:center;line-height:1.5;text-wrap:pretty">One at a time is enough. Many people pair one qada with each daily prayer.</div>
+</div>
+<dc-import name="Waqt TabBar" active="today" nav="{{ nav }}" hint-size="390px,84px" style="position:absolute;left:0;bottom:0"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:390,&quot;height&quot;:844},&quot;added&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;Record&lt;string,number&gt;&quot;},&quot;onChange&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;(total:number)=&gt;void&quot;},&quot;nav&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;(s:string)=&gt;void&quot;}}">
+class Component extends DCLogic {
+  state = { c: null, made: 23, week: [1, 0, 2, 1, 0, 2, 0], hit: null };
+  counts() {
+    if (this.state.c) return this.state.c;
+    const a = this.props.added ?? {};
+    const b = { fajr: 5, dhuhr: 2, asr: 3, maghrib: 1, isha: 3 };
+    Object.keys(a).forEach(k => b[k] += a[k]);
+    return b;
+  }
+  renderVals() {
+    const c = this.counts(), st = this.state, P = this.props;
+    const N = [['fajr', 'Fajr'], ['dhuhr', 'Dhuhr'], ['asr', 'Asr'], ['maghrib', 'Maghrib'], ['isha', 'Isha']];
+    const total = Object.values(c).reduce((a, b) => a + b, 0);
+    const rows = N.map(([k, n]) => {
+      const z = c[k] === 0;
+      return { n, c: c[k],
+        cs: { fontFamily: 'var(--serif)', fontSize: 26, minWidth: 34, textAlign: 'right', color: z ? 'var(--mu)' : 'var(--ink)', animation: st.hit === k ? 'wqBump .3s' : 'none' },
+        bl: z ? 'All done' : 'Made up',
+        bs: { height: 44, minWidth: 100, padding: '0 16px', borderRadius: 999, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 14, fontWeight: 600, cursor: z ? 'default' : 'pointer', boxSizing: 'border-box', background: z ? 'transparent' : 'var(--mint)', color: z ? 'var(--mu)' : 'var(--mink)', border: z ? '1px solid var(--ln)' : 'none' },
+        dec: () => { if (z) return; const nc = { ...c, [k]: c[k] - 1 }; const w = [...st.week]; w[6]++; this.setState({ c: nc, made: st.made + 1, week: w, hit: k }); P.onChange && P.onChange(total - 1); } };
+    });
+    const D = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
+    const week = st.week.map((v, i) => ({ d: D[i],
+      bar: { display: 'block', width: '100%', maxWidth: 26, height: Math.max(6, v * 16), borderRadius: 8, background: i === 6 ? 'var(--br)' : 'var(--acc)', opacity: v ? 1 : .18, transition: 'height .3s cubic-bezier(.3,1.4,.5,1)' },
+      lab: { fontSize: 12, fontWeight: i === 6 ? 700 : 500, color: i === 6 ? 'var(--bri)' : 'var(--mu)' } }));
+    return { total, made: st.made, rows, week, weekTotal: st.week.reduce((a, b) => a + b, 0), back: () => P.nav && P.nav('home'), nav: P.nav };
+  }
+}
+</script>
+</body>
+</html>

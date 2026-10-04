@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet><style>@keyframes wqPop{0%{transform:scale(.3);opacity:0}55%{transform:scale(1.18);opacity:1}100%{transform:scale(1)}}@keyframes wqUp{from{transform:translateY(40px);opacity:0}to{transform:none;opacity:1}}</style></helmet>
+<div style="width:390px;height:844px;position:relative;overflow:hidden;background:var(--bg);color:var(--ink)">
+<div style="position:absolute;inset:0;pointer-events:none"><dc-import name="Waqt Home" marked="{{ bgMarked }}" hint-size="390px,844px"></dc-import></div>
+<div onClick="{{ close }}" style="position:absolute;inset:0;background:var(--dim)"></div>
+<div style="position:absolute;left:0;right:0;bottom:0;background:var(--card);border-radius:28px 28px 0 0;padding:8px 20px 30px;box-shadow:0 -12px 40px rgba(0,0,0,.18)">
+<div style="width:36px;height:5px;border-radius:3px;background:var(--ln);margin:0 auto 18px"></div>
+<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px">
+<div><div style="font-family:var(--serif);font-size:34px;line-height:1.05;letter-spacing:-.015em">{{ name }}</div><div style="font-size:15px;color:var(--mu);margin-top:6px">{{ win }} · {{ note }}</div></div>
+<div onClick="{{ close }}" style="width:36px;height:36px;border-radius:50%;background:var(--fill);display:flex;align-items:center;justify-content:center;color:var(--mu);cursor:pointer;flex:none"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"></path></svg></div>
+</div>
+<div style="display:flex;flex-direction:column;gap:10px;margin-top:22px">
+<sc-for list="{{ opts }}" as="o" hint-placeholder-count="4">
+<div onClick="{{ o.pick }}" style="{{ o.bx }}">
+<span style="{{ o.ic }}">
+<sc-if value="{{ o.a }}" hint-placeholder-val="{{ false }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></sc-if>
+<sc-if value="{{ o.b }}" hint-placeholder-val="{{ false }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"></path></svg></sc-if>
+<sc-if value="{{ o.c }}" hint-placeholder-val="{{ false }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg></sc-if>
+<sc-if value="{{ o.d }}" hint-placeholder-val="{{ false }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"></path><path d="M3 3v5h5"></path></svg></sc-if>
+</span>
+<div style="flex:1;min-width:0"><div style="font-size:16px;font-weight:600">{{ o.t }}</div><div style="font-size:13px;color:var(--mu);margin-top:2px">{{ o.s }}</div></div>
+<sc-if value="{{ o.on }}" hint-placeholder-val="{{ false }}"><span style="{{ o.ck }}"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></span></sc-if>
+</div>
+</sc-for>
+</div>
+<sc-if value="{{ askConfirm }}" hint-placeholder-val="{{ false }}">
+<div style="margin-top:12px;padding:16px;border-radius:20px;background:var(--brs);animation:wqUp .3s ease-out">
+<div style="font-size:15px;font-weight:600;color:var(--bri)">Add 1 {{ name }} to your qada?</div>
+<div style="font-size:13px;color:var(--mu);margin-top:4px;line-height:1.45">You can make it up at any time. Nothing is added until you confirm.</div>
+<div style="display:flex;gap:8px;margin-top:14px"><div onClick="{{ cancel }}" style="flex:1;height:46px;border-radius:14px;border:1px solid var(--ln);background:var(--card);display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:600;cursor:pointer">Not now</div><div onClick="{{ confirm }}" style="flex:1;height:46px;border-radius:14px;background:var(--bri);color:var(--onbr);display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:600;cursor:pointer">Add to qada</div></div>
+</div>
+</sc-if>
+<sc-if value="{{ added }}" hint-placeholder-val="{{ false }}"><div style="margin-top:12px;padding:14px 16px;border-radius:20px;background:var(--brs);color:var(--bri);font-size:14px;font-weight:600;animation:wqUp .3s ease-out">Added to qada. Make it up whenever you can.</div></sc-if>
+<div onClick="{{ remind }}" style="display:flex;align-items:center;justify-content:center;gap:8px;height:48px;margin-top:10px;font-size:15px;font-weight:600;color:var(--acc);cursor:pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"></path><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"></path></svg>{{ remindLabel }}</div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:390,&quot;height&quot;:844},&quot;prayer&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;fajr&quot;,&quot;dhuhr&quot;,&quot;asr&quot;,&quot;maghrib&quot;,&quot;isha&quot;],&quot;default&quot;:&quot;dhuhr&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;marked&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;string[]&quot;},&quot;onDone&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;(k:string,status:string)=&gt;void&quot;},&quot;nav&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;(s:string)=&gt;void&quot;}}">
+class Component extends DCLogic {
+  state = { sel: null, confirmed: false, reminded: false };
+  renderVals() {
+    const P = this.props, k = P.prayer ?? 'dhuhr', st = this.state;
+    const W = { fajr: ['Fajr', '05:28 – 06:52', 'closed at sunrise'], dhuhr: ['Dhuhr', '12:39 – 15:57', '1h 12m left'], asr: ['Asr', '15:57 – 18:28', 'opens at 15:57'], maghrib: ['Maghrib', '18:28 – 19:46', 'opens at 18:28'], isha: ['Isha', '19:46 – 05:28', 'opens at 19:46'] }[k];
+    const O = [['ontime', 'Prayed on time', 'Within the ' + W[0] + ' window'], ['jamaah', 'In congregation', 'With the jamāʿah, on time'], ['late', 'Prayed late', 'After the window closed'], ['missed', 'Missed, add to qada', 'You confirm before anything is added']];
+    const opts = O.map(([id, t, s]) => {
+      const on = st.sel === id, m = id === 'missed';
+      return { t, s, on, a: id === 'ontime', b: id === 'jamaah', c: id === 'late', d: m,
+        bx: { display: 'flex', alignItems: 'center', gap: 14, minHeight: 68, padding: '0 16px 0 12px', borderRadius: 20, cursor: 'pointer', boxSizing: 'border-box', transition: 'background .2s,border-color .2s', border: '1.5px solid ' + (on ? (m ? 'var(--br)' : 'var(--acc)') : 'var(--ln)'), background: on ? (m ? 'var(--brs)' : 'var(--mint)') : 'var(--card)' },
+        ic: { width: 42, height: 42, borderRadius: 14, display: 'flex', alignItems: 'center', justifyContent: 'center', flex: 'none', background: m ? 'var(--brs)' : 'var(--mint)', color: m ? 'var(--bri)' : 'var(--mink)' },
+        ck: { width: 26, height: 26, borderRadius: '50%', flex: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center', background: m ? 'var(--bri)' : 'var(--br)', color: m ? 'var(--onbr)' : 'var(--hero)', animation: 'wqPop .45s cubic-bezier(.3,1.4,.5,1)' },
+        pick: () => { this.setState({ sel: id, confirmed: false }); if (!m && P.onDone) setTimeout(() => P.onDone(k, id), 750); } };
+    });
+    return {
+      name: W[0], win: W[1], note: W[2], opts,
+      bgMarked: P.marked ?? ['fajr'],
+      askConfirm: st.sel === 'missed' && !st.confirmed, added: st.sel === 'missed' && st.confirmed,
+      cancel: () => this.setState({ sel: null }),
+      confirm: () => { this.setState({ confirmed: true }); if (P.onDone) setTimeout(() => P.onDone(k, 'missed'), 900); },
+      remindLabel: st.reminded ? 'Reminder set for 15:01' : 'Remind me in 15 min',
+      remind: () => { this.setState({ reminded: true }); if (P.nav) setTimeout(() => P.nav('home'), 700); },
+      close: () => P.nav && P.nav('home')
+    };
+  }
+}
+</script>
+</body>
+</html>

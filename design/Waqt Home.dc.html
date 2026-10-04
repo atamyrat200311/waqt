@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet><style>@keyframes wqPop{0%{transform:scale(.3);opacity:0}55%{transform:scale(1.18);opacity:1}100%{transform:scale(1)}}@keyframes wqDraw{from{stroke-dashoffset:22}to{stroke-dashoffset:0}}@keyframes wqGlow{0%,100%{opacity:.16;r:12px}50%{opacity:.38;r:16px}}</style></helmet>
+<div style="width:390px;height:844px;background:var(--bg);color:var(--ink);position:relative;overflow:hidden;display:flex;flex-direction:column">
+<sc-if value="{{ ios }}" hint-placeholder-val="{{ true }}"><dc-import name="Waqt Status" time="{{ clock }}" hint-size="390px,50px"></dc-import></sc-if>
+<sc-if value="{{ android }}" hint-placeholder-val="{{ false }}"><div style="height:36px;flex:none;display:flex;align-items:center;justify-content:space-between;padding:0 22px;font-size:14px;font-weight:500"><span>{{ clock }}</span><span style="display:flex;gap:6px;align-items:center"><span style="display:block;width:0;height:0;border-left:12px solid transparent;border-bottom:12px solid currentColor"></span><span style="display:block;width:8px;height:13px;border-radius:2px;background:currentColor"></span></span></div></sc-if>
+<div style="flex:1;overflow-y:auto;scrollbar-width:none;padding-bottom:168px">
+<sc-if value="{{ ios }}" hint-placeholder-val="{{ true }}">
+<div style="padding:4px 20px 18px">
+<div style="display:flex;justify-content:space-between;align-items:center;height:44px">
+<div style="display:flex;align-items:center;gap:6px;height:36px;padding:0 14px 0 10px;border-radius:999px;background:var(--card);border:1px solid var(--ln);font-size:14px;font-weight:600;cursor:pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--acc)"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>Ashgabat</div>
+<div onClick="{{ goAdd }}" style="width:44px;height:44px;border-radius:50%;background:var(--card);border:1px solid var(--ln);box-sizing:border-box;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--acc)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></div>
+</div>
+<div style="font-family:var(--serif);font-size:34px;line-height:1.08;letter-spacing:-.015em;margin-top:14px;font-weight:400">{{ gDate }}</div>
+<div style="display:flex;align-items:center;gap:9px;margin-top:7px;font-size:15px;color:var(--mu)"><span style="display:block;width:6px;height:6px;background:var(--br);transform:rotate(45deg)"></span>{{ hDate }}</div>
+</div>
+</sc-if>
+<sc-if value="{{ android }}" hint-placeholder-val="{{ false }}">
+<div style="height:72px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 12px 0 20px;margin-bottom:8px"><div style="min-width:0"><div style="font-family:var(--serif);font-size:24px;line-height:1.15;letter-spacing:-.01em">{{ gDate }}</div><div style="display:flex;align-items:center;gap:8px;margin-top:3px;font-size:14px;color:var(--mu)"><span style="display:block;width:5px;height:5px;background:var(--br);transform:rotate(45deg)"></span>{{ hDate }}</div></div><div style="display:flex;align-items:center;gap:6px;height:32px;padding:0 14px 0 10px;border-radius:8px;border:1px solid var(--ln);font-size:14px;font-weight:600"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--acc)"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>Ashgabat</div></div>
+
+</sc-if>
+<div style="margin:0 16px;border-radius:var(--r,28px);background:var(--hero);color:var(--hink);padding:20px 20px 14px;position:relative;overflow:hidden">
+<svg width="260" height="260" style="position:absolute;right:-70px;top:-80px;opacity:.09;-webkit-mask-image:radial-gradient(circle at 60% 40%,#000 15%,transparent 68%);mask-image:radial-gradient(circle at 60% 40%,#000 15%,transparent 68%)"><defs><pattern id="wq-star" width="44" height="44" patternUnits="userSpaceOnUse"><g fill="none" stroke="#fff" stroke-width="1"><rect x="13" y="13" width="18" height="18"></rect><rect x="13" y="13" width="18" height="18" transform="rotate(45 22 22)"></rect></g></pattern></defs><rect width="260" height="260" fill="url(#wq-star)"></rect></svg>
+<div style="position:relative">
+<div style="font-size:12px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--hmu)">{{ heroKicker }}</div>
+<div style="display:flex;align-items:baseline;gap:10px;margin-top:10px"><span style="font-family:var(--serif);font-size:28px;line-height:1">{{ heroName }}</span><span style="font-size:16px;color:var(--hmu);font-weight:500">{{ heroTime }}</span></div>
+<div style="font-family:var(--serif);font-size:66px;line-height:1;letter-spacing:-.035em;margin-top:6px;font-weight:350;font-variation-settings:'opsz' 144"><span style="font-family:'Plus Jakarta Sans',sans-serif;font-size:20px;letter-spacing:0;color:var(--hmu);font-weight:500;margin-right:10px">in</span>{{ cdH }}<span style="font-size:30px;letter-spacing:0;margin:0 10px 0 3px">h</span>{{ cdM }}<span style="font-size:30px;letter-spacing:0;margin-left:3px">m</span></div>
+<sc-if value="{{ ram }}" hint-placeholder-val="{{ false }}">
+<div style="font-size:14px;color:var(--hmu);margin-top:12px;font-weight:500">Suhoor ends 05:18 · Fast 12 of 30</div>
+<div style="display:flex;gap:3px;margin-top:9px"><sc-for list="{{ fasts }}" as="f" hint-placeholder-count="30"><span style="{{ f.s }}"></span></sc-for></div>
+</sc-if>
+<svg width="318" height="92" viewBox="0 0 318 92" style="display:block;margin:14px 0 2px;overflow:visible">
+<line x1="0" y1="82" x2="318" y2="82" stroke-width="1" style="stroke:var(--hink);stroke-opacity:.14"></line>
+<path d="{{ arcRest }}" fill="none" stroke-width="1.4" stroke-dasharray="2 5" stroke-linecap="round" style="stroke:var(--hink);stroke-opacity:.5"></path>
+<path d="{{ arcPast }}" fill="none" stroke-width="1.8" stroke-linecap="round" style="stroke:var(--hink)"></path>
+<circle cx="{{ dF.x }}" cy="{{ dF.y }}" r="3.5" style="{{ dF.s }}"></circle>
+<circle cx="{{ dD.x }}" cy="{{ dD.y }}" r="3.5" style="{{ dD.s }}"></circle>
+<circle cx="{{ dA.x }}" cy="{{ dA.y }}" r="3.5" style="{{ dA.s }}"></circle>
+<circle cx="{{ dM.x }}" cy="{{ dM.y }}" r="3.5" style="{{ dM.s }}"></circle>
+<circle cx="{{ dI.x }}" cy="{{ dI.y }}" r="3.5" style="{{ dI.s }}"></circle>
+<circle cx="{{ sun.x }}" cy="{{ sun.y }}" r="14" style="fill:var(--br);animation:wqGlow 3.4s ease-in-out infinite"></circle>
+<circle cx="{{ sun.x }}" cy="{{ sun.y }}" r="6" style="fill:var(--br)"></circle>
+</svg>
+<div style="display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px;margin-top:8px">
+<sc-for list="{{ prayers }}" as="p" hint-placeholder-count="5">
+<div onClick="{{ p.tap }}" style="{{ p.bx }}">
+<sc-if value="{{ p.done }}" hint-placeholder-val="{{ false }}"><span style="width:26px;height:26px;border-radius:50%;background:var(--br);display:flex;align-items:center;justify-content:center;animation:wqPop .5s cubic-bezier(.3,1.4,.5,1)"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="stroke:var(--hero)"><path d="M5 12.5l4.5 4.5L19 7.5" stroke-dasharray="22" style="animation:wqDraw .4s .18s ease-out both"></path></svg></span></sc-if>
+<sc-if value="{{ p.ring }}" hint-placeholder-val="{{ false }}"><span style="width:26px;height:26px;border-radius:50%;border:2px solid var(--br);box-sizing:border-box;display:flex;align-items:center;justify-content:center"><span style="display:block;width:8px;height:8px;border-radius:50%;background:var(--br)"></span></span></sc-if>
+<sc-if value="{{ p.up }}" hint-placeholder-val="{{ true }}"><span style="display:block;width:26px;height:26px;border-radius:50%;border:1.5px dashed var(--hmu);box-sizing:border-box"></span></sc-if>
+<span style="{{ p.tx }}"><span style="font-size:13px;font-weight:600">{{ p.n }}</span><span style="font-size:12px;color:var(--hmu)">{{ p.t }}</span></span>
+</div>
+</sc-for>
+</div>
+</div>
+</div>
+<div style="padding:28px 22px 12px;font-family:var(--serif);font-size:24px;letter-spacing:-.01em">Your day</div>
+<div style="display:flex;flex-wrap:wrap;gap:6px;padding:0 20px 12px">
+<sc-for list="{{ doneItems }}" as="d" hint-placeholder-count="2"><span style="display:flex;align-items:center;gap:6px;height:30px;padding:0 12px 0 9px;border-radius:999px;background:var(--fill);font-size:13px;color:var(--mu);font-weight:500"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" style="stroke:var(--br)"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>{{ d }}</span></sc-for>
+</div>
+<div style="display:flex;flex-direction:column;gap:10px;padding:0 16px">
+<div style="display:flex;align-items:center;gap:14px;padding:14px 14px 14px 16px;border-radius:var(--r,24px);background:var(--mint)">
+<span style="width:44px;height:44px;border-radius:14px;background:var(--card);display:flex;align-items:center;justify-content:center;color:var(--mink);flex:none"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4h6a4 4 0 0 1 4 4v13a3 3 0 0 0-3-3H2z"></path><path d="M22 4h-6a4 4 0 0 0-4 4v13a3 3 0 0 1 3-3h7z"></path></svg></span>
+<div style="flex:1;min-width:0"><div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--mink)">Up next</div><div style="font-size:17px;font-weight:600;margin-top:2px">Evening adhkar</div><div style="font-size:13px;color:var(--mu);margin-top:1px">After Asr · 4 min</div></div>
+<div onClick="{{ goAdhkar }}" style="height:44px;padding:0 20px;border-radius:999px;background:var(--pri);color:var(--onp);display:flex;align-items:center;font-size:15px;font-weight:600;cursor:pointer;flex:none">Start</div>
+</div>
+<sc-if value="{{ ram }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;align-items:center;gap:14px;padding:14px 14px 14px 16px;border-radius:var(--r,24px);background:var(--card);border:1px solid var(--ln)">
+<span style="width:44px;height:44px;border-radius:14px;background:var(--fill);display:flex;align-items:center;justify-content:center;color:var(--acc);flex:none"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg></span>
+<div style="flex:1;min-width:0"><div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--mu)">After Isha · 19:46</div><div style="font-size:17px;font-weight:600;margin-top:2px">Taraweeh</div><div style="font-size:13px;color:var(--mu);margin-top:1px">At the mosque · reminder 19:30</div></div>
+<div onClick="{{ toggleRemind }}" style="{{ bellS }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"></path><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"></path></svg></div>
+</div>
+</sc-if>
+<div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px">
+<div onClick="{{ goExpense }}" style="padding:16px;border-radius:var(--r,24px);background:var(--card);border:1px solid var(--ln);cursor:pointer;display:flex;flex-direction:column;gap:8px;min-height:122px;box-sizing:border-box">
+<div style="display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--mu);font-weight:500">Spent today<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="color:var(--acc)"><path d="M12 5v14M5 12h14"></path></svg></div>
+<div style="display:flex;align-items:baseline;gap:5px;margin-top:auto"><span style="font-family:var(--serif);font-size:34px;line-height:1;letter-spacing:-.02em">{{ spent }}</span><span style="font-size:13px;color:var(--mu);font-weight:600">TMT</span></div>
+<div style="display:flex;align-items:center;gap:5px;font-size:12px;color:var(--mu)"><svg width="13" height="13" viewBox="0 0 24 24" stroke-width="2" stroke-linejoin="round" style="fill:var(--br);stroke:var(--br)"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></svg>incl. {{ sadaqa }} sadaqa</div>
+</div>
+<div onClick="{{ goTasks }}" style="padding:16px;border-radius:var(--r,24px);background:var(--card);border:1px solid var(--ln);cursor:pointer;display:flex;flex-direction:column;gap:8px;min-height:122px;box-sizing:border-box">
+<div style="display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--mu);font-weight:500">Tasks<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"></path></svg></div>
+<div style="display:flex;align-items:baseline;gap:6px;margin-top:auto"><span style="font-family:var(--serif);font-size:34px;line-height:1;letter-spacing:-.02em">{{ tasksDone }}</span><span style="font-size:14px;color:var(--mu);font-weight:500">of {{ tasksTotal }}</span></div>
+<div style="display:flex;gap:4px;padding:4px 0"><sc-for list="{{ taskSegs }}" as="g" hint-placeholder-count="5"><span style="{{ g.s }}"></span></sc-for></div>
+</div>
+</div>
+<div onClick="{{ goQada }}" style="display:flex;align-items:center;gap:12px;min-height:56px;padding:0 16px;border-radius:var(--r,24px);background:var(--brs);color:var(--bri);cursor:pointer">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"></path><path d="M3 3v5h5"></path></svg>
+<span style="flex:1;font-size:15px;font-weight:600">{{ qada }} qada remaining</span>
+<span style="font-size:14px;font-weight:600;display:flex;align-items:center;gap:2px">Make up<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"></path></svg></span>
+</div>
+<div onClick="{{ goCal }}" style="display:flex;align-items:center;gap:14px;padding:14px 16px;border-radius:var(--r,24px);background:var(--card);border:1px solid var(--ln);cursor:pointer">
+<span style="width:40px;height:40px;border-radius:13px;background:var(--fill);display:flex;align-items:center;justify-content:center;color:var(--acc);flex:none"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg></span>
+<div style="flex:1;min-width:0"><div style="font-size:15px;font-weight:600">{{ calA }}</div><div style="font-size:13px;color:var(--mu);margin-top:2px">{{ calB }}</div></div>
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--mu);flex:none"><path d="m9 18 6-6-6-6"></path></svg>
+</div>
+</div>
+</div>
+<sc-if value="{{ ios }}" hint-placeholder-val="{{ true }}"><dc-import name="Waqt TabBar" active="today" nav="{{ nav }}" hint-size="390px,84px" style="position:absolute;left:0;bottom:0"></dc-import></sc-if>
+<sc-if value="{{ android }}" hint-placeholder-val="{{ false }}">
+<div onClick="{{ goAdd }}" style="position:absolute;right:16px;bottom:96px;height:56px;padding:0 22px 0 16px;border-radius:16px;background:var(--mint);color:var(--mink);display:flex;align-items:center;gap:10px;font-size:15px;font-weight:600;box-shadow:0 6px 18px rgba(15,76,58,.22),0 1px 3px rgba(0,0,0,.08);cursor:pointer"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg>Add</div>
+<div style="position:absolute;left:0;right:0;bottom:0;height:80px;background:var(--fill);display:flex;justify-content:space-around;align-items:center;padding:0 24px 6px">
+<div style="display:flex;flex-direction:column;align-items:center;gap:4px;width:80px;font-size:12px;font-weight:700"><span style="width:64px;height:32px;border-radius:16px;background:var(--mint);color:var(--mink);display:flex;align-items:center;justify-content:center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M4.9 7.9 7 10M19.1 7.9 17 10M2 18h20M7 18a5 5 0 0 1 10 0"></path></svg></span>Today</div>
+<div onClick="{{ goTools }}" style="display:flex;flex-direction:column;align-items:center;gap:4px;width:80px;font-size:12px;font-weight:500;color:var(--mu);cursor:pointer"><span style="width:64px;height:32px;display:flex;align-items:center;justify-content:center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7.5" height="7.5" rx="2"></rect><rect x="13.5" y="3" width="7.5" height="7.5" rx="2"></rect><rect x="3" y="13.5" width="7.5" height="7.5" rx="2"></rect><rect x="13.5" y="13.5" width="7.5" height="7.5" rx="2"></rect></svg></span>Tools</div>
+<div onClick="{{ goMe }}" style="display:flex;flex-direction:column;align-items:center;gap:4px;width:80px;font-size:12px;font-weight:500;color:var(--mu);cursor:pointer"><span style="width:64px;height:32px;display:flex;align-items:center;justify-content:center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"></circle><path d="M4 21a8 8 0 0 1 16 0"></path></svg></span>Me</div>
+</div>
+</sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:390,&quot;height&quot;:844},&quot;platform&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;ios&quot;,&quot;android&quot;],&quot;default&quot;:&quot;ios&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;mode&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;normal&quot;,&quot;ramadan&quot;],&quot;default&quot;:&quot;normal&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;marked&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;string[]&quot;},&quot;onChip&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;(k:string)=&gt;void&quot;},&quot;nav&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;(screen:string)=&gt;void&quot;},&quot;spent&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:240,&quot;tsType&quot;:&quot;number&quot;},&quot;sadaqa&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:20,&quot;tsType&quot;:&quot;number&quot;},&quot;qada&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:14,&quot;tsType&quot;:&quot;number&quot;},&quot;tasksDone&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:2,&quot;tsType&quot;:&quot;number&quot;},&quot;tasksTotal&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:5,&quot;tsType&quot;:&quot;number&quot;}}">
+class Component extends DCLogic {
+  state = { local: null, remind: true };
+  renderVals() {
+    const P = this.props, ram = P.mode === 'ramadan', and = P.platform === 'android';
+    const marked = P.marked ?? this.state.local ?? (ram ? ['fajr', 'dhuhr'] : ['fajr']);
+    const cur = ram ? 'asr' : 'dhuhr', nowT = ram ? .787 : .649;
+    const L = [['fajr', 'Fajr', '05:28', 0], ['dhuhr', 'Dhuhr', '12:39', .502], ['asr', 'Asr', '15:57', .733], ['maghrib', 'Maghrib', '18:28', .909], ['isha', 'Isha', '19:46', 1]];
+    const pt = t => ({ x: +(8 + t * 302).toFixed(1), y: +(82 - 70 * Math.sin(Math.PI * t)).toFixed(1) });
+    const path = (a, b) => { let d = ''; for (let i = 0; i <= 48; i++) { const p = pt(a + (b - a) * i / 48); d += (i ? 'L' : 'M') + p.x + ' ' + p.y; } return d; };
+    const dot = t => ({ ...pt(t), s: t <= nowT ? { fill: 'var(--hink)' } : { fill: 'var(--hero)', stroke: 'var(--hink)', strokeOpacity: .6, strokeWidth: 1.4 } });
+    const nav = k => () => P.nav && P.nav(k);
+    const prayers = L.map(([k, n, t]) => {
+      const done = marked.includes(k), ring = !done && k === cur, up = !done && !ring;
+      return { k, n, t, done, ring, up,
+        bx: { display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6, padding: '10px 0 9px', borderRadius: 18, cursor: 'pointer', minHeight: 44, background: ring ? 'rgba(255,255,255,.14)' : 'rgba(255,255,255,.06)', boxShadow: ring ? 'inset 0 0 0 1px rgba(255,255,255,.14)' : 'none', transition: 'background .25s' },
+        tx: { display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 1, opacity: up ? .74 : 1 },
+        tap: () => P.onChip ? P.onChip(k) : this.setState({ local: done ? marked.filter(x => x !== k) : [...marked, k] }) };
+    });
+    const doneItems = [];
+    L.forEach(([k, n]) => { if (marked.includes(k)) { doneItems.push(n); if (k === 'fajr') doneItems.push('Morning adhkar'); } });
+    const td = P.tasksDone ?? 2, tt = P.tasksTotal ?? 5;
+    return {
+      ios: !and, android: and, ram, clock: ram ? '16:14' : '14:45',
+      gDate: ram ? 'Friday, 19 February' : 'Sunday, 4 October', hDate: ram ? '12 Ramaḍān 1448' : '22 Rabīʿ II 1448',
+      heroKicker: ram ? 'Ramadan · Iftar' : 'Next prayer', heroName: ram ? 'Iftar' : 'Asr', heroTime: ram ? 'Maghrib 18:28' : '15:57', cdH: ram ? '2' : '1', cdM: ram ? '14' : '12',
+      arcPast: path(0, nowT), arcRest: path(nowT, 1), sun: pt(nowT), dF: dot(0), dD: dot(.502), dA: dot(.733), dM: dot(.909), dI: dot(1),
+      fasts: Array.from({ length: 30 }, (_, i) => ({ s: { display: 'block', flex: 1, height: 4, borderRadius: 2, background: i < 11 ? 'var(--br)' : i === 11 ? 'var(--hink)' : 'rgba(255,255,255,.2)' } })),
+      prayers, doneItems, spent: P.spent ?? 240, sadaqa: P.sadaqa ?? 20, qada: P.qada ?? 14, tasksDone: td, tasksTotal: tt,
+      taskSegs: Array.from({ length: Math.min(tt, 8) }, (_, i) => ({ s: { display: 'block', flex: 1, height: 5, borderRadius: 3, background: i < td ? 'var(--acc)' : 'var(--ln)' } })),
+      calA: ram ? 'Last ten nights begin in 9 days' : 'Rajab begins in 67 days', calB: ram ? 'Eid al-Fitr in about 18 days' : 'Ramadan in 127 days',
+      bellS: { width: 44, height: 44, borderRadius: '50%', flex: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', background: this.state.remind ? 'var(--mint)' : 'transparent', color: this.state.remind ? 'var(--mink)' : 'var(--mu)', border: this.state.remind ? 'none' : '1px solid var(--ln)', boxSizing: 'border-box' },
+      toggleRemind: () => this.setState(s => ({ remind: !s.remind })),
+      goAdd: nav('expense'), goAdhkar: nav('adhkar'), goExpense: nav('expense'), goTasks: nav('tasks'), goQada: nav('qada'), goCal: nav('calendar'), goTools: nav('tools'), goMe: nav('me'), nav: P.nav
+    };
+  }
+}
+</script>
+</body>
+</html>

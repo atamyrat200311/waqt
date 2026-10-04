@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet><style>@keyframes wqPop{0%{transform:scale(.3);opacity:0}55%{transform:scale(1.18);opacity:1}100%{transform:scale(1)}}</style></helmet>
+<div style="width:390px;height:844px;background:var(--bg);color:var(--ink);position:relative;overflow:hidden;display:flex;flex-direction:column">
+<dc-import name="Waqt Status" time="14:46" hint-size="390px,50px"></dc-import>
+<div style="flex:1;overflow-y:auto;scrollbar-width:none;padding-bottom:190px">
+<div onClick="{{ back }}" style="display:flex;align-items:center;height:44px;padding:0 10px;color:var(--acc);font-size:17px;font-weight:500;cursor:pointer;width:max-content"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"></path></svg>Today</div>
+<div style="padding:4px 20px 0;display:flex;justify-content:space-between;align-items:baseline"><span style="font-family:var(--serif);font-size:34px;letter-spacing:-.015em">Tasks</span><span style="font-size:14px;color:var(--mu)">{{ done }} of {{ count }} done</span></div>
+<sc-for list="{{ groups }}" as="g" hint-placeholder-count="3">
+<div style="padding:22px 16px 0">
+<div style="display:flex;align-items:baseline;gap:8px;padding:0 6px 10px"><span style="font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--acc)">{{ g.label }}</span><span style="font-size:13px;color:var(--mu)">{{ g.time }}</span></div>
+<div style="border-radius:var(--r,24px);background:var(--card);border:1px solid var(--ln);overflow:hidden">
+<sc-for list="{{ g.items }}" as="t" hint-placeholder-count="2">
+<div onClick="{{ t.toggle }}" style="display:flex;align-items:center;gap:12px;min-height:56px;padding:6px 16px 6px 10px;border-top:1px solid var(--ln);margin-top:-1px;cursor:pointer">
+<span style="width:44px;height:44px;display:flex;align-items:center;justify-content:center;flex:none">
+<sc-if value="{{ t.done }}" hint-placeholder-val="{{ false }}"><span style="width:24px;height:24px;border-radius:50%;background:var(--br);display:flex;align-items:center;justify-content:center;animation:wqPop .4s cubic-bezier(.3,1.4,.5,1)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" style="stroke:var(--card)"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></span></sc-if>
+<sc-if value="{{ t.open }}" hint-placeholder-val="{{ true }}"><span style="display:block;width:24px;height:24px;border-radius:50%;border:2px solid var(--ln);box-sizing:border-box"></span></sc-if>
+</span>
+<span style="{{ t.ts }}">{{ t.t }}</span>
+</div>
+</sc-for>
+</div>
+</div>
+</sc-for>
+</div>
+<div style="position:absolute;left:12px;right:12px;bottom:96px;padding:8px;border-radius:24px;background:var(--card);border:1px solid var(--ln);box-shadow:0 10px 30px -10px rgba(20,32,27,.25);display:flex;flex-direction:column;gap:8px">
+<sc-if value="{{ menu }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;flex-wrap:wrap;gap:6px;padding:6px 4px 4px"><sc-for list="{{ wins }}" as="w" hint-placeholder-count="5"><div onClick="{{ w.pick }}" style="{{ w.s }}">{{ w.l }}</div></sc-for></div>
+</sc-if>
+<div style="display:flex;align-items:center;gap:8px">
+<input value="{{ draft }}" onChange="{{ onDraft }}" onKeyDown="{{ onKey }}" placeholder="Add a task…" style="flex:1;min-width:0;height:44px;border:0;outline:none;background:transparent;font:500 16px 'Plus Jakarta Sans',sans-serif;color:var(--ink);padding:0 8px">
+<div onClick="{{ toggleMenu }}" style="height:36px;padding:0 10px 0 12px;border-radius:999px;background:var(--mint);color:var(--mink);display:flex;align-items:center;gap:4px;font-size:13px;font-weight:600;cursor:pointer;flex:none">{{ winLabel }}<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg></div>
+<div onClick="{{ add }}" style="width:44px;height:44px;border-radius:50%;background:var(--pri);color:var(--onp);display:flex;align-items:center;justify-content:center;cursor:pointer;flex:none"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></div>
+</div>
+</div>
+<dc-import name="Waqt TabBar" active="today" nav="{{ nav }}" hint-size="390px,84px" style="position:absolute;left:0;bottom:0"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:390,&quot;height&quot;:844},&quot;onChange&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;(done:number,total:number)=&gt;void&quot;},&quot;nav&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;(s:string)=&gt;void&quot;}}">
+class Component extends DCLogic {
+  state = {
+    tasks: [
+      { id: 1, t: 'Pay the electricity bill', w: 'bd', done: true },
+      { id: 2, t: 'Call Mekan about the car service', w: 'bd', done: true },
+      { id: 3, t: 'Pick up Aýna from school', w: 'aa', done: false },
+      { id: 4, t: 'Buy bread and ayran at the bazaar', w: 'aa', done: false },
+      { id: 5, t: 'Read 10 pages with the kids', w: 'ai', done: false }
+    ], draft: '', win: 'aa', menu: false
+  };
+  update(tasks) { this.setState({ tasks }); const P = this.props; P.onChange && P.onChange(tasks.filter(t => t.done).length, tasks.length); }
+  renderVals() {
+    const st = this.state, P = this.props;
+    const WIN = [['bd', 'Before Dhuhr', 'until 12:39'], ['ad', 'After Dhuhr', '12:39 – 15:57'], ['aa', 'After Asr', 'from 15:57'], ['am', 'After Maghrib', 'from 18:28'], ['ai', 'After Isha', 'from 19:46']];
+    const groups = WIN.map(([k, label, time]) => ({ label, time, items: st.tasks.filter(t => t.w === k).map(t => ({ t: t.t, done: t.done, open: !t.done,
+      ts: { flex: 1, fontSize: 16, fontWeight: 500, lineHeight: 1.35, color: t.done ? 'var(--mu)' : 'var(--ink)', textDecoration: t.done ? 'line-through' : 'none', textDecorationColor: 'var(--mu)' },
+      toggle: () => this.update(st.tasks.map(x => x.id === t.id ? { ...x, done: !x.done } : x)) })) })).filter(g => g.items.length);
+    const add = () => { const v = st.draft.trim(); if (!v) return; this.setState({ draft: '' }); this.update([...st.tasks, { id: Date.now(), t: v, w: st.win, done: false }]); };
+    return { groups, done: st.tasks.filter(t => t.done).length, count: st.tasks.length, draft: st.draft, menu: st.menu,
+      winLabel: WIN.find(w => w[0] === st.win)[1],
+      wins: WIN.map(([k, l]) => ({ l, pick: () => this.setState({ win: k, menu: false }), s: { height: 36, padding: '0 14px', borderRadius: 999, display: 'flex', alignItems: 'center', fontSize: 13, fontWeight: 600, cursor: 'pointer', background: st.win === k ? 'var(--pri)' : 'var(--fill)', color: st.win === k ? 'var(--onp)' : 'var(--ink)' } })),
+      toggleMenu: () => this.setState(s => ({ menu: !s.menu })),
+      onDraft: e => this.setState({ draft: e.target.value }), onKey: e => { if (e.key === 'Enter') add(); }, add,
+      back: () => P.nav && P.nav('home'), nav: P.nav };
+  }
+}
+</script>
+</body>
+</html>

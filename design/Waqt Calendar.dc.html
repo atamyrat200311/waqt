@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<div style="width:390px;height:844px;background:var(--bg);color:var(--ink);position:relative;overflow:hidden;display:flex;flex-direction:column">
+<dc-import name="Waqt Status" time="14:46" hint-size="390px,50px"></dc-import>
+<div style="flex:1;overflow-y:auto;scrollbar-width:none;padding-bottom:104px">
+<div onClick="{{ back }}" style="display:flex;align-items:center;height:44px;padding:0 10px;color:var(--acc);font-size:17px;font-weight:500;cursor:pointer;width:max-content"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"></path></svg>Tools</div>
+<div style="padding:4px 12px 0 20px;display:flex;align-items:center;gap:8px">
+<div style="flex:1;min-width:0"><div style="font-family:var(--serif);font-size:32px;letter-spacing:-.015em;line-height:1.1">Rabīʿ al-Thānī</div><div style="font-size:14px;color:var(--mu);margin-top:4px">1448 · 13 Sep – 12 Oct 2026</div></div>
+<div style="width:44px;height:44px;border-radius:50%;border:1px solid var(--ln);display:flex;align-items:center;justify-content:center;color:var(--mu);box-sizing:border-box"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"></path></svg></div>
+<div style="width:44px;height:44px;border-radius:50%;border:1px solid var(--ln);display:flex;align-items:center;justify-content:center;color:var(--ink);box-sizing:border-box"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"></path></svg></div>
+</div>
+<div style="margin:18px 12px 0;padding:14px 8px 12px;border-radius:var(--r,24px);background:var(--card);border:1px solid var(--ln)">
+<div style="display:grid;grid-template-columns:repeat(7,minmax(0,1fr));text-align:center;font-size:12px;font-weight:600;color:var(--mu);padding-bottom:8px"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span></div>
+<div style="display:grid;grid-template-columns:repeat(7,minmax(0,1fr));row-gap:2px">
+<sc-for list="{{ cells }}" as="c" hint-placeholder-count="36">
+<div style="height:52px;display:flex;align-items:center;justify-content:center"><div style="{{ c.box }}"><span style="{{ c.hs }}">{{ c.h }}</span><span style="{{ c.gs }}">{{ c.g }}</span><span style="{{ c.dot }}"></span></div></div>
+</sc-for>
+</div>
+<div style="display:flex;gap:16px;justify-content:center;padding-top:10px;font-size:12px;color:var(--mu)"><span style="display:flex;align-items:center;gap:6px"><span style="display:block;width:6px;height:6px;border-radius:50%;background:var(--br)"></span>White days 13–15</span><span style="display:flex;align-items:center;gap:6px"><span style="display:block;width:6px;height:6px;border-radius:50%;border:1.5px solid var(--acc);box-sizing:border-box"></span>Mon &amp; Thu fasts</span></div>
+</div>
+<div style="padding:26px 22px 10px;font-family:var(--serif);font-size:22px">Upcoming</div>
+<div style="margin:0 12px;border-radius:var(--r,24px);background:var(--card);border:1px solid var(--ln);overflow:hidden">
+<sc-for list="{{ up }}" as="u" hint-placeholder-count="4">
+<div style="display:flex;align-items:center;gap:12px;min-height:64px;padding:8px 18px;border-top:1px solid var(--ln);margin-top:-1px">
+<div style="flex:1;min-width:0"><div style="font-size:16px;font-weight:600">{{ u.n }}</div><div style="font-size:13px;color:var(--mu);margin-top:2px">{{ u.d }}</div></div>
+<div style="text-align:right"><span style="font-family:var(--serif);font-size:26px;letter-spacing:-.02em">{{ u.c }}</span><span style="font-size:12px;color:var(--mu);margin-left:4px">days</span></div>
+</div>
+</sc-for>
+</div>
+<div style="padding:12px 28px 0;font-size:13px;color:var(--mu);line-height:1.5;text-align:center;text-wrap:pretty">Dates may shift by a day depending on the local moon sighting.</div>
+</div>
+<dc-import name="Waqt TabBar" active="tools" nav="{{ nav }}" hint-size="390px,84px" style="position:absolute;left:0;bottom:0"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:390,&quot;height&quot;:844},&quot;nav&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;(s:string)=&gt;void&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const P = this.props, cells = [];
+    for (let i = 0; i < 6; i++) cells.push({ h: '', g: '', box: { display: 'none' }, hs: {}, gs: {}, dot: {} });
+    for (let d = 1; d <= 30; d++) {
+      const col = (6 + d - 1) % 7, today = d === 22, white = d >= 13 && d <= 15, monThu = col === 0 || col === 3, past = d < 22;
+      const g = d <= 18 ? 12 + d : d - 18;
+      cells.push({ h: d, g: (d === 19 ? 'Oct ' : '') + g,
+        box: { width: 46, height: 48, borderRadius: 16, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', position: 'relative', background: today ? 'var(--pri)' : white ? 'var(--brs)' : 'transparent' },
+        hs: { fontFamily: 'var(--serif)', fontSize: 19, lineHeight: 1, color: today ? 'var(--onp)' : white ? 'var(--bri)' : past ? 'var(--mu)' : 'var(--ink)' },
+        gs: { fontSize: 10, marginTop: 3, color: today ? 'var(--onp)' : 'var(--mu)', opacity: today ? .85 : 1 },
+        dot: monThu && !today && !white ? { position: 'absolute', top: 5, right: 7, width: 5, height: 5, borderRadius: '50%', border: '1.5px solid var(--acc)', opacity: past ? .45 : 1 } : white ? { position: 'absolute', top: 5, right: 7, width: 5, height: 5, borderRadius: '50%', background: 'var(--br)' } : { display: 'none' } });
+    }
+    const up = [['Rajab begins', '1 Rajab · Thu 10 Dec', 67], ['Laylat al-Miʿrāj', '27 Rajab · evening of Tue 5 Jan', 93], ['Ramadan begins', '1 Ramaḍān · Mon 8 Feb', 127], ['Eid al-Fitr', '1 Shawwāl · Tue 9 Mar', 156]].map(([n, d, c]) => ({ n, d, c }));
+    return { cells, up, back: () => P.nav && P.nav('tools'), nav: P.nav };
+  }
+}
+</script>
+</body>
+</html>
