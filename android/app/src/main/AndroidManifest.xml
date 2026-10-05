@@ -11,7 +11,7 @@
     <!-- No INTERNET permission on purpose: the app never touches the network. -->
 
     <application
-        android:label="Waqt"
+        android:label="WAQT"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher"
         android:allowBackup="false">
@@ -42,7 +42,7 @@
         <!-- Home-screen widget (Glance). -->
         <receiver
             android:name=".widget.WaqtWidgetReceiver"
-            android:label="Waqt"
+            android:label="WAQT"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
