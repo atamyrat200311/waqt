@@ -15,6 +15,7 @@ import '../../../shared/widgets/layout.dart';
 import '../../../shared/widgets/rows.dart';
 import '../../../shared/widgets/segmented.dart';
 import '../../../shared/widgets/waqt_card.dart';
+import '../../../shared/widgets/waqt_icon.dart';
 import '../../calendar/presentation/calendar_screen.dart';
 import '../../prayer/application/prayer_providers.dart';
 import '../../today/application/today_providers.dart';
@@ -79,6 +80,8 @@ class RamadanScreen extends ConsumerWidget {
                 ],
               ),
             ),
+            const SizedBox(height: 12),
+            const _FastsOwedCard(),
             if (active) ...[
               const SizedBox(height: 12),
               WaqtCard(
@@ -207,6 +210,48 @@ class RamadanScreen extends ConsumerWidget {
           ]),
         ),
       ],
+    );
+  }
+}
+
+/// Ramadan fasts still owed, with a one-tap "made one up today".
+class _FastsOwedCard extends ConsumerWidget {
+  const _FastsOwedCard();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final c = context.colors;
+    final l = context.l10n;
+    final owed = ref.watch(fastsOwedProvider).value ?? 0;
+    final today = ref.watch(todayKeyProvider);
+    final todayFast = (ref.watch(fastsInRangeProvider((today, today))).value ?? const {})[today];
+    final loggedToday = todayFast?.type == FastType.qada && todayFast?.status == FastStatus.fasted;
+    if (owed == 0 && !loggedToday) return const SizedBox.shrink();
+    return WaqtCard(
+      color: c.brassSoft,
+      border: false,
+      padding: const EdgeInsets.all(16),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(l.fastsOwedTitle, style: WaqtType.sans(14, weight: 600, color: c.brassText)),
+          const SizedBox(height: 4),
+          Text(l.fastsOwedCount(owed), style: WaqtType.serif(30, weight: 500, color: c.ink)),
+          const SizedBox(height: 4),
+          Text(l.fastsOwedSub, style: WaqtType.sans(13, color: c.muted, height: 1.4)),
+          const SizedBox(height: 12),
+          PillButton(
+            label: l.fastsLogQada,
+            icon: loggedToday ? WaqtIcons.check : null,
+            style: loggedToday ? PillStyle.brass : PillStyle.outline,
+            expand: true,
+            onPressed: () {
+              Haptics.success();
+              ref.read(fastRepositoryProvider).set(today, FastType.qada, loggedToday ? null : FastStatus.fasted);
+            },
+          ),
+        ],
+      ),
     );
   }
 }

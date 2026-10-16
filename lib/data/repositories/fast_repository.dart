@@ -38,5 +38,22 @@ class FastRepository {
   }
 }
 
+/// Ramadan fasts still owed: missed or excused Ramadan days minus make-up
+/// (qada) fasts kept. Never negative.
+int fastsOwed(Iterable<FastLog> all) {
+  var owed = 0;
+  var madeUp = 0;
+  for (final f in all) {
+    if (f.type == FastType.ramadan && f.status != FastStatus.fasted) owed++;
+    if (f.type == FastType.qada && f.status == FastStatus.fasted) madeUp++;
+  }
+  return (owed - madeUp).clamp(0, 1 << 30);
+}
+
+final fastsOwedProvider = StreamProvider<int>((ref) => ref
+    .watch(fastRepositoryProvider)
+    .watchRange(const DayKey('1900-01-01'), const DayKey('2999-12-31'))
+    .map((m) => fastsOwed(m.values)));
+
 final fastRepositoryProvider =
     Provider<FastRepository>((ref) => FastRepository(ref.watch(databaseProvider)));

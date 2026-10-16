@@ -1,5 +1,8 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:waqt/core/utils/money.dart';
+import 'package:waqt/core/utils/dates.dart';
+import 'package:waqt/data/db/enums.dart';
+import 'package:waqt/data/repositories/fast_repository.dart';
 import 'package:waqt/features/zakat/domain/zakat.dart';
 
 void main() {
@@ -47,5 +50,19 @@ void main() {
     expect(back.goldGrams, 2.5);
     expect(back.silverPrice, 9);
     expect(back.basis, NisabBasis.gold);
+  });
+
+  test('fasts owed = missed/excused Ramadan days minus make-up fasts', () {
+    const d = DayKey('2026-03-01');
+    final logs = [
+      const FastLog(d, FastType.ramadan, FastStatus.fasted),
+      const FastLog(d, FastType.ramadan, FastStatus.missed),
+      const FastLog(d, FastType.ramadan, FastStatus.excused),
+      const FastLog(d, FastType.ramadan, FastStatus.excused),
+      const FastLog(d, FastType.qada, FastStatus.fasted),
+      const FastLog(d, FastType.monThu, FastStatus.missed),
+    ];
+    expect(fastsOwed(logs), 2);
+    expect(fastsOwed([...logs, ...List.filled(5, const FastLog(d, FastType.qada, FastStatus.fasted))]), 0);
   });
 }

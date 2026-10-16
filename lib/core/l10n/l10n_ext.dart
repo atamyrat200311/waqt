@@ -72,6 +72,7 @@ extension L10nNames on AppLocalizations {
         FastType.monThu => fastTypeMonThu,
         FastType.whiteDays => fastTypeWhiteDays,
         FastType.other => fastTypeOther,
+        FastType.qada => fastTypeQada,
       };
 
   String fastStatus(FastStatus s) => switch (s) {

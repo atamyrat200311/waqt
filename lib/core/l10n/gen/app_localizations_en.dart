@@ -824,6 +824,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get fastTypeOther => 'Voluntary fast';
 
   @override
+  String get fastTypeQada => 'Make-up fast';
+
+  @override
   String get ramadanTitle => 'Ramadan';
 
   @override
@@ -2005,6 +2008,28 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get notifTestSent => 'Test alert on its way…';
+
+  @override
+  String get fastsOwedTitle => 'Fasts to make up';
+
+  @override
+  String fastsOwedCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count days',
+      one: '$count day',
+      zero: 'All made up — alhamdulillah',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get fastsOwedSub =>
+      'Missed or excused Ramadan days, minus make-up fasts you log.';
+
+  @override
+  String get fastsLogQada => 'I fasted a make-up day today';
 
   @override
   String get backupTitle => 'Backup & restore';

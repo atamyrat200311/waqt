@@ -56,7 +56,8 @@ enum BookmarkKind { ayah, hadith, dua, name }
 /// Memorization state of a surah (spaced review ladder, see hifz.dart).
 enum HifzStatus { learning, memorized }
 
-enum FastType { ramadan, monThu, whiteDays, other }
+/// `qada` = making up a missed or excused Ramadan fast.
+enum FastType { ramadan, monThu, whiteDays, other, qada }
 
 enum FastStatus { fasted, missed, excused }
 

@@ -815,6 +815,9 @@ class AppLocalizationsTr extends AppLocalizations {
   String get fastTypeOther => 'Nafile oruç';
 
   @override
+  String get fastTypeQada => 'Kaza orucu';
+
+  @override
   String get ramadanTitle => 'Ramazan';
 
   @override
@@ -1950,6 +1953,27 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get notifTestSent => 'Test bildirimi yolda…';
+
+  @override
+  String get fastsOwedTitle => 'Kaza edilecek oruçlar';
+
+  @override
+  String fastsOwedCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count gün',
+      zero: 'Hepsi kaza edildi — elhamdülillah',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get fastsOwedSub =>
+      'Kaçırılan veya mazeretli Ramazan günleri, tuttuğunuz kaza oruçları düşülerek.';
+
+  @override
+  String get fastsLogQada => 'Bugün kaza orucu tuttum';
 
   @override
   String get backupTitle => 'Yedekle ve geri yükle';

@@ -192,6 +192,11 @@ const Map<String, List<String>> s2 = {
   'notifTestBody': ['If you can see and hear this, prayer alerts will work.', 'Muny görýän we eşidýän bolsaňyz, namaz duýduryşlary işlär.', 'Bunu görüp duyuyorsanız namaz bildirimleri çalışacaktır.', 'Если вы видите и слышите это, напоминания о намазе работают.'],
   'notifTestSent': ['Test alert on its way…', 'Synag duýduryşy ýolda…', 'Test bildirimi yolda…', 'Тестовое уведомление в пути…'],
 
+  'fastsOwedTitle': ['Fasts to make up', 'Kaza edilmeli orazalar', 'Kaza edilecek oruçlar', 'Посты к восполнению'],
+  'fastsOwedCount': ['{count, plural, =0{All made up — alhamdulillah} one{{count} day} other{{count} days}}', '{count, plural, =0{Hemmesi kaza edildi — elhamdulillah} other{{count} gün}}', '{count, plural, =0{Hepsi kaza edildi — elhamdülillah} other{{count} gün}}', '{count, plural, =0{Всё восполнено — альхамдулиллях} one{{count} день} few{{count} дня} other{{count} дней}}'],
+  'fastsOwedSub': ['Missed or excused Ramadan days, minus make-up fasts you log.', 'Sypdyrylan ýa-da ötünçli Remezan günleri, kaza orazalary aýrylan.', 'Kaçırılan veya mazeretli Ramazan günleri, tuttuğunuz kaza oruçları düşülerek.', 'Пропущенные или по уважительной причине дни Рамадана минус восполненные посты.'],
+  'fastsLogQada': ['I fasted a make-up day today', 'Şu gün kaza orazasyny tutdum', 'Bugün kaza orucu tuttum', 'Сегодня я восполнил(а) пост'],
+
   // ---------------------------------------------------------------- backup
   'backupTitle': ['Backup & restore', 'Ätiýaçlyk we dikeltmek', 'Yedekle ve geri yükle', 'Резервная копия'],
   'backupRowSub': ['Move your data to a new phone', 'Maglumatlaryňyzy täze telefona geçiriň', 'Verilerinizi yeni telefona taşıyın', 'Перенос данных на новый телефон'],

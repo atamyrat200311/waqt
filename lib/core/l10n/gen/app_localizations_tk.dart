@@ -817,6 +817,9 @@ class AppLocalizationsTk extends AppLocalizations {
   String get fastTypeOther => 'Nepil oraza';
 
   @override
+  String get fastTypeQada => 'Kaza orazasy';
+
+  @override
   String get ramadanTitle => 'Remezan';
 
   @override
@@ -1947,6 +1950,27 @@ class AppLocalizationsTk extends AppLocalizations {
 
   @override
   String get notifTestSent => 'Synag duýduryşy ýolda…';
+
+  @override
+  String get fastsOwedTitle => 'Kaza edilmeli orazalar';
+
+  @override
+  String fastsOwedCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count gün',
+      zero: 'Hemmesi kaza edildi — elhamdulillah',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get fastsOwedSub =>
+      'Sypdyrylan ýa-da ötünçli Remezan günleri, kaza orazalary aýrylan.';
+
+  @override
+  String get fastsLogQada => 'Şu gün kaza orazasyny tutdum';
 
   @override
   String get backupTitle => 'Ätiýaçlyk we dikeltmek';

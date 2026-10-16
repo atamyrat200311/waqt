@@ -404,6 +404,7 @@ const Map<String, List<String>> s = {
   'fastTypeMonThu': ['Monday/Thursday fast', 'Duşenbe/Penşenbe orazasy', 'Pazartesi/Perşembe orucu', 'Пост в Пн/Чт'],
   'fastTypeWhiteDays': ['White day fast', 'Ak gün orazasy', 'Eyyam-ı bîd orucu', 'Пост белого дня'],
   'fastTypeOther': ['Voluntary fast', 'Nepil oraza', 'Nafile oruç', 'Добровольный пост'],
+  'fastTypeQada': ['Make-up fast', 'Kaza orazasy', 'Kaza orucu', 'Восполнение поста'],
 
   // --------------------------------------------------------------- ramadan
   'ramadanTitle': ['Ramadan', 'Remezan', 'Ramazan', 'Рамадан'],

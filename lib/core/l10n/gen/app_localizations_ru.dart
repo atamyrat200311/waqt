@@ -835,6 +835,9 @@ class AppLocalizationsRu extends AppLocalizations {
   String get fastTypeOther => 'Добровольный пост';
 
   @override
+  String get fastTypeQada => 'Восполнение поста';
+
+  @override
   String get ramadanTitle => 'Рамадан';
 
   @override
@@ -2025,6 +2028,29 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get notifTestSent => 'Тестовое уведомление в пути…';
+
+  @override
+  String get fastsOwedTitle => 'Посты к восполнению';
+
+  @override
+  String fastsOwedCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count дней',
+      few: '$count дня',
+      one: '$count день',
+      zero: 'Всё восполнено — альхамдулиллях',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get fastsOwedSub =>
+      'Пропущенные или по уважительной причине дни Рамадана минус восполненные посты.';
+
+  @override
+  String get fastsLogQada => 'Сегодня я восполнил(а) пост';
 
   @override
   String get backupTitle => 'Резервная копия';

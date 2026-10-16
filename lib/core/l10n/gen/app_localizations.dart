@@ -1248,6 +1248,12 @@ abstract class AppLocalizations {
   /// **'Voluntary fast'**
   String get fastTypeOther;
 
+  /// No description provided for @fastTypeQada.
+  ///
+  /// In en, this message translates to:
+  /// **'Make-up fast'**
+  String get fastTypeQada;
+
   /// No description provided for @ramadanTitle.
   ///
   /// In en, this message translates to:
@@ -3203,6 +3209,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Test alert on its way…'**
   String get notifTestSent;
+
+  /// No description provided for @fastsOwedTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Fasts to make up'**
+  String get fastsOwedTitle;
+
+  /// No description provided for @fastsOwedCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =0{All made up — alhamdulillah} one{{count} day} other{{count} days}}'**
+  String fastsOwedCount(int count);
+
+  /// No description provided for @fastsOwedSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Missed or excused Ramadan days, minus make-up fasts you log.'**
+  String get fastsOwedSub;
+
+  /// No description provided for @fastsLogQada.
+  ///
+  /// In en, this message translates to:
+  /// **'I fasted a make-up day today'**
+  String get fastsLogQada;
 
   /// No description provided for @backupTitle.
   ///

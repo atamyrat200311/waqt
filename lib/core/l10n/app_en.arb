@@ -623,6 +623,7 @@
   "fastTypeMonThu": "Monday/Thursday fast",
   "fastTypeWhiteDays": "White day fast",
   "fastTypeOther": "Voluntary fast",
+  "fastTypeQada": "Make-up fast",
   "ramadanTitle": "Ramadan",
   "ramadanMode": "Ramadan mode",
   "ramadanAuto": "Automatic",
@@ -1374,6 +1375,17 @@
   "notifTestSub": "Arrives in 5 seconds — lock your phone to check sound and banner.",
   "notifTestBody": "If you can see and hear this, prayer alerts will work.",
   "notifTestSent": "Test alert on its way…",
+  "fastsOwedTitle": "Fasts to make up",
+  "fastsOwedCount": "{count, plural, =0{All made up — alhamdulillah} one{{count} day} other{{count} days}}",
+  "@fastsOwedCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "fastsOwedSub": "Missed or excused Ramadan days, minus make-up fasts you log.",
+  "fastsLogQada": "I fasted a make-up day today",
   "backupTitle": "Backup & restore",
   "backupRowSub": "Move your data to a new phone",
   "backupIntro": "Waqt has no account and no cloud. Export a backup file and keep it safe (Files, Telegram “Saved messages”, email to yourself). Restore it on any phone.",
