@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -8,16 +10,28 @@ import '../../../data/settings/settings_controller.dart';
 import '../../prayer/application/prayer_providers.dart';
 import '../domain/hadith.dart';
 
-/// Loaded editions, keyed by (book, language). Kept alive: books are large
-/// and reopened often.
-final hadithEditionProvider = FutureProvider.family<HadithEdition, (String, String)>((ref, key) async {
+/// Keeps a large provider alive for a while after its last listener leaves,
+/// so going back and forth is instant but memory is released eventually.
+void _keepAliveFor(Ref ref, Duration grace) {
+  final link = ref.keepAlive();
+  Timer? timer;
+  ref.onCancel(() => timer = Timer(grace, link.close));
+  ref.onResume(() => timer?.cancel());
+  ref.onDispose(() => timer?.cancel());
+}
+
+/// Loaded editions, keyed by (book, language). Bukhari/Muslim are several
+/// MB each, so they are released 2 minutes after no screen uses them.
+final hadithEditionProvider = FutureProvider.autoDispose.family<HadithEdition, (String, String)>((ref, key) async {
+  _keepAliveFor(ref, const Duration(minutes: 2));
   final book = HadithBooks.byId(key.$1)!;
   final json = (await loadGzJson(book.asset(key.$2)))! as Map<String, Object?>;
   return HadithEdition.fromJson(book, key.$2, json);
 });
 
 /// Normalized texts for search (built lazily, off the UI isolate).
-final hadithSearchIndexProvider = FutureProvider.family<List<String>, (String, String)>((ref, key) async {
+final hadithSearchIndexProvider = FutureProvider.autoDispose.family<List<String>, (String, String)>((ref, key) async {
+  _keepAliveFor(ref, const Duration(minutes: 2));
   final e = await ref.watch(hadithEditionProvider(key).future);
   return compute(normalizeHadithTexts, e);
 });

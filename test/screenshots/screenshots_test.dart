@@ -118,7 +118,7 @@ Future<void> shoot(
     f.writeAsBytesSync(bytes!.buffer.asUint8List());
   });
   await tester.pumpWidget(const SizedBox());
-  await tester.pump(const Duration(seconds: 2));
+  await tester.pump(const Duration(minutes: 3));
   debugDefaultTargetPlatformOverride = null;
   tester.view.reset();
   tester.platformDispatcher.clearPlatformBrightnessTestValue();

@@ -39,7 +39,8 @@ void main() {
 
   Future<void> done(WidgetTester tester) async {
     await tester.pumpWidget(const SizedBox());
-    await tester.pump(const Duration(seconds: 2));
+    // Past the 2-minute grace period that keeps hadith books in memory.
+    await tester.pump(const Duration(minutes: 3));
   }
 
   testWidgets('Quran tab → reader → bookmark an ayah → back saves last read', (tester) async {
