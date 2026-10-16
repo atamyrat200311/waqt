@@ -1518,6 +1518,29 @@
   "habitSugGratitude": "Write 3 things I’m grateful for",
   "habitSugRead": "Read 10 pages of a book",
   "habitSugSleep": "Sleep before 23:00",
+  "ramadanChallenge": "Ramadan 30",
+  "ramadanChallengeScore": "{score} of 5 today",
+  "@ramadanChallengeScore": {
+    "placeholders": {
+      "score": {
+        "type": "String"
+      }
+    }
+  },
+  "ramadanCoreDays": "{count, plural, =0{Full days start with fast, prayers and Quran} one{{count} full day so far} other{{count} full days so far}}",
+  "@ramadanCoreDays": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "ramadanItemFast": "Fast",
+  "ramadanItemPrayers": "5 prayers",
+  "ramadanItemQuran": "Quran",
+  "ramadanItemDhikr": "Dhikr",
+  "ramadanItemSadaqa": "Sadaqa",
+  "ramadanChallengeIntro": "When Ramadan begins, Waqt tracks five daily goals — fast, prayers, Quran, dhikr and sadaqa — and lets you share your progress.",
   "obGetStarted": "Get started",
   "obTagline": "Your day, around the five prayers.",
   "obValuePrayer": "Prayer times that just work",

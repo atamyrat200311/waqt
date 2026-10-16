@@ -2318,6 +2318,46 @@ class AppLocalizationsRu extends AppLocalizations {
   String get habitSugSleep => 'Лечь спать до 23:00';
 
   @override
+  String get ramadanChallenge => 'Рамадан 30';
+
+  @override
+  String ramadanChallengeScore(String score) {
+    return 'Сегодня $score из 5';
+  }
+
+  @override
+  String ramadanCoreDays(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Уже $count полных дней',
+      few: 'Уже $count полных дня',
+      one: 'Уже $count полный день',
+      zero: 'Полный день: пост, намазы и Коран',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get ramadanItemFast => 'Пост';
+
+  @override
+  String get ramadanItemPrayers => '5 намазов';
+
+  @override
+  String get ramadanItemQuran => 'Коран';
+
+  @override
+  String get ramadanItemDhikr => 'Зикр';
+
+  @override
+  String get ramadanItemSadaqa => 'Садака';
+
+  @override
+  String get ramadanChallengeIntro =>
+      'Когда начнётся Рамадан, Waqt будет отмечать пять целей дня — пост, намазы, Коран, зикр и садаку — и поможет поделиться успехами.';
+
+  @override
   String get obGetStarted => 'Начать';
 
   @override

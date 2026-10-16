@@ -20,6 +20,7 @@ import '../../calendar/presentation/calendar_screen.dart';
 import '../../prayer/application/prayer_providers.dart';
 import '../../today/application/today_providers.dart';
 import '../domain/ramadan.dart';
+import 'ramadan_challenge_card.dart';
 
 /// Ramadan mode, today's fast, the month's fasts and reminders.
 class RamadanScreen extends ConsumerWidget {
@@ -81,6 +82,8 @@ class RamadanScreen extends ConsumerWidget {
               ),
             ),
             const SizedBox(height: 12),
+            if (info != null) const RamadanChallengeCard() else const RamadanChallengeTeaser(),
+            const SizedBox(height: 2),
             const _FastsOwedCard(),
             if (active) ...[
               const SizedBox(height: 12),

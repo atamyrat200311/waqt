@@ -3696,6 +3696,60 @@ abstract class AppLocalizations {
   /// **'Sleep before 23:00'**
   String get habitSugSleep;
 
+  /// No description provided for @ramadanChallenge.
+  ///
+  /// In en, this message translates to:
+  /// **'Ramadan 30'**
+  String get ramadanChallenge;
+
+  /// No description provided for @ramadanChallengeScore.
+  ///
+  /// In en, this message translates to:
+  /// **'{score} of 5 today'**
+  String ramadanChallengeScore(String score);
+
+  /// No description provided for @ramadanCoreDays.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =0{Full days start with fast, prayers and Quran} one{{count} full day so far} other{{count} full days so far}}'**
+  String ramadanCoreDays(int count);
+
+  /// No description provided for @ramadanItemFast.
+  ///
+  /// In en, this message translates to:
+  /// **'Fast'**
+  String get ramadanItemFast;
+
+  /// No description provided for @ramadanItemPrayers.
+  ///
+  /// In en, this message translates to:
+  /// **'5 prayers'**
+  String get ramadanItemPrayers;
+
+  /// No description provided for @ramadanItemQuran.
+  ///
+  /// In en, this message translates to:
+  /// **'Quran'**
+  String get ramadanItemQuran;
+
+  /// No description provided for @ramadanItemDhikr.
+  ///
+  /// In en, this message translates to:
+  /// **'Dhikr'**
+  String get ramadanItemDhikr;
+
+  /// No description provided for @ramadanItemSadaqa.
+  ///
+  /// In en, this message translates to:
+  /// **'Sadaqa'**
+  String get ramadanItemSadaqa;
+
+  /// No description provided for @ramadanChallengeIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'When Ramadan begins, Waqt tracks five daily goals — fast, prayers, Quran, dhikr and sadaqa — and lets you share your progress.'**
+  String get ramadanChallengeIntro;
+
   /// No description provided for @obGetStarted.
   ///
   /// In en, this message translates to:

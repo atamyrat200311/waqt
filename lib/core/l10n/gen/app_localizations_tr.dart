@@ -2228,6 +2228,44 @@ class AppLocalizationsTr extends AppLocalizations {
   String get habitSugSleep => '23:00’ten önce uyu';
 
   @override
+  String get ramadanChallenge => 'Ramazan 30';
+
+  @override
+  String ramadanChallengeScore(String score) {
+    return 'Bugün 5’ten $score';
+  }
+
+  @override
+  String ramadanCoreDays(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Şimdiye kadar $count tam gün',
+      zero: 'Tam gün: oruç, namaz ve Kur’an',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get ramadanItemFast => 'Oruç';
+
+  @override
+  String get ramadanItemPrayers => '5 vakit';
+
+  @override
+  String get ramadanItemQuran => 'Kur’an';
+
+  @override
+  String get ramadanItemDhikr => 'Zikir';
+
+  @override
+  String get ramadanItemSadaqa => 'Sadaka';
+
+  @override
+  String get ramadanChallengeIntro =>
+      'Ramazan başladığında Waqt beş günlük hedefi takip eder — oruç, namaz, Kur’an, zikir ve sadaka — ve ilerlemenizi paylaşmanızı sağlar.';
+
+  @override
   String get obGetStarted => 'Başlayalım';
 
   @override

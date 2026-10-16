@@ -3,6 +3,7 @@ import 'package:waqt/core/utils/dates.dart';
 import 'package:waqt/core/utils/money.dart';
 import 'package:waqt/data/db/enums.dart';
 import 'package:waqt/data/repositories/fast_repository.dart';
+import 'package:waqt/features/ramadan/domain/ramadan.dart';
 import 'package:waqt/features/zakat/domain/zakat.dart';
 
 void main() {
@@ -64,5 +65,12 @@ void main() {
     ];
     expect(fastsOwed(logs), 2);
     expect(fastsOwed([...logs, ...List.filled(5, const FastLog(d, FastType.qada, FastStatus.fasted))]), 0);
+  });
+
+  test('Ramadan checks score and core completion', () {
+    const c = RamadanChecks(fasted: true, prayers: true, quran: true, dhikr: false, sadaqa: true);
+    expect(c.score, 4);
+    expect(c.complete, isFalse);
+    expect(c.coreComplete, isTrue);
   });
 }

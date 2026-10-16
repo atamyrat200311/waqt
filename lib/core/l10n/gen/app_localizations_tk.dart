@@ -2226,6 +2226,44 @@ class AppLocalizationsTk extends AppLocalizations {
   String get habitSugSleep => '23:00-dan öň ýat';
 
   @override
+  String get ramadanChallenge => 'Remezan 30';
+
+  @override
+  String ramadanChallengeScore(String score) {
+    return 'Şu gün 5-den $score';
+  }
+
+  @override
+  String ramadanCoreDays(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Häzire çenli $count doly gün',
+      zero: 'Doly gün: oraza, namaz we Kuran',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get ramadanItemFast => 'Oraza';
+
+  @override
+  String get ramadanItemPrayers => '5 namaz';
+
+  @override
+  String get ramadanItemQuran => 'Kuran';
+
+  @override
+  String get ramadanItemDhikr => 'Zikir';
+
+  @override
+  String get ramadanItemSadaqa => 'Sadaka';
+
+  @override
+  String get ramadanChallengeIntro =>
+      'Remezan başlanda Waqt bäş gündelik maksady yzarlar — oraza, namaz, Kuran, zikir we sadaka — we ösüşiňizi paýlaşmaga mümkinçilik berer.';
+
+  @override
   String get obGetStarted => 'Başla';
 
   @override

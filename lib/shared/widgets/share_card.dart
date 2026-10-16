@@ -224,8 +224,11 @@ class ShareCard extends StatelessWidget {
     final longArabic = (arabic?.length ?? 0) > 160;
     final longText = (text?.length ?? 0) > 260;
 
+    // Long texts (Ayat al-Kursi, long hadith) get a 9:16 story card so
+    // they stay readable instead of shrinking.
+    final story = (arabic?.length ?? 0) + (text?.length ?? 0) > 280;
     return AspectRatio(
-      aspectRatio: 4 / 5,
+      aspectRatio: story ? 9 / 16 : 4 / 5,
       child: ClipRRect(
         borderRadius: BorderRadius.circular(24),
         child: ColoredBox(

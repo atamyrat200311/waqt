@@ -2296,6 +2296,45 @@ class AppLocalizationsEn extends AppLocalizations {
   String get habitSugSleep => 'Sleep before 23:00';
 
   @override
+  String get ramadanChallenge => 'Ramadan 30';
+
+  @override
+  String ramadanChallengeScore(String score) {
+    return '$score of 5 today';
+  }
+
+  @override
+  String ramadanCoreDays(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count full days so far',
+      one: '$count full day so far',
+      zero: 'Full days start with fast, prayers and Quran',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get ramadanItemFast => 'Fast';
+
+  @override
+  String get ramadanItemPrayers => '5 prayers';
+
+  @override
+  String get ramadanItemQuran => 'Quran';
+
+  @override
+  String get ramadanItemDhikr => 'Dhikr';
+
+  @override
+  String get ramadanItemSadaqa => 'Sadaqa';
+
+  @override
+  String get ramadanChallengeIntro =>
+      'When Ramadan begins, Waqt tracks five daily goals — fast, prayers, Quran, dhikr and sadaqa — and lets you share your progress.';
+
+  @override
   String get obGetStarted => 'Get started';
 
   @override

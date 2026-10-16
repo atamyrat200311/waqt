@@ -26,6 +26,7 @@ import '../../habits/application/habit_providers.dart';
 import '../../notifications/application/notification_service.dart';
 import '../../prayer/application/prayer_providers.dart';
 import '../../quran/application/quran_providers.dart';
+import '../../ramadan/presentation/ramadan_challenge_card.dart';
 import '../application/today_providers.dart';
 import '../domain/today_logic.dart';
 import 'hero_card.dart';
@@ -98,6 +99,7 @@ class _TodayScreenState extends ConsumerState<TodayScreen> {
             padding: const EdgeInsets.symmetric(horizontal: Gap.screen),
             sliver: SliverList.list(
               children: const [
+                RamadanChallengeCard(),
                 _UpNextCard(),
                 _TaraweehCard(),
                 _Tiles(),

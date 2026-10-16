@@ -30,3 +30,34 @@ int daysUntilRamadan(HijriService hijri, DateTime date) {
       .difference(DateTime.utc(d.year, d.month, d.day))
       .inDays;
 }
+
+/// One day of the "Ramadan 30" challenge: five simple pillars of the day.
+class RamadanChecks {
+  const RamadanChecks({
+    required this.fasted,
+    required this.prayers,
+    required this.quran,
+    required this.dhikr,
+    required this.sadaqa,
+  });
+
+  final bool fasted;
+
+  /// All five prayers prayed (or excused).
+  final bool prayers;
+
+  /// Read at least a page of Quran (or today's khatm portion).
+  final bool quran;
+
+  /// Morning or evening adhkar completed.
+  final bool dhikr;
+
+  /// Any sadaqa recorded.
+  final bool sadaqa;
+
+  int get score => [fasted, prayers, quran, dhikr, sadaqa].where((b) => b).length;
+  bool get complete => score == 5;
+
+  /// The three core items used for the month tally (data kept per day).
+  bool get coreComplete => fasted && prayers && quran;
+}

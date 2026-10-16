@@ -803,6 +803,18 @@
   "habitSugGratitude": "Şükür edýän 3 zadymy ýaz",
   "habitSugRead": "Kitapdan 10 sahypa oka",
   "habitSugSleep": "23:00-dan öň ýat",
+  "ramadanChallenge": "Remezan 30",
+  "ramadanChallengeScore": "Şu gün 5-den {score}",
+  "ramadanCoreDays": "{count, plural, =0{Doly gün: oraza, namaz we Kuran} other{Häzire çenli {count} doly gün}}",
+  "ramadanItemFast": "Oraza",
+  "ramadanItemPrayers": "5 namaz",
+  "ramadanItemQuran": "Kuran",
+  "ramadanItemDhikr": "Zikir",
+  "ramadanItemSadaqa": "Sadaka",
+  "ramadanChallengeIntro": "Remezan başlanda Waqt bäş gündelik maksady yzarlar — oraza, namaz, Kuran, zikir we sadaka — we ösüşiňizi paýlaşmaga mümkinçilik berer.",
+  "@ramadanChallengeIntro": {
+    "description": "REVIEW"
+  },
   "obGetStarted": "Başla",
   "obTagline": "Günüňiz — bäş namazyň töwereginde.",
   "obValuePrayer": "Takyk namaz wagtlary",

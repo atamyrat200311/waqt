@@ -164,6 +164,21 @@ void main() {
   testWidgets('home ramadan', (t) async {
     await shoot(
       t,
+      'ramadan_challenge_screen',
+      location: '/tools/ramadan',
+      settings: const AppSettings(onboardingDone: true, ramadanMode: RamadanMode.on),
+      now: DateTime.utc(2027, 2, 20, 11),
+      height: 1400,
+    );
+    await shoot(
+      t,
+      'home_ramadan_challenge',
+      settings: const AppSettings(onboardingDone: true, ramadanMode: RamadanMode.on),
+      now: DateTime.utc(2027, 2, 20, 11),
+      height: 1600,
+    );
+    await shoot(
+      t,
       'home_ramadan',
       settings: const AppSettings(onboardingDone: true, ramadanMode: RamadanMode.on),
     );

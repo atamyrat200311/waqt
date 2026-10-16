@@ -292,6 +292,22 @@ const Map<String, List<String>> s2 = {
   'habitSugRead': ['Read 10 pages of a book', 'Kitapdan 10 sahypa oka', 'Kitaptan 10 sayfa oku', 'Прочитать 10 страниц книги'],
   'habitSugSleep': ['Sleep before 23:00', '23:00-dan öň ýat', '23:00’ten önce uyu', 'Лечь спать до 23:00'],
 
+  // --------------------------------------------------------------- ramadan
+  'ramadanChallenge': ['Ramadan 30', 'Remezan 30', 'Ramazan 30', 'Рамадан 30'],
+  'ramadanChallengeScore': ['{score} of 5 today', 'Şu gün 5-den {score}', 'Bugün 5’ten {score}', 'Сегодня {score} из 5'],
+  'ramadanCoreDays': ['{count, plural, =0{Full days start with fast, prayers and Quran} one{{count} full day so far} other{{count} full days so far}}', '{count, plural, =0{Doly gün: oraza, namaz we Kuran} other{Häzire çenli {count} doly gün}}', '{count, plural, =0{Tam gün: oruç, namaz ve Kur’an} other{Şimdiye kadar {count} tam gün}}', '{count, plural, =0{Полный день: пост, намазы и Коран} one{Уже {count} полный день} few{Уже {count} полных дня} other{Уже {count} полных дней}}'],
+  'ramadanItemFast': ['Fast', 'Oraza', 'Oruç', 'Пост'],
+  'ramadanItemPrayers': ['5 prayers', '5 namaz', '5 vakit', '5 намазов'],
+  'ramadanItemQuran': ['Quran', 'Kuran', 'Kur’an', 'Коран'],
+  'ramadanItemDhikr': ['Dhikr', 'Zikir', 'Zikir', 'Зикр'],
+  'ramadanItemSadaqa': ['Sadaqa', 'Sadaka', 'Sadaka', 'Садака'],
+  'ramadanChallengeIntro': [
+    'When Ramadan begins, Waqt tracks five daily goals — fast, prayers, Quran, dhikr and sadaqa — and lets you share your progress.',
+    '?Remezan başlanda Waqt bäş gündelik maksady yzarlar — oraza, namaz, Kuran, zikir we sadaka — we ösüşiňizi paýlaşmaga mümkinçilik berer.',
+    'Ramazan başladığında Waqt beş günlük hedefi takip eder — oruç, namaz, Kur’an, zikir ve sadaka — ve ilerlemenizi paylaşmanızı sağlar.',
+    'Когда начнётся Рамадан, Waqt будет отмечать пять целей дня — пост, намазы, Коран, зикр и садаку — и поможет поделиться успехами.'
+  ],
+
   // ------------------------------------------------------------ onboarding
   'obGetStarted': ['Get started', 'Başla', 'Başlayalım', 'Начать'],
   'obTagline': ['Your day, around the five prayers.', 'Günüňiz — bäş namazyň töwereginde.', 'Gününüz, beş vakit namaz etrafında.', 'Ваш день — вокруг пяти намазов.'],
