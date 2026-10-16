@@ -6,9 +6,17 @@ import '../../data/db/enums.dart';
 import '../../data/settings/settings_controller.dart';
 import '../../features/adhkar/presentation/adhkar_reader.dart';
 import '../../features/calendar/presentation/calendar_screen.dart';
+import '../../features/library/presentation/library_screen.dart';
 import '../../features/me/presentation/me_screen.dart';
 import '../../features/onboarding/presentation/onboarding_screen.dart';
 import '../../features/qada/presentation/qada_screen.dart';
+import '../../features/quran/domain/quran.dart' show totalAyahs;
+import '../../features/quran/presentation/hifz_screen.dart';
+import '../../features/quran/presentation/khatm_screen.dart';
+import '../../features/quran/presentation/quran_bookmarks_screen.dart';
+import '../../features/quran/presentation/quran_home_screen.dart';
+import '../../features/quran/presentation/quran_reader.dart';
+import '../../features/quran/presentation/quran_search_screen.dart';
 import '../../features/ramadan/presentation/ramadan_screen.dart';
 import '../../features/settings/presentation/location_picker.dart';
 import '../../features/settings/presentation/settings_screen.dart';
@@ -61,6 +69,24 @@ final appRouterProvider = Provider<GoRouter>((ref) {
           ]),
           StatefulShellBranch(routes: [
             GoRoute(
+              path: Routes.quran,
+              builder: (context, state) => const QuranHomeScreen(),
+              routes: [
+                GoRoute(path: _child(Routes.quranSearch), builder: (context, state) => const QuranSearchScreen()),
+                GoRoute(path: _child(Routes.quranBookmarks), builder: (context, state) => const QuranBookmarksScreen()),
+                GoRoute(path: _child(Routes.khatm), builder: (context, state) => const KhatmScreen()),
+                GoRoute(path: _child(Routes.hifz), builder: (context, state) => const HifzScreen()),
+              ],
+            ),
+          ]),
+          StatefulShellBranch(routes: [
+            GoRoute(
+              path: Routes.library,
+              builder: (context, state) => const LibraryScreen(),
+            ),
+          ]),
+          StatefulShellBranch(routes: [
+            GoRoute(
               path: Routes.tools,
               builder: (context, state) => const ToolsScreen(),
               routes: [
@@ -85,8 +111,6 @@ final appRouterProvider = Provider<GoRouter>((ref) {
               ],
             ),
           ]),
-          // TODO(quran): add a 4th StatefulShellBranch here and a ShellTab in
-          // app_shell.dart (`shellTabs`) when the Quran reader is built.
         ],
       ),
       GoRoute(
@@ -95,6 +119,18 @@ final appRouterProvider = Provider<GoRouter>((ref) {
         builder: (context, state) => AdhkarReader(
           set: state.pathParameters['set'] == 'evening' ? AdhkarSet.evening : AdhkarSet.morning,
         ),
+      ),
+      GoRoute(
+        path: Routes.readPattern,
+        parentNavigatorKey: rootNavigatorKey,
+        builder: (context, state) {
+          final q = state.uri.queryParameters;
+          return QuranReaderScreen(
+            start: (int.tryParse(q['i'] ?? '') ?? 0).clamp(0, totalAyahs - 1),
+            pageMode: q['mode'] == 'page',
+            hifzSurah: int.tryParse(q['hifz'] ?? ''),
+          );
+        },
       ),
       GoRoute(
         path: Routes.location,

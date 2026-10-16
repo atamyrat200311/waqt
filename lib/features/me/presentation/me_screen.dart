@@ -13,6 +13,7 @@ import '../../../data/db/enums.dart';
 import '../../../data/repositories/expense_repository.dart';
 import '../../../data/settings/settings_controller.dart';
 import '../../../shared/widgets/buttons.dart';
+import '../../../shared/widgets/layout.dart';
 import '../../../shared/widgets/waqt_card.dart';
 import '../../../shared/widgets/waqt_icon.dart';
 import '../../prayer/application/prayer_providers.dart';
@@ -66,7 +67,7 @@ class MeScreen extends ConsumerWidget {
                 _FastsAndSadaqa(),
                 SizedBox(height: 10),
                 _SpendingCard(),
-                SizedBox(height: 32),
+                BottomSpace(),
               ]),
             ),
           ),

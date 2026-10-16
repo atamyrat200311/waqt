@@ -11,6 +11,7 @@ import '../../../core/theme/dimens.dart';
 import '../../../core/utils/clock.dart';
 import '../../../core/utils/dates.dart';
 import '../../../data/db/enums.dart';
+import '../../../shared/widgets/ornaments.dart';
 import '../../../shared/widgets/status_marks.dart';
 import '../../prayer/application/prayer_providers.dart';
 import '../../prayer/domain/prayer_engine.dart';
@@ -40,7 +41,7 @@ class HeroCard extends ConsumerWidget {
       clipBehavior: Clip.antiAlias,
       child: Stack(
         children: [
-          const Positioned(right: -70, top: -80, child: _StarPattern()),
+          const Positioned(right: -70, top: -80, child: StarPattern()),
           Padding(
             padding: const EdgeInsets.fromLTRB(20, 20, 20, 14),
             child: Column(
@@ -427,48 +428,3 @@ class _ArcPainter extends CustomPainter {
 }
 
 /// Faint eight-point star lattice in the hero's top-right corner.
-class _StarPattern extends StatelessWidget {
-  const _StarPattern();
-
-  @override
-  Widget build(BuildContext context) => IgnorePointer(
-        child: ShaderMask(
-          shaderCallback: (r) => const RadialGradient(
-            center: Alignment(0.2, -0.2),
-            radius: 0.75,
-            colors: [Colors.black, Colors.black, Colors.transparent],
-            stops: [0, 0.15, 0.68],
-          ).createShader(r),
-          blendMode: BlendMode.dstIn,
-          child: Opacity(
-            opacity: 0.09,
-            child: CustomPaint(size: const Size.square(260), painter: _StarPainter()),
-          ),
-        ),
-      );
-}
-
-class _StarPainter extends CustomPainter {
-  @override
-  void paint(Canvas canvas, Size size) {
-    final paint = Paint()
-      ..color = Colors.white
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = 1;
-    const cell = 44.0;
-    for (var x = 0.0; x < size.width; x += cell) {
-      for (var y = 0.0; y < size.height; y += cell) {
-        final r = Rect.fromLTWH(x + 13, y + 13, 18, 18);
-        canvas.drawRect(r, paint);
-        canvas.save();
-        canvas.translate(x + 22, y + 22);
-        canvas.rotate(math.pi / 4);
-        canvas.drawRect(const Rect.fromLTWH(-9, -9, 18, 18), paint);
-        canvas.restore();
-      }
-    }
-  }
-
-  @override
-  bool shouldRepaint(_StarPainter old) => false;
-}

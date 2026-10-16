@@ -1401,4 +1401,394 @@ class AppLocalizationsTk extends AppLocalizations {
 
   @override
   String get chanReminders => 'Ýatlatmalar';
+
+  @override
+  String get tabQuran => 'Kuran';
+
+  @override
+  String get tabLibrary => 'Kitaphana';
+
+  @override
+  String get quranTitle => 'Kuran';
+
+  @override
+  String get quranContinue => 'Okamagy dowam et';
+
+  @override
+  String get quranStart => 'Okap başla';
+
+  @override
+  String get quranStartHint => 'Fatiha süresinden başlaň.';
+
+  @override
+  String quranAyahN(String n) {
+    return 'Aýat $n';
+  }
+
+  @override
+  String quranPageN(String n) {
+    return 'Sahypa $n';
+  }
+
+  @override
+  String quranJuzN(String n) {
+    return 'Pāra $n';
+  }
+
+  @override
+  String get quranSurahs => 'Süreler';
+
+  @override
+  String get quranJuzTab => 'Pāralar';
+
+  @override
+  String quranAyahCount(int count) {
+    return '$count aýat';
+  }
+
+  @override
+  String get quranMeccan => 'Mekke';
+
+  @override
+  String get quranMedinan => 'Medine';
+
+  @override
+  String get quranSearch => 'Kurandan gözle';
+
+  @override
+  String get quranSearchHint => 'Süre, 2:255 ýa-da sözler';
+
+  @override
+  String quranGoTo(String ref) {
+    return '$ref aç';
+  }
+
+  @override
+  String get quranNoResults =>
+      'Hiç zat tapylmady. Az söz ýa-da arapça synanyşyň.';
+
+  @override
+  String quranResults(int count) {
+    return '$count aýat';
+  }
+
+  @override
+  String quranSearchIn(String translation) {
+    return 'Arapça we $translation boýunça gözlenýär';
+  }
+
+  @override
+  String get quranBookmarks => 'Bellikler';
+
+  @override
+  String get quranNoBookmarks =>
+      'Entek bellik ýok. Aýaty saklamak üçin oňa basyň.';
+
+  @override
+  String get quranBookmark => 'Belle';
+
+  @override
+  String get quranRemoveBookmark => 'Belligi aýyr';
+
+  @override
+  String get quranBookmarked => 'Belliklere goşuldy';
+
+  @override
+  String get copy => 'Göçür';
+
+  @override
+  String get copied => 'Göçürildi';
+
+  @override
+  String get shareImage => 'Surat edip paýlaş';
+
+  @override
+  String get shareText => 'Tekst paýlaş';
+
+  @override
+  String get share => 'Paýlaş';
+
+  @override
+  String get quranAddNote => 'Bellik ýaz';
+
+  @override
+  String get quranNoteHint => 'Bu aýat siziň üçin näme aňladýar?';
+
+  @override
+  String get quranSetLastRead => 'Şu ýerde galdym diý';
+
+  @override
+  String get quranReadingSettings => 'Okamak sazlamalary';
+
+  @override
+  String get quranArabicSize => 'Arapça ölçegi';
+
+  @override
+  String get quranTextSize => 'Terjime ölçegi';
+
+  @override
+  String get quranShowTranslation => 'Terjimäni görkez';
+
+  @override
+  String get quranShowTranslit => 'Okalyşyny görkez';
+
+  @override
+  String get quranTranslation => 'Terjime';
+
+  @override
+  String get quranArabicFont => 'Arap ýazgysy';
+
+  @override
+  String get quranFontUthmani => 'Osmany';
+
+  @override
+  String get quranFontNaskh => 'Nesh (ýönekeý)';
+
+  @override
+  String get quranSepia => 'Ýyly kagyz';
+
+  @override
+  String get quranKeepAwake => 'Okanyňda ekrany öçürme';
+
+  @override
+  String get quranMemorize => 'Ýatlamak tertibi';
+
+  @override
+  String get quranMemorizeHint =>
+      'Arapça gizlenen. Okaň, soň barlamak üçin basyň.';
+
+  @override
+  String get quranTapToReveal => 'Görmek üçin basyň';
+
+  @override
+  String get quranModeList => 'Terjimeli görnüş';
+
+  @override
+  String get quranModePage => 'Mushaf sahypalary';
+
+  @override
+  String get quranSajda => 'Sežde';
+
+  @override
+  String get quranToday => 'Şu gün';
+
+  @override
+  String quranGoal(String read, String goal) {
+    return '$goal aýatdan $read';
+  }
+
+  @override
+  String get quranGoalDone => 'Günlük maksat ýerine ýetdi';
+
+  @override
+  String quranStreak(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Yzly-yzyna $count gün',
+      zero: 'Şu gün başlaň',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get quranDailyGoal => 'Günlük maksat';
+
+  @override
+  String quranDailyGoalValue(int count) {
+    return 'Günde $count aýat';
+  }
+
+  @override
+  String get quranReadTracking =>
+      'Aýat birsellem seredenden soň okalan hasaplanýar.';
+
+  @override
+  String get quranOfDay => 'Günüň aýaty';
+
+  @override
+  String get quranOpenInReader => 'Kuranda aç';
+
+  @override
+  String quranSurahInfo(String place, String ayahs) {
+    return '$place · $ayahs';
+  }
+
+  @override
+  String quranNextSurah(String name) {
+    return 'Indiki: $name';
+  }
+
+  @override
+  String get quranLoading => 'Kuran açylýar…';
+
+  @override
+  String get quranReadSurah => 'Oka';
+
+  @override
+  String get khatmTitle => 'Hatym meýilnamasy';
+
+  @override
+  String get khatmShort => 'Hatym';
+
+  @override
+  String get khatmIntro =>
+      'Tutuş Kurany öz depgiňizde okaň. Waqt galan bölegi galan günlere paýlaýar, şonuň üçin bir gün sypdyrmak meýilnamany bozmaýar.';
+
+  @override
+  String get khatmChoose => 'Näçe günde';
+
+  @override
+  String khatmDays(int count) {
+    return '$count gün';
+  }
+
+  @override
+  String khatmPerDay(String pages) {
+    return '≈ günde $pages sahypa';
+  }
+
+  @override
+  String get khatmStart => 'Meýilnamany başla';
+
+  @override
+  String khatmDayOf(String day, String total) {
+    return '$total günüň $day-njisi';
+  }
+
+  @override
+  String khatmTodayTarget(String ayahs, String pages) {
+    return 'Şu gün: $ayahs aýat · takmynan $pages sahypa';
+  }
+
+  @override
+  String get khatmTodayDone => 'Şu günki bölek okaldy. Barakallahu fik!';
+
+  @override
+  String get khatmBehind => 'Azajyk yzda galdyňyz — şu günki bölek biraz uly.';
+
+  @override
+  String get khatmOnTrack => 'Meýilnama boýunça';
+
+  @override
+  String get khatmEnd => 'Meýilnamany bes et';
+
+  @override
+  String get khatmEndConfirm =>
+      'Bu meýilnamany bes etmelimi? Okan taryhyňyz galýar.';
+
+  @override
+  String get khatmComplete => 'Hatym tamamlandy! Alla kabul etsin.';
+
+  @override
+  String khatmProgress(String read, String total) {
+    return '$total aýatdan $read';
+  }
+
+  @override
+  String khatmDaysLeft(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count gün galdy',
+      zero: 'Soňky gün',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get khatmRamadan => 'Remezan';
+
+  @override
+  String get khatmNewPlan => 'Täze meýilnama';
+
+  @override
+  String get khatmShareText => 'Waqt bilen Kurany hatym etdim. Elhamdulillah!';
+
+  @override
+  String get khatmReminder => 'Ýassydan soň ýatlat';
+
+  @override
+  String get notifQuranTitle => 'Şu günki Kuran';
+
+  @override
+  String get notifQuranBody => 'Ukudan öň Kuran bilen birnäçe minut.';
+
+  @override
+  String get hifzTitle => 'Ýatlamak';
+
+  @override
+  String get hifzIntro =>
+      'Ýatlaýan süreleriňizi goşuň. Her birini aralykly tertipde gaýtalaň — 1, 3, 7, 14, 30 we 90 gün — berk ýatda galar ýaly.';
+
+  @override
+  String get hifzAdd => 'Süre goş';
+
+  @override
+  String get hifzDue => 'Gaýtalamaly';
+
+  @override
+  String get hifzUpcoming => 'Ýakynda';
+
+  @override
+  String get hifzReview => 'Gaýtala';
+
+  @override
+  String get hifzHowWent => 'Gaýtalamak nähili geçdi?';
+
+  @override
+  String get hifzStrong => 'Berk';
+
+  @override
+  String get hifzWeak => 'Işlemeli';
+
+  @override
+  String hifzNext(String date) {
+    return 'Indiki gaýtalama $date';
+  }
+
+  @override
+  String get hifzEmpty =>
+      'Sanawyňyzda entek zat ýok. ʿAmma pārasyndaky gysga süreler gowy başlangyç.';
+
+  @override
+  String get hifzRemove => 'Sanawdan aýyr';
+
+  @override
+  String get hifzSuggested => 'Teklip edilýän';
+
+  @override
+  String get hifzAllSurahs => 'Ähli süreler';
+
+  @override
+  String get hifzTileIdle => 'Aralykly gaýtalama';
+
+  @override
+  String hifzDueCount(int count) {
+    return 'Şu gün $count sany';
+  }
+
+  @override
+  String get khatmTileIdle => 'Meýilnama bilen tamamla';
+
+  @override
+  String get hifzMemorized => 'Ýatlanan';
+
+  @override
+  String get shareThemeEmerald => 'Zümerret';
+
+  @override
+  String get shareThemePaper => 'Kagyz';
+
+  @override
+  String get shareThemeNight => 'Gije';
+
+  @override
+  String get shareWithArabic => 'Arapça';
+
+  @override
+  String get shareWithTranslation => 'Terjime';
+
+  @override
+  String get shareFooter => 'Waqt · günüňiz namazyň töwereginde';
 }

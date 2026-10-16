@@ -98,7 +98,7 @@ class _TodayScreenState extends ConsumerState<TodayScreen> {
               ],
             ),
           ),
-          SliverToBoxAdapter(child: SizedBox(height: cupertino ? 32 : 96)),
+          SliverToBoxAdapter(child: BottomSpace(extra: cupertino ? 32 : 96)),
         ],
       ),
     );

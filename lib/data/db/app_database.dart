@@ -17,13 +17,18 @@ part 'app_database.g.dart';
   AdhkarProgress,
   Fasts,
   TasbihSessions,
+  Bookmarks,
+  QuranReads,
+  HifzItems,
+  Habits,
+  HabitLogs,
 ])
 class AppDatabase extends _$AppDatabase {
   AppDatabase([QueryExecutor? executor]) : super(executor ?? _openConnection());
 
   /// Bump and add a step in [migration] for every schema change.
   @override
-  int get schemaVersion => 1;
+  int get schemaVersion => 2;
 
   @override
   MigrationStrategy get migration => MigrationStrategy(
@@ -38,8 +43,14 @@ class AppDatabase extends _$AppDatabase {
           await customStatement('CREATE INDEX IF NOT EXISTS idx_tasks_date ON tasks(date)');
         },
         onUpgrade: (m, from, to) async {
-          // v1 is the first schema. Future steps go here, e.g.
-          // if (from < 2) await m.addColumn(tasks, tasks.someNewColumn);
+          if (from < 2) {
+            // v2: Quran, hadith bookmarks, memorization and habits.
+            await m.createTable(bookmarks);
+            await m.createTable(quranReads);
+            await m.createTable(hifzItems);
+            await m.createTable(habits);
+            await m.createTable(habitLogs);
+          }
         },
         beforeOpen: (details) async {
           await customStatement('PRAGMA foreign_keys = ON');

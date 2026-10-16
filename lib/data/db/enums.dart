@@ -49,6 +49,13 @@ enum TaskWindow {
 
 enum AdhkarSet { morning, evening }
 
+/// What a bookmark points at. `ref` formats: ayah `2:255`, hadith
+/// `bukhari:1`, dua `<duaId>`, name `<1…99>`.
+enum BookmarkKind { ayah, hadith, dua, name }
+
+/// Memorization state of a surah (spaced review ladder, see hifz.dart).
+enum HifzStatus { learning, memorized }
+
 enum FastType { ramadan, monThu, whiteDays, other }
 
 enum FastStatus { fasted, missed, excused }

@@ -9,6 +9,8 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'strings_v2.dart';
+
 const langs = ['en', 'tk', 'tr', 'ru'];
 
 /// Placeholders whose type must be int (used in plurals or numeric formatting).
@@ -718,7 +720,9 @@ void main() {
   for (var i = 0; i < langs.length; i++) {
     final lang = langs[i];
     final out = <String, Object>{'@@locale': lang};
-    s.forEach((key, values) {
+    final dup = s.keys.toSet().intersection(s2.keys.toSet());
+    if (dup.isNotEmpty) throw StateError('Duplicate keys: $dup');
+    <String, List<String>>{...s, ...s2}.forEach((key, values) {
       if (values.length != langs.length) {
         throw StateError('$key has ${values.length} translations');
       }
@@ -749,7 +753,7 @@ void main() {
     });
     final file = File('${outDir.path}/app_$lang.arb');
     file.writeAsStringSync('${const JsonEncoder.withIndent('  ').convert(out)}\n');
-    print('wrote ${file.path} (${s.length} keys)');
+    print('wrote ${file.path} (${s.length + s2.length} keys)');
   }
 }
 

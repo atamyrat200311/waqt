@@ -50,7 +50,7 @@ class ToolsScreen extends StatelessWidget {
                 TasbihCard(),
                 SizedBox(height: 12),
                 _ToolTiles(),
-                SizedBox(height: 32),
+                BottomSpace(),
               ]),
             ),
           ),

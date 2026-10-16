@@ -26,6 +26,7 @@ import 'package:waqt/data/repositories/prayer_repository.dart';
 import 'package:waqt/data/repositories/task_repository.dart';
 import 'package:waqt/data/settings/app_settings.dart';
 import 'package:waqt/features/adhkar/application/adhkar_providers.dart';
+import 'package:waqt/features/quran/application/quran_providers.dart';
 
 import '../helpers/test_app.dart';
 
@@ -83,6 +84,7 @@ Future<void> shoot(
   await tester.runAsync(() async {
     await seed(container);
     await container.read(adhkarCatalogProvider.future);
+    await container.read(quranTextsProvider.future);
   });
   final key = GlobalKey();
   await tester.pumpWidget(
@@ -169,6 +171,24 @@ void main() {
     await shoot(t, 'onboarding_language', settings: const AppSettings());
     await shoot(t, 'onboarding_location', settings: const AppSettings(), act: (t) async {
       await t.tap(find.text('English'));
+    });
+  }, skip: !_enabled);
+
+  testWidgets('quran', (t) async {
+    const reading = AppSettings(onboardingDone: true, quranLastRead: 261);
+    await shoot(t, 'quran_home', settings: reading, location: '/quran');
+    await shoot(t, 'quran_home_android_dark', settings: reading, location: '/quran', platform: TargetPlatform.android, dark: true);
+    await shoot(t, 'quran_reader', location: '/read?i=261');
+    await shoot(t, 'quran_reader_fatiha_dark', location: '/read?i=0', dark: true);
+    await shoot(t, 'quran_reader_page', location: '/read?i=261&mode=page');
+    await shoot(t, 'quran_reader_hifz', location: '/read?i=6221&hifz=112');
+    await shoot(t, 'quran_khatm_setup', location: '/quran/khatm');
+    await shoot(t, 'quran_hifz', location: '/quran/memorize');
+    await shoot(t, 'quran_search', location: '/quran/search', act: (t) async {
+      await t.enterText(find.byType(TextField), 'mercy');
+      await t.pump(const Duration(milliseconds: 400));
+      await t.runAsync(() => Future<void>.delayed(const Duration(seconds: 2)));
+      await t.pump();
     });
   }, skip: !_enabled);
 

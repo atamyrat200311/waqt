@@ -1414,4 +1414,426 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get chanReminders => 'Reminders';
+
+  @override
+  String get tabQuran => 'Quran';
+
+  @override
+  String get tabLibrary => 'Library';
+
+  @override
+  String get quranTitle => 'Quran';
+
+  @override
+  String get quranContinue => 'Continue reading';
+
+  @override
+  String get quranStart => 'Start reading';
+
+  @override
+  String get quranStartHint => 'Begin with Al-Fatihah, the Opening.';
+
+  @override
+  String quranAyahN(String n) {
+    return 'Ayah $n';
+  }
+
+  @override
+  String quranPageN(String n) {
+    return 'Page $n';
+  }
+
+  @override
+  String quranJuzN(String n) {
+    return 'Juz $n';
+  }
+
+  @override
+  String get quranSurahs => 'Surahs';
+
+  @override
+  String get quranJuzTab => 'Juz';
+
+  @override
+  String quranAyahCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count ayahs',
+      one: '$count ayah',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get quranMeccan => 'Meccan';
+
+  @override
+  String get quranMedinan => 'Medinan';
+
+  @override
+  String get quranSearch => 'Search the Quran';
+
+  @override
+  String get quranSearchHint => 'Surah, 2:255 or any words';
+
+  @override
+  String quranGoTo(String ref) {
+    return 'Go to $ref';
+  }
+
+  @override
+  String get quranNoResults => 'No matches. Try fewer words or Arabic.';
+
+  @override
+  String quranResults(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count ayahs',
+      one: '$count ayah',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String quranSearchIn(String translation) {
+    return 'Searching Arabic and $translation';
+  }
+
+  @override
+  String get quranBookmarks => 'Bookmarks';
+
+  @override
+  String get quranNoBookmarks =>
+      'No bookmarks yet. Tap an ayah to save it here.';
+
+  @override
+  String get quranBookmark => 'Bookmark';
+
+  @override
+  String get quranRemoveBookmark => 'Remove bookmark';
+
+  @override
+  String get quranBookmarked => 'Saved to bookmarks';
+
+  @override
+  String get copy => 'Copy';
+
+  @override
+  String get copied => 'Copied';
+
+  @override
+  String get shareImage => 'Share as image';
+
+  @override
+  String get shareText => 'Share text';
+
+  @override
+  String get share => 'Share';
+
+  @override
+  String get quranAddNote => 'Add a note';
+
+  @override
+  String get quranNoteHint => 'What does this ayah mean to you?';
+
+  @override
+  String get quranSetLastRead => 'Mark as where I stopped';
+
+  @override
+  String get quranReadingSettings => 'Reading settings';
+
+  @override
+  String get quranArabicSize => 'Arabic size';
+
+  @override
+  String get quranTextSize => 'Translation size';
+
+  @override
+  String get quranShowTranslation => 'Show translation';
+
+  @override
+  String get quranShowTranslit => 'Show transliteration';
+
+  @override
+  String get quranTranslation => 'Translation';
+
+  @override
+  String get quranArabicFont => 'Arabic script';
+
+  @override
+  String get quranFontUthmani => 'Uthmani';
+
+  @override
+  String get quranFontNaskh => 'Naskh (plain)';
+
+  @override
+  String get quranSepia => 'Warm paper';
+
+  @override
+  String get quranKeepAwake => 'Keep screen on while reading';
+
+  @override
+  String get quranMemorize => 'Memorize mode';
+
+  @override
+  String get quranMemorizeHint =>
+      'Arabic is hidden. Recite, then tap to check.';
+
+  @override
+  String get quranTapToReveal => 'Tap to reveal';
+
+  @override
+  String get quranModeList => 'Translation view';
+
+  @override
+  String get quranModePage => 'Mushaf pages';
+
+  @override
+  String get quranSajda => 'Sajdah';
+
+  @override
+  String get quranToday => 'Today';
+
+  @override
+  String quranGoal(String read, String goal) {
+    return '$read of $goal ayahs';
+  }
+
+  @override
+  String get quranGoalDone => 'Daily goal reached';
+
+  @override
+  String quranStreak(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count days in a row',
+      one: '$count day in a row',
+      zero: 'Start a streak today',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get quranDailyGoal => 'Daily goal';
+
+  @override
+  String quranDailyGoalValue(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count ayahs a day',
+      one: '$count ayah a day',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get quranReadTracking =>
+      'Ayahs count as read after you spend a moment on them.';
+
+  @override
+  String get quranOfDay => 'Ayah of the day';
+
+  @override
+  String get quranOpenInReader => 'Open in Quran';
+
+  @override
+  String quranSurahInfo(String place, String ayahs) {
+    return '$place · $ayahs';
+  }
+
+  @override
+  String quranNextSurah(String name) {
+    return 'Next: $name';
+  }
+
+  @override
+  String get quranLoading => 'Opening the Quran…';
+
+  @override
+  String get quranReadSurah => 'Read';
+
+  @override
+  String get khatmTitle => 'Khatm plan';
+
+  @override
+  String get khatmShort => 'Khatm';
+
+  @override
+  String get khatmIntro =>
+      'Read the whole Quran at your pace. Waqt spreads what’s left over the remaining days, so a missed day never ruins the plan.';
+
+  @override
+  String get khatmChoose => 'Finish in';
+
+  @override
+  String khatmDays(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count days',
+      one: '$count day',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String khatmPerDay(String pages) {
+    return '≈ $pages pages a day';
+  }
+
+  @override
+  String get khatmStart => 'Start plan';
+
+  @override
+  String khatmDayOf(String day, String total) {
+    return 'Day $day of $total';
+  }
+
+  @override
+  String khatmTodayTarget(String ayahs, String pages) {
+    return 'Today: $ayahs ayahs · about $pages pages';
+  }
+
+  @override
+  String get khatmTodayDone => 'Today’s portion is done. Barakallahu fik!';
+
+  @override
+  String get khatmBehind =>
+      'A little behind — today’s portion is a bit bigger.';
+
+  @override
+  String get khatmOnTrack => 'On track';
+
+  @override
+  String get khatmEnd => 'End plan';
+
+  @override
+  String get khatmEndConfirm => 'End this plan? Your reading history stays.';
+
+  @override
+  String get khatmComplete => 'Khatm complete! May Allah accept it from you.';
+
+  @override
+  String khatmProgress(String read, String total) {
+    return '$read of $total ayahs';
+  }
+
+  @override
+  String khatmDaysLeft(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count days left',
+      one: '$count day left',
+      zero: 'Last day',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get khatmRamadan => 'Ramadan';
+
+  @override
+  String get khatmNewPlan => 'Start a new plan';
+
+  @override
+  String get khatmShareText =>
+      'I completed a khatm of the Quran with Waqt. Alhamdulillah!';
+
+  @override
+  String get khatmReminder => 'Remind me after Isha';
+
+  @override
+  String get notifQuranTitle => 'Today’s Quran';
+
+  @override
+  String get notifQuranBody => 'A few minutes with the Quran before sleep.';
+
+  @override
+  String get hifzTitle => 'Memorize';
+
+  @override
+  String get hifzIntro =>
+      'Add surahs you’re memorizing. Review each on a spaced schedule — 1, 3, 7, 14, 30 and 90 days — so it stays strong.';
+
+  @override
+  String get hifzAdd => 'Add surah';
+
+  @override
+  String get hifzDue => 'Due for review';
+
+  @override
+  String get hifzUpcoming => 'Coming up';
+
+  @override
+  String get hifzReview => 'Review';
+
+  @override
+  String get hifzHowWent => 'How did the review go?';
+
+  @override
+  String get hifzStrong => 'Strong';
+
+  @override
+  String get hifzWeak => 'Needs work';
+
+  @override
+  String hifzNext(String date) {
+    return 'Next review $date';
+  }
+
+  @override
+  String get hifzEmpty =>
+      'Nothing on your list yet. Short surahs from Juz ʿAmma are a great start.';
+
+  @override
+  String get hifzRemove => 'Remove from list';
+
+  @override
+  String get hifzSuggested => 'Suggested';
+
+  @override
+  String get hifzAllSurahs => 'All surahs';
+
+  @override
+  String get hifzTileIdle => 'Spaced review';
+
+  @override
+  String hifzDueCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count due today',
+      one: '$count due today',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get khatmTileIdle => 'Finish on a schedule';
+
+  @override
+  String get hifzMemorized => 'Memorized';
+
+  @override
+  String get shareThemeEmerald => 'Emerald';
+
+  @override
+  String get shareThemePaper => 'Paper';
+
+  @override
+  String get shareThemeNight => 'Night';
+
+  @override
+  String get shareWithArabic => 'Arabic';
+
+  @override
+  String get shareWithTranslation => 'Translation';
+
+  @override
+  String get shareFooter => 'Waqt · your day around prayer';
 }

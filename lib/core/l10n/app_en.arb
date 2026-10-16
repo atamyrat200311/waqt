@@ -1001,5 +1001,270 @@
   },
   "chanAdhan": "Prayer times · adhan",
   "chanStandard": "Prayer times · standard sound",
-  "chanReminders": "Reminders"
+  "chanReminders": "Reminders",
+  "tabQuran": "Quran",
+  "tabLibrary": "Library",
+  "quranTitle": "Quran",
+  "quranContinue": "Continue reading",
+  "quranStart": "Start reading",
+  "quranStartHint": "Begin with Al-Fatihah, the Opening.",
+  "quranAyahN": "Ayah {n}",
+  "@quranAyahN": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "quranPageN": "Page {n}",
+  "@quranPageN": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "quranJuzN": "Juz {n}",
+  "@quranJuzN": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "quranSurahs": "Surahs",
+  "quranJuzTab": "Juz",
+  "quranAyahCount": "{count, plural, one{{count} ayah} other{{count} ayahs}}",
+  "@quranAyahCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "quranMeccan": "Meccan",
+  "quranMedinan": "Medinan",
+  "quranSearch": "Search the Quran",
+  "quranSearchHint": "Surah, 2:255 or any words",
+  "quranGoTo": "Go to {ref}",
+  "@quranGoTo": {
+    "placeholders": {
+      "ref": {
+        "type": "String"
+      }
+    }
+  },
+  "quranNoResults": "No matches. Try fewer words or Arabic.",
+  "quranResults": "{count, plural, one{{count} ayah} other{{count} ayahs}}",
+  "@quranResults": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "quranSearchIn": "Searching Arabic and {translation}",
+  "@quranSearchIn": {
+    "placeholders": {
+      "translation": {
+        "type": "String"
+      }
+    }
+  },
+  "quranBookmarks": "Bookmarks",
+  "quranNoBookmarks": "No bookmarks yet. Tap an ayah to save it here.",
+  "quranBookmark": "Bookmark",
+  "quranRemoveBookmark": "Remove bookmark",
+  "quranBookmarked": "Saved to bookmarks",
+  "copy": "Copy",
+  "copied": "Copied",
+  "shareImage": "Share as image",
+  "shareText": "Share text",
+  "share": "Share",
+  "quranAddNote": "Add a note",
+  "quranNoteHint": "What does this ayah mean to you?",
+  "quranSetLastRead": "Mark as where I stopped",
+  "quranReadingSettings": "Reading settings",
+  "quranArabicSize": "Arabic size",
+  "quranTextSize": "Translation size",
+  "quranShowTranslation": "Show translation",
+  "quranShowTranslit": "Show transliteration",
+  "quranTranslation": "Translation",
+  "quranArabicFont": "Arabic script",
+  "quranFontUthmani": "Uthmani",
+  "quranFontNaskh": "Naskh (plain)",
+  "quranSepia": "Warm paper",
+  "quranKeepAwake": "Keep screen on while reading",
+  "quranMemorize": "Memorize mode",
+  "quranMemorizeHint": "Arabic is hidden. Recite, then tap to check.",
+  "quranTapToReveal": "Tap to reveal",
+  "quranModeList": "Translation view",
+  "quranModePage": "Mushaf pages",
+  "quranSajda": "Sajdah",
+  "quranToday": "Today",
+  "quranGoal": "{read} of {goal} ayahs",
+  "@quranGoal": {
+    "placeholders": {
+      "read": {
+        "type": "String"
+      },
+      "goal": {
+        "type": "String"
+      }
+    }
+  },
+  "quranGoalDone": "Daily goal reached",
+  "quranStreak": "{count, plural, =0{Start a streak today} one{{count} day in a row} other{{count} days in a row}}",
+  "@quranStreak": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "quranDailyGoal": "Daily goal",
+  "quranDailyGoalValue": "{count, plural, one{{count} ayah a day} other{{count} ayahs a day}}",
+  "@quranDailyGoalValue": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "quranReadTracking": "Ayahs count as read after you spend a moment on them.",
+  "quranOfDay": "Ayah of the day",
+  "quranOpenInReader": "Open in Quran",
+  "quranSurahInfo": "{place} · {ayahs}",
+  "@quranSurahInfo": {
+    "placeholders": {
+      "place": {
+        "type": "String"
+      },
+      "ayahs": {
+        "type": "String"
+      }
+    }
+  },
+  "quranNextSurah": "Next: {name}",
+  "@quranNextSurah": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "quranLoading": "Opening the Quran…",
+  "quranReadSurah": "Read",
+  "khatmTitle": "Khatm plan",
+  "khatmShort": "Khatm",
+  "khatmIntro": "Read the whole Quran at your pace. Waqt spreads what’s left over the remaining days, so a missed day never ruins the plan.",
+  "khatmChoose": "Finish in",
+  "khatmDays": "{count, plural, one{{count} day} other{{count} days}}",
+  "@khatmDays": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "khatmPerDay": "≈ {pages} pages a day",
+  "@khatmPerDay": {
+    "placeholders": {
+      "pages": {
+        "type": "String"
+      }
+    }
+  },
+  "khatmStart": "Start plan",
+  "khatmDayOf": "Day {day} of {total}",
+  "@khatmDayOf": {
+    "placeholders": {
+      "day": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      }
+    }
+  },
+  "khatmTodayTarget": "Today: {ayahs} ayahs · about {pages} pages",
+  "@khatmTodayTarget": {
+    "placeholders": {
+      "ayahs": {
+        "type": "String"
+      },
+      "pages": {
+        "type": "String"
+      }
+    }
+  },
+  "khatmTodayDone": "Today’s portion is done. Barakallahu fik!",
+  "khatmBehind": "A little behind — today’s portion is a bit bigger.",
+  "khatmOnTrack": "On track",
+  "khatmEnd": "End plan",
+  "khatmEndConfirm": "End this plan? Your reading history stays.",
+  "khatmComplete": "Khatm complete! May Allah accept it from you.",
+  "khatmProgress": "{read} of {total} ayahs",
+  "@khatmProgress": {
+    "placeholders": {
+      "read": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      }
+    }
+  },
+  "khatmDaysLeft": "{count, plural, =0{Last day} one{{count} day left} other{{count} days left}}",
+  "@khatmDaysLeft": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "khatmRamadan": "Ramadan",
+  "khatmNewPlan": "Start a new plan",
+  "khatmShareText": "I completed a khatm of the Quran with Waqt. Alhamdulillah!",
+  "khatmReminder": "Remind me after Isha",
+  "notifQuranTitle": "Today’s Quran",
+  "notifQuranBody": "A few minutes with the Quran before sleep.",
+  "hifzTitle": "Memorize",
+  "hifzIntro": "Add surahs you’re memorizing. Review each on a spaced schedule — 1, 3, 7, 14, 30 and 90 days — so it stays strong.",
+  "hifzAdd": "Add surah",
+  "hifzDue": "Due for review",
+  "hifzUpcoming": "Coming up",
+  "hifzReview": "Review",
+  "hifzHowWent": "How did the review go?",
+  "hifzStrong": "Strong",
+  "hifzWeak": "Needs work",
+  "hifzNext": "Next review {date}",
+  "@hifzNext": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "hifzEmpty": "Nothing on your list yet. Short surahs from Juz ʿAmma are a great start.",
+  "hifzRemove": "Remove from list",
+  "hifzSuggested": "Suggested",
+  "hifzAllSurahs": "All surahs",
+  "hifzTileIdle": "Spaced review",
+  "hifzDueCount": "{count, plural, one{{count} due today} other{{count} due today}}",
+  "@hifzDueCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "khatmTileIdle": "Finish on a schedule",
+  "hifzMemorized": "Memorized",
+  "shareThemeEmerald": "Emerald",
+  "shareThemePaper": "Paper",
+  "shareThemeNight": "Night",
+  "shareWithArabic": "Arabic",
+  "shareWithTranslation": "Translation",
+  "shareFooter": "Waqt · your day around prayer"
 }
