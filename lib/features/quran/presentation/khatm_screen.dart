@@ -17,6 +17,7 @@ import '../../../shared/widgets/waqt_icon.dart';
 import '../../prayer/application/prayer_providers.dart';
 import '../application/quran_providers.dart';
 import '../domain/quran.dart';
+import 'ayah_actions.dart';
 import 'quran_reader.dart';
 
 const _durations = [7, 10, 15, 20, 30, 60, 90, 180, 365];
@@ -60,7 +61,9 @@ class _KhatmScreenState extends ConsumerState<KhatmScreen> {
           children: [
             WaqtIcon(WaqtIcons.target, color: c.onMint),
             const SizedBox(width: 12),
-            Expanded(child: Text(l.khatmIntro, style: WaqtType.sans(15, color: c.onMint, height: 1.45))),
+            Expanded(
+              child: Text(l.khatmIntro, style: WaqtType.sans(15, color: c.onMint, height: 1.45)),
+            ),
           ],
         ),
       ),
@@ -72,14 +75,12 @@ class _KhatmScreenState extends ConsumerState<KhatmScreen> {
               selected: d == _days,
               child: WaqtRow(
                 title: d == 30 ? '${l.khatmDays(d)} · ${l.khatmRamadan}' : l.khatmDays(d),
-                subtitle: l.khatmPerDay('${KhatmProgress.pagesFor((totalAyahs / d).ceil())}'),
+                subtitle: l.khatmPerDay('${(totalPages / d).ceil()}'),
                 onTap: () {
                   Haptics.tap();
                   setState(() => _days = d);
                 },
-                trailing: d == _days
-                    ? WaqtIcon(WaqtIcons.check, color: c.accent, size: 20)
-                    : const SizedBox(width: 20),
+                trailing: d == _days ? WaqtIcon(WaqtIcons.check, color: c.accent, size: 20) : const SizedBox(width: 20),
               ),
             ),
         ],
@@ -98,20 +99,26 @@ class _KhatmScreenState extends ConsumerState<KhatmScreen> {
         padding: const EdgeInsets.fromLTRB(16, 8, 8, 8),
         child: Row(
           children: [
-            Expanded(child: Text(l.quranDailyGoalValue(goal), style: WaqtType.sans(16, weight: 600, color: c.ink))),
+            Expanded(
+              child: Text(l.quranDailyGoalValue(goal), style: WaqtType.sans(16, weight: 600, color: c.ink)),
+            ),
             CircleIconButton(
               icon: WaqtIcons.minus,
               semanticLabel: '−',
               background: c.fill,
               onPressed: goal <= 1
                   ? null
-                  : () => ref.read(settingsProvider.notifier).setReader((r) => r.copyWith(dailyGoal: goal <= 10 ? goal - 1 : goal - 5)),
+                  : () => ref
+                        .read(settingsProvider.notifier)
+                        .setReader((r) => r.copyWith(dailyGoal: goal <= 10 ? goal - 1 : goal - 5)),
             ),
             CircleIconButton(
               icon: WaqtIcons.plus,
               semanticLabel: '+',
               background: c.fill,
-              onPressed: () => ref.read(settingsProvider.notifier).setReader((r) => r.copyWith(dailyGoal: goal < 10 ? goal + 1 : goal + 5)),
+              onPressed: () => ref
+                  .read(settingsProvider.notifier)
+                  .setReader((r) => r.copyWith(dailyGoal: goal < 10 ? goal + 1 : goal + 5)),
             ),
           ],
         ),
@@ -129,15 +136,15 @@ class _KhatmScreenState extends ConsumerState<KhatmScreen> {
     final recent = ref.watch(quranRecentDailyProvider).value ?? const {};
     final today = ref.watch(todayKeyProvider);
     final reminder = ref.watch(settingsProvider.select((s) => s.quranReminder));
-    final last = ref.watch(settingsProvider.select((s) => s.quranLastRead)) ?? 0;
+    final next = ref.watch(khatmNextAyahProvider);
 
     final status = k.complete
         ? l.khatmComplete
         : k.todayDone
-            ? l.khatmTodayDone
-            : k.behind
-                ? l.khatmBehind
-                : l.khatmOnTrack;
+        ? l.khatmTodayDone
+        : k.behind
+        ? l.khatmBehind
+        : l.khatmOnTrack;
 
     final bars = [for (var i = 13; i >= 0; i--) recent[today.addDays(-i)] ?? 0];
     final maxBar = bars.fold<int>(1, (m, v) => v > m ? v : m);
@@ -158,7 +165,10 @@ class _KhatmScreenState extends ConsumerState<KhatmScreen> {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Text('${(k.fraction * 100).floor()}%', style: WaqtType.serif(44, weight: 400, color: c.ink)),
-                    Text(l.khatmProgress('${k.readTotal}', '$totalAyahs'), style: WaqtType.sans(12.5, color: c.muted)),
+                    Text(
+                      l.khatmProgress('${k.readPagesRounded}', '$totalPages'),
+                      style: WaqtType.sans(12.5, color: c.muted),
+                    ),
                   ],
                 ),
               ),
@@ -171,7 +181,11 @@ class _KhatmScreenState extends ConsumerState<KhatmScreen> {
             ),
             const SizedBox(height: 6),
             if (!k.complete)
-              Text(status, textAlign: TextAlign.center, style: WaqtType.sans(14.5, color: k.behind ? c.brassText : c.accent, weight: 600)),
+              Text(
+                status,
+                textAlign: TextAlign.center,
+                style: WaqtType.sans(14.5, color: k.behind ? c.brassText : c.accent, weight: 600),
+              ),
           ],
         ),
       ),
@@ -181,7 +195,7 @@ class _KhatmScreenState extends ConsumerState<KhatmScreen> {
           child: Row(
             children: [
               ProgressRing(
-                value: k.todayTarget == 0 ? 1 : (k.readToday / k.todayTarget).clamp(0, 1).toDouble(),
+                value: k.todayTargetPages <= 0 ? 1 : (k.readTodayPages / k.todayTargetPages).clamp(0, 1).toDouble(),
                 color: c.primary,
                 track: c.fill,
                 strokeWidth: 5,
@@ -194,12 +208,14 @@ class _KhatmScreenState extends ConsumerState<KhatmScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      l.khatmTodayTarget('${k.todayTarget}', '${KhatmProgress.pagesFor(k.todayTarget)}'),
+                      l.khatmTodayTarget('${k.targetPagesRounded}', ayahReference(next)),
                       style: WaqtType.sans(15, weight: 600, color: c.ink),
                     ),
                     const SizedBox(height: 2),
-                    Text('${l.quranGoal('${k.readToday}', '${k.todayTarget}')} · ${l.khatmDaysLeft(k.daysLeft)}',
-                        style: WaqtType.sans(13, color: c.muted)),
+                    Text(
+                      '${l.quranGoalPages('${k.readTodayRounded}', '${k.targetPagesRounded}')} · ${l.khatmDaysLeft(k.daysLeft)}',
+                      style: WaqtType.sans(13, color: c.muted),
+                    ),
                   ],
                 ),
               ),
@@ -207,7 +223,7 @@ class _KhatmScreenState extends ConsumerState<KhatmScreen> {
           ),
         ),
         const SizedBox(height: 10),
-        BigButton(label: l.quranContinue, onPressed: () => openReader(context, last)),
+        BigButton(label: l.quranContinue, onPressed: () => openReader(context, next)),
       ] else ...[
         BigButton(
           label: l.share,
@@ -226,32 +242,42 @@ class _KhatmScreenState extends ConsumerState<KhatmScreen> {
         ),
       ],
       const SizedBox(height: 10),
-      WaqtCard(
-        child: SizedBox(
-          height: 72,
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.end,
+      if (bars.any((b) => b > 0))
+        WaqtCard(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              for (var i = 0; i < bars.length; i++)
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 2),
-                    child: Semantics(
-                      label: '${bars[i]}',
-                      child: Container(
-                        height: 6 + 60 * bars[i] / maxBar,
-                        decoration: BoxDecoration(
-                          color: i == bars.length - 1 ? c.brass : (bars[i] > 0 ? c.primary.withValues(alpha: 0.75) : c.fill),
-                          borderRadius: BorderRadius.circular(5),
+              Kicker(l.khatmLast14),
+              const SizedBox(height: 10),
+              SizedBox(
+                height: 72,
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    for (var i = 0; i < bars.length; i++)
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 2),
+                          child: Semantics(
+                            label: '${bars[i]}',
+                            child: Container(
+                              height: 6 + 60 * bars[i] / maxBar,
+                              decoration: BoxDecoration(
+                                color: i == bars.length - 1
+                                    ? c.brass
+                                    : (bars[i] > 0 ? c.primary.withValues(alpha: 0.75) : c.fill),
+                                borderRadius: BorderRadius.circular(5),
+                              ),
+                            ),
+                          ),
                         ),
                       ),
-                    ),
-                  ),
+                  ],
                 ),
+              ),
             ],
           ),
         ),
-      ),
       const SizedBox(height: 10),
       WaqtGroup(
         children: [

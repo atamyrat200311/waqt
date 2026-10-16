@@ -7,6 +7,7 @@
 // and sunnah.com) and writes:
 //
 //   assets/quran/ar.json.gz           6236 Uthmani (Hafs) ayahs, Mushaf order
+//   assets/quran/ar_search.json.gz    6236 simple-spelling (imlaʾi) ayahs for search
 //   assets/quran/translit.json.gz     6236 transliterations
 //   assets/quran/<id>.json.gz         6236 ayahs per translation (see _translations)
 //   assets/hadith/<book>_<lang>.json.gz
@@ -80,9 +81,31 @@ Future<List<String>> _quranEdition(String edition) async {
   return [for (final v in verses) _clean(v['text'] as String)];
 }
 
+/// The KFGQPC text separates an open tanween from a following alif / alif
+/// maqsura with a space (needed by their font), which breaks letter joining
+/// and search in standard fonts. Also drops stray RLM marks.
+final _tanweenSplit = RegExp('([\u08F0-\u08F2]) ([\u0627\u0649\u064A][\u0610-\u061A\u064B-\u065F\u0670\u06D6-\u06ED]*)(?=\\s|\$)');
+
+String _fixUthmani(String s) =>
+    s.replaceAllMapped(_tanweenSplit, (m) => '${m[1]}${m[2]}').replaceAll('\u200F', '').trim();
+
 Future<void> _buildQuran() async {
   print('Quran text');
-  _writeGz('assets/quran/ar.json.gz', await _quranEdition('ara-quranuthmanihaf'));
+  final uthmani = [for (final a in await _quranEdition('ara-quranuthmanihaf')) _fixUthmani(a)];
+  _writeGz('assets/quran/ar.json.gz', uthmani);
+
+  // Simple spelling for search; Tanzil prefixes the basmala to each surah's
+  // first ayah, which is not part of the ayah (except Al-Fatihah 1:1).
+  final simple = await _quranEdition('ara-quransimple');
+  final basmala = simple.first;
+  final info0 = await _getJson('$_quranBase/info.json') as Map;
+  var at = 0;
+  for (final c in (info0['chapters'] as List).cast<Map>()) {
+    final n = c['chapter'] as int;
+    if (n != 1 && simple[at].startsWith('$basmala ')) simple[at] = simple[at].substring(basmala.length + 1);
+    at += (c['verses'] as List).length;
+  }
+  _writeGz('assets/quran/ar_search.json.gz', simple);
   _writeGz('assets/quran/translit.json.gz', await _quranEdition('ara-quran-la1'));
   for (final e in _translations.entries) {
     _writeGz('assets/quran/${e.key}.json.gz', await _quranEdition(e.value));

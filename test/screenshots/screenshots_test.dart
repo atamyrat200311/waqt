@@ -27,6 +27,7 @@ import 'package:waqt/data/repositories/task_repository.dart';
 import 'package:waqt/data/settings/app_settings.dart';
 import 'package:waqt/features/adhkar/application/adhkar_providers.dart';
 import 'package:waqt/features/hadith/application/hadith_providers.dart';
+import 'package:waqt/features/library/application/library_providers.dart';
 import 'package:waqt/features/quran/application/quran_providers.dart';
 import 'package:waqt/features/quran/domain/quran.dart';
 
@@ -218,6 +219,18 @@ void main() {
     await shoot(t, 'hadith_bukhari', location: '/library/hadith/bukhari', preload: hadith);
     await shoot(t, 'hadith_bukhari_section', location: '/library/hadith/bukhari/2', preload: hadith);
     await shoot(t, 'hadith_nawawi', location: '/library/hadith/nawawi', preload: hadith);
+    Future<void> content(ProviderContainer c) async {
+      await c.read(duaCatalogProvider.future);
+      await c.read(allahNamesProvider.future);
+      await c.read(guidesProvider.future);
+    }
+
+    await shoot(t, 'duas', location: '/library/duas', preload: content, height: 1500);
+    await shoot(t, 'names', location: '/library/names', preload: content);
+    await shoot(t, 'learn', location: '/library/learn', preload: content);
+    await shoot(t, 'guide_salah', location: '/library/learn/salah', preload: content, height: 2400);
+    await shoot(t, 'guide_islam_ru', location: '/library/learn/islam', preload: content, height: 1600,
+        settings: const AppSettings(onboardingDone: true, language: 'ru'));
   }, skip: !_enabled);
 
   testWidgets('new tools', (t) async {

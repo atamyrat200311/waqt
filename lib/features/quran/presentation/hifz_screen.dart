@@ -20,7 +20,34 @@ import 'quran_home_screen.dart';
 import 'quran_reader.dart';
 
 /// Short surahs most people memorize first.
-const _suggested = [1, 112, 113, 114, 103, 108, 110, 111, 109, 107, 106, 105, 104, 102, 101, 100, 99, 97, 95, 94, 93, 87, 78, 67, 36, 18];
+const _suggested = [
+  1,
+  112,
+  113,
+  114,
+  103,
+  108,
+  110,
+  111,
+  109,
+  107,
+  106,
+  105,
+  104,
+  102,
+  101,
+  100,
+  99,
+  97,
+  95,
+  94,
+  93,
+  87,
+  78,
+  67,
+  36,
+  18,
+];
 
 class HifzScreen extends ConsumerWidget {
   const HifzScreen({super.key});
@@ -60,10 +87,7 @@ class HifzScreen extends ConsumerWidget {
                   fontSize: 14,
                   onPressed: () => openReader(context, s.startIndex, hifzSurah: s.number),
                 )
-              : Text(
-                  l.hifzNext(l.dayMonth(DayKey(h.nextReview).date)),
-                  style: WaqtType.sans(12.5, color: c.muted),
-                ),
+              : Text(l.hifzNext(l.dayMonth(DayKey(h.nextReview).date)), style: WaqtType.sans(12.5, color: c.muted)),
         ),
       );
     }
@@ -91,7 +115,9 @@ class HifzScreen extends ConsumerWidget {
                   children: [
                     WaqtIcon(WaqtIcons.repeat, color: c.onMint),
                     const SizedBox(width: 12),
-                    Expanded(child: Text(l.hifzIntro, style: WaqtType.sans(14.5, color: c.onMint, height: 1.45))),
+                    Expanded(
+                      child: Text(l.hifzIntro, style: WaqtType.sans(14.5, color: c.onMint, height: 1.45)),
+                    ),
                   ],
                 ),
               ),
@@ -99,7 +125,11 @@ class HifzScreen extends ConsumerWidget {
                 EmptyState(
                   icon: WaqtIcons.repeat,
                   text: l.hifzEmpty,
-                  action: PillButton(label: l.hifzAdd, icon: WaqtIcons.plus, onPressed: () => _addSurah(context, ref, rows)),
+                  action: PillButton(
+                    label: l.hifzAdd,
+                    icon: WaqtIcons.plus,
+                    onPressed: () => _addSurah(context, ref, rows),
+                  ),
                 ),
               if (due.isNotEmpty) ...[
                 SectionTitle(l.hifzDue, padding: const EdgeInsets.fromLTRB(6, 22, 6, 10)),
@@ -125,8 +155,14 @@ class HifzScreen extends ConsumerWidget {
         final c = ctx.colors;
         final l = ctx.l10n;
         final lang = l.localeName;
-        final suggested = [for (final n in _suggested) if (!have.contains(n)) n];
-        final rest = [for (var n = 1; n <= totalSurahs; n++) if (!have.contains(n) && !_suggested.contains(n)) n];
+        final suggested = [
+          for (final n in _suggested)
+            if (!have.contains(n)) n,
+        ];
+        final rest = [
+          for (var n = 1; n <= totalSurahs; n++)
+            if (!have.contains(n) && !_suggested.contains(n)) n,
+        ];
         return ListView(
           padding: EdgeInsets.fromLTRB(Gap.screen, 0, Gap.screen, 20 + MediaQuery.paddingOf(ctx).bottom),
           children: [
@@ -137,17 +173,21 @@ class HifzScreen extends ConsumerWidget {
             if (suggested.isNotEmpty) ...[
               Kicker(l.hifzSuggested),
               const SizedBox(height: 8),
-              WaqtGroup(children: [
-                for (final n in suggested)
-                  SurahRow(surah: SurahInfo(n), language: lang, onTap: () => Navigator.pop(ctx, n)),
-              ]),
+              WaqtGroup(
+                children: [
+                  for (final n in suggested)
+                    SurahRow(surah: SurahInfo(n), language: lang, onTap: () => Navigator.pop(ctx, n)),
+                ],
+              ),
               const SizedBox(height: 18),
             ],
             Kicker(l.hifzAllSurahs),
             const SizedBox(height: 8),
-            WaqtGroup(children: [
-              for (final n in rest) SurahRow(surah: SurahInfo(n), language: lang, onTap: () => Navigator.pop(ctx, n)),
-            ]),
+            WaqtGroup(
+              children: [
+                for (final n in rest) SurahRow(surah: SurahInfo(n), language: lang, onTap: () => Navigator.pop(ctx, n)),
+              ],
+            ),
           ],
         );
       },

@@ -50,7 +50,11 @@ class _HadithBookScreenState extends ConsumerState<HadithBookScreen> {
     final preferred = ref.watch(hadithLanguageProvider);
     final edition = ref.watch(hadithEditionProvider((book.id, lang)));
     final arabic = ref.watch(hadithEditionProvider((book.id, 'ara'))).value;
-    final e = edition.value;
+    final pref = edition.value;
+    // English is the complete edition; other translations miss some hadith,
+    // which are shown in English (with an "EN" chip) rather than skipped.
+    final english = lang == 'eng' ? pref : ref.watch(hadithEditionProvider((book.id, 'eng'))).value;
+    final e = pref == null ? null : english;
 
     final slivers = <Widget>[
       SliverToBoxAdapter(
@@ -58,12 +62,9 @@ class _HadithBookScreenState extends ConsumerState<HadithBookScreen> {
           padding: const EdgeInsets.fromLTRB(Gap.screen, 10, Gap.screen, 6),
           child: Row(
             children: [
-              Expanded(
-                child: Text(
-                  e == null ? book.arabicName : '${book.arabicName}  ·  ${l.hadithCount(e.hadiths.length)}',
-                  style: WaqtType.sans(14, color: c.muted),
-                ),
-              ),
+              Text(book.arabicName, textDirection: TextDirection.rtl, style: WaqtType.arabic(16, height: 1.3, color: c.muted)),
+              if (e != null)
+                Expanded(child: Text('  ·  ${l.hadithCount(e.hadiths.length)}', style: WaqtType.sans(14, color: c.muted))),
             ],
           ),
         ),
@@ -104,17 +105,20 @@ class _HadithBookScreenState extends ConsumerState<HadithBookScreen> {
     if (e == null) {
       slivers.add(const SliverToBoxAdapter(child: HadithLoading()));
     } else if (_query.isNotEmpty) {
-      final index = ref.watch(hadithSearchIndexProvider((book.id, lang))).value;
-      final hits = index == null ? null : searchHadith(e, index, _query);
+      final isArabic = RegExp('[\u0600-\u06FF]').hasMatch(_query);
+      final searchEdition = isArabic ? arabic : pref;
+      final index = ref.watch(hadithSearchIndexProvider((book.id, isArabic ? 'ara' : lang))).value;
+      final found = index == null || searchEdition == null ? null : searchHadith(searchEdition, index, _query);
+      final hits = found == null ? null : [for (final h in found) ?e.byNumber(h.number)];
       if (hits == null) {
         slivers.add(const SliverToBoxAdapter(child: HadithLoading()));
       } else if (hits.isEmpty) {
         slivers.add(SliverToBoxAdapter(child: EmptyState(icon: WaqtIcons.search, text: l.hadithNoResults)));
       } else {
-        slivers.add(_hadithList(book.id, hits, arabic, highlight: _query));
+        slivers.add(_hadithList(book.id, hits, arabic, pref, highlight: _query));
       }
     } else if (e.flat) {
-      slivers.add(_hadithList(book.id, e.hadiths, arabic));
+      slivers.add(_hadithList(book.id, e.hadiths, arabic, pref));
     } else {
       slivers.add(
         SliverPadding(
@@ -191,17 +195,22 @@ class _HadithBookScreenState extends ConsumerState<HadithBookScreen> {
 
   String _n(num v) => v == v.roundToDouble() ? '${v.toInt()}' : '$v';
 
-  Widget _hadithList(String bookId, List<Hadith> list, HadithEdition? arabic, {String? highlight}) => SliverPadding(
+  Widget _hadithList(String bookId, List<Hadith> list, HadithEdition? arabic, HadithEdition? pref, {String? highlight}) =>
+      SliverPadding(
         padding: const EdgeInsets.symmetric(horizontal: Gap.screen),
         sliver: SliverList.separated(
           itemCount: list.length,
           separatorBuilder: (_, _) => const SizedBox(height: 10),
-          itemBuilder: (context, i) => HadithCard(
-            bookId: bookId,
-            hadith: list[i],
-            arabic: arabic?.byNumber(list[i].number),
-            highlight: highlight,
-          ),
+          itemBuilder: (context, i) {
+            final translated = pref?.byNumber(list[i].number);
+            return HadithCard(
+              bookId: bookId,
+              hadith: translated ?? list[i],
+              fallback: translated == null && pref?.language != 'eng',
+              arabic: arabic?.byNumber(list[i].number),
+              highlight: highlight,
+            );
+          },
         ),
       );
 }
@@ -216,9 +225,12 @@ class HadithSectionScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final l = context.l10n;
     final lang = ref.watch(hadithBookLanguageProvider(bookId));
-    final e = ref.watch(hadithEditionProvider((bookId, lang))).value;
+    final pref = ref.watch(hadithEditionProvider((bookId, lang))).value;
+    final english = lang == 'eng' ? pref : ref.watch(hadithEditionProvider((bookId, 'eng'))).value;
+    final e = pref == null ? null : english;
     final arabic = ref.watch(hadithEditionProvider((bookId, 'ara'))).value;
-    final section = e?.sections.where((s) => s.id == sectionId).firstOrNull;
+    final section = pref?.sections.where((s) => s.id == sectionId).firstOrNull ??
+        e?.sections.where((s) => s.id == sectionId).firstOrNull;
     final list = e?.inSection(sectionId) ?? const <Hadith>[];
 
     return SubScreen(
@@ -233,11 +245,15 @@ class HadithSectionScreen extends ConsumerWidget {
             sliver: SliverList.separated(
               itemCount: list.length,
               separatorBuilder: (_, _) => const SizedBox(height: 10),
-              itemBuilder: (context, i) => HadithCard(
-                bookId: bookId,
-                hadith: list[i],
-                arabic: arabic?.byNumber(list[i].number),
-              ),
+              itemBuilder: (context, i) {
+                final translated = pref?.byNumber(list[i].number);
+                return HadithCard(
+                  bookId: bookId,
+                  hadith: translated ?? list[i],
+                  fallback: translated == null && lang != 'eng',
+                  arabic: arabic?.byNumber(list[i].number),
+                );
+              },
             ),
           ),
       ],

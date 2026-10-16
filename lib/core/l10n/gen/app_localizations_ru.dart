@@ -1533,6 +1533,9 @@ class AppLocalizationsRu extends AppLocalizations {
   String get quranRemoveBookmark => 'Убрать закладку';
 
   @override
+  String get quranRemoveNoteConfirm => 'Удалить закладку вместе с заметкой?';
+
+  @override
   String get quranBookmarked => 'Добавлено в закладки';
 
   @override
@@ -1621,6 +1624,14 @@ class AppLocalizationsRu extends AppLocalizations {
   String quranGoal(String read, String goal) {
     return '$read из $goal аятов';
   }
+
+  @override
+  String quranGoalPages(String read, String goal) {
+    return '$read из $goal стр.';
+  }
+
+  @override
+  String get khatmLast14 => 'Последние 14 дней';
 
   @override
   String get quranGoalDone => 'Дневная цель выполнена';
@@ -1718,8 +1729,8 @@ class AppLocalizationsRu extends AppLocalizations {
   }
 
   @override
-  String khatmTodayTarget(String ayahs, String pages) {
-    return 'Сегодня: $ayahs аятов · около $pages стр.';
+  String khatmTodayTarget(String pages, String from) {
+    return 'Сегодня: $pages стр., начиная с $from';
   }
 
   @override
@@ -1742,7 +1753,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String khatmProgress(String read, String total) {
-    return '$read из $total аятов';
+    return '$read из $total стр.';
   }
 
   @override
@@ -1840,6 +1851,15 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get khatmTileIdle => 'Читать по плану';
+
+  @override
+  String get hifzAgain => 'Заново';
+
+  @override
+  String get quranJumpTo => 'Перейти к суре, джузу или странице';
+
+  @override
+  String get quranPages => 'Страницы';
 
   @override
   String get hifzMemorized => 'Выучено';

@@ -103,15 +103,22 @@ void main() {
   });
 
   group('khatm', () {
-    test('first day of a 30-day plan spreads all ayahs evenly', () {
+    test('page weights sum to 604 and short ayahs weigh less', () {
+      expect(ayahPageWeights.fold<double>(0, (a, b) => a + b), closeTo(totalPages, 1e-6));
+      expect(ayahPageWeights[const AyahRef(2, 282).index], greaterThan(ayahPageWeights[const AyahRef(108, 1).index]));
+      expect(pagesOf([for (var i = 0; i < 7; i++) i]), closeTo(1, 1e-9)); // Al-Fatihah = page 1
+    });
+
+    test('first day of a 30-day plan spreads all pages evenly', () {
       final k = khatmProgress(
         plan: const KhatmPlan(start: '2026-10-01', days: 30),
         today: DateTime(2026, 10, 1),
-        readTotal: 0,
-        readToday: 0,
+        readPages: 0,
+        readTodayPages: 0,
       );
       expect(k.dayNumber, 1);
-      expect(k.todayTarget, (totalAyahs / 30).ceil());
+      expect(k.todayTargetPages, closeTo(totalPages / 30, 1e-9));
+      expect(k.targetPagesRounded, 21);
       expect(k.behind, isFalse);
       expect(k.todayDone, isFalse);
     });
@@ -120,42 +127,41 @@ void main() {
       final k = khatmProgress(
         plan: const KhatmPlan(start: '2026-10-01', days: 30),
         today: DateTime(2026, 10, 11),
-        readTotal: 0,
-        readToday: 0,
+        readPages: 0,
+        readTodayPages: 0,
       );
       expect(k.dayNumber, 11);
       expect(k.daysLeft, 20);
-      expect(k.todayTarget, (totalAyahs / 20).ceil());
+      expect(k.todayTargetPages, closeTo(totalPages / 20, 1e-9));
       expect(k.behind, isTrue);
     });
 
-    test('reading today does not shrink today\'s target', () {
-      final before = khatmProgress(
-        plan: const KhatmPlan(start: '2026-10-01', days: 10),
-        today: DateTime(2026, 10, 2),
-        readTotal: 624,
-        readToday: 0,
-      );
-      final after = khatmProgress(
-        plan: const KhatmPlan(start: '2026-10-01', days: 10),
-        today: DateTime(2026, 10, 2),
-        readTotal: 724,
-        readToday: 100,
-      );
-      expect(after.todayTarget, before.todayTarget);
-      expect(after.readToday, 100);
+    test("reading today doesn't shrink today's target and can complete it", () {
+      const plan = KhatmPlan(start: '2026-10-01', days: 10);
+      final before = khatmProgress(plan: plan, today: DateTime(2026, 10, 2), readPages: 60, readTodayPages: 0);
+      final after = khatmProgress(plan: plan, today: DateTime(2026, 10, 2), readPages: 121, readTodayPages: 61);
+      expect(after.todayTargetPages, before.todayTargetPages);
+      expect(after.todayDone, isTrue);
     });
 
-    test('complete when every ayah is read', () {
+    test('complete only when every ayah was read', () {
       final k = khatmProgress(
         plan: const KhatmPlan(start: '2026-10-01', days: 7),
         today: DateTime(2026, 10, 9),
-        readTotal: totalAyahs,
-        readToday: 5,
+        readPages: 603.99999,
+        readTodayPages: 5,
+        allRead: true,
       );
       expect(k.complete, isTrue);
       expect(k.fraction, 1);
       expect(k.behind, isFalse);
+    });
+
+    test('portion helpers', () {
+      expect(firstUnread({0, 1, 2}), 3);
+      expect(firstUnread({}), 0);
+      // One page from Al-Fatihah ends at its last ayah.
+      expect(portionEnd(0, 1), 6);
     });
 
     test('plan JSON round-trip and validation', () {
@@ -174,11 +180,30 @@ void main() {
     expect(readingStreak({}, DateTime(2026, 10, 6)), 0);
   });
 
-  test('hifz ladder climbs on strong reviews and resets on weak ones', () {
-    expect(hifzNext(0, strong: true), (1, 3));
-    expect(hifzNext(4, strong: true), (5, 90));
-    expect(hifzNext(5, strong: true), (5, 90));
-    expect(hifzNext(4, strong: false), (0, 1));
+  test('hifz ladder: good climbs, hard steps back, again restarts', () {
+    expect(hifzNext(0, grade: HifzGrade.good), (1, 3));
+    expect(hifzNext(4, grade: HifzGrade.good), (5, 90));
+    expect(hifzNext(5, grade: HifzGrade.good), (5, 90));
+    expect(hifzNext(4, grade: HifzGrade.hard), (3, 14));
+    expect(hifzNext(0, grade: HifzGrade.hard), (0, 1));
+    expect(hifzNext(4, grade: HifzGrade.again), (0, 1));
+  });
+
+  test('tracker honours a per-ayah dwell', () async {
+    final db = memoryDb();
+    addTearDown(db.close);
+    final t = ReadTracker(
+      repository: QuranRepository(db),
+      today: () => const DayKey('2026-10-04'),
+      flushEvery: 100,
+      dwellFor: (a) => a == 1 ? 4 : 2,
+    );
+    for (var i = 0; i < 3; i++) {
+      t.tick([0, 1]);
+    }
+    expect(t.recorded, {0});
+    t.tick([0, 1]);
+    expect(t.recorded, {0, 1});
   });
 
   test('daily ayah is stable within a day and valid', () {

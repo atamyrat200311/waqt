@@ -1518,6 +1518,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get quranRemoveBookmark => 'Remove bookmark';
 
   @override
+  String get quranRemoveNoteConfirm => 'Remove this bookmark and its note?';
+
+  @override
   String get quranBookmarked => 'Saved to bookmarks';
 
   @override
@@ -1606,6 +1609,14 @@ class AppLocalizationsEn extends AppLocalizations {
   String quranGoal(String read, String goal) {
     return '$read of $goal ayahs';
   }
+
+  @override
+  String quranGoalPages(String read, String goal) {
+    return '$read of $goal pages';
+  }
+
+  @override
+  String get khatmLast14 => 'Last 14 days';
 
   @override
   String get quranGoalDone => 'Daily goal reached';
@@ -1700,8 +1711,8 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String khatmTodayTarget(String ayahs, String pages) {
-    return 'Today: $ayahs ayahs · about $pages pages';
+  String khatmTodayTarget(String pages, String from) {
+    return 'Today: $pages pages, from $from';
   }
 
   @override
@@ -1725,7 +1736,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String khatmProgress(String read, String total) {
-    return '$read of $total ayahs';
+    return '$read of $total pages';
   }
 
   @override
@@ -1821,6 +1832,15 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get khatmTileIdle => 'Finish on a schedule';
+
+  @override
+  String get hifzAgain => 'Again';
+
+  @override
+  String get quranJumpTo => 'Jump to surah, juz or page';
+
+  @override
+  String get quranPages => 'Pages';
 
   @override
   String get hifzMemorized => 'Memorized';

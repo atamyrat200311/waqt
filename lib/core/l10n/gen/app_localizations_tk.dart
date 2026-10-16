@@ -1494,6 +1494,9 @@ class AppLocalizationsTk extends AppLocalizations {
   String get quranRemoveBookmark => 'Belligi aýyr';
 
   @override
+  String get quranRemoveNoteConfirm => 'Bu bellik we onuň ýazgysy aýrylsynmy?';
+
+  @override
   String get quranBookmarked => 'Belliklere goşuldy';
 
   @override
@@ -1584,6 +1587,14 @@ class AppLocalizationsTk extends AppLocalizations {
   }
 
   @override
+  String quranGoalPages(String read, String goal) {
+    return '$goal sahypadan $read';
+  }
+
+  @override
+  String get khatmLast14 => 'Soňky 14 gün';
+
+  @override
   String get quranGoalDone => 'Günlük maksat ýerine ýetdi';
 
   @override
@@ -1663,8 +1674,8 @@ class AppLocalizationsTk extends AppLocalizations {
   }
 
   @override
-  String khatmTodayTarget(String ayahs, String pages) {
-    return 'Şu gün: $ayahs aýat · takmynan $pages sahypa';
+  String khatmTodayTarget(String pages, String from) {
+    return 'Şu gün: $pages sahypa, $from başlap';
   }
 
   @override
@@ -1688,7 +1699,7 @@ class AppLocalizationsTk extends AppLocalizations {
 
   @override
   String khatmProgress(String read, String total) {
-    return '$total aýatdan $read';
+    return '$total sahypadan $read';
   }
 
   @override
@@ -1776,6 +1787,15 @@ class AppLocalizationsTk extends AppLocalizations {
 
   @override
   String get khatmTileIdle => 'Meýilnama bilen tamamla';
+
+  @override
+  String get hifzAgain => 'Gaýtadan';
+
+  @override
+  String get quranJumpTo => 'Süre, para ýa-da sahypa geç';
+
+  @override
+  String get quranPages => 'Sahypalar';
 
   @override
   String get hifzMemorized => 'Ýatlanan';

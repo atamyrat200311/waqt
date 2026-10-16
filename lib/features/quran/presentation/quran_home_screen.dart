@@ -109,7 +109,12 @@ class _QuranHomeScreenState extends ConsumerState<QuranHomeScreen> {
                             }
                           }
                         }
-                        return SurahRow(surah: s, language: lang, done: done, onTap: () => openReader(context, s.startIndex));
+                        return SurahRow(
+                          surah: s,
+                          language: lang,
+                          done: done,
+                          onTap: () => openReader(context, s.startIndex),
+                        );
                       },
                     ),
             ),
@@ -123,7 +128,14 @@ class _QuranHomeScreenState extends ConsumerState<QuranHomeScreen> {
 
 /// One surah in the index.
 class SurahRow extends StatelessWidget {
-  const SurahRow({super.key, required this.surah, required this.language, required this.onTap, this.done = false, this.trailing});
+  const SurahRow({
+    super.key,
+    required this.surah,
+    required this.language,
+    required this.onTap,
+    this.done = false,
+    this.trailing,
+  });
 
   final SurahInfo surah;
   final String language;
@@ -270,9 +282,17 @@ class ContinueReadingCard extends ConsumerWidget {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Kicker(last == null ? l.quranStart : l.quranContinue, color: c.onHeroMuted, size: 12, tracking: 0.09),
+                              Kicker(
+                                last == null ? l.quranStart : l.quranContinue,
+                                color: c.onHeroMuted,
+                                size: 12,
+                                tracking: 0.09,
+                              ),
                               const SizedBox(height: 8),
-                              Text(surah.translit, style: WaqtType.serif(compact ? 24 : 28, weight: 500, color: c.onHero)),
+                              Text(
+                                surah.translit,
+                                style: WaqtType.serif(compact ? 24 : 28, weight: 500, color: c.onHero),
+                              ),
                               const SizedBox(height: 4),
                               Text(
                                 last == null
@@ -367,7 +387,11 @@ class ReadingGoalCard extends ConsumerWidget {
                 Kicker(k != null && !k.complete ? l.khatmDayOf('${k.dayNumber}', '${k.plan.days}') : l.quranToday),
                 const SizedBox(height: 4),
                 Text(
-                  g.done ? l.quranGoalDone : l.quranGoal('${g.read}', '${g.target}'),
+                  g.done
+                      ? l.quranGoalDone
+                      : (g.pages
+                            ? l.quranGoalPages('${g.read}', '${g.target}')
+                            : l.quranGoal('${g.read}', '${g.target}')),
                   style: WaqtType.sans(16, weight: 600, color: c.ink),
                 ),
                 const SizedBox(height: 3),
@@ -453,9 +477,19 @@ class _Tile extends StatelessWidget {
         children: [
           IconTile(icon: icon, small: true, background: highlight ? c.brassSoft : c.mint, color: iconColor ?? c.onMint),
           const SizedBox(height: 12),
-          Text(title, maxLines: 1, overflow: TextOverflow.ellipsis, style: WaqtType.sans(15.5, weight: 600, color: c.ink)),
+          Text(
+            title,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            style: WaqtType.sans(15.5, weight: 600, color: c.ink),
+          ),
           const SizedBox(height: 2),
-          Text(subtitle, maxLines: 1, overflow: TextOverflow.ellipsis, style: WaqtType.sans(13, color: highlight ? c.brassText : c.muted)),
+          Text(
+            subtitle,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            style: WaqtType.sans(13, color: highlight ? c.brassText : c.muted),
+          ),
         ],
       ),
     );

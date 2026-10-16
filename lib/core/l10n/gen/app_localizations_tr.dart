@@ -1495,6 +1495,9 @@ class AppLocalizationsTr extends AppLocalizations {
   String get quranRemoveBookmark => 'Yer imini kaldır';
 
   @override
+  String get quranRemoveNoteConfirm => 'Bu yer imi ve notu silinsin mi?';
+
+  @override
   String get quranBookmarked => 'Yer imlerine eklendi';
 
   @override
@@ -1585,6 +1588,14 @@ class AppLocalizationsTr extends AppLocalizations {
   }
 
   @override
+  String quranGoalPages(String read, String goal) {
+    return '$goal sayfadan $read';
+  }
+
+  @override
+  String get khatmLast14 => 'Son 14 gün';
+
+  @override
   String get quranGoalDone => 'Günlük hedef tamam';
 
   @override
@@ -1664,8 +1675,8 @@ class AppLocalizationsTr extends AppLocalizations {
   }
 
   @override
-  String khatmTodayTarget(String ayahs, String pages) {
-    return 'Bugün: $ayahs ayet · yaklaşık $pages sayfa';
+  String khatmTodayTarget(String pages, String from) {
+    return 'Bugün: $pages sayfa, $from itibaren';
   }
 
   @override
@@ -1690,7 +1701,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String khatmProgress(String read, String total) {
-    return '$total ayetten $read';
+    return '$total sayfadan $read';
   }
 
   @override
@@ -1778,6 +1789,15 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get khatmTileIdle => 'Planlı bitirin';
+
+  @override
+  String get hifzAgain => 'Tekrar';
+
+  @override
+  String get quranJumpTo => 'Sure, cüz veya sayfaya git';
+
+  @override
+  String get quranPages => 'Sayfalar';
 
   @override
   String get hifzMemorized => 'Ezberlendi';

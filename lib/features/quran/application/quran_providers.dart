@@ -14,8 +14,7 @@ import '../domain/translations.dart';
 /// Uthmani text, 6236 ayahs.
 final quranArabicProvider = FutureProvider<List<String>>((ref) => loadGzStrings('assets/quran/ar.json.gz'));
 
-final quranTranslitProvider =
-    FutureProvider<List<String>>((ref) => loadGzStrings('assets/quran/translit.json.gz'));
+final quranTranslitProvider = FutureProvider<List<String>>((ref) => loadGzStrings('assets/quran/translit.json.gz'));
 
 final quranTranslationTextProvider = FutureProvider.family<List<String>, String>(
   (ref, id) => loadGzStrings(QuranTranslations.byId(id).asset),
@@ -31,10 +30,13 @@ final activeTranslationProvider = Provider<QuranTranslation>((ref) {
 /// Everything the reader needs, loaded together.
 @immutable
 class QuranTexts {
-  const QuranTexts({required this.arabic, required this.translit, required this.translation});
+  const QuranTexts({required this.arabic, required this.translit, required this.translation, this.translationCredit});
   final List<String> arabic;
   final List<String> translit;
   final List<String> translation;
+
+  /// "Saheeh International" etc., for share cards.
+  final String? translationCredit;
 }
 
 final quranTextsProvider = FutureProvider<QuranTexts>((ref) async {
@@ -44,7 +46,7 @@ final quranTextsProvider = FutureProvider<QuranTexts>((ref) async {
     ref.watch(quranTranslitProvider.future),
     ref.watch(quranTranslationTextProvider(t.id).future),
   ]);
-  return QuranTexts(arabic: results[0], translit: results[1], translation: results[2]);
+  return QuranTexts(arabic: results[0], translit: results[1], translation: results[2], translationCredit: t.author);
 });
 
 /// Normalized copies for search (built in a background isolate).
@@ -55,15 +57,19 @@ class QuranSearchIndex {
   final List<String> translation;
 }
 
+/// Simple (imlaʾi) spelling of the Arabic, used only for search so ordinary
+/// typing (الصلاة, ابراهيم) matches the Uthmani text.
+final quranArabicSearchProvider =
+    FutureProvider<List<String>>((ref) => loadGzStrings('assets/quran/ar_search.json.gz'));
+
 final quranSearchIndexProvider = FutureProvider<QuranSearchIndex>((ref) async {
   final texts = await ref.watch(quranTextsProvider.future);
-  return compute(_buildIndex, (texts.arabic, texts.translation));
+  final simple = await ref.watch(quranArabicSearchProvider.future);
+  return compute(_buildIndex, (simple, texts.translation));
 });
 
-QuranSearchIndex _buildIndex((List<String>, List<String>) input) => QuranSearchIndex(
-      [for (final a in input.$1) normalizeArabic(a)],
-      [for (final t in input.$2) normalizeLatin(t)],
-    );
+QuranSearchIndex _buildIndex((List<String>, List<String>) input) =>
+    QuranSearchIndex([for (final a in input.$1) normalizeArabic(a)], [for (final t in input.$2) normalizeLatin(t)]);
 
 // ---------------------------------------------------------------- bookmarks
 
@@ -97,12 +103,6 @@ final quranStreakProvider = Provider<int>((ref) {
   return readingStreak(days, ref.watch(todayKeyProvider).date);
 });
 
-final _readSinceKhatmProvider = StreamProvider<int>((ref) {
-  final plan = ref.watch(settingsProvider.select((s) => s.khatmPlan));
-  if (plan == null) return Stream.value(0);
-  return ref.watch(quranRepositoryProvider).watchDistinctSince(DayKey(plan.start));
-});
-
 /// Ayahs read since the khatm plan began (to tick them in the surah list).
 final khatmReadAyahsProvider = StreamProvider<Set<int>>((ref) {
   final plan = ref.watch(settingsProvider.select((s) => s.khatmPlan));
@@ -110,36 +110,60 @@ final khatmReadAyahsProvider = StreamProvider<Set<int>>((ref) {
   return ref.watch(quranRepositoryProvider).watchReadSince(DayKey(plan.start));
 });
 
+/// Ayahs read for the first time in this plan today.
+final _khatmNewTodayProvider = StreamProvider<Set<int>>((ref) {
+  final plan = ref.watch(settingsProvider.select((s) => s.khatmPlan));
+  if (plan == null) return Stream.value(const <int>{});
+  return ref.watch(quranRepositoryProvider).watchFirstReadOn(DayKey(plan.start), ref.watch(todayKeyProvider));
+});
+
 final khatmProgressProvider = Provider<KhatmProgress?>((ref) {
   final plan = ref.watch(settingsProvider.select((s) => s.khatmPlan));
   if (plan == null) return null;
-  final total = ref.watch(_readSinceKhatmProvider).value ?? 0;
+  final read = ref.watch(khatmReadAyahsProvider).value ?? const <int>{};
+  final newToday = ref.watch(_khatmNewTodayProvider).value ?? const <int>{};
   return khatmProgress(
     plan: plan,
     today: ref.watch(todayKeyProvider).date,
-    readTotal: total,
-    readToday: ref.watch(quranTodayReadProvider),
+    readPages: pagesOf(read),
+    readTodayPages: pagesOf(newToday),
+    allRead: read.length >= totalAyahs,
   );
 });
+
+/// Where "continue khatm" resumes: the first ayah not yet read in the plan.
+final khatmNextAyahProvider = Provider<int>(
+  (ref) => firstUnread(ref.watch(khatmReadAyahsProvider).value ?? const <int>{}),
+);
 
 /// Today's target and progress for the reading ring (khatm or daily goal).
 @immutable
 class ReadingGoal {
   const ReadingGoal({required this.read, required this.target, required this.streak, this.khatm});
+
+  /// Ayahs today (daily goal) or pages today (khatm plan, see [pages]).
   final int read;
   final int target;
   final int streak;
   final KhatmProgress? khatm;
-  double get fraction => target <= 0 ? 1 : (read / target).clamp(0, 1).toDouble();
-  bool get done => read >= target;
+
+  /// True when [read]/[target] are pages of an active khatm plan.
+  bool get pages => khatm != null && !khatm!.complete;
+  double get fraction => pages
+      ? (khatm!.todayTargetPages <= 0 ? 1 : (khatm!.readTodayPages / khatm!.todayTargetPages).clamp(0, 1).toDouble())
+      : target <= 0
+      ? 1
+      : (read / target).clamp(0, 1).toDouble();
+  bool get done => pages ? khatm!.todayDone : read >= target;
 }
 
 final readingGoalProvider = Provider<ReadingGoal>((ref) {
   final khatm = ref.watch(khatmProgressProvider);
   final goal = ref.watch(settingsProvider.select((s) => s.reader.dailyGoal));
+  final active = khatm != null && !khatm.complete;
   return ReadingGoal(
-    read: ref.watch(quranTodayReadProvider),
-    target: khatm != null && !khatm.complete ? khatm.todayTarget : goal,
+    read: active ? khatm.readTodayRounded : ref.watch(quranTodayReadProvider),
+    target: active ? khatm.targetPagesRounded : goal,
     streak: ref.watch(quranStreakProvider),
     khatm: khatm,
   );

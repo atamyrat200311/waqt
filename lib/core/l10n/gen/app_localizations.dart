@@ -2424,6 +2424,12 @@ abstract class AppLocalizations {
   /// **'Remove bookmark'**
   String get quranRemoveBookmark;
 
+  /// No description provided for @quranRemoveNoteConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove this bookmark and its note?'**
+  String get quranRemoveNoteConfirm;
+
   /// No description provided for @quranBookmarked.
   ///
   /// In en, this message translates to:
@@ -2598,6 +2604,18 @@ abstract class AppLocalizations {
   /// **'{read} of {goal} ayahs'**
   String quranGoal(String read, String goal);
 
+  /// No description provided for @quranGoalPages.
+  ///
+  /// In en, this message translates to:
+  /// **'{read} of {goal} pages'**
+  String quranGoalPages(String read, String goal);
+
+  /// No description provided for @khatmLast14.
+  ///
+  /// In en, this message translates to:
+  /// **'Last 14 days'**
+  String get khatmLast14;
+
   /// No description provided for @quranGoalDone.
   ///
   /// In en, this message translates to:
@@ -2715,8 +2733,8 @@ abstract class AppLocalizations {
   /// No description provided for @khatmTodayTarget.
   ///
   /// In en, this message translates to:
-  /// **'Today: {ayahs} ayahs · about {pages} pages'**
-  String khatmTodayTarget(String ayahs, String pages);
+  /// **'Today: {pages} pages, from {from}'**
+  String khatmTodayTarget(String pages, String from);
 
   /// No description provided for @khatmTodayDone.
   ///
@@ -2757,7 +2775,7 @@ abstract class AppLocalizations {
   /// No description provided for @khatmProgress.
   ///
   /// In en, this message translates to:
-  /// **'{read} of {total} ayahs'**
+  /// **'{read} of {total} pages'**
   String khatmProgress(String read, String total);
 
   /// No description provided for @khatmDaysLeft.
@@ -2903,6 +2921,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Finish on a schedule'**
   String get khatmTileIdle;
+
+  /// No description provided for @hifzAgain.
+  ///
+  /// In en, this message translates to:
+  /// **'Again'**
+  String get hifzAgain;
+
+  /// No description provided for @quranJumpTo.
+  ///
+  /// In en, this message translates to:
+  /// **'Jump to surah, juz or page'**
+  String get quranJumpTo;
+
+  /// No description provided for @quranPages.
+  ///
+  /// In en, this message translates to:
+  /// **'Pages'**
+  String get quranPages;
 
   /// No description provided for @hifzMemorized.
   ///

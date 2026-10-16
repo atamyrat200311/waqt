@@ -48,9 +48,26 @@ class QuranBookmarksScreen extends ConsumerWidget {
                   background: Container(
                     alignment: AlignmentDirectional.centerEnd,
                     padding: const EdgeInsets.only(right: 24),
-                    decoration: BoxDecoration(color: c.brassSoft, borderRadius: BorderRadius.circular(Radii.card(context))),
+                    decoration: BoxDecoration(
+                      color: c.brassSoft,
+                      borderRadius: BorderRadius.circular(Radii.card(context)),
+                    ),
                     child: WaqtIcon(WaqtIcons.trash, color: c.brassText),
                   ),
+                  confirmDismiss: (_) async {
+                    if (b.note == null) return true;
+                    return await showDialog<bool>(
+                          context: context,
+                          builder: (ctx) => AlertDialog.adaptive(
+                            content: Text(l.quranRemoveNoteConfirm),
+                            actions: [
+                              TextButton(onPressed: () => Navigator.pop(ctx, false), child: Text(l.cancel)),
+                              TextButton(onPressed: () => Navigator.pop(ctx, true), child: Text(l.quranRemoveBookmark)),
+                            ],
+                          ),
+                        ) ??
+                        false;
+                  },
                   onDismissed: (_) => ref.read(bookmarkRepositoryProvider).remove(BookmarkKind.ayah, b.ref),
                   child: WaqtCard(
                     onTap: () => openReader(context, r.index),
@@ -62,8 +79,10 @@ class QuranBookmarksScreen extends ConsumerWidget {
                             WaqtIcon(WaqtIcons.bookmarkFilled, size: 16, color: c.brass),
                             const SizedBox(width: 6),
                             Expanded(
-                              child: Text('${SurahInfo(r.surah).translit} · ${r.surah}:${r.ayah}',
-                                  style: WaqtType.sans(14, weight: 700, color: c.accent)),
+                              child: Text(
+                                '${SurahInfo(r.surah).translit} · ${r.surah}:${r.ayah}',
+                                style: WaqtType.sans(14, weight: 700, color: c.accent),
+                              ),
                             ),
                           ],
                         ),
@@ -77,8 +96,12 @@ class QuranBookmarksScreen extends ConsumerWidget {
                             style: WaqtType.quran(21, height: 1.8, color: c.ink),
                           ),
                           const SizedBox(height: 4),
-                          Text(texts.translation[r.index],
-                              maxLines: 3, overflow: TextOverflow.ellipsis, style: WaqtType.sans(14.5, color: c.muted, height: 1.45)),
+                          Text(
+                            texts.translation[r.index],
+                            maxLines: 3,
+                            overflow: TextOverflow.ellipsis,
+                            style: WaqtType.sans(14.5, color: c.muted, height: 1.45),
+                          ),
                         ],
                         if (b.note != null) ...[
                           const SizedBox(height: 10),

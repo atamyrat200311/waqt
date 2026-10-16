@@ -27,6 +27,7 @@ class ShareCardData {
     required this.reference,
     this.arabicQuran = false,
     this.big,
+    this.credit,
   });
 
   /// Small caps line at the top ("AYAH OF THE DAY").
@@ -36,6 +37,9 @@ class ShareCardData {
 
   /// Source line ("Al-Baqarah · 2:255").
   final String reference;
+
+  /// Translator / source credit shown small under the reference.
+  final String? credit;
 
   /// Use the Quran face for [arabic].
   final bool arabicQuran;
@@ -97,6 +101,7 @@ class _ShareSheetState extends State<_ShareSheet> {
         reference: widget.data.reference,
         arabicQuran: widget.data.arabicQuran,
         big: widget.data.big,
+        credit: _text ? widget.data.credit : null,
       );
 
   Future<void> _shareImage() async {
@@ -282,6 +287,8 @@ class ShareCard extends StatelessWidget {
                       textAlign: TextAlign.center,
                       style: WaqtType.sans(13, weight: 600, color: accent),
                     ),
+                    if (data.credit != null)
+                      Text(data.credit!, textAlign: TextAlign.center, style: WaqtType.sans(10.5, color: muted)),
                     const SizedBox(height: 14),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,

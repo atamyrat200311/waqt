@@ -1,0 +1,1402 @@
+[
+  {
+    "id": "islam",
+    "icon": "star",
+    "title": {
+      "en": "Islam in 2 minutes",
+      "tk": "Yslam 2 minutda",
+      "tr": "2 dakikada İslam",
+      "ru": "Ислам за 2 минуты"
+    },
+    "subtitle": {
+      "en": "For the curious and for new Muslims",
+      "tk": "Gyzyklanýanlar we täze musulmanlar üçin",
+      "tr": "Merak edenler ve yeni Müslümanlar için",
+      "ru": "Для интересующихся и новых мусульман"
+    },
+    "intro": {
+      "en": "Islam means peaceful submission to the One God. Here are the essentials in a few short steps.",
+      "tk": "Yslam — ýeke-täk Hudaýa parahatlyk bilen boýun bolmak diýmekdir. Ine, esasy zatlar birnäçe gysga ädimde.",
+      "tr": "İslam, tek olan Allah'a gönülden teslim olmak demektir. İşte temel bilgiler birkaç kısa adımda.",
+      "ru": "Ислам означает мирную покорность Единому Богу. Вот самое главное в нескольких коротких шагах."
+    },
+    "steps": [
+      {
+        "title": {
+          "en": "What is Islam?",
+          "tk": "Yslam näme?",
+          "tr": "İslam nedir?",
+          "ru": "Что такое ислам?"
+        },
+        "text": {
+          "en": "The word Islam comes from the Arabic root for peace (salam) and submission. A Muslim is someone who willingly submits to God, seeking peace with God, with oneself and with others. About two billion people are Muslims.",
+          "tk": "«Yslam» sözi arap dilindäki parahatlyk (salam) we boýun bolmak manyly kökden gelýär. Musulman — Hudaýa öz islegi bilen boýun bolýan, Hudaý bilen, özi we başgalar bilen parahatlyk gözleýän adamdyr. Dünýäde iki milliarda golaý musulman bar.",
+          "tr": "İslam kelimesi Arapçada barış (selam) ve teslimiyet anlamındaki kökten gelir. Müslüman, Allah'a gönüllü olarak teslim olan; Allah'la, kendisiyle ve başkalarıyla barış arayan kişidir. Dünyada yaklaşık iki milyar Müslüman vardır.",
+          "ru": "Слово «ислам» происходит от арабского корня со значением «мир» (салам) и «покорность». Мусульманин — тот, кто добровольно покоряется Богу, стремясь к миру с Богом, с собой и с другими. В мире около двух миллиардов мусульман."
+        }
+      },
+      {
+        "title": {
+          "en": "One God — Allah",
+          "tk": "Ýeke-täk Hudaý — Alla",
+          "tr": "Tek Tanrı — Allah",
+          "ru": "Единый Бог — Аллах"
+        },
+        "text": {
+          "en": "“Allah” is the Arabic word for God — the same God worshipped by Abraham, Moses and Jesus. He is One, with no partner, no child and no equal. He is the Most Merciful, the Creator of everything.",
+          "tk": "«Alla» — arap dilinde Hudaý diýmekdir; Ybraýymyň, Musanyň we Isanyň ybadat eden şol bir Hudaýy. Ol Ýekedir, Onuň şärigi, perzendi we deňi ýok. Ol Iň Rehimli, ähli zadyň Ýaradyjysydyr.",
+          "tr": "“Allah”, Arapçada Tanrı demektir — İbrahim'in, Musa'nın ve İsa'nın ibadet ettiği aynı Tanrı. O birdir; ortağı, çocuğu ve dengi yoktur. O, Rahmân'dır, her şeyin Yaratıcısıdır.",
+          "ru": "«Аллах» — арабское слово «Бог»; это тот же Бог, Которому поклонялись Авраам, Моисей и Иисус. Он Един, у Него нет сотоварища, детей и равных. Он Милостивейший, Творец всего."
+        }
+      },
+      {
+        "title": {
+          "en": "The Shahada",
+          "tk": "Kelime şahadat",
+          "tr": "Kelime-i şehadet",
+          "ru": "Шахада"
+        },
+        "text": {
+          "en": "The declaration of faith: “I bear witness that there is no god but Allah, and I bear witness that Muhammad is the Messenger of Allah.” Saying it sincerely, with understanding, is how a person becomes Muslim.",
+          "tk": "Iman şaýatlygy: «Alladan başga hudaý ýokdugyna şaýatlyk edýärin we Muhammediň Allanyň ilçisidigine şaýatlyk edýärin.» Muny düşünip, ýürekden aýdan adam musulman bolýar.",
+          "tr": "İman beyanı: “Allah'tan başka ilah olmadığına şahitlik ederim ve Muhammed'in Allah'ın Resulü olduğuna şahitlik ederim.” Bunu anlayarak ve samimiyetle söyleyen kişi Müslüman olur.",
+          "ru": "Свидетельство веры: «Свидетельствую, что нет божества, кроме Аллаха, и свидетельствую, что Мухаммад — посланник Аллаха». Искренне и с пониманием произнёсший его становится мусульманином."
+        },
+        "ar": "أَشْهَدُ أَنْ لَا إِلَٰهَ إِلَّا اللَّهُ، وَأَشْهَدُ أَنَّ مُحَمَّدًا رَسُولُ اللَّهِ",
+        "translit": "Ashhadu an la ilaha illallah, wa ashhadu anna Muhammadan rasulullah."
+      },
+      {
+        "title": {
+          "en": "Prophets and Muhammad ﷺ",
+          "tk": "Pygamberler we Muhammet ﷺ",
+          "tr": "Peygamberler ve Hz. Muhammed ﷺ",
+          "ru": "Пророки и Мухаммад ﷺ"
+        },
+        "text": {
+          "en": "God sent prophets to every nation with one message: worship God alone and do good. Among them are Adam, Noah, Abraham, Moses and Jesus. Muhammad ﷺ (born in Mecca, c. 570) is the final prophet. Muslims love and respect them all.",
+          "tk": "Hudaý her halka şol bir habar bilen pygamberler iberdi: diňe Hudaýa ybadat ediň we ýagşylyk ediň. Olaryň arasynda Adam, Nuh, Ybraýym, Musa we Isa bar. Muhammet ﷺ (takm. 570-nji ýylda Mekgede doglan) iň soňky pygamberdir. Musulmanlar olaryň hemmesini söýýärler we hormatlaýarlar.",
+          "tr": "Allah her topluma aynı mesajla peygamberler gönderdi: yalnız Allah'a ibadet edin ve iyilik yapın. Âdem, Nuh, İbrahim, Musa ve İsa bunlardandır. Hz. Muhammed ﷺ (yaklaşık 570'te Mekke'de doğdu) son peygamberdir. Müslümanlar hepsini sever ve sayar.",
+          "ru": "Бог посылал пророков к каждому народу с одной вестью: поклоняйтесь только Богу и творите добро. Среди них — Адам, Ной, Авраам, Моисей и Иисус. Мухаммад ﷺ (родился в Мекке около 570 г.) — последний пророк. Мусульмане любят и почитают их всех."
+        }
+      },
+      {
+        "title": {
+          "en": "The Quran",
+          "tk": "Kuran",
+          "tr": "Kur'an",
+          "ru": "Коран"
+        },
+        "text": {
+          "en": "The Quran is the word of God revealed to Muhammad ﷺ over 23 years and preserved in Arabic unchanged. It has 114 chapters (surahs) and guides belief, worship, ethics and daily life. Muslims recite it in every prayer.",
+          "tk": "Kuran — Muhammede ﷺ 23 ýylyň dowamynda inderilen we arap dilinde üýtgewsiz saklanan Hudaýyň sözüdir. Onda 114 süre bar; ol iman, ybadat, ahlak we gündelik durmuş üçin ýol görkezýär. Musulmanlar ony her namazda okaýarlar.",
+          "tr": "Kur'an, Hz. Muhammed'e ﷺ 23 yıl boyunca indirilen ve Arapça aslıyla değişmeden korunan Allah'ın kelamıdır. 114 sureden oluşur; inanca, ibadete, ahlaka ve günlük hayata rehberlik eder. Müslümanlar onu her namazda okur.",
+          "ru": "Коран — слово Бога, ниспосланное Мухаммаду ﷺ в течение 23 лет и сохранённое на арабском языке без изменений. В нём 114 сур; он наставляет в вере, поклонении, нравственности и повседневной жизни. Мусульмане читают его в каждой молитве."
+        }
+      },
+      {
+        "title": {
+          "en": "A Muslim's day",
+          "tk": "Musulmanyň güni",
+          "tr": "Bir Müslüman'ın günü",
+          "ru": "День мусульманина"
+        },
+        "text": {
+          "en": "The day is built around five prayers, from dawn to night. Muslims also fast in Ramadan, give zakat, and — if able — make the Hajj to Mecca once in a lifetime. Simple things like eating with Bismillah or honesty at work become worship.",
+          "tk": "Gün daňdan gijä çenli bäş wagt namazyň töweregine guralýar. Musulmanlar Remezanda oraza tutýarlar, zekat berýärler we mümkinçiligi bolsa, ömründe bir gezek Mekgä haja barýarlar. Bismilla bilen nahar iýmek, işde dogruçyl bolmak ýaly ýönekeý zatlar hem ybadata öwrülýär.",
+          "tr": "Gün, sabahtan geceye beş vakit namaz etrafında şekillenir. Müslümanlar Ramazan'da oruç tutar, zekât verir ve gücü yetiyorsa ömründe bir kez Mekke'ye hacca gider. Besmeleyle yemek, işte dürüst olmak gibi basit şeyler de ibadete dönüşür.",
+          "ru": "День строится вокруг пяти молитв — от рассвета до ночи. Мусульмане постятся в Рамадан, выплачивают закят и, если могут, раз в жизни совершают хадж в Мекку. Даже простые вещи — еда с «Бисмиллях», честность в работе — становятся поклонением."
+        }
+      },
+      {
+        "title": {
+          "en": "Mercy and good character",
+          "tk": "Rehim we gowy ahlak",
+          "tr": "Merhamet ve güzel ahlak",
+          "ru": "Милосердие и благой нрав"
+        },
+        "text": {
+          "en": "The Prophet ﷺ said: “I was sent to perfect good character.” Kindness to parents, neighbours, animals and strangers, honesty and keeping promises are at the heart of Islam. All but one of the Quran's chapters begin: “In the name of God, the Most Merciful, the Especially Merciful.”",
+          "tk": "Pygamber ﷺ: «Men gowy ahlagy kämilleşdirmek üçin iberildim» diýipdir. Ata-enä, goňşulara, haýwanlara we nätanyşlara mähirlilik, dogruçyllyk we wada wepaly bolmak Yslamyň özenidir. Kuranyň birinden başga ähli süreleri «Rahman we Rahym Allanyň ady bilen» başlanýar.",
+          "tr": "Peygamber ﷺ: “Ben güzel ahlakı tamamlamak için gönderildim” buyurmuştur. Anne babaya, komşulara, hayvanlara ve yabancılara iyilik, dürüstlük ve sözünde durmak İslam'ın özündedir. Kur'an'ın biri hariç bütün sureleri “Rahmân ve Rahîm olan Allah'ın adıyla” başlar.",
+          "ru": "Пророк ﷺ сказал: «Я послан, чтобы довершить благой нрав». Доброта к родителям, соседям, животным и незнакомцам, честность и верность слову — суть ислама. Все суры Корана, кроме одной, начинаются словами «Во имя Аллаха, Милостивого, Милосердного»."
+        }
+      }
+    ],
+    "note": {
+      "en": "Curious to learn more? Visit a local mosque — visitors are welcome — or read a translation of the Quran.",
+      "tk": "Has köp öwrenmek isleýärsiňmi? Ýakyndaky metjide bar — myhmanlar hoş görülýär — ýa-da Kuranyň terjimesini oka.",
+      "tr": "Daha fazlasını öğrenmek ister misin? Yakındaki bir camiyi ziyaret et — misafirler hoş karşılanır — ya da bir Kur'an meali oku.",
+      "ru": "Хотите узнать больше? Посетите ближайшую мечеть — гостям там рады — или прочитайте перевод смыслов Корана."
+    }
+  },
+  {
+    "id": "pillars",
+    "icon": "kaaba",
+    "title": {
+      "en": "The Five Pillars",
+      "tk": "Yslamyň bäş binýady",
+      "tr": "İslam'ın beş şartı",
+      "ru": "Пять столпов ислама"
+    },
+    "subtitle": {
+      "en": "The foundation of a Muslim's practice",
+      "tk": "Musulmanyň amallarynyň esasy",
+      "tr": "Müslüman hayatının temeli",
+      "ru": "Основа практики мусульманина"
+    },
+    "intro": {
+      "en": "The Prophet ﷺ said: “Islam is built on five.” (Bukhari 8, Muslim 16)",
+      "tk": "Pygamber ﷺ: «Yslam bäş zadyň üstünde gurlandyr» diýipdir. (Buhari 8, Muslim 16)",
+      "tr": "Peygamber ﷺ: “İslam beş temel üzerine kurulmuştur” buyurmuştur. (Buhârî 8, Müslim 16)",
+      "ru": "Пророк ﷺ сказал: «Ислам построен на пяти». (аль-Бухари 8, Муслим 16)"
+    },
+    "steps": [
+      {
+        "title": {
+          "en": "1. Shahada — testimony of faith",
+          "tk": "1. Şahadat — iman şaýatlygy",
+          "tr": "1. Kelime-i şehadet",
+          "ru": "1. Шахада — свидетельство веры"
+        },
+        "text": {
+          "en": "Believing and declaring that there is no god but Allah and that Muhammad ﷺ is His Messenger. It is the door to Islam and shapes everything else.",
+          "tk": "Alladan başga hudaý ýokdugyna we Muhammediň ﷺ Onuň ilçisidigine ynanmak we muny aýtmak. Bu Yslamyň gapysydyr we beýleki ähli zady kesgitleýär.",
+          "tr": "Allah'tan başka ilah olmadığına ve Hz. Muhammed'in ﷺ O'nun elçisi olduğuna inanıp bunu dile getirmek. İslam'ın kapısıdır ve diğer her şeyi şekillendirir.",
+          "ru": "Верить и свидетельствовать, что нет божества, кроме Аллаха, и что Мухаммад ﷺ — Его посланник. Это дверь в ислам, определяющая всё остальное."
+        },
+        "ar": "أَشْهَدُ أَنْ لَا إِلَٰهَ إِلَّا اللَّهُ، وَأَشْهَدُ أَنَّ مُحَمَّدًا رَسُولُ اللَّهِ",
+        "translit": "Ashhadu an la ilaha illallah, wa ashhadu anna Muhammadan rasulullah."
+      },
+      {
+        "title": {
+          "en": "2. Salah — prayer",
+          "tk": "2. Namaz",
+          "tr": "2. Namaz",
+          "ru": "2. Намаз — молитва"
+        },
+        "text": {
+          "en": "Five prayers a day — Fajr, Dhuhr, Asr, Maghrib and Isha — facing the Kaaba in Mecca. Prayer is a direct daily meeting with Allah.",
+          "tk": "Günde bäş wagt namaz — ertir, öýle, ikindi, agşam we ýassy — Mekgedäki Kägbä ýüzlenip okalýar. Namaz Alla bilen her günki gönüden-göni duşuşykdyr.",
+          "tr": "Günde beş vakit namaz — sabah, öğle, ikindi, akşam ve yatsı — Mekke'deki Kâbe'ye yönelerek kılınır. Namaz, Allah ile her gün yapılan doğrudan bir buluşmadır.",
+          "ru": "Пять молитв в день — фаджр, зухр, аср, магриб и иша — лицом к Каабе в Мекке. Молитва — ежедневная непосредственная встреча с Аллахом."
+        }
+      },
+      {
+        "title": {
+          "en": "3. Zakat — obligatory charity",
+          "tk": "3. Zekat",
+          "tr": "3. Zekât",
+          "ru": "3. Закят — обязательная милостыня"
+        },
+        "text": {
+          "en": "Each year, Muslims whose savings reach the minimum (nisab) give 2.5% to those in need. It purifies wealth and supports the community.",
+          "tk": "Her ýyl, emlägi nisaba ýeten musulmanlar onuň 2,5 göterimini mätäçlere berýärler. Zekat malyň arassalaýar we jemgyýeti goldaýar.",
+          "tr": "Her yıl, birikimi nisaba ulaşan Müslümanlar bunun %2,5'ini ihtiyaç sahiplerine verir. Zekât malı arındırır ve toplumu destekler.",
+          "ru": "Ежегодно мусульмане, чьи сбережения достигли нисаба, отдают 2,5% нуждающимся. Закят очищает имущество и поддерживает общину."
+        }
+      },
+      {
+        "title": {
+          "en": "4. Sawm — fasting in Ramadan",
+          "tk": "4. Remezan orazasy",
+          "tr": "4. Ramazan orucu",
+          "ru": "4. Саум — пост в Рамадан"
+        },
+        "text": {
+          "en": "During the month of Ramadan, healthy adults abstain from food, drink and marital relations from dawn to sunset, growing in patience, gratitude and compassion.",
+          "tk": "Remezan aýynda sagdyn uly adamlar daňdan gün batýança iýmekden, içmekden we är-aýal gatnaşygyndan saklanýarlar; sabyr, şükür we rehimdarlyk artýar.",
+          "tr": "Ramazan ayında sağlıklı yetişkinler tan vaktinden gün batımına kadar yemekten, içmekten ve eşlerle birleşmekten uzak durur; sabır, şükür ve merhamette olgunlaşır.",
+          "ru": "В месяц Рамадан здоровые взрослые воздерживаются от еды, питья и супружеской близости от рассвета до заката, взращивая терпение, благодарность и сострадание."
+        }
+      },
+      {
+        "title": {
+          "en": "5. Hajj — pilgrimage",
+          "tk": "5. Haj",
+          "tr": "5. Hac",
+          "ru": "5. Хадж — паломничество"
+        },
+        "text": {
+          "en": "Once in a lifetime, for those who are physically and financially able: the pilgrimage to Mecca in the month of Dhul-Hijjah.",
+          "tk": "Bedeni we maddy taýdan mümkinçiligi bolanlar üçin ömründe bir gezek: Zülhijje aýynda Mekgä haj zyýaraty.",
+          "tr": "Bedenen ve maddi olarak gücü yetenler için ömürde bir kez: Zilhicce ayında Mekke'ye hac yolculuğu.",
+          "ru": "Раз в жизни для тех, кто способен физически и материально: паломничество в Мекку в месяц зуль-хиджа."
+        }
+      }
+    ],
+    "note": {
+      "en": "The pillars are the frame; good character, kindness and honesty are the house built on them.",
+      "tk": "Bäş binýat — karkasdyr; gowy ahlak, mähirlilik we dogruçyllyk onuň üstünde gurlan öýdür.",
+      "tr": "Bu şartlar bir iskelettir; güzel ahlak, iyilik ve dürüstlük onun üzerine kurulan evdir.",
+      "ru": "Столпы — это каркас; благой нрав, доброта и честность — дом, построенный на нём."
+    }
+  },
+  {
+    "id": "iman",
+    "icon": "heart",
+    "title": {
+      "en": "Six Articles of Faith",
+      "tk": "Imanyň alty şerti",
+      "tr": "İmanın altı şartı",
+      "ru": "Шесть столпов веры"
+    },
+    "subtitle": {
+      "en": "What a Muslim believes",
+      "tk": "Musulman nämä ynanýar",
+      "tr": "Bir Müslüman neye inanır",
+      "ru": "Во что верит мусульманин"
+    },
+    "intro": {
+      "en": "When the angel Jibril asked the Prophet ﷺ about faith (iman), he named six things. (Muslim 8)",
+      "tk": "Jebraýyl perişde Pygamberden ﷺ iman hakda soranda, ol alty zady sanapdyr. (Muslim 8)",
+      "tr": "Cebrail, Peygamber'e ﷺ imanı sorduğunda o altı şey saymıştır. (Müslim 8)",
+      "ru": "Когда ангел Джибриль спросил Пророка ﷺ о вере (иман), тот назвал шесть вещей. (Муслим 8)"
+    },
+    "steps": [
+      {
+        "title": {
+          "en": "1. Allah",
+          "tk": "1. Alla",
+          "tr": "1. Allah'a iman",
+          "ru": "1. Аллах"
+        },
+        "text": {
+          "en": "Believing in One God, the Creator, who has no partner and nothing like Him, and in His beautiful names and attributes.",
+          "tk": "Şärigi we meňzeşi bolmadyk Ýeke-täk Ýaradyjy Hudaýa we Onuň gözel atlaryna hem sypatlaryna ynanmak.",
+          "tr": "Ortağı ve benzeri olmayan tek Yaratıcı'ya, O'nun güzel isimlerine ve sıfatlarına inanmak.",
+          "ru": "Вера в Единого Бога-Творца, у Которого нет сотоварища и нет ничего подобного Ему, и в Его прекрасные имена и качества."
+        }
+      },
+      {
+        "title": {
+          "en": "2. Angels",
+          "tk": "2. Perişdeler",
+          "tr": "2. Meleklere iman",
+          "ru": "2. Ангелы"
+        },
+        "text": {
+          "en": "Angels are created from light and carry out Allah's commands. Jibril brought the revelation; others record our deeds.",
+          "tk": "Perişdeler nurdan ýaradylyp, Allanyň buýruklaryny ýerine ýetirýärler. Jebraýyl ylham getiripdir; başgalary amallarymyzy ýazýar.",
+          "tr": "Melekler nurdan yaratılmıştır ve Allah'ın emirlerini yerine getirir. Cebrail vahyi getirmiştir; diğerleri amellerimizi yazar.",
+          "ru": "Ангелы сотворены из света и исполняют повеления Аллаха. Джибриль приносил откровение, другие записывают наши деяния."
+        }
+      },
+      {
+        "title": {
+          "en": "3. Revealed Books",
+          "tk": "3. Mukaddes kitaplar",
+          "tr": "3. Kitaplara iman",
+          "ru": "3. Писания"
+        },
+        "text": {
+          "en": "Allah revealed scriptures: the Torah (Tawrat) to Moses, the Psalms (Zabur) to David, the Gospel (Injil) to Jesus, and the Quran to Muhammad ﷺ — the final, preserved revelation.",
+          "tk": "Alla mukaddes kitaplary inderdi: Musa pygambere Töwrat, Dawut pygambere Zebur, Isa pygambere Injil we Muhammede ﷺ iň soňky, gorap saklanan ylham — Kuran.",
+          "tr": "Allah kitaplar indirmiştir: Hz. Musa'ya Tevrat, Hz. Davud'a Zebur, Hz. İsa'ya İncil ve Hz. Muhammed'e ﷺ son ve korunmuş vahiy olan Kur'an.",
+          "ru": "Аллах ниспослал Писания: Таурат (Тору) — Мусе, Забур (Псалтирь) — Дауду, Инджиль (Евангелие) — Исе и Коран — Мухаммаду ﷺ, последнее сохранённое откровение."
+        }
+      },
+      {
+        "title": {
+          "en": "4. Messengers",
+          "tk": "4. Pygamberler",
+          "tr": "4. Peygamberlere iman",
+          "ru": "4. Посланники"
+        },
+        "text": {
+          "en": "Believing in all the prophets Allah sent, from Adam to Muhammad ﷺ, without rejecting any of them. They were the best of people and examples for us.",
+          "tk": "Adamdan Muhammede ﷺ çenli Allanyň iberen ähli pygamberlerine, hiç birini inkär etmezden ynanmak. Olar adamlaryň iň gowusy we bize nusgadyr.",
+          "tr": "Hz. Âdem'den Hz. Muhammed'e ﷺ kadar Allah'ın gönderdiği bütün peygamberlere, hiçbirini ayırmadan inanmak. Onlar insanların en hayırlısı ve bizim için örnektir.",
+          "ru": "Вера во всех пророков, посланных Аллахом, от Адама до Мухаммада ﷺ, не отвергая ни одного из них. Они — лучшие из людей и пример для нас."
+        }
+      },
+      {
+        "title": {
+          "en": "5. The Last Day",
+          "tk": "5. Ahyret güni",
+          "tr": "5. Ahiret gününe iman",
+          "ru": "5. Последний день"
+        },
+        "text": {
+          "en": "After death comes resurrection and judgement; every deed, small or large, will be weighed, followed by Paradise or Hell.",
+          "tk": "Ölümden soň direliş we hasap bar; uly-kiçi her bir amal ölçüler, soňra jennet ýa-da dowzah bolar.",
+          "tr": "Ölümden sonra diriliş ve hesap vardır; küçük büyük her amel tartılacak, ardından cennet veya cehennem gelecektir.",
+          "ru": "После смерти — воскрешение и суд; каждое дело, малое и большое, будет взвешено, а затем — Рай или Ад."
+        }
+      },
+      {
+        "title": {
+          "en": "6. Divine decree (Qadar)",
+          "tk": "6. Kadar (ykbal)",
+          "tr": "6. Kadere iman",
+          "ru": "6. Предопределение (кадар)"
+        },
+        "text": {
+          "en": "Allah knows and has decreed all things, the good and the hard. We still make real choices and are responsible for them — so we strive, then trust Him.",
+          "tk": "Alla ähli zady — ýagşysyny-da, kynyny-da bilýär we kesgitläpdir. Muňa garamazdan biz hakyky saýlaw edýäris we onuň üçin jogapkärdiris — şonuň üçin tagalla edýäris, soňra Oňa bil baglaýarys.",
+          "tr": "Allah her şeyi — iyisini de zorunu da — bilir ve takdir etmiştir. Yine de biz gerçek seçimler yaparız ve onlardan sorumluyuz; bu yüzden çalışır, sonra O'na güveniriz.",
+          "ru": "Аллах знает и предопределил всё — и благое, и тяжёлое. При этом мы делаем настоящий выбор и отвечаем за него — поэтому мы стараемся, а затем уповаем на Него."
+        }
+      }
+    ]
+  },
+  {
+    "id": "wudu",
+    "icon": "droplet",
+    "title": {
+      "en": "How to make wudu",
+      "tk": "Täret nädip alynýar",
+      "tr": "Abdest nasıl alınır",
+      "ru": "Как совершать омовение"
+    },
+    "subtitle": {
+      "en": "The washing before prayer",
+      "tk": "Namazdan öňki arassalanyş",
+      "tr": "Namazdan önceki temizlik",
+      "ru": "Очищение перед молитвой (вуду)"
+    },
+    "intro": {
+      "en": "Wudu is needed before prayer and before touching the Quran. The obligatory parts are washing the face, the arms and the feet and wiping the head; the rest is sunnah. Use clean water and do not waste it.",
+      "tk": "Täret namazdan we Kurana elleşmezden öň gerek. Onuň parzlary: ýüzi, golları we aýaklary ýuwmak hem-de başa mesh etmek; galanlary sünnetdir. Arassa suw ulan we ony isrip etme.",
+      "tr": "Abdest, namazdan ve Kur'an'a dokunmadan önce gereklidir. Farzları: yüzü, kolları ve ayakları yıkamak ve başı meshetmektir; diğerleri sünnettir. Temiz su kullan ve israf etme.",
+      "ru": "Омовение необходимо перед молитвой и прикосновением к Корану. Обязательные части — омыть лицо, руки и ноги и протереть голову; остальное — сунна. Используй чистую воду и не трать её впустую."
+    },
+    "steps": [
+      {
+        "title": {
+          "en": "Intention",
+          "tk": "Niýet",
+          "tr": "Niyet",
+          "ru": "Намерение"
+        },
+        "text": {
+          "en": "Intend in your heart to make wudu for Allah. There is no need to say it aloud.",
+          "tk": "Alla üçin täret almagy ýüregiňde niýet et. Muny sesli aýtmak hökman däl.",
+          "tr": "Allah rızası için abdest almaya kalben niyet et. Bunu sesli söylemen gerekmez.",
+          "ru": "Намерься в сердце совершить омовение ради Аллаха. Произносить вслух не обязательно."
+        }
+      },
+      {
+        "title": {
+          "en": "Bismillah",
+          "tk": "Bismilla",
+          "tr": "Besmele",
+          "ru": "Бисмиллях"
+        },
+        "text": {
+          "en": "Begin by saying Bismillah.",
+          "tk": "Bismilla diýip başla.",
+          "tr": "Besmele çekerek başla.",
+          "ru": "Начни со слов «Бисмиллях»."
+        },
+        "ar": "بِسْمِ اللَّهِ",
+        "translit": "Bismillah."
+      },
+      {
+        "title": {
+          "en": "Hands",
+          "tk": "Eller",
+          "tr": "Eller",
+          "ru": "Кисти рук"
+        },
+        "text": {
+          "en": "Wash both hands up to the wrists three times, including between the fingers.",
+          "tk": "Iki eliňi bilegiňe çenli üç gezek ýuw, barmaklaryň arasyny hem.",
+          "tr": "Her iki elini bileklere kadar üç kez yıka, parmak aralarını da.",
+          "ru": "Трижды вымой обе кисти до запястий, в том числе между пальцами."
+        }
+      },
+      {
+        "title": {
+          "en": "Mouth",
+          "tk": "Agyz",
+          "tr": "Ağız",
+          "ru": "Рот"
+        },
+        "text": {
+          "en": "Rinse your mouth three times.",
+          "tk": "Agzyňy üç gezek çaýka.",
+          "tr": "Ağzını üç kez çalkala.",
+          "ru": "Трижды прополощи рот."
+        }
+      },
+      {
+        "title": {
+          "en": "Nose",
+          "tk": "Burun",
+          "tr": "Burun",
+          "ru": "Нос"
+        },
+        "text": {
+          "en": "Draw water into your nose and blow it out with the left hand, three times.",
+          "tk": "Burnuňa suw çek we çep eliň bilen üç gezek süm.",
+          "tr": "Burnuna su çek ve sol elinle sümkür; üç kez.",
+          "ru": "Трижды втяни воду в нос и высморкай её с помощью левой руки."
+        }
+      },
+      {
+        "title": {
+          "en": "Face",
+          "tk": "Ýüz",
+          "tr": "Yüz",
+          "ru": "Лицо"
+        },
+        "text": {
+          "en": "Wash your face three times — from the hairline to the chin and from ear to ear.",
+          "tk": "Ýüzüňi üç gezek ýuw — saç çykýan ýerden eňege çenli we bir gulakdan beýleki gulaga çenli.",
+          "tr": "Yüzünü üç kez yıka — saç bitiminden çeneye, bir kulaktan diğerine kadar.",
+          "ru": "Трижды омой лицо — от линии волос до подбородка и от уха до уха."
+        }
+      },
+      {
+        "title": {
+          "en": "Arms",
+          "tk": "Gollar",
+          "tr": "Kollar",
+          "ru": "Руки"
+        },
+        "text": {
+          "en": "Wash the right arm up to and including the elbow three times, then the left.",
+          "tk": "Sag goluňy tirsegi bilen bile üç gezek ýuw, soňra çep goluňy.",
+          "tr": "Sağ kolunu dirsekle birlikte üç kez yıka, sonra sol kolunu.",
+          "ru": "Трижды омой правую руку до локтя включительно, затем левую."
+        }
+      },
+      {
+        "title": {
+          "en": "Head",
+          "tk": "Baş",
+          "tr": "Baş",
+          "ru": "Голова"
+        },
+        "text": {
+          "en": "Wipe your head once with wet hands (in the Hanafi school, at least a quarter of the head is obligatory).",
+          "tk": "Öl elleriň bilen başyňa bir gezek mesh et (hanafy mezhebinde başyň iň bolmanda dörtden birine mesh etmek parzdyr).",
+          "tr": "Islak ellerinle başını bir kez meshet (Hanefi mezhebinde başın en az dörtte birini meshetmek farzdır).",
+          "ru": "Один раз протри голову влажными руками (в ханафитском мазхабе обязательно протереть не менее четверти головы)."
+        }
+      },
+      {
+        "title": {
+          "en": "Ears",
+          "tk": "Gulaklar",
+          "tr": "Kulaklar",
+          "ru": "Уши"
+        },
+        "text": {
+          "en": "Wipe the inside of your ears with your index fingers and the back with your thumbs, once.",
+          "tk": "Gulaklaryňyň içini süýem barmaklaryň bilen, arkasyny başam barmaklaryň bilen bir gezek mesh et.",
+          "tr": "Kulaklarının içini işaret parmaklarınla, arkasını başparmaklarınla bir kez meshet.",
+          "ru": "Один раз протри уши: изнутри указательными пальцами, снаружи — большими."
+        }
+      },
+      {
+        "title": {
+          "en": "Feet",
+          "tk": "Aýaklar",
+          "tr": "Ayaklar",
+          "ru": "Ноги"
+        },
+        "text": {
+          "en": "Wash the right foot up to and including the ankles three times, between the toes too, then the left.",
+          "tk": "Sag aýagyňy topuklary bilen bile üç gezek ýuw, barmaklaryň arasyny hem, soňra çep aýagyňy.",
+          "tr": "Sağ ayağını topuklarla birlikte üç kez yıka, parmak aralarını da; sonra sol ayağını.",
+          "ru": "Трижды омой правую ногу до щиколоток включительно, в том числе между пальцами, затем левую."
+        }
+      },
+      {
+        "title": {
+          "en": "Dua after wudu",
+          "tk": "Täretden soňky dileg",
+          "tr": "Abdest sonrası dua",
+          "ru": "Дуа после омовения"
+        },
+        "text": {
+          "en": "I bear witness that there is no god but Allah alone, without partner, and that Muhammad is His servant and Messenger. O Allah, make me among those who repent and those who purify themselves.",
+          "tk": "Ýeke-täk, şärigi bolmadyk Alladan başga hudaý ýokdugyna we Muhammediň Onuň guly hem ilçisidigine şaýatlyk edýärin. Allahym, meni toba edýänlerden we arassalanýanlardan et.",
+          "tr": "Allah'tan başka ilah olmadığına, O'nun tek ve ortaksız olduğuna ve Muhammed'in O'nun kulu ve elçisi olduğuna şahitlik ederim. Allah'ım, beni tövbe edenlerden ve temizlenenlerden eyle.",
+          "ru": "Свидетельствую, что нет божества, кроме одного Аллаха, у Которого нет сотоварища, и что Мухаммад — Его раб и посланник. О Аллах, сделай меня из числа кающихся и очищающихся."
+        },
+        "ar": "أَشْهَدُ أَنْ لَا إِلَٰهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ، اللَّهُمَّ اجْعَلْنِي مِنَ التَّوَّابِينَ، وَاجْعَلْنِي مِنَ الْمُتَطَهِّرِينَ",
+        "translit": "Ashhadu an la ilaha illallahu wahdahu la sharika lah, wa ashhadu anna Muhammadan 'abduhu wa rasuluh. Allahummaj'alni minat-tawwabin, waj'alni minal-mutatahhirin."
+      }
+    ],
+    "note": {
+      "en": "Wudu is broken by: using the toilet (urine, stool or wind), deep sleep lying down, fainting, and in the Hanafi school also flowing blood or pus and vomiting a mouthful. After any of these, renew your wudu before praying.",
+      "tk": "Täreti bozýan zatlar: hajat (peşew, täret, ýel), ýatyp çuň uklamak, huşuňy ýitirmek, hanafy mezhebinde bolsa akýan gan ýa-da iriň we agyz dolusy gusmak. Bulardan soň namazdan öň täzeden täret al.",
+      "tr": "Abdesti bozanlar: tuvalet ihtiyacı (idrar, dışkı, yel), uzanarak derin uyumak, bayılmak; Hanefi mezhebinde ayrıca akan kan veya irin ve ağız dolusu kusmak. Bunlardan sonra namazdan önce abdesti yenile.",
+      "ru": "Омовение нарушают: отправление нужды (моча, кал, газы), глубокий сон лёжа, потеря сознания, а в ханафитском мазхабе также вытекающая кровь или гной и рвота полным ртом. После этого обнови омовение перед молитвой."
+    }
+  },
+  {
+    "id": "salah",
+    "icon": "mosque",
+    "title": {
+      "en": "How to pray",
+      "tk": "Namaz nädip okalýar",
+      "tr": "Namaz nasıl kılınır",
+      "ru": "Как совершать намаз"
+    },
+    "subtitle": {
+      "en": "A 2-rak'ah prayer, step by step (e.g. Fajr)",
+      "tk": "Iki rekagatly namaz, ädimme-ädim (meselem, ertir namazy)",
+      "tr": "Adım adım iki rekâtlık namaz (ör. sabah namazı)",
+      "ru": "Намаз из 2 ракатов шаг за шагом (например, фаджр)"
+    },
+    "intro": {
+      "en": "Before you pray: have wudu, clean clothes and a clean place, cover the body properly, face the qibla (the direction of the Kaaba) and pray within the prayer's time. Details differ slightly between schools; the Hanafi way is common in Central Asia. Learn the details from a local imam.",
+      "tk": "Namazdan öň: täretli bol, eşigiň we ýeriň arassa bolsun, bedeniňi dogry ört, kybla (Kägbäniň tarapy) ýüzlen we namazy öz wagtynda oka. Mezhepleriň arasynda käbir tapawutlar bar; Merkezi Aziýada hanafy mezhebi giňden ýaýrandyr. Jikme-jiklikleri ýerli ymamdan öwren.",
+      "tr": "Namazdan önce: abdestli ol, elbisen ve yerin temiz olsun, avret yerlerini ört, kıbleye (Kâbe yönüne) dön ve namazı vaktinde kıl. Mezhepler arasında küçük farklar vardır; Orta Asya'da Hanefi mezhebi yaygındır. Ayrıntıları bir imamdan öğren.",
+      "ru": "Перед намазом: соверши омовение, позаботься о чистоте одежды и места, должным образом прикрой тело, повернись к кибле (в сторону Каабы) и молись в установленное время. Между мазхабами есть небольшие различия; в Центральной Азии распространён ханафитский мазхаб. Подробности узнай у местного имама."
+    },
+    "steps": [
+      {
+        "title": {
+          "en": "Intention",
+          "tk": "Niýet",
+          "tr": "Niyet",
+          "ru": "Намерение"
+        },
+        "text": {
+          "en": "Stand facing the qibla and intend in your heart which prayer you are praying, e.g. the two fard rak'ahs of Fajr.",
+          "tk": "Kybla ýüzlenip dur we haýsy namazy okaýandygyňy ýüregiňde niýet et, meselem, ertir namazynyň iki rekagat parzy.",
+          "tr": "Kıbleye dönerek ayakta dur ve hangi namazı kıldığına kalben niyet et; ör. sabah namazının iki rekât farzı.",
+          "ru": "Встань лицом к кибле и намерься в сердце, какую молитву совершаешь, например два фард-раката фаджра."
+        }
+      },
+      {
+        "title": {
+          "en": "Opening takbir",
+          "tk": "Iftitah tekbiri",
+          "tr": "İftitah tekbiri",
+          "ru": "Открывающий такбир"
+        },
+        "text": {
+          "en": "Raise your hands (men to the ears, women to the shoulders) and say “Allahu akbar” (Allah is the Greatest). Then place the right hand over the left.",
+          "tk": "Elleriňi göter (erkekler gulaklaryna, aýallar egnine çenli) we «Allahu ekber» (Alla beýikdir) diý. Soňra sag eliňi çep eliňiň üstünde goý.",
+          "tr": "Ellerini kaldır (erkekler kulak hizasına, kadınlar omuz hizasına) ve “Allahu ekber” (Allah en büyüktür) de. Sonra sağ elini sol elinin üzerine koy.",
+          "ru": "Подними руки (мужчины — до ушей, женщины — до плеч) и скажи «Аллаху акбар» (Аллах велик). Затем положи правую руку поверх левой."
+        },
+        "ar": "اللَّهُ أَكْبَرُ",
+        "translit": "Allahu akbar."
+      },
+      {
+        "title": {
+          "en": "Opening dua",
+          "tk": "Sena",
+          "tr": "Sübhaneke",
+          "ru": "Начальная мольба"
+        },
+        "text": {
+          "en": "Recite quietly: Glory and praise be to You, O Allah. Blessed is Your name, exalted is Your majesty, and there is no god but You.",
+          "tk": "Içiňden oka: Allahym, Seni hamd bilen päk tutýaryn. Adyň mübärekdir, şan-şöhratyň beýikdir, Senden başga hudaý ýokdur.",
+          "tr": "Sessizce oku: Allah'ım, Seni hamdinle tesbih ederim. İsmin mübarektir, şanın yücedir, Senden başka ilah yoktur.",
+          "ru": "Прочитай про себя: Пречист Ты, о Аллах, и хвала Тебе. Благословенно имя Твоё, возвышенно величие Твоё, и нет божества, кроме Тебя."
+        },
+        "ar": "سُبْحَانَكَ اللَّهُمَّ وَبِحَمْدِكَ، وَتَبَارَكَ اسْمُكَ، وَتَعَالَىٰ جَدُّكَ، وَلَا إِلَٰهَ غَيْرُكَ",
+        "translit": "Subhanakallahumma wa bihamdika, wa tabarakasmuka, wa ta'ala jadduka, wa la ilaha ghayruk."
+      },
+      {
+        "title": {
+          "en": "Seeking refuge and Bismillah",
+          "tk": "Euzu we Bismilla",
+          "tr": "Eûzü-besmele",
+          "ru": "Истиаза и басмала"
+        },
+        "text": {
+          "en": "Quietly seek refuge in Allah from Satan and say Bismillah before Al-Fatiha.",
+          "tk": "Fatihadan öň içiňden şeýtandan Alla sygyn we Bismilla diý.",
+          "tr": "Fâtiha'dan önce sessizce şeytandan Allah'a sığın ve besmele çek.",
+          "ru": "Перед «аль-Фатихой» про себя попроси у Аллаха защиты от шайтана и скажи «Бисмиллях»."
+        },
+        "ar": "أَعُوذُ بِاللَّهِ مِنَ الشَّيْطَانِ الرَّجِيمِ، بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ",
+        "translit": "A'udhu billahi minash-shaytanir-rajim. Bismillahir-Rahmanir-Rahim."
+      },
+      {
+        "title": {
+          "en": "Al-Fatiha",
+          "tk": "Fatiha süresi",
+          "tr": "Fâtiha suresi",
+          "ru": "Сура «аль-Фатиха»"
+        },
+        "text": {
+          "en": "Recite Al-Fatiha: All praise is for Allah, Lord of the worlds, the Most Merciful, the Especially Merciful, Master of the Day of Judgement. You alone we worship and You alone we ask for help. Guide us to the straight path — the path of those You have blessed, not of those who earned anger, nor of those astray. Then say “Amin” quietly.",
+          "tk": "Fatihany oka: Hamd älemleriň Rebbi, Rahman, Rahym, Jeza gününiň Eýesi Alla mahsusdyr. Diňe Saňa ybadat edýäris we diňe Senden kömek soraýarys. Bizi dogry ýola — nygmat berenleriňiň ýoluna sal; gazaba sezewar bolanlaryň we azaşanlaryň ýoluna däl. Soňra içiňden «Amin» diý.",
+          "tr": "Fâtiha'yı oku: Hamd, âlemlerin Rabbi, Rahmân, Rahîm, din gününün sahibi Allah'adır. Yalnız Sana ibadet eder ve yalnız Senden yardım dileriz. Bizi doğru yola ilet; nimet verdiklerinin yoluna, gazaba uğrayanların ve sapıtanların yoluna değil. Sonra sessizce “Âmin” de.",
+          "ru": "Прочитай «аль-Фатиху»: Хвала Аллаху, Господу миров, Милостивому, Милосердному, Властелину Дня воздаяния! Тебе одному мы поклоняемся и Тебя одного молим о помощи. Веди нас прямым путём — путём тех, кого Ты облагодетельствовал, не тех, на кого пал гнев, и не заблудших. Затем тихо скажи «Амин»."
+        },
+        "ar": "الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ ۝ الرَّحْمَٰنِ الرَّحِيمِ ۝ مَالِكِ يَوْمِ الدِّينِ ۝ إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ ۝ اهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ ۝ صِرَاطَ الَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ الْمَغْضُوبِ عَلَيْهِمْ وَلَا الضَّالِّينَ",
+        "translit": "Alhamdu lillahi Rabbil-'alamin. Ar-Rahmanir-Rahim. Maliki yawmid-din. Iyyaka na'budu wa iyyaka nasta'in. Ihdinas-siratal-mustaqim. Siratal-ladhina an'amta 'alayhim, ghayril-maghdubi 'alayhim wa lad-dallin. (Amin)"
+      },
+      {
+        "title": {
+          "en": "A short surah",
+          "tk": "Gysga süre",
+          "tr": "Kısa bir sure",
+          "ru": "Короткая сура"
+        },
+        "text": {
+          "en": "Then recite a short surah or a few verses, for example Al-Ikhlas: Say, He is Allah, the One; Allah, the Eternal Refuge; He neither begets nor is born, and there is none comparable to Him.",
+          "tk": "Soňra gysga bir süre ýa-da birnäçe aýat oka, meselem, Yhlas süresini: Aýt: Ol Alla Ýekedir; Alla Samatdyr; Ol dogmady we dogrulmady; Onuň hiç bir deňi ýokdur.",
+          "tr": "Sonra kısa bir sure veya birkaç ayet oku, ör. İhlas suresi: De ki: O Allah birdir; Allah Samed'dir; doğurmamış ve doğurulmamıştır; hiçbir şey O'na denk değildir.",
+          "ru": "Затем прочитай короткую суру или несколько аятов, например «аль-Ихлас»: Скажи: «Он — Аллах Единый, Аллах Самодостаточный. Он не родил и не был рождён, и нет никого, равного Ему»."
+        },
+        "ar": "قُلْ هُوَ اللَّهُ أَحَدٌ ۝ اللَّهُ الصَّمَدُ ۝ لَمْ يَلِدْ وَلَمْ يُولَدْ ۝ وَلَمْ يَكُنْ لَهُ كُفُوًا أَحَدٌ",
+        "translit": "Qul huwallahu ahad. Allahus-samad. Lam yalid wa lam yulad. Wa lam yakul-lahu kufuwan ahad."
+      },
+      {
+        "title": {
+          "en": "Ruku (bowing)",
+          "tk": "Rükug",
+          "tr": "Rükû",
+          "ru": "Руку (поясной поклон)"
+        },
+        "text": {
+          "en": "Say “Allahu akbar” and bow with your hands on your knees and your back straight. Say three times: Glory be to my Lord, the Magnificent.",
+          "tk": "«Allahu ekber» diýip, elleriňi dyzlaryňa goýup, arkaňy göni saklap egil. Üç gezek aýt: Beýik Rebbimi päk tutýaryn.",
+          "tr": "“Allahu ekber” diyerek ellerini dizlerine koy ve sırtını düz tutarak eğil. Üç kez söyle: Yüce Rabbimi tesbih ederim.",
+          "ru": "Сказав «Аллаху акбар», поклонись, положив руки на колени и держа спину прямой. Трижды скажи: Пречист мой Великий Господь."
+        },
+        "ar": "سُبْحَانَ رَبِّيَ الْعَظِيمِ",
+        "translit": "Subhana Rabbiyal-'Azim."
+      },
+      {
+        "title": {
+          "en": "Rising from ruku",
+          "tk": "Rükugdan galmak",
+          "tr": "Rükûdan doğrulma",
+          "ru": "Выпрямление"
+        },
+        "text": {
+          "en": "Rise to standing saying: “Allah hears the one who praises Him,” then: “Our Lord, to You belongs all praise.”",
+          "tk": "Göni galyp aýt: «Alla Oňa hamd edeni eşidýär», soňra: «Rebbimiz, hamd Saňadyr.»",
+          "tr": "Doğrulurken söyle: “Allah kendisine hamd edeni işitir”, sonra: “Rabbimiz, hamd Sana mahsustur.”",
+          "ru": "Выпрямляясь, скажи: «Аллах слышит того, кто воздаёт Ему хвалу», затем: «Господь наш, Тебе хвала»."
+        },
+        "ar": "سَمِعَ اللَّهُ لِمَنْ حَمِدَهُ. رَبَّنَا لَكَ الْحَمْدُ",
+        "translit": "Sami'allahu liman hamidah. Rabbana lakal-hamd."
+      },
+      {
+        "title": {
+          "en": "Sujud (prostration)",
+          "tk": "Sejde",
+          "tr": "Secde",
+          "ru": "Суджуд (земной поклон)"
+        },
+        "text": {
+          "en": "Say “Allahu akbar” and prostrate: forehead, nose, palms, knees and toes on the ground. Say three times: Glory be to my Lord, the Most High.",
+          "tk": "«Allahu ekber» diýip sejde et: maňlaý, burun, aýalar, dyzlar we aýak barmaklary ýerde bolsun. Üç gezek aýt: Iň Belent Rebbimi päk tutýaryn.",
+          "tr": "“Allahu ekber” diyerek secdeye var: alın, burun, avuçlar, dizler ve ayak parmakları yerde olsun. Üç kez söyle: En yüce Rabbimi tesbih ederim.",
+          "ru": "Сказав «Аллаху акбар», соверши земной поклон: лоб, нос, ладони, колени и пальцы ног — на земле. Трижды скажи: Пречист мой Всевышний Господь."
+        },
+        "ar": "سُبْحَانَ رَبِّيَ الْأَعْلَىٰ",
+        "translit": "Subhana Rabbiyal-A'la."
+      },
+      {
+        "title": {
+          "en": "Sitting between prostrations",
+          "tk": "Iki sejdäniň arasynda oturmak",
+          "tr": "İki secde arası oturuş",
+          "ru": "Сидение между поклонами"
+        },
+        "text": {
+          "en": "Say “Allahu akbar” and sit up calmly for a moment. You may say: My Lord, forgive me.",
+          "tk": "«Allahu ekber» diýip, bir salym rahat otur. «Rebbim, meni bagyşla» diýip bilersiň.",
+          "tr": "“Allahu ekber” diyerek bir an sakince otur. “Rabbim, beni bağışla” diyebilirsin.",
+          "ru": "Сказав «Аллаху акбар», спокойно сядь на мгновение. Можно сказать: «Господи, прости меня»."
+        },
+        "ar": "رَبِّ اغْفِرْ لِي",
+        "translit": "Rabbighfir li."
+      },
+      {
+        "title": {
+          "en": "Second prostration",
+          "tk": "Ikinji sejde",
+          "tr": "İkinci secde",
+          "ru": "Второй поклон"
+        },
+        "text": {
+          "en": "Say “Allahu akbar” and prostrate again in the same way, saying “Subhana Rabbiyal-A'la” three times. This completes the first rak'ah.",
+          "tk": "«Allahu ekber» diýip, şol bir görnüşde ýene sejde et we üç gezek «Subhana Rabbiýel-Ala» diý. Şeýdip birinji rekagat tamamlanýar.",
+          "tr": "“Allahu ekber” diyerek aynı şekilde tekrar secdeye var ve üç kez “Sübhâne Rabbiye'l-a'lâ” de. Böylece birinci rekât tamamlanır.",
+          "ru": "Сказав «Аллаху акбар», снова соверши поклон так же и трижды скажи «Субхана Раббияль-Аля». Так завершается первый ракат."
+        }
+      },
+      {
+        "title": {
+          "en": "The second rak'ah",
+          "tk": "Ikinji rekagat",
+          "tr": "İkinci rekât",
+          "ru": "Второй ракат"
+        },
+        "text": {
+          "en": "Say “Allahu akbar” and stand up. Repeat Al-Fatiha, a short surah, ruku, rising and two prostrations. The opening dua is not repeated.",
+          "tk": "«Allahu ekber» diýip, aýaga gal. Fatihany, gysga bir süräni, rükugy, galmagy we iki sejdäni gaýtala. Sena gaýtalanmaýar.",
+          "tr": "“Allahu ekber” diyerek ayağa kalk. Fâtiha'yı, kısa bir sureyi, rükûyu, doğrulmayı ve iki secdeyi tekrarla. Sübhaneke tekrar okunmaz.",
+          "ru": "Сказав «Аллаху акбар», встань. Повтори «аль-Фатиху», короткую суру, руку, выпрямление и два поклона. Начальная мольба не повторяется."
+        }
+      },
+      {
+        "title": {
+          "en": "Tashahhud",
+          "tk": "Täşehhüt",
+          "tr": "Teşehhüd",
+          "ru": "Ташаххуд"
+        },
+        "text": {
+          "en": "After the second prostration of the second rak'ah, sit and recite at-Tahiyyat.",
+          "tk": "Ikinji rekagatyň ikinji sejdesinden soň oturyp, Ettehyýatuny oka.",
+          "tr": "İkinci rekâtın ikinci secdesinden sonra oturup Ettehiyyatü'yü oku.",
+          "ru": "После второго поклона второго раката сядь и прочитай ат-Тахийят."
+        },
+        "ar": "التَّحِيَّاتُ لِلَّهِ وَالصَّلَوَاتُ وَالطَّيِّبَاتُ، السَّلَامُ عَلَيْكَ أَيُّهَا النَّبِيُّ وَرَحْمَةُ اللَّهِ وَبَرَكَاتُهُ، السَّلَامُ عَلَيْنَا وَعَلَىٰ عِبَادِ اللَّهِ الصَّالِحِينَ، أَشْهَدُ أَنْ لَا إِلَٰهَ إِلَّا اللَّهُ، وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ",
+        "translit": "At-tahiyyatu lillahi was-salawatu wat-tayyibat. As-salamu 'alayka ayyuhan-nabiyyu wa rahmatullahi wa barakatuh. As-salamu 'alayna wa 'ala 'ibadillahis-salihin. Ashhadu an la ilaha illallah, wa ashhadu anna Muhammadan 'abduhu wa rasuluh."
+      },
+      {
+        "title": {
+          "en": "Salawat",
+          "tk": "Salawat",
+          "tr": "Salli-Barik",
+          "ru": "Салават"
+        },
+        "text": {
+          "en": "Then send blessings on the Prophet ﷺ with the Salawat Ibrahimiyya.",
+          "tk": "Soňra Ybraýymyýa salawaty bilen Pygambere ﷺ salawat aýt.",
+          "tr": "Sonra Salli ve Barik dualarıyla Peygamber'e ﷺ salavat getir.",
+          "ru": "Затем благослови Пророка ﷺ салаватом Ибрахимия."
+        },
+        "ar": "اللَّهُمَّ صَلِّ عَلَىٰ مُحَمَّدٍ وَعَلَىٰ آلِ مُحَمَّدٍ، كَمَا صَلَّيْتَ عَلَىٰ إِبْرَاهِيمَ وَعَلَىٰ آلِ إِبْرَاهِيمَ، إِنَّكَ حَمِيدٌ مَجِيدٌ، اللَّهُمَّ بَارِكْ عَلَىٰ مُحَمَّدٍ وَعَلَىٰ آلِ مُحَمَّدٍ، كَمَا بَارَكْتَ عَلَىٰ إِبْرَاهِيمَ وَعَلَىٰ آلِ إِبْرَاهِيمَ، إِنَّكَ حَمِيدٌ مَجِيدٌ",
+        "translit": "Allahumma salli 'ala Muhammadin wa 'ala ali Muhammad, kama sallayta 'ala Ibrahima wa 'ala ali Ibrahim, innaka Hamidun Majid. Allahumma barik 'ala Muhammadin wa 'ala ali Muhammad, kama barakta 'ala Ibrahima wa 'ala ali Ibrahim, innaka Hamidun Majid."
+      },
+      {
+        "title": {
+          "en": "A short dua",
+          "tk": "Gysga dileg",
+          "tr": "Kısa bir dua",
+          "ru": "Краткая мольба"
+        },
+        "text": {
+          "en": "Then make a short dua, for example: Our Lord, give us good in this world and good in the Hereafter, and protect us from the punishment of the Fire.",
+          "tk": "Soňra gysga dileg et, meselem: Rebbimiz, bize bu dünýäde-de, ahyretde-de ýagşylyk ber we bizi dowzah azabyndan gora.",
+          "tr": "Sonra kısa bir dua et, ör.: Rabbimiz, bize dünyada da ahirette de iyilik ver ve bizi ateş azabından koru.",
+          "ru": "Затем сделай краткую мольбу, например: Господь наш, даруй нам благо в этом мире и в Последней жизни и защити нас от мучений Огня."
+        },
+        "ar": "رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الْآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ",
+        "translit": "Rabbana atina fid-dunya hasanatan wa fil-akhirati hasanatan wa qina 'adhaban-nar."
+      },
+      {
+        "title": {
+          "en": "Salam",
+          "tk": "Salam bermek",
+          "tr": "Selam",
+          "ru": "Салам"
+        },
+        "text": {
+          "en": "Turn your head to the right saying “As-salamu 'alaykum wa rahmatullah”, then to the left saying the same. Your prayer is complete.",
+          "tk": "Başyňy saga öwrüp «Esselamu aleýkum we rahmetulla» diý, soňra çepe öwrüp şony gaýtala. Namazyň tamamlandy.",
+          "tr": "Başını sağa çevirerek “Esselâmü aleyküm ve rahmetullah” de, sonra sola çevirerek aynısını söyle. Namazın tamamlandı.",
+          "ru": "Поверни голову направо со словами «Ас-саляму алейкум ва рахматуллах», затем налево с теми же словами. Намаз завершён."
+        },
+        "ar": "السَّلَامُ عَلَيْكُمْ وَرَحْمَةُ اللَّهِ",
+        "translit": "As-salamu 'alaykum wa rahmatullah."
+      },
+      {
+        "title": {
+          "en": "Rak'ahs of the five prayers",
+          "tk": "Bäş wagt namazyň rekagatlary",
+          "tr": "Beş vakit namazın rekâtları",
+          "ru": "Ракаты пяти молитв"
+        },
+        "text": {
+          "en": "Fard rak'ahs: Fajr 2 · Dhuhr 4 · Asr 4 · Maghrib 3 · Isha 4. In 3- and 4-rak'ah prayers, sit after the 2nd rak'ah for the tashahhud only, then stand and continue; in the extra fard rak'ahs only Al-Fatiha is recited. Sunnah prayers (and Witr in the Hanafi school) are prayed around these.",
+          "tk": "Parz rekagatlar: Ertir 2 · Öýle 4 · Ikindi 4 · Agşam 3 · Ýassy 4. Üç we dört rekagatly namazlarda 2-nji rekagatdan soň oturyp diňe Ettehyýatuny okaýarsyň, soňra galyp dowam edýärsiň; parzyň goşmaça rekagatlarynda diňe Fatiha okalýar. Sünnet namazlary (hanafy mezhebinde witr hem) bulara goşulýar.",
+          "tr": "Farz rekâtlar: Sabah 2 · Öğle 4 · İkindi 4 · Akşam 3 · Yatsı 4. Üç ve dört rekâtlı namazlarda 2. rekâttan sonra oturup yalnız Ettehiyyatü okunur, sonra kalkılıp devam edilir; farzın sonraki rekâtlarında yalnız Fâtiha okunur. Sünnet namazlar (Hanefi mezhebinde vitir de) bunlara eklenir.",
+          "ru": "Фард-ракаты: фаджр 2 · зухр 4 · аср 4 · магриб 3 · иша 4. В молитвах из 3 и 4 ракатов после 2-го раката садятся только для ат-Тахийят, затем встают и продолжают; в последующих фард-ракатах читается только «аль-Фатиха». Сунна-молитвы (и витр в ханафитском мазхабе) совершаются дополнительно."
+        }
+      }
+    ],
+    "note": {
+      "en": "Women pray the same way, with small differences in posture according to their school. If you are new, it is fine to pray simply while you learn — Allah sees your effort.",
+      "tk": "Aýallar hem şol bir görnüşde okaýarlar, mezhebine görä durşunda käbir tapawutlar bar. Täze başlaýan bolsaň, öwrenýänçäň ýönekeý okamak bolýar — Alla seniň tagallaňy görýär.",
+      "tr": "Kadınlar da aynı şekilde kılar; mezhebe göre duruşta küçük farklar vardır. Yeni başladıysan öğrenirken sade kılman sorun değil — Allah gayretini görür.",
+      "ru": "Женщины молятся так же, с небольшими различиями в положении тела согласно мазхабу. Если ты только начинаешь, молись просто, пока учишься, — Аллах видит твоё старание."
+    }
+  },
+  {
+    "id": "ghusl",
+    "icon": "droplet",
+    "title": {
+      "en": "Ghusl (full washing)",
+      "tk": "Gusul",
+      "tr": "Gusül abdesti",
+      "ru": "Гусль (полное омовение)"
+    },
+    "subtitle": {
+      "en": "The complete ritual bath",
+      "tk": "Doly arassalanyş",
+      "tr": "Tam boy yıkanma",
+      "ru": "Полное ритуальное омовение"
+    },
+    "intro": {
+      "en": "Ghusl is washing the whole body. It is required after marital relations or a wet dream and at the end of menstruation or post-natal bleeding. It is recommended before Friday prayer and the two Eids, and for someone who has just embraced Islam.",
+      "tk": "Gusul — tutuş bedeni ýuwmakdyr. Ol är-aýal gatnaşygyndan ýa-da düýşde bulaşandan soň, aýbaşy we lohusalyk tamamlananda hökmandyr. Juma namazyndan we iki baýramdan öň hem-de täze musulman bolan adam üçin bu halanýar.",
+      "tr": "Gusül, bütün bedeni yıkamaktır. Eşlerin birleşmesinden veya ihtilamdan sonra ve âdet ya da lohusalık bitiminde farzdır. Cuma namazı ve iki bayram öncesinde ve yeni Müslüman olan kişi için tavsiye edilir.",
+      "ru": "Гусль — омовение всего тела. Он обязателен после супружеской близости или поллюции и по окончании менструации или послеродового кровотечения. Он желателен перед пятничной молитвой и двумя праздниками, а также для принявшего ислам."
+    },
+    "steps": [
+      {
+        "title": {
+          "en": "Intention",
+          "tk": "Niýet",
+          "tr": "Niyet",
+          "ru": "Намерение"
+        },
+        "text": {
+          "en": "Intend ghusl in your heart and say Bismillah.",
+          "tk": "Ýüregiňde gusul niýet et we Bismilla diý.",
+          "tr": "Kalben gusle niyet et ve besmele çek.",
+          "ru": "Намерься в сердце совершить гусль и скажи «Бисмиллях»."
+        }
+      },
+      {
+        "title": {
+          "en": "Hands",
+          "tk": "Eller",
+          "tr": "Eller",
+          "ru": "Руки"
+        },
+        "text": {
+          "en": "Wash both hands three times.",
+          "tk": "Iki eliňi üç gezek ýuw.",
+          "tr": "Her iki elini üç kez yıka.",
+          "ru": "Трижды вымой обе кисти рук."
+        }
+      },
+      {
+        "title": {
+          "en": "Private parts",
+          "tk": "Örtülmeli ýerler",
+          "tr": "Avret yerleri",
+          "ru": "Интимные места"
+        },
+        "text": {
+          "en": "Wash the private parts and remove any impurity, using the left hand.",
+          "tk": "Örtülmeli ýerleriňi ýuw we çep eliň bilen ähli hapalygy aýyr.",
+          "tr": "Avret yerlerini yıka ve sol elinle her türlü pisliği gider.",
+          "ru": "Омой интимные места левой рукой и удали любую нечистоту."
+        }
+      },
+      {
+        "title": {
+          "en": "Wudu",
+          "tk": "Täret",
+          "tr": "Abdest",
+          "ru": "Малое омовение"
+        },
+        "text": {
+          "en": "Make a complete wudu as for prayer (you may leave washing the feet until the end).",
+          "tk": "Namaz üçin alşyň ýaly doly täret al (aýaklaryňy iň soňunda ýuwup bilersiň).",
+          "tr": "Namaz için aldığın gibi tam bir abdest al (ayaklarını en sona bırakabilirsin).",
+          "ru": "Соверши полное омовение, как для молитвы (омовение ног можно оставить на конец)."
+        }
+      },
+      {
+        "title": {
+          "en": "Mouth and nose",
+          "tk": "Agyz we burun",
+          "tr": "Ağız ve burun",
+          "ru": "Рот и нос"
+        },
+        "text": {
+          "en": "Rinse the mouth and the nose thoroughly — in the Hanafi school this is obligatory in ghusl.",
+          "tk": "Agzyňy we burnuňy gowy çaýka — hanafy mezhebinde bu gusulda parzdyr.",
+          "tr": "Ağzını ve burnunu iyice çalkala — Hanefi mezhebinde bu gusülde farzdır.",
+          "ru": "Тщательно прополощи рот и нос — в ханафитском мазхабе это обязательно при гусле."
+        }
+      },
+      {
+        "title": {
+          "en": "Head",
+          "tk": "Baş",
+          "tr": "Baş",
+          "ru": "Голова"
+        },
+        "text": {
+          "en": "Pour water over your head three times, making sure it reaches the roots of the hair.",
+          "tk": "Başyňa üç gezek suw guý, suwuň saç düýbüne ýetmegini üpjün et.",
+          "tr": "Başına üç kez su dök ve suyun saç diplerine ulaşmasını sağla.",
+          "ru": "Трижды полей голову водой так, чтобы она достигла корней волос."
+        }
+      },
+      {
+        "title": {
+          "en": "Whole body",
+          "tk": "Tutuş beden",
+          "tr": "Bütün beden",
+          "ru": "Всё тело"
+        },
+        "text": {
+          "en": "Pour water over the whole body, right side then left, so that no spot stays dry — check the navel, behind the ears and under rings.",
+          "tk": "Tutuş bedeniňe, ilki sag, soňra çep tarapyňa suw guý, hiç bir ýer gury galmasyn — göbegiňi, gulagyňyň arkasyny we ýüzügiň astyny barla.",
+          "tr": "Bütün bedenine, önce sağ sonra sol tarafına su dök; hiçbir yer kuru kalmasın — göbeği, kulak arkalarını ve yüzük altını kontrol et.",
+          "ru": "Облей водой всё тело, сначала правую, затем левую сторону, чтобы ни одно место не осталось сухим, — проверь пупок, за ушами и под кольцами."
+        }
+      },
+      {
+        "title": {
+          "en": "Feet",
+          "tk": "Aýaklar",
+          "tr": "Ayaklar",
+          "ru": "Ноги"
+        },
+        "text": {
+          "en": "Finally, wash your feet if you did not wash them earlier.",
+          "tk": "Ahyrynda, öň ýuwmadyk bolsaň, aýaklaryňy ýuw.",
+          "tr": "Son olarak, daha önce yıkamadıysan ayaklarını yıka.",
+          "ru": "В конце омой ноги, если не сделал этого раньше."
+        }
+      }
+    ],
+    "note": {
+      "en": "The obligatory parts (Hanafi): rinsing the mouth, rinsing the nose and washing the entire body once. Remove nail polish or anything that stops water reaching the skin first.",
+      "tk": "Gusulyň parzlary (hanafy): agzy çaýkamak, burny çaýkamak we tutuş bedeni bir gezek ýuwmak. Ilki dyrnak boýagyny ýa-da suwuň deriňe ýetmegine päsgel berýän zady aýyr.",
+      "tr": "Farzları (Hanefi): ağzı çalkalamak, burnu çalkalamak ve bütün bedeni bir kez yıkamak. Önce oje gibi suyun deriye ulaşmasına engel olan şeyleri çıkar.",
+      "ru": "Обязательные части (ханафитский мазхаб): полоскание рта, промывание носа и омовение всего тела один раз. Сначала удали лак для ногтей и всё, что мешает воде достичь кожи."
+    }
+  },
+  {
+    "id": "fasting",
+    "icon": "moon",
+    "title": {
+      "en": "Fasting in Ramadan",
+      "tk": "Remezan orazasy",
+      "tr": "Ramazan orucu",
+      "ru": "Пост в Рамадан"
+    },
+    "subtitle": {
+      "en": "From dawn to sunset",
+      "tk": "Daňdan gün batýança",
+      "tr": "Tan vaktinden gün batımına",
+      "ru": "От рассвета до заката"
+    },
+    "intro": {
+      "en": "Fasting Ramadan is obligatory for every adult, sane and healthy Muslim who is not travelling. It is a month of Quran, prayer, charity and self-control. (Quran 2:183–185)",
+      "tk": "Remezan orazasy syýahatda bolmadyk her bir kämillik ýaşyna ýeten, akylly we sagdyn musulman üçin parzdyr. Bu Kuranyň, namazyň, sadakanyň we özüňi saklamagyň aýydyr. (Kuran 2:183–185)",
+      "tr": "Ramazan orucu, yolcu olmayan her ergen, akıllı ve sağlıklı Müslümana farzdır. Kur'an, namaz, sadaka ve nefis terbiyesi ayıdır. (Kur'an 2:183–185)",
+      "ru": "Пост в Рамадан обязателен для каждого совершеннолетнего, вменяемого и здорового мусульманина, не находящегося в пути. Это месяц Корана, молитвы, милостыни и самообладания. (Коран 2:183–185)"
+    },
+    "steps": [
+      {
+        "title": {
+          "en": "Intention",
+          "tk": "Niýet",
+          "tr": "Niyet",
+          "ru": "Намерение"
+        },
+        "text": {
+          "en": "Intend to fast each day in your heart, ideally at night. The Hanafi school also accepts the intention for a Ramadan fast until before midday.",
+          "tk": "Her gün oraza tutmagy ýüregiňde, has gowusy gije niýet et. Hanafy mezhebinde Remezan orazasy üçin niýet günortandan öň hem kabul edilýär.",
+          "tr": "Her gün oruç tutmaya kalben, tercihen geceden niyet et. Hanefi mezhebinde Ramazan orucu için niyet öğleden önceye kadar da geçerlidir.",
+          "ru": "Намеревайся поститься каждый день в сердце, лучше ночью. В ханафитском мазхабе намерение на пост Рамадана принимается и до полудня."
+        }
+      },
+      {
+        "title": {
+          "en": "Suhoor",
+          "tk": "Sähri (agyz bekleme)",
+          "tr": "Sahur",
+          "ru": "Сухур"
+        },
+        "text": {
+          "en": "Eat a pre-dawn meal and stop when Fajr time begins. The Prophet ﷺ said: “Take suhoor, for in suhoor there is blessing.” (Bukhari 1923)",
+          "tk": "Daňdan öň nahar iý we ertir namazynyň wagty girende bes et. Pygamber ﷺ: «Sähri ediň, sähride bereket bar» diýipdir. (Buhari 1923)",
+          "tr": "Tan yerinden önce sahur yap ve imsak (sabah namazı vakti) girince yemeyi bırak. Peygamber ﷺ: “Sahur yapın, sahurda bereket vardır” buyurmuştur. (Buhârî 1923)",
+          "ru": "Поешь перед рассветом и прекрати с наступлением времени фаджра. Пророк ﷺ сказал: «Ешьте сухур, ведь в сухуре — благодать». (аль-Бухари 1923)"
+        }
+      },
+      {
+        "title": {
+          "en": "From Fajr to Maghrib",
+          "tk": "Ertirden agşama çenli",
+          "tr": "İmsaktan iftara",
+          "ru": "От фаджра до магриба"
+        },
+        "text": {
+          "en": "From true dawn (Fajr) until sunset (Maghrib), abstain from food, drink, smoking and marital relations. Guard your tongue too — from lies, backbiting and quarrels.",
+          "tk": "Hakyky daňdan (ertir) gün batýança (agşam) iýmekden, içmekden, çilim çekmekden we är-aýal gatnaşygyndan saklan. Diliňi hem ýalandan, gybatdan we jedelden gora.",
+          "tr": "Tan yerinin ağarmasından (imsak) gün batımına (akşam) kadar yemekten, içmekten, sigaradan ve eşlerle birleşmekten uzak dur. Dilini de yalandan, gıybetten ve kavgadan koru.",
+          "ru": "С истинного рассвета (фаджр) до заката (магриб) воздерживайся от еды, питья, курения и супружеской близости. Береги и язык — от лжи, злословия и ссор."
+        }
+      },
+      {
+        "title": {
+          "en": "What breaks the fast",
+          "tk": "Orazany näme bozýar",
+          "tr": "Orucu bozanlar",
+          "ru": "Что нарушает пост"
+        },
+        "text": {
+          "en": "Eating or drinking on purpose, smoking, marital relations, deliberate vomiting, and anything deliberately taken into the body through the mouth or nose. Eating out of forgetfulness does not break it — just continue fasting. (Bukhari 1933)",
+          "tk": "Bilkastlaýyn iýmek ýa-da içmek, çilim çekmek, är-aýal gatnaşygy, bilkastlaýyn gusmak we agyz ýa-da burun arkaly bedene bilkastlaýyn girizilen zat. Unudyp iýmek orazany bozmaýar — orazaňy dowam et. (Buhari 1933)",
+          "tr": "Bilerek yemek veya içmek, sigara içmek, eşlerle birleşmek, kasten kusmak ve ağız ya da burundan bilerek vücuda alınan şeyler. Unutarak yemek orucu bozmaz — oruca devam et. (Buhârî 1933)",
+          "ru": "Умышленная еда или питьё, курение, супружеская близость, умышленная рвота и всё, что умышленно вводится в организм через рот или нос. Еда по забывчивости пост не нарушает — просто продолжай поститься. (аль-Бухари 1933)"
+        }
+      },
+      {
+        "title": {
+          "en": "Iftar",
+          "tk": "Agyz açmak",
+          "tr": "İftar",
+          "ru": "Ифтар"
+        },
+        "text": {
+          "en": "Break the fast at sunset without delay, ideally with dates or water, and say: The thirst is gone, the veins are moistened, and the reward is confirmed, if Allah wills. (Abu Dawud 2357)",
+          "tk": "Gün batan badyna gijikdirmän, has gowusy hurma ýa-da suw bilen agyz aç we aýt: Suwsuzlyk gitdi, damarlar çyglandy we Alla isläp bolsa, sogap berkidildi. (Abu Dawud 2357)",
+          "tr": "Güneş batınca geciktirmeden, tercihen hurma veya suyla iftar et ve söyle: Susuzluk gitti, damarlar ıslandı ve inşallah sevap sabit oldu. (Ebû Dâvûd 2357)",
+          "ru": "Разговейся сразу после заката, лучше финиками или водой, и скажи: Ушла жажда, увлажнились жилы, и утвердилась награда, если пожелает Аллах. (Абу Дауд 2357)"
+        },
+        "ar": "ذَهَبَ الظَّمَأُ، وَابْتَلَّتِ الْعُرُوقُ، وَثَبَتَ الْأَجْرُ إِنْ شَاءَ اللَّهُ",
+        "translit": "Dhahabaz-zama'u, wabtallatil-'uruq, wa thabatal-ajru in sha' Allah."
+      },
+      {
+        "title": {
+          "en": "Who is exempt",
+          "tk": "Kim orazadan boşadylýar",
+          "tr": "Kimler muaftır",
+          "ru": "Кто освобождён"
+        },
+        "text": {
+          "en": "Travellers, the sick, pregnant or breastfeeding women who fear harm, and women during menstruation or post-natal bleeding do not fast; they make up the days later. The elderly and the chronically ill who cannot fast pay fidya instead.",
+          "tk": "Syýahatçylar, syrkawlar, zyýandan gorkýan göwreli ýa-da emdirýän aýallar hem-de aýbaşy ýa-da lohusalyk döwründäki aýallar oraza tutmaýarlar; olar günleri soňra kaza edýärler. Oraza tutup bilmeýän garrylar we dowamly syrkawlar onuň ýerine pidýe berýärler.",
+          "tr": "Yolcular, hastalar, zarar görmekten korkan hamile veya emziren kadınlar ve âdet ya da lohusalık dönemindeki kadınlar oruç tutmaz; günleri sonra kaza ederler. Oruç tutamayan yaşlılar ve süreğen hastalar bunun yerine fidye verir.",
+          "ru": "Путники, больные, беременные или кормящие женщины, опасающиеся вреда, и женщины во время менструации или послеродового кровотечения не постятся; они восполняют дни позже. Пожилые и хронически больные, не способные поститься, вместо этого выплачивают фидью."
+        }
+      },
+      {
+        "title": {
+          "en": "Making up: qada and fidya",
+          "tk": "Kaza we pidýe",
+          "tr": "Kaza ve fidye",
+          "ru": "Восполнение: када и фидья"
+        },
+        "text": {
+          "en": "Missed days are made up one for one after Ramadan (qada). Fidya means feeding one poor person for each missed day — usually the same amount as sadaqat al-fitr. Breaking a fast on purpose without excuse may require kaffara; ask your imam.",
+          "tk": "Goýberilen günler Remezandan soň bir güne bir gün kaza edilýär. Pidýe — her goýberilen gün üçin bir garyby doýurmak; adatça pitre möçberinde bolýar. Ötünçsiz bilkastlaýyn orazany bozmak kepparaty talap edip biler; ymamyňdan sora.",
+          "tr": "Tutulamayan günler Ramazan'dan sonra gün gün kaza edilir. Fidye, her gün için bir yoksulu doyurmaktır; genellikle fitre miktarı kadardır. Mazeretsiz bilerek orucu bozmak keffaret gerektirebilir; imamına danış.",
+          "ru": "Пропущенные дни восполняются после Рамадана день за день (када). Фидья — накормить одного бедняка за каждый пропущенный день; обычно это сумма, равная закят аль-фитр. Умышленное нарушение поста без причины может требовать каффары; спроси имама."
+        }
+      },
+      {
+        "title": {
+          "en": "Laylat al-Qadr",
+          "tk": "Kadyr gijesi",
+          "tr": "Kadir Gecesi",
+          "ru": "Ночь Предопределения"
+        },
+        "text": {
+          "en": "Seek the Night of Power in the last ten nights; it is better than a thousand months (97:3). Say often: O Allah, You are the Pardoner and You love to pardon, so pardon me.",
+          "tk": "Kadyr gijesini soňky on gijede gözle; ol müň aýdan ýagşydyr (97:3). Köplenç aýt: Allahym, Sen Günä Geçijisiň, günä geçmegi söýýärsiň, meniň günälerimi geç.",
+          "tr": "Kadir Gecesi'ni son on gecede ara; o bin aydan hayırlıdır (97:3). Sıkça söyle: Allah'ım, Sen affedicisin, affetmeyi seversin; beni affet.",
+          "ru": "Ищи Ночь Предопределения в последние десять ночей; она лучше тысячи месяцев (97:3). Чаще говори: О Аллах, Ты — Прощающий, любишь прощать, так прости же меня."
+        },
+        "ar": "اللَّهُمَّ إِنَّكَ عَفُوٌّ تُحِبُّ الْعَفْوَ فَاعْفُ عَنِّي",
+        "translit": "Allahumma innaka 'afuwwun tuhibbul-'afwa fa'fu 'anni."
+      }
+    ],
+    "note": {
+      "en": "Use Waqt's Ramadan mode for suhoor and iftar times and reminders.",
+      "tk": "Sähri we agyz açar wagtlary hem ýatlatmalar üçin Waqt-yň Remezan tertibini ulan.",
+      "tr": "Sahur ve iftar vakitleri ile hatırlatıcılar için Waqt'ın Ramazan modunu kullan.",
+      "ru": "Для времени сухура и ифтара и напоминаний используй режим Рамадана в Waqt."
+    }
+  },
+  {
+    "id": "zakat",
+    "icon": "hands",
+    "title": {
+      "en": "Zakat basics",
+      "tk": "Zekatyň esaslary",
+      "tr": "Zekâtın temelleri",
+      "ru": "Основы закята"
+    },
+    "subtitle": {
+      "en": "Purifying wealth, helping others",
+      "tk": "Maly arassalamak, başgalara kömek etmek",
+      "tr": "Malı arındırmak, başkalarına yardım etmek",
+      "ru": "Очищение имущества и помощь другим"
+    },
+    "intro": {
+      "en": "Zakat is the third pillar of Islam: a yearly due of 2.5% on savings above a minimum, given to those in need.",
+      "tk": "Zekat Yslamyň üçünji binýadydyr: belli bir möçberden ýokary emläkden her ýyl 2,5 göterim mätäçlere berilýär.",
+      "tr": "Zekât, İslam'ın üçüncü şartıdır: belirli bir miktarın üzerindeki birikimden her yıl %2,5 ihtiyaç sahiplerine verilir.",
+      "ru": "Закят — третий столп ислама: ежегодная выплата 2,5% со сбережений сверх минимума в пользу нуждающихся."
+    },
+    "steps": [
+      {
+        "title": {
+          "en": "Who pays",
+          "tk": "Kim töleýär",
+          "tr": "Kim verir",
+          "ru": "Кто платит"
+        },
+        "text": {
+          "en": "An adult, sane Muslim who owns wealth above the nisab, beyond basic needs and debts, for one full lunar (Hijri) year.",
+          "tk": "Esasy zerurlyklaryndan we bergilerinden artyk, nisapdan ýokary emlägi doly bir aý (hijri) ýylynyň dowamynda elinde saklan kämillik ýaşyna ýeten, akylly musulman.",
+          "tr": "Temel ihtiyaçları ve borçları dışında nisabın üzerinde mala, tam bir kamerî (hicrî) yıl boyunca sahip olan ergen ve akıllı Müslüman.",
+          "ru": "Совершеннолетний вменяемый мусульманин, владеющий имуществом сверх нисаба, помимо основных нужд и долгов, в течение полного лунного (хиджрийского) года."
+        }
+      },
+      {
+        "title": {
+          "en": "Nisab (minimum)",
+          "tk": "Nisap",
+          "tr": "Nisap",
+          "ru": "Нисаб (минимум)"
+        },
+        "text": {
+          "en": "The minimum is the value of 85 g of gold or 595 g of silver. Many scholars recommend the silver nisab because it benefits more of the poor; ask your local imam which one to use.",
+          "tk": "Iň az möçber 85 g altynyň ýa-da 595 g kümşüň bahasydyr. Köp alymlar garyplara has köp peýda berýändigi üçin kümüş nisabyny maslahat berýärler; haýsysyny ulanmalydygyny ýerli ymamdan sora.",
+          "tr": "Asgari miktar 85 g altın veya 595 g gümüş değeridir. Birçok âlim, fakirlere daha çok fayda sağladığı için gümüş nisabını tavsiye eder; hangisini kullanacağını bölgendeki imama sor.",
+          "ru": "Минимум — стоимость 85 г золота или 595 г серебра. Многие учёные советуют серебряный нисаб, так как он приносит больше пользы бедным; уточни у местного имама, какой применять."
+        }
+      },
+      {
+        "title": {
+          "en": "Rate: 2.5%",
+          "tk": "Möçberi: 2,5%",
+          "tr": "Oran: %2,5",
+          "ru": "Ставка: 2,5%"
+        },
+        "text": {
+          "en": "Zakat is 2.5% (one fortieth) of qualifying wealth. Example: savings of 40,000 TMT → zakat of 1,000 TMT.",
+          "tk": "Zekat degişli emlägiň 2,5 göterimidir (kyrkdan biri). Mysal: 40 000 TMT tygşytlyk → 1 000 TMT zekat.",
+          "tr": "Zekât, zekâta tabi malın %2,5'idir (kırkta biri). Örnek: 40.000 TMT birikim → 1.000 TMT zekât.",
+          "ru": "Закят — 2,5% (одна сороковая) облагаемого имущества. Пример: сбережения 40 000 TMT → закят 1 000 TMT."
+        }
+      },
+      {
+        "title": {
+          "en": "What it is due on",
+          "tk": "Zekat nämeden berilýär",
+          "tr": "Neyin zekâtı verilir",
+          "ru": "С чего выплачивается"
+        },
+        "text": {
+          "en": "Cash and bank savings, gold and silver, goods held for trade, and money owed to you that you expect to receive. Not on your home, car, clothes or work tools. Livestock and harvests have their own rules.",
+          "tk": "Nagt we bankdaky pul, altyn we kümüş, söwda üçin saklanýan harytlar hem-de almaga umyt edýän algylaryň. Öýüňden, ulagyňdan, eşigiňden we iş gurallaryňdan berilmeýär. Mal-gara we hasyl üçin aýratyn düzgünler bar.",
+          "tr": "Nakit ve banka birikimi, altın ve gümüş, ticaret malları ve tahsil etmeyi beklediğin alacaklar. Evin, araban, elbiselerin ve iş aletlerin için zekât yoktur. Hayvanların ve mahsulün ayrı hükümleri vardır.",
+          "ru": "Наличные и банковские сбережения, золото и серебро, товары для торговли и долги, которые ты рассчитываешь получить. Не облагаются дом, машина, одежда и рабочие инструменты. Для скота и урожая — особые правила."
+        }
+      },
+      {
+        "title": {
+          "en": "Who receives it (9:60)",
+          "tk": "Kim alýar (9:60)",
+          "tr": "Kimlere verilir (9:60)",
+          "ru": "Кто получает (9:60)"
+        },
+        "text": {
+          "en": "The Quran names eight groups: the poor, the needy, those who collect zakat, those whose hearts are to be won, freeing captives, those in debt, in the cause of Allah, and the stranded traveller. Zakat is not given to your parents, children or spouse.",
+          "tk": "Kuranda sekiz topar agzalýar: garyplar, mätäçler, zekat ýygnaýanlar, ýürekleri Yslama ýakynlaşdyrylmaly adamlar, ýesirleri azat etmek, bergidarlar, Allanyň ýolunda we ýolda galan syýahatçy. Zekat ata-enä, çagalara ýa-da ýanýoldaşa berilmeýär.",
+          "tr": "Kur'an sekiz grubu sayar: fakirler, yoksullar, zekât görevlileri, kalpleri İslam'a ısındırılacak olanlar, esirlerin özgürlüğü, borçlular, Allah yolunda olanlar ve yolda kalmış yolcu. Zekât anne babaya, çocuklara veya eşe verilmez.",
+          "ru": "Коран называет восемь групп: бедные, нуждающиеся, сборщики закята, те, чьи сердца нужно расположить, освобождение пленников, должники, на пути Аллаха и путник, оказавшийся в нужде. Закят не дают родителям, детям и супругу."
+        },
+        "ar": "إِنَّمَا الصَّدَقَاتُ لِلْفُقَرَاءِ وَالْمَسَاكِينِ وَالْعَامِلِينَ عَلَيْهَا وَالْمُؤَلَّفَةِ قُلُوبُهُمْ وَفِي الرِّقَابِ وَالْغَارِمِينَ وَفِي سَبِيلِ اللَّهِ وَابْنِ السَّبِيلِ",
+        "translit": "Innamas-sadaqatu lil-fuqara'i wal-masakini wal-'amilina 'alayha wal-mu'allafati qulubuhum wa fir-riqabi wal-gharimina wa fi sabilillahi wabnis-sabil."
+      },
+      {
+        "title": {
+          "en": "Sadaqat al-fitr",
+          "tk": "Pitre",
+          "tr": "Fitre (sadaka-i fıtır)",
+          "ru": "Закят аль-фитр"
+        },
+        "text": {
+          "en": "Before the Eid prayer at the end of Ramadan, every Muslim who can afford it pays sadaqat al-fitr for themselves and their dependants — food or its value — so the poor can celebrate too. Your mosque announces the amount each year.",
+          "tk": "Remezanyň ahyrynda baýram namazyndan öň güýji ýetýän her bir musulman özi we hossarlygyndakylar üçin pitre berýär — azyk ýa-da onuň bahasy — garyplar hem baýram etsin diýip. Möçberini her ýyl metjit yglan edýär.",
+          "tr": "Ramazan'ın sonunda bayram namazından önce gücü yeten her Müslüman kendisi ve bakmakla yükümlü olduğu kişiler için fitre verir — gıda veya değeri — ki yoksullar da bayram edebilsin. Miktarı her yıl cami tarafından duyurulur.",
+          "ru": "Перед праздничной молитвой в конце Рамадана каждый мусульманин, имеющий возможность, выплачивает закят аль-фитр за себя и иждивенцев — едой или её стоимостью, — чтобы и бедные могли праздновать. Размер ежегодно объявляет мечеть."
+        }
+      }
+    ],
+    "note": {
+      "en": "Voluntary charity (sadaqa) has no minimum — even a smile is charity. (Tirmidhi 1956)",
+      "tk": "Meýletin sadakanyň iň az möçberi ýok — hatda ýylgyryş hem sadakadyr. (Tirmizi 1956)",
+      "tr": "Gönüllü sadakanın alt sınırı yoktur — bir tebessüm bile sadakadır. (Tirmizî 1956)",
+      "ru": "У добровольной милостыни (садака) нет минимума — даже улыбка является садакой. (ат-Тирмизи 1956)"
+    }
+  },
+  {
+    "id": "dhikr",
+    "icon": "sun",
+    "title": {
+      "en": "Simple daily dhikr",
+      "tk": "Gündelik ýönekeý zikirler",
+      "tr": "Günlük basit zikirler",
+      "ru": "Простой ежедневный зикр"
+    },
+    "subtitle": {
+      "en": "Remembrance anyone can do, anywhere",
+      "tk": "Islendik adamyň islendik ýerde edip biljek zikri",
+      "tr": "Herkesin her yerde yapabileceği zikir",
+      "ru": "Поминание, доступное каждому и везде"
+    },
+    "intro": {
+      "en": "Dhikr means remembering Allah. These short phrases are light on the tongue and heavy on the scale — say them while walking, waiting or before sleep.",
+      "tk": "Zikir — Allany ýatlamak diýmekdir. Bu gysga sözler dile ýeňil, terezide agyrdyr — ýöräniňde, garaşanyňda ýa-da ýatmazdan öň aýt.",
+      "tr": "Zikir, Allah'ı anmak demektir. Bu kısa sözler dile hafif, mizanda ağırdır — yürürken, beklerken veya uyumadan önce söyle.",
+      "ru": "Зикр — это поминание Аллаха. Эти короткие слова легки для языка и тяжелы на весах — произноси их на ходу, в ожидании или перед сном."
+    },
+    "steps": [
+      {
+        "title": {
+          "en": "SubhanAllah",
+          "tk": "Subhanalla",
+          "tr": "Sübhanallah",
+          "ru": "Субханаллах"
+        },
+        "text": {
+          "en": "Glory be to Allah — He is free of every imperfection. “Whoever says SubhanAllahi wa bihamdihi 100 times a day, his sins are wiped away even if they are like the foam of the sea.” (Bukhari 6405)",
+          "tk": "Alla ähli kemçiliklerden päkdir. «Kim günde 100 gezek ‹Subhanallahi we bihamdihi› diýse, günäleri deňiz köpügi ýaly köp bolsa-da öçürilýär.» (Buhari 6405)",
+          "tr": "Allah her türlü eksiklikten münezzehtir. “Kim günde 100 kez ‘Sübhânallâhi ve bihamdihî’ derse, günahları deniz köpüğü kadar olsa da silinir.” (Buhârî 6405)",
+          "ru": "Пречист Аллах от всякого недостатка. «Кто скажет “Субханаллахи ва бихамдихи” 100 раз в день, тому простятся грехи, даже если их столько, сколько морской пены». (аль-Бухари 6405)"
+        },
+        "ar": "سُبْحَانَ اللَّهِ",
+        "translit": "SubhanAllah."
+      },
+      {
+        "title": {
+          "en": "Alhamdulillah",
+          "tk": "Elhamdulilla",
+          "tr": "Elhamdülillah",
+          "ru": "Альхамдулиллях"
+        },
+        "text": {
+          "en": "All praise is for Allah. “Alhamdulillah fills the scale.” (Muslim 223)",
+          "tk": "Ähli hamd Alla mahsusdyr. «Elhamdulilla terezini doldurýar.» (Muslim 223)",
+          "tr": "Hamd Allah'a mahsustur. “Elhamdülillah mizanı doldurur.” (Müslim 223)",
+          "ru": "Вся хвала — Аллаху. «“Альхамдулиллях” заполняет весы». (Муслим 223)"
+        },
+        "ar": "الْحَمْدُ لِلَّهِ",
+        "translit": "Alhamdulillah."
+      },
+      {
+        "title": {
+          "en": "Allahu Akbar",
+          "tk": "Allahu ekber",
+          "tr": "Allahu ekber",
+          "ru": "Аллаху акбар"
+        },
+        "text": {
+          "en": "Allah is the Greatest — greater than any worry, fear or desire.",
+          "tk": "Alla beýikdir — islendik aladadan, gorkudan ýa-da höwesden beýikdir.",
+          "tr": "Allah en büyüktür — her kaygıdan, korkudan ve arzudan büyüktür.",
+          "ru": "Аллах велик — больше любой тревоги, страха или желания."
+        },
+        "ar": "اللَّهُ أَكْبَرُ",
+        "translit": "Allahu akbar."
+      },
+      {
+        "title": {
+          "en": "After every prayer: 33 · 33 · 34",
+          "tk": "Her namazdan soň: 33 · 33 · 34",
+          "tr": "Her namazdan sonra: 33 · 33 · 34",
+          "ru": "После каждого намаза: 33 · 33 · 34"
+        },
+        "text": {
+          "en": "After each obligatory prayer, say SubhanAllah 33 times, Alhamdulillah 33 times and Allahu Akbar 34 times — the Prophet ﷺ said whoever says them will never be disappointed. (Muslim 596) Use the tasbih counter in Tools.",
+          "tk": "Her parz namazdan soň 33 gezek Subhanalla, 33 gezek Elhamdulilla we 34 gezek Allahu ekber diý — Pygamber ﷺ olary aýdanyň hiç wagt umytsyz galmajakdygyny aýdypdyr. (Muslim 596) Gurallardaky täsbih sanajyny ulan.",
+          "tr": "Her farz namazdan sonra 33 kez Sübhanallah, 33 kez Elhamdülillah ve 34 kez Allahu ekber de — Peygamber ﷺ bunları söyleyenin asla eli boş dönmeyeceğini bildirmiştir. (Müslim 596) Araçlar'daki tesbih sayacını kullan.",
+          "ru": "После каждой обязательной молитвы говори «Субханаллах» 33 раза, «Альхамдулиллях» 33 раза и «Аллаху акбар» 34 раза — Пророк ﷺ сказал, что произносящий их не останется ни с чем. (Муслим 596) Используй счётчик тасбиха в разделе «Инструменты»."
+        },
+        "ar": "سُبْحَانَ اللَّهِ ٣٣ · الْحَمْدُ لِلَّهِ ٣٣ · اللَّهُ أَكْبَرُ ٣٤",
+        "translit": "SubhanAllah ×33 · Alhamdulillah ×33 · Allahu akbar ×34"
+      },
+      {
+        "title": {
+          "en": "La ilaha illallah",
+          "tk": "La ilähe illalla",
+          "tr": "Lâ ilâhe illallah",
+          "ru": "Ля иляха илляЛлах"
+        },
+        "text": {
+          "en": "There is no god but Allah. “The best remembrance is La ilaha illallah.” (Tirmidhi 3383)",
+          "tk": "Alladan başga hudaý ýokdur. «Zikiriň iň gowusy ‹La ilähe illalla›-dyr.» (Tirmizi 3383)",
+          "tr": "Allah'tan başka ilah yoktur. “Zikrin en faziletlisi ‘Lâ ilâhe illallah’tır.” (Tirmizî 3383)",
+          "ru": "Нет божества, кроме Аллаха. «Лучшее поминание — “Ля иляха илляЛлах”». (ат-Тирмизи 3383)"
+        },
+        "ar": "لَا إِلَٰهَ إِلَّا اللَّهُ",
+        "translit": "La ilaha illallah."
+      },
+      {
+        "title": {
+          "en": "SubhanAllahi wa bihamdihi, SubhanAllahil-'Azim",
+          "tk": "Subhanallahi we bihamdihi, Subhanallahil-Azym",
+          "tr": "Sübhânallâhi ve bihamdihî, Sübhânallâhi'l-azîm",
+          "ru": "Субханаллахи ва бихамдихи, Субханаллахиль-Азым"
+        },
+        "text": {
+          "en": "Glory and praise be to Allah; glory be to Allah, the Magnificent. “Two words light on the tongue, heavy on the scale and beloved to the Most Merciful.” (Bukhari 6406)",
+          "tk": "Allany hamd bilen päk tutýaryn; Beýik Allany päk tutýaryn. «Dile ýeňil, terezide agyr we Rahmana söýgüli iki söz.» (Buhari 6406)",
+          "tr": "Allah'ı hamd ile tesbih ederim; yüce Allah'ı tesbih ederim. “Dile hafif, mizanda ağır ve Rahmân'a sevimli iki söz.” (Buhârî 6406)",
+          "ru": "Пречист Аллах и хвала Ему; пречист Аллах Великий. «Два слова, лёгкие для языка, тяжёлые на весах и любимые Милостивым». (аль-Бухари 6406)"
+        },
+        "ar": "سُبْحَانَ اللَّهِ وَبِحَمْدِهِ، سُبْحَانَ اللَّهِ الْعَظِيمِ",
+        "translit": "SubhanAllahi wa bihamdihi, SubhanAllahil-'Azim."
+      },
+      {
+        "title": {
+          "en": "Astaghfirullah",
+          "tk": "Estagfirulla",
+          "tr": "Estağfirullah",
+          "ru": "Астагфируллах"
+        },
+        "text": {
+          "en": "I seek Allah's forgiveness. The Prophet ﷺ sought forgiveness more than seventy times a day. (Bukhari 6307)",
+          "tk": "Alladan bagyşlanmak soraýaryn. Pygamber ﷺ günde ýetmiş gezekden köp bagyşlanmak sorapdyr. (Buhari 6307)",
+          "tr": "Allah'tan bağışlanma dilerim. Peygamber ﷺ günde yetmiş defadan fazla istiğfar ederdi. (Buhârî 6307)",
+          "ru": "Прошу прощения у Аллаха. Пророк ﷺ просил прощения более семидесяти раз в день. (аль-Бухари 6307)"
+        },
+        "ar": "أَسْتَغْفِرُ اللَّهَ",
+        "translit": "Astaghfirullah."
+      },
+      {
+        "title": {
+          "en": "Salawat on the Prophet ﷺ",
+          "tk": "Pygambere ﷺ salawat",
+          "tr": "Peygamber'e ﷺ salavat",
+          "ru": "Салават Пророку ﷺ"
+        },
+        "text": {
+          "en": "O Allah, send blessings upon Muhammad. “Whoever sends one blessing upon me, Allah sends ten upon him.” (Muslim 408)",
+          "tk": "Allahym, Muhammede salawat aýt (rehmet et). «Kim maňa bir gezek salawat aýtsa, Alla oňa on gezek rehmet eder.» (Muslim 408)",
+          "tr": "Allah'ım, Muhammed'e salât et. “Kim bana bir salavat getirirse Allah ona on rahmet eder.” (Müslim 408)",
+          "ru": "О Аллах, благослови Мухаммада. «Кто благословит меня один раз, того Аллах благословит десять раз». (Муслим 408)"
+        },
+        "ar": "اللَّهُمَّ صَلِّ عَلَىٰ مُحَمَّدٍ",
+        "translit": "Allahumma salli 'ala Muhammad."
+      },
+      {
+        "title": {
+          "en": "La hawla wa la quwwata illa billah",
+          "tk": "La hawla we la kuwwata illa billa",
+          "tr": "Lâ havle ve lâ kuvvete illâ billâh",
+          "ru": "Ля хауля ва ля куввата илля биЛлях"
+        },
+        "text": {
+          "en": "There is no might nor power except with Allah. “A treasure from the treasures of Paradise.” (Bukhari 6384)",
+          "tk": "Güýç-kuwwat diňe Alladandyr. «Jennet hazynalaryndan bir hazyna.» (Buhari 6384)",
+          "tr": "Güç ve kuvvet ancak Allah'tandır. “Cennet hazinelerinden bir hazine.” (Buhârî 6384)",
+          "ru": "Нет мощи и силы ни у кого, кроме Аллаха. «Сокровище из сокровищ Рая». (аль-Бухари 6384)"
+        },
+        "ar": "لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ",
+        "translit": "La hawla wa la quwwata illa billah."
+      }
+    ],
+    "note": {
+      "en": "Start small: pick one phrase and say it ten times after each prayer. Consistency matters more than quantity.",
+      "tk": "Kiçiden başla: bir sözi saýla-da, ony her namazdan soň on gezek aýt. Mukdardan has durnuklylyk möhümdir.",
+      "tr": "Küçük başla: bir söz seç ve her namazdan sonra on kez söyle. Süreklilik miktardan daha önemlidir.",
+      "ru": "Начни с малого: выбери одну фразу и произноси её десять раз после каждой молитвы. Постоянство важнее количества."
+    }
+  }
+]

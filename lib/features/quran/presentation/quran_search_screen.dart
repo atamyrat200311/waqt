@@ -81,8 +81,14 @@ class _QuranSearchScreenState extends ConsumerState<QuranSearchScreen> {
                 filled: true,
                 fillColor: c.card,
                 contentPadding: const EdgeInsets.symmetric(vertical: 14),
-                enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(16), borderSide: BorderSide(color: c.hairline)),
-                focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(16), borderSide: BorderSide(color: c.accent)),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(16),
+                  borderSide: BorderSide(color: c.hairline),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(16),
+                  borderSide: BorderSide(color: c.accent),
+                ),
               ),
             ),
           ),
@@ -90,7 +96,10 @@ class _QuranSearchScreenState extends ConsumerState<QuranSearchScreen> {
         SliverToBoxAdapter(
           child: Padding(
             padding: const EdgeInsets.fromLTRB(Gap.title, 0, Gap.title, 10),
-            child: Text(l.quranSearchIn('${translation.label} · ${translation.author}'), style: WaqtType.sans(12.5, color: c.muted)),
+            child: Text(
+              l.quranSearchIn('${translation.label} · ${translation.author}'),
+              style: WaqtType.sans(12.5, color: c.muted),
+            ),
           ),
         ),
         if (jump != null)
@@ -120,7 +129,8 @@ class _QuranSearchScreenState extends ConsumerState<QuranSearchScreen> {
               padding: const EdgeInsets.fromLTRB(Gap.screen, 10, Gap.screen, 0),
               child: WaqtGroup(
                 children: [
-                  for (final s in surahs) SurahRow(surah: s, language: lang, onTap: () => openReader(context, s.startIndex)),
+                  for (final s in surahs)
+                    SurahRow(surah: s, language: lang, onTap: () => openReader(context, s.startIndex)),
                 ],
               ),
             ),
@@ -132,7 +142,7 @@ class _QuranSearchScreenState extends ConsumerState<QuranSearchScreen> {
               child: index.isLoading
                   ? const LinearProgressIndicator()
                   : Text(
-                      hits.isEmpty && surahs.isEmpty ? l.quranNoResults : l.quranResults(hits.length),
+                      hits.isEmpty && surahs.isEmpty ? l.quranNoResults : hits.length >= 200 ? '${l.quranResults(200)}+' : l.quranResults(hits.length),
                       style: WaqtType.kicker(color: c.muted, size: 12),
                     ),
             ),
@@ -151,8 +161,10 @@ class _QuranSearchScreenState extends ConsumerState<QuranSearchScreen> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
-                        Text('${SurahInfo(r.surah).translit} · ${r.surah}:${r.ayah}',
-                            style: WaqtType.sans(13, weight: 700, color: c.accent)),
+                        Text(
+                          '${SurahInfo(r.surah).translit} · ${r.surah}:${r.ayah}',
+                          style: WaqtType.sans(13, weight: 700, color: c.accent),
+                        ),
                         const SizedBox(height: 6),
                         Text(
                           texts.arabic[idx],
@@ -193,14 +205,16 @@ class _Highlighted extends StatelessWidget {
     final from = at > 80 ? lower.lastIndexOf(' ', at - 60).clamp(0, at) : 0;
     final prefix = from > 0 ? '… ' : '';
     return Text.rich(
-      TextSpan(children: [
-        TextSpan(text: prefix + text.substring(from, at)),
-        TextSpan(
-          text: text.substring(at, at + q.length),
-          style: base.copyWith(backgroundColor: c.brassSoft, color: c.brassText, fontWeight: FontWeight.w700),
-        ),
-        TextSpan(text: text.substring(at + q.length)),
-      ]),
+      TextSpan(
+        children: [
+          TextSpan(text: prefix + text.substring(from, at)),
+          TextSpan(
+            text: text.substring(at, at + q.length),
+            style: base.copyWith(backgroundColor: c.brassSoft, color: c.brassText, fontWeight: FontWeight.w700),
+          ),
+          TextSpan(text: text.substring(at + q.length)),
+        ],
+      ),
       maxLines: 4,
       overflow: TextOverflow.ellipsis,
       style: base,

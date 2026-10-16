@@ -60,6 +60,19 @@ class QuranRepository {
     return q.watch().map((rows) => {for (final r in rows) r.read(_db.quranReads.ayah)!});
   }
 
+  /// Ayahs whose first read on or after [since] happened on [day] (new
+  /// reading for the khatm; re-reading old ayahs does not count).
+  Stream<Set<int>> watchFirstReadOn(DayKey since, DayKey day) {
+    return _db
+        .customSelect(
+          'SELECT ayah FROM quran_reads WHERE date >= ? GROUP BY ayah HAVING MIN(date) = ?',
+          variables: [Variable.withString(since.value), Variable.withString(day.value)],
+          readsFrom: {_db.quranReads},
+        )
+        .watch()
+        .map((rows) => {for (final r in rows) r.read<int>('ayah')});
+  }
+
   // ------------------------------------------------------------ hifz
 
   Stream<List<HifzRow>> watchHifz() =>

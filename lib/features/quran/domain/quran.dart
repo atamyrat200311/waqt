@@ -123,13 +123,53 @@ String normalizeArabic(String s) => s
     .replaceAll(RegExp(r'\s+'), ' ');
 
 const _latinFold = {
-  'á': 'a', 'à': 'a', 'â': 'a', 'ä': 'a', 'ā': 'a', 'ã': 'a', 'å': 'a',
-  'é': 'e', 'è': 'e', 'ê': 'e', 'ë': 'e', 'ē': 'e',
-  'í': 'i', 'ì': 'i', 'î': 'i', 'ï': 'i', 'ī': 'i', 'ı': 'i',
-  'ó': 'o', 'ò': 'o', 'ô': 'o', 'ö': 'o', 'ō': 'o',
-  'ú': 'u', 'ù': 'u', 'û': 'u', 'ü': 'u', 'ū': 'u',
-  'ç': 'c', 'ş': 's', 'ğ': 'g', 'ñ': 'n', 'ň': 'n', 'ý': 'y', 'ž': 'z',
-  'ḥ': 'h', 'ṣ': 's', 'ḍ': 'd', 'ṭ': 't', 'ẓ': 'z', 'ё': 'е', 'ʿ': '', 'ʾ': '', "'": '', '`': '', '’': '', '‘': '',
+  'á': 'a',
+  'à': 'a',
+  'â': 'a',
+  'ä': 'a',
+  'ā': 'a',
+  'ã': 'a',
+  'å': 'a',
+  'é': 'e',
+  'è': 'e',
+  'ê': 'e',
+  'ë': 'e',
+  'ē': 'e',
+  'í': 'i',
+  'ì': 'i',
+  'î': 'i',
+  'ï': 'i',
+  'ī': 'i',
+  'ı': 'i',
+  'ó': 'o',
+  'ò': 'o',
+  'ô': 'o',
+  'ö': 'o',
+  'ō': 'o',
+  'ú': 'u',
+  'ù': 'u',
+  'û': 'u',
+  'ü': 'u',
+  'ū': 'u',
+  'ç': 'c',
+  'ş': 's',
+  'ğ': 'g',
+  'ñ': 'n',
+  'ň': 'n',
+  'ý': 'y',
+  'ž': 'z',
+  'ḥ': 'h',
+  'ṣ': 's',
+  'ḍ': 'd',
+  'ṭ': 't',
+  'ẓ': 'z',
+  'ё': 'е',
+  'ʿ': '',
+  'ʾ': '',
+  "'": '',
+  '`': '',
+  '’': '',
+  '‘': '',
 };
 
 /// Lower-cases and strips accents / apostrophes for Latin & Cyrillic search.
@@ -157,7 +197,9 @@ List<SurahInfo> searchSurahs(String query, String language) {
   final nq = normalizeLatin(q).replaceAll(RegExp(r'^(al|an|ar|as|at|ad|az|ash|adh)\s'), '');
   return SurahInfo.all.where((s) {
     final t = normalizeLatin(s.translit);
-    return t.contains(nq) || normalizeLatin(s.meaning(language)).contains(nq) || normalizeLatin(s.meaning('en')).contains(nq);
+    return t.contains(nq) ||
+        normalizeLatin(s.meaning(language)).contains(nq) ||
+        normalizeLatin(s.meaning('en')).contains(nq);
   }).toList();
 }
 
@@ -190,16 +232,63 @@ List<int> searchAyahs({
 
 /// Short, well-known ayahs for the "Ayah of the day" card (rotates daily).
 const dailyAyahPool = <AyahRef>[
-  AyahRef(2, 152), AyahRef(2, 153), AyahRef(2, 186), AyahRef(2, 286), AyahRef(3, 8), AyahRef(3, 139),
-  AyahRef(3, 159), AyahRef(3, 173), AyahRef(3, 190), AyahRef(4, 28), AyahRef(6, 162), AyahRef(7, 23),
-  AyahRef(8, 46), AyahRef(9, 40), AyahRef(9, 51), AyahRef(11, 88), AyahRef(12, 87), AyahRef(13, 11),
-  AyahRef(13, 28), AyahRef(14, 7), AyahRef(16, 97), AyahRef(16, 128), AyahRef(17, 24), AyahRef(17, 80),
-  AyahRef(18, 10), AyahRef(20, 25), AyahRef(20, 114), AyahRef(21, 87), AyahRef(23, 118), AyahRef(25, 63),
-  AyahRef(25, 74), AyahRef(28, 24), AyahRef(29, 69), AyahRef(31, 17), AyahRef(33, 41), AyahRef(39, 10),
-  AyahRef(39, 53), AyahRef(40, 60), AyahRef(41, 34), AyahRef(42, 19), AyahRef(47, 7), AyahRef(49, 10),
-  AyahRef(49, 13), AyahRef(50, 16), AyahRef(51, 56), AyahRef(55, 13), AyahRef(57, 4), AyahRef(59, 18),
-  AyahRef(64, 16), AyahRef(65, 2), AyahRef(65, 3), AyahRef(67, 2), AyahRef(93, 5), AyahRef(94, 5),
-  AyahRef(94, 6), AyahRef(103, 1), AyahRef(112, 1),
+  AyahRef(2, 152),
+  AyahRef(2, 153),
+  AyahRef(2, 186),
+  AyahRef(2, 286),
+  AyahRef(3, 8),
+  AyahRef(3, 139),
+  AyahRef(3, 159),
+  AyahRef(3, 173),
+  AyahRef(3, 190),
+  AyahRef(4, 28),
+  AyahRef(6, 162),
+  AyahRef(7, 23),
+  AyahRef(8, 46),
+  AyahRef(9, 40),
+  AyahRef(9, 51),
+  AyahRef(11, 88),
+  AyahRef(12, 87),
+  AyahRef(13, 11),
+  AyahRef(13, 28),
+  AyahRef(14, 7),
+  AyahRef(16, 97),
+  AyahRef(16, 128),
+  AyahRef(17, 24),
+  AyahRef(17, 80),
+  AyahRef(18, 10),
+  AyahRef(20, 25),
+  AyahRef(20, 114),
+  AyahRef(21, 87),
+  AyahRef(23, 118),
+  AyahRef(25, 63),
+  AyahRef(25, 74),
+  AyahRef(28, 24),
+  AyahRef(29, 69),
+  AyahRef(31, 17),
+  AyahRef(33, 41),
+  AyahRef(39, 10),
+  AyahRef(39, 53),
+  AyahRef(40, 60),
+  AyahRef(41, 34),
+  AyahRef(42, 19),
+  AyahRef(47, 7),
+  AyahRef(49, 10),
+  AyahRef(49, 13),
+  AyahRef(50, 16),
+  AyahRef(51, 56),
+  AyahRef(55, 13),
+  AyahRef(57, 4),
+  AyahRef(59, 18),
+  AyahRef(64, 16),
+  AyahRef(65, 2),
+  AyahRef(65, 3),
+  AyahRef(67, 2),
+  AyahRef(93, 5),
+  AyahRef(94, 5),
+  AyahRef(94, 6),
+  AyahRef(103, 1),
+  AyahRef(112, 1),
 ];
 
 AyahRef dailyAyah(DateTime day) {
@@ -208,6 +297,24 @@ AyahRef dailyAyah(DateTime day) {
 }
 
 // ---------------------------------------------------------------- khatm
+
+/// Share of a Mushaf page each ayah represents (1 / ayahs on its page), so
+/// progress is measured in pages: short Juz ʿAmma ayahs weigh less than the
+/// long ayahs of Al-Baqarah. Sums to [totalPages].
+final List<double> ayahPageWeights = () {
+  final w = List<double>.filled(totalAyahs, 0);
+  for (var p = 1; p <= totalPages; p++) {
+    final (a, b) = pageRange(p);
+    final share = 1 / (b - a + 1);
+    for (var i = a; i <= b; i++) {
+      w[i] = share;
+    }
+  }
+  return w;
+}();
+
+/// Pages represented by a set of ayahs.
+double pagesOf(Iterable<int> ayahs) => ayahs.fold<double>(0, (sum, i) => sum + ayahPageWeights[i]);
 
 /// A plan to finish the whole Quran in [days] days starting on [start].
 @immutable
@@ -235,15 +342,16 @@ class KhatmPlan {
   int get hashCode => Object.hash(start, days);
 }
 
-/// Where a plan stands today.
+/// Where a plan stands today. All amounts are Mushaf pages (of 604).
 @immutable
 class KhatmProgress {
   const KhatmProgress({
     required this.plan,
     required this.dayNumber,
-    required this.readTotal,
-    required this.readToday,
-    required this.todayTarget,
+    required this.readPages,
+    required this.readTodayPages,
+    required this.todayTargetPages,
+    required this.allRead,
   });
 
   final KhatmPlan plan;
@@ -251,50 +359,79 @@ class KhatmProgress {
   /// 1-based day of the plan (can exceed `plan.days` when overdue).
   final int dayNumber;
 
-  /// Distinct ayahs read since the plan started.
-  final int readTotal;
-  final int readToday;
+  /// Pages read since the plan started (each ayah counted once).
+  final double readPages;
 
-  /// Ayahs to read today so the plan finishes on time (re-spread daily, so a
-  /// missed day is caught up gently over the remaining days).
-  final int todayTarget;
+  /// Pages read today that had not been read earlier in this plan.
+  final double readTodayPages;
 
-  double get fraction => (readTotal / totalAyahs).clamp(0, 1).toDouble();
-  bool get complete => readTotal >= totalAyahs;
+  /// Pages to read today so the plan finishes on time. What's left is
+  /// re-spread over the remaining days, so a missed day is caught up gently.
+  final double todayTargetPages;
+
+  /// Every ayah has been read at least once since the start.
+  final bool allRead;
+
+  double get fraction => allRead ? 1 : (readPages / totalPages).clamp(0, 1).toDouble();
+  bool get complete => allRead;
   int get daysLeft => (plan.days - dayNumber + 1).clamp(0, plan.days);
-  bool get todayDone => complete || readToday >= todayTarget;
+
+  /// Small tolerance so floating sums don't leave "0.01 pages" to go.
+  bool get todayDone => complete || readTodayPages + 0.05 >= todayTargetPages;
+
+  /// Whole pages for display.
+  int get readPagesRounded => readPages.floor();
+  int get targetPagesRounded => todayTargetPages.ceil();
+  int get readTodayRounded => readTodayPages.round();
 
   /// Behind the straight-line schedule as of the end of yesterday (with a
   /// one-page grace), so today's reading can still catch up.
   bool get behind {
     if (complete) return false;
-    final expectedYesterday = totalAyahs * (dayNumber - 1) / plan.days;
-    return (readTotal - readToday) + 10 < expectedYesterday;
+    final expectedYesterday = totalPages * (dayNumber - 1) / plan.days;
+    return (readPages - readTodayPages) + 1 < expectedYesterday;
   }
-
-  /// Roughly 10.3 ayahs per Mushaf page on average.
-  static int pagesFor(int ayahs) => (ayahs * totalPages / totalAyahs).ceil();
 }
 
 KhatmProgress khatmProgress({
   required KhatmPlan plan,
   required DateTime today,
-  required int readTotal,
-  required int readToday,
+  required double readPages,
+  required double readTodayPages,
+  bool allRead = false,
 }) {
   final start = DateTime.parse(plan.start);
   final t = DateTime(today.year, today.month, today.day);
   final dayNumber = (t.difference(DateTime(start.year, start.month, start.day)).inHours / 24).round() + 1;
-  final remainingBeforeToday = (totalAyahs - (readTotal - readToday)).clamp(0, totalAyahs);
+  final remainingBeforeToday = (totalPages - (readPages - readTodayPages)).clamp(0, totalPages).toDouble();
   final daysLeft = (plan.days - dayNumber + 1).clamp(1, plan.days);
-  final target = (remainingBeforeToday / daysLeft).ceil();
   return KhatmProgress(
     plan: plan,
     dayNumber: dayNumber.clamp(1, 100000),
-    readTotal: readTotal,
-    readToday: readToday,
-    todayTarget: target,
+    readPages: readPages,
+    readTodayPages: readTodayPages,
+    todayTargetPages: remainingBeforeToday / daysLeft,
+    allRead: allRead || readPages >= totalPages - 0.001,
   );
+}
+
+/// First ayah not yet read in the plan (where "continue khatm" resumes).
+int firstUnread(Set<int> read) {
+  for (var i = 0; i < totalAyahs; i++) {
+    if (!read.contains(i)) return i;
+  }
+  return 0;
+}
+
+/// Last ayah of today's portion when reading [pages] pages from [from].
+int portionEnd(int from, double pages) {
+  var sum = 0.0;
+  var i = from;
+  while (i < totalAyahs - 1 && sum + ayahPageWeights[i] < pages - 0.001) {
+    sum += ayahPageWeights[i];
+    i++;
+  }
+  return i;
 }
 
 // ---------------------------------------------------------------- hifz
@@ -302,9 +439,25 @@ KhatmProgress khatmProgress({
 /// Review ladder in days (spaced repetition for memorized surahs).
 const hifzLadder = [1, 3, 7, 14, 30, 90];
 
-/// Next (step, days until review) after a review rated [strong] or not.
-(int, int) hifzNext(int step, {required bool strong}) {
-  final next = strong ? (step + 1).clamp(0, hifzLadder.length - 1) : 0;
+/// How a memorization review went.
+enum HifzGrade {
+  /// Forgot a lot: start the ladder again tomorrow.
+  again,
+
+  /// Shaky: one step back down the ladder.
+  hard,
+
+  /// Solid: one step up.
+  good,
+}
+
+/// Next (step, days until review) after a review.
+(int, int) hifzNext(int step, {required HifzGrade grade}) {
+  final next = switch (grade) {
+    HifzGrade.again => 0,
+    HifzGrade.hard => (step - 1).clamp(0, hifzLadder.length - 1),
+    HifzGrade.good => (step + 1).clamp(0, hifzLadder.length - 1),
+  };
   return (next, hifzLadder[next]);
 }
 

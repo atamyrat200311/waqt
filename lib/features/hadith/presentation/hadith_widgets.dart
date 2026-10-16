@@ -39,7 +39,14 @@ ShareCardData hadithShareData(AppLocalizations l, String bookId, Hadith h, {Hadi
 
 /// One hadith: number, translation, optional Arabic, grade, actions.
 class HadithCard extends ConsumerWidget {
-  const HadithCard({super.key, required this.bookId, required this.hadith, this.arabic, this.highlight});
+  const HadithCard({
+    super.key,
+    required this.bookId,
+    required this.hadith,
+    this.arabic,
+    this.highlight,
+    this.fallback = false,
+  });
 
   final String bookId;
   final Hadith hadith;
@@ -47,6 +54,9 @@ class HadithCard extends ConsumerWidget {
 
   /// Search term to emphasise.
   final String? highlight;
+
+  /// Shown in English because the chosen translation lacks this hadith.
+  final bool fallback;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -66,6 +76,14 @@ class HadithCard extends ConsumerWidget {
             children: [
               StarBadge(label: hadith.label, color: c.hairline, textColor: c.ink, size: 36),
               const SizedBox(width: 8),
+              if (fallback) ...[
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                  decoration: BoxDecoration(border: Border.all(color: c.hairline), borderRadius: BorderRadius.circular(6)),
+                  child: Text('EN', style: WaqtType.sans(11, weight: 700, color: c.muted)),
+                ),
+                const SizedBox(width: 6),
+              ],
               if (hadith.grade.isNotEmpty)
                 Flexible(
                   child: Container(

@@ -249,7 +249,9 @@ class AyahTile extends StatelessWidget {
                       radius: 22,
                       child: SizedBox.square(
                         dimension: 40,
-                        child: Center(child: Text('•••', style: WaqtType.sans(13, weight: 700, color: p.muted))),
+                        child: Center(
+                          child: Text('•••', style: WaqtType.sans(13, weight: 700, color: p.muted)),
+                        ),
                       ),
                     ),
                   ),
@@ -266,7 +268,11 @@ class AyahTile extends StatelessWidget {
                     ),
                     Container(
                       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-                      decoration: BoxDecoration(color: p.card, borderRadius: BorderRadius.circular(99), border: Border.all(color: p.hairline)),
+                      decoration: BoxDecoration(
+                        color: p.card,
+                        borderRadius: BorderRadius.circular(99),
+                        border: Border.all(color: p.hairline),
+                      ),
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [

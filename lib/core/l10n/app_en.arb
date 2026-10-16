@@ -1076,6 +1076,7 @@
   "quranNoBookmarks": "No bookmarks yet. Tap an ayah to save it here.",
   "quranBookmark": "Bookmark",
   "quranRemoveBookmark": "Remove bookmark",
+  "quranRemoveNoteConfirm": "Remove this bookmark and its note?",
   "quranBookmarked": "Saved to bookmarks",
   "moreActions": "More",
   "copy": "Copy",
@@ -1115,6 +1116,18 @@
       }
     }
   },
+  "quranGoalPages": "{read} of {goal} pages",
+  "@quranGoalPages": {
+    "placeholders": {
+      "read": {
+        "type": "String"
+      },
+      "goal": {
+        "type": "String"
+      }
+    }
+  },
+  "khatmLast14": "Last 14 days",
   "quranGoalDone": "Daily goal reached",
   "quranStreak": "{count, plural, =0{Start a streak today} one{{count} day in a row} other{{count} days in a row}}",
   "@quranStreak": {
@@ -1189,13 +1202,13 @@
       }
     }
   },
-  "khatmTodayTarget": "Today: {ayahs} ayahs · about {pages} pages",
+  "khatmTodayTarget": "Today: {pages} pages, from {from}",
   "@khatmTodayTarget": {
     "placeholders": {
-      "ayahs": {
+      "pages": {
         "type": "String"
       },
-      "pages": {
+      "from": {
         "type": "String"
       }
     }
@@ -1206,7 +1219,7 @@
   "khatmEnd": "End plan",
   "khatmEndConfirm": "End this plan? Your reading history stays.",
   "khatmComplete": "Khatm complete! May Allah accept it from you.",
-  "khatmProgress": "{read} of {total} ayahs",
+  "khatmProgress": "{read} of {total} pages",
   "@khatmProgress": {
     "placeholders": {
       "read": {
@@ -1262,6 +1275,9 @@
     }
   },
   "khatmTileIdle": "Finish on a schedule",
+  "hifzAgain": "Again",
+  "quranJumpTo": "Jump to surah, juz or page",
+  "quranPages": "Pages",
   "hifzMemorized": "Memorized",
   "libraryHadith": "Hadith collections",
   "libraryDuas": "Duas",

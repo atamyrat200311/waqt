@@ -34,10 +34,10 @@ abstract final class QuranTranslations {
   /// Default translation for an app language. Turkmen has no bundled
   /// translation; Russian is the most widely read alternative.
   static String defaultFor(String appLanguage) => switch (appLanguage) {
-        'ru' || 'tk' => 'ru_kuliev',
-        'tr' => 'tr_diyanet',
-        _ => 'en_sahih',
-      };
+    'ru' || 'tk' => 'ru_kuliev',
+    'tr' => 'tr_diyanet',
+    _ => 'en_sahih',
+  };
 
   static QuranTranslation byId(String id) => all.firstWhere((t) => t.id == id, orElse: () => all.first);
 

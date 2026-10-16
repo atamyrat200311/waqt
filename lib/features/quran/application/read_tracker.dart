@@ -9,16 +9,14 @@ import '../../../data/repositories/quran_repository.dart';
 /// currently on screen. An ayah that stays visible for [dwellTicks] ticks is
 /// recorded — fast scrolling never counts, a normal reading pace always does.
 class ReadTracker {
-  ReadTracker({
-    required this.repository,
-    required this.today,
-    this.dwellTicks = 2,
-    this.flushEvery = 5,
-  });
+  ReadTracker({required this.repository, required this.today, this.dwellTicks = 2, this.flushEvery = 5, this.dwellFor});
 
   final QuranRepository repository;
   final DayKey Function() today;
   final int dwellTicks;
+
+  /// Per-ayah dwell (ticks) — longer ayahs need longer. Defaults to [dwellTicks].
+  final int Function(int ayah)? dwellFor;
   final int flushEvery;
 
   final Map<int, int> _seen = {};
@@ -35,7 +33,7 @@ class ReadTracker {
     for (final a in now) {
       final n = (_seen[a] ?? 0) + 1;
       _seen[a] = n;
-      if (n == dwellTicks && _recorded.add(a)) _pending.add(a);
+      if (n == (dwellFor?.call(a) ?? dwellTicks) && _recorded.add(a)) _pending.add(a);
     }
     if (++_ticks % flushEvery == 0) unawaited(flush());
   }

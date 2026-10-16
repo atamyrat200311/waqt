@@ -27,6 +27,7 @@ ShareCardData ayahShareData(BuildContext context, int index, QuranTexts texts, {
     arabic: texts.arabic[index],
     text: texts.translation[index],
     reference: ayahReference(index),
+    credit: texts.translationCredit,
     arabicQuran: true,
   );
 }
@@ -50,22 +51,24 @@ class _AyahActions extends ConsumerWidget {
     final repo = ref.read(bookmarkRepositoryProvider);
 
     Widget action(WaqtIconData icon, String label, VoidCallback onTap, {Color? color}) => InkWell(
-          onTap: onTap,
-          borderRadius: BorderRadius.circular(16),
-          child: ConstrainedBox(
-            constraints: const BoxConstraints(minHeight: 52),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 12),
-              child: Row(
-                children: [
-                  WaqtIcon(icon, size: 21, color: color ?? c.accent),
-                  const SizedBox(width: 14),
-                  Expanded(child: Text(label, style: WaqtType.sans(16, weight: 500, color: c.ink))),
-                ],
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(16),
+      child: ConstrainedBox(
+        constraints: const BoxConstraints(minHeight: 52),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 12),
+          child: Row(
+            children: [
+              WaqtIcon(icon, size: 21, color: color ?? c.accent),
+              const SizedBox(width: 14),
+              Expanded(
+                child: Text(label, style: WaqtType.sans(16, weight: 500, color: c.ink)),
               ),
-            ),
+            ],
           ),
-        );
+        ),
+      ),
+    );
 
     return SingleChildScrollView(
       padding: EdgeInsets.fromLTRB(12, 0, 12, 12 + MediaQuery.paddingOf(context).bottom),
@@ -99,6 +102,20 @@ class _AyahActions extends ConsumerWidget {
             mark != null ? l.quranRemoveBookmark : l.quranBookmark,
             () async {
               Haptics.light();
+              // Removing a bookmark also drops its note: confirm first.
+              if (mark?.note != null) {
+                final ok = await showDialog<bool>(
+                  context: context,
+                  builder: (ctx) => AlertDialog.adaptive(
+                    content: Text(l.quranRemoveNoteConfirm),
+                    actions: [
+                      TextButton(onPressed: () => Navigator.pop(ctx, false), child: Text(l.cancel)),
+                      TextButton(onPressed: () => Navigator.pop(ctx, true), child: Text(l.quranRemoveBookmark)),
+                    ],
+                  ),
+                );
+                if (ok != true) return;
+              }
               await repo.toggle(BookmarkKind.ayah, key);
               if (context.mounted) Navigator.pop(context);
             },
@@ -156,7 +173,11 @@ class _NoteSheetState extends State<_NoteSheet> {
     final l = context.l10n;
     return Padding(
       padding: EdgeInsets.fromLTRB(
-          20, 0, 20, 20 + MediaQuery.viewInsetsOf(context).bottom + MediaQuery.paddingOf(context).bottom),
+        20,
+        0,
+        20,
+        20 + MediaQuery.viewInsetsOf(context).bottom + MediaQuery.paddingOf(context).bottom,
+      ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.stretch,

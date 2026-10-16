@@ -70,6 +70,16 @@ void main() {
     await done(tester);
   });
 
+  testWidgets('a quick lookup does not move the continue-reading position', (tester) async {
+    final c = await pump(tester, settings: const AppSettings(onboardingDone: true, quranLastRead: 100));
+    unawaited(c.read(appRouterProvider).push('/read?i=6221'));
+    await tester.pumpAndSettle();
+    c.read(appRouterProvider).pop();
+    await tester.pumpAndSettle();
+    expect(c.read(settingsProvider).quranLastRead, 100);
+    await done(tester);
+  });
+
   testWidgets('reader settings change the Arabic size', (tester) async {
     final c = await pump(tester);
     c.read(appRouterProvider).go('/read?i=0');

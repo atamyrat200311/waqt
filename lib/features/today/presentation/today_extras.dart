@@ -69,7 +69,7 @@ class TodayQuranRow extends ConsumerWidget {
                     children: [
                       Flexible(
                         child: Text(
-                          g.done ? l.quranGoalDone : l.quranGoal('${g.read}', '${g.target}'),
+                          g.done ? l.quranGoalDone : (g.pages ? l.quranGoalPages('${g.read}', '${g.target}') : l.quranGoal('${g.read}', '${g.target}')),
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                           style: WaqtType.sans(13, color: c.muted),
