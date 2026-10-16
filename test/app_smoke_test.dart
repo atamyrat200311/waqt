@@ -19,7 +19,7 @@ void main() {
     await tester.pump(const Duration(seconds: 2));
   }
 
-  testWidgets('first launch goes to onboarding, then the 3-tab shell', (tester) async {
+  testWidgets('first launch goes to onboarding, then the 5-tab shell', (tester) async {
     await tester.pumpWidget(ProviderScope(
       overrides: settingsOverrides(const AppSettings()),
       child: const WaqtApp(),
@@ -44,6 +44,8 @@ void main() {
     await tester.tap(find.text('Start'));
     await tester.pumpAndSettle();
     expect(find.text('Today'), findsWidgets);
+    expect(find.text('Quran'), findsWidgets);
+    expect(find.text('Library'), findsWidgets);
     expect(find.text('Tools'), findsWidgets);
     expect(find.text('Me'), findsWidgets);
     await dispose(tester);

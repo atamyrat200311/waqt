@@ -116,7 +116,12 @@ class _QuranReaderScreenState extends ConsumerState<QuranReaderScreen> {
     _unhighlight?.cancel();
     _positions.itemPositions.removeListener(_onPositions);
     unawaited(_tracker.flush());
-    if (_savedLastRead != _current && widget.hifzSurah == null) unawaited(_settings.setQuranLastRead(_current));
+    // Providers can't change while the tree is unmounting; save right after.
+    if (_savedLastRead != _current && widget.hifzSurah == null) {
+      final settings = _settings;
+      final index = _current;
+      Future.microtask(() => settings.setQuranLastRead(index));
+    }
     WakelockPlus.disable().catchError((Object _) {});
     super.dispose();
   }

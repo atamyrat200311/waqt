@@ -1,0 +1,1666 @@
+{
+  "categories": [
+    {
+      "id": "daily",
+      "icon": "sun",
+      "title": {
+        "en": "Daily life",
+        "tk": "Gündelik durmuş",
+        "tr": "Günlük hayat",
+        "ru": "Повседневная жизнь"
+      }
+    },
+    {
+      "id": "prayer",
+      "icon": "mosque",
+      "title": {
+        "en": "Prayer",
+        "tk": "Namaz",
+        "tr": "Namaz",
+        "ru": "Намаз"
+      }
+    },
+    {
+      "id": "quranic",
+      "icon": "book",
+      "title": {
+        "en": "From the Quran",
+        "tk": "Kurandan",
+        "tr": "Kur'an'dan",
+        "ru": "Из Корана"
+      }
+    },
+    {
+      "id": "hardship",
+      "icon": "shield",
+      "title": {
+        "en": "Hardship & protection",
+        "tk": "Kynçylyk we gorag",
+        "tr": "Sıkıntı ve korunma",
+        "ru": "Трудности и защита"
+      }
+    },
+    {
+      "id": "forgiveness",
+      "icon": "heart",
+      "title": {
+        "en": "Forgiveness",
+        "tk": "Bagyşlanmak",
+        "tr": "Bağışlanma",
+        "ru": "Прощение"
+      }
+    },
+    {
+      "id": "travel",
+      "icon": "travel",
+      "title": {
+        "en": "Travel",
+        "tk": "Syýahat",
+        "tr": "Yolculuk",
+        "ru": "Путешествие"
+      }
+    },
+    {
+      "id": "family",
+      "icon": "family",
+      "title": {
+        "en": "Family & people",
+        "tk": "Maşgala we adamlar",
+        "tr": "Aile ve insanlar",
+        "ru": "Семья и люди"
+      }
+    },
+    {
+      "id": "occasions",
+      "icon": "star",
+      "title": {
+        "en": "Occasions",
+        "tk": "Ýörite ýagdaýlar",
+        "tr": "Özel durumlar",
+        "ru": "Особые случаи"
+      }
+    }
+  ],
+  "duas": [
+    {
+      "id": "wake_up",
+      "category": "daily",
+      "title": {
+        "en": "Waking up",
+        "tk": "Ukudan oýananda",
+        "tr": "Uyanınca",
+        "ru": "При пробуждении"
+      },
+      "ar": "الْحَمْدُ لِلَّهِ الَّذِي أَحْيَانَا بَعْدَ مَا أَمَاتَنَا وَإِلَيْهِ النُّشُورُ",
+      "translit": "Alhamdu lillahil-ladhi ahyana ba'da ma amatana wa ilayhin-nushur.",
+      "text": {
+        "en": "All praise is for Allah, who gave us life after He had caused us to die (in sleep), and to Him is the resurrection.",
+        "tk": "Bizi (ukuda) öldürenden soň direlden Alla hamd bolsun, direliş hem Oňadyr.",
+        "tr": "Bizi (uykuda) öldürdükten sonra dirilten Allah'a hamd olsun. Dönüş O'nadır.",
+        "ru": "Хвала Аллаху, Который оживил нас после того, как умертвил (во сне), и к Нему воскрешение."
+      },
+      "source": "Bukhari 6312",
+      "count": 1
+    },
+    {
+      "id": "before_sleep",
+      "category": "daily",
+      "title": {
+        "en": "Before sleeping",
+        "tk": "Ýatmazdan öň",
+        "tr": "Uyumadan önce",
+        "ru": "Перед сном"
+      },
+      "ar": "بِاسْمِكَ اللَّهُمَّ أَمُوتُ وَأَحْيَا",
+      "translit": "Bismika Allahumma amutu wa ahya.",
+      "text": {
+        "en": "In Your name, O Allah, I die and I live.",
+        "tk": "Allahym, Seniň adyň bilen ölýärin we direlýärin.",
+        "tr": "Allah'ım, Senin adınla ölür ve dirilirim.",
+        "ru": "С Твоим именем, о Аллах, я умираю и оживаю."
+      },
+      "source": "Bukhari 6324",
+      "count": 1
+    },
+    {
+      "id": "enter_home",
+      "category": "daily",
+      "title": {
+        "en": "Entering the home",
+        "tk": "Öýe girende",
+        "tr": "Eve girerken",
+        "ru": "При входе в дом"
+      },
+      "ar": "بِسْمِ اللَّهِ وَلَجْنَا، وَبِسْمِ اللَّهِ خَرَجْنَا، وَعَلَى رَبِّنَا تَوَكَّلْنَا",
+      "translit": "Bismillahi walajna, wa bismillahi kharajna, wa 'ala Rabbina tawakkalna.",
+      "text": {
+        "en": "In the name of Allah we enter, in the name of Allah we leave, and upon our Lord we rely. (Then greet your family with salam.)",
+        "tk": "Allanyň ady bilen girdik, Allanyň ady bilen çykdyk we Rebbimize bil bagladyk. (Soňra maşgalaňa salam ber.)",
+        "tr": "Allah'ın adıyla girdik, Allah'ın adıyla çıktık ve Rabbimize tevekkül ettik. (Sonra ev halkına selam ver.)",
+        "ru": "С именем Аллаха мы вошли, с именем Аллаха вышли и на нашего Господа уповаем. (Затем поприветствуй домашних.)"
+      },
+      "source": "Abu Dawud 5096",
+      "count": 1
+    },
+    {
+      "id": "leave_home",
+      "category": "daily",
+      "title": {
+        "en": "Leaving the home",
+        "tk": "Öýden çykanda",
+        "tr": "Evden çıkarken",
+        "ru": "При выходе из дома"
+      },
+      "ar": "بِسْمِ اللَّهِ، تَوَكَّلْتُ عَلَى اللَّهِ، وَلَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ",
+      "translit": "Bismillah, tawakkaltu 'alallah, wa la hawla wa la quwwata illa billah.",
+      "text": {
+        "en": "In the name of Allah. I place my trust in Allah, and there is no might nor power except with Allah.",
+        "tk": "Allanyň ady bilen. Alla bil bagladym. Güýç-kuwwat diňe Alladandyr.",
+        "tr": "Allah'ın adıyla. Allah'a tevekkül ettim. Güç ve kuvvet ancak Allah'tandır.",
+        "ru": "С именем Аллаха. Уповаю на Аллаха, и нет мощи и силы ни у кого, кроме Аллаха."
+      },
+      "source": "Abu Dawud 5095, Tirmidhi 3426",
+      "count": 1
+    },
+    {
+      "id": "enter_toilet",
+      "category": "daily",
+      "title": {
+        "en": "Entering the toilet",
+        "tk": "Hajathana girende",
+        "tr": "Tuvalete girerken",
+        "ru": "Перед входом в туалет"
+      },
+      "ar": "اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْخُبُثِ وَالْخَبَائِثِ",
+      "translit": "Allahumma inni a'udhu bika minal-khubuthi wal-khaba'ith.",
+      "text": {
+        "en": "O Allah, I seek refuge in You from the male and female devils. (Enter with the left foot.)",
+        "tk": "Allahym, erkek we aýal şeýtanlardan Saňa sygynýaryn. (Çep aýagyň bilen gir.)",
+        "tr": "Allah'ım, erkek ve dişi şeytanlardan Sana sığınırım. (Sol ayakla gir.)",
+        "ru": "О Аллах, прибегаю к Тебе от злых духов мужского и женского пола. (Входи с левой ноги.)"
+      },
+      "source": "Bukhari 142, Muslim 375",
+      "count": 1
+    },
+    {
+      "id": "leave_toilet",
+      "category": "daily",
+      "title": {
+        "en": "Leaving the toilet",
+        "tk": "Hajathanadan çykanda",
+        "tr": "Tuvaletten çıkınca",
+        "ru": "При выходе из туалета"
+      },
+      "ar": "غُفْرَانَكَ",
+      "translit": "Ghufranak.",
+      "text": {
+        "en": "I ask for Your forgiveness. (Leave with the right foot.)",
+        "tk": "Senden bagyşlanmak soraýaryn. (Sag aýagyň bilen çyk.)",
+        "tr": "Senden bağışlanma dilerim. (Sağ ayakla çık.)",
+        "ru": "Прошу Твоего прощения. (Выходи с правой ноги.)"
+      },
+      "source": "Abu Dawud 30, Tirmidhi 7",
+      "count": 1
+    },
+    {
+      "id": "dressing",
+      "category": "daily",
+      "title": {
+        "en": "Getting dressed",
+        "tk": "Eşik geýende",
+        "tr": "Elbise giyerken",
+        "ru": "Надевая одежду"
+      },
+      "ar": "الْحَمْدُ لِلَّهِ الَّذِي كَسَانِي هَٰذَا الثَّوْبَ وَرَزَقَنِيهِ مِنْ غَيْرِ حَوْلٍ مِنِّي وَلَا قُوَّةٍ",
+      "translit": "Alhamdu lillahil-ladhi kasani hadhath-thawba wa razaqanihi min ghayri hawlin minni wa la quwwah.",
+      "text": {
+        "en": "All praise is for Allah, who clothed me with this garment and provided it for me without any might or power on my part.",
+        "tk": "Menden hiç bir güýç-kuwwat bolmazdan, maňa şu eşigi geýdiren we ony maňa rysk eden Alla hamd bolsun.",
+        "tr": "Benden hiçbir güç ve kuvvet olmaksızın bana bu elbiseyi giydiren ve onu bana rızık olarak veren Allah'a hamd olsun.",
+        "ru": "Хвала Аллаху, Который одел меня в эту одежду и наделил меня ею без какой-либо мощи и силы с моей стороны."
+      },
+      "source": "Abu Dawud 4023",
+      "count": 1
+    },
+    {
+      "id": "before_eating",
+      "category": "daily",
+      "title": {
+        "en": "Before eating",
+        "tk": "Nahar iýmezden öň",
+        "tr": "Yemekten önce",
+        "ru": "Перед едой"
+      },
+      "ar": "بِسْمِ اللَّهِ",
+      "translit": "Bismillah.",
+      "text": {
+        "en": "In the name of Allah. (Eat with your right hand, from what is in front of you.)",
+        "tk": "Allanyň ady bilen. (Sag eliň bilen, öňüňdäkiden iý.)",
+        "tr": "Allah'ın adıyla. (Sağ elinle ve önünden ye.)",
+        "ru": "С именем Аллаха. (Ешь правой рукой то, что перед тобой.)"
+      },
+      "source": "Bukhari 5376",
+      "count": 1
+    },
+    {
+      "id": "after_eating",
+      "category": "daily",
+      "title": {
+        "en": "After eating",
+        "tk": "Nahardan soň",
+        "tr": "Yemekten sonra",
+        "ru": "После еды"
+      },
+      "ar": "الْحَمْدُ لِلَّهِ الَّذِي أَطْعَمَنِي هَٰذَا وَرَزَقَنِيهِ مِنْ غَيْرِ حَوْلٍ مِنِّي وَلَا قُوَّةٍ",
+      "translit": "Alhamdu lillahil-ladhi at'amani hadha wa razaqanihi min ghayri hawlin minni wa la quwwah.",
+      "text": {
+        "en": "All praise is for Allah, who fed me this and provided it for me without any might or power on my part.",
+        "tk": "Menden hiç bir güýç-kuwwat bolmazdan, maňa muny iýdiren we rysk eden Alla hamd bolsun.",
+        "tr": "Benden hiçbir güç ve kuvvet olmaksızın bana bunu yediren ve rızık olarak veren Allah'a hamd olsun.",
+        "ru": "Хвала Аллаху, Который накормил меня этим и наделил меня этим без какой-либо мощи и силы с моей стороны."
+      },
+      "source": "Abu Dawud 4023, Tirmidhi 3458",
+      "count": 1
+    },
+    {
+      "id": "forgot_bismillah",
+      "category": "daily",
+      "title": {
+        "en": "Forgot Bismillah at a meal",
+        "tk": "Nahar başynda Bismillany unudanyňda",
+        "tr": "Yemekte besmeleyi unutunca",
+        "ru": "Если забыл «Бисмиллях» за едой"
+      },
+      "ar": "بِسْمِ اللَّهِ أَوَّلَهُ وَآخِرَهُ",
+      "translit": "Bismillahi awwalahu wa akhirah.",
+      "text": {
+        "en": "In the name of Allah, at its beginning and at its end.",
+        "tk": "Başynda-da, ahyrynda-da Allanyň ady bilen.",
+        "tr": "Başında da sonunda da Allah'ın adıyla.",
+        "ru": "С именем Аллаха — в начале и в конце."
+      },
+      "source": "Abu Dawud 3767, Tirmidhi 1858",
+      "count": 1
+    },
+    {
+      "id": "to_mosque",
+      "category": "prayer",
+      "title": {
+        "en": "Going to the mosque",
+        "tk": "Metjide barýarkaň",
+        "tr": "Camiye giderken",
+        "ru": "По пути в мечеть"
+      },
+      "ar": "اللَّهُمَّ اجْعَلْ فِي قَلْبِي نُورًا، وَفِي بَصَرِي نُورًا، وَفِي سَمْعِي نُورًا، وَعَنْ يَمِينِي نُورًا، وَعَنْ يَسَارِي نُورًا، وَفَوْقِي نُورًا، وَتَحْتِي نُورًا، وَأَمَامِي نُورًا، وَخَلْفِي نُورًا، وَعَظِّمْ لِي نُورًا",
+      "translit": "Allahummaj'al fi qalbi nura, wa fi basari nura, wa fi sam'i nura, wa 'an yamini nura, wa 'an yasari nura, wa fawqi nura, wa tahti nura, wa amami nura, wa khalfi nura, wa 'azzim li nura.",
+      "text": {
+        "en": "O Allah, place light in my heart, light in my sight and light in my hearing; light on my right and light on my left; light above me and light below me; light in front of me and light behind me; and make the light great for me.",
+        "tk": "Allahym, kalbyma nur, gözüme nur, gulagyma nur ber; sagyma nur, çepime nur, üstüme nur, astyma nur, öňüme nur, yzyma nur ber we meniň nurumy beýik et.",
+        "tr": "Allah'ım, kalbime nur, gözüme nur, kulağıma nur ver; sağıma nur, soluma nur, üstüme nur, altıma nur, önüme nur, arkama nur ver ve nurumu büyüt.",
+        "ru": "О Аллах, помести свет в моё сердце, свет в моё зрение и свет в мой слух; свет справа от меня и свет слева; свет надо мной и свет подо мной; свет впереди и свет позади меня и увеличь для меня свет."
+      },
+      "source": "Muslim 763",
+      "count": 1
+    },
+    {
+      "id": "enter_mosque",
+      "category": "prayer",
+      "title": {
+        "en": "Entering the mosque",
+        "tk": "Metjide girende",
+        "tr": "Camiye girerken",
+        "ru": "При входе в мечеть"
+      },
+      "ar": "اللَّهُمَّ افْتَحْ لِي أَبْوَابَ رَحْمَتِكَ",
+      "translit": "Allahummaf-tah li abwaba rahmatik.",
+      "text": {
+        "en": "O Allah, open for me the gates of Your mercy. (Enter with the right foot.)",
+        "tk": "Allahym, maňa rehmetiňiň gapylaryny aç. (Sag aýagyň bilen gir.)",
+        "tr": "Allah'ım, bana rahmetinin kapılarını aç. (Sağ ayakla gir.)",
+        "ru": "О Аллах, открой мне врата Твоей милости. (Входи с правой ноги.)"
+      },
+      "source": "Muslim 713",
+      "count": 1
+    },
+    {
+      "id": "leave_mosque",
+      "category": "prayer",
+      "title": {
+        "en": "Leaving the mosque",
+        "tk": "Metjitden çykanda",
+        "tr": "Camiden çıkarken",
+        "ru": "При выходе из мечети"
+      },
+      "ar": "اللَّهُمَّ إِنِّي أَسْأَلُكَ مِنْ فَضْلِكَ",
+      "translit": "Allahumma inni as'aluka min fadlik.",
+      "text": {
+        "en": "O Allah, I ask You of Your bounty. (Leave with the left foot.)",
+        "tk": "Allahym, Senden keremiňi soraýaryn. (Çep aýagyň bilen çyk.)",
+        "tr": "Allah'ım, Senden lütfunu isterim. (Sol ayakla çık.)",
+        "ru": "О Аллах, прошу у Тебя Твоей щедрости. (Выходи с левой ноги.)"
+      },
+      "source": "Muslim 713",
+      "count": 1
+    },
+    {
+      "id": "after_wudu",
+      "category": "prayer",
+      "title": {
+        "en": "After wudu",
+        "tk": "Täretden soň",
+        "tr": "Abdestten sonra",
+        "ru": "После омовения"
+      },
+      "ar": "أَشْهَدُ أَنْ لَا إِلَٰهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ، اللَّهُمَّ اجْعَلْنِي مِنَ التَّوَّابِينَ، وَاجْعَلْنِي مِنَ الْمُتَطَهِّرِينَ",
+      "translit": "Ashhadu an la ilaha illallahu wahdahu la sharika lah, wa ashhadu anna Muhammadan 'abduhu wa rasuluh. Allahummaj'alni minat-tawwabin, waj'alni minal-mutatahhirin.",
+      "text": {
+        "en": "I bear witness that there is no god but Allah alone, without partner, and I bear witness that Muhammad is His servant and Messenger. O Allah, make me among those who often repent and among those who purify themselves.",
+        "tk": "Ýeke-täk, şärigi bolmadyk Alladan başga hudaý ýokdugyna we Muhammediň Onuň guly hem ilçisidigine şaýatlyk edýärin. Allahym, meni köp toba edýänlerden we arassalanýanlardan et.",
+        "tr": "Allah'tan başka ilah olmadığına, O'nun tek ve ortaksız olduğuna; Muhammed'in O'nun kulu ve elçisi olduğuna şahitlik ederim. Allah'ım, beni çok tövbe edenlerden ve temizlenenlerden eyle.",
+        "ru": "Свидетельствую, что нет божества, кроме одного Аллаха, у Которого нет сотоварища, и свидетельствую, что Мухаммад — Его раб и посланник. О Аллах, сделай меня из числа часто кающихся и очищающихся."
+      },
+      "source": "Muslim 234, Tirmidhi 55",
+      "count": 1
+    },
+    {
+      "id": "after_adhan",
+      "category": "prayer",
+      "title": {
+        "en": "After the adhan",
+        "tk": "Azandan soň",
+        "tr": "Ezandan sonra",
+        "ru": "После азана"
+      },
+      "ar": "اللَّهُمَّ رَبَّ هَٰذِهِ الدَّعْوَةِ التَّامَّةِ، وَالصَّلَاةِ الْقَائِمَةِ، آتِ مُحَمَّدًا الْوَسِيلَةَ وَالْفَضِيلَةَ، وَابْعَثْهُ مَقَامًا مَحْمُودًا الَّذِي وَعَدْتَهُ",
+      "translit": "Allahumma Rabba hadhihid-da'watit-tammah, was-salatil-qa'imah, ati Muhammadanil-wasilata wal-fadilah, wab'athhu maqamam mahmudanil-ladhi wa'adtah.",
+      "text": {
+        "en": "O Allah, Lord of this perfect call and of the prayer about to begin, grant Muhammad al-Wasila and excellence, and raise him to the praised station You promised him. (Whoever says this will receive his ﷺ intercession.)",
+        "tk": "Allahym, eý bu kämil çagyryşyň we başlanjak namazyň Rebbi! Muhammede ﷺ Wesileni we artykmaçlygy ber, ony Özüň wada beren öwülen makama ýetir. (Muny aýdana Pygamberiň ﷺ şepagaty ýetişer.)",
+        "tr": "Allah'ım, ey bu eksiksiz davetin ve kılınacak namazın Rabbi! Muhammed'e ﷺ vesileyi ve fazileti ver, onu vaat ettiğin Makam-ı Mahmud'a ulaştır. (Bunu söyleyene Peygamber'in ﷺ şefaati helal olur.)",
+        "ru": "О Аллах, Господь этого совершенного призыва и наступающей молитвы, даруй Мухаммаду ﷺ аль-Василю и превосходство и приведи его к достохвальному месту, которое Ты ему обещал. (Сказавшему это положено его ﷺ заступничество.)"
+      },
+      "source": "Bukhari 614",
+      "count": 1
+    },
+    {
+      "id": "istiftah",
+      "category": "prayer",
+      "title": {
+        "en": "Opening dua (istiftah)",
+        "tk": "Namazy açyş dilegi (Sena)",
+        "tr": "Sübhaneke (açılış duası)",
+        "ru": "Начальная мольба (истифтах)"
+      },
+      "ar": "سُبْحَانَكَ اللَّهُمَّ وَبِحَمْدِكَ، وَتَبَارَكَ اسْمُكَ، وَتَعَالَىٰ جَدُّكَ، وَلَا إِلَٰهَ غَيْرُكَ",
+      "translit": "Subhanakallahumma wa bihamdika, wa tabarakasmuka, wa ta'ala jadduka, wa la ilaha ghayruk.",
+      "text": {
+        "en": "Glory and praise be to You, O Allah. Blessed is Your name, exalted is Your majesty, and there is no god but You.",
+        "tk": "Allahym, Seni hamd bilen päk tutýaryn. Adyň mübärekdir, şan-şöhratyň beýikdir, Senden başga hudaý ýokdur.",
+        "tr": "Allah'ım, Seni hamdinle tesbih ederim. İsmin mübarektir, şanın yücedir, Senden başka ilah yoktur.",
+        "ru": "Пречист Ты, о Аллах, и хвала Тебе. Благословенно имя Твоё, возвышенно величие Твоё, и нет божества, кроме Тебя."
+      },
+      "source": "Abu Dawud 775, Tirmidhi 243",
+      "count": 1
+    },
+    {
+      "id": "ruku",
+      "category": "prayer",
+      "title": {
+        "en": "In ruku (bowing)",
+        "tk": "Rükugda",
+        "tr": "Rükûda",
+        "ru": "В поясном поклоне (руку)"
+      },
+      "ar": "سُبْحَانَ رَبِّيَ الْعَظِيمِ",
+      "translit": "Subhana Rabbiyal-'Azim.",
+      "text": {
+        "en": "Glory be to my Lord, the Magnificent.",
+        "tk": "Beýik Rebbimi päk tutýaryn.",
+        "tr": "Yüce Rabbimi tesbih ederim.",
+        "ru": "Пречист мой Великий Господь."
+      },
+      "source": "Muslim 772",
+      "count": 3
+    },
+    {
+      "id": "rising_ruku",
+      "category": "prayer",
+      "title": {
+        "en": "Rising from ruku",
+        "tk": "Rükugdan galanyňda",
+        "tr": "Rükûdan kalkarken",
+        "ru": "Выпрямляясь после руку"
+      },
+      "ar": "سَمِعَ اللَّهُ لِمَنْ حَمِدَهُ. رَبَّنَا وَلَكَ الْحَمْدُ، حَمْدًا كَثِيرًا طَيِّبًا مُبَارَكًا فِيهِ",
+      "translit": "Sami'allahu liman hamidah. Rabbana wa lakal-hamd, hamdan kathiran tayyiban mubarakan fih.",
+      "text": {
+        "en": "Allah hears the one who praises Him. Our Lord, and to You belongs all praise — abundant, good and blessed praise.",
+        "tk": "Alla Oňa hamd edeni eşidýär. Rebbimiz, hamd Saňadyr — köp, päk we bereketli hamd.",
+        "tr": "Allah kendisine hamd edeni işitir. Rabbimiz, hamd Sanadır; çok, temiz ve bereketli bir hamd.",
+        "ru": "Аллах слышит того, кто воздаёт Ему хвалу. Господь наш, Тебе хвала — обильная, благая и благословенная."
+      },
+      "source": "Bukhari 795, 799",
+      "count": 1
+    },
+    {
+      "id": "sujud",
+      "category": "prayer",
+      "title": {
+        "en": "In sujud (prostration)",
+        "tk": "Sejdede",
+        "tr": "Secdede",
+        "ru": "В земном поклоне (суджуд)"
+      },
+      "ar": "سُبْحَانَ رَبِّيَ الْأَعْلَىٰ",
+      "translit": "Subhana Rabbiyal-A'la.",
+      "text": {
+        "en": "Glory be to my Lord, the Most High.",
+        "tk": "Iň Belent Rebbimi päk tutýaryn.",
+        "tr": "En yüce Rabbimi tesbih ederim.",
+        "ru": "Пречист мой Всевышний Господь."
+      },
+      "source": "Muslim 772",
+      "count": 3
+    },
+    {
+      "id": "between_sujud",
+      "category": "prayer",
+      "title": {
+        "en": "Between the two prostrations",
+        "tk": "Iki sejdäniň arasynda",
+        "tr": "İki secde arasında",
+        "ru": "Между двумя поклонами"
+      },
+      "ar": "رَبِّ اغْفِرْ لِي، رَبِّ اغْفِرْ لِي",
+      "translit": "Rabbighfir li, Rabbighfir li.",
+      "text": {
+        "en": "My Lord, forgive me. My Lord, forgive me.",
+        "tk": "Rebbim, meni bagyşla. Rebbim, meni bagyşla.",
+        "tr": "Rabbim, beni bağışla. Rabbim, beni bağışla.",
+        "ru": "Господи, прости меня. Господи, прости меня."
+      },
+      "source": "Abu Dawud 874",
+      "count": 1
+    },
+    {
+      "id": "tashahhud",
+      "category": "prayer",
+      "title": {
+        "en": "Tashahhud (at-Tahiyyat)",
+        "tk": "Täşehhüt (Ettehyýatu)",
+        "tr": "Teşehhüd (Ettehiyyatü)",
+        "ru": "Ташаххуд (ат-Тахийят)"
+      },
+      "ar": "التَّحِيَّاتُ لِلَّهِ وَالصَّلَوَاتُ وَالطَّيِّبَاتُ، السَّلَامُ عَلَيْكَ أَيُّهَا النَّبِيُّ وَرَحْمَةُ اللَّهِ وَبَرَكَاتُهُ، السَّلَامُ عَلَيْنَا وَعَلَىٰ عِبَادِ اللَّهِ الصَّالِحِينَ، أَشْهَدُ أَنْ لَا إِلَٰهَ إِلَّا اللَّهُ، وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ",
+      "translit": "At-tahiyyatu lillahi was-salawatu wat-tayyibat. As-salamu 'alayka ayyuhan-nabiyyu wa rahmatullahi wa barakatuh. As-salamu 'alayna wa 'ala 'ibadillahis-salihin. Ashhadu an la ilaha illallah, wa ashhadu anna Muhammadan 'abduhu wa rasuluh.",
+      "text": {
+        "en": "All greetings, prayers and good things belong to Allah. Peace be upon you, O Prophet, and the mercy of Allah and His blessings. Peace be upon us and upon the righteous servants of Allah. I bear witness that there is no god but Allah, and I bear witness that Muhammad is His servant and Messenger.",
+        "tk": "Ähli salamlar, namazlar we päk zatlar Alla degişlidir. Eý Pygamber, saňa salam, Allanyň rehmeti we bereketi bolsun. Bize we Allanyň salyh bendelerine salam bolsun. Alladan başga hudaý ýokdugyna we Muhammediň Onuň guly hem ilçisidigine şaýatlyk edýärin.",
+        "tr": "Bütün tahiyyeler, dualar ve güzel sözler Allah'adır. Ey Peygamber, selam, Allah'ın rahmeti ve bereketi senin üzerine olsun. Selam bizim üzerimize ve Allah'ın salih kullarının üzerine olsun. Allah'tan başka ilah olmadığına ve Muhammed'in O'nun kulu ve elçisi olduğuna şahitlik ederim.",
+        "ru": "Приветствия, молитвы и всё благое — Аллаху. Мир тебе, о Пророк, милость Аллаха и Его благословения. Мир нам и праведным рабам Аллаха. Свидетельствую, что нет божества, кроме Аллаха, и свидетельствую, что Мухаммад — Его раб и посланник."
+      },
+      "source": "Bukhari 831, Muslim 402",
+      "count": 1
+    },
+    {
+      "id": "salawat",
+      "category": "prayer",
+      "title": {
+        "en": "Salawat (Ibrahimiyya)",
+        "tk": "Salawat (Ybraýymyýa)",
+        "tr": "Salli-Barik duaları",
+        "ru": "Салават (Ибрахимия)"
+      },
+      "ar": "اللَّهُمَّ صَلِّ عَلَىٰ مُحَمَّدٍ وَعَلَىٰ آلِ مُحَمَّدٍ، كَمَا صَلَّيْتَ عَلَىٰ إِبْرَاهِيمَ وَعَلَىٰ آلِ إِبْرَاهِيمَ، إِنَّكَ حَمِيدٌ مَجِيدٌ، اللَّهُمَّ بَارِكْ عَلَىٰ مُحَمَّدٍ وَعَلَىٰ آلِ مُحَمَّدٍ، كَمَا بَارَكْتَ عَلَىٰ إِبْرَاهِيمَ وَعَلَىٰ آلِ إِبْرَاهِيمَ، إِنَّكَ حَمِيدٌ مَجِيدٌ",
+      "translit": "Allahumma salli 'ala Muhammadin wa 'ala ali Muhammad, kama sallayta 'ala Ibrahima wa 'ala ali Ibrahim, innaka Hamidun Majid. Allahumma barik 'ala Muhammadin wa 'ala ali Muhammad, kama barakta 'ala Ibrahima wa 'ala ali Ibrahim, innaka Hamidun Majid.",
+      "text": {
+        "en": "O Allah, send prayers upon Muhammad and the family of Muhammad, as You sent prayers upon Ibrahim and the family of Ibrahim; You are Praiseworthy, Glorious. O Allah, bless Muhammad and the family of Muhammad, as You blessed Ibrahim and the family of Ibrahim; You are Praiseworthy, Glorious.",
+        "tk": "?Allahym, Ybraýyma we Ybraýymyň maşgalasyna rehmet edişiň ýaly, Muhammede we Muhammediň maşgalasyna-da rehmet et; Sen Öwgä Mynasyp, Şöhratlysyň. Allahym, Ybraýyma we Ybraýymyň maşgalasyna bereket berşiň ýaly, Muhammede we Muhammediň maşgalasyna-da bereket ber; Sen Öwgä Mynasyp, Şöhratlysyň.",
+        "tr": "Allah'ım, İbrahim'e ve İbrahim'in ailesine salât ettiğin gibi Muhammed'e ve Muhammed'in ailesine de salât et; şüphesiz Sen övülmeye layıksın, şanı yücesin. Allah'ım, İbrahim'e ve İbrahim'in ailesine bereket verdiğin gibi Muhammed'e ve Muhammed'in ailesine de bereket ver; şüphesiz Sen övülmeye layıksın, şanı yücesin.",
+        "ru": "О Аллах, благослови Мухаммада и семью Мухаммада, как Ты благословил Ибрахима и семью Ибрахима, поистине, Ты — Достохвальный, Славный. О Аллах, ниспошли благодать Мухаммаду и семье Мухаммада, как Ты ниспослал благодать Ибрахиму и семье Ибрахима, поистине, Ты — Достохвальный, Славный."
+      },
+      "source": "Bukhari 3370",
+      "count": 1
+    },
+    {
+      "id": "before_salam_forgive",
+      "category": "prayer",
+      "title": {
+        "en": "Before salam: forgiveness",
+        "tk": "Salamdan öň: bagyşlanmak",
+        "tr": "Selamdan önce: bağışlanma",
+        "ru": "Перед саламом: о прощении"
+      },
+      "ar": "اللَّهُمَّ إِنِّي ظَلَمْتُ نَفْسِي ظُلْمًا كَثِيرًا، وَلَا يَغْفِرُ الذُّنُوبَ إِلَّا أَنْتَ، فَاغْفِرْ لِي مَغْفِرَةً مِنْ عِنْدِكَ، وَارْحَمْنِي، إِنَّكَ أَنْتَ الْغَفُورُ الرَّحِيمُ",
+      "translit": "Allahumma inni zalamtu nafsi zulman kathira, wa la yaghfirudh-dhunuba illa ant, faghfir li maghfiratan min 'indik, warhamni, innaka antal-Ghafurur-Rahim.",
+      "text": {
+        "en": "O Allah, I have wronged myself greatly, and none forgives sins but You. So forgive me with forgiveness from You, and have mercy on me. You are the Forgiving, the Merciful.",
+        "tk": "Allahym, men özüme köp zulum etdim, günäleri diňe Sen bagyşlaýarsyň. Meni Öz huzuryňdan bagyşla we maňa rehim et. Sen Bagyşlaýjy, Rehimlisiň.",
+        "tr": "Allah'ım, ben nefsime çok zulmettim; günahları ancak Sen bağışlarsın. Katından bir bağışlama ile beni bağışla ve bana merhamet et. Şüphesiz Sen çok bağışlayan, çok merhamet edensin.",
+        "ru": "О Аллах, я много поступал несправедливо по отношению к себе, а грехи не прощает никто, кроме Тебя. Прости же меня прощением от Тебя и помилуй меня, поистине, Ты — Прощающий, Милосердный."
+      },
+      "source": "Bukhari 834, Muslim 2705",
+      "count": 1
+    },
+    {
+      "id": "before_salam_refuge",
+      "category": "prayer",
+      "title": {
+        "en": "Before salam: four refuges",
+        "tk": "Salamdan öň: dört sygynmak",
+        "tr": "Selamdan önce: dört şeyden sığınma",
+        "ru": "Перед саламом: защита от четырёх"
+      },
+      "ar": "اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنْ عَذَابِ جَهَنَّمَ، وَمِنْ عَذَابِ الْقَبْرِ، وَمِنْ فِتْنَةِ الْمَحْيَا وَالْمَمَاتِ، وَمِنْ شَرِّ فِتْنَةِ الْمَسِيحِ الدَّجَّالِ",
+      "translit": "Allahumma inni a'udhu bika min 'adhabi jahannam, wa min 'adhabil-qabr, wa min fitnatil-mahya wal-mamat, wa min sharri fitnatil-masihid-dajjal.",
+      "text": {
+        "en": "O Allah, I seek refuge in You from the punishment of Hell, from the punishment of the grave, from the trials of life and death, and from the evil of the trial of the False Messiah (Dajjal).",
+        "tk": "Allahym, dowzah azabyndan, gabyr azabyndan, ýaşaýşyň we ölümiň fitnelerinden hem-de Mesih Dejjalyň fitnesiniň şerinden Saňa sygynýaryn.",
+        "tr": "Allah'ım, cehennem azabından, kabir azabından, hayatın ve ölümün fitnesinden ve Mesih Deccal'in fitnesinin şerrinden Sana sığınırım.",
+        "ru": "О Аллах, прибегаю к Тебе от мучений Ада, от мучений могилы, от искушений жизни и смерти и от зла искушения Лжемессии (Даджаля)."
+      },
+      "source": "Muslim 588",
+      "count": 1
+    },
+    {
+      "id": "after_salah",
+      "category": "prayer",
+      "title": {
+        "en": "After salah",
+        "tk": "Namazdan soň",
+        "tr": "Namazdan sonra",
+        "ru": "После намаза"
+      },
+      "ar": "أَسْتَغْفِرُ اللَّهَ، أَسْتَغْفِرُ اللَّهَ، أَسْتَغْفِرُ اللَّهَ. اللَّهُمَّ أَنْتَ السَّلَامُ، وَمِنْكَ السَّلَامُ، تَبَارَكْتَ يَا ذَا الْجَلَالِ وَالْإِكْرَامِ",
+      "translit": "Astaghfirullah, astaghfirullah, astaghfirullah. Allahumma antas-Salam, wa minkas-salam, tabarakta ya Dhal-Jalali wal-Ikram.",
+      "text": {
+        "en": "I ask Allah's forgiveness (3 times). O Allah, You are Peace and from You comes peace. Blessed are You, O Owner of majesty and honour.",
+        "tk": "Alladan bagyşlanmak soraýaryn (3 gezek). Allahym, Sen Selamsyň, selamatlyk Sendendir. Eý Beýiklik we Hormat Eýesi, Sen mübäreksiň.",
+        "tr": "Allah'tan bağışlanma dilerim (3 kez). Allah'ım, Sen Selam'sın, esenlik Sendendir. Ey celal ve ikram sahibi, Sen ne yücesin.",
+        "ru": "Прошу прощения у Аллаха (3 раза). О Аллах, Ты — Мир, и от Тебя мир. Благословен Ты, о Обладатель величия и почёта."
+      },
+      "source": "Muslim 591",
+      "count": 1
+    },
+    {
+      "id": "after_salah_tahlil",
+      "category": "prayer",
+      "title": {
+        "en": "After salah: tahlil",
+        "tk": "Namazdan soň: tehlil",
+        "tr": "Namazdan sonra: tevhid",
+        "ru": "После намаза: тахлиль"
+      },
+      "ar": "لَا إِلَٰهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ، وَهُوَ عَلَىٰ كُلِّ شَيْءٍ قَدِيرٌ، اللَّهُمَّ لَا مَانِعَ لِمَا أَعْطَيْتَ، وَلَا مُعْطِيَ لِمَا مَنَعْتَ، وَلَا يَنْفَعُ ذَا الْجَدِّ مِنْكَ الْجَدُّ",
+      "translit": "La ilaha illallahu wahdahu la sharika lah, lahul-mulku wa lahul-hamd, wa huwa 'ala kulli shay'in qadir. Allahumma la mani'a lima a'tayt, wa la mu'tiya lima mana't, wa la yanfa'u dhal-jaddi minkal-jadd.",
+      "text": {
+        "en": "There is no god but Allah alone, without partner. His is the dominion and His is the praise, and He has power over all things. O Allah, none can withhold what You give, none can give what You withhold, and no wealth can avail its owner against You.",
+        "tk": "Ýeke-täk, şärigi bolmadyk Alladan başga hudaý ýokdur. Mülk hem hamd Onuňkydyr, Ol her zada gadyrdyr. Allahym, Seniň berýäniňe päsgel berjek, Seniň saklanyňy berjek ýokdur. Baýlyk eýesine baýlygy Seniň öňüňde peýda bermez.",
+        "tr": "Allah'tan başka ilah yoktur; tektir, ortağı yoktur. Mülk O'nundur, hamd O'nadır; O her şeye kadirdir. Allah'ım, Senin verdiğine engel olacak, Senin engel olduğunu verecek yoktur. Zenginin zenginliği Sana karşı ona fayda vermez.",
+        "ru": "Нет божества, кроме одного Аллаха, у Которого нет сотоварища. Ему принадлежит власть, Ему хвала, и Он над всякой вещью мощен. О Аллах, никто не лишит того, что Ты даровал, и никто не даст того, чего Ты лишил, и богатство не поможет богатому перед Тобой."
+      },
+      "source": "Bukhari 844, Muslim 593",
+      "count": 1
+    },
+    {
+      "id": "q_2_127",
+      "category": "quranic",
+      "title": {
+        "en": "Accept from us",
+        "tk": "Bizden kabul et",
+        "tr": "Bizden kabul et",
+        "ru": "Прими от нас"
+      },
+      "ar": "رَبَّنَا تَقَبَّلْ مِنَّا إِنَّكَ أَنْتَ السَّمِيعُ الْعَلِيمُ",
+      "translit": "Rabbana taqabbal minna innaka antas-Sami'ul-'Alim.",
+      "text": {
+        "en": "Our Lord, accept this from us. You are the All-Hearing, the All-Knowing. (Dua of Ibrahim and Ismail.)",
+        "tk": "Rebbimiz, bizden kabul et. Hakykatdan-da, Sen Eşidiji, Bilijisiň. (Ybraýym we Ysmaýyl pygamberleriň dilegi.)",
+        "tr": "Rabbimiz, bizden kabul buyur. Şüphesiz Sen işitensin, bilensin. (Hz. İbrahim ve Hz. İsmail'in duası.)",
+        "ru": "Господь наш, прими от нас! Воистину, Ты — Слышащий, Знающий. (Мольба Ибрахима и Исмаила.)"
+      },
+      "source": "Quran 2:127",
+      "count": 1
+    },
+    {
+      "id": "q_2_201",
+      "category": "quranic",
+      "title": {
+        "en": "Good in both worlds",
+        "tk": "Iki dünýäniň ýagşylygy",
+        "tr": "Dünya ve ahiret iyiliği",
+        "ru": "Благо в обоих мирах"
+      },
+      "ar": "رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الْآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ",
+      "translit": "Rabbana atina fid-dunya hasanatan wa fil-akhirati hasanatan wa qina 'adhaban-nar.",
+      "text": {
+        "en": "Our Lord, give us good in this world and good in the Hereafter, and protect us from the punishment of the Fire.",
+        "tk": "Rebbimiz, bize bu dünýäde-de ýagşylyk, ahyretde-de ýagşylyk ber we bizi dowzah odunyň azabyndan gora.",
+        "tr": "Rabbimiz, bize dünyada da iyilik ver, ahirette de iyilik ver ve bizi ateş azabından koru.",
+        "ru": "Господь наш, даруй нам благо в этом мире и благо в Последней жизни и защити нас от мучений в Огне."
+      },
+      "source": "Quran 2:201",
+      "count": 1
+    },
+    {
+      "id": "q_2_250",
+      "category": "quranic",
+      "title": {
+        "en": "Patience and firmness",
+        "tk": "Sabyr we berklik",
+        "tr": "Sabır ve sebat",
+        "ru": "Терпение и стойкость"
+      },
+      "ar": "رَبَّنَا أَفْرِغْ عَلَيْنَا صَبْرًا وَثَبِّتْ أَقْدَامَنَا وَانْصُرْنَا عَلَى الْقَوْمِ الْكَافِرِينَ",
+      "translit": "Rabbana afrigh 'alayna sabran wa thabbit aqdamana wansurna 'alal-qawmil-kafirin.",
+      "text": {
+        "en": "Our Lord, pour patience upon us, make our feet firm, and help us against the disbelieving people.",
+        "tk": "Rebbimiz, üstümize sabyr ýagdyr, aýaklarymyzy berk et we kapyrlar kowmuna garşy bize kömek et.",
+        "tr": "Rabbimiz, üzerimize sabır yağdır, ayaklarımızı sabit kıl ve kâfirler topluluğuna karşı bize yardım et.",
+        "ru": "Господь наш, ниспошли нам терпение, укрепи наши стопы и помоги нам одержать верх над неверующими людьми."
+      },
+      "source": "Quran 2:250",
+      "count": 1
+    },
+    {
+      "id": "q_2_286",
+      "category": "quranic",
+      "title": {
+        "en": "Do not burden us",
+        "tk": "Bize agyr ýük ýükleme",
+        "tr": "Bize ağır yük yükleme",
+        "ru": "Не возлагай на нас бремени"
+      },
+      "ar": "رَبَّنَا لَا تُؤَاخِذْنَا إِنْ نَسِينَا أَوْ أَخْطَأْنَا، رَبَّنَا وَلَا تَحْمِلْ عَلَيْنَا إِصْرًا كَمَا حَمَلْتَهُ عَلَى الَّذِينَ مِنْ قَبْلِنَا، رَبَّنَا وَلَا تُحَمِّلْنَا مَا لَا طَاقَةَ لَنَا بِهِ، وَاعْفُ عَنَّا وَاغْفِرْ لَنَا وَارْحَمْنَا، أَنْتَ مَوْلَانَا فَانْصُرْنَا عَلَى الْقَوْمِ الْكَافِرِينَ",
+      "translit": "Rabbana la tu'akhidhna in nasina aw akhta'na. Rabbana wa la tahmil 'alayna isran kama hamaltahu 'alal-ladhina min qablina. Rabbana wa la tuhammilna ma la taqata lana bih. Wa'fu 'anna waghfir lana warhamna, anta mawlana fansurna 'alal-qawmil-kafirin.",
+      "text": {
+        "en": "Our Lord, do not take us to task if we forget or make a mistake. Our Lord, do not place on us a burden like the one You placed on those before us. Our Lord, do not burden us with more than we can bear. Pardon us, forgive us and have mercy on us. You are our Protector, so help us against the disbelieving people.",
+        "tk": "Rebbimiz, unutsak ýa-da ýalňyşsak, bizi jogapkär etme. Rebbimiz, bizden öňkülere ýükleýşiň ýaly agyr ýüki bize ýükleme. Rebbimiz, güýjümiz ýetmejek zady bize ýükleme. Bizi ötüne, bagyşla we bize rehim et. Sen biziň Howandarymyzsyň, kapyrlar kowmuna garşy bize kömek et.",
+        "tr": "Rabbimiz, unutur ya da yanılırsak bizi sorumlu tutma. Rabbimiz, bizden öncekilere yüklediğin gibi bize de ağır yük yükleme. Rabbimiz, gücümüzün yetmediği şeyleri bize taşıtma. Bizi affet, bizi bağışla, bize merhamet et. Sen bizim Mevlâmızsın; kâfirler topluluğuna karşı bize yardım et.",
+        "ru": "Господь наш, не наказывай нас, если мы забыли или ошиблись. Господь наш, не возлагай на нас бремени, которое Ты возложил на наших предшественников. Господь наш, не обременяй нас тем, что нам не под силу. Извини нас, прости нас и помилуй нас. Ты — наш Покровитель, помоги же нам одержать верх над неверующими людьми."
+      },
+      "source": "Quran 2:286",
+      "count": 1
+    },
+    {
+      "id": "q_3_8",
+      "category": "quranic",
+      "title": {
+        "en": "Keep our hearts steady",
+        "tk": "Ýüreklerimizi egriltme",
+        "tr": "Kalplerimizi kaydırma",
+        "ru": "Не уклоняй наши сердца"
+      },
+      "ar": "رَبَّنَا لَا تُزِغْ قُلُوبَنَا بَعْدَ إِذْ هَدَيْتَنَا وَهَبْ لَنَا مِنْ لَدُنْكَ رَحْمَةً إِنَّكَ أَنْتَ الْوَهَّابُ",
+      "translit": "Rabbana la tuzigh qulubana ba'da idh hadaytana wa hab lana min ladunka rahmah, innaka antal-Wahhab.",
+      "text": {
+        "en": "Our Lord, do not let our hearts deviate after You have guided us, and grant us mercy from Yourself. You are the Bestower.",
+        "tk": "Rebbimiz, bizi dogry ýola salanyňdan soň ýüreklerimizi egriltme we bize Öz huzuryňdan rehmet bagyşla. Hakykatdan-da, Sen Bagyş Berijisiň.",
+        "tr": "Rabbimiz, bizi doğru yola ilettikten sonra kalplerimizi kaydırma ve bize katından bir rahmet bağışla. Şüphesiz Sen çok bağışlayansın.",
+        "ru": "Господь наш, не уклоняй наши сердца после того, как Ты наставил нас на прямой путь, и даруй нам милость от Себя. Воистину, Ты — Дарующий."
+      },
+      "source": "Quran 3:8",
+      "count": 1
+    },
+    {
+      "id": "q_3_147",
+      "category": "quranic",
+      "title": {
+        "en": "Forgive our excesses",
+        "tk": "Çäkden aşmalarymyzy bagyşla",
+        "tr": "Aşırılıklarımızı bağışla",
+        "ru": "Прости наши излишества"
+      },
+      "ar": "رَبَّنَا اغْفِرْ لَنَا ذُنُوبَنَا وَإِسْرَافَنَا فِي أَمْرِنَا وَثَبِّتْ أَقْدَامَنَا وَانْصُرْنَا عَلَى الْقَوْمِ الْكَافِرِينَ",
+      "translit": "Rabbanaghfir lana dhunubana wa israfana fi amrina wa thabbit aqdamana wansurna 'alal-qawmil-kafirin.",
+      "text": {
+        "en": "Our Lord, forgive us our sins and our excesses in our affairs, make our feet firm, and help us against the disbelieving people.",
+        "tk": "Rebbimiz, günälerimizi we işlerimizdäki çäkden aşmalarymyzy bagyşla, aýaklarymyzy berk et we kapyrlar kowmuna garşy bize kömek et.",
+        "tr": "Rabbimiz, günahlarımızı ve işlerimizdeki aşırılıklarımızı bağışla, ayaklarımızı sabit kıl ve kâfirler topluluğuna karşı bize yardım et.",
+        "ru": "Господь наш, прости нам наши грехи и излишества в наших делах, укрепи наши стопы и помоги нам одержать верх над неверующими людьми."
+      },
+      "source": "Quran 3:147",
+      "count": 1
+    },
+    {
+      "id": "q_7_23",
+      "category": "quranic",
+      "title": {
+        "en": "Dua of Adam",
+        "tk": "Adam pygamberiň dilegi",
+        "tr": "Hz. Âdem'in duası",
+        "ru": "Мольба Адама"
+      },
+      "ar": "رَبَّنَا ظَلَمْنَا أَنْفُسَنَا وَإِنْ لَمْ تَغْفِرْ لَنَا وَتَرْحَمْنَا لَنَكُونَنَّ مِنَ الْخَاسِرِينَ",
+      "translit": "Rabbana zalamna anfusana wa in lam taghfir lana wa tarhamna lanakunanna minal-khasirin.",
+      "text": {
+        "en": "Our Lord, we have wronged ourselves. If You do not forgive us and have mercy on us, we will surely be among the losers.",
+        "tk": "Rebbimiz, biz özümize zulum etdik. Eger Sen bizi bagyşlamasaň we bize rehim etmeseň, elbetde, zyýan çekenlerden bolarys.",
+        "tr": "Rabbimiz, biz kendimize zulmettik. Eğer bizi bağışlamaz ve bize merhamet etmezsen mutlaka ziyana uğrayanlardan oluruz.",
+        "ru": "Господь наш, мы поступили несправедливо по отношению к себе. Если Ты не простишь нас и не помилуешь, мы непременно окажемся в числе потерпевших убыток."
+      },
+      "source": "Quran 7:23",
+      "count": 1
+    },
+    {
+      "id": "q_14_40",
+      "category": "quranic",
+      "title": {
+        "en": "Dua of Ibrahim",
+        "tk": "Ybraýym pygamberiň dilegi",
+        "tr": "Hz. İbrahim'in duası",
+        "ru": "Мольба Ибрахима"
+      },
+      "ar": "رَبِّ اجْعَلْنِي مُقِيمَ الصَّلَاةِ وَمِنْ ذُرِّيَّتِي، رَبَّنَا وَتَقَبَّلْ دُعَاءِ، رَبَّنَا اغْفِرْ لِي وَلِوَالِدَيَّ وَلِلْمُؤْمِنِينَ يَوْمَ يَقُومُ الْحِسَابُ",
+      "translit": "Rabbij'alni muqimas-salati wa min dhurriyyati, Rabbana wa taqabbal du'a'. Rabbanaghfir li wa liwalidayya wa lil-mu'minina yawma yaqumul-hisab.",
+      "text": {
+        "en": "My Lord, make me one who establishes prayer, and from my descendants too. Our Lord, accept my supplication. Our Lord, forgive me, my parents and the believers on the Day the reckoning takes place.",
+        "tk": "Rebbim, meni we nesillerimi namazy dowam etdirýänlerden et. Rebbimiz, dilegimi kabul et. Rebbimiz, hasap gününde meni, ata-enemi we möminleri bagyşla.",
+        "tr": "Rabbim, beni ve soyumdan gelecekleri namazı dosdoğru kılanlardan eyle. Rabbimiz, duamı kabul et. Rabbimiz, hesabın görüleceği gün beni, anne babamı ve müminleri bağışla.",
+        "ru": "Господи, сделай меня и моих потомков выстаивающими молитву. Господь наш, прими мою мольбу. Господь наш, прости меня, моих родителей и верующих в тот день, когда будет подведён итог."
+      },
+      "source": "Quran 14:40-41",
+      "count": 1
+    },
+    {
+      "id": "q_20_25",
+      "category": "quranic",
+      "title": {
+        "en": "Ease my task (dua of Musa)",
+        "tk": "Işimi aňsat et (Musa pygamberiň dilegi)",
+        "tr": "İşimi kolaylaştır (Hz. Musa'nın duası)",
+        "ru": "Облегчи мне дело (мольба Мусы)"
+      },
+      "ar": "رَبِّ اشْرَحْ لِي صَدْرِي، وَيَسِّرْ لِي أَمْرِي، وَاحْلُلْ عُقْدَةً مِنْ لِسَانِي، يَفْقَهُوا قَوْلِي",
+      "translit": "Rabbish-rah li sadri, wa yassir li amri, wahlul 'uqdatam min lisani, yafqahu qawli.",
+      "text": {
+        "en": "My Lord, open my heart for me, ease my task for me, and untie the knot from my tongue, so that they may understand my speech.",
+        "tk": "Rebbim, göwsümi giňelt, işimi aňsatlaşdyr, dilimdäki düwüni çöz, sözümi düşünsinler.",
+        "tr": "Rabbim, gönlüme genişlik ver, işimi kolaylaştır, dilimdeki düğümü çöz ki sözümü anlasınlar.",
+        "ru": "Господи, раскрой мне мою грудь, облегчи мою задачу, развяжи узел на моём языке, чтобы они поняли мою речь."
+      },
+      "source": "Quran 20:25-28",
+      "count": 1
+    },
+    {
+      "id": "q_20_114",
+      "category": "quranic",
+      "title": {
+        "en": "Increase me in knowledge",
+        "tk": "Ylmymy artdyr",
+        "tr": "İlmimi artır",
+        "ru": "Приумножь мои знания"
+      },
+      "ar": "رَبِّ زِدْنِي عِلْمًا",
+      "translit": "Rabbi zidni 'ilma.",
+      "text": {
+        "en": "My Lord, increase me in knowledge.",
+        "tk": "Rebbim, ylmymy artdyr.",
+        "tr": "Rabbim, ilmimi artır.",
+        "ru": "Господи, приумножь мои знания."
+      },
+      "source": "Quran 20:114",
+      "count": 1
+    },
+    {
+      "id": "q_21_87",
+      "category": "quranic",
+      "title": {
+        "en": "Dua of Yunus",
+        "tk": "Ýunus pygamberiň dilegi",
+        "tr": "Hz. Yunus'un duası",
+        "ru": "Мольба Юнуса"
+      },
+      "ar": "لَا إِلَٰهَ إِلَّا أَنْتَ سُبْحَانَكَ إِنِّي كُنْتُ مِنَ الظَّالِمِينَ",
+      "translit": "La ilaha illa anta subhanaka inni kuntu minaz-zalimin.",
+      "text": {
+        "en": "There is no god but You. Glory be to You! I have indeed been among the wrongdoers. (Said by Yunus in the belly of the whale.)",
+        "tk": "Senden başga hudaý ýokdur. Sen ähli kemçiliklerden päksiň. Hakykatdan-da, men zalymlardan boldum. (Ýunus pygamber balygyň içinde şeýle dileg edipdir.)",
+        "tr": "Senden başka ilah yoktur. Seni tesbih ederim. Gerçekten ben zalimlerden oldum. (Hz. Yunus balığın karnında böyle dua etmiştir.)",
+        "ru": "Нет божества, кроме Тебя. Пречист Ты! Воистину, я был одним из несправедливых. (Так взывал Юнус во чреве кита.)"
+      },
+      "source": "Quran 21:87",
+      "count": 1
+    },
+    {
+      "id": "q_23_118",
+      "category": "quranic",
+      "title": {
+        "en": "Best of the merciful",
+        "tk": "Rehim edijileriň iň ýagşysy",
+        "tr": "Merhamet edenlerin en hayırlısı",
+        "ru": "Лучший из милосердных"
+      },
+      "ar": "رَبِّ اغْفِرْ وَارْحَمْ وَأَنْتَ خَيْرُ الرَّاحِمِينَ",
+      "translit": "Rabbighfir warham wa anta khayrur-rahimin.",
+      "text": {
+        "en": "My Lord, forgive and have mercy, for You are the best of those who show mercy.",
+        "tk": "Rebbim, bagyşla we rehim et, Sen rehim edijileriň iň ýagşysysyň.",
+        "tr": "Rabbim, bağışla ve merhamet et. Sen merhamet edenlerin en hayırlısısın.",
+        "ru": "Господи, прости и помилуй, ведь Ты — Лучший из милосердных."
+      },
+      "source": "Quran 23:118",
+      "count": 1
+    },
+    {
+      "id": "q_28_24",
+      "category": "quranic",
+      "title": {
+        "en": "In need of Your good",
+        "tk": "Seniň ýagşylygyňa mätäç",
+        "tr": "Hayrına muhtacım",
+        "ru": "Нуждаюсь в Твоём благе"
+      },
+      "ar": "رَبِّ إِنِّي لِمَا أَنْزَلْتَ إِلَيَّ مِنْ خَيْرٍ فَقِيرٌ",
+      "translit": "Rabbi inni lima anzalta ilayya min khayrin faqir.",
+      "text": {
+        "en": "My Lord, I am truly in need of whatever good You send down to me. (Dua of Musa.)",
+        "tk": "Rebbim, Seniň maňa inderjek islendik ýagşylygyňa men mätäçdirin. (Musa pygamberiň dilegi.)",
+        "tr": "Rabbim, bana indireceğin her hayra muhtacım. (Hz. Musa'nın duası.)",
+        "ru": "Господи, я нуждаюсь в любом благе, которое Ты ниспошлёшь мне. (Мольба Мусы.)"
+      },
+      "source": "Quran 28:24",
+      "count": 1
+    },
+    {
+      "id": "q_59_10",
+      "category": "quranic",
+      "title": {
+        "en": "For our brothers in faith",
+        "tk": "Iman doganlarymyz üçin",
+        "tr": "Mümin kardeşlerimiz için",
+        "ru": "За братьев по вере"
+      },
+      "ar": "رَبَّنَا اغْفِرْ لَنَا وَلِإِخْوَانِنَا الَّذِينَ سَبَقُونَا بِالْإِيمَانِ وَلَا تَجْعَلْ فِي قُلُوبِنَا غِلًّا لِلَّذِينَ آمَنُوا رَبَّنَا إِنَّكَ رَءُوفٌ رَحِيمٌ",
+      "translit": "Rabbanaghfir lana wa li-ikhwaninal-ladhina sabaquna bil-iman, wa la taj'al fi qulubina ghillal-lilladhina amanu, Rabbana innaka Ra'ufur-Rahim.",
+      "text": {
+        "en": "Our Lord, forgive us and our brothers who preceded us in faith, and put no resentment in our hearts toward those who believe. Our Lord, You are Kind and Merciful.",
+        "tk": "Rebbimiz, bizi we bizden öň iman getiren doganlarymyzy bagyşla, ýüreklerimizde iman getirenlere garşy kin goýma. Rebbimiz, Sen Şepagatly, Rehimlisiň.",
+        "tr": "Rabbimiz, bizi ve bizden önce iman etmiş kardeşlerimizi bağışla; kalplerimizde iman edenlere karşı hiçbir kin bırakma. Rabbimiz, Sen çok şefkatlisin, çok merhametlisin.",
+        "ru": "Господь наш, прости нас и наших братьев, которые опередили нас в вере, и не вселяй в наши сердца злобы к тем, которые уверовали. Господь наш, Ты — Сострадательный, Милосердный."
+      },
+      "source": "Quran 59:10",
+      "count": 1
+    },
+    {
+      "id": "anxiety",
+      "category": "hardship",
+      "title": {
+        "en": "Anxiety and sorrow",
+        "tk": "Alada we gaýgy",
+        "tr": "Kaygı ve hüzün",
+        "ru": "Тревога и печаль"
+      },
+      "ar": "اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْهَمِّ وَالْحَزَنِ، وَالْعَجْزِ وَالْكَسَلِ، وَالْجُبْنِ وَالْبُخْلِ، وَضَلَعِ الدَّيْنِ، وَغَلَبَةِ الرِّجَالِ",
+      "translit": "Allahumma inni a'udhu bika minal-hammi wal-hazan, wal-'ajzi wal-kasal, wal-jubni wal-bukhl, wa dala'id-dayni wa ghalabatir-rijal.",
+      "text": {
+        "en": "O Allah, I seek refuge in You from anxiety and sorrow, from weakness and laziness, from cowardice and miserliness, from the burden of debt and from being overpowered by people.",
+        "tk": "Allahym, aladadan we gaýgydan, ejizlikden we ýaltalykdan, gorkaklykdan we gysgançlykdan, bergi agramyndan we adamlaryň zorlugyndan Saňa sygynýaryn.",
+        "tr": "Allah'ım, kaygıdan ve hüzünden, acizlikten ve tembellikten, korkaklıktan ve cimrilikten, borcun ağırlığından ve insanların baskısından Sana sığınırım.",
+        "ru": "О Аллах, прибегаю к Тебе от тревоги и печали, от бессилия и лени, от трусости и скупости, от бремени долга и от притеснения людей."
+      },
+      "source": "Bukhari 6369",
+      "count": 1
+    },
+    {
+      "id": "distress",
+      "category": "hardship",
+      "title": {
+        "en": "In distress",
+        "tk": "Kyn ýagdaýda",
+        "tr": "Sıkıntı anında",
+        "ru": "В беде"
+      },
+      "ar": "لَا إِلَٰهَ إِلَّا اللَّهُ الْعَظِيمُ الْحَلِيمُ، لَا إِلَٰهَ إِلَّا اللَّهُ رَبُّ الْعَرْشِ الْعَظِيمِ، لَا إِلَٰهَ إِلَّا اللَّهُ رَبُّ السَّمَاوَاتِ وَرَبُّ الْأَرْضِ وَرَبُّ الْعَرْشِ الْكَرِيمِ",
+      "translit": "La ilaha illallahul-'Azimul-Halim, la ilaha illallahu Rabbul-'Arshil-'Azim, la ilaha illallahu Rabbus-samawati wa Rabbul-ardi wa Rabbul-'Arshil-Karim.",
+      "text": {
+        "en": "There is no god but Allah, the Magnificent, the Forbearing. There is no god but Allah, Lord of the Mighty Throne. There is no god but Allah, Lord of the heavens, Lord of the earth and Lord of the Noble Throne.",
+        "tk": "Beýik we Halym Alladan başga hudaý ýokdur. Beýik Arşyň Rebbi Alladan başga hudaý ýokdur. Asmanlaryň Rebbi, ýeriň Rebbi we Kerim Arşyň Rebbi Alladan başga hudaý ýokdur.",
+        "tr": "Yüce ve Halîm olan Allah'tan başka ilah yoktur. Büyük Arş'ın Rabbi Allah'tan başka ilah yoktur. Göklerin Rabbi, yerin Rabbi ve şerefli Arş'ın Rabbi Allah'tan başka ilah yoktur.",
+        "ru": "Нет божества, кроме Аллаха, Великого, Кроткого. Нет божества, кроме Аллаха, Господа великого Трона. Нет божества, кроме Аллаха, Господа небес, Господа земли и Господа благородного Трона."
+      },
+      "source": "Bukhari 6346, Muslim 2730",
+      "count": 1
+    },
+    {
+      "id": "hope_mercy",
+      "category": "hardship",
+      "title": {
+        "en": "Hoping for His mercy",
+        "tk": "Rehmetine umyt baglap",
+        "tr": "Rahmetini umarak",
+        "ru": "Надеясь на Его милость"
+      },
+      "ar": "اللَّهُمَّ رَحْمَتَكَ أَرْجُو، فَلَا تَكِلْنِي إِلَىٰ نَفْسِي طَرْفَةَ عَيْنٍ، وَأَصْلِحْ لِي شَأْنِي كُلَّهُ، لَا إِلَٰهَ إِلَّا أَنْتَ",
+      "translit": "Allahumma rahmataka arju, fala takilni ila nafsi tarfata 'ayn, wa aslih li sha'ni kullah, la ilaha illa ant.",
+      "text": {
+        "en": "O Allah, it is Your mercy I hope for. Do not leave me to myself even for the blink of an eye, and set right all my affairs. There is no god but You.",
+        "tk": "Allahym, rehmetiňe umyt edýärin. Meni göz açyp-ýumasy salym hem özüme taşlama, ähli işlerimi düzet. Senden başga hudaý ýokdur.",
+        "tr": "Allah'ım, rahmetini umuyorum. Beni göz açıp kapayıncaya kadar bile nefsime bırakma. Bütün işlerimi düzelt. Senden başka ilah yoktur.",
+        "ru": "О Аллах, на Твою милость я надеюсь. Не оставляй меня наедине с собой ни на миг и приведи в порядок все мои дела. Нет божества, кроме Тебя."
+      },
+      "source": "Abu Dawud 5090",
+      "count": 1
+    },
+    {
+      "id": "ya_hayyu",
+      "category": "hardship",
+      "title": {
+        "en": "Calling for help",
+        "tk": "Kömek soranyňda",
+        "tr": "Yardım dilerken",
+        "ru": "Взывая о помощи"
+      },
+      "ar": "يَا حَيُّ يَا قَيُّومُ بِرَحْمَتِكَ أَسْتَغِيثُ",
+      "translit": "Ya Hayyu ya Qayyum, bi-rahmatika astaghith.",
+      "text": {
+        "en": "O Ever-Living, O Sustainer of all, by Your mercy I call for help.",
+        "tk": "Eý Diri, eý Hemme zady Saklaýan! Rehmetiň bilen kömek soraýaryn.",
+        "tr": "Ey Hayy, ey Kayyum! Rahmetinle yardım dilerim.",
+        "ru": "О Живой, о Вседержитель! К Твоей милости взываю о помощи."
+      },
+      "source": "Tirmidhi 3524",
+      "count": 1
+    },
+    {
+      "id": "fear_people",
+      "category": "hardship",
+      "title": {
+        "en": "When afraid of people",
+        "tk": "Adamlardan gorkanyňda",
+        "tr": "Bir topluluktan korkunca",
+        "ru": "Опасаясь людей"
+      },
+      "ar": "اللَّهُمَّ إِنَّا نَجْعَلُكَ فِي نُحُورِهِمْ، وَنَعُوذُ بِكَ مِنْ شُرُورِهِمْ",
+      "translit": "Allahumma inna naj'aluka fi nuhurihim, wa na'udhu bika min shururihim.",
+      "text": {
+        "en": "O Allah, we place You before them, and we seek refuge in You from their evil.",
+        "tk": "Allahym, Seni olaryň garşysynda goýýarys we olaryň şerinden Saňa sygynýarys.",
+        "tr": "Allah'ım, Seni onların karşısına koyarız ve onların şerrinden Sana sığınırız.",
+        "ru": "О Аллах, мы выставляем Тебя против них и прибегаем к Тебе от их зла."
+      },
+      "source": "Abu Dawud 1537",
+      "count": 1
+    },
+    {
+      "id": "debt",
+      "category": "hardship",
+      "title": {
+        "en": "For debt",
+        "tk": "Bergi üçin",
+        "tr": "Borç için",
+        "ru": "При долгах"
+      },
+      "ar": "اللَّهُمَّ اكْفِنِي بِحَلَالِكَ عَنْ حَرَامِكَ، وَأَغْنِنِي بِفَضْلِكَ عَمَّنْ سِوَاكَ",
+      "translit": "Allahummak-fini bi-halalika 'an haramik, wa aghnini bi-fadlika 'amman siwak.",
+      "text": {
+        "en": "O Allah, let what You have made lawful suffice me against what You have forbidden, and by Your grace make me free of need of anyone besides You.",
+        "tk": "Allahym, halalyň bilen meni haramyňdan halas et we keremiň bilen meni Senden başgalara mätäç etme.",
+        "tr": "Allah'ım, helalinle beni haramından müstağni kıl ve lütfunla beni Senden başkasına muhtaç etme.",
+        "ru": "О Аллах, удовлетвори меня дозволенным Тобой, избавив от запретного, и по милости Своей избавь меня от нужды в ком-либо, кроме Тебя."
+      },
+      "source": "Tirmidhi 3563",
+      "count": 1
+    },
+    {
+      "id": "hasbunallah",
+      "category": "hardship",
+      "title": {
+        "en": "Allah is enough for us",
+        "tk": "Alla bize ýeterlikdir",
+        "tr": "Allah bize yeter",
+        "ru": "Достаточно нам Аллаха"
+      },
+      "ar": "حَسْبُنَا اللَّهُ وَنِعْمَ الْوَكِيلُ",
+      "translit": "Hasbunallahu wa ni'mal-wakil.",
+      "text": {
+        "en": "Allah is sufficient for us, and He is the best Disposer of affairs. (Said by Ibrahim and by Muhammad ﷺ in times of danger.)",
+        "tk": "Alla bize ýeterlikdir, Ol nähili gowy Wekildir. (Muny Ybraýym we Muhammet ﷺ howp wagtynda aýdypdyrlar.)",
+        "tr": "Allah bize yeter, O ne güzel vekildir. (Hz. İbrahim ve Hz. Muhammed ﷺ tehlike anında böyle demiştir.)",
+        "ru": "Достаточно нам Аллаха, и как прекрасен Он как Попечитель! (Так говорили Ибрахим и Мухаммад ﷺ перед лицом опасности.)"
+      },
+      "source": "Quran 3:173, Bukhari 4563",
+      "count": 1
+    },
+    {
+      "id": "calamity",
+      "category": "hardship",
+      "title": {
+        "en": "When a calamity strikes",
+        "tk": "Musybat gelende",
+        "tr": "Musibet gelince",
+        "ru": "При несчастье"
+      },
+      "ar": "إِنَّا لِلَّهِ وَإِنَّا إِلَيْهِ رَاجِعُونَ، اللَّهُمَّ أْجُرْنِي فِي مُصِيبَتِي، وَأَخْلِفْ لِي خَيْرًا مِنْهَا",
+      "translit": "Inna lillahi wa inna ilayhi raji'un. Allahumma'jurni fi musibati wa akhlif li khayram minha.",
+      "text": {
+        "en": "We belong to Allah and to Him we return. O Allah, reward me in my affliction and replace it for me with something better.",
+        "tk": "Biz Alladandyrys we Oňa gaýdyp bararys. Allahym, musybatym üçin maňa sogap ber we ornuna ondan gowusyny ber.",
+        "tr": "Biz Allah'a aidiz ve O'na döneceğiz. Allah'ım, musibetimde bana ecir ver ve onun yerine bana daha hayırlısını ver.",
+        "ru": "Поистине, мы принадлежим Аллаху и к Нему возвращаемся. О Аллах, вознагради меня в моём несчастье и дай мне взамен лучшее."
+      },
+      "source": "Muslim 918",
+      "count": 1
+    },
+    {
+      "id": "every_state",
+      "category": "hardship",
+      "title": {
+        "en": "In every situation",
+        "tk": "Her ýagdaýda",
+        "tr": "Her durumda",
+        "ru": "В любом положении"
+      },
+      "ar": "الْحَمْدُ لِلَّهِ عَلَىٰ كُلِّ حَالٍ",
+      "translit": "Alhamdu lillahi 'ala kulli hal.",
+      "text": {
+        "en": "Praise be to Allah in every circumstance. (The Prophet ﷺ said this when something displeasing happened.)",
+        "tk": "Her ýagdaýda Alla hamd bolsun. (Pygamber ﷺ halamaýan zady bolanda şeýle diýipdir.)",
+        "tr": "Her hâlükârda Allah'a hamd olsun. (Peygamber ﷺ hoşlanmadığı bir şey olunca böyle derdi.)",
+        "ru": "Хвала Аллаху при любых обстоятельствах. (Так говорил Пророк ﷺ, когда случалось неприятное.)"
+      },
+      "source": "Ibn Majah 3803",
+      "count": 1
+    },
+    {
+      "id": "sick_visit",
+      "category": "hardship",
+      "title": {
+        "en": "Visiting the sick",
+        "tk": "Syrkawy görmäge baranyňda",
+        "tr": "Hasta ziyaretinde",
+        "ru": "При посещении больного"
+      },
+      "ar": "لَا بَأْسَ، طَهُورٌ إِنْ شَاءَ اللَّهُ",
+      "translit": "La ba'sa, tahurun in sha' Allah.",
+      "text": {
+        "en": "No harm — it is a purification (from sins), if Allah wills.",
+        "tk": "Zyýany ýok, Alla isläp bolsa, bu (günälerden) arassalanmakdyr.",
+        "tr": "Zararı yok, inşallah bu (günahlardan) bir arınmadır.",
+        "ru": "Ничего страшного, это очищение (от грехов), если пожелает Аллах."
+      },
+      "source": "Bukhari 3616",
+      "count": 1
+    },
+    {
+      "id": "sick_healing",
+      "category": "hardship",
+      "title": {
+        "en": "For the healing of the sick",
+        "tk": "Syrkawyň şypasy üçin",
+        "tr": "Hastanın şifası için",
+        "ru": "Об исцелении больного"
+      },
+      "ar": "أَسْأَلُ اللَّهَ الْعَظِيمَ، رَبَّ الْعَرْشِ الْعَظِيمِ، أَنْ يَشْفِيَكَ",
+      "translit": "As'alullahal-'Azim, Rabbal-'Arshil-'Azim, an yashfiyak.",
+      "text": {
+        "en": "I ask Allah the Magnificent, Lord of the Mighty Throne, to cure you.",
+        "tk": "Beýik Alladan, beýik Arşyň Rebbinden saňa şypa bermegini soraýaryn.",
+        "tr": "Yüce Allah'tan, büyük Arş'ın Rabbinden sana şifa vermesini dilerim.",
+        "ru": "Прошу Великого Аллаха, Господа великого Трона, исцелить тебя."
+      },
+      "source": "Abu Dawud 3106, Tirmidhi 2083",
+      "count": 7
+    },
+    {
+      "id": "pain",
+      "category": "hardship",
+      "title": {
+        "en": "When in pain",
+        "tk": "Bir ýeriň agyranda",
+        "tr": "Bir yerin ağrıdığında",
+        "ru": "При боли"
+      },
+      "ar": "بِسْمِ اللَّهِ، بِسْمِ اللَّهِ، بِسْمِ اللَّهِ. أَعُوذُ بِاللَّهِ وَقُدْرَتِهِ مِنْ شَرِّ مَا أَجِدُ وَأُحَاذِرُ",
+      "translit": "Bismillah (3×). A'udhu billahi wa qudratihi min sharri ma ajidu wa uhadhir (7×).",
+      "text": {
+        "en": "Place your hand where it hurts and say “Bismillah” three times, then seven times: I seek refuge in Allah and His power from the evil of what I feel and what I fear.",
+        "tk": "Eliňi agyrýan ýeriňe goý-da, üç gezek «Bismilla» diý, soňra ýedi gezek: Duýýan we gorkýan zadymyň şerinden Alla we Onuň kudratyna sygynýaryn.",
+        "tr": "Elini ağrıyan yere koy, üç kez “Bismillah” de, sonra yedi kez: Hissettiğim ve endişe ettiğim şeyin şerrinden Allah'a ve O'nun kudretine sığınırım.",
+        "ru": "Положи руку на больное место, трижды скажи «Бисмиллях», затем семь раз: Прибегаю к Аллаху и Его могуществу от зла того, что я чувствую и чего опасаюсь."
+      },
+      "source": "Muslim 2202",
+      "count": 7
+    },
+    {
+      "id": "protection",
+      "category": "hardship",
+      "title": {
+        "en": "Protection from harm",
+        "tk": "Zyýandan goranmak",
+        "tr": "Zarardan korunma",
+        "ru": "Защита от вреда"
+      },
+      "ar": "بِسْمِ اللَّهِ الَّذِي لَا يَضُرُّ مَعَ اسْمِهِ شَيْءٌ فِي الْأَرْضِ وَلَا فِي السَّمَاءِ، وَهُوَ السَّمِيعُ الْعَلِيمُ",
+      "translit": "Bismillahil-ladhi la yadurru ma'asmihi shay'un fil-ardi wa la fis-sama', wa huwas-Sami'ul-'Alim.",
+      "text": {
+        "en": "In the name of Allah, with whose name nothing on earth or in heaven can cause harm, and He is the All-Hearing, the All-Knowing. (Say it every morning and evening.)",
+        "tk": "Adynyň bilen ýerde we gökde hiç bir zat zyýan ýetirip bilmeýän Allanyň ady bilen. Ol Eşidiji, Bilijidir. (Her irden we agşam aýt.)",
+        "tr": "İsmiyle yerde ve gökte hiçbir şeyin zarar veremeyeceği Allah'ın adıyla. O işitendir, bilendir. (Her sabah ve akşam söyle.)",
+        "ru": "С именем Аллаха, с именем Которого ничто не причинит вреда ни на земле, ни на небе. Он — Слышащий, Знающий. (Говори каждое утро и вечер.)"
+      },
+      "source": "Abu Dawud 5088, Tirmidhi 3388",
+      "count": 3
+    },
+    {
+      "id": "sayyid_istighfar",
+      "category": "forgiveness",
+      "title": {
+        "en": "Master of forgiveness prayers",
+        "tk": "Seýidul-istigfar",
+        "tr": "Seyyidü'l-istiğfar",
+        "ru": "Лучшая мольба о прощении"
+      },
+      "ar": "اللَّهُمَّ أَنْتَ رَبِّي، لَا إِلَٰهَ إِلَّا أَنْتَ، خَلَقْتَنِي وَأَنَا عَبْدُكَ، وَأَنَا عَلَىٰ عَهْدِكَ وَوَعْدِكَ مَا اسْتَطَعْتُ، أَعُوذُ بِكَ مِنْ شَرِّ مَا صَنَعْتُ، أَبُوءُ لَكَ بِنِعْمَتِكَ عَلَيَّ، وَأَبُوءُ لَكَ بِذَنْبِي، فَاغْفِرْ لِي، فَإِنَّهُ لَا يَغْفِرُ الذُّنُوبَ إِلَّا أَنْتَ",
+      "translit": "Allahumma anta Rabbi, la ilaha illa ant, khalaqtani wa ana 'abduk, wa ana 'ala 'ahdika wa wa'dika mastata't, a'udhu bika min sharri ma sana't, abu'u laka bi-ni'matika 'alayya, wa abu'u laka bi-dhanbi, faghfir li, fa-innahu la yaghfirudh-dhunuba illa ant.",
+      "text": {
+        "en": "O Allah, You are my Lord; there is no god but You. You created me and I am Your servant, and I keep Your covenant and promise as best I can. I seek refuge in You from the evil of what I have done. I acknowledge Your favour upon me and I acknowledge my sin, so forgive me, for none forgives sins but You. (Whoever says it with conviction in the day and dies before evening, or at night and dies before morning, is among the people of Paradise.)",
+        "tk": "Allahym, Sen meniň Rebbimsiň, Senden başga hudaý ýokdur. Sen meni ýaratdyň, men Seniň guluň. Güýjümiň ýetdiginden Saňa beren ähtimde we wadamda durýaryn. Eden işlerimiň şerinden Saňa sygynýaryn. Maňa beren nygmatyňy we öz günämi boýun alýaryn. Meni bagyşla, sebäbi günäleri diňe Sen bagyşlaýarsyň. (Kim muny ynanyp gündiz aýdyp, agşama çenli ölse ýa-da gije aýdyp, ertire çenli ölse, jennet ehlindendir.)",
+        "tr": "Allah'ım, Sen benim Rabbimsin, Senden başka ilah yoktur. Beni Sen yarattın, ben Senin kulunum. Gücüm yettiğince Sana verdiğim ahit ve vaat üzereyim. Yaptıklarımın şerrinden Sana sığınırım. Bana verdiğin nimeti ikrar eder, günahımı itiraf ederim. Beni bağışla; çünkü günahları ancak Sen bağışlarsın. (Kim buna inanarak gündüz söyler ve akşam olmadan ölürse ya da gece söyler ve sabah olmadan ölürse cennet ehlindendir.)",
+        "ru": "О Аллах, Ты — мой Господь, нет божества, кроме Тебя. Ты сотворил меня, и я — Твой раб, и я буду верен обету и обещанию Тебе, насколько смогу. Прибегаю к Тебе от зла того, что я сделал. Признаю милость, оказанную Тобой мне, и признаю свой грех. Прости же меня, ведь никто не прощает грехи, кроме Тебя. (Кто скажет это с убеждённостью днём и умрёт до вечера или ночью и умрёт до утра, тот из обитателей Рая.)"
+      },
+      "source": "Bukhari 6306",
+      "count": 1
+    },
+    {
+      "id": "istighfar",
+      "category": "forgiveness",
+      "title": {
+        "en": "Seeking forgiveness",
+        "tk": "Bagyşlanmak soramak",
+        "tr": "İstiğfar",
+        "ru": "Просьба о прощении"
+      },
+      "ar": "أَسْتَغْفِرُ اللَّهَ وَأَتُوبُ إِلَيْهِ",
+      "translit": "Astaghfirullaha wa atubu ilayh.",
+      "text": {
+        "en": "I seek Allah's forgiveness and turn to Him in repentance. (The Prophet ﷺ said it more than seventy times a day.)",
+        "tk": "Alladan bagyşlanmak soraýaryn we Oňa toba edýärin. (Pygamber ﷺ muny günde ýetmiş gezekden köp aýdypdyr.)",
+        "tr": "Allah'tan bağışlanma diler, O'na tövbe ederim. (Peygamber ﷺ bunu günde yetmiş defadan fazla söylerdi.)",
+        "ru": "Прошу прощения у Аллаха и приношу Ему покаяние. (Пророк ﷺ говорил это более семидесяти раз в день.)"
+      },
+      "source": "Bukhari 6307",
+      "count": 100
+    },
+    {
+      "id": "rabbighfir_tub",
+      "category": "forgiveness",
+      "title": {
+        "en": "Forgive me, accept my repentance",
+        "tk": "Meni bagyşla, tobamy kabul et",
+        "tr": "Beni bağışla, tövbemi kabul et",
+        "ru": "Прости меня, прими покаяние"
+      },
+      "ar": "رَبِّ اغْفِرْ لِي وَتُبْ عَلَيَّ، إِنَّكَ أَنْتَ التَّوَّابُ الرَّحِيمُ",
+      "translit": "Rabbighfir li wa tub 'alayya, innaka antat-Tawwabur-Rahim.",
+      "text": {
+        "en": "My Lord, forgive me and accept my repentance; You are the Accepter of repentance, the Merciful. (The Companions counted the Prophet ﷺ saying it 100 times in one sitting.)",
+        "tk": "Rebbim, meni bagyşla we tobamy kabul et. Hakykatdan-da, Sen Tobany Kabul Ediji, Rehimlisiň. (Sahabalar Pygamberiň ﷺ muny bir oturylyşykda 100 gezek aýdandygyny sanapdyrlar.)",
+        "tr": "Rabbim, beni bağışla ve tövbemi kabul et. Şüphesiz Sen tövbeleri kabul edensin, merhametlisin. (Sahabeler, Peygamber'in ﷺ bunu bir mecliste 100 kez söylediğini saymıştır.)",
+        "ru": "Господи, прости меня и прими моё покаяние, ведь Ты — Принимающий покаяние, Милосердный. (Сподвижники насчитывали, что Пророк ﷺ говорил это 100 раз за одно собрание.)"
+      },
+      "source": "Abu Dawud 1516",
+      "count": 100
+    },
+    {
+      "id": "all_sins",
+      "category": "forgiveness",
+      "title": {
+        "en": "Forgive all my sins",
+        "tk": "Ähli günälerimi bagyşla",
+        "tr": "Bütün günahlarımı bağışla",
+        "ru": "Прости все мои грехи"
+      },
+      "ar": "اللَّهُمَّ اغْفِرْ لِي ذَنْبِي كُلَّهُ، دِقَّهُ وَجِلَّهُ، وَأَوَّلَهُ وَآخِرَهُ، وَعَلَانِيَتَهُ وَسِرَّهُ",
+      "translit": "Allahummaghfir li dhanbi kullah, diqqahu wa jillah, wa awwalahu wa akhirah, wa 'alaniyatahu wa sirrah.",
+      "text": {
+        "en": "O Allah, forgive me all my sins — the small and the great, the first and the last, the open and the secret. (Said by the Prophet ﷺ in prostration.)",
+        "tk": "Allahym, ähli günälerimi bagyşla: kiçisini-de, ulusyny-da, ilkinjisini-de, soňkusyny-da, aýanyny-da, gizlinini-de. (Pygamber ﷺ muny sejdede aýdypdyr.)",
+        "tr": "Allah'ım, günahlarımın hepsini bağışla: küçüğünü ve büyüğünü, ilkini ve sonunu, açığını ve gizlisini. (Peygamber ﷺ bunu secdede söylerdi.)",
+        "ru": "О Аллах, прости мне все мои грехи — малые и большие, первые и последние, явные и тайные. (Пророк ﷺ говорил это в земном поклоне.)"
+      },
+      "source": "Muslim 483",
+      "count": 1
+    },
+    {
+      "id": "laylat_qadr",
+      "category": "forgiveness",
+      "title": {
+        "en": "Laylat al-Qadr",
+        "tk": "Kadyr gijesi",
+        "tr": "Kadir Gecesi",
+        "ru": "Ночь Предопределения"
+      },
+      "ar": "اللَّهُمَّ إِنَّكَ عَفُوٌّ تُحِبُّ الْعَفْوَ فَاعْفُ عَنِّي",
+      "translit": "Allahumma innaka 'afuwwun tuhibbul-'afwa fa'fu 'anni.",
+      "text": {
+        "en": "O Allah, You are the Pardoner and You love to pardon, so pardon me. (Taught by the Prophet ﷺ to 'A'isha for Laylat al-Qadr.)",
+        "tk": "?Allahym, Sen Günä Geçijisiň, günä geçmegi söýýärsiň, meniň günälerimi geç. (Pygamber ﷺ muny Aýşa enemize Kadyr gijesi üçin öwredipdir.)",
+        "tr": "Allah'ım, Sen affedicisin, affetmeyi seversin; beni affet. (Peygamber ﷺ bunu Hz. Aişe'ye Kadir Gecesi için öğretmiştir.)",
+        "ru": "О Аллах, Ты — Прощающий, любишь прощать, так прости же меня. (Пророк ﷺ научил этому Аишу для Ночи Предопределения.)"
+      },
+      "source": "Tirmidhi 3513",
+      "count": 1
+    },
+    {
+      "id": "travel",
+      "category": "travel",
+      "title": {
+        "en": "Setting out on a journey",
+        "tk": "Ýola çykanyňda",
+        "tr": "Yolculuğa çıkarken",
+        "ru": "Отправляясь в путь"
+      },
+      "ar": "اللَّهُ أَكْبَرُ، اللَّهُ أَكْبَرُ، اللَّهُ أَكْبَرُ، سُبْحَانَ الَّذِي سَخَّرَ لَنَا هَٰذَا وَمَا كُنَّا لَهُ مُقْرِنِينَ، وَإِنَّا إِلَىٰ رَبِّنَا لَمُنْقَلِبُونَ، اللَّهُمَّ إِنَّا نَسْأَلُكَ فِي سَفَرِنَا هَٰذَا الْبِرَّ وَالتَّقْوَىٰ، وَمِنَ الْعَمَلِ مَا تَرْضَىٰ، اللَّهُمَّ هَوِّنْ عَلَيْنَا سَفَرَنَا هَٰذَا وَاطْوِ عَنَّا بُعْدَهُ، اللَّهُمَّ أَنْتَ الصَّاحِبُ فِي السَّفَرِ، وَالْخَلِيفَةُ فِي الْأَهْلِ، اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنْ وَعْثَاءِ السَّفَرِ، وَكَآبَةِ الْمَنْظَرِ، وَسُوءِ الْمُنْقَلَبِ فِي الْمَالِ وَالْأَهْلِ",
+      "translit": "Allahu akbar, Allahu akbar, Allahu akbar. Subhanal-ladhi sakhkhara lana hadha wa ma kunna lahu muqrinin, wa inna ila Rabbina lamunqalibun. Allahumma inna nas'aluka fi safarina hadhal-birra wat-taqwa, wa minal-'amali ma tarda. Allahumma hawwin 'alayna safarana hadha watwi 'anna bu'dah. Allahumma antas-sahibu fis-safar, wal-khalifatu fil-ahl. Allahumma inni a'udhu bika min wa'tha'is-safar, wa ka'abatil-manzar, wa su'il-munqalabi fil-mali wal-ahl.",
+      "text": {
+        "en": "Allah is the Greatest (3×). Glory be to Him who has subjected this to us, for we could never have done it ourselves, and to our Lord we shall return. O Allah, we ask You on this journey for righteousness and piety, and for deeds that please You. O Allah, make this journey easy for us and shorten its distance. O Allah, You are the Companion on the journey and the Guardian of the family. O Allah, I seek refuge in You from the hardships of travel, from a distressing sight, and from an ill return to my wealth and family.",
+        "tk": "Alla beýikdir (3 gezek). Biziň güýjümiz ýetmejek zady bize boýun egdiren Alla päkdir, biz hökman Rebbimize gaýdyp bararys. Allahym, bu syýahatymyzda Senden ýagşylyk we takwa hem-de Seniň razy boljak amallaryňy soraýarys. Allahym, bu syýahatymyzy bize ýeňilleşdir we uzaklygyny gysgalt. Allahym, Sen syýahatda ýoldaş, maşgalada bolsa howandarsyň. Allahym, ýoluň kynçylyklaryndan, gamgyn görnüşden we malda hem maşgalada erbet gaýdyp gelmekden Saňa sygynýaryn.",
+        "tr": "Allah en büyüktür (3 kez). Bunu bizim hizmetimize veren Allah'ı tesbih ederiz; yoksa biz buna güç yetiremezdik. Şüphesiz biz Rabbimize döneceğiz. Allah'ım, bu yolculuğumuzda Senden iyilik, takva ve razı olacağın ameller isteriz. Allah'ım, bu yolculuğu bize kolaylaştır, uzaklığını kısalt. Allah'ım, yolculukta yoldaş, ailede vekil Sensin. Allah'ım, yolculuğun zahmetinden, üzücü manzaradan ve malda, ailede kötü bir dönüşten Sana sığınırım.",
+        "ru": "Аллах велик (3 раза). Пречист Тот, Кто подчинил нам это, ведь сами мы не смогли бы этого сделать, и, поистине, мы вернёмся к нашему Господу. О Аллах, просим Тебя в этой поездке о благочестии и богобоязненности и о делах, которыми Ты доволен. О Аллах, облегчи нам эту поездку и сократи её расстояние. О Аллах, Ты — Спутник в пути и Хранитель семьи. О Аллах, прибегаю к Тебе от тягот пути, от удручающего зрелища и от дурного возвращения к имуществу и семье."
+      },
+      "source": "Muslim 1342",
+      "count": 1
+    },
+    {
+      "id": "return_travel",
+      "category": "travel",
+      "title": {
+        "en": "Returning from a journey",
+        "tk": "Syýahatdan gaýdyp gelende",
+        "tr": "Yolculuktan dönünce",
+        "ru": "По возвращении из поездки"
+      },
+      "ar": "آيِبُونَ، تَائِبُونَ، عَابِدُونَ، لِرَبِّنَا حَامِدُونَ",
+      "translit": "Ayibuna, ta'ibuna, 'abiduna, li-Rabbina hamidun.",
+      "text": {
+        "en": "We return, repenting, worshipping and praising our Lord. (Added to the travel dua on the way back.)",
+        "tk": "Gaýdyp gelýäris, toba edýäris, ybadat edýäris we Rebbimize hamd aýdýarys. (Yzyna gaýdyşyn syýahat dilegine goşup aýdylýar.)",
+        "tr": "Dönüyoruz, tövbe ediyoruz, ibadet ediyoruz, Rabbimize hamd ediyoruz. (Dönüşte yolculuk duasına eklenir.)",
+        "ru": "Возвращаемся, каясь, поклоняясь и восхваляя нашего Господа. (Добавляется к дуа путника на обратном пути.)"
+      },
+      "source": "Muslim 1342",
+      "count": 1
+    },
+    {
+      "id": "enter_town",
+      "category": "travel",
+      "title": {
+        "en": "Entering a town or city",
+        "tk": "Bir şähere girende",
+        "tr": "Bir şehre girerken",
+        "ru": "При въезде в город"
+      },
+      "ar": "اللَّهُمَّ رَبَّ السَّمَاوَاتِ السَّبْعِ وَمَا أَظْلَلْنَ، وَرَبَّ الْأَرَضِينَ السَّبْعِ وَمَا أَقْلَلْنَ، وَرَبَّ الشَّيَاطِينِ وَمَا أَضْلَلْنَ، وَرَبَّ الرِّيَاحِ وَمَا ذَرَيْنَ، أَسْأَلُكَ خَيْرَ هَٰذِهِ الْقَرْيَةِ وَخَيْرَ أَهْلِهَا وَخَيْرَ مَا فِيهَا، وَأَعُوذُ بِكَ مِنْ شَرِّهَا وَشَرِّ أَهْلِهَا وَشَرِّ مَا فِيهَا",
+      "translit": "Allahumma Rabbas-samawatis-sab'i wa ma azlalna, wa Rabbal-aradinas-sab'i wa ma aqlalna, wa Rabbash-shayatini wa ma adlalna, wa Rabbar-riyahi wa ma dharayna, as'aluka khayra hadhihil-qaryati wa khayra ahliha wa khayra ma fiha, wa a'udhu bika min sharriha wa sharri ahliha wa sharri ma fiha.",
+      "text": {
+        "en": "O Allah, Lord of the seven heavens and all they shade, Lord of the seven earths and all they carry, Lord of the devils and all they mislead, Lord of the winds and all they scatter: I ask You for the good of this town, the good of its people and the good of what is in it, and I seek refuge in You from its evil, the evil of its people and the evil of what is in it.",
+        "tk": "Allahym, ýedi gat asmanyň we olaryň kölegeleýän zatlarynyň Rebbi, ýedi gat ýeriň we olaryň göterýän zatlarynyň Rebbi, şeýtanlaryň we olaryň azdyranlarynyň Rebbi, ýelleriň we olaryň sowurýan zatlarynyň Rebbi! Senden bu şäheriň, onuň ilatynyň we ondaky zatlaryň ýagşylygyny soraýaryn; onuň, ilatynyň we ondaky zatlaryň şerinden Saňa sygynýaryn.",
+        "tr": "Allah'ım, ey yedi göğün ve gölgelediklerinin Rabbi, yedi yerin ve taşıdıklarının Rabbi, şeytanların ve saptırdıklarının Rabbi, rüzgârların ve savurduklarının Rabbi! Senden bu beldenin, halkının ve içindekilerin hayrını isterim; onun, halkının ve içindekilerin şerrinden Sana sığınırım.",
+        "ru": "О Аллах, Господь семи небес и того, что они осеняют, Господь семи земель и того, что они носят, Господь шайтанов и тех, кого они сбили с пути, Господь ветров и того, что они развеивают! Прошу у Тебя блага этого города, блага его жителей и блага того, что в нём, и прибегаю к Тебе от его зла, зла его жителей и зла того, что в нём."
+      },
+      "source": "an-Nasa'i (al-Kubra) 8826, Ibn Hibban 2709",
+      "count": 1
+    },
+    {
+      "id": "stopping_place",
+      "category": "travel",
+      "title": {
+        "en": "Stopping at a place",
+        "tk": "Bir ýerde düşlenende",
+        "tr": "Bir yerde konaklarken",
+        "ru": "Остановившись в пути"
+      },
+      "ar": "أَعُوذُ بِكَلِمَاتِ اللَّهِ التَّامَّاتِ مِنْ شَرِّ مَا خَلَقَ",
+      "translit": "A'udhu bi-kalimatillahit-tammati min sharri ma khalaq.",
+      "text": {
+        "en": "I seek refuge in the perfect words of Allah from the evil of what He has created. (Nothing will harm you until you leave that place.)",
+        "tk": "Allanyň kämil sözleri bilen Onuň ýaradanlarynyň şerinden goralmak isleýärin. (Şol ýerden gidýänçäň saňa hiç zat zyýan ýetirmez.)",
+        "tr": "Allah'ın eksiksiz kelimelerine, yarattıklarının şerrinden sığınırım. (Oradan ayrılıncaya kadar sana hiçbir şey zarar vermez.)",
+        "ru": "Прибегаю к совершенным словам Аллаха от зла того, что Он сотворил. (Ничто не повредит тебе, пока ты не покинешь это место.)"
+      },
+      "source": "Muslim 2708",
+      "count": 1
+    },
+    {
+      "id": "farewell",
+      "category": "travel",
+      "title": {
+        "en": "Seeing someone off",
+        "tk": "Ýola ugradanyňda",
+        "tr": "Yolcu uğurlarken",
+        "ru": "Провожая в путь"
+      },
+      "ar": "أَسْتَوْدِعُ اللَّهَ دِينَكَ، وَأَمَانَتَكَ، وَخَوَاتِيمَ عَمَلِكَ",
+      "translit": "Astawdi'ullaha dinaka, wa amanataka, wa khawatima 'amalik.",
+      "text": {
+        "en": "I entrust to Allah your faith, your trustworthiness and the final outcome of your deeds.",
+        "tk": "Diniňi, amanadyňy we amallaryňyň soňuny Alla amanat edýärin.",
+        "tr": "Dinini, emanetini ve amellerinin sonunu Allah'a emanet ediyorum.",
+        "ru": "Вверяю Аллаху твою веру, то, что тебе доверено, и итог твоих дел."
+      },
+      "source": "Abu Dawud 2600, Tirmidhi 3443",
+      "count": 1
+    },
+    {
+      "id": "parents",
+      "category": "family",
+      "title": {
+        "en": "For parents",
+        "tk": "Ata-ene üçin",
+        "tr": "Anne baba için",
+        "ru": "За родителей"
+      },
+      "ar": "رَبِّ ارْحَمْهُمَا كَمَا رَبَّيَانِي صَغِيرًا",
+      "translit": "Rabbir-hamhuma kama rabbayani saghira.",
+      "text": {
+        "en": "My Lord, have mercy on them as they raised me when I was small.",
+        "tk": "Rebbim, olar meni kiçikäm terbiýeläp ösdürişleri ýaly, Sen hem olara rehim et.",
+        "tr": "Rabbim, onlar beni küçükken nasıl yetiştirdilerse Sen de onlara öyle merhamet et.",
+        "ru": "Господи, помилуй их, как они растили меня ребёнком."
+      },
+      "source": "Quran 17:24",
+      "count": 1
+    },
+    {
+      "id": "spouse_children",
+      "category": "family",
+      "title": {
+        "en": "Spouse and children",
+        "tk": "Ýanýoldaş we çagalar",
+        "tr": "Eş ve çocuklar",
+        "ru": "Супруги и дети"
+      },
+      "ar": "رَبَّنَا هَبْ لَنَا مِنْ أَزْوَاجِنَا وَذُرِّيَّاتِنَا قُرَّةَ أَعْيُنٍ وَاجْعَلْنَا لِلْمُتَّقِينَ إِمَامًا",
+      "translit": "Rabbana hab lana min azwajina wa dhurriyyatina qurrata a'yunin waj'alna lil-muttaqina imama.",
+      "text": {
+        "en": "Our Lord, grant us from our spouses and children the comfort of our eyes, and make us an example for the God-conscious.",
+        "tk": "Rebbimiz, bize ýanýoldaşlarymyzdan we nesillerimizden gözlerimiziň guwanjyny bagyşla we bizi takwalara nusga et.",
+        "tr": "Rabbimiz, bize eşlerimizden ve nesillerimizden göz aydınlığı olacak kimseler bağışla ve bizi takva sahiplerine önder kıl.",
+        "ru": "Господь наш, даруй нам в наших супругах и потомках отраду для глаз и сделай нас примером для богобоязненных."
+      },
+      "source": "Quran 25:74",
+      "count": 1
+    },
+    {
+      "id": "righteous_child",
+      "category": "family",
+      "title": {
+        "en": "For righteous children",
+        "tk": "Salyh perzent üçin",
+        "tr": "Hayırlı evlat için",
+        "ru": "О праведном потомстве"
+      },
+      "ar": "رَبِّ هَبْ لِي مِنْ لَدُنْكَ ذُرِّيَّةً طَيِّبَةً إِنَّكَ سَمِيعُ الدُّعَاءِ",
+      "translit": "Rabbi hab li min ladunka dhurriyyatan tayyibah, innaka sami'ud-du'a'.",
+      "text": {
+        "en": "My Lord, grant me from Yourself good offspring. You are the Hearer of prayer. (Dua of Zakariyya.)",
+        "tk": "Rebbim, maňa Öz huzuryňdan päk nesil bagyşla. Hakykatdan-da, Sen dilegi Eşidijisiň. (Zekeriýa pygamberiň dilegi.)",
+        "tr": "Rabbim, bana katından tertemiz bir nesil bağışla. Şüphesiz Sen duayı işitensin. (Hz. Zekeriyya'nın duası.)",
+        "ru": "Господи, даруй мне от Себя благое потомство, ведь Ты — Слышащий мольбу. (Мольба Закарии.)"
+      },
+      "source": "Quran 3:38",
+      "count": 1
+    },
+    {
+      "id": "newlyweds",
+      "category": "family",
+      "title": {
+        "en": "Congratulating newlyweds",
+        "tk": "Täze öýlenenleri gutlamak",
+        "tr": "Yeni evlileri tebrik",
+        "ru": "Поздравление молодожёнов"
+      },
+      "ar": "بَارَكَ اللَّهُ لَكَ، وَبَارَكَ عَلَيْكَ، وَجَمَعَ بَيْنَكُمَا فِي خَيْرٍ",
+      "translit": "Barakallahu laka, wa baraka 'alayka, wa jama'a baynakuma fi khayr.",
+      "text": {
+        "en": "May Allah bless you, shower blessings upon you, and unite you both in goodness.",
+        "tk": "Alla saňa bereket bersin, üstüňe bereket ýagdyrsyn we ikiňizi ýagşylykda jemlesin.",
+        "tr": "Allah sana bereket versin, üzerine bereket yağdırsın ve ikinizi hayırda bir araya getirsin.",
+        "ru": "Да благословит тебя Аллах, да ниспошлёт тебе благодать и да соединит вас обоих во благе."
+      },
+      "source": "Abu Dawud 2130, Tirmidhi 1091",
+      "count": 1
+    },
+    {
+      "id": "sneezing",
+      "category": "family",
+      "title": {
+        "en": "Sneezing",
+        "tk": "Asgyranyňda",
+        "tr": "Hapşırınca",
+        "ru": "При чихании"
+      },
+      "ar": "الْحَمْدُ لِلَّهِ — يَرْحَمُكَ اللَّهُ — يَهْدِيكُمُ اللَّهُ وَيُصْلِحُ بَالَكُمْ",
+      "translit": "Alhamdulillah. — Yarhamukallah. — Yahdikumullahu wa yuslihu balakum.",
+      "text": {
+        "en": "The one who sneezes says: “Praise be to Allah.” The listener replies: “May Allah have mercy on you.” The sneezer answers: “May Allah guide you and set your affairs right.”",
+        "tk": "Asgyran: «Alla hamd bolsun» diýýär. Eşiden: «Alla saňa rehim etsin» diýýär. Asgyran: «Alla sizi hidaýat etsin we işiňizi oňlasyn» diýip jogap berýär.",
+        "tr": "Hapşıran: “Allah'a hamd olsun” der. Duyan: “Allah sana merhamet etsin” der. Hapşıran da: “Allah sizi hidayete erdirsin ve hâlinizi düzeltsin” diye karşılık verir.",
+        "ru": "Чихнувший говорит: «Хвала Аллаху». Слышавший отвечает: «Да помилует тебя Аллах». Чихнувший говорит: «Да наставит вас Аллах и да приведёт в порядок ваши дела»."
+      },
+      "source": "Bukhari 6224",
+      "count": 1
+    },
+    {
+      "id": "anger",
+      "category": "family",
+      "title": {
+        "en": "When angry",
+        "tk": "Gaharyň gelende",
+        "tr": "Öfkelenince",
+        "ru": "В гневе"
+      },
+      "ar": "أَعُوذُ بِاللَّهِ مِنَ الشَّيْطَانِ الرَّجِيمِ",
+      "translit": "A'udhu billahi minash-shaytanir-rajim.",
+      "text": {
+        "en": "I seek refuge in Allah from the accursed Satan. (The Prophet ﷺ said these words take anger away.)",
+        "tk": "Kowlan şeýtandan Alla sygynýaryn. (Pygamber ﷺ bu sözleriň gahary aýyrýandygyny aýdypdyr.)",
+        "tr": "Kovulmuş şeytandan Allah'a sığınırım. (Peygamber ﷺ bu sözlerin öfkeyi gidereceğini söylemiştir.)",
+        "ru": "Прибегаю к Аллаху от проклятого шайтана. (Пророк ﷺ сказал, что эти слова снимают гнев.)"
+      },
+      "source": "Bukhari 6115, Muslim 2610",
+      "count": 1
+    },
+    {
+      "id": "salam",
+      "category": "family",
+      "title": {
+        "en": "Greeting with salam",
+        "tk": "Salam bermek",
+        "tr": "Selam vermek",
+        "ru": "Приветствие «салам»"
+      },
+      "ar": "السَّلَامُ عَلَيْكُمْ وَرَحْمَةُ اللَّهِ وَبَرَكَاتُهُ",
+      "translit": "As-salamu 'alaykum wa rahmatullahi wa barakatuh. (Reply: Wa 'alaykumus-salam wa rahmatullahi wa barakatuh.)",
+      "text": {
+        "en": "Peace be upon you, and the mercy of Allah and His blessings. The reply: “And upon you be peace, and the mercy of Allah and His blessings.”",
+        "tk": "Size salam, Allanyň rehmeti we bereketi bolsun. Jogaby: «Size-de salam, Allanyň rehmeti we bereketi bolsun.»",
+        "tr": "Selam, Allah'ın rahmeti ve bereketi üzerinize olsun. Cevabı: “Selam, Allah'ın rahmeti ve bereketi sizin de üzerinize olsun.”",
+        "ru": "Мир вам, милость Аллаха и Его благословения. Ответ: «И вам мир, милость Аллаха и Его благословения»."
+      },
+      "source": "Abu Dawud 5195, Tirmidhi 2689",
+      "count": 1
+    },
+    {
+      "id": "iftar",
+      "category": "occasions",
+      "title": {
+        "en": "Breaking the fast",
+        "tk": "Agyz açanyňda",
+        "tr": "İftar ederken",
+        "ru": "При разговении"
+      },
+      "ar": "ذَهَبَ الظَّمَأُ، وَابْتَلَّتِ الْعُرُوقُ، وَثَبَتَ الْأَجْرُ إِنْ شَاءَ اللَّهُ",
+      "translit": "Dhahabaz-zama'u, wabtallatil-'uruq, wa thabatal-ajru in sha' Allah.",
+      "text": {
+        "en": "The thirst is gone, the veins are moistened, and the reward is confirmed, if Allah wills.",
+        "tk": "Suwsuzlyk gitdi, damarlar çyglandy we Alla isläp bolsa, sogap berkidildi.",
+        "tr": "Susuzluk gitti, damarlar ıslandı ve inşallah sevap sabit oldu.",
+        "ru": "Ушла жажда, увлажнились жилы, и утвердилась награда, если пожелает Аллах."
+      },
+      "source": "Abu Dawud 2357",
+      "count": 1
+    },
+    {
+      "id": "rain",
+      "category": "occasions",
+      "title": {
+        "en": "When it rains",
+        "tk": "Ýagyş ýaganda",
+        "tr": "Yağmur yağınca",
+        "ru": "Во время дождя"
+      },
+      "ar": "صَيِّبًا نَافِعًا",
+      "translit": "Sayyiban nafi'a.",
+      "text": {
+        "en": "(O Allah, make it) a beneficial, abundant rain.",
+        "tk": "(Allahym, muny) peýdaly, bol ýagyş et.",
+        "tr": "(Allah'ım, bunu) faydalı, bol bir yağmur kıl.",
+        "ru": "(О Аллах, сделай его) обильным и полезным дождём."
+      },
+      "source": "Bukhari 1032",
+      "count": 1
+    },
+    {
+      "id": "after_rain",
+      "category": "occasions",
+      "title": {
+        "en": "After rain",
+        "tk": "Ýagyşdan soň",
+        "tr": "Yağmurdan sonra",
+        "ru": "После дождя"
+      },
+      "ar": "مُطِرْنَا بِفَضْلِ اللَّهِ وَرَحْمَتِهِ",
+      "translit": "Mutirna bi-fadlillahi wa rahmatih.",
+      "text": {
+        "en": "We have been given rain by the grace and mercy of Allah.",
+        "tk": "Bize Allanyň keremi we rehmeti bilen ýagyş ýagdy.",
+        "tr": "Allah'ın lütfu ve rahmetiyle bize yağmur yağdı.",
+        "ru": "Дождь пролился на нас по милости и щедрости Аллаха."
+      },
+      "source": "Bukhari 846, Muslim 71",
+      "count": 1
+    },
+    {
+      "id": "wind",
+      "category": "occasions",
+      "title": {
+        "en": "Strong wind",
+        "tk": "Güýçli ýel öwüsende",
+        "tr": "Şiddetli rüzgârda",
+        "ru": "При сильном ветре"
+      },
+      "ar": "اللَّهُمَّ إِنِّي أَسْأَلُكَ خَيْرَهَا، وَخَيْرَ مَا فِيهَا، وَخَيْرَ مَا أُرْسِلَتْ بِهِ، وَأَعُوذُ بِكَ مِنْ شَرِّهَا، وَشَرِّ مَا فِيهَا، وَشَرِّ مَا أُرْسِلَتْ بِهِ",
+      "translit": "Allahumma inni as'aluka khayraha, wa khayra ma fiha, wa khayra ma ursilat bih, wa a'udhu bika min sharriha, wa sharri ma fiha, wa sharri ma ursilat bih.",
+      "text": {
+        "en": "O Allah, I ask You for its good, the good within it and the good it was sent with, and I seek refuge in You from its evil, the evil within it and the evil it was sent with.",
+        "tk": "Allahym, Senden onuň ýagşylygyny, ondaky ýagşylygy we onuň bilen iberilen ýagşylygy soraýaryn; onuň şerinden, ondaky şerden we onuň bilen iberilen şerden Saňa sygynýaryn.",
+        "tr": "Allah'ım, Senden onun hayrını, içindekinin hayrını ve onunla gönderilenin hayrını isterim; onun şerrinden, içindekinin şerrinden ve onunla gönderilenin şerrinden Sana sığınırım.",
+        "ru": "О Аллах, прошу у Тебя его блага, блага того, что в нём, и блага того, с чем он послан, и прибегаю к Тебе от его зла, зла того, что в нём, и зла того, с чем он послан."
+      },
+      "source": "Muslim 899",
+      "count": 1
+    },
+    {
+      "id": "new_moon",
+      "category": "occasions",
+      "title": {
+        "en": "Seeing the new crescent",
+        "tk": "Täze aýy görende",
+        "tr": "Hilali görünce",
+        "ru": "Увидев новый месяц"
+      },
+      "ar": "اللَّهُمَّ أَهْلِلْهُ عَلَيْنَا بِالْيُمْنِ وَالْإِيمَانِ، وَالسَّلَامَةِ وَالْإِسْلَامِ، رَبِّي وَرَبُّكَ اللَّهُ",
+      "translit": "Allahumma ahlilhu 'alayna bil-yumni wal-iman, was-salamati wal-islam. Rabbi wa Rabbukallah.",
+      "text": {
+        "en": "O Allah, let this crescent rise over us with blessing and faith, with safety and Islam. (Addressing the moon:) My Lord and your Lord is Allah.",
+        "tk": "?Allahym, bu aýy bize bereket we iman, amanlyk we Yslam bilen dogdur. (Aýa ýüzlenip:) Meniň Rebbim we seniň Rebbiň Alladyr.",
+        "tr": "Allah'ım, bu hilali üzerimize uğur ve iman, esenlik ve İslam ile doğdur. (Aya hitaben:) Benim Rabbim de senin Rabbin de Allah'tır.",
+        "ru": "О Аллах, яви нам этот месяц с благом и верой, с безопасностью и исламом. (Обращаясь к месяцу:) Мой Господь и твой Господь — Аллах."
+      },
+      "source": "Tirmidhi 3451",
+      "count": 1
+    },
+    {
+      "id": "istikhara",
+      "category": "occasions",
+      "title": {
+        "en": "Istikhara (seeking guidance)",
+        "tk": "Istihara (haýyrlysyny soramak)",
+        "tr": "İstihare duası",
+        "ru": "Истихара (просьба о благом выборе)"
+      },
+      "ar": "اللَّهُمَّ إِنِّي أَسْتَخِيرُكَ بِعِلْمِكَ، وَأَسْتَقْدِرُكَ بِقُدْرَتِكَ، وَأَسْأَلُكَ مِنْ فَضْلِكَ الْعَظِيمِ، فَإِنَّكَ تَقْدِرُ وَلَا أَقْدِرُ، وَتَعْلَمُ وَلَا أَعْلَمُ، وَأَنْتَ عَلَّامُ الْغُيُوبِ، اللَّهُمَّ إِنْ كُنْتَ تَعْلَمُ أَنَّ هَٰذَا الْأَمْرَ خَيْرٌ لِي فِي دِينِي وَمَعَاشِي وَعَاقِبَةِ أَمْرِي، فَاقْدُرْهُ لِي وَيَسِّرْهُ لِي، ثُمَّ بَارِكْ لِي فِيهِ، وَإِنْ كُنْتَ تَعْلَمُ أَنَّ هَٰذَا الْأَمْرَ شَرٌّ لِي فِي دِينِي وَمَعَاشِي وَعَاقِبَةِ أَمْرِي، فَاصْرِفْهُ عَنِّي وَاصْرِفْنِي عَنْهُ، وَاقْدُرْ لِيَ الْخَيْرَ حَيْثُ كَانَ، ثُمَّ أَرْضِنِي بِهِ",
+      "translit": "Allahumma inni astakhiruka bi-'ilmik, wa astaqdiruka bi-qudratik, wa as'aluka min fadlikal-'azim, fa-innaka taqdiru wa la aqdir, wa ta'lamu wa la a'lam, wa anta 'allamul-ghuyub. Allahumma in kunta ta'lamu anna hadhal-amra khayrun li fi dini wa ma'ashi wa 'aqibati amri, faqdurhu li wa yassirhu li, thumma barik li fih. Wa in kunta ta'lamu anna hadhal-amra sharrun li fi dini wa ma'ashi wa 'aqibati amri, fasrifhu 'anni wasrifni 'anh, waqdur liyal-khayra haythu kan, thumma ardini bih.",
+      "text": {
+        "en": "After praying two voluntary rak'ahs, say: O Allah, I ask You to guide me by Your knowledge and to empower me by Your power, and I ask You of Your immense bounty. You are able and I am not; You know and I do not; You are the Knower of the unseen. O Allah, if You know that this matter (name it) is good for me in my religion, my livelihood and my end, then decree it for me, make it easy for me and bless me in it. And if You know that this matter is bad for me in my religion, my livelihood and my end, then turn it away from me and turn me away from it, decree for me the good wherever it may be, and make me content with it.",
+        "tk": "Iki rekagat nepil namaz okap, şeýle diý: Allahym, ylmyň bilen Senden haýyrlysyny, kudratyň bilen Senden güýç soraýaryn we beýik keremiňden soraýaryn. Sen başarýarsyň, men başaramok; Sen bilýärsiň, men bilemok; Sen gaýyplary Bilijisiň. Allahym, eger bu işiň (adyny tut) dinim, durmuşym we işimiň soňy üçin haýyrlydygyny bilýän bolsaň, ony maňa nesip et, aňsat et we onda maňa bereket ber. Eger bu işiň dinim, durmuşym we işimiň soňy üçin erbetdigini bilýän bolsaň, ony menden, meni-de ondan daşlaşdyr, nirede bolsa-da haýyrlysyny maňa nesip et we meni ondan razy et.",
+        "tr": "İki rekât nafile namaz kıldıktan sonra şöyle de: Allah'ım, ilminle Senden hayır isterim, kudretinle Senden güç isterim ve büyük lütfundan isterim. Sen güç yetirirsin, ben yetiremem; Sen bilirsin, ben bilemem; gaybları bilen Sensin. Allah'ım, eğer bu işin (adını söyle) dinim, geçimim ve işimin sonu bakımından benim için hayırlı olduğunu biliyorsan onu bana takdir et, kolaylaştır ve onda bana bereket ver. Eğer bu işin dinim, geçimim ve işimin sonu bakımından benim için kötü olduğunu biliyorsan onu benden, beni de ondan uzaklaştır; hayır nerede ise onu bana takdir et ve beni ondan razı kıl.",
+        "ru": "Совершив два добровольных раката, скажи: О Аллах, прошу Тебя помочь мне выбрать благое по Твоему знанию, прошу силы по Твоему могуществу и прошу Тебя о Твоей великой милости. Ты можешь, а я не могу; Ты знаешь, а я не знаю; Ты — Знающий сокровенное. О Аллах, если Ты знаешь, что это дело (назови его) — благо для меня в моей религии, жизни и исходе моих дел, то предопредели его мне, облегчи его и благослови меня в нём. А если Ты знаешь, что это дело — зло для меня в моей религии, жизни и исходе моих дел, то отврати его от меня и отврати меня от него, предопредели мне благо, где бы оно ни было, а затем сделай меня довольным им."
+      },
+      "source": "Bukhari 1162",
+      "count": 1
+    },
+    {
+      "id": "masha_allah",
+      "category": "occasions",
+      "title": {
+        "en": "Seeing something you like",
+        "tk": "Haladan zadyňy görende",
+        "tr": "Hoşa giden bir şey görünce",
+        "ru": "Увидев то, что нравится"
+      },
+      "ar": "مَا شَاءَ اللَّهُ، لَا قُوَّةَ إِلَّا بِاللَّهِ",
+      "translit": "Ma sha' Allah, la quwwata illa billah.",
+      "text": {
+        "en": "What Allah has willed (has come to be); there is no power except with Allah.",
+        "tk": "Alla näme islese, şol bolýar; güýç-kuwwat diňe Alladandyr.",
+        "tr": "Allah'ın dilediği olur; güç ancak Allah'tandır.",
+        "ru": "Так пожелал Аллах; нет силы ни у кого, кроме Аллаха."
+      },
+      "source": "Quran 18:39",
+      "count": 1
+    },
+    {
+      "id": "good_news",
+      "category": "occasions",
+      "title": {
+        "en": "When something good happens",
+        "tk": "Begenç ýagdaý bolanda",
+        "tr": "Sevindirici bir şey olunca",
+        "ru": "При радостном событии"
+      },
+      "ar": "الْحَمْدُ لِلَّهِ الَّذِي بِنِعْمَتِهِ تَتِمُّ الصَّالِحَاتُ",
+      "translit": "Alhamdu lillahil-ladhi bi-ni'matihi tatimmus-salihat.",
+      "text": {
+        "en": "Praise be to Allah, by whose favour good things are completed.",
+        "tk": "Nygmaty bilen ýagşy işler tamamlanýan Alla hamd bolsun.",
+        "tr": "Nimetiyle iyiliklerin tamamlandığı Allah'a hamd olsun.",
+        "ru": "Хвала Аллаху, по милости Которого свершаются благие дела."
+      },
+      "source": "Ibn Majah 3803",
+      "count": 1
+    },
+    {
+      "id": "thanks",
+      "category": "occasions",
+      "title": {
+        "en": "Thanking someone",
+        "tk": "Birine minnetdarlyk bildireniňde",
+        "tr": "Birine teşekkür ederken",
+        "ru": "Благодарность человеку"
+      },
+      "ar": "جَزَاكَ اللَّهُ خَيْرًا",
+      "translit": "Jazakallahu khayra.",
+      "text": {
+        "en": "May Allah reward you with good. (The Prophet ﷺ said whoever says this has praised well.)",
+        "tk": "Alla saňa ýagşylyk bilen sylag bersin. (Pygamber ﷺ: «Muny aýdan oňat öwgi aýdypdyr» diýipdir.)",
+        "tr": "Allah seni hayırla mükâfatlandırsın. (Peygamber ﷺ, bunu söyleyenin övgüde en güzelini yaptığını bildirmiştir.)",
+        "ru": "Да воздаст тебе Аллах благом. (Пророк ﷺ сказал, что сказавший это достойно выразил похвалу.)"
+      },
+      "source": "Tirmidhi 2035",
+      "count": 1
+    }
+  ]
+}
