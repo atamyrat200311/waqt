@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -46,7 +48,7 @@ void main() {
     await tester.pumpAndSettle();
     expect(find.text('Al-Fatihah'), findsWidgets);
 
-    c.read(appRouterProvider).push('/read?i=6221');
+    unawaited(c.read(appRouterProvider).push('/read?i=6221'));
     await tester.pumpAndSettle();
     expect(find.text('Al-Ikhlas'), findsWidgets);
 
