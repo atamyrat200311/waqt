@@ -181,6 +181,11 @@ const Map<String, List<String>> s2 = {
   'learnStepN': ['Step {n}', '{n}-nji ädim', 'Adım {n}', 'Шаг {n}'],
 
 
+  // -------------------------------------------------------------------- me
+  'meQuranStreak': ['Quran streak', 'Kuran yzygiderliligi', 'Kur’an serisi', 'Серия чтения Корана'],
+  'meQuranDaily': ['reading every day', 'her gün okamak', 'her gün okuma', 'чтение каждый день'],
+  'meAyahsRead': ['Ayahs read', 'Okalan aýatlar', 'Okunan ayetler', 'Прочитано аятов'],
+
   // ----------------------------------------------------------------- zakat
   'zakatTitle': ['Zakat calculator', 'Zekat hasaplaýjy', 'Zekât hesaplayıcı', 'Калькулятор закята'],
   'zakatShort': ['Zakat', 'Zekat', 'Zekât', 'Закят'],

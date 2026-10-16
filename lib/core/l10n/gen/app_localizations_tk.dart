@@ -1923,6 +1923,15 @@ class AppLocalizationsTk extends AppLocalizations {
   }
 
   @override
+  String get meQuranStreak => 'Kuran yzygiderliligi';
+
+  @override
+  String get meQuranDaily => 'her gün okamak';
+
+  @override
+  String get meAyahsRead => 'Okalan aýatlar';
+
+  @override
   String get zakatTitle => 'Zekat hasaplaýjy';
 
   @override

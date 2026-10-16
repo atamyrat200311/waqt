@@ -2001,6 +2001,15 @@ class AppLocalizationsRu extends AppLocalizations {
   }
 
   @override
+  String get meQuranStreak => 'Серия чтения Корана';
+
+  @override
+  String get meQuranDaily => 'чтение каждый день';
+
+  @override
+  String get meAyahsRead => 'Прочитано аятов';
+
+  @override
   String get zakatTitle => 'Калькулятор закята';
 
   @override

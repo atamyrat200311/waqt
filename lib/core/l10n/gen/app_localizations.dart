@@ -3156,6 +3156,24 @@ abstract class AppLocalizations {
   /// **'Step {n}'**
   String learnStepN(String n);
 
+  /// No description provided for @meQuranStreak.
+  ///
+  /// In en, this message translates to:
+  /// **'Quran streak'**
+  String get meQuranStreak;
+
+  /// No description provided for @meQuranDaily.
+  ///
+  /// In en, this message translates to:
+  /// **'reading every day'**
+  String get meQuranDaily;
+
+  /// No description provided for @meAyahsRead.
+  ///
+  /// In en, this message translates to:
+  /// **'Ayahs read'**
+  String get meAyahsRead;
+
   /// No description provided for @zakatTitle.
   ///
   /// In en, this message translates to:

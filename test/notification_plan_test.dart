@@ -39,6 +39,17 @@ void main() {
     expect(p.first.alert, AlertType.silent);
   });
 
+  test('Quran reminder lands in slot 9, 45 min after Isha', () {
+    final p = plan(const AppSettings(quranReminder: true));
+    final q = p.where((n) => n.kind == NotificationKind.quran).toList();
+    expect(q, hasLength(7));
+    expect(q.first.id % 10, 9);
+    final isha = engine().day(DateTime(2026, 10, 4)).isha;
+    expect(q.first.at, isha.add(const Duration(minutes: 45)));
+    expect(NotificationPayload.parse(q.first.payload), isA<QuranPayload>());
+    expect(p.map((n) => n.id).toSet(), hasLength(p.length));
+  });
+
   test('never more than 60 pending', () {
     final p = plan(
       const AppSettings(adhkarReminders: true, suhoorReminder: true, taraweehReminder: true),

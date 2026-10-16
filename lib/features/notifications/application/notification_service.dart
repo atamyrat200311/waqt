@@ -265,6 +265,7 @@ class NotificationService {
       NotificationKind.taraweeh => (l.homeTaraweeh, l.homeTaraweehSub(time)),
       NotificationKind.adhkarMorning => (l.adhkarMorning, l.notifMorningBody),
       NotificationKind.adhkarEvening => (l.adhkarEvening, l.notifEveningBody),
+      NotificationKind.quran => (l.notifQuranTitle, l.notifQuranBody),
     };
   }
 }

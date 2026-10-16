@@ -196,7 +196,7 @@ const dailyAyahPool = <AyahRef>[
   AyahRef(13, 28), AyahRef(14, 7), AyahRef(16, 97), AyahRef(16, 128), AyahRef(17, 24), AyahRef(17, 80),
   AyahRef(18, 10), AyahRef(20, 25), AyahRef(20, 114), AyahRef(21, 87), AyahRef(23, 118), AyahRef(25, 63),
   AyahRef(25, 74), AyahRef(28, 24), AyahRef(29, 69), AyahRef(31, 17), AyahRef(33, 41), AyahRef(39, 10),
-  AyahRef(39, 53), AyahRef(40, 60), AyahRef(41, 34), AyahRef(42, 30), AyahRef(47, 7), AyahRef(49, 10),
+  AyahRef(39, 53), AyahRef(40, 60), AyahRef(41, 34), AyahRef(42, 19), AyahRef(47, 7), AyahRef(49, 10),
   AyahRef(49, 13), AyahRef(50, 16), AyahRef(51, 56), AyahRef(55, 13), AyahRef(57, 4), AyahRef(59, 18),
   AyahRef(64, 16), AyahRef(65, 2), AyahRef(65, 3), AyahRef(67, 2), AyahRef(93, 5), AyahRef(94, 5),
   AyahRef(94, 6), AyahRef(103, 1), AyahRef(112, 1),

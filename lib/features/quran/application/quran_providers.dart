@@ -157,3 +157,13 @@ final hifzDueProvider = Provider<List<HifzRow>>((ref) {
       if (!DayKey(h.nextReview).isAfter(today)) h,
   ];
 });
+
+/// Distinct ayah-reads this calendar month (sum of daily counts).
+final quranMonthAyahsProvider = StreamProvider<int>((ref) {
+  final today = ref.watch(todayKeyProvider);
+  final d = today.date;
+  return ref
+      .watch(quranRepositoryProvider)
+      .watchDailyCounts(DayKey.fromDate(DateTime(d.year, d.month)), today)
+      .map((m) => m.values.fold<int>(0, (a, b) => a + b));
+});

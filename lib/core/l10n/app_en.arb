@@ -1366,6 +1366,9 @@
       }
     }
   },
+  "meQuranStreak": "Quran streak",
+  "meQuranDaily": "reading every day",
+  "meAyahsRead": "Ayahs read",
   "zakatTitle": "Zakat calculator",
   "zakatShort": "Zakat",
   "zakatDue": "Zakat due",

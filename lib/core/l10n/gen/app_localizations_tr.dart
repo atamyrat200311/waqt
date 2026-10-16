@@ -1926,6 +1926,15 @@ class AppLocalizationsTr extends AppLocalizations {
   }
 
   @override
+  String get meQuranStreak => 'Kur’an serisi';
+
+  @override
+  String get meQuranDaily => 'her gün okuma';
+
+  @override
+  String get meAyahsRead => 'Okunan ayetler';
+
+  @override
   String get zakatTitle => 'Zekât hesaplayıcı';
 
   @override

@@ -11,6 +11,7 @@ String routeForPayload(NotificationPayload p) => switch (p) {
       MarkPayload(:final prayer, :final day) => Routes.markPrayer(prayer.name, day.value),
       AdhkarPayload(:final set) => Routes.adhkar(set.name),
       TodayPayload() => Routes.today,
+      QuranPayload() => Routes.quran,
     };
 
 /// Routes notification taps (including the one that launched the app).

@@ -17,6 +17,7 @@ import '../../../shared/widgets/layout.dart';
 import '../../../shared/widgets/waqt_card.dart';
 import '../../../shared/widgets/waqt_icon.dart';
 import '../../prayer/application/prayer_providers.dart';
+import '../../quran/application/quran_providers.dart';
 import '../application/me_providers.dart';
 import '../domain/stats.dart';
 
@@ -61,6 +62,8 @@ class MeScreen extends ConsumerWidget {
                 _StreakCard(),
                 SizedBox(height: 10),
                 _OnTimeAndAdhkar(),
+                SizedBox(height: 10),
+                _QuranStats(),
                 SizedBox(height: 10),
                 _ConsistencyCard(),
                 SizedBox(height: 10),
@@ -214,6 +217,44 @@ class _OnTimeAndAdhkar extends ConsumerWidget {
             value: Text.rich(TextSpan(children: [
               TextSpan(text: '$adhkar ', style: big),
               TextSpan(text: l.meDays, style: WaqtType.sans(16, weight: 500, color: c.muted)),
+            ])),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _QuranStats extends ConsumerWidget {
+  const _QuranStats();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final c = context.colors;
+    final l = context.l10n;
+    final streak = ref.watch(quranStreakProvider);
+    final month = ref.watch(quranMonthAyahsProvider).value ?? 0;
+    final khatm = ref.watch(khatmProgressProvider);
+    final big = WaqtType.serif(34, tracking: -0.02, height: 1, color: c.ink);
+    return IntrinsicHeight(
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          _StatTile(
+            label: l.meQuranStreak,
+            caption: l.meQuranDaily,
+            value: Text.rich(TextSpan(children: [
+              TextSpan(text: '$streak ', style: big),
+              TextSpan(text: l.meDays, style: WaqtType.sans(16, weight: 500, color: c.muted)),
+            ])),
+          ),
+          const SizedBox(width: 10),
+          _StatTile(
+            label: khatm == null ? l.meAyahsRead : l.khatmShort,
+            caption: khatm == null ? l.meThisMonth : l.khatmDayOf('${khatm.dayNumber}', '${khatm.plan.days}'),
+            value: Text.rich(TextSpan(children: [
+              TextSpan(text: khatm == null ? '$month' : '${(khatm.fraction * 100).floor()}', style: big),
+              if (khatm != null) TextSpan(text: '%', style: big.copyWith(fontSize: 20)),
             ])),
           ),
         ],

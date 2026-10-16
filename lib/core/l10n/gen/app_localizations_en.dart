@@ -1981,6 +1981,15 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
+  String get meQuranStreak => 'Quran streak';
+
+  @override
+  String get meQuranDaily => 'reading every day';
+
+  @override
+  String get meAyahsRead => 'Ayahs read';
+
+  @override
   String get zakatTitle => 'Zakat calculator';
 
   @override

@@ -26,6 +26,7 @@ Object _scheduleKey(AppSettings s) => Object.hashAll([
       s.suhoorMinutes,
       s.iftarReminder,
       s.taraweehReminder,
+      s.quranReminder,
     ]);
 
 /// Keeps scheduled notifications in sync with settings: reschedules (debounced)

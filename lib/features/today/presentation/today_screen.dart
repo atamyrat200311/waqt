@@ -28,6 +28,7 @@ import '../application/today_providers.dart';
 import '../domain/today_logic.dart';
 import 'hero_card.dart';
 import 'mark_sheet.dart';
+import 'today_extras.dart';
 
 /// Home ("Today" tab).
 class TodayScreen extends ConsumerStatefulWidget {
@@ -93,8 +94,11 @@ class _TodayScreenState extends ConsumerState<TodayScreen> {
                 _UpNextCard(),
                 _TaraweehCard(),
                 _Tiles(),
+                TodayQuranRow(),
+                TodayHabitsRow(),
                 _QadaBanner(),
                 _CalendarRow(),
+                AyahOfDayCard(),
               ],
             ),
           ),

@@ -3,7 +3,7 @@ import '../../../data/db/enums.dart';
 import '../../../data/settings/app_settings.dart';
 import '../../prayer/domain/prayer_engine.dart';
 
-enum NotificationKind { prayer, iftar, suhoor, taraweeh, adhkarMorning, adhkarEvening }
+enum NotificationKind { prayer, iftar, suhoor, taraweeh, adhkarMorning, adhkarEvening, quran }
 
 /// One notification to schedule. Pure value; `NotificationService` turns it
 /// into a platform request.
@@ -36,6 +36,7 @@ class PlannedNotification {
         NotificationKind.adhkarMorning => 'adhkar:morning',
         NotificationKind.adhkarEvening => 'adhkar:evening',
         NotificationKind.suhoor || NotificationKind.taraweeh => 'today',
+        NotificationKind.quran => 'quran',
       };
 
   @override
@@ -58,6 +59,8 @@ sealed class NotificationPayload {
         return AdhkarPayload(parts[1] == 'evening' ? AdhkarSet.evening : AdhkarSet.morning);
       case 'today':
         return const TodayPayload();
+      case 'quran':
+        return const QuranPayload();
     }
     return null;
   }
@@ -76,6 +79,11 @@ class AdhkarPayload extends NotificationPayload {
 
 class TodayPayload extends NotificationPayload {
   const TodayPayload();
+}
+
+/// Opens the Quran tab (continue reading).
+class QuranPayload extends NotificationPayload {
+  const QuranPayload();
 }
 
 /// Builds the list of notifications for the next [days] days.
@@ -168,6 +176,16 @@ abstract final class NotificationPlanner {
           id: id(),
           kind: NotificationKind.adhkarEvening,
           at: eveningAdhkarTime(d),
+          day: key,
+        ));
+      }
+      // Slot 9: daily Quran portion, 45 minutes after Isha.
+      if (settings.quranReminder) {
+        slot = 9;
+        out.add(PlannedNotification(
+          id: id(),
+          kind: NotificationKind.quran,
+          at: d.isha.add(const Duration(minutes: 45)),
           day: key,
         ));
       }

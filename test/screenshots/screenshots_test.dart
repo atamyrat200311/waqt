@@ -73,8 +73,9 @@ Future<void> shoot(
   DateTime? now,
   Future<void> Function(WidgetTester t)? act,
   Future<void> Function(ProviderContainer c)? preload,
+  double height = 844,
 }) async {
-  tester.view.physicalSize = const Size(390 * 3, 844 * 3);
+  tester.view.physicalSize = Size(390 * 3, height * 3);
   tester.view.devicePixelRatio = 3;
   tester.platformDispatcher.platformBrightnessTestValue = dark ? Brightness.dark : Brightness.light;
   debugDefaultTargetPlatformOverride = platform;
@@ -127,6 +128,13 @@ void main() {
     await shoot(t, 'home_ios_light');
     await shoot(t, 'home_ios_dark', dark: true);
     await shoot(t, 'home_android', platform: TargetPlatform.android);
+  }, skip: !_enabled);
+
+  testWidgets('full pages', (t) async {
+    await shoot(t, 'full_home', height: 2300);
+    await shoot(t, 'full_me', location: '/me', height: 1900);
+    await shoot(t, 'full_library', location: '/library', height: 1700);
+    await shoot(t, 'full_quran', location: '/quran', height: 1500);
   }, skip: !_enabled);
 
   testWidgets('home ramadan', (t) async {
