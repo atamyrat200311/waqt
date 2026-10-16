@@ -1932,6 +1932,38 @@ class AppLocalizationsTk extends AppLocalizations {
   String get meAyahsRead => 'Okalan aýatlar';
 
   @override
+  String get backupTitle => 'Ätiýaçlyk we dikeltmek';
+
+  @override
+  String get backupRowSub => 'Maglumatlaryňyzy täze telefona geçiriň';
+
+  @override
+  String get backupIntro =>
+      'Waqt-da hasap we bulut ýok. Ätiýaçlyk faýlyny eksport edip, ygtybarly ýerde saklaň (Faýllar, Telegram «Saklanan habarlar», öz e-poçtaňyz). Islendik telefonda dikeldip bilersiňiz.';
+
+  @override
+  String get backupExport => 'Ätiýaçlygy eksport et';
+
+  @override
+  String get backupImport => 'Faýldan dikelt';
+
+  @override
+  String get backupRestore => 'Dikelt';
+
+  @override
+  String get backupRestoreTitle => 'Ähli maglumatlar çalşylsynmy?';
+
+  @override
+  String get backupRestoreBody =>
+      'Bu telefondaky ähli zat ätiýaçlyk bilen çalşylar.';
+
+  @override
+  String get backupRestored => 'Dikeldildi. Hoş geldiňiz!';
+
+  @override
+  String get backupInvalid => 'Bu faýl Waqt ätiýaçlygy däl.';
+
+  @override
   String get zakatTitle => 'Zekat hasaplaýjy';
 
   @override

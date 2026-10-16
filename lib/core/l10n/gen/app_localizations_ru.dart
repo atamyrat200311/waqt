@@ -2010,6 +2010,38 @@ class AppLocalizationsRu extends AppLocalizations {
   String get meAyahsRead => 'Прочитано аятов';
 
   @override
+  String get backupTitle => 'Резервная копия';
+
+  @override
+  String get backupRowSub => 'Перенос данных на новый телефон';
+
+  @override
+  String get backupIntro =>
+      'В Waqt нет аккаунта и облака. Экспортируйте файл резервной копии и сохраните его (Файлы, «Избранное» в Telegram, письмо себе). Восстановите на любом телефоне.';
+
+  @override
+  String get backupExport => 'Экспортировать копию';
+
+  @override
+  String get backupImport => 'Восстановить из файла';
+
+  @override
+  String get backupRestore => 'Восстановить';
+
+  @override
+  String get backupRestoreTitle => 'Заменить все данные?';
+
+  @override
+  String get backupRestoreBody =>
+      'Все данные на этом телефоне будут заменены копией.';
+
+  @override
+  String get backupRestored => 'Восстановлено. С возвращением!';
+
+  @override
+  String get backupInvalid => 'Этот файл не является копией Waqt.';
+
+  @override
   String get zakatTitle => 'Калькулятор закята';
 
   @override

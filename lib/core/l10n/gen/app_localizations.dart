@@ -3174,6 +3174,66 @@ abstract class AppLocalizations {
   /// **'Ayahs read'**
   String get meAyahsRead;
 
+  /// No description provided for @backupTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Backup & restore'**
+  String get backupTitle;
+
+  /// No description provided for @backupRowSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Move your data to a new phone'**
+  String get backupRowSub;
+
+  /// No description provided for @backupIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Waqt has no account and no cloud. Export a backup file and keep it safe (Files, Telegram “Saved messages”, email to yourself). Restore it on any phone.'**
+  String get backupIntro;
+
+  /// No description provided for @backupExport.
+  ///
+  /// In en, this message translates to:
+  /// **'Export backup'**
+  String get backupExport;
+
+  /// No description provided for @backupImport.
+  ///
+  /// In en, this message translates to:
+  /// **'Restore from file'**
+  String get backupImport;
+
+  /// No description provided for @backupRestore.
+  ///
+  /// In en, this message translates to:
+  /// **'Restore'**
+  String get backupRestore;
+
+  /// No description provided for @backupRestoreTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Replace all data?'**
+  String get backupRestoreTitle;
+
+  /// No description provided for @backupRestoreBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Everything on this phone will be replaced by the backup.'**
+  String get backupRestoreBody;
+
+  /// No description provided for @backupRestored.
+  ///
+  /// In en, this message translates to:
+  /// **'Restored. Welcome back!'**
+  String get backupRestored;
+
+  /// No description provided for @backupInvalid.
+  ///
+  /// In en, this message translates to:
+  /// **'This file isn’t a Waqt backup.'**
+  String get backupInvalid;
+
   /// No description provided for @zakatTitle.
   ///
   /// In en, this message translates to:

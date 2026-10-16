@@ -248,6 +248,7 @@ class SettingsScreen extends ConsumerWidget {
               ),
             ),
             WaqtRow(title: l.widgets, onTap: () => context.push(Routes.widgetsHelp)),
+            WaqtRow(title: l.backupTitle, subtitle: l.backupRowSub, onTap: () => context.push(Routes.backup)),
           ]),
           Padding(
             padding: const EdgeInsets.fromLTRB(40, 30, 40, 0),

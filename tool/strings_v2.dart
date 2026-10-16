@@ -186,6 +186,23 @@ const Map<String, List<String>> s2 = {
   'meQuranDaily': ['reading every day', 'her gün okamak', 'her gün okuma', 'чтение каждый день'],
   'meAyahsRead': ['Ayahs read', 'Okalan aýatlar', 'Okunan ayetler', 'Прочитано аятов'],
 
+  // ---------------------------------------------------------------- backup
+  'backupTitle': ['Backup & restore', 'Ätiýaçlyk we dikeltmek', 'Yedekle ve geri yükle', 'Резервная копия'],
+  'backupRowSub': ['Move your data to a new phone', 'Maglumatlaryňyzy täze telefona geçiriň', 'Verilerinizi yeni telefona taşıyın', 'Перенос данных на новый телефон'],
+  'backupIntro': [
+    'Waqt has no account and no cloud. Export a backup file and keep it safe (Files, Telegram “Saved messages”, email to yourself). Restore it on any phone.',
+    '?Waqt-da hasap we bulut ýok. Ätiýaçlyk faýlyny eksport edip, ygtybarly ýerde saklaň (Faýllar, Telegram «Saklanan habarlar», öz e-poçtaňyz). Islendik telefonda dikeldip bilersiňiz.',
+    'Waqt’ta hesap ve bulut yok. Bir yedek dosyası dışa aktarın ve güvenli bir yerde saklayın (Dosyalar, Telegram “Kayıtlı mesajlar”, kendinize e-posta). Her telefonda geri yükleyin.',
+    'В Waqt нет аккаунта и облака. Экспортируйте файл резервной копии и сохраните его (Файлы, «Избранное» в Telegram, письмо себе). Восстановите на любом телефоне.'
+  ],
+  'backupExport': ['Export backup', 'Ätiýaçlygy eksport et', 'Yedeği dışa aktar', 'Экспортировать копию'],
+  'backupImport': ['Restore from file', 'Faýldan dikelt', 'Dosyadan geri yükle', 'Восстановить из файла'],
+  'backupRestore': ['Restore', 'Dikelt', 'Geri yükle', 'Восстановить'],
+  'backupRestoreTitle': ['Replace all data?', 'Ähli maglumatlar çalşylsynmy?', 'Tüm veriler değiştirilsin mi?', 'Заменить все данные?'],
+  'backupRestoreBody': ['Everything on this phone will be replaced by the backup.', 'Bu telefondaky ähli zat ätiýaçlyk bilen çalşylar.', 'Bu telefondaki her şey yedekle değiştirilecek.', 'Все данные на этом телефоне будут заменены копией.'],
+  'backupRestored': ['Restored. Welcome back!', 'Dikeldildi. Hoş geldiňiz!', 'Geri yüklendi. Tekrar hoş geldiniz!', 'Восстановлено. С возвращением!'],
+  'backupInvalid': ['This file isn’t a Waqt backup.', 'Bu faýl Waqt ätiýaçlygy däl.', 'Bu dosya bir Waqt yedeği değil.', 'Этот файл не является копией Waqt.'],
+
   // ----------------------------------------------------------------- zakat
   'zakatTitle': ['Zakat calculator', 'Zekat hasaplaýjy', 'Zekât hesaplayıcı', 'Калькулятор закята'],
   'zakatShort': ['Zakat', 'Zekat', 'Zekât', 'Закят'],

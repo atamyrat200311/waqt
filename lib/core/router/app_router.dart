@@ -25,6 +25,7 @@ import '../../features/quran/presentation/quran_home_screen.dart';
 import '../../features/quran/presentation/quran_reader.dart';
 import '../../features/quran/presentation/quran_search_screen.dart';
 import '../../features/ramadan/presentation/ramadan_screen.dart';
+import '../../features/settings/presentation/backup_screen.dart';
 import '../../features/settings/presentation/location_picker.dart';
 import '../../features/settings/presentation/settings_screen.dart';
 import '../../features/settings/presentation/widgets_help_screen.dart';
@@ -149,6 +150,7 @@ final appRouterProvider = Provider<GoRouter>((ref) {
                   builder: (context, state) => const SettingsScreen(),
                   routes: [
                     GoRoute(path: _child(Routes.widgetsHelp), builder: (context, state) => const WidgetsHelpScreen()),
+                    GoRoute(path: _child(Routes.backup), builder: (context, state) => const BackupScreen()),
                   ],
                 ),
               ],

@@ -1990,6 +1990,38 @@ class AppLocalizationsEn extends AppLocalizations {
   String get meAyahsRead => 'Ayahs read';
 
   @override
+  String get backupTitle => 'Backup & restore';
+
+  @override
+  String get backupRowSub => 'Move your data to a new phone';
+
+  @override
+  String get backupIntro =>
+      'Waqt has no account and no cloud. Export a backup file and keep it safe (Files, Telegram “Saved messages”, email to yourself). Restore it on any phone.';
+
+  @override
+  String get backupExport => 'Export backup';
+
+  @override
+  String get backupImport => 'Restore from file';
+
+  @override
+  String get backupRestore => 'Restore';
+
+  @override
+  String get backupRestoreTitle => 'Replace all data?';
+
+  @override
+  String get backupRestoreBody =>
+      'Everything on this phone will be replaced by the backup.';
+
+  @override
+  String get backupRestored => 'Restored. Welcome back!';
+
+  @override
+  String get backupInvalid => 'This file isn’t a Waqt backup.';
+
+  @override
   String get zakatTitle => 'Zakat calculator';
 
   @override

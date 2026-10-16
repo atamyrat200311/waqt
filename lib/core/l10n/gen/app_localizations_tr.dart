@@ -1935,6 +1935,38 @@ class AppLocalizationsTr extends AppLocalizations {
   String get meAyahsRead => 'Okunan ayetler';
 
   @override
+  String get backupTitle => 'Yedekle ve geri yükle';
+
+  @override
+  String get backupRowSub => 'Verilerinizi yeni telefona taşıyın';
+
+  @override
+  String get backupIntro =>
+      'Waqt’ta hesap ve bulut yok. Bir yedek dosyası dışa aktarın ve güvenli bir yerde saklayın (Dosyalar, Telegram “Kayıtlı mesajlar”, kendinize e-posta). Her telefonda geri yükleyin.';
+
+  @override
+  String get backupExport => 'Yedeği dışa aktar';
+
+  @override
+  String get backupImport => 'Dosyadan geri yükle';
+
+  @override
+  String get backupRestore => 'Geri yükle';
+
+  @override
+  String get backupRestoreTitle => 'Tüm veriler değiştirilsin mi?';
+
+  @override
+  String get backupRestoreBody =>
+      'Bu telefondaki her şey yedekle değiştirilecek.';
+
+  @override
+  String get backupRestored => 'Geri yüklendi. Tekrar hoş geldiniz!';
+
+  @override
+  String get backupInvalid => 'Bu dosya bir Waqt yedeği değil.';
+
+  @override
   String get zakatTitle => 'Zekât hesaplayıcı';
 
   @override
