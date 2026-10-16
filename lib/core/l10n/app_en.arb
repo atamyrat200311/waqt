@@ -1261,6 +1261,167 @@
   },
   "khatmTileIdle": "Finish on a schedule",
   "hifzMemorized": "Memorized",
+  "libraryHadith": "Hadith collections",
+  "libraryDuas": "Duas",
+  "libraryDuasSub": "For every moment of the day",
+  "libraryNames": "99 Names of Allah",
+  "libraryNamesSub": "Asmaʾ al-Husna",
+  "libraryLearn": "Learn",
+  "libraryLearnSub": "Prayer, wudu, fasting and more",
+  "libraryAdhkar": "Morning & evening adhkar",
+  "librarySaved": "Saved",
+  "librarySavedEmpty": "Bookmark a hadith, dua or Name and it will appear here.",
+  "libraryContentReview": "Texts are compiled from classical sources. Please verify with a scholar when in doubt.",
+  "hadithTitle": "Hadith",
+  "hadithOfDay": "Hadith of the day",
+  "hadithBookNawawi": "40 Hadith of an-Nawawi",
+  "hadithBookQudsi": "40 Hadith Qudsi",
+  "hadithBookBukhari": "Sahih al-Bukhari",
+  "hadithBookMuslim": "Sahih Muslim",
+  "hadithCount": "{count, plural, one{{count} hadith} other{{count} hadith}}",
+  "@hadithCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "hadithN": "Hadith {n}",
+  "@hadithN": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "hadithBooks": "Books",
+  "hadithSearchHint": "Search words or a number",
+  "hadithShowArabic": "Show Arabic text",
+  "hadithTranslation": "Translation",
+  "hadithNoResults": "No hadith found.",
+  "hadithFallback": "Not available in your language — showing English.",
+  "hadithRange": "Hadith {from}–{to}",
+  "@hadithRange": {
+    "placeholders": {
+      "from": {
+        "type": "String"
+      },
+      "to": {
+        "type": "String"
+      }
+    }
+  },
+  "hadithOpenBook": "Read the collection",
+  "langEnglish": "English",
+  "langRussian": "Russian",
+  "langTurkish": "Turkish",
+  "duaSearchHint": "Search duas",
+  "duaRepeat": "Repeat {count}×",
+  "@duaRepeat": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "duaAll": "All",
+  "duaFavorites": "Favorites",
+  "namesQuiz": "Practice",
+  "namesQuizQuestion": "What does this Name mean?",
+  "namesQuizScore": "{right} of {total} correct",
+  "@namesQuizScore": {
+    "placeholders": {
+      "right": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      }
+    }
+  },
+  "namesQuizNext": "Next",
+  "namesQuizAgain": "Practice again",
+  "namesLearned": "{count} of 99 learned",
+  "@namesLearned": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "namesHadith": "“Allah has ninety-nine names; whoever learns them will enter Paradise.” — Bukhari & Muslim",
+  "learnSteps": "{count, plural, one{{count} step} other{{count} steps}}",
+  "@learnSteps": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "learnStepN": "Step {n}",
+  "@learnStepN": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "zakatTitle": "Zakat calculator",
+  "zakatShort": "Zakat",
+  "zakatDue": "Zakat due",
+  "zakatAbove": "Above nisab — 2.5% is due.",
+  "zakatBelow": "Below nisab — no zakat is due.",
+  "zakatNeedPrice": "Enter today’s gold or silver price to find the nisab.",
+  "zakatWealth": "Zakatable wealth",
+  "zakatNisab": "Nisab",
+  "zakatNisabBasis": "Nisab based on",
+  "zakatNisabGold": "Gold · 85 g",
+  "zakatNisabSilver": "Silver · 595 g",
+  "zakatPriceHint": "Waqt never goes online — type today’s local price per gram.",
+  "zakatGoldPrice": "Gold price",
+  "zakatSilverPrice": "Silver price",
+  "zakatPerGram": "per gram",
+  "zakatGrams": "g",
+  "zakatAssets": "What you own",
+  "zakatLiabilities": "What you owe now",
+  "zakatCash": "Cash & bank",
+  "zakatGold": "Gold",
+  "zakatSilver": "Silver",
+  "zakatInvestments": "Shares & savings",
+  "zakatBusiness": "Business stock",
+  "zakatReceivables": "Money owed to you",
+  "zakatDebts": "Debts due now",
+  "zakatRecord": "Record as sadaqa expense",
+  "zakatRecorded": "Recorded in expenses",
+  "zakatNote": "Zakat is 2.5% of wealth above the nisab held for one lunar year. Your home, car and personal items are not counted. Ask a scholar for your situation.",
+  "timetableTitle": "Prayer timetable",
+  "timetableShort": "Timetable",
+  "timetableNote": "Times use your method, Asr setting and mosque offsets. Fridays are highlighted.",
+  "habitsTitle": "Habits",
+  "habitsAdd": "New habit",
+  "habitsNameHint": "e.g. Read one page of Quran",
+  "habitsEmpty": "Small daily habits add up. Add one you want to keep — prayer-related or not.",
+  "habitsDoneToday": "{done} of {total} today",
+  "@habitsDoneToday": {
+    "placeholders": {
+      "done": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      }
+    }
+  },
+  "habitsSuggestions": "Ideas",
+  "habitSugQuran": "Read one page of Quran",
+  "habitSugDhikr": "100× SubhanAllah",
+  "habitSugWater": "Drink 8 glasses of water",
+  "habitSugWalk": "20-minute walk",
+  "habitSugSadaqa": "Give a little sadaqa",
+  "habitSugParents": "Call my parents",
+  "habitSugGratitude": "Write 3 things I’m grateful for",
+  "habitSugRead": "Read 10 pages of a book",
+  "habitSugSleep": "Sleep before 23:00",
   "shareThemeEmerald": "Emerald",
   "shareThemePaper": "Paper",
   "shareThemeNight": "Night",

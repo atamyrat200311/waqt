@@ -87,3 +87,15 @@ class AmountInput {
 
   bool get isZero => minor == 0;
 }
+
+/// Parses typed money ("1 234,5", "1234.50") into minor units; null if empty
+/// or invalid. Accepts comma or dot decimals and ignores spaces.
+int? parseMinor(String raw) {
+  final s = raw.replaceAll(RegExp(r'[\s  ]'), '').replaceAll(',', '.');
+  if (s.isEmpty) return null;
+  final m = RegExp(r'^(\d{1,12})(?:\.(\d{0,2}))?$').firstMatch(s);
+  if (m == null) return null;
+  final whole = int.parse(m.group(1)!);
+  final cents = (m.group(2) ?? '').padRight(2, '0');
+  return whole * 100 + int.parse(cents.isEmpty ? '0' : cents);
+}

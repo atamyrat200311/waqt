@@ -83,6 +83,7 @@ class ReaderPrefs {
     this.keepAwake = true,
     this.dailyGoal = 10,
     this.hadithArabic = true,
+    this.hadithLanguage,
   });
 
   /// Translation id (`en_sahih`…) or null for the default of the app
@@ -106,6 +107,9 @@ class ReaderPrefs {
   /// Show the Arabic text of hadith alongside the translation.
   final bool hadithArabic;
 
+  /// Hadith translation edition (`eng`/`rus`/`tur`) or null for the default.
+  final String? hadithLanguage;
+
   static const minArabic = 22.0, maxArabic = 48.0, minText = 14.0, maxText = 26.0;
 
   ReaderPrefs copyWith({
@@ -119,6 +123,7 @@ class ReaderPrefs {
     bool? keepAwake,
     int? dailyGoal,
     bool? hadithArabic,
+    String? Function()? hadithLanguage,
   }) {
     return ReaderPrefs(
       translation: translation != null ? translation() : this.translation,
@@ -131,6 +136,7 @@ class ReaderPrefs {
       keepAwake: keepAwake ?? this.keepAwake,
       dailyGoal: (dailyGoal ?? this.dailyGoal).clamp(1, 1000),
       hadithArabic: hadithArabic ?? this.hadithArabic,
+      hadithLanguage: hadithLanguage != null ? hadithLanguage() : this.hadithLanguage,
     );
   }
 
@@ -145,6 +151,7 @@ class ReaderPrefs {
         'keepAwake': keepAwake,
         'dailyGoal': dailyGoal,
         'hadithArabic': hadithArabic,
+        'hadithLanguage': hadithLanguage,
       };
 
   factory ReaderPrefs.fromJson(Object? raw) {
@@ -161,6 +168,10 @@ class ReaderPrefs {
       keepAwake: raw['keepAwake'] as bool? ?? true,
       dailyGoal: ((raw['dailyGoal'] as num?)?.toInt() ?? 10).clamp(1, 1000),
       hadithArabic: raw['hadithArabic'] as bool? ?? true,
+      hadithLanguage: switch (raw['hadithLanguage']) {
+        final String l when const {'eng', 'rus', 'tur'}.contains(l) => l,
+        _ => null,
+      },
     );
   }
 
@@ -176,11 +187,12 @@ class ReaderPrefs {
       other.sepia == sepia &&
       other.keepAwake == keepAwake &&
       other.dailyGoal == dailyGoal &&
-      other.hadithArabic == hadithArabic;
+      other.hadithArabic == hadithArabic &&
+      other.hadithLanguage == hadithLanguage;
 
   @override
   int get hashCode => Object.hash(translation, showTranslation, showTranslit, arabicSize, textSize, quranFont,
-      sepia, keepAwake, dailyGoal, hadithArabic);
+      sepia, keepAwake, dailyGoal, hadithArabic, hadithLanguage);
 }
 
 /// All user preferences. Persisted as one JSON blob by [SettingsRepository].

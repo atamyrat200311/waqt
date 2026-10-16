@@ -1839,6 +1839,313 @@ class AppLocalizationsRu extends AppLocalizations {
   String get hifzMemorized => 'Выучено';
 
   @override
+  String get libraryHadith => 'Сборники хадисов';
+
+  @override
+  String get libraryDuas => 'Дуа';
+
+  @override
+  String get libraryDuasSub => 'На каждый момент дня';
+
+  @override
+  String get libraryNames => '99 имён Аллаха';
+
+  @override
+  String get libraryNamesSub => 'Асма-уль-Хусна';
+
+  @override
+  String get libraryLearn => 'Основы';
+
+  @override
+  String get libraryLearnSub => 'Намаз, омовение, пост и другое';
+
+  @override
+  String get libraryAdhkar => 'Утренние и вечерние азкары';
+
+  @override
+  String get librarySaved => 'Сохранённое';
+
+  @override
+  String get librarySavedEmpty =>
+      'Добавьте хадис, дуа или имя в закладки — они появятся здесь.';
+
+  @override
+  String get libraryContentReview =>
+      'Тексты собраны из классических источников. В сомнительных случаях уточняйте у учёного.';
+
+  @override
+  String get hadithTitle => 'Хадисы';
+
+  @override
+  String get hadithOfDay => 'Хадис дня';
+
+  @override
+  String get hadithBookNawawi => '40 хадисов ан-Навави';
+
+  @override
+  String get hadithBookQudsi => '40 хадисов кудси';
+
+  @override
+  String get hadithBookBukhari => 'Сахих аль-Бухари';
+
+  @override
+  String get hadithBookMuslim => 'Сахих Муслим';
+
+  @override
+  String hadithCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count хадисов',
+      few: '$count хадиса',
+      one: '$count хадис',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String hadithN(String n) {
+    return 'Хадис $n';
+  }
+
+  @override
+  String get hadithBooks => 'Книги';
+
+  @override
+  String get hadithSearchHint => 'Слова или номер';
+
+  @override
+  String get hadithShowArabic => 'Показывать арабский текст';
+
+  @override
+  String get hadithTranslation => 'Перевод';
+
+  @override
+  String get hadithNoResults => 'Хадисы не найдены.';
+
+  @override
+  String get hadithFallback => 'Нет на вашем языке — показан английский.';
+
+  @override
+  String hadithRange(String from, String to) {
+    return 'Хадисы $from–$to';
+  }
+
+  @override
+  String get hadithOpenBook => 'Читать сборник';
+
+  @override
+  String get langEnglish => 'Английский';
+
+  @override
+  String get langRussian => 'Русский';
+
+  @override
+  String get langTurkish => 'Турецкий';
+
+  @override
+  String get duaSearchHint => 'Поиск дуа';
+
+  @override
+  String duaRepeat(String count) {
+    return '$count раз';
+  }
+
+  @override
+  String get duaAll => 'Все';
+
+  @override
+  String get duaFavorites => 'Избранное';
+
+  @override
+  String get namesQuiz => 'Тренировка';
+
+  @override
+  String get namesQuizQuestion => 'Что означает это имя?';
+
+  @override
+  String namesQuizScore(String right, String total) {
+    return '$right из $total верно';
+  }
+
+  @override
+  String get namesQuizNext => 'Дальше';
+
+  @override
+  String get namesQuizAgain => 'Ещё раз';
+
+  @override
+  String namesLearned(String count) {
+    return 'Выучено $count из 99';
+  }
+
+  @override
+  String get namesHadith =>
+      '«У Аллаха девяносто девять имён; кто выучит их, войдёт в Рай». — аль-Бухари и Муслим';
+
+  @override
+  String learnSteps(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count шагов',
+      few: '$count шага',
+      one: '$count шаг',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String learnStepN(String n) {
+    return 'Шаг $n';
+  }
+
+  @override
+  String get zakatTitle => 'Калькулятор закята';
+
+  @override
+  String get zakatShort => 'Закят';
+
+  @override
+  String get zakatDue => 'Закят к выплате';
+
+  @override
+  String get zakatAbove => 'Выше нисаба — к выплате 2,5%.';
+
+  @override
+  String get zakatBelow => 'Ниже нисаба — закят не обязателен.';
+
+  @override
+  String get zakatNeedPrice =>
+      'Введите сегодняшнюю цену золота или серебра, чтобы узнать нисаб.';
+
+  @override
+  String get zakatWealth => 'Облагаемое имущество';
+
+  @override
+  String get zakatNisab => 'Нисаб';
+
+  @override
+  String get zakatNisabBasis => 'Нисаб по';
+
+  @override
+  String get zakatNisabGold => 'Золото · 85 г';
+
+  @override
+  String get zakatNisabSilver => 'Серебро · 595 г';
+
+  @override
+  String get zakatPriceHint =>
+      'Waqt не выходит в интернет — укажите сегодняшнюю местную цену за грамм.';
+
+  @override
+  String get zakatGoldPrice => 'Цена золота';
+
+  @override
+  String get zakatSilverPrice => 'Цена серебра';
+
+  @override
+  String get zakatPerGram => 'за грамм';
+
+  @override
+  String get zakatGrams => 'г';
+
+  @override
+  String get zakatAssets => 'Ваше имущество';
+
+  @override
+  String get zakatLiabilities => 'Текущие долги';
+
+  @override
+  String get zakatCash => 'Наличные и счета';
+
+  @override
+  String get zakatGold => 'Золото';
+
+  @override
+  String get zakatSilver => 'Серебро';
+
+  @override
+  String get zakatInvestments => 'Акции и вклады';
+
+  @override
+  String get zakatBusiness => 'Товары для торговли';
+
+  @override
+  String get zakatReceivables => 'Долги перед вами';
+
+  @override
+  String get zakatDebts => 'Долги к оплате';
+
+  @override
+  String get zakatRecord => 'Записать как садака';
+
+  @override
+  String get zakatRecorded => 'Записано в расходы';
+
+  @override
+  String get zakatNote =>
+      'Закят — 2,5% имущества сверх нисаба, которым вы владели лунный год. Дом, машина и личные вещи не учитываются. Уточните у учёного.';
+
+  @override
+  String get timetableTitle => 'Расписание намазов';
+
+  @override
+  String get timetableShort => 'Расписание';
+
+  @override
+  String get timetableNote =>
+      'Время рассчитано по вашему методу, настройке асра и поправкам мечети. Пятницы выделены.';
+
+  @override
+  String get habitsTitle => 'Привычки';
+
+  @override
+  String get habitsAdd => 'Новая привычка';
+
+  @override
+  String get habitsNameHint => 'например, читать страницу Корана';
+
+  @override
+  String get habitsEmpty =>
+      'Маленькие ежедневные привычки складываются в большое. Добавьте ту, которую хотите сохранить.';
+
+  @override
+  String habitsDoneToday(String done, String total) {
+    return 'Сегодня $done из $total';
+  }
+
+  @override
+  String get habitsSuggestions => 'Идеи';
+
+  @override
+  String get habitSugQuran => 'Читать страницу Корана';
+
+  @override
+  String get habitSugDhikr => '100× СубханАллах';
+
+  @override
+  String get habitSugWater => 'Выпить 8 стаканов воды';
+
+  @override
+  String get habitSugWalk => 'Прогулка 20 минут';
+
+  @override
+  String get habitSugSadaqa => 'Дать немного садаки';
+
+  @override
+  String get habitSugParents => 'Позвонить родителям';
+
+  @override
+  String get habitSugGratitude => 'Записать 3 повода для благодарности';
+
+  @override
+  String get habitSugRead => 'Прочитать 10 страниц книги';
+
+  @override
+  String get habitSugSleep => 'Лечь спать до 23:00';
+
+  @override
   String get shareThemeEmerald => 'Изумруд';
 
   @override

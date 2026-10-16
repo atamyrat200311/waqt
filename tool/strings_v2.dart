@@ -126,6 +126,118 @@ const Map<String, List<String>> s2 = {
   'khatmTileIdle': ['Finish on a schedule', 'Meýilnama bilen tamamla', 'Planlı bitirin', 'Читать по плану'],
   'hifzMemorized': ['Memorized', 'Ýatlanan', 'Ezberlendi', 'Выучено'],
 
+
+  // --------------------------------------------------------------- library
+  'libraryHadith': ['Hadith collections', 'Hadys ýygyndylary', 'Hadis külliyatı', 'Сборники хадисов'],
+  'libraryDuas': ['Duas', 'Dogalar', 'Dualar', 'Дуа'],
+  'libraryDuasSub': ['For every moment of the day', 'Günüň her pursaty üçin', 'Günün her anı için', 'На каждый момент дня'],
+  'libraryNames': ['99 Names of Allah', 'Allanyň 99 ady', 'Allah’ın 99 ismi', '99 имён Аллаха'],
+  'libraryNamesSub': ['Asmaʾ al-Husna', 'Esmaul-Husna', 'Esmâ-ül Hüsnâ', 'Асма-уль-Хусна'],
+  'libraryLearn': ['Learn', 'Öwren', 'Öğren', 'Основы'],
+  'libraryLearnSub': ['Prayer, wudu, fasting and more', 'Namaz, täret, oraza we başgalar', 'Namaz, abdest, oruç ve daha fazlası', 'Намаз, омовение, пост и другое'],
+  'libraryAdhkar': ['Morning & evening adhkar', 'Ertir we agşam zikirleri', 'Sabah ve akşam zikirleri', 'Утренние и вечерние азкары'],
+  'librarySaved': ['Saved', 'Saklananlar', 'Kaydedilenler', 'Сохранённое'],
+  'librarySavedEmpty': ['Bookmark a hadith, dua or Name and it will appear here.', 'Hadysy, dogany ýa-da Ady belläň — şu ýerde peýda bolar.', 'Bir hadisi, duayı veya ismi kaydedin; burada görünür.', 'Добавьте хадис, дуа или имя в закладки — они появятся здесь.'],
+  'libraryContentReview': ['Texts are compiled from classical sources. Please verify with a scholar when in doubt.', '?Tekstler nusgawy çeşmelerden toplandy. Şübhe bolsa alym bilen barlaň.', 'Metinler klasik kaynaklardan derlenmiştir. Şüphe durumunda bir âlime danışın.', 'Тексты собраны из классических источников. В сомнительных случаях уточняйте у учёного.'],
+
+  // ---------------------------------------------------------------- hadith
+  'hadithTitle': ['Hadith', 'Hadys', 'Hadis', 'Хадисы'],
+  'hadithOfDay': ['Hadith of the day', 'Günüň hadysy', 'Günün hadisi', 'Хадис дня'],
+  'hadithBookNawawi': ['40 Hadith of an-Nawawi', 'An-Nawawiniň 40 hadysy', 'Nevevî’nin 40 Hadisi', '40 хадисов ан-Навави'],
+  'hadithBookQudsi': ['40 Hadith Qudsi', '40 Kudsi hadys', '40 Kudsî Hadis', '40 хадисов кудси'],
+  'hadithBookBukhari': ['Sahih al-Bukhari', 'Sahyh al-Buhary', 'Sahîh-i Buhârî', 'Сахих аль-Бухари'],
+  'hadithBookMuslim': ['Sahih Muslim', 'Sahyh Muslim', 'Sahîh-i Müslim', 'Сахих Муслим'],
+  'hadithCount': ['{count, plural, one{{count} hadith} other{{count} hadith}}', '{count} hadys', '{count} hadis', '{count, plural, one{{count} хадис} few{{count} хадиса} other{{count} хадисов}}'],
+  'hadithN': ['Hadith {n}', 'Hadys {n}', 'Hadis {n}', 'Хадис {n}'],
+  'hadithBooks': ['Books', 'Kitaplar', 'Kitaplar', 'Книги'],
+  'hadithSearchHint': ['Search words or a number', 'Söz ýa-da belgi gözle', 'Kelime veya numara arayın', 'Слова или номер'],
+  'hadithShowArabic': ['Show Arabic text', 'Arapça teksti görkez', 'Arapça metni göster', 'Показывать арабский текст'],
+  'hadithTranslation': ['Translation', 'Terjime', 'Tercüme', 'Перевод'],
+  'hadithNoResults': ['No hadith found.', 'Hadys tapylmady.', 'Hadis bulunamadı.', 'Хадисы не найдены.'],
+  'hadithFallback': ['Not available in your language — showing English.', '?Siziň diliňizde ýok — iňlisçe görkezilýär.', 'Dilinizde mevcut değil — İngilizce gösteriliyor.', 'Нет на вашем языке — показан английский.'],
+  'hadithRange': ['Hadith {from}–{to}', 'Hadys {from}–{to}', 'Hadis {from}–{to}', 'Хадисы {from}–{to}'],
+  'hadithOpenBook': ['Read the collection', 'Ýygyndyny oka', 'Külliyatı oku', 'Читать сборник'],
+  'langEnglish': ['English', 'Iňlis dili', 'İngilizce', 'Английский'],
+  'langRussian': ['Russian', 'Rus dili', 'Rusça', 'Русский'],
+  'langTurkish': ['Turkish', 'Türk dili', 'Türkçe', 'Турецкий'],
+
+  // ------------------------------------------------------------------ duas
+  'duaSearchHint': ['Search duas', 'Doga gözle', 'Dua ara', 'Поиск дуа'],
+  'duaRepeat': ['Repeat {count}×', '{count} gezek', '{count} kez', '{count} раз'],
+  'duaAll': ['All', 'Hemmesi', 'Tümü', 'Все'],
+  'duaFavorites': ['Favorites', 'Halanlarym', 'Favoriler', 'Избранное'],
+
+  // ----------------------------------------------------------------- names
+  'namesQuiz': ['Practice', 'Türgenleş', 'Alıştırma', 'Тренировка'],
+  'namesQuizQuestion': ['What does this Name mean?', 'Bu at näme aňladýar?', 'Bu isim ne anlama gelir?', 'Что означает это имя?'],
+  'namesQuizScore': ['{right} of {total} correct', '{total} soragdan {right} dogry', '{total} sorudan {right} doğru', '{right} из {total} верно'],
+  'namesQuizNext': ['Next', 'Indiki', 'Sonraki', 'Дальше'],
+  'namesQuizAgain': ['Practice again', 'Ýene türgenleş', 'Tekrar alıştırma', 'Ещё раз'],
+  'namesLearned': ['{count} of 99 learned', '99-dan {count} öwrenildi', '99’dan {count} öğrenildi', 'Выучено {count} из 99'],
+  'namesHadith': ['“Allah has ninety-nine names; whoever learns them will enter Paradise.” — Bukhari & Muslim', '«Allanyň togsan dokuz ady bar; kim olary ýatlasa, jennete girer.» — Buhary we Muslim', '“Allah’ın doksan dokuz ismi vardır; onları ezberleyen cennete girer.” — Buhârî ve Müslim', '«У Аллаха девяносто девять имён; кто выучит их, войдёт в Рай». — аль-Бухари и Муслим'],
+
+  // ----------------------------------------------------------------- learn
+  'learnSteps': ['{count, plural, one{{count} step} other{{count} steps}}', '{count} ädim', '{count} adım', '{count, plural, one{{count} шаг} few{{count} шага} other{{count} шагов}}'],
+  'learnStepN': ['Step {n}', '{n}-nji ädim', 'Adım {n}', 'Шаг {n}'],
+
+
+  // ----------------------------------------------------------------- zakat
+  'zakatTitle': ['Zakat calculator', 'Zekat hasaplaýjy', 'Zekât hesaplayıcı', 'Калькулятор закята'],
+  'zakatShort': ['Zakat', 'Zekat', 'Zekât', 'Закят'],
+  'zakatDue': ['Zakat due', 'Tölenmeli zekat', 'Ödenecek zekât', 'Закят к выплате'],
+  'zakatAbove': ['Above nisab — 2.5% is due.', 'Nisapdan ýokary — 2,5% tölenmeli.', 'Nisabın üzerinde — %2,5 ödenir.', 'Выше нисаба — к выплате 2,5%.'],
+  'zakatBelow': ['Below nisab — no zakat is due.', 'Nisapdan aşak — zekat tölenmeýär.', 'Nisabın altında — zekât gerekmez.', 'Ниже нисаба — закят не обязателен.'],
+  'zakatNeedPrice': ['Enter today’s gold or silver price to find the nisab.', 'Nisaby bilmek üçin şu günki altyn ýa-da kümüş bahasyny giriziň.', 'Nisabı bulmak için bugünkü altın veya gümüş fiyatını girin.', 'Введите сегодняшнюю цену золота или серебра, чтобы узнать нисаб.'],
+  'zakatWealth': ['Zakatable wealth', 'Zekatly baýlyk', 'Zekâta tabi servet', 'Облагаемое имущество'],
+  'zakatNisab': ['Nisab', 'Nisap', 'Nisap', 'Нисаб'],
+  'zakatNisabBasis': ['Nisab based on', 'Nisap esasy', 'Nisap ölçüsü', 'Нисаб по'],
+  'zakatNisabGold': ['Gold · 85 g', 'Altyn · 85 g', 'Altın · 85 g', 'Золото · 85 г'],
+  'zakatNisabSilver': ['Silver · 595 g', 'Kümüş · 595 g', 'Gümüş · 595 g', 'Серебро · 595 г'],
+  'zakatPriceHint': ['Waqt never goes online — type today’s local price per gram.', 'Waqt internete çykmaýar — bir gram üçin şu günki ýerli bahany ýazyň.', 'Waqt internete bağlanmaz — gram başına bugünkü yerel fiyatı yazın.', 'Waqt не выходит в интернет — укажите сегодняшнюю местную цену за грамм.'],
+  'zakatGoldPrice': ['Gold price', 'Altynyň bahasy', 'Altın fiyatı', 'Цена золота'],
+  'zakatSilverPrice': ['Silver price', 'Kümşüň bahasy', 'Gümüş fiyatı', 'Цена серебра'],
+  'zakatPerGram': ['per gram', 'bir gram üçin', 'gram başına', 'за грамм'],
+  'zakatGrams': ['g', 'g', 'g', 'г'],
+  'zakatAssets': ['What you own', 'Emläkiňiz', 'Varlıklarınız', 'Ваше имущество'],
+  'zakatLiabilities': ['What you owe now', 'Häzirki bergiňiz', 'Şu anki borçlarınız', 'Текущие долги'],
+  'zakatCash': ['Cash & bank', 'Nagt we bank', 'Nakit ve banka', 'Наличные и счета'],
+  'zakatGold': ['Gold', 'Altyn', 'Altın', 'Золото'],
+  'zakatSilver': ['Silver', 'Kümüş', 'Gümüş', 'Серебро'],
+  'zakatInvestments': ['Shares & savings', 'Paýnamalar we goýumlar', 'Hisse ve yatırımlar', 'Акции и вклады'],
+  'zakatBusiness': ['Business stock', 'Söwda harytlary', 'Ticari mallar', 'Товары для торговли'],
+  'zakatReceivables': ['Money owed to you', 'Size berilmeli pul', 'Size olan alacaklar', 'Долги перед вами'],
+  'zakatDebts': ['Debts due now', 'Häzir tölenmeli bergiler', 'Vadesi gelen borçlar', 'Долги к оплате'],
+  'zakatRecord': ['Record as sadaqa expense', 'Sadaka çykdajysy hökmünde ýaz', 'Sadaka harcaması olarak kaydet', 'Записать как садака'],
+  'zakatRecorded': ['Recorded in expenses', 'Çykdajylara ýazyldy', 'Harcamalara kaydedildi', 'Записано в расходы'],
+  'zakatNote': [
+    'Zakat is 2.5% of wealth above the nisab held for one lunar year. Your home, car and personal items are not counted. Ask a scholar for your situation.',
+    '?Zekat — bir hijri ýyl saklanan, nisapdan ýokary baýlygyň 2,5%-i. Öý, ulag we şahsy zatlar hasaba alynmaýar. Ýagdaýyňyz barada alymdan soraň.',
+    'Zekât, bir kamerî yıl elde tutulan ve nisabı aşan servetin %2,5’idir. Ev, araba ve kişisel eşyalar sayılmaz. Durumunuz için bir âlime danışın.',
+    'Закят — 2,5% имущества сверх нисаба, которым вы владели лунный год. Дом, машина и личные вещи не учитываются. Уточните у учёного.'
+  ],
+
+  // ------------------------------------------------------------- timetable
+  'timetableTitle': ['Prayer timetable', 'Namaz tertibi', 'Namaz vakitleri çizelgesi', 'Расписание намазов'],
+  'timetableShort': ['Timetable', 'Tertip', 'Çizelge', 'Расписание'],
+  'timetableNote': ['Times use your method, Asr setting and mosque offsets. Fridays are highlighted.', 'Wagtlar siziň usulyňyz, ikindi sazlamasy we metjit düzedişleri boýunça. Anna günleri bellenen.', 'Vakitler yönteminize, ikindi ayarınıza ve cami düzeltmelerine göredir. Cumalar vurgulanır.', 'Время рассчитано по вашему методу, настройке асра и поправкам мечети. Пятницы выделены.'],
+
+  // ---------------------------------------------------------------- habits
+  'habitsTitle': ['Habits', 'Endikler', 'Alışkanlıklar', 'Привычки'],
+  'habitsAdd': ['New habit', 'Täze endik', 'Yeni alışkanlık', 'Новая привычка'],
+  'habitsNameHint': ['e.g. Read one page of Quran', 'meselem, Kurandan bir sahypa oka', 'örn. Kur’an’dan bir sayfa oku', 'например, читать страницу Корана'],
+  'habitsEmpty': ['Small daily habits add up. Add one you want to keep — prayer-related or not.', '?Kiçi gündelik endikler köp zada getirýär. Saklamak isleýän bir endigiňizi goşuň.', 'Küçük günlük alışkanlıklar birikir. Sürdürmek istediğiniz birini ekleyin.', 'Маленькие ежедневные привычки складываются в большое. Добавьте ту, которую хотите сохранить.'],
+  'habitsDoneToday': ['{done} of {total} today', 'Şu gün {total}-dan {done}', 'Bugün {total}’dan {done}', 'Сегодня {done} из {total}'],
+  'habitsSuggestions': ['Ideas', 'Pikirler', 'Fikirler', 'Идеи'],
+  'habitSugQuran': ['Read one page of Quran', 'Kurandan bir sahypa oka', 'Kur’an’dan bir sayfa oku', 'Читать страницу Корана'],
+  'habitSugDhikr': ['100× SubhanAllah', '100× Subhanalla', '100× Sübhanallah', '100× СубханАллах'],
+  'habitSugWater': ['Drink 8 glasses of water', '8 bulgur suw iç', '8 bardak su iç', 'Выпить 8 стаканов воды'],
+  'habitSugWalk': ['20-minute walk', '20 minut gezelenç', '20 dakika yürüyüş', 'Прогулка 20 минут'],
+  'habitSugSadaqa': ['Give a little sadaqa', 'Azajyk sadaka ber', 'Biraz sadaka ver', 'Дать немного садаки'],
+  'habitSugParents': ['Call my parents', 'Ene-atama jaň et', 'Anne babamı ara', 'Позвонить родителям'],
+  'habitSugGratitude': ['Write 3 things I’m grateful for', 'Şükür edýän 3 zadymy ýaz', 'Şükrettiğim 3 şeyi yaz', 'Записать 3 повода для благодарности'],
+  'habitSugRead': ['Read 10 pages of a book', 'Kitapdan 10 sahypa oka', 'Kitaptan 10 sayfa oku', 'Прочитать 10 страниц книги'],
+  'habitSugSleep': ['Sleep before 23:00', '23:00-dan öň ýat', '23:00’ten önce uyu', 'Лечь спать до 23:00'],
+
   // ------------------------------------------------------------ share card
   'shareThemeEmerald': ['Emerald', 'Zümerret', 'Zümrüt', 'Изумруд'],
   'shareThemePaper': ['Paper', 'Kagyz', 'Kâğıt', 'Бумага'],

@@ -26,6 +26,7 @@ import 'package:waqt/data/repositories/prayer_repository.dart';
 import 'package:waqt/data/repositories/task_repository.dart';
 import 'package:waqt/data/settings/app_settings.dart';
 import 'package:waqt/features/adhkar/application/adhkar_providers.dart';
+import 'package:waqt/features/hadith/application/hadith_providers.dart';
 import 'package:waqt/features/quran/application/quran_providers.dart';
 
 import '../helpers/test_app.dart';
@@ -71,6 +72,7 @@ Future<void> shoot(
   AppSettings settings = const AppSettings(onboardingDone: true),
   DateTime? now,
   Future<void> Function(WidgetTester t)? act,
+  Future<void> Function(ProviderContainer c)? preload,
 }) async {
   tester.view.physicalSize = const Size(390 * 3, 844 * 3);
   tester.view.devicePixelRatio = 3;
@@ -85,6 +87,7 @@ Future<void> shoot(
     await seed(container);
     await container.read(adhkarCatalogProvider.future);
     await container.read(quranTextsProvider.future);
+    await preload?.call(container);
   });
   final key = GlobalKey();
   await tester.pumpWidget(
@@ -190,6 +193,37 @@ void main() {
       await t.runAsync(() => Future<void>.delayed(const Duration(seconds: 2)));
       await t.pump();
     });
+  }, skip: !_enabled);
+
+  testWidgets('library', (t) async {
+    Future<void> hadith(ProviderContainer c) async {
+      await c.read(hadithOfDayProvider.future);
+      for (final b in ['bukhari', 'nawawi']) {
+        await c.read(hadithEditionProvider((b, 'eng')).future);
+        await c.read(hadithEditionProvider((b, 'ara')).future);
+      }
+    }
+
+    await shoot(t, 'library', location: '/library', preload: hadith);
+    await shoot(t, 'library_android_dark', location: '/library', preload: hadith, platform: TargetPlatform.android, dark: true);
+    await shoot(t, 'hadith_bukhari', location: '/library/hadith/bukhari', preload: hadith);
+    await shoot(t, 'hadith_bukhari_section', location: '/library/hadith/bukhari/2', preload: hadith);
+    await shoot(t, 'hadith_nawawi', location: '/library/hadith/nawawi', preload: hadith);
+  }, skip: !_enabled);
+
+  testWidgets('new tools', (t) async {
+    await shoot(t, 'tools_ios_v2', location: '/tools');
+    await shoot(
+      t,
+      'zakat',
+      location: '/tools/zakat',
+      settings: const AppSettings(
+        onboardingDone: true,
+        zakat: {'cash': 2500000, 'goldGrams': 20, 'silverPrice': 1650, 'goldPrice': 140000},
+      ),
+    );
+    await shoot(t, 'timetable', location: '/tools/timetable');
+    await shoot(t, 'habits_empty', location: '/today/habits');
   }, skip: !_enabled);
 
   testWidgets('expense sheet', (t) async {

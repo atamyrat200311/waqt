@@ -67,7 +67,7 @@ void main() {
       expect(itemInfo(8), (2, null));
       expect(itemInfo(9), (2, 7));
       expect(itemOfAyah(7), 9);
-      final last = totalAyahs + totalSurahs - 1;
+      const last = totalAyahs + totalSurahs - 1;
       expect(itemInfo(last), (114, totalAyahs - 1));
     });
   });

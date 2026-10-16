@@ -2898,6 +2898,540 @@ abstract class AppLocalizations {
   /// **'Memorized'**
   String get hifzMemorized;
 
+  /// No description provided for @libraryHadith.
+  ///
+  /// In en, this message translates to:
+  /// **'Hadith collections'**
+  String get libraryHadith;
+
+  /// No description provided for @libraryDuas.
+  ///
+  /// In en, this message translates to:
+  /// **'Duas'**
+  String get libraryDuas;
+
+  /// No description provided for @libraryDuasSub.
+  ///
+  /// In en, this message translates to:
+  /// **'For every moment of the day'**
+  String get libraryDuasSub;
+
+  /// No description provided for @libraryNames.
+  ///
+  /// In en, this message translates to:
+  /// **'99 Names of Allah'**
+  String get libraryNames;
+
+  /// No description provided for @libraryNamesSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Asmaʾ al-Husna'**
+  String get libraryNamesSub;
+
+  /// No description provided for @libraryLearn.
+  ///
+  /// In en, this message translates to:
+  /// **'Learn'**
+  String get libraryLearn;
+
+  /// No description provided for @libraryLearnSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Prayer, wudu, fasting and more'**
+  String get libraryLearnSub;
+
+  /// No description provided for @libraryAdhkar.
+  ///
+  /// In en, this message translates to:
+  /// **'Morning & evening adhkar'**
+  String get libraryAdhkar;
+
+  /// No description provided for @librarySaved.
+  ///
+  /// In en, this message translates to:
+  /// **'Saved'**
+  String get librarySaved;
+
+  /// No description provided for @librarySavedEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'Bookmark a hadith, dua or Name and it will appear here.'**
+  String get librarySavedEmpty;
+
+  /// No description provided for @libraryContentReview.
+  ///
+  /// In en, this message translates to:
+  /// **'Texts are compiled from classical sources. Please verify with a scholar when in doubt.'**
+  String get libraryContentReview;
+
+  /// No description provided for @hadithTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Hadith'**
+  String get hadithTitle;
+
+  /// No description provided for @hadithOfDay.
+  ///
+  /// In en, this message translates to:
+  /// **'Hadith of the day'**
+  String get hadithOfDay;
+
+  /// No description provided for @hadithBookNawawi.
+  ///
+  /// In en, this message translates to:
+  /// **'40 Hadith of an-Nawawi'**
+  String get hadithBookNawawi;
+
+  /// No description provided for @hadithBookQudsi.
+  ///
+  /// In en, this message translates to:
+  /// **'40 Hadith Qudsi'**
+  String get hadithBookQudsi;
+
+  /// No description provided for @hadithBookBukhari.
+  ///
+  /// In en, this message translates to:
+  /// **'Sahih al-Bukhari'**
+  String get hadithBookBukhari;
+
+  /// No description provided for @hadithBookMuslim.
+  ///
+  /// In en, this message translates to:
+  /// **'Sahih Muslim'**
+  String get hadithBookMuslim;
+
+  /// No description provided for @hadithCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, one{{count} hadith} other{{count} hadith}}'**
+  String hadithCount(int count);
+
+  /// No description provided for @hadithN.
+  ///
+  /// In en, this message translates to:
+  /// **'Hadith {n}'**
+  String hadithN(String n);
+
+  /// No description provided for @hadithBooks.
+  ///
+  /// In en, this message translates to:
+  /// **'Books'**
+  String get hadithBooks;
+
+  /// No description provided for @hadithSearchHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Search words or a number'**
+  String get hadithSearchHint;
+
+  /// No description provided for @hadithShowArabic.
+  ///
+  /// In en, this message translates to:
+  /// **'Show Arabic text'**
+  String get hadithShowArabic;
+
+  /// No description provided for @hadithTranslation.
+  ///
+  /// In en, this message translates to:
+  /// **'Translation'**
+  String get hadithTranslation;
+
+  /// No description provided for @hadithNoResults.
+  ///
+  /// In en, this message translates to:
+  /// **'No hadith found.'**
+  String get hadithNoResults;
+
+  /// No description provided for @hadithFallback.
+  ///
+  /// In en, this message translates to:
+  /// **'Not available in your language — showing English.'**
+  String get hadithFallback;
+
+  /// No description provided for @hadithRange.
+  ///
+  /// In en, this message translates to:
+  /// **'Hadith {from}–{to}'**
+  String hadithRange(String from, String to);
+
+  /// No description provided for @hadithOpenBook.
+  ///
+  /// In en, this message translates to:
+  /// **'Read the collection'**
+  String get hadithOpenBook;
+
+  /// No description provided for @langEnglish.
+  ///
+  /// In en, this message translates to:
+  /// **'English'**
+  String get langEnglish;
+
+  /// No description provided for @langRussian.
+  ///
+  /// In en, this message translates to:
+  /// **'Russian'**
+  String get langRussian;
+
+  /// No description provided for @langTurkish.
+  ///
+  /// In en, this message translates to:
+  /// **'Turkish'**
+  String get langTurkish;
+
+  /// No description provided for @duaSearchHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Search duas'**
+  String get duaSearchHint;
+
+  /// No description provided for @duaRepeat.
+  ///
+  /// In en, this message translates to:
+  /// **'Repeat {count}×'**
+  String duaRepeat(String count);
+
+  /// No description provided for @duaAll.
+  ///
+  /// In en, this message translates to:
+  /// **'All'**
+  String get duaAll;
+
+  /// No description provided for @duaFavorites.
+  ///
+  /// In en, this message translates to:
+  /// **'Favorites'**
+  String get duaFavorites;
+
+  /// No description provided for @namesQuiz.
+  ///
+  /// In en, this message translates to:
+  /// **'Practice'**
+  String get namesQuiz;
+
+  /// No description provided for @namesQuizQuestion.
+  ///
+  /// In en, this message translates to:
+  /// **'What does this Name mean?'**
+  String get namesQuizQuestion;
+
+  /// No description provided for @namesQuizScore.
+  ///
+  /// In en, this message translates to:
+  /// **'{right} of {total} correct'**
+  String namesQuizScore(String right, String total);
+
+  /// No description provided for @namesQuizNext.
+  ///
+  /// In en, this message translates to:
+  /// **'Next'**
+  String get namesQuizNext;
+
+  /// No description provided for @namesQuizAgain.
+  ///
+  /// In en, this message translates to:
+  /// **'Practice again'**
+  String get namesQuizAgain;
+
+  /// No description provided for @namesLearned.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} of 99 learned'**
+  String namesLearned(String count);
+
+  /// No description provided for @namesHadith.
+  ///
+  /// In en, this message translates to:
+  /// **'“Allah has ninety-nine names; whoever learns them will enter Paradise.” — Bukhari & Muslim'**
+  String get namesHadith;
+
+  /// No description provided for @learnSteps.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, one{{count} step} other{{count} steps}}'**
+  String learnSteps(int count);
+
+  /// No description provided for @learnStepN.
+  ///
+  /// In en, this message translates to:
+  /// **'Step {n}'**
+  String learnStepN(String n);
+
+  /// No description provided for @zakatTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Zakat calculator'**
+  String get zakatTitle;
+
+  /// No description provided for @zakatShort.
+  ///
+  /// In en, this message translates to:
+  /// **'Zakat'**
+  String get zakatShort;
+
+  /// No description provided for @zakatDue.
+  ///
+  /// In en, this message translates to:
+  /// **'Zakat due'**
+  String get zakatDue;
+
+  /// No description provided for @zakatAbove.
+  ///
+  /// In en, this message translates to:
+  /// **'Above nisab — 2.5% is due.'**
+  String get zakatAbove;
+
+  /// No description provided for @zakatBelow.
+  ///
+  /// In en, this message translates to:
+  /// **'Below nisab — no zakat is due.'**
+  String get zakatBelow;
+
+  /// No description provided for @zakatNeedPrice.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter today’s gold or silver price to find the nisab.'**
+  String get zakatNeedPrice;
+
+  /// No description provided for @zakatWealth.
+  ///
+  /// In en, this message translates to:
+  /// **'Zakatable wealth'**
+  String get zakatWealth;
+
+  /// No description provided for @zakatNisab.
+  ///
+  /// In en, this message translates to:
+  /// **'Nisab'**
+  String get zakatNisab;
+
+  /// No description provided for @zakatNisabBasis.
+  ///
+  /// In en, this message translates to:
+  /// **'Nisab based on'**
+  String get zakatNisabBasis;
+
+  /// No description provided for @zakatNisabGold.
+  ///
+  /// In en, this message translates to:
+  /// **'Gold · 85 g'**
+  String get zakatNisabGold;
+
+  /// No description provided for @zakatNisabSilver.
+  ///
+  /// In en, this message translates to:
+  /// **'Silver · 595 g'**
+  String get zakatNisabSilver;
+
+  /// No description provided for @zakatPriceHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Waqt never goes online — type today’s local price per gram.'**
+  String get zakatPriceHint;
+
+  /// No description provided for @zakatGoldPrice.
+  ///
+  /// In en, this message translates to:
+  /// **'Gold price'**
+  String get zakatGoldPrice;
+
+  /// No description provided for @zakatSilverPrice.
+  ///
+  /// In en, this message translates to:
+  /// **'Silver price'**
+  String get zakatSilverPrice;
+
+  /// No description provided for @zakatPerGram.
+  ///
+  /// In en, this message translates to:
+  /// **'per gram'**
+  String get zakatPerGram;
+
+  /// No description provided for @zakatGrams.
+  ///
+  /// In en, this message translates to:
+  /// **'g'**
+  String get zakatGrams;
+
+  /// No description provided for @zakatAssets.
+  ///
+  /// In en, this message translates to:
+  /// **'What you own'**
+  String get zakatAssets;
+
+  /// No description provided for @zakatLiabilities.
+  ///
+  /// In en, this message translates to:
+  /// **'What you owe now'**
+  String get zakatLiabilities;
+
+  /// No description provided for @zakatCash.
+  ///
+  /// In en, this message translates to:
+  /// **'Cash & bank'**
+  String get zakatCash;
+
+  /// No description provided for @zakatGold.
+  ///
+  /// In en, this message translates to:
+  /// **'Gold'**
+  String get zakatGold;
+
+  /// No description provided for @zakatSilver.
+  ///
+  /// In en, this message translates to:
+  /// **'Silver'**
+  String get zakatSilver;
+
+  /// No description provided for @zakatInvestments.
+  ///
+  /// In en, this message translates to:
+  /// **'Shares & savings'**
+  String get zakatInvestments;
+
+  /// No description provided for @zakatBusiness.
+  ///
+  /// In en, this message translates to:
+  /// **'Business stock'**
+  String get zakatBusiness;
+
+  /// No description provided for @zakatReceivables.
+  ///
+  /// In en, this message translates to:
+  /// **'Money owed to you'**
+  String get zakatReceivables;
+
+  /// No description provided for @zakatDebts.
+  ///
+  /// In en, this message translates to:
+  /// **'Debts due now'**
+  String get zakatDebts;
+
+  /// No description provided for @zakatRecord.
+  ///
+  /// In en, this message translates to:
+  /// **'Record as sadaqa expense'**
+  String get zakatRecord;
+
+  /// No description provided for @zakatRecorded.
+  ///
+  /// In en, this message translates to:
+  /// **'Recorded in expenses'**
+  String get zakatRecorded;
+
+  /// No description provided for @zakatNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Zakat is 2.5% of wealth above the nisab held for one lunar year. Your home, car and personal items are not counted. Ask a scholar for your situation.'**
+  String get zakatNote;
+
+  /// No description provided for @timetableTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Prayer timetable'**
+  String get timetableTitle;
+
+  /// No description provided for @timetableShort.
+  ///
+  /// In en, this message translates to:
+  /// **'Timetable'**
+  String get timetableShort;
+
+  /// No description provided for @timetableNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Times use your method, Asr setting and mosque offsets. Fridays are highlighted.'**
+  String get timetableNote;
+
+  /// No description provided for @habitsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Habits'**
+  String get habitsTitle;
+
+  /// No description provided for @habitsAdd.
+  ///
+  /// In en, this message translates to:
+  /// **'New habit'**
+  String get habitsAdd;
+
+  /// No description provided for @habitsNameHint.
+  ///
+  /// In en, this message translates to:
+  /// **'e.g. Read one page of Quran'**
+  String get habitsNameHint;
+
+  /// No description provided for @habitsEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'Small daily habits add up. Add one you want to keep — prayer-related or not.'**
+  String get habitsEmpty;
+
+  /// No description provided for @habitsDoneToday.
+  ///
+  /// In en, this message translates to:
+  /// **'{done} of {total} today'**
+  String habitsDoneToday(String done, String total);
+
+  /// No description provided for @habitsSuggestions.
+  ///
+  /// In en, this message translates to:
+  /// **'Ideas'**
+  String get habitsSuggestions;
+
+  /// No description provided for @habitSugQuran.
+  ///
+  /// In en, this message translates to:
+  /// **'Read one page of Quran'**
+  String get habitSugQuran;
+
+  /// No description provided for @habitSugDhikr.
+  ///
+  /// In en, this message translates to:
+  /// **'100× SubhanAllah'**
+  String get habitSugDhikr;
+
+  /// No description provided for @habitSugWater.
+  ///
+  /// In en, this message translates to:
+  /// **'Drink 8 glasses of water'**
+  String get habitSugWater;
+
+  /// No description provided for @habitSugWalk.
+  ///
+  /// In en, this message translates to:
+  /// **'20-minute walk'**
+  String get habitSugWalk;
+
+  /// No description provided for @habitSugSadaqa.
+  ///
+  /// In en, this message translates to:
+  /// **'Give a little sadaqa'**
+  String get habitSugSadaqa;
+
+  /// No description provided for @habitSugParents.
+  ///
+  /// In en, this message translates to:
+  /// **'Call my parents'**
+  String get habitSugParents;
+
+  /// No description provided for @habitSugGratitude.
+  ///
+  /// In en, this message translates to:
+  /// **'Write 3 things I’m grateful for'**
+  String get habitSugGratitude;
+
+  /// No description provided for @habitSugRead.
+  ///
+  /// In en, this message translates to:
+  /// **'Read 10 pages of a book'**
+  String get habitSugRead;
+
+  /// No description provided for @habitSugSleep.
+  ///
+  /// In en, this message translates to:
+  /// **'Sleep before 23:00'**
+  String get habitSugSleep;
+
   /// No description provided for @shareThemeEmerald.
   ///
   /// In en, this message translates to:

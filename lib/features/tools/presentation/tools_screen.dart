@@ -8,6 +8,7 @@ import '../../../core/router/routes.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_typography.dart';
 import '../../../core/theme/dimens.dart';
+import '../../../core/utils/dates.dart';
 import '../../../data/db/enums.dart';
 import '../../../shared/widgets/buttons.dart';
 import '../../../shared/widgets/layout.dart';
@@ -15,6 +16,7 @@ import '../../../shared/widgets/progress_ring.dart';
 import '../../../shared/widgets/waqt_card.dart';
 import '../../../shared/widgets/waqt_icon.dart';
 import '../../adhkar/application/adhkar_providers.dart';
+import '../../habits/application/habit_providers.dart';
 import '../../prayer/application/prayer_providers.dart';
 import '../../ramadan/domain/ramadan.dart';
 import '../../today/application/today_providers.dart';
@@ -398,13 +400,33 @@ class _ToolTiles extends ConsumerWidget {
           ),
         );
 
-    return Row(
+    final (habitsDone, habitsTotal) = ref.watch(habitsTodayProvider);
+    return Column(
       children: [
-        tile(WaqtIcons.book, l.toolsAdhkar, adhkarSub, () => context.push(Routes.adhkar(adhkarSet.name))),
-        const SizedBox(width: 10),
-        tile(WaqtIcons.calendar, l.toolsCalendar, l.dayMonthHijri(h.day, h.month), () => context.push(Routes.calendar)),
-        const SizedBox(width: 10),
-        tile(WaqtIcons.moon, l.toolsRamadan, ramadanSub, () => context.push(Routes.ramadan), brass: true),
+        Row(
+          children: [
+            tile(WaqtIcons.book, l.toolsAdhkar, adhkarSub, () => context.push(Routes.adhkar(adhkarSet.name))),
+            const SizedBox(width: 10),
+            tile(WaqtIcons.calendar, l.toolsCalendar, l.dayMonthHijri(h.day, h.month), () => context.push(Routes.calendar)),
+            const SizedBox(width: 10),
+            tile(WaqtIcons.moon, l.toolsRamadan, ramadanSub, () => context.push(Routes.ramadan), brass: true),
+          ],
+        ),
+        const SizedBox(height: 10),
+        Row(
+          children: [
+            tile(WaqtIcons.calculator, l.zakatShort, l.zakatNisab, () => context.push(Routes.zakat)),
+            const SizedBox(width: 10),
+            tile(WaqtIcons.table, l.timetableShort, l.monthName(monthKey(day)), () => context.push(Routes.timetable)),
+            const SizedBox(width: 10),
+            tile(
+              WaqtIcons.sparkles,
+              l.habitsTitle,
+              habitsTotal == 0 ? l.habitsAdd : l.habitsDoneToday('$habitsDone', '$habitsTotal'),
+              () => context.push(Routes.habits),
+            ),
+          ],
+        ),
       ],
     );
   }

@@ -1777,6 +1777,300 @@ class AppLocalizationsTr extends AppLocalizations {
   String get hifzMemorized => 'Ezberlendi';
 
   @override
+  String get libraryHadith => 'Hadis külliyatı';
+
+  @override
+  String get libraryDuas => 'Dualar';
+
+  @override
+  String get libraryDuasSub => 'Günün her anı için';
+
+  @override
+  String get libraryNames => 'Allah’ın 99 ismi';
+
+  @override
+  String get libraryNamesSub => 'Esmâ-ül Hüsnâ';
+
+  @override
+  String get libraryLearn => 'Öğren';
+
+  @override
+  String get libraryLearnSub => 'Namaz, abdest, oruç ve daha fazlası';
+
+  @override
+  String get libraryAdhkar => 'Sabah ve akşam zikirleri';
+
+  @override
+  String get librarySaved => 'Kaydedilenler';
+
+  @override
+  String get librarySavedEmpty =>
+      'Bir hadisi, duayı veya ismi kaydedin; burada görünür.';
+
+  @override
+  String get libraryContentReview =>
+      'Metinler klasik kaynaklardan derlenmiştir. Şüphe durumunda bir âlime danışın.';
+
+  @override
+  String get hadithTitle => 'Hadis';
+
+  @override
+  String get hadithOfDay => 'Günün hadisi';
+
+  @override
+  String get hadithBookNawawi => 'Nevevî’nin 40 Hadisi';
+
+  @override
+  String get hadithBookQudsi => '40 Kudsî Hadis';
+
+  @override
+  String get hadithBookBukhari => 'Sahîh-i Buhârî';
+
+  @override
+  String get hadithBookMuslim => 'Sahîh-i Müslim';
+
+  @override
+  String hadithCount(int count) {
+    return '$count hadis';
+  }
+
+  @override
+  String hadithN(String n) {
+    return 'Hadis $n';
+  }
+
+  @override
+  String get hadithBooks => 'Kitaplar';
+
+  @override
+  String get hadithSearchHint => 'Kelime veya numara arayın';
+
+  @override
+  String get hadithShowArabic => 'Arapça metni göster';
+
+  @override
+  String get hadithTranslation => 'Tercüme';
+
+  @override
+  String get hadithNoResults => 'Hadis bulunamadı.';
+
+  @override
+  String get hadithFallback =>
+      'Dilinizde mevcut değil — İngilizce gösteriliyor.';
+
+  @override
+  String hadithRange(String from, String to) {
+    return 'Hadis $from–$to';
+  }
+
+  @override
+  String get hadithOpenBook => 'Külliyatı oku';
+
+  @override
+  String get langEnglish => 'İngilizce';
+
+  @override
+  String get langRussian => 'Rusça';
+
+  @override
+  String get langTurkish => 'Türkçe';
+
+  @override
+  String get duaSearchHint => 'Dua ara';
+
+  @override
+  String duaRepeat(String count) {
+    return '$count kez';
+  }
+
+  @override
+  String get duaAll => 'Tümü';
+
+  @override
+  String get duaFavorites => 'Favoriler';
+
+  @override
+  String get namesQuiz => 'Alıştırma';
+
+  @override
+  String get namesQuizQuestion => 'Bu isim ne anlama gelir?';
+
+  @override
+  String namesQuizScore(String right, String total) {
+    return '$total sorudan $right doğru';
+  }
+
+  @override
+  String get namesQuizNext => 'Sonraki';
+
+  @override
+  String get namesQuizAgain => 'Tekrar alıştırma';
+
+  @override
+  String namesLearned(String count) {
+    return '99’dan $count öğrenildi';
+  }
+
+  @override
+  String get namesHadith =>
+      '“Allah’ın doksan dokuz ismi vardır; onları ezberleyen cennete girer.” — Buhârî ve Müslim';
+
+  @override
+  String learnSteps(int count) {
+    return '$count adım';
+  }
+
+  @override
+  String learnStepN(String n) {
+    return 'Adım $n';
+  }
+
+  @override
+  String get zakatTitle => 'Zekât hesaplayıcı';
+
+  @override
+  String get zakatShort => 'Zekât';
+
+  @override
+  String get zakatDue => 'Ödenecek zekât';
+
+  @override
+  String get zakatAbove => 'Nisabın üzerinde — %2,5 ödenir.';
+
+  @override
+  String get zakatBelow => 'Nisabın altında — zekât gerekmez.';
+
+  @override
+  String get zakatNeedPrice =>
+      'Nisabı bulmak için bugünkü altın veya gümüş fiyatını girin.';
+
+  @override
+  String get zakatWealth => 'Zekâta tabi servet';
+
+  @override
+  String get zakatNisab => 'Nisap';
+
+  @override
+  String get zakatNisabBasis => 'Nisap ölçüsü';
+
+  @override
+  String get zakatNisabGold => 'Altın · 85 g';
+
+  @override
+  String get zakatNisabSilver => 'Gümüş · 595 g';
+
+  @override
+  String get zakatPriceHint =>
+      'Waqt internete bağlanmaz — gram başına bugünkü yerel fiyatı yazın.';
+
+  @override
+  String get zakatGoldPrice => 'Altın fiyatı';
+
+  @override
+  String get zakatSilverPrice => 'Gümüş fiyatı';
+
+  @override
+  String get zakatPerGram => 'gram başına';
+
+  @override
+  String get zakatGrams => 'g';
+
+  @override
+  String get zakatAssets => 'Varlıklarınız';
+
+  @override
+  String get zakatLiabilities => 'Şu anki borçlarınız';
+
+  @override
+  String get zakatCash => 'Nakit ve banka';
+
+  @override
+  String get zakatGold => 'Altın';
+
+  @override
+  String get zakatSilver => 'Gümüş';
+
+  @override
+  String get zakatInvestments => 'Hisse ve yatırımlar';
+
+  @override
+  String get zakatBusiness => 'Ticari mallar';
+
+  @override
+  String get zakatReceivables => 'Size olan alacaklar';
+
+  @override
+  String get zakatDebts => 'Vadesi gelen borçlar';
+
+  @override
+  String get zakatRecord => 'Sadaka harcaması olarak kaydet';
+
+  @override
+  String get zakatRecorded => 'Harcamalara kaydedildi';
+
+  @override
+  String get zakatNote =>
+      'Zekât, bir kamerî yıl elde tutulan ve nisabı aşan servetin %2,5’idir. Ev, araba ve kişisel eşyalar sayılmaz. Durumunuz için bir âlime danışın.';
+
+  @override
+  String get timetableTitle => 'Namaz vakitleri çizelgesi';
+
+  @override
+  String get timetableShort => 'Çizelge';
+
+  @override
+  String get timetableNote =>
+      'Vakitler yönteminize, ikindi ayarınıza ve cami düzeltmelerine göredir. Cumalar vurgulanır.';
+
+  @override
+  String get habitsTitle => 'Alışkanlıklar';
+
+  @override
+  String get habitsAdd => 'Yeni alışkanlık';
+
+  @override
+  String get habitsNameHint => 'örn. Kur’an’dan bir sayfa oku';
+
+  @override
+  String get habitsEmpty =>
+      'Küçük günlük alışkanlıklar birikir. Sürdürmek istediğiniz birini ekleyin.';
+
+  @override
+  String habitsDoneToday(String done, String total) {
+    return 'Bugün $total’dan $done';
+  }
+
+  @override
+  String get habitsSuggestions => 'Fikirler';
+
+  @override
+  String get habitSugQuran => 'Kur’an’dan bir sayfa oku';
+
+  @override
+  String get habitSugDhikr => '100× Sübhanallah';
+
+  @override
+  String get habitSugWater => '8 bardak su iç';
+
+  @override
+  String get habitSugWalk => '20 dakika yürüyüş';
+
+  @override
+  String get habitSugSadaqa => 'Biraz sadaka ver';
+
+  @override
+  String get habitSugParents => 'Anne babamı ara';
+
+  @override
+  String get habitSugGratitude => 'Şükrettiğim 3 şeyi yaz';
+
+  @override
+  String get habitSugRead => 'Kitaptan 10 sayfa oku';
+
+  @override
+  String get habitSugSleep => '23:00’ten önce uyu';
+
+  @override
   String get shareThemeEmerald => 'Zümrüt';
 
   @override
