@@ -239,6 +239,25 @@ class _QuranReaderScreenState extends ConsumerState<QuranReaderScreen> {
       body: Stack(
         children: [
           Positioned.fill(child: body),
+          // Soft fade so text scrolling under the floating bar stays calm.
+          Positioned(
+            left: 0,
+            right: 0,
+            top: 0,
+            height: top + barHeight + 18,
+            child: IgnorePointer(
+              child: DecoratedBox(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [palette.bg, palette.bg.withValues(alpha: 0.85), palette.bg.withValues(alpha: 0)],
+                    stops: const [0, 0.6, 1],
+                  ),
+                ),
+              ),
+            ),
+          ),
           Positioned(
             left: 0,
             right: 0,

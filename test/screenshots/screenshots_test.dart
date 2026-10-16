@@ -28,6 +28,7 @@ import 'package:waqt/data/settings/app_settings.dart';
 import 'package:waqt/features/adhkar/application/adhkar_providers.dart';
 import 'package:waqt/features/hadith/application/hadith_providers.dart';
 import 'package:waqt/features/quran/application/quran_providers.dart';
+import 'package:waqt/features/quran/domain/quran.dart';
 
 import '../helpers/test_app.dart';
 
@@ -232,6 +233,38 @@ void main() {
     );
     await shoot(t, 'timetable', location: '/tools/timetable');
     await shoot(t, 'habits_empty', location: '/today/habits');
+  }, skip: !_enabled);
+
+  testWidgets('review set', (t) async {
+    const tk = AppSettings(onboardingDone: true, language: 'tk', quranLastRead: 261);
+    const ru = AppSettings(onboardingDone: true, language: 'ru', quranLastRead: 261);
+    await shoot(t, 'review_home_tk', settings: tk, height: 1800);
+    await shoot(t, 'review_quran_ru', settings: ru, location: '/quran', height: 1300);
+    await shoot(t, 'review_reader_ru', settings: ru, location: '/read?i=261');
+    await shoot(t, 'review_tools_tk', settings: tk, location: '/tools', height: 1300);
+    await shoot(t, 'review_reader_settings', location: '/read?i=261', act: (t) async {
+      await t.tap(find.text('Aa'));
+    });
+    await shoot(t, 'review_ayah_actions', location: '/read?i=261', act: (t) async {
+      await t.longPress(find.textContaining('Allah - there is no deity'));
+    });
+    await shoot(
+      t,
+      'review_khatm_active',
+      location: '/quran/khatm',
+      settings: const AppSettings(onboardingDone: true, khatmPlan: KhatmPlan(start: '2026-09-28', days: 30)),
+      height: 1300,
+    );
+    await shoot(t, 'review_share_sheet', location: '/read?i=261', act: (t) async {
+      await t.longPress(find.textContaining('Allah - there is no deity'));
+      await t.pumpAndSettle();
+      await t.tap(find.text('Share as image'));
+    });
+    await shoot(t, 'review_habit_editor', location: '/today/habits', act: (t) async {
+      await t.tap(find.bySemanticsLabel('New habit').first);
+    });
+    await shoot(t, 'review_settings_full', location: '/me/settings', height: 2600);
+    await shoot(t, 'review_backup', location: '/me/settings/backup');
   }, skip: !_enabled);
 
   testWidgets('expense sheet', (t) async {

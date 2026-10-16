@@ -32,6 +32,7 @@ const Map<String, List<String>> s2 = {
   'quranBookmark': ['Bookmark', 'Belle', 'Yer imi ekle', 'В закладки'],
   'quranRemoveBookmark': ['Remove bookmark', 'Belligi aýyr', 'Yer imini kaldır', 'Убрать закладку'],
   'quranBookmarked': ['Saved to bookmarks', 'Belliklere goşuldy', 'Yer imlerine eklendi', 'Добавлено в закладки'],
+  'moreActions': ['More', 'Başgalar', 'Daha fazla', 'Ещё'],
   'copy': ['Copy', 'Göçür', 'Kopyala', 'Копировать'],
   'copied': ['Copied', 'Göçürildi', 'Kopyalandı', 'Скопировано'],
   'shareImage': ['Share as image', 'Surat edip paýlaş', 'Görsel olarak paylaş', 'Поделиться картинкой'],
@@ -185,6 +186,11 @@ const Map<String, List<String>> s2 = {
   'meQuranStreak': ['Quran streak', 'Kuran yzygiderliligi', 'Kur’an serisi', 'Серия чтения Корана'],
   'meQuranDaily': ['reading every day', 'her gün okamak', 'her gün okuma', 'чтение каждый день'],
   'meAyahsRead': ['Ayahs read', 'Okalan aýatlar', 'Okunan ayetler', 'Прочитано аятов'],
+
+  'notifTestTitle': ['Send a test alert', 'Synag duýduryşyny iber', 'Test bildirimi gönder', 'Отправить тестовое уведомление'],
+  'notifTestSub': ['Arrives in 5 seconds — lock your phone to check sound and banner.', '5 sekuntdan geler — sesi barlamak üçin telefony gulplaň.', '5 saniye içinde gelir — sesi kontrol etmek için telefonu kilitleyin.', 'Придёт через 5 секунд — заблокируйте телефон, чтобы проверить звук.'],
+  'notifTestBody': ['If you can see and hear this, prayer alerts will work.', 'Muny görýän we eşidýän bolsaňyz, namaz duýduryşlary işlär.', 'Bunu görüp duyuyorsanız namaz bildirimleri çalışacaktır.', 'Если вы видите и слышите это, напоминания о намазе работают.'],
+  'notifTestSent': ['Test alert on its way…', 'Synag duýduryşy ýolda…', 'Test bildirimi yolda…', 'Тестовое уведомление в пути…'],
 
   // ---------------------------------------------------------------- backup
   'backupTitle': ['Backup & restore', 'Ätiýaçlyk we dikeltmek', 'Yedekle ve geri yükle', 'Резервная копия'],

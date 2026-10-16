@@ -1518,6 +1518,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get quranBookmarked => 'Saved to bookmarks';
 
   @override
+  String get moreActions => 'More';
+
+  @override
   String get copy => 'Copy';
 
   @override
@@ -1988,6 +1991,20 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get meAyahsRead => 'Ayahs read';
+
+  @override
+  String get notifTestTitle => 'Send a test alert';
+
+  @override
+  String get notifTestSub =>
+      'Arrives in 5 seconds — lock your phone to check sound and banner.';
+
+  @override
+  String get notifTestBody =>
+      'If you can see and hear this, prayer alerts will work.';
+
+  @override
+  String get notifTestSent => 'Test alert on its way…';
 
   @override
   String get backupTitle => 'Backup & restore';

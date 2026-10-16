@@ -172,6 +172,21 @@ class SettingsScreen extends ConsumerWidget {
               value: s.adhkarReminders,
               onChanged: ctl.setAdhkarReminders,
             ),
+            ToggleRow(
+              title: l.khatmReminder,
+              value: s.quranReminder,
+              onChanged: ctl.setQuranReminder,
+            ),
+            WaqtRow(
+              title: l.notifTestTitle,
+              subtitle: l.notifTestSub,
+              onTap: () async {
+                await ref.read(notificationServiceProvider).sendTest(s.alertFor(Prayer.dhuhr), l10n: l);
+                if (context.mounted) {
+                  ScaffoldMessenger.maybeOf(context)?.showSnackBar(SnackBar(content: Text(l.notifTestSent)));
+                }
+              },
+            ),
           ]),
           header(l.secGeneral),
           group([

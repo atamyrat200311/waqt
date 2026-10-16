@@ -1533,6 +1533,9 @@ class AppLocalizationsRu extends AppLocalizations {
   String get quranBookmarked => 'Добавлено в закладки';
 
   @override
+  String get moreActions => 'Ещё';
+
+  @override
   String get copy => 'Копировать';
 
   @override
@@ -2008,6 +2011,20 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get meAyahsRead => 'Прочитано аятов';
+
+  @override
+  String get notifTestTitle => 'Отправить тестовое уведомление';
+
+  @override
+  String get notifTestSub =>
+      'Придёт через 5 секунд — заблокируйте телефон, чтобы проверить звук.';
+
+  @override
+  String get notifTestBody =>
+      'Если вы видите и слышите это, напоминания о намазе работают.';
+
+  @override
+  String get notifTestSent => 'Тестовое уведомление в пути…';
 
   @override
   String get backupTitle => 'Резервная копия';

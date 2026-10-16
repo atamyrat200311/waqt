@@ -1495,6 +1495,9 @@ class AppLocalizationsTr extends AppLocalizations {
   String get quranBookmarked => 'Yer imlerine eklendi';
 
   @override
+  String get moreActions => 'Daha fazla';
+
+  @override
   String get copy => 'Kopyala';
 
   @override
@@ -1933,6 +1936,20 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get meAyahsRead => 'Okunan ayetler';
+
+  @override
+  String get notifTestTitle => 'Test bildirimi gönder';
+
+  @override
+  String get notifTestSub =>
+      '5 saniye içinde gelir — sesi kontrol etmek için telefonu kilitleyin.';
+
+  @override
+  String get notifTestBody =>
+      'Bunu görüp duyuyorsanız namaz bildirimleri çalışacaktır.';
+
+  @override
+  String get notifTestSent => 'Test bildirimi yolda…';
 
   @override
   String get backupTitle => 'Yedekle ve geri yükle';

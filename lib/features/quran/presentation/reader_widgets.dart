@@ -242,7 +242,7 @@ class AyahTile extends StatelessWidget {
                   if (bookmarked) WaqtIcon(WaqtIcons.bookmarkFilled, size: 18, color: p.brass),
                   Semantics(
                     button: true,
-                    label: l.share,
+                    label: l.moreActions,
                     excludeSemantics: true,
                     child: InkResponse(
                       onTap: onMore,

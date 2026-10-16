@@ -1494,6 +1494,9 @@ class AppLocalizationsTk extends AppLocalizations {
   String get quranBookmarked => 'Belliklere goşuldy';
 
   @override
+  String get moreActions => 'Başgalar';
+
+  @override
   String get copy => 'Göçür';
 
   @override
@@ -1930,6 +1933,20 @@ class AppLocalizationsTk extends AppLocalizations {
 
   @override
   String get meAyahsRead => 'Okalan aýatlar';
+
+  @override
+  String get notifTestTitle => 'Synag duýduryşyny iber';
+
+  @override
+  String get notifTestSub =>
+      '5 sekuntdan geler — sesi barlamak üçin telefony gulplaň.';
+
+  @override
+  String get notifTestBody =>
+      'Muny görýän we eşidýän bolsaňyz, namaz duýduryşlary işlär.';
+
+  @override
+  String get notifTestSent => 'Synag duýduryşy ýolda…';
 
   @override
   String get backupTitle => 'Ätiýaçlyk we dikeltmek';

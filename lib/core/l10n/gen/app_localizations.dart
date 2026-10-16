@@ -2424,6 +2424,12 @@ abstract class AppLocalizations {
   /// **'Saved to bookmarks'**
   String get quranBookmarked;
 
+  /// No description provided for @moreActions.
+  ///
+  /// In en, this message translates to:
+  /// **'More'**
+  String get moreActions;
+
   /// No description provided for @copy.
   ///
   /// In en, this message translates to:
@@ -3173,6 +3179,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Ayahs read'**
   String get meAyahsRead;
+
+  /// No description provided for @notifTestTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Send a test alert'**
+  String get notifTestTitle;
+
+  /// No description provided for @notifTestSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Arrives in 5 seconds — lock your phone to check sound and banner.'**
+  String get notifTestSub;
+
+  /// No description provided for @notifTestBody.
+  ///
+  /// In en, this message translates to:
+  /// **'If you can see and hear this, prayer alerts will work.'**
+  String get notifTestBody;
+
+  /// No description provided for @notifTestSent.
+  ///
+  /// In en, this message translates to:
+  /// **'Test alert on its way…'**
+  String get notifTestSent;
 
   /// No description provided for @backupTitle.
   ///
