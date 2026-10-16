@@ -211,6 +211,17 @@ adhkar reminders, suhoor/iftar reminders.
       tk strings prefixed "?" in the JSON are flagged for review) and the Turkmen surah meanings in
       `lib/features/quran/domain/surah_names.dart`.
 - [ ] Translate hadith chapter (section) names (English only today) if desired.
+- [ ] Content agent's verification list (duas/guides): sources from Abu Dawud/Tirmidhi/Ibn Majah/
+      Nasa'i were written from memory of Ḥiṣn al-Muslim (enter/leave home, toilet, dressing, after
+      eating, istiftah, between prostrations, debt, healing ×7, protection ×3, Laylat al-Qadr,
+      farewell, newlyweds, iftar…); `enter_home` (Abu Dawud 5096) is graded weak by some;
+      `enter_town` source numbers; `new_moon` wording (Tirmidhi 3451); Sayyid al-Istighfar follows
+      Bukhari 6306 while `assets/adhkar/adhkar.json` m07 omits "laka" (Ḥiṣn wording) — align one way;
+      Al-Ahad at no. 67 in names.json follows the popular list; Hanafi fiqh points in the guides
+      (wudu, ghusl, Ramadan intention, silver nisab, fidya) need an imam's check. Quranic and
+      Bukhari/Muslim texts were cross-checked against the bundled data.
+- [ ] Hadith numbering in dua `source` fields uses sunnah.com numbering; the bundled hadith files
+      number differently (e.g. istikhara Bukhari 1162 vs 1166) — don't deep-link by number.
 - [ ] Android: `flutter build apk` after the super-app release (new plugins: share_plus, wakelock_plus,
       file_picker) — dl.google.com was still blocked in this environment.
 
@@ -343,7 +354,31 @@ share as text), habits (`/today/habits`, also on Today). Backup/restore:
 `data/backup/backup_service.dart` (JSON of settings + all tables, single-transaction restore),
 screen at `/me/settings/backup`. Settings has "Send a test alert".
 
-Share cards: `showShareCardSheet(context, ShareCardData(...))` — 3 themes, PNG via share_plus.
+Share cards: `showShareCardSheet(context, ShareCardData(...))` — 3 themes, PNG via share_plus;
+texts over ~280 chars switch to a 9:16 story card; `credit` shows the translator.
+
+Review-round decisions (multi-agent UX review, phase 10):
+- Quran text: the build tool joins KFGQPC "open tanween + space + alif" splits and drops RLM
+  marks (`_fixUthmani`); Arabic search uses `assets/quran/ar_search.json.gz` (Tanzil simple text,
+  basmala prefixes stripped) — never the Uthmani text.
+- Khatm is measured in **pages** (`ayahPageWeights`, 1/ayahs-on-page, sums to 604) and counts only
+  ayahs read for the first time since the plan began (`watchFirstReadOn`). Continue = first unread.
+- Last read moves only when the reader was opened at the saved position (or none saved) or after
+  ≥ 3 ayahs were recorded; "Mark as where I stopped" pins it for the session.
+- Read dwell ≈ 0.3 s/word (2–25 s), only below the toolbar, never hidden memorize ayahs; Mushaf
+  pages 0.25 s/word (15–60 s). Single tap on an ayah does nothing (long-press / ••• for actions).
+- Colors: brass only for checks/streaks/progress/sadaqa; `danger`/`dangerSoft` for delete and wrong
+  answers; `onHeroAccent` for accent text on emerald; `track` for ring/bar tracks.
+- `WaqtType.sans(..., tabular: true)` only for times/amounts that update in place.
+- Text scale cap 1.6×; tab bars and the reader bar clamp to 1.2×, the hero to 1.25×.
+- Tools = utilities (Qibla, Tasbih, Calendar, Ramadan, Zakat, Timetable). Adhkar lives in Today
+  (up next) + Library; habits in Today (+ `/today/habits`).
+- "Silent" alert renamed "Sound" (it plays the default sound). Turkmen dates use `tkOrdinal`.
+- Surah names: `SurahInfo.translit` is localized (ru Cyrillic, tk Turkmen) via the static
+  `SurahInfo.language` set in `WaqtApp.build`; `.latin` is the Latin form.
+- Ramadan 30 (`features/ramadan/application/ramadan_challenge.dart`): fast, all prayers, ≥ 10 ayahs
+  (or khatm portion), adhkar, sadaqa; "full days" = fast + prayers + Quran.
+- Fasting qada: `FastType.qada`; owed = missed/excused Ramadan days − make-up fasts.
 
 Screenshots: `WAQT_SCREENSHOTS=1 flutter test test/screenshots` (now incl. `full_*` long
 pages and a `review_*` set in tk/ru). `shoot(..., height:, preload:)` helpers.
@@ -359,3 +394,4 @@ pages and a `review_*` set in tk/ru). `shoot(..., height:, preload:)` helpers.
 - [x] 7. Me (stats), Settings, Onboarding
 - [x] 8. Widgets (iOS + Android) + polish — code written; Android/iOS builds not run here (see TODOs)
 - [x] 9. Super app: fonts, 5 tabs + liquid glass, Quran, hadith, library, zakat, timetable, habits, backup
+- [x] 10. Multi-agent UX review (everyday user, Quran reader, designer) and fixes; Ramadan 30; fasting qada

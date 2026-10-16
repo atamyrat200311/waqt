@@ -239,7 +239,7 @@ void main() {
     await shoot(t, 'quran_reader_hifz', location: '/read?i=6221&hifz=112');
     await shoot(t, 'quran_khatm_setup', location: '/quran/khatm');
     await shoot(t, 'quran_hifz', location: '/quran/memorize');
-    await shoot(t, 'quran_search', location: '/quran/search', act: (t) async {
+    await shoot(t, 'quran_search', location: '/quran/search', preload: (c) => c.read(quranSearchIndexProvider.future), act: (t) async {
       await t.enterText(find.byType(TextField), 'mercy');
       await t.pump(const Duration(milliseconds: 400));
       await t.runAsync(() => Future<void>.delayed(const Duration(seconds: 2)));
