@@ -3222,6 +3222,78 @@ abstract class AppLocalizations {
   /// **'reading every day'**
   String get meQuranDaily;
 
+  /// No description provided for @mePrayedToday.
+  ///
+  /// In en, this message translates to:
+  /// **'prayed today'**
+  String get mePrayedToday;
+
+  /// No description provided for @meStartStreak.
+  ///
+  /// In en, this message translates to:
+  /// **'Pray all five today to start your streak'**
+  String get meStartStreak;
+
+  /// No description provided for @meStreakShare.
+  ///
+  /// In en, this message translates to:
+  /// **'Five prayers a day, with Waqt'**
+  String get meStreakShare;
+
+  /// No description provided for @meSettingsRow.
+  ///
+  /// In en, this message translates to:
+  /// **'Settings'**
+  String get meSettingsRow;
+
+  /// No description provided for @habitsEmptyShort.
+  ///
+  /// In en, this message translates to:
+  /// **'Build a small daily habit'**
+  String get habitsEmptyShort;
+
+  /// No description provided for @homeAddExpenseShort.
+  ///
+  /// In en, this message translates to:
+  /// **'Expense'**
+  String get homeAddExpenseShort;
+
+  /// No description provided for @qadaMadeUpSnack.
+  ///
+  /// In en, this message translates to:
+  /// **'{prayer}: one made up'**
+  String qadaMadeUpSnack(String prayer);
+
+  /// No description provided for @qadaYearsHelper.
+  ///
+  /// In en, this message translates to:
+  /// **'I missed about…'**
+  String get qadaYearsHelper;
+
+  /// No description provided for @qadaMonths.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, one{{count} month} other{{count} months}}'**
+  String qadaMonths(int count);
+
+  /// No description provided for @qadaYears.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, one{{count} year} other{{count} years}}'**
+  String qadaYears(int count);
+
+  /// No description provided for @expensesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Spending'**
+  String get expensesTitle;
+
+  /// No description provided for @expensesEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No spending recorded this month.'**
+  String get expensesEmpty;
+
   /// No description provided for @meAyahsRead.
   ///
   /// In en, this message translates to:
@@ -3329,6 +3401,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Restored. Welcome back!'**
   String get backupRestored;
+
+  /// No description provided for @backupNever.
+  ///
+  /// In en, this message translates to:
+  /// **'No backup yet'**
+  String get backupNever;
+
+  /// No description provided for @backupLast.
+  ///
+  /// In en, this message translates to:
+  /// **'Last backup: {date}'**
+  String backupLast(String date);
 
   /// No description provided for @backupInvalid.
   ///
@@ -3611,6 +3695,66 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Sleep before 23:00'**
   String get habitSugSleep;
+
+  /// No description provided for @obGetStarted.
+  ///
+  /// In en, this message translates to:
+  /// **'Get started'**
+  String get obGetStarted;
+
+  /// No description provided for @obTagline.
+  ///
+  /// In en, this message translates to:
+  /// **'Your day, around the five prayers.'**
+  String get obTagline;
+
+  /// No description provided for @obValuePrayer.
+  ///
+  /// In en, this message translates to:
+  /// **'Prayer times that just work'**
+  String get obValuePrayer;
+
+  /// No description provided for @obValuePrayerSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Alerts, qibla, tracking and gentle qada help.'**
+  String get obValuePrayerSub;
+
+  /// No description provided for @obValueQuran.
+  ///
+  /// In en, this message translates to:
+  /// **'Quran & hadith, offline'**
+  String get obValueQuran;
+
+  /// No description provided for @obValueQuranSub.
+  ///
+  /// In en, this message translates to:
+  /// **'8 translations, khatm planner, memorization, duas.'**
+  String get obValueQuranSub;
+
+  /// No description provided for @obValueDay.
+  ///
+  /// In en, this message translates to:
+  /// **'Plan your whole day'**
+  String get obValueDay;
+
+  /// No description provided for @obValueDaySub.
+  ///
+  /// In en, this message translates to:
+  /// **'Tasks by prayer time, spending, habits and streaks.'**
+  String get obValueDaySub;
+
+  /// No description provided for @obValuePrivate.
+  ///
+  /// In en, this message translates to:
+  /// **'Private by design'**
+  String get obValuePrivate;
+
+  /// No description provided for @obValuePrivateSub.
+  ///
+  /// In en, this message translates to:
+  /// **'No account, no ads, no tracking. Works offline.'**
+  String get obValuePrivateSub;
 
   /// No description provided for @shareThemeEmerald.
   ///

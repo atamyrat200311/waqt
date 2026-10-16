@@ -9,8 +9,7 @@ import '../../quran/domain/quran.dart' show normalizeArabic, normalizeLatin;
 @immutable
 class Loc {
   const Loc(this.values);
-  factory Loc.fromJson(Object? j) =>
-      Loc(j is Map ? {for (final e in j.entries) '${e.key}': '${e.value}'} : const {});
+  factory Loc.fromJson(Object? j) => Loc(j is Map ? {for (final e in j.entries) '${e.key}': '${e.value}'} : const {});
 
   final Map<String, String> values;
 
@@ -110,15 +109,15 @@ class AllahName {
   final Loc note;
 
   static List<AllahName> listFromJson(String raw) => [
-        for (final n in (jsonDecode(raw) as List).cast<Map<String, Object?>>())
-          AllahName(
-            (n['n']! as num).toInt(),
-            n['ar']! as String,
-            n['translit']! as String,
-            Loc.fromJson(n['meaning']),
-            Loc.fromJson(n['note']),
-          ),
-      ];
+    for (final n in (jsonDecode(raw) as List).cast<Map<String, Object?>>())
+      AllahName(
+        (n['n']! as num).toInt(),
+        n['ar']! as String,
+        n['translit']! as String,
+        Loc.fromJson(n['meaning']),
+        Loc.fromJson(n['note']),
+      ),
+  ];
 }
 
 @immutable
@@ -151,25 +150,25 @@ class Guide {
   final Loc note;
 
   static List<Guide> listFromJson(String raw) => [
-        for (final g in (jsonDecode(raw) as List).cast<Map<String, Object?>>())
-          Guide(
-            id: g['id']! as String,
-            icon: g['icon'] as String? ?? 'book',
-            title: Loc.fromJson(g['title']),
-            subtitle: Loc.fromJson(g['subtitle']),
-            intro: Loc.fromJson(g['intro']),
-            note: Loc.fromJson(g['note']),
-            steps: [
-              for (final s in (g['steps'] as List? ?? const []).cast<Map<String, Object?>>())
-                GuideStep(
-                  Loc.fromJson(s['title']),
-                  Loc.fromJson(s['text']),
-                  (s['ar'] as String?)?.trim().isEmpty ?? true ? null : s['ar'] as String,
-                  (s['translit'] as String?)?.trim().isEmpty ?? true ? null : s['translit'] as String,
-                ),
-            ],
-          ),
-      ];
+    for (final g in (jsonDecode(raw) as List).cast<Map<String, Object?>>())
+      Guide(
+        id: g['id']! as String,
+        icon: g['icon'] as String? ?? 'book',
+        title: Loc.fromJson(g['title']),
+        subtitle: Loc.fromJson(g['subtitle']),
+        intro: Loc.fromJson(g['intro']),
+        note: Loc.fromJson(g['note']),
+        steps: [
+          for (final s in (g['steps'] as List? ?? const []).cast<Map<String, Object?>>())
+            GuideStep(
+              Loc.fromJson(s['title']),
+              Loc.fromJson(s['text']),
+              (s['ar'] as String?)?.trim().isEmpty ?? true ? null : s['ar'] as String,
+              (s['translit'] as String?)?.trim().isEmpty ?? true ? null : s['translit'] as String,
+            ),
+        ],
+      ),
+  ];
 }
 
 /// Multiple-choice question for the Names practice: the right meaning plus

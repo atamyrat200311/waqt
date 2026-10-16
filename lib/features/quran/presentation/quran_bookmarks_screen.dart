@@ -52,7 +52,7 @@ class QuranBookmarksScreen extends ConsumerWidget {
                       color: c.brassSoft,
                       borderRadius: BorderRadius.circular(Radii.card(context)),
                     ),
-                    child: WaqtIcon(WaqtIcons.trash, color: c.brassText),
+                    child: WaqtIcon(WaqtIcons.trash, color: c.danger),
                   ),
                   confirmDismiss: (_) async {
                     if (b.note == null) return true;
@@ -107,7 +107,7 @@ class QuranBookmarksScreen extends ConsumerWidget {
                           const SizedBox(height: 10),
                           Container(
                             padding: const EdgeInsets.all(10),
-                            decoration: BoxDecoration(color: c.brassSoft, borderRadius: BorderRadius.circular(12)),
+                            decoration: BoxDecoration(color: c.dangerSoft, borderRadius: BorderRadius.circular(12)),
                             child: Text(b.note!, style: WaqtType.sans(14, color: c.brassText, height: 1.4)),
                           ),
                         ],

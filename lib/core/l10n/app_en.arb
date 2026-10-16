@@ -1394,6 +1394,39 @@
   },
   "meQuranStreak": "Quran streak",
   "meQuranDaily": "reading every day",
+  "mePrayedToday": "prayed today",
+  "meStartStreak": "Pray all five today to start your streak",
+  "meStreakShare": "Five prayers a day, with Waqt",
+  "meSettingsRow": "Settings",
+  "habitsEmptyShort": "Build a small daily habit",
+  "homeAddExpenseShort": "Expense",
+  "qadaMadeUpSnack": "{prayer}: one made up",
+  "@qadaMadeUpSnack": {
+    "placeholders": {
+      "prayer": {
+        "type": "String"
+      }
+    }
+  },
+  "qadaYearsHelper": "I missed about…",
+  "qadaMonths": "{count, plural, one{{count} month} other{{count} months}}",
+  "@qadaMonths": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "qadaYears": "{count, plural, one{{count} year} other{{count} years}}",
+  "@qadaYears": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "expensesTitle": "Spending",
+  "expensesEmpty": "No spending recorded this month.",
   "meAyahsRead": "Ayahs read",
   "notifTestTitle": "Send a test alert",
   "notifTestSub": "Arrives in 5 seconds — lock your phone to check sound and banner.",
@@ -1419,6 +1452,15 @@
   "backupRestoreTitle": "Replace all data?",
   "backupRestoreBody": "Everything on this phone will be replaced by the backup.",
   "backupRestored": "Restored. Welcome back!",
+  "backupNever": "No backup yet",
+  "backupLast": "Last backup: {date}",
+  "@backupLast": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
   "backupInvalid": "This file isn’t a Waqt backup.",
   "zakatTitle": "Zakat calculator",
   "zakatShort": "Zakat",
@@ -1476,6 +1518,16 @@
   "habitSugGratitude": "Write 3 things I’m grateful for",
   "habitSugRead": "Read 10 pages of a book",
   "habitSugSleep": "Sleep before 23:00",
+  "obGetStarted": "Get started",
+  "obTagline": "Your day, around the five prayers.",
+  "obValuePrayer": "Prayer times that just work",
+  "obValuePrayerSub": "Alerts, qibla, tracking and gentle qada help.",
+  "obValueQuran": "Quran & hadith, offline",
+  "obValueQuranSub": "8 translations, khatm planner, memorization, duas.",
+  "obValueDay": "Plan your whole day",
+  "obValueDaySub": "Tasks by prayer time, spending, habits and streaks.",
+  "obValuePrivate": "Private by design",
+  "obValuePrivateSub": "No account, no ads, no tracking. Works offline.",
   "shareThemeEmerald": "Emerald",
   "shareThemePaper": "Paper",
   "shareThemeNight": "Night",

@@ -80,11 +80,20 @@ class NamesScreen extends ConsumerWidget {
                       child: Center(
                         child: FittedBox(
                           fit: BoxFit.scaleDown,
-                          child: Text(n.arabic, textDirection: TextDirection.rtl, style: WaqtType.arabic(32, height: 1.4, color: c.accent)),
+                          child: Text(
+                            n.arabic,
+                            textDirection: TextDirection.rtl,
+                            style: WaqtType.arabic(32, height: 1.4, color: c.accent),
+                          ),
                         ),
                       ),
                     ),
-                    Text(n.translit, maxLines: 1, overflow: TextOverflow.ellipsis, style: WaqtType.sans(14, weight: 600, color: c.ink)),
+                    Text(
+                      n.translit,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: WaqtType.sans(14, weight: 600, color: c.ink),
+                    ),
                     const SizedBox(height: 2),
                     Text(
                       n.meaning.of(lang),
@@ -124,13 +133,25 @@ class NamesScreen extends ConsumerWidget {
               children: [
                 StarBadge(label: '${n.number}', color: c.brass, textColor: c.brassText, size: 44),
                 const SizedBox(height: 8),
-                Text(n.arabic, textDirection: TextDirection.rtl, style: WaqtType.arabic(54, height: 1.4, color: c.accent)),
+                Text(
+                  n.arabic,
+                  textDirection: TextDirection.rtl,
+                  style: WaqtType.arabic(54, height: 1.4, color: c.accent),
+                ),
                 Text(n.translit, style: WaqtType.serif(26, weight: 500, color: c.ink)),
                 const SizedBox(height: 4),
-                Text(n.meaning.of(lang), textAlign: TextAlign.center, style: WaqtType.sans(17, weight: 600, color: c.muted)),
+                Text(
+                  n.meaning.of(lang),
+                  textAlign: TextAlign.center,
+                  style: WaqtType.sans(17, weight: 600, color: c.muted),
+                ),
                 if (!n.note.isEmpty) ...[
                   const SizedBox(height: 16),
-                  Text(n.note.of(lang), textAlign: TextAlign.center, style: WaqtType.serif(16, height: 1.55, color: c.ink)),
+                  Text(
+                    n.note.of(lang),
+                    textAlign: TextAlign.center,
+                    style: WaqtType.serif(16, height: 1.55, color: c.ink),
+                  ),
                 ],
                 const SizedBox(height: 20),
                 Row(
@@ -196,16 +217,16 @@ class _QuizState extends State<_Quiz> {
   }
 
   void _next() => setState(() {
-        _i++;
-        _picked = null;
-      });
+    _i++;
+    _picked = null;
+  });
 
   void _restart() => setState(() {
-        _questions = buildNameQuiz(widget.names);
-        _i = 0;
-        _right = 0;
-        _picked = null;
-      });
+    _questions = buildNameQuiz(widget.names);
+    _i = 0;
+    _right = 0;
+    _picked = null;
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -248,10 +269,23 @@ class _QuizState extends State<_Quiz> {
             ),
           ),
           const SizedBox(height: 18),
-          Text(l.namesQuizQuestion, textAlign: TextAlign.center, style: WaqtType.sans(15, color: c.muted)),
+          Text(
+            l.namesQuizQuestion,
+            textAlign: TextAlign.center,
+            style: WaqtType.sans(15, color: c.muted),
+          ),
           const SizedBox(height: 8),
-          Text(q.name.arabic, textAlign: TextAlign.center, textDirection: TextDirection.rtl, style: WaqtType.arabic(52, height: 1.4, color: c.accent)),
-          Text(q.name.translit, textAlign: TextAlign.center, style: WaqtType.serif(24, weight: 500, color: c.ink)),
+          Text(
+            q.name.arabic,
+            textAlign: TextAlign.center,
+            textDirection: TextDirection.rtl,
+            style: WaqtType.arabic(52, height: 1.4, color: c.accent),
+          ),
+          Text(
+            q.name.translit,
+            textAlign: TextAlign.center,
+            style: WaqtType.serif(24, weight: 500, color: c.ink),
+          ),
           const SizedBox(height: 20),
           for (var o = 0; o < q.options.length; o++) ...[
             _Option(
@@ -259,10 +293,10 @@ class _QuizState extends State<_Quiz> {
               state: _picked == null
                   ? _OptionState.idle
                   : o == q.answer
-                      ? _OptionState.right
-                      : o == _picked
-                          ? _OptionState.wrong
-                          : _OptionState.dim,
+                  ? _OptionState.right
+                  : o == _picked
+                  ? _OptionState.wrong
+                  : _OptionState.dim,
               onTap: () => _pick(o),
             ),
             const SizedBox(height: 8),
@@ -289,12 +323,15 @@ class _Option extends StatelessWidget {
     final (bg, fg, border) = switch (state) {
       _OptionState.idle => (c.card, c.ink, c.hairline),
       _OptionState.right => (c.mint, c.onMint, c.primary),
-      _OptionState.wrong => (c.brassSoft, c.brassText, c.brass),
+      _OptionState.wrong => (c.dangerSoft, c.danger, c.danger),
       _OptionState.dim => (c.card, c.muted, c.hairline),
     };
     return Material(
       color: bg,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16), side: BorderSide(color: border, width: state == _OptionState.idle ? 1 : 1.5)),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(16),
+        side: BorderSide(color: border, width: state == _OptionState.idle ? 1 : 1.5),
+      ),
       child: InkWell(
         borderRadius: BorderRadius.circular(16),
         onTap: onTap,
@@ -304,9 +341,11 @@ class _Option extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
             child: Row(
               children: [
-                Expanded(child: Text(text, style: WaqtType.sans(15.5, weight: 600, color: fg))),
+                Expanded(
+                  child: Text(text, style: WaqtType.sans(15.5, weight: 600, color: fg)),
+                ),
                 if (state == _OptionState.right) WaqtIcon(WaqtIcons.check, size: 20, color: c.onMint),
-                if (state == _OptionState.wrong) WaqtIcon(WaqtIcons.close, size: 18, color: c.brassText),
+                if (state == _OptionState.wrong) WaqtIcon(WaqtIcons.close, size: 18, color: c.danger),
               ],
             ),
           ),

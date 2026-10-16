@@ -9,14 +9,11 @@ import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_typography.dart';
 import '../../../core/theme/dimens.dart';
 import '../../../core/utils/dates.dart';
-import '../../../data/db/enums.dart';
 import '../../../shared/widgets/buttons.dart';
 import '../../../shared/widgets/layout.dart';
 import '../../../shared/widgets/progress_ring.dart';
 import '../../../shared/widgets/waqt_card.dart';
 import '../../../shared/widgets/waqt_icon.dart';
-import '../../adhkar/application/adhkar_providers.dart';
-import '../../habits/application/habit_providers.dart';
 import '../../prayer/application/prayer_providers.dart';
 import '../../ramadan/domain/ramadan.dart';
 import '../../today/application/today_providers.dart';
@@ -360,14 +357,6 @@ class _ToolTiles extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final c = context.colors;
     final l = context.l10n;
-    final now = ref.watch(prayerNowProvider);
-    final morning = ref.watch(adhkarTodayProvider(AdhkarSet.morning));
-    final evening = ref.watch(adhkarTodayProvider(AdhkarSet.evening));
-    final afterAsr = !now.now.isBefore(now.today[Prayer.asr]);
-    final (adhkarSet, adhkarSub) = afterAsr
-        ? (AdhkarSet.evening, evening.isComplete ? l.toolsAdhkarDone : l.toolsEveningDue)
-        : (AdhkarSet.morning, morning.isComplete ? l.toolsAdhkarDone : l.toolsMorningDue);
-
     final hijri = ref.watch(hijriServiceProvider);
     final day = ref.watch(todayKeyProvider).date;
     final h = hijri.fromGregorian(day);
@@ -379,10 +368,11 @@ class _ToolTiles extends ConsumerWidget {
             onTap: onTap,
             radius: Adaptive.isCupertino(context) ? 22 : 28,
             padding: const EdgeInsets.all(14),
-            child: SizedBox(
-              height: 90,
+            child: ConstrainedBox(
+              constraints: const BoxConstraints(minHeight: 90),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
                 children: [
                   IconTile(
                     icon: icon,
@@ -390,23 +380,20 @@ class _ToolTiles extends ConsumerWidget {
                     background: brass ? c.brassSoft : c.mint,
                     color: brass ? c.brassText : c.onMint,
                   ),
-                  const Spacer(),
-                  Text(title, maxLines: 1, overflow: TextOverflow.ellipsis, style: WaqtType.sans(14, weight: 600, color: c.ink)),
+                  const SizedBox(height: 12),
+                  Text(title, maxLines: 1, overflow: TextOverflow.ellipsis, style: WaqtType.sans(15, weight: 600, color: c.ink)),
                   const SizedBox(height: 2),
-                  Text(sub, maxLines: 1, overflow: TextOverflow.ellipsis, style: WaqtType.sans(12, color: c.muted)),
+                  Text(sub, maxLines: 1, overflow: TextOverflow.ellipsis, style: WaqtType.sans(13, color: c.muted)),
                 ],
               ),
             ),
           ),
         );
 
-    final (habitsDone, habitsTotal) = ref.watch(habitsTodayProvider);
     return Column(
       children: [
         Row(
           children: [
-            tile(WaqtIcons.book, l.toolsAdhkar, adhkarSub, () => context.push(Routes.adhkar(adhkarSet.name))),
-            const SizedBox(width: 10),
             tile(WaqtIcons.calendar, l.toolsCalendar, l.dayMonthHijri(h.day, h.month), () => context.push(Routes.calendar)),
             const SizedBox(width: 10),
             tile(WaqtIcons.moon, l.toolsRamadan, ramadanSub, () => context.push(Routes.ramadan), brass: true),
@@ -418,13 +405,6 @@ class _ToolTiles extends ConsumerWidget {
             tile(WaqtIcons.calculator, l.zakatShort, l.zakatNisab, () => context.push(Routes.zakat)),
             const SizedBox(width: 10),
             tile(WaqtIcons.table, l.timetableShort, l.monthName(monthKey(day)), () => context.push(Routes.timetable)),
-            const SizedBox(width: 10),
-            tile(
-              WaqtIcons.sparkles,
-              l.habitsTitle,
-              habitsTotal == 0 ? l.habitsAdd : l.habitsDoneToday('$habitsDone', '$habitsTotal'),
-              () => context.push(Routes.habits),
-            ),
           ],
         ),
       ],

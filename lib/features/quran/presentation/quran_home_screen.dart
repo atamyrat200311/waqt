@@ -370,7 +370,7 @@ class ReadingGoalCard extends ConsumerWidget {
           ProgressRing(
             value: g.fraction,
             color: c.brass,
-            track: c.fill,
+            track: c.track,
             strokeWidth: 6,
             size: 62,
             child: Center(

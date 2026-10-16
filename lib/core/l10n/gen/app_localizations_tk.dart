@@ -1960,6 +1960,49 @@ class AppLocalizationsTk extends AppLocalizations {
   String get meQuranDaily => 'her gün okamak';
 
   @override
+  String get mePrayedToday => 'şu gün okaldy';
+
+  @override
+  String get meStartStreak =>
+      'Yzygiderligi başlatmak üçin şu gün bäşisini okaň';
+
+  @override
+  String get meStreakShare => 'Günde bäş namaz, Waqt bilen';
+
+  @override
+  String get meSettingsRow => 'Sazlamalar';
+
+  @override
+  String get habitsEmptyShort => 'Kiçijik gündelik endik dörediň';
+
+  @override
+  String get homeAddExpenseShort => 'Çykdajy';
+
+  @override
+  String qadaMadeUpSnack(String prayer) {
+    return '$prayer: biri kaza edildi';
+  }
+
+  @override
+  String get qadaYearsHelper => 'Takmynan galan wagtym…';
+
+  @override
+  String qadaMonths(int count) {
+    return '$count aý';
+  }
+
+  @override
+  String qadaYears(int count) {
+    return '$count ýyl';
+  }
+
+  @override
+  String get expensesTitle => 'Çykdajylar';
+
+  @override
+  String get expensesEmpty => 'Bu aý çykdajy ýazylmady.';
+
+  @override
   String get meAyahsRead => 'Okalan aýatlar';
 
   @override
@@ -2025,6 +2068,14 @@ class AppLocalizationsTk extends AppLocalizations {
 
   @override
   String get backupRestored => 'Dikeldildi. Hoş geldiňiz!';
+
+  @override
+  String get backupNever => 'Entek ätiýaçlyk ýok';
+
+  @override
+  String backupLast(String date) {
+    return 'Soňky ätiýaçlyk: $date';
+  }
 
   @override
   String get backupInvalid => 'Bu faýl Waqt ätiýaçlygy däl.';
@@ -2173,6 +2224,39 @@ class AppLocalizationsTk extends AppLocalizations {
 
   @override
   String get habitSugSleep => '23:00-dan öň ýat';
+
+  @override
+  String get obGetStarted => 'Başla';
+
+  @override
+  String get obTagline => 'Günüňiz — bäş namazyň töwereginde.';
+
+  @override
+  String get obValuePrayer => 'Takyk namaz wagtlary';
+
+  @override
+  String get obValuePrayerSub => 'Duýduryşlar, kybla, hasap we kaza kömegi.';
+
+  @override
+  String get obValueQuran => 'Kuran we hadys, internetsiz';
+
+  @override
+  String get obValueQuranSub =>
+      '8 terjime, hatym meýilnamasy, ýat tutmak, dogalar.';
+
+  @override
+  String get obValueDay => 'Tutuş günüňizi meýilleşdiriň';
+
+  @override
+  String get obValueDaySub =>
+      'Namaz wagty boýunça işler, çykdajylar, endikler.';
+
+  @override
+  String get obValuePrivate => 'Doly gizlin';
+
+  @override
+  String get obValuePrivateSub =>
+      'Hasap ýok, mahabat ýok, yzarlama ýok. Internetsiz işleýär.';
 
   @override
   String get shareThemeEmerald => 'Zümerret';

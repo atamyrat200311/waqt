@@ -47,7 +47,7 @@ class Glass extends StatelessWidget {
     final c = context.colors;
     final highContrast = solid || (MediaQuery.maybeHighContrastOf(context) ?? false);
     final base = tint ?? c.card;
-    final alpha = highContrast ? 1.0 : (opacity ?? (c.isDark ? 0.58 : 0.66));
+    final alpha = highContrast ? 1.0 : (opacity ?? (c.isDark ? 0.5 : 0.55));
     final borderRadius = shape == BoxShape.circle ? null : BorderRadius.circular(radius);
 
     Widget body = CustomPaint(
@@ -61,8 +61,13 @@ class Glass extends StatelessWidget {
     );
 
     if (!highContrast) {
+      // Blur plus a saturation lift, so colour behind the glass glows
+      // through instead of turning grey (the "liquid" look).
       body = BackdropFilter(
-        filter: ui.ImageFilter.blur(sigmaX: blur, sigmaY: blur),
+        filter: ui.ImageFilter.compose(
+          outer: ui.ImageFilter.blur(sigmaX: blur, sigmaY: blur),
+          inner: const ui.ColorFilter.matrix(_saturate),
+        ),
         child: body,
       );
     }
@@ -93,6 +98,14 @@ class Glass extends StatelessWidget {
     );
   }
 }
+
+/// Saturation 1.6 colour matrix (luminance weights 0.2126/0.7152/0.0722).
+const _saturate = <double>[
+  1.4725, -0.4291, -0.0433, 0, 0, //
+  -0.1275, 1.1709, -0.0433, 0, 0,
+  -0.1275, -0.4291, 1.5567, 0, 0,
+  0, 0, 0, 1, 0,
+];
 
 class _GlassPainter extends CustomPainter {
   _GlassPainter({required this.fill, required this.dark, required this.radius, required this.circle});

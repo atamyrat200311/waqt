@@ -50,6 +50,7 @@ abstract final class Routes {
   static const timetable = '/tools/timetable';
   static const habits = '/today/habits';
   static const backup = '/me/settings/backup';
+  static const expenses = '/me/expenses';
 
   /// Deep link used by notification taps: opens Today and the mark sheet.
   static String markPrayer(String prayer, String day) => '/today?mark=$prayer&day=$day';

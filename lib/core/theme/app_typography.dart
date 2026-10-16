@@ -56,6 +56,7 @@ abstract final class WaqtType {
     FontStyle? style,
     TextDecoration? decoration,
     Color? decorationColor,
+    bool tabular = false,
   }) {
     return TextStyle(
       fontFamily: sansFamily,
@@ -68,7 +69,9 @@ abstract final class WaqtType {
       fontStyle: style,
       decoration: decoration,
       decorationColor: decorationColor,
-      fontFeatures: _tabular,
+      // Tabular figures only for numbers that update in place (times,
+      // counters); Inter's tabular set also widens hyphens in words.
+      fontFeatures: tabular ? _tabular : null,
       fontVariations: [
         FontVariation.weight(weight),
         FontVariation.opticalSize(size.clamp(14, 32).toDouble()),

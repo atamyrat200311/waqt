@@ -139,16 +139,18 @@ class _Countdown extends ConsumerWidget {
         fit: BoxFit.scaleDown,
         alignment: AlignmentDirectional.centerStart,
         child: Text.rich(
-          TextSpan(children: [
-            if (l.homeIn.isNotEmpty) TextSpan(text: '${l.homeIn}  ', style: word),
-            if (parts.hours > 0) ...[
-              TextSpan(text: '${parts.hours}', style: big),
-              TextSpan(text: '${l.unitH}  ', style: unit),
+          TextSpan(
+            children: [
+              if (l.homeIn.isNotEmpty) TextSpan(text: '${l.homeIn}  ', style: word),
+              if (parts.hours > 0) ...[
+                TextSpan(text: '${parts.hours}', style: big),
+                TextSpan(text: '${l.unitH}  ', style: unit),
+              ],
+              TextSpan(text: '${parts.minutes}', style: big),
+              TextSpan(text: l.unitM, style: unit),
+              if (l.homeInAfter.isNotEmpty) TextSpan(text: '  ${l.homeInAfter}', style: word),
             ],
-            TextSpan(text: '${parts.minutes}', style: big),
-            TextSpan(text: l.unitM, style: unit),
-            if (l.homeInAfter.isNotEmpty) TextSpan(text: '  ${l.homeInAfter}', style: word),
-          ]),
+          ),
           maxLines: 1,
         ),
       ),
@@ -176,8 +178,8 @@ class _FastBar extends StatelessWidget {
                 color: i == day - 1
                     ? c.onHero
                     : fasts[i] == FastStatus.fasted
-                        ? c.brass
-                        : Colors.white.withValues(alpha: 0.2),
+                    ? c.brass
+                    : Colors.white.withValues(alpha: 0.2),
               ),
             ),
           ),
@@ -189,13 +191,7 @@ class _FastBar extends StatelessWidget {
 
 /// One of the five chips under the arc.
 class PrayerChip extends StatelessWidget {
-  const PrayerChip({
-    super.key,
-    required this.prayer,
-    required this.time,
-    required this.state,
-    required this.onTap,
-  });
+  const PrayerChip({super.key, required this.prayer, required this.time, required this.state, required this.onTap});
 
   final Prayer prayer;
   final DateTime time;
@@ -251,7 +247,7 @@ class PrayerChip extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(height: 1),
-                        Text(hhmm(time), style: WaqtType.sans(12, color: c.onHeroMuted)),
+                        Text(hhmm(time), style: WaqtType.sans(12, color: c.onHeroMuted, tabular: true)),
                       ],
                     ),
                   ),
@@ -277,10 +273,7 @@ class _DayArc extends StatefulWidget {
 }
 
 class _DayArcState extends State<_DayArc> with SingleTickerProviderStateMixin {
-  late final AnimationController _glow = AnimationController(
-    vsync: this,
-    duration: const Duration(milliseconds: 3400),
-  );
+  late final AnimationController _glow = AnimationController(vsync: this, duration: const Duration(milliseconds: 3400));
 
   @override
   void didChangeDependencies() {
@@ -414,11 +407,7 @@ class _ArcPainter extends CustomPainter {
     // Sun: glow pulses opacity .16→.38 and radius 12→16 over 3.4 s.
     final sun = _pt(progress, size);
     final phase = (1 - math.cos(glow.value * 2 * math.pi)) / 2;
-    canvas.drawCircle(
-      sun,
-      12 + 4 * phase,
-      Paint()..color = brass.withValues(alpha: 0.16 + 0.22 * phase),
-    );
+    canvas.drawCircle(sun, 12 + 4 * phase, Paint()..color = brass.withValues(alpha: 0.16 + 0.22 * phase));
     canvas.drawCircle(sun, 6, Paint()..color = brass);
   }
 

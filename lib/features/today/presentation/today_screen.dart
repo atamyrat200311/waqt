@@ -22,8 +22,10 @@ import '../../adhkar/application/adhkar_providers.dart';
 import '../../adhkar/domain/adhkar.dart';
 import '../../calendar/domain/hijri_service.dart';
 import '../../expenses/presentation/expense_sheet.dart';
+import '../../habits/application/habit_providers.dart';
 import '../../notifications/application/notification_service.dart';
 import '../../prayer/application/prayer_providers.dart';
+import '../../quran/application/quran_providers.dart';
 import '../application/today_providers.dart';
 import '../domain/today_logic.dart';
 import 'hero_card.dart';
@@ -79,11 +81,16 @@ class _TodayScreenState extends ConsumerState<TodayScreen> {
       backgroundColor: c.bg,
       floatingActionButton: cupertino
           ? null
-          : _AddFab(label: l.add, onPressed: () => showExpenseSheet(context)),
+          : _AddFab(label: l.homeAddExpenseShort, onPressed: () => showExpenseSheet(context)),
       body: CustomScrollView(
         slivers: [
-          SliverToBoxAdapter(child: _Header(cupertino: cupertino)),
-          SliverToBoxAdapter(child: HeroCard(onChip: _mark)),
+          SliverToBoxAdapter(
+            child: MediaQuery.withClampedTextScaling(maxScaleFactor: 1.3, child: _Header(cupertino: cupertino)),
+          ),
+          // The hero is already display-size; chips stay readable at 1.25×.
+          SliverToBoxAdapter(
+            child: MediaQuery.withClampedTextScaling(maxScaleFactor: 1.25, child: HeroCard(onChip: _mark)),
+          ),
           SliverToBoxAdapter(child: _UnmarkedCard(onPrayer: (p, d) => _mark(p, d))),
           SliverToBoxAdapter(child: SectionTitle(l.homeYourDay)),
           const SliverToBoxAdapter(child: _DoneChips()),
@@ -127,11 +134,7 @@ class _Header extends ConsumerWidget {
     final hDate = l.hijriFull(h.day, h.month, h.year);
     final top = MediaQuery.paddingOf(context).top;
 
-    final chip = _LocationChip(
-      name: place,
-      cupertino: cupertino,
-      onTap: () => context.push(Routes.location),
-    );
+    final chip = _LocationChip(name: place, cupertino: cupertino, onTap: () => context.push(Routes.location));
 
     if (cupertino) {
       return Padding(
@@ -157,7 +160,10 @@ class _Header extends ConsumerWidget {
               ),
             ),
             const SizedBox(height: 14),
-            Semantics(header: true, child: Text(gDate, style: WaqtType.title(color: c.ink))),
+            Semantics(
+              header: true,
+              child: Text(gDate, style: WaqtType.title(color: c.ink)),
+            ),
             const SizedBox(height: 7),
             _HijriLine(text: hDate, size: 15, diamond: 6),
           ],
@@ -247,7 +253,10 @@ class _LocationChip extends StatelessWidget {
           widthFactor: 1,
           child: Material(
             color: cupertino ? c.card : Colors.transparent,
-            shape: RoundedRectangleBorder(borderRadius: r, side: BorderSide(color: c.hairline)),
+            shape: RoundedRectangleBorder(
+              borderRadius: r,
+              side: BorderSide(color: c.hairline),
+            ),
             clipBehavior: Clip.antiAlias,
             child: InkWell(
               onTap: onTap,
@@ -296,7 +305,11 @@ class _AddFab extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16),
           boxShadow: [
-            BoxShadow(color: const Color(0xFF0F4C3A).withValues(alpha: 0.22), blurRadius: 18, offset: const Offset(0, 6)),
+            BoxShadow(
+              color: const Color(0xFF0F4C3A).withValues(alpha: 0.22),
+              blurRadius: 18,
+              offset: const Offset(0, 6),
+            ),
             BoxShadow(color: Colors.black.withValues(alpha: 0.08), blurRadius: 3, offset: const Offset(0, 1)),
           ],
         ),
@@ -347,10 +360,7 @@ class _UnmarkedCard extends ConsumerWidget {
     }
 
     Future<void> allPrayed() async {
-      await ref.read(prayerRepositoryProvider).markMany(
-        [for (final p in prayers) (yesterday, p)],
-        PrayerStatus.onTime,
-      );
+      await ref.read(prayerRepositoryProvider).markMany([for (final p in prayers) (yesterday, p)], PrayerStatus.onTime);
       ref.invalidate(yesterdayUnmarkedProvider);
     }
 
@@ -428,15 +438,19 @@ class _DoneChips extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final c = context.colors;
     final l = context.l10n;
-    final marks = ref.watch(todayMarksProvider).value ?? const {};
+    // Prayers already show their checks on the hero card; these chips are
+    // the rest of the day's good deeds.
     final morning = ref.watch(adhkarTodayProvider(AdhkarSet.morning)).isComplete;
     final evening = ref.watch(adhkarTodayProvider(AdhkarSet.evening)).isComplete;
-    final items = <String>[];
-    for (final p in Prayer.values) {
-      if (marks[p]?.isPrayed ?? false) items.add(l.prayer(p));
-      if (p == Prayer.fajr && morning) items.add(l.adhkarMorning);
-      if (p == Prayer.asr && evening) items.add(l.adhkarEvening);
-    }
+    final quranDone = ref.watch(readingGoalProvider).done;
+    final habits = ref.watch(habitViewsProvider);
+    final items = <String>[
+      if (morning) l.adhkarMorning,
+      if (evening) l.adhkarEvening,
+      if (quranDone) l.quranGoalDone,
+      for (final h in habits)
+        if (h.doneToday) h.habit.title,
+    ];
     if (items.isEmpty) return const SizedBox.shrink();
     return Padding(
       padding: const EdgeInsets.fromLTRB(20, 0, 20, 12),
@@ -510,10 +524,7 @@ class _UpNextCard extends ConsumerWidget {
               ),
             ),
             const SizedBox(width: 10),
-            PillButton(
-              label: l.homeStart,
-              onPressed: () => context.push(Routes.adhkar(set.name)),
-            ),
+            PillButton(label: l.homeStart, onPressed: () => context.push(Routes.adhkar(set.name))),
           ],
         ),
       ),
@@ -583,29 +594,39 @@ class _Tiles extends ConsumerWidget {
     final tasks = ref.watch(todayTasksProvider).value ?? const [];
     final done = tasks.where((t) => t.done).length;
 
-    Widget tile({required VoidCallback onTap, required String label, required WaqtIconData icon, required Widget body}) =>
-        Expanded(
-          child: WaqtCard(
-            onTap: onTap,
-            padding: const EdgeInsets.all(16),
-            child: ConstrainedBox(
-              constraints: const BoxConstraints(minHeight: 90),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+    Widget tile({
+      required VoidCallback onTap,
+      required String label,
+      required WaqtIconData icon,
+      required Widget body,
+    }) => Expanded(
+      child: WaqtCard(
+        onTap: onTap,
+        padding: const EdgeInsets.all(16),
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(minHeight: 90),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
                 children: [
-                  Row(
-                    children: [
-                      Expanded(child: Text(label, style: WaqtType.sans(13, weight: 500, color: c.muted))),
-                      WaqtIcon(icon, size: icon == WaqtIcons.plus ? 18 : 16, color: icon == WaqtIcons.plus ? c.accent : c.muted),
-                    ],
+                  Expanded(
+                    child: Text(label, style: WaqtType.sans(13, weight: 500, color: c.muted)),
                   ),
-                  const SizedBox(height: 18),
-                  body,
+                  WaqtIcon(
+                    icon,
+                    size: icon == WaqtIcons.plus ? 18 : 16,
+                    color: icon == WaqtIcons.plus ? c.accent : c.muted,
+                  ),
                 ],
               ),
-            ),
+              const SizedBox(height: 18),
+              body,
+            ],
           ),
-        );
+        ),
+      ),
+    );
 
     return _Spaced(
       child: IntrinsicHeight(
@@ -730,10 +751,7 @@ class _QadaBanner extends ConsumerWidget {
               WaqtIcon(WaqtIcons.qada, size: 20, color: c.brassText),
               const SizedBox(width: 12),
               Expanded(
-                child: Text(
-                  l.homeQadaRemaining(total),
-                  style: WaqtType.sans(15, weight: 600, color: c.brassText),
-                ),
+                child: Text(l.homeQadaRemaining(total), style: WaqtType.sans(15, weight: 600, color: c.brassText)),
               ),
               Text(l.homeMakeUp, style: WaqtType.sans(14, weight: 600, color: c.brassText)),
               const SizedBox(width: 2),

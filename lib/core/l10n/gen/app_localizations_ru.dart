@@ -2037,6 +2037,62 @@ class AppLocalizationsRu extends AppLocalizations {
   String get meQuranDaily => 'чтение каждый день';
 
   @override
+  String get mePrayedToday => 'совершено сегодня';
+
+  @override
+  String get meStartStreak => 'Совершите сегодня все пять, чтобы начать серию';
+
+  @override
+  String get meStreakShare => 'Пять намазов в день — с Waqt';
+
+  @override
+  String get meSettingsRow => 'Настройки';
+
+  @override
+  String get habitsEmptyShort => 'Заведите маленькую привычку';
+
+  @override
+  String get homeAddExpenseShort => 'Расход';
+
+  @override
+  String qadaMadeUpSnack(String prayer) {
+    return '$prayer: восполнен один';
+  }
+
+  @override
+  String get qadaYearsHelper => 'Я пропустил(а) примерно…';
+
+  @override
+  String qadaMonths(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count месяцев',
+      few: '$count месяца',
+      one: '$count месяц',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String qadaYears(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count лет',
+      few: '$count года',
+      one: '$count год',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get expensesTitle => 'Расходы';
+
+  @override
+  String get expensesEmpty => 'В этом месяце расходов нет.';
+
+  @override
   String get meAyahsRead => 'Прочитано аятов';
 
   @override
@@ -2104,6 +2160,14 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get backupRestored => 'Восстановлено. С возвращением!';
+
+  @override
+  String get backupNever => 'Копий ещё не было';
+
+  @override
+  String backupLast(String date) {
+    return 'Последняя копия: $date';
+  }
 
   @override
   String get backupInvalid => 'Этот файл не является копией Waqt.';
@@ -2252,6 +2316,37 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get habitSugSleep => 'Лечь спать до 23:00';
+
+  @override
+  String get obGetStarted => 'Начать';
+
+  @override
+  String get obTagline => 'Ваш день — вокруг пяти намазов.';
+
+  @override
+  String get obValuePrayer => 'Точное время намаза';
+
+  @override
+  String get obValuePrayerSub => 'Напоминания, кибла, учёт и помощь с када.';
+
+  @override
+  String get obValueQuran => 'Коран и хадисы без интернета';
+
+  @override
+  String get obValueQuranSub => '8 переводов, план хатма, заучивание, дуа.';
+
+  @override
+  String get obValueDay => 'Планируйте весь день';
+
+  @override
+  String get obValueDaySub => 'Дела по времени намаза, расходы, привычки.';
+
+  @override
+  String get obValuePrivate => 'Полная приватность';
+
+  @override
+  String get obValuePrivateSub =>
+      'Без аккаунта, рекламы и слежки. Работает офлайн.';
 
   @override
   String get shareThemeEmerald => 'Изумруд';

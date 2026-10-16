@@ -118,7 +118,7 @@ class _LocationPickerState extends ConsumerState<LocationPicker> {
           const SizedBox(height: 10),
           Semantics(
             liveRegion: true,
-            child: Text(_error!, style: WaqtType.sans(14, weight: 600, color: c.brassText)),
+            child: Text(_error!, style: WaqtType.sans(14, weight: 600, color: c.danger)),
           ),
         ],
         const SizedBox(height: 14),

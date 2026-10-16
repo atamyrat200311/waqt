@@ -59,47 +59,59 @@ class LibraryScreen extends StatelessWidget {
                   onTap: () => context.push(Routes.duas),
                 ),
                 const SizedBox(height: 10),
-                Row(
-                  children: [
-                    Expanded(
-                      child: _SmallTile(
-                        icon: WaqtIcons.star,
-                        title: l.libraryNames,
-                        subtitle: l.libraryNamesSub,
-                        brass: true,
-                        onTap: () => context.push(Routes.names),
+                IntrinsicHeight(
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Expanded(
+                        child: _SmallTile(
+                          icon: WaqtIcons.star,
+                          title: l.libraryNames,
+                          subtitle: l.libraryNamesSub,
+                          onTap: () => context.push(Routes.names),
+                        ),
                       ),
-                    ),
-                    const SizedBox(width: 10),
-                    Expanded(
-                      child: _SmallTile(
-                        icon: WaqtIcons.learn,
-                        title: l.libraryLearn,
-                        subtitle: l.libraryLearnSub,
-                        onTap: () => context.push(Routes.learn),
+                      const SizedBox(width: 10),
+                      Expanded(
+                        child: _SmallTile(
+                          icon: WaqtIcons.learn,
+                          title: l.libraryLearn,
+                          subtitle: l.libraryLearnSub,
+                          onTap: () => context.push(Routes.learn),
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
                 const SizedBox(height: 10),
-                const Row(
-                  children: [
-                    Expanded(child: _AdhkarTile(set: AdhkarSet.morning)),
-                    SizedBox(width: 10),
-                    Expanded(child: _AdhkarTile(set: AdhkarSet.evening)),
-                  ],
+                const IntrinsicHeight(
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Expanded(child: _AdhkarTile(set: AdhkarSet.morning)),
+                      SizedBox(width: 10),
+                      Expanded(child: _AdhkarTile(set: AdhkarSet.evening)),
+                    ],
+                  ),
                 ),
                 SectionTitle(l.libraryHadith, padding: const EdgeInsets.fromLTRB(6, 26, 6, 12)),
-                GridView.count(
-                  crossAxisCount: 2,
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  mainAxisSpacing: 10,
-                  crossAxisSpacing: 10,
-                  childAspectRatio: 1.08,
-                  padding: EdgeInsets.zero,
-                  children: [for (final b in HadithBooks.all) HadithBookTile(book: b)],
-                ),
+                for (var r = 0; r < HadithBooks.all.length; r += 2) ...[
+                  if (r > 0) const SizedBox(height: 10),
+                  IntrinsicHeight(
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        Expanded(child: HadithBookTile(book: HadithBooks.all[r])),
+                        const SizedBox(width: 10),
+                        Expanded(
+                          child: r + 1 < HadithBooks.all.length
+                              ? HadithBookTile(book: HadithBooks.all[r + 1])
+                              : const SizedBox(),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
                 Padding(
                   padding: const EdgeInsets.fromLTRB(8, 16, 8, 0),
                   child: Text(l.libraryContentReview, style: WaqtType.sans(12.5, color: c.muted, height: 1.4)),
@@ -154,7 +166,7 @@ class HadithOfDayCard extends ConsumerWidget {
                                   hadithShareData(l, d.book.id, d.hadith, arabic: d.arabic, kicker: l.hadithOfDay),
                                 ),
                                 child: SizedBox.square(
-                                  dimension: 40,
+                                  dimension: 44,
                                   child: Center(child: WaqtIcon(WaqtIcons.share, size: 19, color: c.onHero)),
                                 ),
                               ),
@@ -174,7 +186,7 @@ class HadithOfDayCard extends ConsumerWidget {
                         const SizedBox(height: 10),
                         Text(
                           '${hadithBookName(l, d.book.id)} · ${d.hadith.label}',
-                          style: WaqtType.sans(13, weight: 600, color: c.brass),
+                          style: WaqtType.sans(13, weight: 600, color: c.onHeroAccent),
                         ),
                       ],
                     ),
@@ -263,11 +275,26 @@ class _SmallTile extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          IconTile(icon: icon, small: true, background: brass ? c.brassSoft : c.mint, color: brass ? c.brassText : c.onMint),
+          IconTile(
+            icon: icon,
+            small: true,
+            background: brass ? c.brassSoft : c.mint,
+            color: brass ? c.brassText : c.onMint,
+          ),
           const SizedBox(height: 12),
-          Text(title, maxLines: 1, overflow: TextOverflow.ellipsis, style: WaqtType.sans(15.5, weight: 600, color: c.ink)),
+          Text(
+            title,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            style: WaqtType.sans(15.5, weight: 600, color: c.ink),
+          ),
           const SizedBox(height: 2),
-          Text(subtitle, maxLines: 2, overflow: TextOverflow.ellipsis, style: WaqtType.sans(12.5, color: c.muted, height: 1.3)),
+          Text(
+            subtitle,
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
+            style: WaqtType.sans(12.5, color: c.muted, height: 1.3),
+          ),
         ],
       ),
     );

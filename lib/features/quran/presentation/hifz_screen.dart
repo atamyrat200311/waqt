@@ -69,10 +69,10 @@ class HifzScreen extends ConsumerWidget {
         key: ValueKey('hifz-${h.surah}'),
         direction: DismissDirection.endToStart,
         background: Container(
-          color: c.brassSoft,
+          color: c.dangerSoft,
           alignment: AlignmentDirectional.centerEnd,
           padding: const EdgeInsets.only(right: 20),
-          child: WaqtIcon(WaqtIcons.trash, color: c.brassText),
+          child: WaqtIcon(WaqtIcons.trash, color: c.danger),
         ),
         onDismissed: (_) => repo.removeHifz(h.surah),
         child: SurahRow(

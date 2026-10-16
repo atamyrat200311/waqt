@@ -164,7 +164,7 @@ class _TimetableScreenState extends ConsumerState<TimetableScreen> {
                           child: Text(
                             hhmm(t),
                             textAlign: TextAlign.center,
-                            style: WaqtType.sans(12.5, weight: isToday ? 700 : 500, color: isToday ? c.onMint : c.ink),
+                            style: WaqtType.sans(12.5, weight: isToday ? 700 : 500, color: isToday ? c.onMint : c.ink, tabular: true),
                           ),
                         ),
                     ],

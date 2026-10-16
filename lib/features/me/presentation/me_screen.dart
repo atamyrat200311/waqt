@@ -14,10 +14,12 @@ import '../../../data/repositories/expense_repository.dart';
 import '../../../data/settings/settings_controller.dart';
 import '../../../shared/widgets/buttons.dart';
 import '../../../shared/widgets/layout.dart';
+import '../../../shared/widgets/share_card.dart';
 import '../../../shared/widgets/waqt_card.dart';
 import '../../../shared/widgets/waqt_icon.dart';
 import '../../prayer/application/prayer_providers.dart';
 import '../../quran/application/quran_providers.dart';
+import '../../today/application/today_providers.dart';
 import '../application/me_providers.dart';
 import '../domain/stats.dart';
 
@@ -50,7 +52,10 @@ class MeScreen extends ConsumerWidget {
                       onPressed: () => context.push(Routes.settings),
                     ),
                   ),
-                  Semantics(header: true, child: Text(l.meTitle, style: WaqtType.title(color: c.ink))),
+                  Semantics(
+                    header: true,
+                    child: Text(l.meTitle, style: WaqtType.title(color: c.ink)),
+                  ),
                 ],
               ),
             ),
@@ -70,6 +75,8 @@ class MeScreen extends ConsumerWidget {
                 _FastsAndSadaqa(),
                 SizedBox(height: 10),
                 _SpendingCard(),
+                SizedBox(height: 10),
+                _SettingsRow(),
                 BottomSpace(),
               ]),
             ),
@@ -87,13 +94,21 @@ class _StreakCard extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final c = context.colors;
     final l = context.l10n;
-    final s = ref.watch(streakProvider) ??
-        const StreakStats(current: 0, best: 0, lastDays: [
-          StreakDay.broken, StreakDay.broken, StreakDay.broken, StreakDay.broken, StreakDay.broken, //
-          StreakDay.broken, StreakDay.broken, StreakDay.broken, StreakDay.broken, StreakDay.broken,
-          StreakDay.broken, StreakDay.broken, StreakDay.broken, StreakDay.pending,
-        ]);
+    final s =
+        ref.watch(streakProvider) ??
+        const StreakStats(
+          current: 0,
+          best: 0,
+          lastDays: [
+            StreakDay.broken, StreakDay.broken, StreakDay.broken, StreakDay.broken, StreakDay.broken, //
+            StreakDay.broken, StreakDay.broken, StreakDay.broken, StreakDay.broken, StreakDay.broken,
+            StreakDay.broken, StreakDay.broken, StreakDay.broken, StreakDay.pending,
+          ],
+        );
     final n = s.lastDays.length;
+    // Day one (or after a break): show today's progress instead of a big 0.
+    final prayedToday = (ref.watch(todayMarksProvider).value ?? const {}).values.where((v) => v.isPrayed).length;
+    final fresh = s.current == 0;
     return Semantics(
       label: '${l.meAll5}: ${s.current} ${l.meDaysInRow(s.current)}. ${l.meBest('${s.best}')}',
       excludeSemantics: true,
@@ -103,20 +118,58 @@ class _StreakCard extends ConsumerWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(l.meAll5.toUpperCase(), style: WaqtType.kicker(color: c.onHeroMuted)),
+            Row(
+              children: [
+                Expanded(
+                  child: Text(l.meAll5.toUpperCase(), style: WaqtType.kicker(color: c.onHeroMuted)),
+                ),
+                if (s.current >= 3)
+                  Semantics(
+                    button: true,
+                    label: l.share,
+                    excludeSemantics: true,
+                    child: InkResponse(
+                      radius: 22,
+                      onTap: () => showShareCardSheet(
+                        context,
+                        ShareCardData(
+                          kicker: l.meAll5,
+                          big: '${s.current}',
+                          text: l.meDaysInRow(s.current),
+                          reference: l.meStreakShare,
+                        ),
+                      ),
+                      child: SizedBox.square(
+                        dimension: 44,
+                        child: Center(child: WaqtIcon(WaqtIcons.share, size: 19, color: c.onHero)),
+                      ),
+                    ),
+                  ),
+              ],
+            ),
             const SizedBox(height: 6),
             Row(
               crossAxisAlignment: CrossAxisAlignment.baseline,
               textBaseline: TextBaseline.alphabetic,
               children: [
                 Text(
-                  '${s.current}',
+                  fresh ? '$prayedToday' : '${s.current}',
                   style: WaqtType.serif(72, weight: 350, tracking: -0.04, height: 1, color: c.onHero),
                 ),
+                if (fresh) Text('/5', style: WaqtType.serif(34, weight: 350, height: 1, color: c.onHeroMuted)),
                 const SizedBox(width: 8),
-                Flexible(child: Text(l.meDaysInRow(s.current), style: WaqtType.sans(18, color: c.onHeroMuted))),
+                Flexible(
+                  child: Text(
+                    fresh ? l.mePrayedToday : l.meDaysInRow(s.current),
+                    style: WaqtType.sans(18, color: c.onHeroMuted),
+                  ),
+                ),
               ],
             ),
+            if (fresh) ...[
+              const SizedBox(height: 6),
+              Text(l.meStartStreak, style: WaqtType.sans(14, color: c.onHeroAccent, weight: 600)),
+            ],
             const SizedBox(height: 16),
             Row(
               children: [
@@ -144,8 +197,10 @@ class _StreakCard extends ConsumerWidget {
             const SizedBox(height: 8),
             Row(
               children: [
-                Expanded(child: Text(l.me2WeeksAgo, style: WaqtType.sans(12, color: c.onHeroMuted))),
-                Text(l.meBest('${s.best}'), style: WaqtType.sans(12, color: c.onHeroMuted)),
+                Expanded(
+                  child: Text(l.me2WeeksAgo, style: WaqtType.sans(12, color: c.onHeroMuted)),
+                ),
+                if (s.best > 0) Text(l.meBest('${s.best}'), style: WaqtType.sans(12, color: c.onHeroMuted)),
               ],
             ),
           ],
@@ -174,13 +229,20 @@ class _StatTile extends StatelessWidget {
             Row(
               children: [
                 if (labelIcon != null) ...[labelIcon!, const SizedBox(width: 6)],
-                Flexible(child: Text(label, style: WaqtType.sans(13, weight: 500, color: c.muted))),
+                Flexible(
+                  child: Text(label, style: WaqtType.sans(13, weight: 500, color: c.muted)),
+                ),
               ],
             ),
             const SizedBox(height: 10),
             value,
             const SizedBox(height: 2),
-            Text(caption, maxLines: 2, overflow: TextOverflow.ellipsis, style: WaqtType.sans(12, color: c.muted)),
+            Text(
+              caption,
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+              style: WaqtType.sans(12, color: c.muted),
+            ),
           ],
         ),
       ),
@@ -205,19 +267,30 @@ class _OnTimeAndAdhkar extends ConsumerWidget {
           _StatTile(
             label: l.meOnTime,
             caption: l.meThisMonth,
-            value: Text.rich(TextSpan(children: [
-              TextSpan(text: onTime == null ? '–' : '${(onTime * 100).round()}', style: big),
-              if (onTime != null) TextSpan(text: '%', style: big.copyWith(fontSize: 20)),
-            ])),
+            value: Text.rich(
+              TextSpan(
+                children: [
+                  TextSpan(text: onTime == null ? '–' : '${(onTime * 100).round()}', style: big),
+                  if (onTime != null) TextSpan(text: '%', style: big.copyWith(fontSize: 20)),
+                ],
+              ),
+            ),
           ),
           const SizedBox(width: 10),
           _StatTile(
             label: l.meAdhkarStreak,
             caption: l.meMorningEvening,
-            value: Text.rich(TextSpan(children: [
-              TextSpan(text: '$adhkar ', style: big),
-              TextSpan(text: l.meDays, style: WaqtType.sans(16, weight: 500, color: c.muted)),
-            ])),
+            value: Text.rich(
+              TextSpan(
+                children: [
+                  TextSpan(text: '$adhkar ', style: big),
+                  TextSpan(
+                    text: l.meDays,
+                    style: WaqtType.sans(16, weight: 500, color: c.muted),
+                  ),
+                ],
+              ),
+            ),
           ),
         ],
       ),
@@ -243,19 +316,30 @@ class _QuranStats extends ConsumerWidget {
           _StatTile(
             label: l.meQuranStreak,
             caption: l.meQuranDaily,
-            value: Text.rich(TextSpan(children: [
-              TextSpan(text: '$streak ', style: big),
-              TextSpan(text: l.meDays, style: WaqtType.sans(16, weight: 500, color: c.muted)),
-            ])),
+            value: Text.rich(
+              TextSpan(
+                children: [
+                  TextSpan(text: '$streak ', style: big),
+                  TextSpan(
+                    text: l.meDays,
+                    style: WaqtType.sans(16, weight: 500, color: c.muted),
+                  ),
+                ],
+              ),
+            ),
           ),
           const SizedBox(width: 10),
           _StatTile(
             label: khatm == null ? l.meAyahsRead : l.khatmShort,
             caption: khatm == null ? l.meThisMonth : l.khatmDayOf('${khatm.dayNumber}', '${khatm.plan.days}'),
-            value: Text.rich(TextSpan(children: [
-              TextSpan(text: khatm == null ? '$month' : '${(khatm.fraction * 100).floor()}', style: big),
-              if (khatm != null) TextSpan(text: '%', style: big.copyWith(fontSize: 20)),
-            ])),
+            value: Text.rich(
+              TextSpan(
+                children: [
+                  TextSpan(text: khatm == null ? '$month' : '${(khatm.fraction * 100).floor()}', style: big),
+                  if (khatm != null) TextSpan(text: '%', style: big.copyWith(fontSize: 20)),
+                ],
+              ),
+            ),
           ),
         ],
       ),
@@ -295,7 +379,9 @@ class _ConsistencyCard extends ConsumerWidget {
             crossAxisAlignment: CrossAxisAlignment.baseline,
             textBaseline: TextBaseline.alphabetic,
             children: [
-              Expanded(child: Text(l.meConsistency, style: WaqtType.sans(15, weight: 600, color: c.ink))),
+              Expanded(
+                child: Text(l.meConsistency, style: WaqtType.sans(15, weight: 600, color: c.ink)),
+              ),
               Text(l.monthStandalone(monthKey(today)), style: WaqtType.sans(13, color: c.muted)),
             ],
           ),
@@ -304,11 +390,7 @@ class _ConsistencyCard extends ConsumerWidget {
             Text(l.meNoPrayerData, style: WaqtType.sans(14, color: c.muted, height: 1.45))
           else ...[
             for (final p in Prayer.values) ...[
-              _ConsistencyBar(
-                name: l.prayer(p),
-                value: cons[p],
-                weak: p == weak && !allStrong,
-              ),
+              _ConsistencyBar(name: l.prayer(p), value: cons[p], weak: p == weak && !allStrong),
               if (p != Prayer.isha) const SizedBox(height: 12),
             ],
             if (weak != null && !allStrong) ...[
@@ -318,10 +400,18 @@ class _ConsistencyCard extends ConsumerWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
                 decoration: BoxDecoration(color: c.brassSoft, borderRadius: BorderRadius.circular(16)),
                 child: Text.rich(
-                  TextSpan(children: [
-                    TextSpan(text: '$tipTitle ', style: WaqtType.sans(13, weight: 700, color: c.brassText, height: 1.5)),
-                    TextSpan(text: tipBody, style: WaqtType.sans(13, color: c.brassText, height: 1.5)),
-                  ]),
+                  TextSpan(
+                    children: [
+                      TextSpan(
+                        text: '$tipTitle ',
+                        style: WaqtType.sans(13, weight: 700, color: c.brassText, height: 1.5),
+                      ),
+                      TextSpan(
+                        text: tipBody,
+                        style: WaqtType.sans(13, color: c.brassText, height: 1.5),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ],
@@ -362,10 +452,7 @@ class _ConsistencyBar extends StatelessWidget {
                 child: FractionallySizedBox(
                   widthFactor: (value ?? 0).clamp(0, 1),
                   child: Container(
-                    decoration: BoxDecoration(
-                      color: weak ? c.brass : c.accent,
-                      borderRadius: BorderRadius.circular(4),
-                    ),
+                    decoration: BoxDecoration(color: weak ? c.brass : c.accent, borderRadius: BorderRadius.circular(4)),
                   ),
                 ),
               ),
@@ -421,10 +508,17 @@ class _FastsAndSadaqa extends ConsumerWidget {
             label: l.meSadaqa,
             labelIcon: WaqtIcon(WaqtIcons.heart, size: 14, color: c.brass),
             caption: l.meThisMonth,
-            value: Text.rich(TextSpan(children: [
-              TextSpan(text: '${formatMinor(sum.sadaqaMinor)} ', style: big),
-              TextSpan(text: currency, style: WaqtType.sans(13, weight: 600, color: c.muted)),
-            ])),
+            value: Text.rich(
+              TextSpan(
+                children: [
+                  TextSpan(text: '${formatMinor(sum.sadaqaMinor)} ', style: big),
+                  TextSpan(
+                    text: currency,
+                    style: WaqtType.sans(13, weight: 600, color: c.muted),
+                  ),
+                ],
+              ),
+            ),
           ),
         ],
       ),
@@ -443,18 +537,19 @@ class _SpendingCard extends ConsumerWidget {
     final currency = ref.watch(settingsProvider.select((s) => s.currency));
     final today = ref.watch(todayKeyProvider).date;
     Color color(ExpenseCategory k) => switch (k) {
-          ExpenseCategory.groceries => c.primary,
-          ExpenseCategory.food => c.spendFood(),
-          ExpenseCategory.bills => c.spendBills(),
-          ExpenseCategory.transport => c.spendTransport(),
-          ExpenseCategory.other => c.hairline,
-          ExpenseCategory.sadaqa => c.brass,
-        };
+      ExpenseCategory.groceries => c.primary,
+      ExpenseCategory.food => c.spendFood(),
+      ExpenseCategory.bills => c.spendBills(),
+      ExpenseCategory.transport => c.spendTransport(),
+      ExpenseCategory.other => c.hairline,
+      ExpenseCategory.sadaqa => c.brass,
+    };
     final cats = sum.byCategory.entries.where((e) => e.key != ExpenseCategory.sadaqa).toList()
       ..sort((a, b) => b.value.compareTo(a.value));
     if (sum.sadaqaMinor > 0) cats.add(MapEntry(ExpenseCategory.sadaqa, sum.sadaqaMinor));
 
     return WaqtCard(
+      onTap: () => context.push(Routes.expenses),
       padding: const EdgeInsets.all(18),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -463,15 +558,27 @@ class _SpendingCard extends ConsumerWidget {
             crossAxisAlignment: CrossAxisAlignment.baseline,
             textBaseline: TextBaseline.alphabetic,
             children: [
-              Expanded(child: Text(l.meSpending, style: WaqtType.sans(15, weight: 600, color: c.ink))),
+              Expanded(
+                child: Text(l.meSpending, style: WaqtType.sans(15, weight: 600, color: c.ink)),
+              ),
               Text(l.monthStandalone(monthKey(today)), style: WaqtType.sans(13, color: c.muted)),
             ],
           ),
           const SizedBox(height: 8),
-          Text.rich(TextSpan(children: [
-            TextSpan(text: '${formatMinor(sum.totalMinor)} ', style: WaqtType.serif(40, tracking: -0.03, color: c.ink)),
-            TextSpan(text: currency, style: WaqtType.sans(14, weight: 600, color: c.muted)),
-          ])),
+          Text.rich(
+            TextSpan(
+              children: [
+                TextSpan(
+                  text: '${formatMinor(sum.totalMinor)} ',
+                  style: WaqtType.serif(40, tracking: -0.03, color: c.ink),
+                ),
+                TextSpan(
+                  text: currency,
+                  style: WaqtType.sans(14, weight: 600, color: c.muted),
+                ),
+              ],
+            ),
+          ),
           if (cats.isEmpty) ...[
             const SizedBox(height: 6),
             Text(l.meNoSpending, style: WaqtType.sans(14, color: c.muted)),
@@ -530,3 +637,27 @@ class _SpendingCard extends ConsumerWidget {
   }
 }
 
+/// Labelled way into Settings (the round icon at the top is easy to miss).
+class _SettingsRow extends StatelessWidget {
+  const _SettingsRow();
+
+  @override
+  Widget build(BuildContext context) {
+    final c = context.colors;
+    final l = context.l10n;
+    return WaqtCard(
+      onTap: () => context.push(Routes.settings),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+      child: Row(
+        children: [
+          IconTile(icon: WaqtIcons.sliders, small: true),
+          const SizedBox(width: 14),
+          Expanded(
+            child: Text(l.meSettingsRow, style: WaqtType.item(color: c.ink)),
+          ),
+          WaqtIcon(WaqtIcons.chevronRight, size: 18, color: c.muted),
+        ],
+      ),
+    );
+  }
+}

@@ -212,7 +212,7 @@ class _ResultCard extends StatelessWidget {
                 : r.aboveNisab
                     ? l.zakatAbove
                     : l.zakatBelow,
-            style: WaqtType.sans(14, color: r.aboveNisab ? c.brass : c.onHeroMuted, weight: 600, height: 1.4),
+            style: WaqtType.sans(14, color: r.aboveNisab ? c.onHeroAccent : c.onHeroMuted, weight: 600, height: 1.4),
           ),
           const SizedBox(height: 14),
           Row(

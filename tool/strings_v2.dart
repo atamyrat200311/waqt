@@ -192,6 +192,18 @@ const Map<String, List<String>> s2 = {
   // -------------------------------------------------------------------- me
   'meQuranStreak': ['Quran streak', 'Kuran yzygiderliligi', 'Kur’an serisi', 'Серия чтения Корана'],
   'meQuranDaily': ['reading every day', 'her gün okamak', 'her gün okuma', 'чтение каждый день'],
+  'mePrayedToday': ['prayed today', 'şu gün okaldy', 'bugün kılındı', 'совершено сегодня'],
+  'meStartStreak': ['Pray all five today to start your streak', 'Yzygiderligi başlatmak üçin şu gün bäşisini okaň', 'Seriyi başlatmak için bugün beş vakti kılın', 'Совершите сегодня все пять, чтобы начать серию'],
+  'meStreakShare': ['Five prayers a day, with Waqt', 'Günde bäş namaz, Waqt bilen', 'Günde beş vakit, Waqt ile', 'Пять намазов в день — с Waqt'],
+  'meSettingsRow': ['Settings', 'Sazlamalar', 'Ayarlar', 'Настройки'],
+  'habitsEmptyShort': ['Build a small daily habit', 'Kiçijik gündelik endik dörediň', 'Küçük bir günlük alışkanlık edinin', 'Заведите маленькую привычку'],
+  'homeAddExpenseShort': ['Expense', 'Çykdajy', 'Harcama', 'Расход'],
+  'qadaMadeUpSnack': ['{prayer}: one made up', '{prayer}: biri kaza edildi', '{prayer}: bir kaza kılındı', '{prayer}: восполнен один'],
+  'qadaYearsHelper': ['I missed about…', 'Takmynan galan wagtym…', 'Yaklaşık kaçırdığım süre…', 'Я пропустил(а) примерно…'],
+  'qadaMonths': ['{count, plural, one{{count} month} other{{count} months}}', '{count} aý', '{count} ay', '{count, plural, one{{count} месяц} few{{count} месяца} other{{count} месяцев}}'],
+  'qadaYears': ['{count, plural, one{{count} year} other{{count} years}}', '{count} ýyl', '{count} yıl', '{count, plural, one{{count} год} few{{count} года} other{{count} лет}}'],
+  'expensesTitle': ['Spending', 'Çykdajylar', 'Harcamalar', 'Расходы'],
+  'expensesEmpty': ['No spending recorded this month.', 'Bu aý çykdajy ýazylmady.', 'Bu ay harcama kaydedilmedi.', 'В этом месяце расходов нет.'],
   'meAyahsRead': ['Ayahs read', 'Okalan aýatlar', 'Okunan ayetler', 'Прочитано аятов'],
 
   'notifTestTitle': ['Send a test alert', 'Synag duýduryşyny iber', 'Test bildirimi gönder', 'Отправить тестовое уведомление'],
@@ -219,6 +231,8 @@ const Map<String, List<String>> s2 = {
   'backupRestoreTitle': ['Replace all data?', 'Ähli maglumatlar çalşylsynmy?', 'Tüm veriler değiştirilsin mi?', 'Заменить все данные?'],
   'backupRestoreBody': ['Everything on this phone will be replaced by the backup.', 'Bu telefondaky ähli zat ätiýaçlyk bilen çalşylar.', 'Bu telefondaki her şey yedekle değiştirilecek.', 'Все данные на этом телефоне будут заменены копией.'],
   'backupRestored': ['Restored. Welcome back!', 'Dikeldildi. Hoş geldiňiz!', 'Geri yüklendi. Tekrar hoş geldiniz!', 'Восстановлено. С возвращением!'],
+  'backupNever': ['No backup yet', 'Entek ätiýaçlyk ýok', 'Henüz yedek yok', 'Копий ещё не было'],
+  'backupLast': ['Last backup: {date}', 'Soňky ätiýaçlyk: {date}', 'Son yedek: {date}', 'Последняя копия: {date}'],
   'backupInvalid': ['This file isn’t a Waqt backup.', 'Bu faýl Waqt ätiýaçlygy däl.', 'Bu dosya bir Waqt yedeği değil.', 'Этот файл не является копией Waqt.'],
 
   // ----------------------------------------------------------------- zakat
@@ -277,6 +291,18 @@ const Map<String, List<String>> s2 = {
   'habitSugGratitude': ['Write 3 things I’m grateful for', 'Şükür edýän 3 zadymy ýaz', 'Şükrettiğim 3 şeyi yaz', 'Записать 3 повода для благодарности'],
   'habitSugRead': ['Read 10 pages of a book', 'Kitapdan 10 sahypa oka', 'Kitaptan 10 sayfa oku', 'Прочитать 10 страниц книги'],
   'habitSugSleep': ['Sleep before 23:00', '23:00-dan öň ýat', '23:00’ten önce uyu', 'Лечь спать до 23:00'],
+
+  // ------------------------------------------------------------ onboarding
+  'obGetStarted': ['Get started', 'Başla', 'Başlayalım', 'Начать'],
+  'obTagline': ['Your day, around the five prayers.', 'Günüňiz — bäş namazyň töwereginde.', 'Gününüz, beş vakit namaz etrafında.', 'Ваш день — вокруг пяти намазов.'],
+  'obValuePrayer': ['Prayer times that just work', 'Takyk namaz wagtlary', 'Doğru namaz vakitleri', 'Точное время намаза'],
+  'obValuePrayerSub': ['Alerts, qibla, tracking and gentle qada help.', 'Duýduryşlar, kybla, hasap we kaza kömegi.', 'Bildirimler, kıble, takip ve kaza yardımı.', 'Напоминания, кибла, учёт и помощь с када.'],
+  'obValueQuran': ['Quran & hadith, offline', 'Kuran we hadys, internetsiz', 'Kur’an ve hadis, çevrimdışı', 'Коран и хадисы без интернета'],
+  'obValueQuranSub': ['8 translations, khatm planner, memorization, duas.', '8 terjime, hatym meýilnamasy, ýat tutmak, dogalar.', '8 meal, hatim planı, ezber, dualar.', '8 переводов, план хатма, заучивание, дуа.'],
+  'obValueDay': ['Plan your whole day', 'Tutuş günüňizi meýilleşdiriň', 'Bütün gününüzü planlayın', 'Планируйте весь день'],
+  'obValueDaySub': ['Tasks by prayer time, spending, habits and streaks.', 'Namaz wagty boýunça işler, çykdajylar, endikler.', 'Namaz vaktine göre görevler, harcamalar, alışkanlıklar.', 'Дела по времени намаза, расходы, привычки.'],
+  'obValuePrivate': ['Private by design', 'Doly gizlin', 'Tamamen gizli', 'Полная приватность'],
+  'obValuePrivateSub': ['No account, no ads, no tracking. Works offline.', 'Hasap ýok, mahabat ýok, yzarlama ýok. Internetsiz işleýär.', 'Hesap yok, reklam yok, takip yok. Çevrimdışı çalışır.', 'Без аккаунта, рекламы и слежки. Работает офлайн.'],
 
   // ------------------------------------------------------------ share card
   'shareThemeEmerald': ['Emerald', 'Zümerret', 'Zümrüt', 'Изумруд'],

@@ -22,8 +22,10 @@ import '../../prayer/domain/prayer_engine.dart';
 import '../application/today_providers.dart';
 
 /// Opens the "mark a prayer" sheet for [prayer] on [day].
-Future<void> showMarkSheet(BuildContext context, Prayer prayer, DayKey day) =>
-    Adaptive.showSheet<void>(context, builder: (_) => MarkSheet(prayer: prayer, day: day));
+Future<void> showMarkSheet(BuildContext context, Prayer prayer, DayKey day) => Adaptive.showSheet<void>(
+  context,
+  builder: (_) => MarkSheet(prayer: prayer, day: day),
+);
 
 class MarkSheet extends ConsumerStatefulWidget {
   const MarkSheet({super.key, required this.prayer, required this.day});
@@ -92,12 +94,9 @@ class _MarkSheetState extends ConsumerState<MarkSheet> {
   Future<void> _remind() async {
     final l = context.l10n;
     final engine = ref.read(prayerEngineProvider);
-    final at = await ref.read(notificationServiceProvider).remindIn(
-          widget.prayer,
-          widget.day,
-          l10n: l,
-          now: ref.read(clockProvider)(),
-        );
+    final at = await ref
+        .read(notificationServiceProvider)
+        .remindIn(widget.prayer, widget.day, l10n: l, now: ref.read(clockProvider)());
     if (!mounted) return;
     setState(() => _reminderAt = hhmm(engine.localTime(at)));
     _closeAfter(700);
@@ -194,8 +193,8 @@ class _MarkSheetState extends ConsumerState<MarkSheet> {
                     onConfirm: _confirmMissed,
                   )
                 : _added
-                    ? _BrassNote(text: l.markAdded)
-                    : const SizedBox(width: double.infinity),
+                ? _BrassNote(text: l.markAdded)
+                : const SizedBox(width: double.infinity),
           ),
           if (status != null && !_askConfirm && !_added)
             TextButton(
@@ -264,10 +263,7 @@ class _OptionTile extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: r,
             color: selected ? (brass ? c.brassSoft : c.mint) : c.card,
-            border: Border.all(
-              width: 1.5,
-              color: selected ? (brass ? c.brass : c.accent) : c.hairline,
-            ),
+            border: Border.all(width: 1.5, color: selected ? (brass ? c.brass : c.accent) : c.hairline),
           ),
           child: Material(
             type: MaterialType.transparency,
@@ -351,7 +347,9 @@ class _ConfirmPanel extends StatelessWidget {
                     onTap: onCancel,
                     child: SizedBox(
                       height: 46,
-                      child: Center(child: Text(l.notNow, style: WaqtType.sans(15, weight: 600, color: c.ink))),
+                      child: Center(
+                        child: Text(l.notNow, style: WaqtType.sans(15, weight: 600, color: c.ink)),
+                      ),
                     ),
                   ),
                 ),

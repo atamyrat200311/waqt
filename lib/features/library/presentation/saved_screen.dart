@@ -48,7 +48,9 @@ class _SavedScreenState extends ConsumerState<SavedScreen> {
           ),
         ),
         if (items.isEmpty)
-          SliverToBoxAdapter(child: EmptyState(icon: WaqtIcons.bookmark, text: l.librarySavedEmpty))
+          SliverToBoxAdapter(
+            child: EmptyState(icon: WaqtIcons.bookmark, text: l.librarySavedEmpty),
+          )
         else
           SliverPadding(
             padding: const EdgeInsets.symmetric(horizontal: Gap.screen),

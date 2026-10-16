@@ -73,7 +73,7 @@ class _HadithBookScreenState extends ConsumerState<HadithBookScreen> {
         SliverToBoxAdapter(
           child: Padding(
             padding: const EdgeInsets.fromLTRB(Gap.screen, 0, Gap.screen, 8),
-            child: Text(l.hadithFallback, style: WaqtType.sans(13, color: c.brassText)),
+            child: Text(l.hadithFallback, style: WaqtType.sans(13, color: c.muted)),
           ),
         ),
       SliverToBoxAdapter(
@@ -278,7 +278,7 @@ class HadithBookTile extends ConsumerWidget {
         children: [
           Row(
             children: [
-              IconTile(icon: WaqtIcons.scroll, small: true, background: book.featured ? c.brassSoft : c.mint, color: book.featured ? c.brassText : c.onMint),
+              IconTile(icon: WaqtIcons.scroll, small: true, background: c.mint, color: c.onMint),
               const Spacer(),
             ],
           ),

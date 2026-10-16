@@ -188,7 +188,7 @@ class _IconAction extends StatelessWidget {
         child: InkResponse(
           onTap: onTap,
           radius: 22,
-          child: SizedBox.square(dimension: 40, child: Center(child: WaqtIcon(icon, size: 19, color: color))),
+          child: SizedBox.square(dimension: 44, child: Center(child: WaqtIcon(icon, size: 19, color: color))),
         ),
       );
 }

@@ -72,12 +72,21 @@ class _DuasScreenState extends ConsumerState<DuasScreen> {
               onChanged: (v) => setState(() => _query = v),
               decoration: InputDecoration(
                 hintText: l.duaSearchHint,
-                prefixIcon: Padding(padding: const EdgeInsets.all(12), child: WaqtIcon(WaqtIcons.search, size: 20, color: c.muted)),
+                prefixIcon: Padding(
+                  padding: const EdgeInsets.all(12),
+                  child: WaqtIcon(WaqtIcons.search, size: 20, color: c.muted),
+                ),
                 filled: true,
                 fillColor: c.card,
                 contentPadding: const EdgeInsets.symmetric(vertical: 12),
-                enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(16), borderSide: BorderSide(color: c.hairline)),
-                focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(16), borderSide: BorderSide(color: c.accent)),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(16),
+                  borderSide: BorderSide(color: c.hairline),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(16),
+                  borderSide: BorderSide(color: c.accent),
+                ),
               ),
             ),
           ),
@@ -97,7 +106,12 @@ class _DuasScreenState extends ConsumerState<DuasScreen> {
           ),
         ),
         if (list.isEmpty)
-          SliverToBoxAdapter(child: EmptyState(icon: WaqtIcons.handHeart, text: _cat == _favorites ? l.librarySavedEmpty : l.hadithNoResults))
+          SliverToBoxAdapter(
+            child: EmptyState(
+              icon: WaqtIcons.handHeart,
+              text: _cat == _favorites ? l.librarySavedEmpty : l.hadithNoResults,
+            ),
+          )
         else
           SliverPadding(
             padding: const EdgeInsets.fromLTRB(Gap.screen, 10, Gap.screen, 0),
@@ -139,7 +153,9 @@ class DuaCard extends ConsumerWidget {
         children: [
           Row(
             children: [
-              Expanded(child: Text(dua.title.of(lang), style: WaqtType.sans(16, weight: 600, color: c.ink))),
+              Expanded(
+                child: Text(dua.title.of(lang), style: WaqtType.sans(16, weight: 600, color: c.ink)),
+              ),
               _Action(
                 icon: saved ? WaqtIcons.bookmarkFilled : WaqtIcons.bookmark,
                 color: saved ? c.brass : c.muted,
@@ -149,7 +165,12 @@ class DuaCard extends ConsumerWidget {
                   ref.read(bookmarkRepositoryProvider).toggle(BookmarkKind.dua, dua.id);
                 },
               ),
-              _Action(icon: WaqtIcons.share, color: c.muted, label: l.share, onTap: () => showShareCardSheet(context, share)),
+              _Action(
+                icon: WaqtIcons.share,
+                color: c.muted,
+                label: l.share,
+                onTap: () => showShareCardSheet(context, share),
+              ),
             ],
           ),
           const SizedBox(height: 10),
@@ -159,14 +180,21 @@ class DuaCard extends ConsumerWidget {
               dua.arabic,
               textAlign: long ? TextAlign.right : TextAlign.center,
               textDirection: TextDirection.rtl,
-              style: WaqtType.arabic(long ? prefs.arabicSize * 0.82 : prefs.arabicSize, height: long ? 1.9 : 1.6, color: c.ink),
+              style: WaqtType.arabic(
+                long ? prefs.arabicSize * 0.82 : prefs.arabicSize,
+                height: long ? 1.9 : 1.6,
+                color: c.ink,
+              ),
             ),
           ),
           if (dua.translit.isNotEmpty) ...[
             const SizedBox(height: 8),
             Padding(
               padding: const EdgeInsets.only(right: 8),
-              child: Text(dua.translit, style: WaqtType.sans(prefs.textSize - 2.5, color: c.muted, height: 1.5, style: FontStyle.italic)),
+              child: Text(
+                dua.translit,
+                style: WaqtType.sans(prefs.textSize - 2.5, color: c.muted, height: 1.5, style: FontStyle.italic),
+              ),
             ),
           ],
           const SizedBox(height: 8),
@@ -177,7 +205,9 @@ class DuaCard extends ConsumerWidget {
           const SizedBox(height: 10),
           Row(
             children: [
-              Expanded(child: Text(dua.source, style: WaqtType.sans(12.5, weight: 600, color: c.accent))),
+              Expanded(
+                child: Text(dua.source, style: WaqtType.sans(12.5, weight: 600, color: c.accent)),
+              ),
               if (dua.count > 1)
                 Container(
                   margin: const EdgeInsets.only(right: 8),
@@ -202,13 +232,16 @@ class _Action extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Semantics(
-        button: true,
-        label: label,
-        excludeSemantics: true,
-        child: InkResponse(
-          onTap: onTap,
-          radius: 22,
-          child: SizedBox.square(dimension: 40, child: Center(child: WaqtIcon(icon, size: 19, color: color))),
-        ),
-      );
+    button: true,
+    label: label,
+    excludeSemantics: true,
+    child: InkResponse(
+      onTap: onTap,
+      radius: 22,
+      child: SizedBox.square(
+        dimension: 44,
+        child: Center(child: WaqtIcon(icon, size: 19, color: color)),
+      ),
+    ),
+  );
 }

@@ -9,6 +9,7 @@ import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_typography.dart';
 import '../../../data/repositories/habit_repository.dart';
 import '../../../data/settings/settings_controller.dart';
+import '../../../shared/widgets/layout.dart';
 import '../../../shared/widgets/progress_ring.dart';
 import '../../../shared/widgets/share_card.dart';
 import '../../../shared/widgets/waqt_card.dart';
@@ -44,7 +45,7 @@ class TodayQuranRow extends ConsumerWidget {
             ProgressRing(
               value: g.fraction,
               color: c.brass,
-              track: c.fill,
+              track: c.track,
               strokeWidth: 4.5,
               size: 46,
               child: Center(
@@ -69,7 +70,11 @@ class TodayQuranRow extends ConsumerWidget {
                     children: [
                       Flexible(
                         child: Text(
-                          g.done ? l.quranGoalDone : (g.pages ? l.quranGoalPages('${g.read}', '${g.target}') : l.quranGoal('${g.read}', '${g.target}')),
+                          g.done
+                              ? l.quranGoalDone
+                              : (g.pages
+                                    ? l.quranGoalPages('${g.read}', '${g.target}')
+                                    : l.quranGoal('${g.read}', '${g.target}')),
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                           style: WaqtType.sans(13, color: c.muted),
@@ -87,7 +92,11 @@ class TodayQuranRow extends ConsumerWidget {
               ),
             ),
             const SizedBox(width: 8),
-            Text(surah.arabic, textDirection: TextDirection.rtl, style: WaqtType.arabic(20, height: 1.3, color: c.accent)),
+            Text(
+              surah.arabic,
+              textDirection: TextDirection.rtl,
+              style: WaqtType.arabic(20, height: 1.3, color: c.accent),
+            ),
           ],
         ),
       ),
@@ -102,9 +111,33 @@ class TodayHabitsRow extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final views = ref.watch(habitViewsProvider);
-    if (views.isEmpty) return const SizedBox.shrink();
     final c = context.colors;
     final l = context.l10n;
+    if (views.isEmpty) {
+      return Padding(
+        padding: const EdgeInsets.only(bottom: 10),
+        child: WaqtCard(
+          onTap: () => context.push(Routes.habits),
+          padding: const EdgeInsetsDirectional.fromSTEB(14, 12, 14, 12),
+          child: Row(
+            children: [
+              IconTile(icon: WaqtIcons.sparkles, small: true, background: c.mint, color: c.onMint),
+              const SizedBox(width: 14),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(l.habitsTitle, style: WaqtType.item(color: c.ink)),
+                    Text(l.habitsEmptyShort, style: WaqtType.sans(13, color: c.muted)),
+                  ],
+                ),
+              ),
+              WaqtIcon(WaqtIcons.plus, size: 20, color: c.accent),
+            ],
+          ),
+        ),
+      );
+    }
     final today = ref.watch(todayKeyProvider);
     final (done, total) = ref.watch(habitsTodayProvider);
 
@@ -120,8 +153,13 @@ class TodayHabitsRow extends ConsumerWidget {
               borderRadius: BorderRadius.circular(10),
               child: Row(
                 children: [
-                  Expanded(child: Text(l.habitsTitle, style: WaqtType.sans(13, weight: 500, color: c.muted))),
-                  Text(l.habitsDoneToday('$done', '$total'), style: WaqtType.sans(13, weight: 600, color: done == total ? c.brassText : c.muted)),
+                  Expanded(
+                    child: Text(l.habitsTitle, style: WaqtType.sans(13, weight: 500, color: c.muted)),
+                  ),
+                  Text(
+                    l.habitsDoneToday('$done', '$total'),
+                    style: WaqtType.sans(13, weight: 600, color: done == total ? c.brassText : c.muted),
+                  ),
                   const SizedBox(width: 2),
                   WaqtIcon(WaqtIcons.chevronRight, size: 16, color: c.muted),
                 ],
@@ -214,9 +252,14 @@ class AyahOfDayCard extends ConsumerWidget {
           children: [
             Row(
               children: [
-                WaqtIcon(WaqtIcons.sparkles, size: 15, color: c.brass),
+                WaqtIcon(WaqtIcons.sparkles, size: 15, color: c.accent),
                 const SizedBox(width: 6),
-                Expanded(child: Text(l.quranOfDay.toUpperCase(), style: WaqtType.kicker(color: c.brassText, size: 11, tracking: 0.08))),
+                Expanded(
+                  child: Text(
+                    l.quranOfDay.toUpperCase(),
+                    style: WaqtType.kicker(color: c.accent, size: 11.5, tracking: 0.08),
+                  ),
+                ),
                 Semantics(
                   button: true,
                   label: l.share,
@@ -224,7 +267,10 @@ class AyahOfDayCard extends ConsumerWidget {
                   child: InkResponse(
                     radius: 22,
                     onTap: () => showShareCardSheet(context, ayahShareData(context, i, texts, kicker: l.quranOfDay)),
-                    child: SizedBox.square(dimension: 40, child: Center(child: WaqtIcon(WaqtIcons.share, size: 18, color: c.muted))),
+                    child: SizedBox.square(
+                      dimension: 44,
+                      child: Center(child: WaqtIcon(WaqtIcons.share, size: 18, color: c.muted)),
+                    ),
                   ),
                 ),
               ],
@@ -241,10 +287,18 @@ class AyahOfDayCard extends ConsumerWidget {
             const SizedBox(height: 8),
             Padding(
               padding: const EdgeInsets.only(right: 10),
-              child: Text(texts.translation[i], textAlign: TextAlign.center, style: WaqtType.serif(15.5, height: 1.55, color: c.ink)),
+              child: Text(
+                texts.translation[i],
+                textAlign: TextAlign.center,
+                style: WaqtType.serif(15.5, height: 1.55, color: c.ink),
+              ),
             ),
             const SizedBox(height: 8),
-            Text(ayahReference(i), textAlign: TextAlign.center, style: WaqtType.sans(12.5, weight: 600, color: c.accent)),
+            Text(
+              ayahReference(i),
+              textAlign: TextAlign.center,
+              style: WaqtType.sans(12.5, weight: 600, color: c.accent),
+            ),
             if (translation.language != l.localeName)
               Padding(
                 padding: const EdgeInsets.only(top: 2),

@@ -76,7 +76,9 @@ Future<void> shoot(
   Future<void> Function(WidgetTester t)? act,
   Future<void> Function(ProviderContainer c)? preload,
   double height = 844,
+  double textScale = 1,
 }) async {
+  tester.platformDispatcher.textScaleFactorTestValue = textScale;
   tester.view.physicalSize = Size(390 * 3, height * 3);
   tester.view.devicePixelRatio = 3;
   tester.platformDispatcher.platformBrightnessTestValue = dark ? Brightness.dark : Brightness.light;
@@ -121,6 +123,7 @@ Future<void> shoot(
   tester.view.reset();
   tester.platformDispatcher.clearPlatformBrightnessTestValue();
   tester.platformDispatcher.clearAccessibilityFeaturesTestValue();
+  tester.platformDispatcher.clearTextScaleFactorTestValue();
 }
 
 void main() {
@@ -137,6 +140,25 @@ void main() {
     await shoot(t, 'full_me', location: '/me', height: 1900);
     await shoot(t, 'full_library', location: '/library', height: 1700);
     await shoot(t, 'full_quran', location: '/quran', height: 1500);
+  }, skip: !_enabled);
+
+  testWidgets('large text', (t) async {
+    for (final (name, loc) in [
+      ('home', '/today'),
+      ('quran', '/quran'),
+      ('library', '/library'),
+      ('tools', '/tools'),
+      ('me', '/me'),
+      ('qada', '/today/qada'),
+      ('tasks', '/today/tasks'),
+      ('settings', '/me/settings'),
+      ('zakat', '/tools/zakat'),
+      ('timetable', '/tools/timetable'),
+      ('reader', '/read?i=261'),
+    ]) {
+      await shoot(t, 'big_$name', location: loc, textScale: 1.6, height: 1400);
+    }
+    await shoot(t, 'big_android_home', textScale: 1.6, platform: TargetPlatform.android, height: 1400);
   }, skip: !_enabled);
 
   testWidgets('home ramadan', (t) async {
@@ -181,8 +203,13 @@ void main() {
     await shoot(t, 'settings', location: '/me/settings');
     await shoot(t, 'settings_android', location: '/me/settings', platform: TargetPlatform.android);
     await shoot(t, 'location', location: '/location');
-    await shoot(t, 'onboarding_language', settings: const AppSettings());
+    await shoot(t, 'onboarding_welcome', settings: const AppSettings());
+    await shoot(t, 'onboarding_language', settings: const AppSettings(), act: (t) async {
+      await t.tap(find.text('Get started'));
+    });
     await shoot(t, 'onboarding_location', settings: const AppSettings(), act: (t) async {
+      await t.tap(find.text('Get started'));
+      await t.pumpAndSettle();
       await t.tap(find.text('English'));
     });
   }, skip: !_enabled);

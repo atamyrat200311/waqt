@@ -4,6 +4,7 @@ import 'package:waqt/data/db/app_database.dart';
 import 'package:waqt/data/repositories/adhkar_repository.dart';
 import 'package:waqt/data/repositories/expense_repository.dart';
 import 'package:waqt/data/repositories/fast_repository.dart';
+import 'package:waqt/data/repositories/prayer_repository.dart';
 import 'package:waqt/data/repositories/task_repository.dart';
 import 'package:waqt/data/settings/app_settings.dart';
 import 'package:waqt/data/settings/settings_repository.dart';
@@ -65,6 +66,17 @@ void main() {
       final tasks = await repo.watchDay(day).first;
       expect(tasks.map((t) => t.sortOrder), [0, 1]);
     });
+  });
+
+  test('PrayerRepository undoes the latest make-up', () async {
+    final repo = PrayerRepository(db);
+    await repo.addOlder({Prayer.fajr: 2});
+    await repo.makeUp(Prayer.fajr);
+    expect((await repo.getQadaCounts())[Prayer.fajr], 1);
+    expect(await repo.watchMadeUpTotal().first, 1);
+    await repo.undoMakeUp(Prayer.fajr);
+    expect((await repo.getQadaCounts())[Prayer.fajr], 2);
+    expect(await repo.watchMadeUpTotal().first, 0);
   });
 
   test('AdhkarRepository upserts per (date, set, item)', () async {

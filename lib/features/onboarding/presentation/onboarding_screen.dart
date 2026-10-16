@@ -10,6 +10,8 @@ import '../../../data/db/enums.dart';
 import '../../../data/settings/settings_controller.dart';
 import '../../../shared/widgets/buttons.dart';
 import '../../../shared/widgets/choice_sheet.dart';
+import '../../../shared/widgets/layout.dart';
+import '../../../shared/widgets/ornaments.dart';
 import '../../../shared/widgets/waqt_card.dart';
 import '../../../shared/widgets/waqt_icon.dart';
 import '../../notifications/application/notification_service.dart';
@@ -17,7 +19,7 @@ import '../../prayer/domain/method_presets.dart';
 import '../../settings/presentation/location_picker.dart';
 import '../../settings/presentation/settings_screen.dart' show languageNames;
 
-/// First-run flow: language → location (+ method preset) → notifications →
+/// First-run flow: welcome → language → location (+ method preset) → notifications →
 /// (Android) battery → start.
 class OnboardingScreen extends ConsumerStatefulWidget {
   const OnboardingScreen({super.key});
@@ -26,13 +28,14 @@ class OnboardingScreen extends ConsumerStatefulWidget {
   ConsumerState<OnboardingScreen> createState() => _OnboardingScreenState();
 }
 
-enum _Step { language, location, notifications, battery }
+enum _Step { welcome, language, location, notifications, battery }
 
 class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
-  _Step _step = _Step.language;
+  _Step _step = _Step.welcome;
   bool _notifAllowed = false;
 
   List<_Step> get _steps => [
+        _Step.welcome,
         _Step.language,
         _Step.location,
         _Step.notifications,
@@ -64,6 +67,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
     final last = index == steps.length - 1;
 
     final body = switch (_step) {
+      _Step.welcome => const _WelcomeStep(),
       _Step.language => _LanguageStep(onPicked: _next),
       _Step.location => const _LocationStep(),
       _Step.notifications => _NotificationsStep(
@@ -122,7 +126,10 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
               ),
               const SizedBox(height: 12),
               if (_step != _Step.language)
-                BigButton(label: last ? l.obStart : l.continueLabel, onPressed: _next),
+                BigButton(
+                  label: _step == _Step.welcome ? l.obGetStarted : (last ? l.obStart : l.continueLabel),
+                  onPressed: _next,
+                ),
               if (_step == _Step.notifications && !_notifAllowed)
                 TextButton(
                   onPressed: _next,
@@ -363,6 +370,60 @@ class _BatteryStep extends StatelessWidget {
           onPressed: SystemSettings.openBattery,
         ),
       ],
+    );
+  }
+}
+
+/// What Waqt is, before any question is asked.
+class _WelcomeStep extends StatelessWidget {
+  const _WelcomeStep();
+
+  @override
+  Widget build(BuildContext context) {
+    final c = context.colors;
+    final l = context.l10n;
+    Widget row(WaqtIconData icon, String title, String body) => Padding(
+          padding: const EdgeInsets.only(bottom: 16),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              IconTile(icon: icon, small: true, background: c.mint, color: c.onMint),
+              const SizedBox(width: 14),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(title, style: WaqtType.sans(16, weight: 600, color: c.ink)),
+                    const SizedBox(height: 2),
+                    Text(body, style: WaqtType.sans(14, color: c.muted, height: 1.4)),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        );
+    return SingleChildScrollView(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const SizedBox(height: 8),
+          Container(
+            width: 72,
+            height: 72,
+            decoration: BoxDecoration(color: c.hero, borderRadius: BorderRadius.circular(22)),
+            child: Center(child: StarBadge(label: '', color: c.brass, size: 44)),
+          ),
+          const SizedBox(height: 18),
+          Text('Waqt', style: WaqtType.serif(48, weight: 500, tracking: -0.02, color: c.ink)),
+          const SizedBox(height: 4),
+          Text(l.obTagline, style: WaqtType.serif(20, color: c.muted, height: 1.35)),
+          const SizedBox(height: 28),
+          row(WaqtIcons.today, l.obValuePrayer, l.obValuePrayerSub),
+          row(WaqtIcons.quran, l.obValueQuran, l.obValueQuranSub),
+          row(WaqtIcons.listCheck, l.obValueDay, l.obValueDaySub),
+          row(WaqtIcons.lock, l.obValuePrivate, l.obValuePrivateSub),
+        ],
+      ),
     );
   }
 }

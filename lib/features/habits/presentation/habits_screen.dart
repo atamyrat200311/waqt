@@ -15,7 +15,22 @@ import '../../../shared/widgets/waqt_icon.dart';
 import '../../prayer/application/prayer_providers.dart';
 import '../application/habit_providers.dart';
 
-const habitIcons = ['quran', 'book', 'beads', 'heart', 'droplet', 'dumbbell', 'leaf', 'pen', 'smile', 'family', 'sun', 'moon', 'wallet', 'clock'];
+const habitIcons = [
+  'quran',
+  'book',
+  'beads',
+  'heart',
+  'droplet',
+  'dumbbell',
+  'leaf',
+  'pen',
+  'smile',
+  'family',
+  'sun',
+  'moon',
+  'wallet',
+  'clock',
+];
 
 /// Daily habits with a check per day, 7-day dots and a streak.
 class HabitsScreen extends ConsumerWidget {
@@ -32,7 +47,9 @@ class HabitsScreen extends ConsumerWidget {
     return SubScreen(
       title: l.habitsTitle,
       backLabel: l.tabToday,
-      titleTrailing: total == 0 ? null : Text(l.habitsDoneToday('$done', '$total'), style: WaqtType.sans(14, color: c.muted)),
+      titleTrailing: total == 0
+          ? null
+          : Text(l.habitsDoneToday('$done', '$total'), style: WaqtType.sans(14, color: c.muted)),
       trailing: CircleIconButton(
         icon: WaqtIcons.plus,
         semanticLabel: l.habitsAdd,
@@ -46,7 +63,40 @@ class HabitsScreen extends ConsumerWidget {
             child: EmptyState(
               icon: WaqtIcons.sparkles,
               text: l.habitsEmpty,
-              action: PillButton(label: l.habitsAdd, icon: WaqtIcons.plus, onPressed: () => showHabitEditor(context)),
+              action: Column(
+                children: [
+                  Wrap(
+                    spacing: 8,
+                    runSpacing: 8,
+                    alignment: WrapAlignment.center,
+                    children: [
+                      for (final (text, icon) in [
+                        (l.habitSugQuran, 'quran'),
+                        (l.habitSugWater, 'droplet'),
+                        (l.habitSugWalk, 'dumbbell'),
+                        (l.habitSugParents, 'family'),
+                        (l.habitSugGratitude, 'pen'),
+                        (l.habitSugRead, 'book'),
+                      ])
+                        ActionChip(
+                          avatar: WaqtIcon(WaqtIcons.byKey(icon), size: 16, color: c.onMint),
+                          label: Text(text),
+                          onPressed: () {
+                            Haptics.success();
+                            ref.read(habitRepositoryProvider).add(text, icon);
+                          },
+                        ),
+                    ],
+                  ),
+                  const SizedBox(height: 14),
+                  PillButton(
+                    label: l.habitsAdd,
+                    icon: WaqtIcons.plus,
+                    style: PillStyle.fill,
+                    onPressed: () => showHabitEditor(context),
+                  ),
+                ],
+              ),
             ),
           )
         else
@@ -74,7 +124,12 @@ class HabitsScreen extends ConsumerWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(v.habit.title, maxLines: 2, overflow: TextOverflow.ellipsis, style: WaqtType.sans(16, weight: 600, color: c.ink)),
+                            Text(
+                              v.habit.title,
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                              style: WaqtType.sans(16, weight: 600, color: c.ink),
+                            ),
                             const SizedBox(height: 6),
                             Row(
                               children: [
@@ -114,7 +169,9 @@ class HabitsScreen extends ConsumerWidget {
                           child: SizedBox.square(
                             dimension: 52,
                             child: Center(
-                              child: v.doneToday ? const DoneMark(size: 34) : UpcomingMark(size: 34, color: c.muted, strokeWidth: 1.8),
+                              child: v.doneToday
+                                  ? const DoneMark(size: 34)
+                                  : UpcomingMark(size: 34, color: c.muted, strokeWidth: 1.8),
                             ),
                           ),
                         ),
@@ -181,7 +238,12 @@ class _EditorState extends ConsumerState<_Editor> {
       (l.habitSugSleep, 'moon'),
     ];
     return SingleChildScrollView(
-      padding: EdgeInsets.fromLTRB(20, 0, 20, 20 + MediaQuery.viewInsetsOf(context).bottom + MediaQuery.paddingOf(context).bottom),
+      padding: EdgeInsets.fromLTRB(
+        20,
+        0,
+        20,
+        20 + MediaQuery.viewInsetsOf(context).bottom + MediaQuery.paddingOf(context).bottom,
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
@@ -222,7 +284,9 @@ class _EditorState extends ConsumerState<_Editor> {
                         borderRadius: BorderRadius.circular(14),
                         border: key == _icon ? Border.all(color: c.primary, width: 1.5) : null,
                       ),
-                      child: Center(child: WaqtIcon(WaqtIcons.byKey(key), size: 20, color: key == _icon ? c.onMint : c.muted)),
+                      child: Center(
+                        child: WaqtIcon(WaqtIcons.byKey(key), size: 20, color: key == _icon ? c.onMint : c.muted),
+                      ),
                     ),
                   ),
                 ),

@@ -248,7 +248,7 @@ class AyahTile extends StatelessWidget {
                       onTap: onMore,
                       radius: 22,
                       child: SizedBox.square(
-                        dimension: 40,
+                        dimension: 44,
                         child: Center(
                           child: Text('•••', style: WaqtType.sans(13, weight: 700, color: p.muted)),
                         ),

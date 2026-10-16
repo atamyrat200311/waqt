@@ -33,6 +33,15 @@ class BackupScreen extends ConsumerStatefulWidget {
 class _BackupScreenState extends ConsumerState<BackupScreen> {
   bool _busy = false;
   String? _message;
+  String? _lastBackup;
+
+  @override
+  void initState() {
+    super.initState();
+    ref.read(settingsRepositoryProvider).getFlag('lastBackup').then((v) {
+      if (mounted) setState(() => _lastBackup = v);
+    });
+  }
 
   BackupService get _service => BackupService(ref.read(databaseProvider));
 
@@ -45,10 +54,15 @@ class _BackupScreenState extends ConsumerState<BackupScreen> {
       await file.writeAsString(json);
       if (!mounted) return;
       final box = context.findRenderObject() as RenderBox?;
-      await SharePlus.instance.share(ShareParams(
+      final result = await SharePlus.instance.share(ShareParams(
         files: [XFile(file.path, mimeType: 'application/json')],
         sharePositionOrigin: box == null ? null : box.localToGlobal(Offset.zero) & box.size,
       ));
+      if (result.status != ShareResultStatus.dismissed) {
+        final today = DayKey.fromDate(DateTime.now()).value;
+        await ref.read(settingsRepositoryProvider).setFlag('lastBackup', today);
+        if (mounted) setState(() => _lastBackup = today);
+      }
     } on Object {
       if (mounted) setState(() => _message = context.l10n.errorGeneric);
     } finally {
@@ -116,11 +130,26 @@ class _BackupScreenState extends ConsumerState<BackupScreen> {
                 ),
               ),
               const SizedBox(height: 16),
-              BigButton(label: l.backupExport, onPressed: _busy ? null : _export),
+              Padding(
+                padding: const EdgeInsets.only(left: 6, bottom: 10),
+                child: Text(
+                  _lastBackup == null ? l.backupNever : l.backupLast(l.dayMonth(DayKey(_lastBackup!).date)),
+                  style: WaqtType.sans(14, weight: 600, color: _lastBackup == null ? c.danger : c.muted),
+                ),
+              ),
+              PillButton(
+                label: l.backupExport,
+                icon: WaqtIcons.share,
+                expand: true,
+                height: 56,
+                radius: 18,
+                fontSize: 16,
+                onPressed: _busy ? null : _export,
+              ),
               const SizedBox(height: 10),
               PillButton(
                 label: l.backupImport,
-                icon: WaqtIcons.upload,
+                icon: WaqtIcons.download,
                 style: PillStyle.fill,
                 expand: true,
                 height: 52,

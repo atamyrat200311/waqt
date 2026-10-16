@@ -6,6 +6,7 @@ import '../../data/db/enums.dart';
 import '../../data/settings/settings_controller.dart';
 import '../../features/adhkar/presentation/adhkar_reader.dart';
 import '../../features/calendar/presentation/calendar_screen.dart';
+import '../../features/expenses/presentation/expense_history_screen.dart';
 import '../../features/habits/presentation/habits_screen.dart';
 import '../../features/hadith/domain/hadith.dart';
 import '../../features/hadith/presentation/hadith_book_screen.dart';
@@ -145,6 +146,7 @@ final appRouterProvider = Provider<GoRouter>((ref) {
               path: Routes.me,
               builder: (context, state) => const MeScreen(),
               routes: [
+                GoRoute(path: _child(Routes.expenses), builder: (context, state) => const ExpenseHistoryScreen()),
                 GoRoute(
                   path: _child(Routes.settings),
                   builder: (context, state) => const SettingsScreen(),

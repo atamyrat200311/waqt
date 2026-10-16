@@ -1963,6 +1963,48 @@ class AppLocalizationsTr extends AppLocalizations {
   String get meQuranDaily => 'her gün okuma';
 
   @override
+  String get mePrayedToday => 'bugün kılındı';
+
+  @override
+  String get meStartStreak => 'Seriyi başlatmak için bugün beş vakti kılın';
+
+  @override
+  String get meStreakShare => 'Günde beş vakit, Waqt ile';
+
+  @override
+  String get meSettingsRow => 'Ayarlar';
+
+  @override
+  String get habitsEmptyShort => 'Küçük bir günlük alışkanlık edinin';
+
+  @override
+  String get homeAddExpenseShort => 'Harcama';
+
+  @override
+  String qadaMadeUpSnack(String prayer) {
+    return '$prayer: bir kaza kılındı';
+  }
+
+  @override
+  String get qadaYearsHelper => 'Yaklaşık kaçırdığım süre…';
+
+  @override
+  String qadaMonths(int count) {
+    return '$count ay';
+  }
+
+  @override
+  String qadaYears(int count) {
+    return '$count yıl';
+  }
+
+  @override
+  String get expensesTitle => 'Harcamalar';
+
+  @override
+  String get expensesEmpty => 'Bu ay harcama kaydedilmedi.';
+
+  @override
   String get meAyahsRead => 'Okunan ayetler';
 
   @override
@@ -2028,6 +2070,14 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get backupRestored => 'Geri yüklendi. Tekrar hoş geldiniz!';
+
+  @override
+  String get backupNever => 'Henüz yedek yok';
+
+  @override
+  String backupLast(String date) {
+    return 'Son yedek: $date';
+  }
 
   @override
   String get backupInvalid => 'Bu dosya bir Waqt yedeği değil.';
@@ -2176,6 +2226,38 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get habitSugSleep => '23:00’ten önce uyu';
+
+  @override
+  String get obGetStarted => 'Başlayalım';
+
+  @override
+  String get obTagline => 'Gününüz, beş vakit namaz etrafında.';
+
+  @override
+  String get obValuePrayer => 'Doğru namaz vakitleri';
+
+  @override
+  String get obValuePrayerSub => 'Bildirimler, kıble, takip ve kaza yardımı.';
+
+  @override
+  String get obValueQuran => 'Kur’an ve hadis, çevrimdışı';
+
+  @override
+  String get obValueQuranSub => '8 meal, hatim planı, ezber, dualar.';
+
+  @override
+  String get obValueDay => 'Bütün gününüzü planlayın';
+
+  @override
+  String get obValueDaySub =>
+      'Namaz vaktine göre görevler, harcamalar, alışkanlıklar.';
+
+  @override
+  String get obValuePrivate => 'Tamamen gizli';
+
+  @override
+  String get obValuePrivateSub =>
+      'Hesap yok, reklam yok, takip yok. Çevrimdışı çalışır.';
 
   @override
   String get shareThemeEmerald => 'Zümrüt';

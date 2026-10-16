@@ -38,11 +38,7 @@ class LearnScreen extends ConsumerWidget {
                 onTap: () => context.push(Routes.learnGuide(g.id)),
                 child: Row(
                   children: [
-                    IconTile(
-                      icon: WaqtIcons.byKey(g.icon),
-                      background: i == 0 ? c.brassSoft : c.mint,
-                      color: i == 0 ? c.brassText : c.onMint,
-                    ),
+                    IconTile(icon: WaqtIcons.byKey(g.icon), background: c.mint, color: c.onMint),
                     const SizedBox(width: 14),
                     Expanded(
                       child: Column(
@@ -121,7 +117,9 @@ class GuideScreen extends ConsumerWidget {
                   children: [
                     WaqtIcon(WaqtIcons.info, size: 20, color: c.brassText),
                     const SizedBox(width: 10),
-                    Expanded(child: Text(g.note.of(lang), style: WaqtType.sans(14, color: c.brassText, height: 1.45))),
+                    Expanded(
+                      child: Text(g.note.of(lang), style: WaqtType.sans(14, color: c.brassText, height: 1.45)),
+                    ),
                   ],
                 ),
               ),
@@ -158,7 +156,10 @@ class _Step extends StatelessWidget {
                   decoration: BoxDecoration(color: c.primary, shape: BoxShape.circle),
                   child: Text('$n', style: WaqtType.sans(13.5, weight: 700, color: c.onPrimary)),
                 ),
-                if (!last) Expanded(child: Container(width: 2, color: c.hairline, margin: const EdgeInsets.symmetric(vertical: 4))),
+                if (!last)
+                  Expanded(
+                    child: Container(width: 2, color: c.hairline, margin: const EdgeInsets.symmetric(vertical: 4)),
+                  ),
               ],
             ),
           ),
@@ -193,9 +194,11 @@ class _Step extends StatelessWidget {
                           ),
                           if (step.translit != null) ...[
                             const SizedBox(height: 6),
-                            Text(step.translit!,
-                                textAlign: TextAlign.center,
-                                style: WaqtType.sans(14, color: c.muted, height: 1.45, style: FontStyle.italic)),
+                            Text(
+                              step.translit!,
+                              textAlign: TextAlign.center,
+                              style: WaqtType.sans(14, color: c.muted, height: 1.45, style: FontStyle.italic),
+                            ),
                           ],
                         ],
                       ),

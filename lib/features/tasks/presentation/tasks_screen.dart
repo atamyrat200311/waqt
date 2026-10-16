@@ -158,10 +158,10 @@ class _TaskRow extends ConsumerWidget {
       key: ValueKey('task-${task.id}'),
       direction: DismissDirection.endToStart,
       background: Container(
-        color: c.brassSoft,
+        color: c.dangerSoft,
         alignment: AlignmentDirectional.centerEnd,
         padding: const EdgeInsetsDirectional.only(end: 20),
-        child: WaqtIcon(WaqtIcons.trash, color: c.brassText),
+        child: WaqtIcon(WaqtIcons.trash, color: c.danger),
       ),
       onDismissed: (_) => delete(),
       child: Semantics(

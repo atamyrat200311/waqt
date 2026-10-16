@@ -157,7 +157,7 @@ class _KhatmScreenState extends ConsumerState<KhatmScreen> {
             ProgressRing(
               value: k.fraction,
               color: c.brass,
-              track: c.fill,
+              track: c.track,
               strokeWidth: 10,
               size: 170,
               child: Center(
@@ -184,7 +184,7 @@ class _KhatmScreenState extends ConsumerState<KhatmScreen> {
               Text(
                 status,
                 textAlign: TextAlign.center,
-                style: WaqtType.sans(14.5, color: k.behind ? c.brassText : c.accent, weight: 600),
+                style: WaqtType.sans(14.5, color: k.behind ? c.ink : c.accent, weight: 600),
               ),
           ],
         ),
@@ -197,7 +197,7 @@ class _KhatmScreenState extends ConsumerState<KhatmScreen> {
               ProgressRing(
                 value: k.todayTargetPages <= 0 ? 1 : (k.readTodayPages / k.todayTargetPages).clamp(0, 1).toDouble(),
                 color: c.primary,
-                track: c.fill,
+                track: c.track,
                 strokeWidth: 5,
                 size: 48,
                 child: Center(child: WaqtIcon(WaqtIcons.quran, size: 20, color: c.accent)),

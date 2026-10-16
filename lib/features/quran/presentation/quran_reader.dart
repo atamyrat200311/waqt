@@ -363,21 +363,24 @@ class _QuranReaderScreenState extends ConsumerState<QuranReaderScreen> with Widg
             left: 0,
             right: 0,
             top: 0,
-            child: _ReaderBar(
-              title: surah.translit,
-              subtitle:
-                  '${l.quranJuzN('${juzOfIndex(_current)}')} · ${l.quranPageN('${_page ? _shownPage : pageOfIndex(_current)}')}',
-              pageMode: _page,
-              onBack: () => context.canPop() ? context.pop() : context.go('/quran'),
-              onTitle: () => showJumpSheet(context, current: _current, onPick: _jumpTo),
-              onToggleMode: _toggleMode,
-              onSettings: () => showReaderSettings(
-                context,
-                memorize: _memorize,
-                onMemorize: (v) => setState(() {
-                  _memorize = v;
-                  _revealed.clear();
-                }),
+            child: MediaQuery.withClampedTextScaling(
+              maxScaleFactor: 1.2,
+              child: _ReaderBar(
+                title: surah.translit,
+                subtitle:
+                    '${l.quranJuzN('${juzOfIndex(_current)}')} · ${l.quranPageN('${_page ? _shownPage : pageOfIndex(_current)}')}',
+                pageMode: _page,
+                onBack: () => context.canPop() ? context.pop() : context.go('/quran'),
+                onTitle: () => showJumpSheet(context, current: _current, onPick: _jumpTo),
+                onToggleMode: _toggleMode,
+                onSettings: () => showReaderSettings(
+                  context,
+                  memorize: _memorize,
+                  onMemorize: (v) => setState(() {
+                    _memorize = v;
+                    _revealed.clear();
+                  }),
+                ),
               ),
             ),
           ),
@@ -523,22 +526,25 @@ class _ReaderBar extends StatelessWidget {
                       radius: 22,
                       solid: !cupertino,
                       padding: const EdgeInsets.symmetric(horizontal: 14),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            title,
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                            style: WaqtType.sans(14.5, weight: 700, color: ink),
-                          ),
-                          Text(
-                            subtitle,
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                            style: WaqtType.sans(11.5, color: muted),
-                          ),
-                        ],
+                      child: FittedBox(
+                        fit: BoxFit.scaleDown,
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Text(
+                              title,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: WaqtType.sans(14.5, weight: 700, color: ink),
+                            ),
+                            Text(
+                              subtitle,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: WaqtType.sans(11.5, color: muted),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),

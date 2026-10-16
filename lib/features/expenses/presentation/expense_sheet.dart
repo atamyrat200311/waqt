@@ -450,8 +450,8 @@ class TodayExpensesSheet extends ConsumerWidget {
               background: Container(
                 alignment: AlignmentDirectional.centerEnd,
                 padding: const EdgeInsets.only(right: 20),
-                color: c.brassSoft,
-                child: WaqtIcon(WaqtIcons.trash, color: c.brassText),
+                color: c.dangerSoft,
+                child: WaqtIcon(WaqtIcons.trash, color: c.danger),
               ),
               onDismissed: (_) {
                 final repo = ref.read(expenseRepositoryProvider);

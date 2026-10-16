@@ -2018,6 +2018,60 @@ class AppLocalizationsEn extends AppLocalizations {
   String get meQuranDaily => 'reading every day';
 
   @override
+  String get mePrayedToday => 'prayed today';
+
+  @override
+  String get meStartStreak => 'Pray all five today to start your streak';
+
+  @override
+  String get meStreakShare => 'Five prayers a day, with Waqt';
+
+  @override
+  String get meSettingsRow => 'Settings';
+
+  @override
+  String get habitsEmptyShort => 'Build a small daily habit';
+
+  @override
+  String get homeAddExpenseShort => 'Expense';
+
+  @override
+  String qadaMadeUpSnack(String prayer) {
+    return '$prayer: one made up';
+  }
+
+  @override
+  String get qadaYearsHelper => 'I missed about…';
+
+  @override
+  String qadaMonths(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count months',
+      one: '$count month',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String qadaYears(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count years',
+      one: '$count year',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get expensesTitle => 'Spending';
+
+  @override
+  String get expensesEmpty => 'No spending recorded this month.';
+
+  @override
   String get meAyahsRead => 'Ayahs read';
 
   @override
@@ -2084,6 +2138,14 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get backupRestored => 'Restored. Welcome back!';
+
+  @override
+  String get backupNever => 'No backup yet';
+
+  @override
+  String backupLast(String date) {
+    return 'Last backup: $date';
+  }
 
   @override
   String get backupInvalid => 'This file isn’t a Waqt backup.';
@@ -2232,6 +2294,40 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get habitSugSleep => 'Sleep before 23:00';
+
+  @override
+  String get obGetStarted => 'Get started';
+
+  @override
+  String get obTagline => 'Your day, around the five prayers.';
+
+  @override
+  String get obValuePrayer => 'Prayer times that just work';
+
+  @override
+  String get obValuePrayerSub =>
+      'Alerts, qibla, tracking and gentle qada help.';
+
+  @override
+  String get obValueQuran => 'Quran & hadith, offline';
+
+  @override
+  String get obValueQuranSub =>
+      '8 translations, khatm planner, memorization, duas.';
+
+  @override
+  String get obValueDay => 'Plan your whole day';
+
+  @override
+  String get obValueDaySub =>
+      'Tasks by prayer time, spending, habits and streaks.';
+
+  @override
+  String get obValuePrivate => 'Private by design';
+
+  @override
+  String get obValuePrivateSub =>
+      'No account, no ads, no tracking. Works offline.';
 
   @override
   String get shareThemeEmerald => 'Emerald';

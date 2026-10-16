@@ -43,9 +43,14 @@ class AppShell extends StatelessWidget {
     return Scaffold(
       body: shell,
       extendBody: cupertino,
-      bottomNavigationBar: cupertino
-          ? GlassTabBar(index: shell.currentIndex, onTap: _go)
-          : _MaterialNavBar(index: shell.currentIndex, onTap: _go),
+      // Tab bars are fixed chrome: like native ones they grow only a little
+      // with large text (content screens scale fully).
+      bottomNavigationBar: MediaQuery.withClampedTextScaling(
+        maxScaleFactor: 1.2,
+        child: cupertino
+            ? GlassTabBar(index: shell.currentIndex, onTap: _go)
+            : _MaterialNavBar(index: shell.currentIndex, onTap: _go),
+      ),
     );
   }
 }
@@ -64,7 +69,7 @@ class GlassTabBar extends StatelessWidget {
     final c = context.colors;
     final l = context.l10n;
     final bottom = MediaQuery.paddingOf(context).bottom;
-    final duration = Adaptive.motion(context, 320);
+    final duration = Adaptive.motion(context, 280);
     return Padding(
       padding: EdgeInsets.fromLTRB(14, 6, 14, bottom > 0 ? bottom - 6 : 12),
       child: SizedBox(
@@ -83,11 +88,25 @@ class GlassTabBar extends StatelessWidget {
                     top: 4,
                     bottom: 4,
                     width: w,
+                    // The lens: a brighter pane of glass with its own rim.
                     child: DecoratedBox(
                       decoration: BoxDecoration(
-                        color: c.mint.withValues(alpha: c.isDark ? 0.85 : 0.9),
+                        gradient: LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          colors: c.isDark
+                              ? [Colors.white.withValues(alpha: 0.16), Colors.white.withValues(alpha: 0.07)]
+                              : [Colors.white.withValues(alpha: 0.85), Colors.white.withValues(alpha: 0.5)],
+                        ),
                         borderRadius: BorderRadius.circular(barHeight / 2),
-                        border: Border.all(color: Colors.white.withValues(alpha: c.isDark ? 0.08 : 0.6)),
+                        border: Border.all(color: Colors.white.withValues(alpha: c.isDark ? 0.18 : 0.9)),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withValues(alpha: c.isDark ? 0.25 : 0.06),
+                            blurRadius: 8,
+                            offset: const Offset(0, 2),
+                          ),
+                        ],
                       ),
                     ),
                   ),
@@ -118,12 +137,7 @@ class GlassTabBar extends StatelessWidget {
 }
 
 class _GlassTabItem extends StatelessWidget {
-  const _GlassTabItem({
-    required this.tab,
-    required this.label,
-    required this.active,
-    required this.onTap,
-  });
+  const _GlassTabItem({required this.tab, required this.label, required this.active, required this.onTap});
 
   final ShellTab tab;
   final String label;
@@ -133,7 +147,7 @@ class _GlassTabItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final c = context.colors;
-    final color = active ? c.onMint : c.muted;
+    final color = active ? c.accent : c.ink.withValues(alpha: 0.72);
     return Semantics(
       button: true,
       selected: active,
@@ -145,14 +159,18 @@ class _GlassTabItem extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            WaqtIcon(tab.icon, size: 23, color: color, strokeWidth: active ? 2.2 : 1.9),
-            const SizedBox(height: 3),
-            Text(
-              label,
-              maxLines: 1,
-              overflow: TextOverflow.fade,
-              softWrap: false,
-              style: WaqtType.sans(10.5, weight: active ? 700 : 500, color: color),
+            WaqtIcon(tab.icon, size: 24, color: color, strokeWidth: active ? 2.2 : 1.9),
+            const SizedBox(height: 2),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 2),
+              child: FittedBox(
+                fit: BoxFit.scaleDown,
+                child: Text(
+                  label,
+                  maxLines: 1,
+                  style: WaqtType.sans(11, weight: active ? 700 : 600, color: color),
+                ),
+              ),
             ),
           ],
         ),

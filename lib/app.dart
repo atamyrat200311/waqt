@@ -53,11 +53,11 @@ class WaqtApp extends ConsumerWidget {
         FallbackCupertinoLocalizationsDelegate(),
       ],
       builder: (context, child) {
-        // Cap text scaling at 1.3× (accessibility bar) so layouts never break.
+        // Cap text scaling at 1.6× (large accessibility sizes) so layouts never break.
         final mq = MediaQuery.of(context);
         return MediaQuery(
           data: mq.copyWith(
-            textScaler: mq.textScaler.clamp(minScaleFactor: 0.85, maxScaleFactor: 1.3),
+            textScaler: mq.textScaler.clamp(minScaleFactor: 0.85, maxScaleFactor: 1.6),
           ),
           child: child!,
         );
