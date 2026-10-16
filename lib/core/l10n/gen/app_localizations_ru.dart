@@ -15,10 +15,10 @@ class AppLocalizationsRu extends AppLocalizations {
   String get tabToday => 'Сегодня';
 
   @override
-  String get tabTools => 'Инструменты';
+  String get tabTools => 'Сервисы';
 
   @override
-  String get tabMe => 'Я';
+  String get tabMe => 'Моё';
 
   @override
   String get add => 'Добавить';
@@ -370,7 +370,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String homeAdhkarAfter(String window, String min) {
-    return '$window · $min мин';
+    return '$window · ≈$min мин чтения';
   }
 
   @override
@@ -386,7 +386,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String homeInclSadaqa(String amount) {
-    return 'вкл. $amount садака';
+    return 'в т. ч. садака $amount';
   }
 
   @override
@@ -531,7 +531,7 @@ class AppLocalizationsRu extends AppLocalizations {
   }
 
   @override
-  String get qadaMadeUp => 'Восполнил';
+  String get qadaMadeUp => 'Восполнено';
 
   @override
   String get qadaAllDone => 'Всё';
@@ -581,10 +581,10 @@ class AppLocalizationsRu extends AppLocalizations {
   String get catTransport => 'Транспорт';
 
   @override
-  String get catFood => 'Еда';
+  String get catFood => 'Кафе и еда вне дома';
 
   @override
-  String get catBills => 'Счета';
+  String get catBills => 'Коммунальные платежи';
 
   @override
   String get catSadaqa => 'Садака';
@@ -811,7 +811,7 @@ class AppLocalizationsRu extends AppLocalizations {
   }
 
   @override
-  String get fastFasted => 'Постился';
+  String get fastFasted => 'Пост соблюдён';
 
   @override
   String get fastMissed => 'Пропущен';
@@ -966,7 +966,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get toolsAdhkarDone => 'Сегодня готово';
 
   @override
-  String get toolsCalendar => 'Календарь хиджры';
+  String get toolsCalendar => 'Календарь';
 
   @override
   String get toolsRamadan => 'Рамадан';
@@ -977,7 +977,7 @@ class AppLocalizationsRu extends AppLocalizations {
   }
 
   @override
-  String get meTitle => 'Я';
+  String get meTitle => 'Моё';
 
   @override
   String get meAll5 => 'Все 5 намазов';
@@ -1134,7 +1134,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get alertAdhan => 'Азан';
 
   @override
-  String get alertSilent => 'Тихо';
+  String get alertSilent => 'Обычный звук';
 
   @override
   String get alertOff => 'Выкл';
@@ -1536,6 +1536,11 @@ class AppLocalizationsRu extends AppLocalizations {
   String get quranRemoveNoteConfirm => 'Удалить закладку вместе с заметкой?';
 
   @override
+  String translationLabel(String name) {
+    return 'Перевод: $name';
+  }
+
+  @override
   String get quranBookmarked => 'Добавлено в закладки';
 
   @override
@@ -1563,7 +1568,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get quranNoteHint => 'Что значит для вас этот аят?';
 
   @override
-  String get quranSetLastRead => 'Отметить, где я остановился';
+  String get quranSetLastRead => 'Запомнить это место';
 
   @override
   String get quranReadingSettings => 'Настройки чтения';
@@ -1615,7 +1620,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get quranModePage => 'Страницы мусхафа';
 
   @override
-  String get quranSajda => 'Земной поклон';
+  String get quranSajda => 'Саджда';
 
   @override
   String get quranToday => 'Сегодня';
@@ -1776,8 +1781,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get khatmNewPlan => 'Новый план';
 
   @override
-  String get khatmShareText =>
-      'Я завершил(а) хатм Корана с Waqt. Альхамдулиллях!';
+  String get khatmShareText => 'Хатм Корана завершён с Waqt. Альхамдулиллях!';
 
   @override
   String get khatmReminder => 'Напоминать после иши';
@@ -1835,7 +1839,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get hifzAllSurahs => 'Все суры';
 
   @override
-  String get hifzTileIdle => 'Интервальное повторение';
+  String get hifzTileIdle => 'Повторение выученного';
 
   @override
   String hifzDueCount(int count) {
@@ -2176,7 +2180,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get zakatBusiness => 'Товары для торговли';
 
   @override
-  String get zakatReceivables => 'Долги перед вами';
+  String get zakatReceivables => 'Вам должны';
 
   @override
   String get zakatDebts => 'Долги к оплате';

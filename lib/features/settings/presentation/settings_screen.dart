@@ -28,7 +28,7 @@ const appVersion = '1.0.0';
 const languageNames = <String?, String>{
   null: '',
   'en': 'English',
-  'tk': 'Türkmen',
+  'tk': 'Türkmençe',
   'tr': 'Türkçe',
   'ru': 'Русский',
 };

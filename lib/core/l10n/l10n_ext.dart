@@ -7,6 +7,16 @@ import 'gen/app_localizations.dart';
 
 export 'gen/app_localizations.dart';
 
+/// Turkmen ordinal with the right vowel harmony: "-njy" after alty (6),
+/// dokuz (9), on (10), otuz (30), kyrk (40), altmyş (60), togsan (90);
+/// "-nji" otherwise (birinji, ikinji, ýigriminji, ýüzünji…).
+String tkOrdinal(int n) {
+  final units = n % 10;
+  final tens = (n % 100) ~/ 10;
+  final back = units != 0 ? (units == 6 || units == 9) : (tens != 0 && const {1, 3, 4, 6, 9}.contains(tens));
+  return '$n-${back ? 'njy' : 'nji'}';
+}
+
 extension L10nContext on BuildContext {
   AppLocalizations get l10n => AppLocalizations.of(this);
 }
@@ -98,12 +108,18 @@ extension L10nNames on AppLocalizations {
 
   // ---- dates ----
 
-  /// "Sunday, 4 October" (localized order).
+  /// "Sunday, 4 October" (localized order). Sentence-cased (Russian weekday
+  /// names are lower-case on their own).
   String longDate(DateTime d) =>
-      dateLong(weekdayName(weekdayKey(d)), '${d.day}', monthName(monthKey(d)));
+      _capitalize(dateLong(weekdayName(weekdayKey(d)), _dayOrdinal(d.day), monthName(monthKey(d))));
 
   /// "4 October".
-  String dayMonth(DateTime d) => dateDayMonth('${d.day}', monthName(monthKey(d)));
+  String dayMonth(DateTime d) => dateDayMonth(_dayOrdinal(d.day), monthName(monthKey(d)));
+
+  /// Turkmen writes dates as ordinals ("4-nji", "6-njy"); others plain.
+  String _dayOrdinal(int day) => localeName == 'tk' ? tkOrdinal(day) : '$day';
+
+  String _capitalize(String s) => s.isEmpty ? s : s[0].toUpperCase() + s.substring(1);
 
   /// "Thu 10 Dec".
   String shortWeekdayDate(DateTime d) =>

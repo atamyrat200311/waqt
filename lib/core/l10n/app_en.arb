@@ -273,7 +273,7 @@
   "homeUpNext": "Up next",
   "homeStart": "Start",
   "homeMarkDone": "Done",
-  "homeAdhkarAfter": "{window} · {min} min",
+  "homeAdhkarAfter": "{window} · ≈{min} min read",
   "@homeAdhkarAfter": {
     "placeholders": {
       "window": {
@@ -438,7 +438,7 @@
   "expenseNoteHint": "Note",
   "catGroceries": "Groceries",
   "catTransport": "Transport",
-  "catFood": "Food",
+  "catFood": "Eating out",
   "catBills": "Bills",
   "catSadaqa": "Sadaqa",
   "catOther": "Other",
@@ -720,7 +720,7 @@
   "toolsMorningDue": "Morning due",
   "toolsEveningDue": "Evening due",
   "toolsAdhkarDone": "Done today",
-  "toolsCalendar": "Hijri calendar",
+  "toolsCalendar": "Calendar",
   "toolsRamadan": "Ramadan",
   "toolsRamadanNow": "Day {n}",
   "@toolsRamadanNow": {
@@ -823,7 +823,7 @@
   },
   "secAlerts": "Alerts",
   "alertAdhan": "Adhan",
-  "alertSilent": "Silent",
+  "alertSilent": "Sound",
   "alertOff": "Off",
   "secGeneral": "General",
   "language": "Language",
@@ -1077,6 +1077,14 @@
   "quranBookmark": "Bookmark",
   "quranRemoveBookmark": "Remove bookmark",
   "quranRemoveNoteConfirm": "Remove this bookmark and its note?",
+  "translationLabel": "Translation: {name}",
+  "@translationLabel": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "quranBookmarked": "Saved to bookmarks",
   "moreActions": "More",
   "copy": "Copy",

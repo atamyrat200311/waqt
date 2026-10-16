@@ -364,7 +364,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String homeAdhkarAfter(String window, String min) {
-    return '$window · $min min';
+    return '$window · ≈$min min read';
   }
 
   @override
@@ -571,7 +571,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get catTransport => 'Transport';
 
   @override
-  String get catFood => 'Food';
+  String get catFood => 'Eating out';
 
   @override
   String get catBills => 'Bills';
@@ -955,7 +955,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get toolsAdhkarDone => 'Done today';
 
   @override
-  String get toolsCalendar => 'Hijri calendar';
+  String get toolsCalendar => 'Calendar';
 
   @override
   String get toolsRamadan => 'Ramadan';
@@ -1122,7 +1122,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get alertAdhan => 'Adhan';
 
   @override
-  String get alertSilent => 'Silent';
+  String get alertSilent => 'Sound';
 
   @override
   String get alertOff => 'Off';
@@ -1519,6 +1519,11 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get quranRemoveNoteConfirm => 'Remove this bookmark and its note?';
+
+  @override
+  String translationLabel(String name) {
+    return 'Translation: $name';
+  }
 
   @override
   String get quranBookmarked => 'Saved to bookmarks';

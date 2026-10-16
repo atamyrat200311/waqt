@@ -86,6 +86,12 @@ void main() {
 
     test('surah search by number, name, meaning and Arabic', () {
       expect(searchSurahs('36', 'en').single.number, 36);
+      SurahInfo.language = 'ru';
+      expect(searchSurahs('бакара', 'ru').first.number, 2);
+      expect(const SurahInfo(2).translit, 'Аль-Бакара');
+      SurahInfo.language = 'tk';
+      expect(const SurahInfo(36).translit, 'Ýasin');
+      SurahInfo.language = 'en';
       expect(searchSurahs('baqara', 'en').first.number, 2);
       expect(searchSurahs('Al-Kahf', 'en').first.number, 18);
       expect(searchSurahs('cave', 'en').single.number, 18);

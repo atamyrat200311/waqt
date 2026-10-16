@@ -90,7 +90,15 @@ class SurahInfo {
   const SurahInfo(this.number);
   final int number;
 
-  String get translit => surahTranslit[number - 1];
+  /// UI language for surah names; kept in sync by the app root so every
+  /// screen (and context-free helpers like share text) name surahs the same.
+  static String language = 'en';
+
+  /// Display name in the UI language (Cyrillic for ru, Turkmen for tk).
+  String get translit => surahName(number, language);
+
+  /// Latin transliteration regardless of language (search, sharing abroad).
+  String get latin => surahTranslit[number - 1];
   String get arabic => surahArabicNames[number - 1];
   int get ayahCount => surahAyahCounts[number - 1];
   bool get medinan => surahMedinan[number - 1];
@@ -196,8 +204,9 @@ List<SurahInfo> searchSurahs(String query, String language) {
   }
   final nq = normalizeLatin(q).replaceAll(RegExp(r'^(al|an|ar|as|at|ad|az|ash|adh)\s'), '');
   return SurahInfo.all.where((s) {
-    final t = normalizeLatin(s.translit);
+    final t = normalizeLatin(s.latin);
     return t.contains(nq) ||
+        normalizeLatin(surahName(s.number, language)).contains(normalizeLatin(q)) ||
         normalizeLatin(s.meaning(language)).contains(nq) ||
         normalizeLatin(s.meaning('en')).contains(nq);
   }).toList();

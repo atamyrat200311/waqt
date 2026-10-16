@@ -60,7 +60,7 @@ class AppLocalizationsTk extends AppLocalizations {
   String get undo => 'Yzyna al';
 
   @override
-  String get reset => 'Täzeden';
+  String get reset => 'Nola gaýtar';
 
   @override
   String get today => 'Şu gün';
@@ -201,12 +201,12 @@ class AppLocalizationsTk extends AppLocalizations {
 
   @override
   String dateLong(String weekday, String day, String month) {
-    return '$day-nji $month, $weekday';
+    return '$day $month, $weekday';
   }
 
   @override
   String dateDayMonth(String day, String month) {
-    return '$day-nji $month';
+    return '$day $month';
   }
 
   @override
@@ -258,7 +258,7 @@ class AppLocalizationsTk extends AppLocalizations {
   }
 
   @override
-  String get unitH => 's';
+  String get unitH => 'sag';
 
   @override
   String get unitM => 'm';
@@ -268,7 +268,7 @@ class AppLocalizationsTk extends AppLocalizations {
 
   @override
   String durationHM(String h, String m) {
-    return '$h s $m min';
+    return '$h sag $m min';
   }
 
   @override
@@ -307,11 +307,11 @@ class AppLocalizationsTk extends AppLocalizations {
     String _temp0 = intl.Intl.pluralLogic(
       days,
       locale: localeName,
-      other: '$days günden',
-      one: 'ertir',
-      zero: 'şu gün',
+      other: '$days günden: $name',
+      one: 'Ertir: $name',
+      zero: 'Şu gün: $name',
     );
-    return '$name $_temp0';
+    return '$_temp0';
   }
 
   @override
@@ -358,7 +358,7 @@ class AppLocalizationsTk extends AppLocalizations {
 
   @override
   String homeAdhkarAfter(String window, String min) {
-    return '$window · $min min';
+    return '$window · ≈$min min okamak';
   }
 
   @override
@@ -374,7 +374,7 @@ class AppLocalizationsTk extends AppLocalizations {
 
   @override
   String homeInclSadaqa(String amount) {
-    return '$amount sadaka bilen';
+    return 'şol sanda $amount sadaka';
   }
 
   @override
@@ -454,17 +454,17 @@ class AppLocalizationsTk extends AppLocalizations {
   String get markLateSub => 'Wagty geçenden soň';
 
   @override
-  String get markMissed => 'Galdy, kaza goş';
+  String get markMissed => 'Okalmady — kaza goş';
 
   @override
   String get markMissedSub => 'Bir zat goşulmazdan öň tassyklarsyňyz';
 
   @override
-  String get markExcused => 'Ötünçli';
+  String get markExcused => 'Üzürli';
 
   @override
   String get markExcusedSub =>
-      'Aýbaşy tertibi açyk — kaza ýok, yzygiderlik saklanýar';
+      'Aýratyn günler açyk — kaza ýok, yzygiderlik saklanýar';
 
   @override
   String markConfirmTitle(String prayer) {
@@ -518,14 +518,14 @@ class AppLocalizationsTk extends AppLocalizations {
   String get qadaMadeUp => 'Kaza etdim';
 
   @override
-  String get qadaAllDone => 'Hemmesi';
+  String get qadaAllDone => 'Tamam';
 
   @override
   String get qadaAddOlder => 'Öňki galan namazlary goş';
 
   @override
   String get qadaTip =>
-      'Birden kaza etmek ýeterlik. Köpler her parz namaz bilen bir kaza okaýar.';
+      'Birme-bir kaza etmek ýeterlik. Köpler her parz namaz bilen bir kaza okaýar.';
 
   @override
   String get qadaAddOlderTitle => 'Öňki galan namazlar';
@@ -539,7 +539,7 @@ class AppLocalizationsTk extends AppLocalizations {
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: 'Kaza $count goş',
+      other: '$count namazy kaza goş',
       zero: 'Kaza goş',
     );
     return '$_temp0';
@@ -565,7 +565,7 @@ class AppLocalizationsTk extends AppLocalizations {
   String get catTransport => 'Ulag';
 
   @override
-  String get catFood => 'Nahar';
+  String get catFood => 'Daşarda nahar';
 
   @override
   String get catBills => 'Tölegler';
@@ -799,7 +799,7 @@ class AppLocalizationsTk extends AppLocalizations {
   String get fastMissed => 'Galdy';
 
   @override
-  String get fastExcused => 'Ötünçli';
+  String get fastExcused => 'Üzürli';
 
   @override
   String get fastClear => 'Arassala';
@@ -836,12 +836,12 @@ class AppLocalizationsTk extends AppLocalizations {
 
   @override
   String ramadanInDays(String days) {
-    return '$days günden';
+    return '$days gün galdy';
   }
 
   @override
   String ramadanDayOf(String n, String total) {
-    return '$total günden $n-nji';
+    return 'Gün $n / $total';
   }
 
   @override
@@ -938,23 +938,23 @@ class AppLocalizationsTk extends AppLocalizations {
   String get toolsAdhkar => 'Zikirler';
 
   @override
-  String get toolsMorningDue => 'Ertirki wagty';
+  String get toolsMorningDue => 'Ertirki zikir wagty';
 
   @override
-  String get toolsEveningDue => 'Agşamky wagty';
+  String get toolsEveningDue => 'Agşamky zikir wagty';
 
   @override
-  String get toolsAdhkarDone => 'Şu gün taýýar';
+  String get toolsAdhkarDone => 'Şu gün okaldy';
 
   @override
-  String get toolsCalendar => 'Hijri senenamasy';
+  String get toolsCalendar => 'Hijri aýlar';
 
   @override
   String get toolsRamadan => 'Remezan';
 
   @override
   String toolsRamadanNow(String n) {
-    return '$n-nji gün';
+    return 'Gün $n';
   }
 
   @override
@@ -1111,7 +1111,7 @@ class AppLocalizationsTk extends AppLocalizations {
   String get alertAdhan => 'Azan';
 
   @override
-  String get alertSilent => 'Sessiz';
+  String get alertSilent => 'Adaty ses';
 
   @override
   String get alertOff => 'Öçük';
@@ -1132,7 +1132,7 @@ class AppLocalizationsTk extends AppLocalizations {
   String get location => 'Ýerleşýän ýeri';
 
   @override
-  String get periodMode => 'Aýbaşy tertibi';
+  String get periodMode => 'Aýratyn günler';
 
   @override
   String get periodModeSub =>
@@ -1435,14 +1435,14 @@ class AppLocalizationsTk extends AppLocalizations {
 
   @override
   String quranJuzN(String n) {
-    return 'Pāra $n';
+    return 'Para $n';
   }
 
   @override
   String get quranSurahs => 'Süreler';
 
   @override
-  String get quranJuzTab => 'Pāralar';
+  String get quranJuzTab => 'Paralar';
 
   @override
   String quranAyahCount(int count) {
@@ -1450,7 +1450,7 @@ class AppLocalizationsTk extends AppLocalizations {
   }
 
   @override
-  String get quranMeccan => 'Mekke';
+  String get quranMeccan => 'Mekge';
 
   @override
   String get quranMedinan => 'Medine';
@@ -1497,10 +1497,15 @@ class AppLocalizationsTk extends AppLocalizations {
   String get quranRemoveNoteConfirm => 'Bu bellik we onuň ýazgysy aýrylsynmy?';
 
   @override
+  String translationLabel(String name) {
+    return 'Terjime: $name';
+  }
+
+  @override
   String get quranBookmarked => 'Belliklere goşuldy';
 
   @override
-  String get moreActions => 'Başgalar';
+  String get moreActions => 'Goşmaça';
 
   @override
   String get copy => 'Göçür';
@@ -1509,7 +1514,7 @@ class AppLocalizationsTk extends AppLocalizations {
   String get copied => 'Göçürildi';
 
   @override
-  String get shareImage => 'Surat edip paýlaş';
+  String get shareImage => 'Surat görnüşinde paýlaş';
 
   @override
   String get shareText => 'Tekst paýlaş';
@@ -1524,7 +1529,7 @@ class AppLocalizationsTk extends AppLocalizations {
   String get quranNoteHint => 'Bu aýat siziň üçin näme aňladýar?';
 
   @override
-  String get quranSetLastRead => 'Şu ýerde galdym diý';
+  String get quranSetLastRead => 'Okan ýerimi belle';
 
   @override
   String get quranReadingSettings => 'Okamak sazlamalary';
@@ -1557,10 +1562,10 @@ class AppLocalizationsTk extends AppLocalizations {
   String get quranSepia => 'Ýyly kagyz';
 
   @override
-  String get quranKeepAwake => 'Okanyňda ekrany öçürme';
+  String get quranKeepAwake => 'Okanyňyzda ekran öçmesin';
 
   @override
-  String get quranMemorize => 'Ýatlamak tertibi';
+  String get quranMemorize => 'Ýat tutmak tertibi';
 
   @override
   String get quranMemorizeHint =>
@@ -1670,7 +1675,7 @@ class AppLocalizationsTk extends AppLocalizations {
 
   @override
   String khatmDayOf(String day, String total) {
-    return '$total günüň $day-njisi';
+    return 'Gün $day / $total';
   }
 
   @override
@@ -1732,7 +1737,7 @@ class AppLocalizationsTk extends AppLocalizations {
   String get notifQuranBody => 'Ukudan öň Kuran bilen birnäçe minut.';
 
   @override
-  String get hifzTitle => 'Ýatlamak';
+  String get hifzTitle => 'Ýat tutmak';
 
   @override
   String get hifzIntro =>
@@ -1757,7 +1762,7 @@ class AppLocalizationsTk extends AppLocalizations {
   String get hifzStrong => 'Berk';
 
   @override
-  String get hifzWeak => 'Işlemeli';
+  String get hifzWeak => 'Ýene gaýtalamaly';
 
   @override
   String hifzNext(String date) {
@@ -1766,7 +1771,7 @@ class AppLocalizationsTk extends AppLocalizations {
 
   @override
   String get hifzEmpty =>
-      'Sanawyňyzda entek zat ýok. ʿAmma pārasyndaky gysga süreler gowy başlangyç.';
+      'Sanawyňyzda entek zat ýok. ʿAmma parasyndaky gysga süreler gowy başlangyç.';
 
   @override
   String get hifzRemove => 'Sanawdan aýyr';
@@ -1778,7 +1783,7 @@ class AppLocalizationsTk extends AppLocalizations {
   String get hifzAllSurahs => 'Ähli süreler';
 
   @override
-  String get hifzTileIdle => 'Aralykly gaýtalama';
+  String get hifzTileIdle => 'Ýat tutulany gaýtala';
 
   @override
   String hifzDueCount(int count) {
@@ -1798,7 +1803,7 @@ class AppLocalizationsTk extends AppLocalizations {
   String get quranPages => 'Sahypalar';
 
   @override
-  String get hifzMemorized => 'Ýatlanan';
+  String get hifzMemorized => 'Ýat tutulan';
 
   @override
   String get libraryHadith => 'Hadys ýygyndylary';
@@ -1842,13 +1847,13 @@ class AppLocalizationsTk extends AppLocalizations {
   String get hadithOfDay => 'Günüň hadysy';
 
   @override
-  String get hadithBookNawawi => 'An-Nawawiniň 40 hadysy';
+  String get hadithBookNawawi => 'Nawawynyň 40 hadysy';
 
   @override
   String get hadithBookQudsi => '40 Kudsi hadys';
 
   @override
-  String get hadithBookBukhari => 'Sahyh al-Buhary';
+  String get hadithBookBukhari => 'Sahyh Buhary';
 
   @override
   String get hadithBookMuslim => 'Sahyh Muslim';
@@ -1945,7 +1950,7 @@ class AppLocalizationsTk extends AppLocalizations {
 
   @override
   String learnStepN(String n) {
-    return '$n-nji ädim';
+    return 'Ädim $n';
   }
 
   @override
@@ -2112,10 +2117,10 @@ class AppLocalizationsTk extends AppLocalizations {
       'Zekat — bir hijri ýyl saklanan, nisapdan ýokary baýlygyň 2,5%-i. Öý, ulag we şahsy zatlar hasaba alynmaýar. Ýagdaýyňyz barada alymdan soraň.';
 
   @override
-  String get timetableTitle => 'Namaz tertibi';
+  String get timetableTitle => 'Aýlyk namaz wagtlary';
 
   @override
-  String get timetableShort => 'Tertip';
+  String get timetableShort => 'Namaz wagtlary';
 
   @override
   String get timetableNote =>

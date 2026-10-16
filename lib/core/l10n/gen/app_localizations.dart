@@ -489,7 +489,7 @@ abstract class AppLocalizations {
   /// No description provided for @homeAdhkarAfter.
   ///
   /// In en, this message translates to:
-  /// **'{window} · {min} min'**
+  /// **'{window} · ≈{min} min read'**
   String homeAdhkarAfter(String window, String min);
 
   /// No description provided for @homeTaraweeh.
@@ -813,7 +813,7 @@ abstract class AppLocalizations {
   /// No description provided for @catFood.
   ///
   /// In en, this message translates to:
-  /// **'Food'**
+  /// **'Eating out'**
   String get catFood;
 
   /// No description provided for @catBills.
@@ -1479,7 +1479,7 @@ abstract class AppLocalizations {
   /// No description provided for @toolsCalendar.
   ///
   /// In en, this message translates to:
-  /// **'Hijri calendar'**
+  /// **'Calendar'**
   String get toolsCalendar;
 
   /// No description provided for @toolsRamadan.
@@ -1761,7 +1761,7 @@ abstract class AppLocalizations {
   /// No description provided for @alertSilent.
   ///
   /// In en, this message translates to:
-  /// **'Silent'**
+  /// **'Sound'**
   String get alertSilent;
 
   /// No description provided for @alertOff.
@@ -2429,6 +2429,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Remove this bookmark and its note?'**
   String get quranRemoveNoteConfirm;
+
+  /// No description provided for @translationLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Translation: {name}'**
+  String translationLabel(String name);
 
   /// No description provided for @quranBookmarked.
   ///

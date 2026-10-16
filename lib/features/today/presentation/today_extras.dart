@@ -202,6 +202,7 @@ class AyahOfDayCard extends ConsumerWidget {
     final texts = ref.watch(quranTextsProvider).value;
     if (texts == null) return const SizedBox.shrink();
     final ref0 = dailyAyah(ref.watch(todayKeyProvider).date);
+    final translation = ref.watch(activeTranslationProvider);
     final i = ref0.index;
     return Padding(
       padding: const EdgeInsets.only(bottom: 10),
@@ -244,6 +245,15 @@ class AyahOfDayCard extends ConsumerWidget {
             ),
             const SizedBox(height: 8),
             Text(ayahReference(i), textAlign: TextAlign.center, style: WaqtType.sans(12.5, weight: 600, color: c.accent)),
+            if (translation.language != l.localeName)
+              Padding(
+                padding: const EdgeInsets.only(top: 2),
+                child: Text(
+                  l.translationLabel('${translation.label} · ${translation.author}'),
+                  textAlign: TextAlign.center,
+                  style: WaqtType.sans(11.5, color: c.muted),
+                ),
+              ),
           ],
         ),
       ),

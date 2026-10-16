@@ -120,6 +120,45 @@ const surahTranslit = <String>[
   'An-Nas',
 ];
 
+/// Russian (Cyrillic) surah names, as in E. Kuliev's translation.
+const _ruNames = <String>[
+  'Аль-Фатиха', 'Аль-Бакара', 'Аль Имран', 'Ан-Ниса', 'Аль-Маида', 'Аль-Анам', 'Аль-Араф', 'Аль-Анфаль', 'Ат-Тауба', 'Юнус',
+  'Худ', 'Юсуф', 'Ар-Раад', 'Ибрахим', 'Аль-Хиджр', 'Ан-Нахль', 'Аль-Исра', 'Аль-Кахф', 'Марьям', 'Та Ха',
+  'Аль-Анбия', 'Аль-Хадж', 'Аль-Муминун', 'Ан-Нур', 'Аль-Фуркан', 'Аш-Шуара', 'Ан-Намль', 'Аль-Касас', 'Аль-Анкабут', 'Ар-Рум',
+  'Лукман', 'Ас-Саджда', 'Аль-Ахзаб', 'Саба', 'Фатыр', 'Йа Син', 'Ас-Саффат', 'Сад', 'Аз-Зумар', 'Гафир',
+  'Фуссылат', 'Аш-Шура', 'Аз-Зухруф', 'Ад-Духан', 'Аль-Джасия', 'Аль-Ахкаф', 'Мухаммад', 'Аль-Фатх', 'Аль-Худжурат', 'Каф',
+  'Аз-Зарият', 'Ат-Тур', 'Ан-Наджм', 'Аль-Камар', 'Ар-Рахман', 'Аль-Вакиа', 'Аль-Хадид', 'Аль-Муджадила', 'Аль-Хашр', 'Аль-Мумтахана',
+  'Ас-Сафф', 'Аль-Джумуа', 'Аль-Мунафикун', 'Ат-Тагабун', 'Ат-Таляк', 'Ат-Тахрим', 'Аль-Мульк', 'Аль-Калям', 'Аль-Хакка', 'Аль-Мааридж',
+  'Нух', 'Аль-Джинн', 'Аль-Муззаммиль', 'Аль-Муддассир', 'Аль-Кияма', 'Аль-Инсан', 'Аль-Мурсалят', 'Ан-Наба', 'Ан-Назиат', 'Абаса',
+  'Ат-Таквир', 'Аль-Инфитар', 'Аль-Мутаффифин', 'Аль-Иншикак', 'Аль-Бурудж', 'Ат-Тарик', 'Аль-Аля', 'Аль-Гашия', 'Аль-Фаджр', 'Аль-Баляд',
+  'Аш-Шамс', 'Аль-Лейль', 'Ад-Духа', 'Аш-Шарх', 'Ат-Тин', 'Аль-Алак', 'Аль-Кадр', 'Аль-Баййина', 'Аз-Зальзаля', 'Аль-Адият',
+  'Аль-Кариа', 'Ат-Такасур', 'Аль-Аср', 'Аль-Хумаза', 'Аль-Филь', 'Курайш', 'Аль-Маун', 'Аль-Каусар', 'Аль-Кафирун', 'Ан-Наср',
+  'Аль-Масад', 'Аль-Ихлас', 'Аль-Фаляк', 'Ан-Нас',
+];
+
+/// Turkmen surah names (common Turkmen spelling, no article). REVIEW.
+const _tkNames = <String>[
+  'Fatiha', 'Bakara', 'Ali Ymran', 'Nisa', 'Maýyda', 'Engam', 'Agraf', 'Enfal', 'Tobe', 'Ýunus',
+  'Hud', 'Ýusup', 'Rad', 'Ybraýym', 'Hijr', 'Nahl', 'Isra', 'Kähf', 'Merýem', 'Taha',
+  'Enbiýa', 'Haj', 'Möminun', 'Nur', 'Furkan', 'Şuara', 'Neml', 'Kasas', 'Ankebut', 'Rum',
+  'Lukman', 'Sejde', 'Ahzap', 'Sebe', 'Fatyr', 'Ýasin', 'Saffat', 'Sad', 'Zumer', 'Gafyr',
+  'Fussylet', 'Şura', 'Zuhruf', 'Duhan', 'Jasiýe', 'Ahkaf', 'Muhammet', 'Fet', 'Hujurat', 'Kaf',
+  'Zariýat', 'Tur', 'Nejm', 'Kamar', 'Rahman', 'Wakyga', 'Hadid', 'Mujadele', 'Haşr', 'Mumtahine',
+  'Saff', 'Jumga', 'Munafykun', 'Tegabun', 'Talak', 'Tahrim', 'Mülk', 'Kalem', 'Hakka', 'Megarij',
+  'Nuh', 'Jin', 'Muzzemmil', 'Muddessir', 'Kyýamat', 'Insan', 'Mursalat', 'Nebe', 'Naziat', 'Abese',
+  'Tekwir', 'Infitar', 'Mutaffifin', 'Inşikak', 'Buruj', 'Tarik', 'Agla', 'Gaşiýe', 'Fajr', 'Beled',
+  'Şems', 'Leýl', 'Duha', 'Inşirah', 'Tin', 'Alak', 'Kadr', 'Beýýine', 'Zilzal', 'Adiýat',
+  'Karyga', 'Tekasur', 'Asr', 'Humeze', 'Fil', 'Kureýş', 'Magun', 'Kewser', 'Kafirun', 'Nasr',
+  'Mesed', 'Yhlas', 'Felak', 'Nas',
+];
+
+/// Surah name for display in [language] (Latin transliteration for en/tr).
+String surahName(int number, String language) => switch (language) {
+      'ru' => _ruNames[number - 1],
+      'tk' => _tkNames[number - 1],
+      _ => surahTranslit[number - 1],
+    };
+
 const _en = <String>[
   'The Opening',
   'The Cow',
