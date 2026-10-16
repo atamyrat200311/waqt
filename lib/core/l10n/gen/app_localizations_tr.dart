@@ -1877,6 +1877,12 @@ class AppLocalizationsTr extends AppLocalizations {
   String get hadithSearchHint => 'Kelime veya numara arayın';
 
   @override
+  String get hadithSearchAll => 'Hadis ara';
+
+  @override
+  String get hadithSearchAllHint => 'Tüm külliyatlarda kelime';
+
+  @override
   String get hadithShowArabic => 'Arapça metni göster';
 
   @override

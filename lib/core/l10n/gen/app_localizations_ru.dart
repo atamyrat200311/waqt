@@ -1945,6 +1945,12 @@ class AppLocalizationsRu extends AppLocalizations {
   String get hadithSearchHint => 'Слова или номер';
 
   @override
+  String get hadithSearchAll => 'Поиск хадисов';
+
+  @override
+  String get hadithSearchAllHint => 'Слова во всех сборниках';
+
+  @override
   String get hadithShowArabic => 'Показывать арабский текст';
 
   @override

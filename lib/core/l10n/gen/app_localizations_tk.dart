@@ -1875,6 +1875,12 @@ class AppLocalizationsTk extends AppLocalizations {
   String get hadithSearchHint => 'Söz ýa-da belgi gözle';
 
   @override
+  String get hadithSearchAll => 'Hadys gözle';
+
+  @override
+  String get hadithSearchAllHint => 'Ähli ýygyndylarda söz';
+
+  @override
   String get hadithShowArabic => 'Arapça teksti görkez';
 
   @override

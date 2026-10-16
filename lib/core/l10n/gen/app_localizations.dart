@@ -3078,6 +3078,18 @@ abstract class AppLocalizations {
   /// **'Search words or a number'**
   String get hadithSearchHint;
 
+  /// No description provided for @hadithSearchAll.
+  ///
+  /// In en, this message translates to:
+  /// **'Search hadith'**
+  String get hadithSearchAll;
+
+  /// No description provided for @hadithSearchAllHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Words in any collection'**
+  String get hadithSearchAllHint;
+
   /// No description provided for @hadithShowArabic.
   ///
   /// In en, this message translates to:

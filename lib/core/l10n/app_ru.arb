@@ -496,6 +496,8 @@
   "hadithN": "Хадис {n}",
   "hadithBooks": "Книги",
   "hadithSearchHint": "Слова или номер",
+  "hadithSearchAll": "Поиск хадисов",
+  "hadithSearchAllHint": "Слова во всех сборниках",
   "hadithShowArabic": "Показывать арабский текст",
   "hadithTranslation": "Перевод",
   "hadithNoResults": "Хадисы не найдены.",

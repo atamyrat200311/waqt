@@ -688,6 +688,8 @@
   "hadithN": "Hadys {n}",
   "hadithBooks": "Kitaplar",
   "hadithSearchHint": "Söz ýa-da belgi gözle",
+  "hadithSearchAll": "Hadys gözle",
+  "hadithSearchAllHint": "Ähli ýygyndylarda söz",
   "hadithShowArabic": "Arapça teksti görkez",
   "hadithTranslation": "Terjime",
   "hadithNoResults": "Hadys tapylmady.",

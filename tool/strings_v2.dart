@@ -159,6 +159,8 @@ const Map<String, List<String>> s2 = {
   'hadithN': ['Hadith {n}', 'Hadys {n}', 'Hadis {n}', 'Хадис {n}'],
   'hadithBooks': ['Books', 'Kitaplar', 'Kitaplar', 'Книги'],
   'hadithSearchHint': ['Search words or a number', 'Söz ýa-da belgi gözle', 'Kelime veya numara arayın', 'Слова или номер'],
+  'hadithSearchAll': ['Search hadith', 'Hadys gözle', 'Hadis ara', 'Поиск хадисов'],
+  'hadithSearchAllHint': ['Words in any collection', 'Ähli ýygyndylarda söz', 'Tüm külliyatlarda kelime', 'Слова во всех сборниках'],
   'hadithShowArabic': ['Show Arabic text', 'Arapça teksti görkez', 'Arapça metni göster', 'Показывать арабский текст'],
   'hadithTranslation': ['Translation', 'Terjime', 'Tercüme', 'Перевод'],
   'hadithNoResults': ['No hadith found.', 'Hadys tapylmady.', 'Hadis bulunamadı.', 'Хадисы не найдены.'],

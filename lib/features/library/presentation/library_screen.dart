@@ -37,6 +37,13 @@ class LibraryScreen extends StatelessWidget {
               title: l.tabLibrary,
               actions: [
                 CircleIconButton(
+                  icon: WaqtIcons.search,
+                  semanticLabel: l.hadithSearchAll,
+                  background: c.card,
+                  border: true,
+                  onPressed: () => context.push(Routes.hadithSearch),
+                ),
+                CircleIconButton(
                   icon: WaqtIcons.bookmark,
                   semanticLabel: l.librarySaved,
                   background: c.card,

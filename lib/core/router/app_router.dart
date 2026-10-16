@@ -10,6 +10,7 @@ import '../../features/expenses/presentation/expense_history_screen.dart';
 import '../../features/habits/presentation/habits_screen.dart';
 import '../../features/hadith/domain/hadith.dart';
 import '../../features/hadith/presentation/hadith_book_screen.dart';
+import '../../features/hadith/presentation/hadith_search_screen.dart';
 import '../../features/library/presentation/duas_screen.dart';
 import '../../features/library/presentation/learn_screens.dart';
 import '../../features/library/presentation/library_screen.dart';
@@ -116,6 +117,7 @@ final appRouterProvider = Provider<GoRouter>((ref) {
                   ],
                 ),
                 GoRoute(path: _child(Routes.duas), builder: (context, state) => const DuasScreen()),
+                GoRoute(path: _child(Routes.hadithSearch), builder: (context, state) => const HadithSearchScreen()),
                 GoRoute(path: _child(Routes.names), builder: (context, state) => const NamesScreen()),
                 GoRoute(
                   path: _child(Routes.learn),

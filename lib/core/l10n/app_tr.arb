@@ -496,6 +496,8 @@
   "hadithN": "Hadis {n}",
   "hadithBooks": "Kitaplar",
   "hadithSearchHint": "Kelime veya numara arayın",
+  "hadithSearchAll": "Hadis ara",
+  "hadithSearchAllHint": "Tüm külliyatlarda kelime",
   "hadithShowArabic": "Arapça metni göster",
   "hadithTranslation": "Tercüme",
   "hadithNoResults": "Hadis bulunamadı.",

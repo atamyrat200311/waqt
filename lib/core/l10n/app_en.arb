@@ -1322,6 +1322,8 @@
   },
   "hadithBooks": "Books",
   "hadithSearchHint": "Search words or a number",
+  "hadithSearchAll": "Search hadith",
+  "hadithSearchAllHint": "Words in any collection",
   "hadithShowArabic": "Show Arabic text",
   "hadithTranslation": "Translation",
   "hadithNoResults": "No hadith found.",

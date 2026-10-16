@@ -1926,6 +1926,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get hadithSearchHint => 'Search words or a number';
 
   @override
+  String get hadithSearchAll => 'Search hadith';
+
+  @override
+  String get hadithSearchAllHint => 'Words in any collection';
+
+  @override
   String get hadithShowArabic => 'Show Arabic text';
 
   @override
