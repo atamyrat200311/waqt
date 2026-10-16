@@ -124,7 +124,12 @@ class _ExpenseHistoryScreenState extends ConsumerState<ExpenseHistoryScreen> {
                               ),
                               onDismissed: (_) {
                                 Haptics.light();
-                                ref.read(expenseRepositoryProvider).delete(e.id);
+                                final repo = ref.read(expenseRepositoryProvider);
+                                repo.delete(e.id);
+                                ScaffoldMessenger.maybeOf(context)?.showSnackBar(SnackBar(
+                                  content: Text(l.expenseDeleted),
+                                  action: SnackBarAction(label: l.undo, onPressed: () => repo.restore(e)),
+                                ));
                               },
                               child: Padding(
                                 padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),

@@ -174,8 +174,8 @@ class _Header extends ConsumerWidget {
     }
     return Padding(
       padding: EdgeInsets.fromLTRB(Gap.title, top, 12, 8),
-      child: SizedBox(
-        height: 72,
+      child: ConstrainedBox(
+        constraints: const BoxConstraints(minHeight: 72),
         child: Row(
           children: [
             Expanded(
@@ -187,7 +187,7 @@ class _Header extends ConsumerWidget {
                     header: true,
                     child: Text(
                       gDate,
-                      maxLines: 1,
+                      maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       style: WaqtType.serif(24, tracking: -0.01, height: 1.15, color: c.ink),
                     ),
@@ -660,6 +660,10 @@ class _Tiles extends ConsumerWidget {
                       Text(currency, style: WaqtType.sans(13, weight: 600, color: c.muted)),
                     ],
                   ),
+                  if (sum.count == 0) ...[
+                    const SizedBox(height: 8),
+                    Text(l.expenseAddFirst, style: WaqtType.sans(12, color: c.muted, height: 1.3)),
+                  ],
                   if (sum.sadaqaMinor > 0) ...[
                     const SizedBox(height: 8),
                     Row(
@@ -669,7 +673,7 @@ class _Tiles extends ConsumerWidget {
                         Flexible(
                           child: Text(
                             l.homeInclSadaqa(formatMinor(sum.sadaqaMinor)),
-                            maxLines: 1,
+                            maxLines: 2,
                             overflow: TextOverflow.ellipsis,
                             style: WaqtType.sans(12, color: c.muted),
                           ),
@@ -702,6 +706,10 @@ class _Tiles extends ConsumerWidget {
                       ),
                     ],
                   ),
+                  if (tasks.isEmpty) ...[
+                    const SizedBox(height: 8),
+                    Text(l.tasksAddFirst, style: WaqtType.sans(12, color: c.muted, height: 1.3)),
+                  ],
                   if (tasks.isNotEmpty) ...[
                     const SizedBox(height: 12),
                     Row(

@@ -379,6 +379,13 @@ Review-round decisions (multi-agent UX review, phase 10):
 - Ramadan 30 (`features/ramadan/application/ramadan_challenge.dart`): fast, all prayers, ≥ 10 ayahs
   (or khatm portion), adhkar, sadaqa; "full days" = fast + prayers + Quran.
 - Fasting qada: `FastType.qada`; owed = missed/excused Ramadan days − make-up fasts.
+- Regression pass 2: onboarding starts with **language** (no Turkmen system locale); "Advanced"
+  method/Asr survives a later city pick. Passed-but-unmarked prayers use `UnmarkedMark` (solid
+  ring) vs dashed upcoming. Overdue khatm: `overdue`, target = original pace, "Extend by N days";
+  `farBehind` shows the page gap; `dayShown` never exceeds the plan length. `isLargeText()`
+  (rows.dart, > 1.3×) makes `WaqtRow` stack value/controls under the title. Expense deletes have
+  undo. Hadith editions/search indexes are autoDispose with a 2-minute keep-alive (widget tests
+  pump 3 minutes after unmounting so the grace timer fires).
 
 Screenshots: `WAQT_SCREENSHOTS=1 flutter test test/screenshots` (now incl. `full_*` long
 pages and a `review_*` set in tk/ru). `shoot(..., height:, preload:)` helpers.

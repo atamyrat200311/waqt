@@ -561,7 +561,7 @@
     "description": "REVIEW"
   },
   "quranBookmarks": "Bellikler",
-  "quranNoBookmarks": "Entek bellik ýok. Aýaty saklamak üçin oňa basyň.",
+  "quranNoBookmarks": "Entek bellik ýok. Aýaty saklamak üçin oňa uzak basyň ýa-da ••• basyň.",
   "quranBookmark": "Belle",
   "quranRemoveBookmark": "Belligi aýyr",
   "quranRemoveNoteConfirm": "Bu bellik we onuň ýazgysy aýrylsynmy?",
@@ -651,7 +651,7 @@
   "hifzReview": "Gaýtala",
   "hifzHowWent": "Gaýtalamak nähili geçdi?",
   "hifzStrong": "Berk",
-  "hifzWeak": "Ýene gaýtalamaly",
+  "hifzWeak": "Gowşak",
   "hifzNext": "Indiki gaýtalama {date}",
   "hifzEmpty": "Sanawyňyzda entek zat ýok. ʿAmma parasyndaky gysga süreler gowy başlangyç.",
   "hifzRemove": "Sanawdan aýyr",
@@ -805,7 +805,7 @@
   "habitSugGratitude": "Şükür edýän 3 zadymy ýaz",
   "habitSugRead": "Kitapdan 10 sahypa oka",
   "habitSugSleep": "23:00-dan öň ýat",
-  "ramadanChallenge": "Remezan 30",
+  "ramadanChallenge": "Remezan synagy",
   "ramadanChallengeScore": "Şu gün 5-den {score}",
   "ramadanCoreDays": "{count, plural, =0{Doly gün: oraza, namaz we Kuran} other{Häzire çenli {count} doly gün}}",
   "ramadanItemFast": "Oraza",
@@ -832,5 +832,38 @@
   "shareThemeNight": "Gije",
   "shareWithArabic": "Arapça",
   "shareWithTranslation": "Terjime",
-  "shareFooter": "Waqt · günüňiz namazyň töwereginde"
+  "shareFooter": "Waqt · günüňiz namazyň töwereginde",
+  "quranReminderAfterIsha": "Ýassydan soň Kuran ýatlatmasy",
+  "khatmOverdue": "Meýilnamanyň möhleti doldy — rahat depginde dowam etmek üçin uzaldyň.",
+  "@khatmOverdue": {
+    "description": "REVIEW"
+  },
+  "khatmFarBehind": "{count} sahypa yzda — howlukmaň, her okalan sahypa hasap.",
+  "@khatmFarBehind": {
+    "description": "REVIEW"
+  },
+  "khatmExtend": "{count} gün uzalt",
+  "@khatmExtend": {
+    "description": "REVIEW"
+  },
+  "expenseAddFirst": "Satyn alyş goşmak üçin + basyň",
+  "@expenseAddFirst": {
+    "description": "REVIEW"
+  },
+  "chipDone": "bellendi",
+  "chipNow": "häzir",
+  "chipUnmarked": "entek bellenmedi",
+  "@chipUnmarked": {
+    "description": "REVIEW"
+  },
+  "chipUpcoming": "ýakynda",
+  "chipMissed": "gaçyryldy, kazada",
+  "@chipMissed": {
+    "description": "REVIEW"
+  },
+  "chipExcused": "ötünçli",
+  "tasksAddFirst": "Namaz wagtyna bir iş meýilleşdiriň",
+  "@tasksAddFirst": {
+    "description": "REVIEW"
+  }
 }

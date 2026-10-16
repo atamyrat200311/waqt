@@ -82,10 +82,17 @@ class StarBadge extends StatelessWidget {
         child: CustomPaint(
           painter: _BadgePainter(color, fill),
           child: Center(
-            child: Text(
-              label,
-              maxLines: 1,
-              style: WaqtType.sans(label.length > 2 ? size * 0.27 : size * 0.33, weight: 700, color: textColor ?? color),
+            // The badge is a fixed shape: shrink the number rather than overflow.
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: size * 0.16),
+              child: FittedBox(
+                fit: BoxFit.scaleDown,
+                child: Text(
+                  label,
+                  maxLines: 1,
+                  style: WaqtType.sans(label.length > 2 ? size * 0.27 : size * 0.33, weight: 700, color: textColor ?? color),
+                ),
+              ),
             ),
           ),
         ),

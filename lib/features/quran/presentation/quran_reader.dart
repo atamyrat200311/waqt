@@ -579,7 +579,7 @@ class _HifzPanel extends StatelessWidget {
     final l = context.l10n;
     final ink = Theme.of(context).colorScheme.onSurface;
     Widget b(String label, HifzGrade g, PillStyle style) => Expanded(
-      child: PillButton(label: label, style: style, expand: true, fontSize: 14, onPressed: () => onRate(g)),
+      child: PillButton(label: label, style: style, expand: true, fontSize: 14, maxLines: 2, onPressed: () => onRate(g)),
     );
     return Glass(
       radius: 26,

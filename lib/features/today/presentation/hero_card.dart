@@ -207,13 +207,20 @@ class PrayerChip extends StatelessWidget {
       ChipState.done => DoneMark(key: ValueKey('done-$prayer'), checkColor: c.hero),
       ChipState.current => const CurrentMark(),
       ChipState.upcoming => UpcomingMark(color: c.onHeroMuted),
-      ChipState.unmarked => UpcomingMark(color: c.onHero),
+      ChipState.unmarked => UnmarkedMark(color: c.onHero),
       ChipState.missed => MissedMark(background: Colors.transparent, color: c.brass),
       ChipState.excused => ExcusedMark(color: c.onHeroMuted),
     };
     return Semantics(
       button: true,
-      label: '${l.prayer(prayer)} ${hhmm(time)}',
+      label: '${l.prayer(prayer)} ${hhmm(time)}, ${switch (state) {
+        ChipState.done => l.chipDone,
+        ChipState.current => l.chipNow,
+        ChipState.upcoming => l.chipUpcoming,
+        ChipState.unmarked => l.chipUnmarked,
+        ChipState.missed => l.chipMissed,
+        ChipState.excused => l.chipExcused,
+      }}',
       excludeSemantics: true,
       child: AnimatedContainer(
         duration: Adaptive.motion(context, 250),

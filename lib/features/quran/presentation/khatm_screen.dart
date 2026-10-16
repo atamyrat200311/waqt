@@ -140,8 +140,12 @@ class _KhatmScreenState extends ConsumerState<KhatmScreen> {
 
     final status = k.complete
         ? l.khatmComplete
+        : k.overdue
+        ? l.khatmOverdue
         : k.todayDone
         ? l.khatmTodayDone
+        : k.farBehind
+        ? l.khatmFarBehind(k.pagesBehind.round())
         : k.behind
         ? l.khatmBehind
         : l.khatmOnTrack;
@@ -175,7 +179,7 @@ class _KhatmScreenState extends ConsumerState<KhatmScreen> {
             ),
             const SizedBox(height: 16),
             Text(
-              k.complete ? l.khatmComplete : l.khatmDayOf('${k.dayNumber}', '${k.plan.days}'),
+              k.complete ? l.khatmComplete : l.khatmDayOf('${k.dayShown}', '${k.plan.days}'),
               textAlign: TextAlign.center,
               style: WaqtType.serif(22, weight: 500, color: c.ink),
             ),
@@ -184,8 +188,22 @@ class _KhatmScreenState extends ConsumerState<KhatmScreen> {
               Text(
                 status,
                 textAlign: TextAlign.center,
-                style: WaqtType.sans(14.5, color: k.behind ? c.ink : c.accent, weight: 600),
+                style: WaqtType.sans(14.5, color: k.behind || k.overdue ? c.ink : c.accent, weight: 600),
               ),
+            if (k.overdue) ...[
+              const SizedBox(height: 12),
+              PillButton(
+                label: l.khatmExtend(k.extensionDays),
+                style: PillStyle.mint,
+                icon: WaqtIcons.calendar,
+                onPressed: () {
+                  Haptics.success();
+                  ref
+                      .read(settingsProvider.notifier)
+                      .setKhatmPlan(KhatmPlan(start: k.plan.start, days: k.plan.days + k.extensionDays));
+                },
+              ),
+            ],
           ],
         ),
       ),

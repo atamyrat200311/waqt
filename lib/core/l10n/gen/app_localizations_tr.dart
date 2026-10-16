@@ -1486,7 +1486,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get quranNoBookmarks =>
-      'Henüz yer imi yok. Kaydetmek için bir ayete dokunun.';
+      'Henüz yer imi yok. Kaydetmek için bir ayete uzun basın veya ••• simgesine dokunun.';
 
   @override
   String get quranBookmark => 'Yer imi ekle';
@@ -1764,7 +1764,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get hifzStrong => 'Sağlam';
 
   @override
-  String get hifzWeak => 'Çalışmalı';
+  String get hifzWeak => 'Zayıf';
 
   @override
   String hifzNext(String date) {
@@ -2234,7 +2234,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get habitSugSleep => '23:00’ten önce uyu';
 
   @override
-  String get ramadanChallenge => 'Ramazan 30';
+  String get ramadanChallenge => 'Ramazan hedefi';
 
   @override
   String ramadanChallengeScore(String score) {
@@ -2320,4 +2320,45 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get shareFooter => 'Waqt · gününüz namaz etrafında';
+
+  @override
+  String get quranReminderAfterIsha => 'Yatsıdan sonra Kur’an hatırlatması';
+
+  @override
+  String get khatmOverdue =>
+      'Planın süresi doldu — rahat bir tempo için uzatın.';
+
+  @override
+  String khatmFarBehind(int count) {
+    return '$count sayfa geridesiniz — acele yok, her sayfa sayılır.';
+  }
+
+  @override
+  String khatmExtend(int count) {
+    return '$count gün uzat';
+  }
+
+  @override
+  String get expenseAddFirst => 'Harcama eklemek için + simgesine dokunun';
+
+  @override
+  String get chipDone => 'işaretlendi';
+
+  @override
+  String get chipNow => 'şimdi';
+
+  @override
+  String get chipUnmarked => 'henüz işaretlenmedi';
+
+  @override
+  String get chipUpcoming => 'yaklaşan';
+
+  @override
+  String get chipMissed => 'kaçırıldı, kazada';
+
+  @override
+  String get chipExcused => 'mazeretli';
+
+  @override
+  String get tasksAddFirst => 'Bir namaz vaktine görev planlayın';
 }

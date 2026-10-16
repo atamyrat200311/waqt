@@ -25,12 +25,12 @@ void main() {
       child: const WaqtApp(),
     ));
     await tester.pumpAndSettle();
+    // Language comes first (no phone has a Turkmen system locale).
+    expect(find.text('Choose your language'), findsOneWidget);
+    await tester.tap(find.text('English'));
+    await tester.pumpAndSettle();
     expect(find.text('Private by design'), findsOneWidget);
     await tester.tap(find.text('Get started'));
-    await tester.pumpAndSettle();
-    expect(find.text('Choose your language'), findsOneWidget);
-
-    await tester.tap(find.text('English'));
     await tester.pumpAndSettle();
     expect(find.text('Where do you pray?'), findsOneWidget);
     expect(find.text('Muslim World League · Hanafi Asr'), findsOneWidget);

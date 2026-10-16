@@ -106,7 +106,7 @@ class RamadanScreen extends ConsumerWidget {
                               expand: true,
                               style: todayFast?.status == s
                                   ? (s == FastStatus.fasted ? PillStyle.brass : PillStyle.primary)
-                                  : (s == FastStatus.fasted ? PillStyle.brassSoft : PillStyle.fill),
+                                  : PillStyle.fill,
                               onPressed: () {
                                 Haptics.tap();
                                 ref.read(fastRepositoryProvider).set(

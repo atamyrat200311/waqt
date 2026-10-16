@@ -106,7 +106,7 @@ class _AdhkarReaderState extends ConsumerState<AdhkarReader> {
                         child: Row(
                           children: [
                             WaqtIcon(WaqtIcons.chevronLeft, size: 26, color: c.accent, strokeWidth: 2.4),
-                            Text(l.tabToday, style: WaqtType.sans(17, weight: 500, color: c.accent)),
+                            Text(l.back, style: WaqtType.sans(17, weight: 500, color: c.accent)),
                           ],
                         ),
                       ),

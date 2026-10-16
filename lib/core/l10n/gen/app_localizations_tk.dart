@@ -1485,7 +1485,7 @@ class AppLocalizationsTk extends AppLocalizations {
 
   @override
   String get quranNoBookmarks =>
-      'Entek bellik ýok. Aýaty saklamak üçin oňa basyň.';
+      'Entek bellik ýok. Aýaty saklamak üçin oňa uzak basyň ýa-da ••• basyň.';
 
   @override
   String get quranBookmark => 'Belle';
@@ -1762,7 +1762,7 @@ class AppLocalizationsTk extends AppLocalizations {
   String get hifzStrong => 'Berk';
 
   @override
-  String get hifzWeak => 'Ýene gaýtalamaly';
+  String get hifzWeak => 'Gowşak';
 
   @override
   String hifzNext(String date) {
@@ -2232,7 +2232,7 @@ class AppLocalizationsTk extends AppLocalizations {
   String get habitSugSleep => '23:00-dan öň ýat';
 
   @override
-  String get ramadanChallenge => 'Remezan 30';
+  String get ramadanChallenge => 'Remezan synagy';
 
   @override
   String ramadanChallengeScore(String score) {
@@ -2319,4 +2319,45 @@ class AppLocalizationsTk extends AppLocalizations {
 
   @override
   String get shareFooter => 'Waqt · günüňiz namazyň töwereginde';
+
+  @override
+  String get quranReminderAfterIsha => 'Ýassydan soň Kuran ýatlatmasy';
+
+  @override
+  String get khatmOverdue =>
+      'Meýilnamanyň möhleti doldy — rahat depginde dowam etmek üçin uzaldyň.';
+
+  @override
+  String khatmFarBehind(int count) {
+    return '$count sahypa yzda — howlukmaň, her okalan sahypa hasap.';
+  }
+
+  @override
+  String khatmExtend(int count) {
+    return '$count gün uzalt';
+  }
+
+  @override
+  String get expenseAddFirst => 'Satyn alyş goşmak üçin + basyň';
+
+  @override
+  String get chipDone => 'bellendi';
+
+  @override
+  String get chipNow => 'häzir';
+
+  @override
+  String get chipUnmarked => 'entek bellenmedi';
+
+  @override
+  String get chipUpcoming => 'ýakynda';
+
+  @override
+  String get chipMissed => 'gaçyryldy, kazada';
+
+  @override
+  String get chipExcused => 'ötünçli';
+
+  @override
+  String get tasksAddFirst => 'Namaz wagtyna bir iş meýilleşdiriň';
 }

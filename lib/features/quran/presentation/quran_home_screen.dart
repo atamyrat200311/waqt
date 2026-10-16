@@ -384,7 +384,7 @@ class ReadingGoalCard extends ConsumerWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Kicker(k != null && !k.complete ? l.khatmDayOf('${k.dayNumber}', '${k.plan.days}') : l.quranToday),
+                Kicker(k != null && !k.complete ? l.khatmDayOf('${k.dayShown}', '${k.plan.days}') : l.quranToday),
                 const SizedBox(height: 4),
                 Text(
                   g.done
@@ -423,28 +423,35 @@ class _QuickTiles extends ConsumerWidget {
     final c = context.colors;
     final k = ref.watch(khatmProgressProvider);
     final due = ref.watch(hifzDueProvider).length;
-    return Row(
-      children: [
-        Expanded(
-          child: _Tile(
-            icon: WaqtIcons.target,
-            title: l.khatmTitle,
-            subtitle: k == null ? l.khatmTileIdle : '${(k.fraction * 100).floor()}% · ${l.khatmDaysLeft(k.daysLeft)}',
-            onTap: () => context.push(Routes.khatm),
+    return IntrinsicHeight(
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Expanded(
+            child: _Tile(
+              icon: WaqtIcons.target,
+              title: l.khatmTitle,
+              subtitle: k == null
+                  ? l.khatmTileIdle
+                  : k.overdue || k.complete
+                  ? '${(k.fraction * 100).floor()}%'
+                  : '${(k.fraction * 100).floor()}% · ${l.khatmDaysLeft(k.daysLeft)}',
+              onTap: () => context.push(Routes.khatm),
+            ),
           ),
-        ),
-        const SizedBox(width: 10),
-        Expanded(
-          child: _Tile(
-            icon: WaqtIcons.repeat,
-            title: l.hifzTitle,
-            subtitle: due > 0 ? l.hifzDueCount(due) : l.hifzTileIdle,
-            highlight: due > 0,
-            onTap: () => context.push(Routes.hifz),
-            iconColor: due > 0 ? c.brassText : null,
+          const SizedBox(width: 10),
+          Expanded(
+            child: _Tile(
+              icon: WaqtIcons.repeat,
+              title: l.hifzTitle,
+              subtitle: due > 0 ? l.hifzDueCount(due) : l.hifzTileIdle,
+              highlight: due > 0,
+              onTap: () => context.push(Routes.hifz),
+              iconColor: due > 0 ? c.brassText : null,
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
@@ -479,16 +486,16 @@ class _Tile extends StatelessWidget {
           const SizedBox(height: 12),
           Text(
             title,
-            maxLines: 1,
+            maxLines: 2,
             overflow: TextOverflow.ellipsis,
-            style: WaqtType.sans(15.5, weight: 600, color: c.ink),
+            style: WaqtType.sans(15.5, weight: 600, color: c.ink, height: 1.25),
           ),
           const SizedBox(height: 2),
           Text(
             subtitle,
-            maxLines: 1,
+            maxLines: 2,
             overflow: TextOverflow.ellipsis,
-            style: WaqtType.sans(13, color: highlight ? c.brassText : c.muted),
+            style: WaqtType.sans(13, color: highlight ? c.brassText : c.muted, height: 1.3),
           ),
         ],
       ),

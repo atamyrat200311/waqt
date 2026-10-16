@@ -2409,7 +2409,7 @@ abstract class AppLocalizations {
   /// No description provided for @quranNoBookmarks.
   ///
   /// In en, this message translates to:
-  /// **'No bookmarks yet. Tap an ayah to save it here.'**
+  /// **'No bookmarks yet. Long-press an ayah or tap ••• to save it here.'**
   String get quranNoBookmarks;
 
   /// No description provided for @quranBookmark.
@@ -2877,7 +2877,7 @@ abstract class AppLocalizations {
   /// No description provided for @hifzWeak.
   ///
   /// In en, this message translates to:
-  /// **'Needs work'**
+  /// **'Shaky'**
   String get hifzWeak;
 
   /// No description provided for @hifzNext.
@@ -3711,7 +3711,7 @@ abstract class AppLocalizations {
   /// No description provided for @ramadanChallenge.
   ///
   /// In en, this message translates to:
-  /// **'Ramadan 30'**
+  /// **'Ramadan challenge'**
   String get ramadanChallenge;
 
   /// No description provided for @ramadanChallengeScore.
@@ -3857,6 +3857,78 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Waqt · your day around prayer'**
   String get shareFooter;
+
+  /// No description provided for @quranReminderAfterIsha.
+  ///
+  /// In en, this message translates to:
+  /// **'Quran reminder after Isha'**
+  String get quranReminderAfterIsha;
+
+  /// No description provided for @khatmOverdue.
+  ///
+  /// In en, this message translates to:
+  /// **'The plan’s days are over — extend it to keep a gentle pace.'**
+  String get khatmOverdue;
+
+  /// No description provided for @khatmFarBehind.
+  ///
+  /// In en, this message translates to:
+  /// **'Behind by {count, plural, one{{count} page} other{{count} pages}} — no pressure, any amount counts.'**
+  String khatmFarBehind(int count);
+
+  /// No description provided for @khatmExtend.
+  ///
+  /// In en, this message translates to:
+  /// **'Extend by {count, plural, one{{count} day} other{{count} days}}'**
+  String khatmExtend(int count);
+
+  /// No description provided for @expenseAddFirst.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap + to note a purchase'**
+  String get expenseAddFirst;
+
+  /// No description provided for @chipDone.
+  ///
+  /// In en, this message translates to:
+  /// **'marked'**
+  String get chipDone;
+
+  /// No description provided for @chipNow.
+  ///
+  /// In en, this message translates to:
+  /// **'now'**
+  String get chipNow;
+
+  /// No description provided for @chipUnmarked.
+  ///
+  /// In en, this message translates to:
+  /// **'not marked yet'**
+  String get chipUnmarked;
+
+  /// No description provided for @chipUpcoming.
+  ///
+  /// In en, this message translates to:
+  /// **'upcoming'**
+  String get chipUpcoming;
+
+  /// No description provided for @chipMissed.
+  ///
+  /// In en, this message translates to:
+  /// **'missed, in qada'**
+  String get chipMissed;
+
+  /// No description provided for @chipExcused.
+  ///
+  /// In en, this message translates to:
+  /// **'excused'**
+  String get chipExcused;
+
+  /// No description provided for @tasksAddFirst.
+  ///
+  /// In en, this message translates to:
+  /// **'Plan something around a prayer'**
+  String get tasksAddFirst;
 }
 
 class _AppLocalizationsDelegate

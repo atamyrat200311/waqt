@@ -218,14 +218,14 @@ void main() {
     await shoot(t, 'settings', location: '/me/settings');
     await shoot(t, 'settings_android', location: '/me/settings', platform: TargetPlatform.android);
     await shoot(t, 'location', location: '/location');
-    await shoot(t, 'onboarding_welcome', settings: const AppSettings());
-    await shoot(t, 'onboarding_language', settings: const AppSettings(), act: (t) async {
-      await t.tap(find.text('Get started'));
+    await shoot(t, 'onboarding_language', settings: const AppSettings());
+    await shoot(t, 'onboarding_welcome', settings: const AppSettings(), act: (t) async {
+      await t.tap(find.text('English'));
     });
     await shoot(t, 'onboarding_location', settings: const AppSettings(), act: (t) async {
-      await t.tap(find.text('Get started'));
-      await t.pumpAndSettle();
       await t.tap(find.text('English'));
+      await t.pumpAndSettle();
+      await t.tap(find.text('Get started'));
     });
   }, skip: !_enabled);
 

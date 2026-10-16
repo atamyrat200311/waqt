@@ -18,9 +18,11 @@ import '../../../shared/widgets/waqt_icon.dart';
 import '../../expenses/presentation/expense_sheet.dart';
 import '../../prayer/application/prayer_providers.dart';
 import '../../quran/presentation/quran_reader.dart';
+import '../../today/application/today_providers.dart';
+import '../../today/presentation/mark_sheet.dart';
 import '../application/ramadan_challenge.dart';
 
-/// "Ramadan 30": five daily goals with one-tap actions and a share card.
+/// Ramadan challenge: five daily goals with one-tap actions and a share card.
 class RamadanChallengeCard extends ConsumerWidget {
   const RamadanChallengeCard({super.key});
 
@@ -38,7 +40,16 @@ class RamadanChallengeCard extends ConsumerWidget {
         Haptics.success();
         ref.read(fastRepositoryProvider).set(now.dayKey, FastType.ramadan, t.fasted ? null : FastStatus.fasted);
       }),
-      (WaqtIcons.mosque, l.ramadanItemPrayers, t.prayers, () => context.go(Routes.today)),
+      (WaqtIcons.mosque, l.ramadanItemPrayers, t.prayers, () {
+        // Open the first prayer whose time has come and isn't marked yet.
+        final marks = ref.read(todayMarksProvider).value ?? const <Prayer, PrayerStatus>{};
+        final open = Prayer.values.where((p) => now.hasStarted(p) && !marks.containsKey(p));
+        if (open.isNotEmpty) {
+          showMarkSheet(context, open.first, now.dayKey);
+        } else {
+          context.go(Routes.today);
+        }
+      }),
       (WaqtIcons.quran, l.ramadanItemQuran, t.quran, () {
         openReader(context, ref.read(settingsProvider).quranLastRead ?? 0);
       }),
@@ -46,7 +57,7 @@ class RamadanChallengeCard extends ConsumerWidget {
         final evening = !now.now.isBefore(now.today[Prayer.asr]);
         context.push(Routes.adhkar(evening ? 'evening' : 'morning'));
       }),
-      (WaqtIcons.heart, l.ramadanItemSadaqa, t.sadaqa, () => showExpenseSheet(context)),
+      (WaqtIcons.heart, l.ramadanItemSadaqa, t.sadaqa, () => showExpenseSheet(context, category: ExpenseCategory.sadaqa)),
     ];
 
     final share = ShareCardData(

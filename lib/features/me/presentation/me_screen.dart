@@ -110,7 +110,9 @@ class _StreakCard extends ConsumerWidget {
     final prayedToday = (ref.watch(todayMarksProvider).value ?? const {}).values.where((v) => v.isPrayed).length;
     final fresh = s.current == 0;
     return Semantics(
-      label: '${l.meAll5}: ${s.current} ${l.meDaysInRow(s.current)}. ${l.meBest('${s.best}')}',
+      label: fresh
+          ? '${l.meAll5}: $prayedToday/5 ${l.mePrayedToday}. ${l.meBest('${s.best}')}'
+          : '${l.meAll5}: ${s.current} ${l.meDaysInRow(s.current)}. ${l.meBest('${s.best}')}',
       excludeSemantics: true,
       child: Container(
         padding: const EdgeInsets.all(20),
@@ -331,7 +333,7 @@ class _QuranStats extends ConsumerWidget {
           const SizedBox(width: 10),
           _StatTile(
             label: khatm == null ? l.meAyahsRead : l.khatmShort,
-            caption: khatm == null ? l.meThisMonth : l.khatmDayOf('${khatm.dayNumber}', '${khatm.plan.days}'),
+            caption: khatm == null ? l.meThisMonth : l.khatmDayOf('${khatm.dayShown}', '${khatm.plan.days}'),
             value: Text.rich(
               TextSpan(
                 children: [
@@ -439,7 +441,11 @@ class _ConsistencyBar extends StatelessWidget {
         children: [
           SizedBox(
             width: 72,
-            child: Text(name, style: WaqtType.sans(14, weight: 600, color: weak ? c.brassText : c.ink)),
+            child: FittedBox(
+              fit: BoxFit.scaleDown,
+              alignment: AlignmentDirectional.centerStart,
+              child: Text(name, softWrap: false, style: WaqtType.sans(14, weight: 600, color: weak ? c.brassText : c.ink)),
+            ),
           ),
           const SizedBox(width: 10),
           Expanded(
@@ -461,10 +467,14 @@ class _ConsistencyBar extends StatelessWidget {
           const SizedBox(width: 10),
           SizedBox(
             width: 40,
-            child: Text(
-              pct == null ? '–' : '$pct%',
-              textAlign: TextAlign.right,
-              style: WaqtType.sans(13, weight: 600, color: weak ? c.brassText : c.muted),
+            child: FittedBox(
+              fit: BoxFit.scaleDown,
+              alignment: AlignmentDirectional.centerEnd,
+              child: Text(
+                pct == null ? '–' : '$pct%',
+                softWrap: false,
+                style: WaqtType.sans(13, weight: 600, color: weak ? c.brassText : c.muted),
+              ),
             ),
           ),
         ],

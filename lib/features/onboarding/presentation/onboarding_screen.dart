@@ -28,19 +28,21 @@ class OnboardingScreen extends ConsumerStatefulWidget {
   ConsumerState<OnboardingScreen> createState() => _OnboardingScreenState();
 }
 
-enum _Step { welcome, language, location, notifications, battery }
+enum _Step { language, welcome, location, notifications, battery }
 
 class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
-  _Step _step = _Step.welcome;
+  // Language first: phones have no Turkmen system locale, so the welcome
+  // screen would otherwise always appear in English or Russian.
+  _Step _step = _Step.language;
   bool _notifAllowed = false;
 
   List<_Step> get _steps => [
-        _Step.welcome,
-        _Step.language,
-        _Step.location,
-        _Step.notifications,
-        if (!Adaptive.isCupertino(context)) _Step.battery,
-      ];
+    _Step.language,
+    _Step.welcome,
+    _Step.location,
+    _Step.notifications,
+    if (!Adaptive.isCupertino(context)) _Step.battery,
+  ];
 
   void _next() {
     final i = _steps.indexOf(_step);
@@ -71,12 +73,12 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
       _Step.language => _LanguageStep(onPicked: _next),
       _Step.location => const _LocationStep(),
       _Step.notifications => _NotificationsStep(
-          allowed: _notifAllowed,
-          onAllow: () async {
-            final ok = await ref.read(notificationServiceProvider).requestPermission();
-            if (mounted) setState(() => _notifAllowed = ok);
-          },
-        ),
+        allowed: _notifAllowed,
+        onAllow: () async {
+          final ok = await ref.read(notificationServiceProvider).requestPermission();
+          if (mounted) setState(() => _notifAllowed = ok);
+        },
+      ),
       _Step.battery => const _BatteryStep(),
     };
 
@@ -159,7 +161,10 @@ class _Title extends StatelessWidget {
           Text(kicker!, style: WaqtType.sans(16, weight: 600, color: c.brassText)),
           const SizedBox(height: 10),
         ],
-        Semantics(header: true, child: Text(title, style: WaqtType.title(color: c.ink))),
+        Semantics(
+          header: true,
+          child: Text(title, style: WaqtType.title(color: c.ink)),
+        ),
         if (body != null) ...[
           const SizedBox(height: 10),
           Text(body!, style: WaqtType.sans(15, color: c.muted, height: 1.5)),
@@ -177,8 +182,8 @@ class _LanguageStep extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final c = context.colors;
     final l = context.l10n;
-    final current = ref.watch(settingsProvider.select((s) => s.language)) ??
-        Localizations.localeOf(context).languageCode;
+    final current =
+        ref.watch(settingsProvider.select((s) => s.language)) ?? Localizations.localeOf(context).languageCode;
     return ListView(
       children: [
         const SizedBox(height: 12),
@@ -198,7 +203,9 @@ class _LanguageStep extends ConsumerWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 18),
                     child: Row(
                       children: [
-                        Expanded(child: Text(e.value, style: WaqtType.sans(17, weight: 600, color: c.ink))),
+                        Expanded(
+                          child: Text(e.value, style: WaqtType.sans(17, weight: 600, color: c.ink)),
+                        ),
                         if (current == e.key) WaqtIcon(WaqtIcons.check, color: c.accent),
                       ],
                     ),
@@ -212,7 +219,9 @@ class _LanguageStep extends ConsumerWidget {
           children: [
             WaqtIcon(WaqtIcons.lock, size: 16, color: c.muted),
             const SizedBox(width: 8),
-            Expanded(child: Text(l.obPrivacy, style: WaqtType.sans(13, color: c.muted))),
+            Expanded(
+              child: Text(l.obPrivacy, style: WaqtType.sans(13, color: c.muted)),
+            ),
           ],
         ),
       ],
@@ -220,11 +229,20 @@ class _LanguageStep extends ConsumerWidget {
   }
 }
 
-class _LocationStep extends ConsumerWidget {
+class _LocationStep extends ConsumerStatefulWidget {
   const _LocationStep();
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<_LocationStep> createState() => _LocationStepState();
+}
+
+class _LocationStepState extends ConsumerState<_LocationStep> {
+  /// Set once the user picks a method or Asr in "Advanced"; a later city
+  /// pick then keeps their choice instead of applying the region preset.
+  bool _manual = false;
+
+  @override
+  Widget build(BuildContext context) {
     final c = context.colors;
     final l = context.l10n;
     final s = ref.watch(settingsProvider);
@@ -265,16 +283,15 @@ class _LocationStep extends ConsumerWidget {
                     selected: s.calcMethod,
                     options: [for (final m in CalcMethod.values) (m, l.method(m), null)],
                   );
-                  if (m != null) await ctl.setCalcMethod(m);
+                  if (m == null) return;
+                  _manual = true;
+                  await ctl.setCalcMethod(m);
                   if (!context.mounted) return;
                   final a = await showChoiceSheet<AsrMadhab>(
                     context,
                     title: l.asr,
                     selected: ref.read(settingsProvider).madhab,
-                    options: [
-                      (AsrMadhab.standard, l.asrStandard, null),
-                      (AsrMadhab.hanafi, l.asrHanafi, null),
-                    ],
+                    options: [(AsrMadhab.standard, l.asrStandard, null), (AsrMadhab.hanafi, l.asrHanafi, null)],
                   );
                   if (a != null) await ctl.setMadhab(a);
                 },
@@ -287,6 +304,7 @@ class _LocationStep extends ConsumerWidget {
         LocationPicker(
           onPicked: (loc, {countryCode}) async {
             await ctl.setLocation(loc);
+            if (_manual) return;
             final preset = presetForRegion(countryCode: countryCode, timezone: loc.timezone);
             await ctl.setCalcMethod(preset.method);
             await ctl.setMadhab(preset.madhab);
@@ -322,7 +340,9 @@ class _NotificationsStep extends StatelessWidget {
         ),
         const SizedBox(height: 28),
         if (allowed)
-          Center(child: Text(l.obNotifAllowed, style: WaqtType.sans(16, weight: 600, color: c.accent)))
+          Center(
+            child: Text(l.obNotifAllowed, style: WaqtType.sans(16, weight: 600, color: c.accent)),
+          )
         else
           PillButton(
             label: l.obAllowNotif,
@@ -383,25 +403,25 @@ class _WelcomeStep extends StatelessWidget {
     final c = context.colors;
     final l = context.l10n;
     Widget row(WaqtIconData icon, String title, String body) => Padding(
-          padding: const EdgeInsets.only(bottom: 16),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              IconTile(icon: icon, small: true, background: c.mint, color: c.onMint),
-              const SizedBox(width: 14),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(title, style: WaqtType.sans(16, weight: 600, color: c.ink)),
-                    const SizedBox(height: 2),
-                    Text(body, style: WaqtType.sans(14, color: c.muted, height: 1.4)),
-                  ],
-                ),
-              ),
-            ],
+      padding: const EdgeInsets.only(bottom: 16),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          IconTile(icon: icon, small: true, background: c.mint, color: c.onMint),
+          const SizedBox(width: 14),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(title, style: WaqtType.sans(16, weight: 600, color: c.ink)),
+                const SizedBox(height: 2),
+                Text(body, style: WaqtType.sans(14, color: c.muted, height: 1.4)),
+              ],
+            ),
           ),
-        );
+        ],
+      ),
+    );
     return SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -411,7 +431,9 @@ class _WelcomeStep extends StatelessWidget {
             width: 72,
             height: 72,
             decoration: BoxDecoration(color: c.hero, borderRadius: BorderRadius.circular(22)),
-            child: Center(child: StarBadge(label: '', color: c.brass, size: 44)),
+            child: Center(
+              child: StarBadge(label: '', color: c.brass, size: 44),
+            ),
           ),
           const SizedBox(height: 18),
           Text('Waqt', style: WaqtType.serif(48, weight: 500, tracking: -0.02, color: c.ink)),

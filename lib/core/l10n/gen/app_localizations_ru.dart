@@ -1524,7 +1524,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get quranNoBookmarks =>
-      'Закладок пока нет. Нажмите на аят, чтобы сохранить его.';
+      'Закладок пока нет. Удерживайте аят или нажмите •••, чтобы сохранить его.';
 
   @override
   String get quranBookmark => 'В закладки';
@@ -1818,7 +1818,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get hifzStrong => 'Уверенно';
 
   @override
-  String get hifzWeak => 'Нужно поработать';
+  String get hifzWeak => 'Неуверенно';
 
   @override
   String hifzNext(String date) {
@@ -2324,7 +2324,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get habitSugSleep => 'Лечь спать до 23:00';
 
   @override
-  String get ramadanChallenge => 'Рамадан 30';
+  String get ramadanChallenge => 'Рамадан-челлендж';
 
   @override
   String ramadanChallengeScore(String score) {
@@ -2411,4 +2411,59 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get shareFooter => 'Waqt · ваш день вокруг молитвы';
+
+  @override
+  String get quranReminderAfterIsha => 'Напоминание о Коране после иши';
+
+  @override
+  String get khatmOverdue =>
+      'Срок плана истёк — продлите его, чтобы читать в спокойном темпе.';
+
+  @override
+  String khatmFarBehind(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Отставание $count страниц',
+      few: 'Отставание $count страницы',
+      one: 'Отставание $count страница',
+    );
+    return '$_temp0 — без спешки, каждая страница на счету.';
+  }
+
+  @override
+  String khatmExtend(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Продлить на $count дней',
+      few: 'Продлить на $count дня',
+      one: 'Продлить на $count день',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get expenseAddFirst => 'Нажмите +, чтобы записать покупку';
+
+  @override
+  String get chipDone => 'отмечен';
+
+  @override
+  String get chipNow => 'сейчас';
+
+  @override
+  String get chipUnmarked => 'ещё не отмечен';
+
+  @override
+  String get chipUpcoming => 'предстоит';
+
+  @override
+  String get chipMissed => 'пропущен, в када';
+
+  @override
+  String get chipExcused => 'уважительная причина';
+
+  @override
+  String get tasksAddFirst => 'Запланируйте дело вокруг намаза';
 }

@@ -1509,7 +1509,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get quranNoBookmarks =>
-      'No bookmarks yet. Tap an ayah to save it here.';
+      'No bookmarks yet. Long-press an ayah or tap ••• to save it here.';
 
   @override
   String get quranBookmark => 'Bookmark';
@@ -1801,7 +1801,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get hifzStrong => 'Strong';
 
   @override
-  String get hifzWeak => 'Needs work';
+  String get hifzWeak => 'Shaky';
 
   @override
   String hifzNext(String date) {
@@ -2302,7 +2302,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get habitSugSleep => 'Sleep before 23:00';
 
   @override
-  String get ramadanChallenge => 'Ramadan 30';
+  String get ramadanChallenge => 'Ramadan challenge';
 
   @override
   String ramadanChallengeScore(String score) {
@@ -2391,4 +2391,57 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get shareFooter => 'Waqt · your day around prayer';
+
+  @override
+  String get quranReminderAfterIsha => 'Quran reminder after Isha';
+
+  @override
+  String get khatmOverdue =>
+      'The plan’s days are over — extend it to keep a gentle pace.';
+
+  @override
+  String khatmFarBehind(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count pages',
+      one: '$count page',
+    );
+    return 'Behind by $_temp0 — no pressure, any amount counts.';
+  }
+
+  @override
+  String khatmExtend(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count days',
+      one: '$count day',
+    );
+    return 'Extend by $_temp0';
+  }
+
+  @override
+  String get expenseAddFirst => 'Tap + to note a purchase';
+
+  @override
+  String get chipDone => 'marked';
+
+  @override
+  String get chipNow => 'now';
+
+  @override
+  String get chipUnmarked => 'not marked yet';
+
+  @override
+  String get chipUpcoming => 'upcoming';
+
+  @override
+  String get chipMissed => 'missed, in qada';
+
+  @override
+  String get chipExcused => 'excused';
+
+  @override
+  String get tasksAddFirst => 'Plan something around a prayer';
 }

@@ -291,9 +291,9 @@ class _SmallTile extends StatelessWidget {
           const SizedBox(height: 12),
           Text(
             title,
-            maxLines: 1,
+            maxLines: 2,
             overflow: TextOverflow.ellipsis,
-            style: WaqtType.sans(15.5, weight: 600, color: c.ink),
+            style: WaqtType.sans(15.5, weight: 600, color: c.ink, height: 1.25),
           ),
           const SizedBox(height: 2),
           Text(

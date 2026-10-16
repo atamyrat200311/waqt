@@ -47,6 +47,7 @@ class _BackupScreenState extends ConsumerState<BackupScreen> {
 
   Future<void> _export() async {
     setState(() => _busy = true);
+    final flags = ref.read(settingsRepositoryProvider);
     try {
       final json = await _service.export(ref.read(settingsProvider));
       final dir = await getTemporaryDirectory();
@@ -54,13 +55,15 @@ class _BackupScreenState extends ConsumerState<BackupScreen> {
       await file.writeAsString(json);
       if (!mounted) return;
       final box = context.findRenderObject() as RenderBox?;
-      final result = await SharePlus.instance.share(ShareParams(
-        files: [XFile(file.path, mimeType: 'application/json')],
-        sharePositionOrigin: box == null ? null : box.localToGlobal(Offset.zero) & box.size,
-      ));
+      final result = await SharePlus.instance.share(
+        ShareParams(
+          files: [XFile(file.path, mimeType: 'application/json')],
+          sharePositionOrigin: box == null ? null : box.localToGlobal(Offset.zero) & box.size,
+        ),
+      );
       if (result.status != ShareResultStatus.dismissed) {
         final today = DayKey.fromDate(DateTime.now()).value;
-        await ref.read(settingsRepositoryProvider).setFlag('lastBackup', today);
+        await flags.setFlag('lastBackup', today);
         if (mounted) setState(() => _lastBackup = today);
       }
     } on Object {
@@ -72,9 +75,17 @@ class _BackupScreenState extends ConsumerState<BackupScreen> {
 
   Future<void> _import() async {
     final l = context.l10n;
+    // Read before any await: the screen may be closed while restoring.
+    final settings = ref.read(settingsProvider.notifier);
     final file = await FilePicker.pickFile(type: FileType.custom, allowedExtensions: const ['json']);
     if (file == null || !mounted) return;
-    final raw = utf8.decode(await file.readAsBytes());
+    String raw;
+    try {
+      raw = utf8.decode(await file.readAsBytes());
+    } on Object {
+      raw = '';
+    }
+    if (!mounted) return;
     if (BackupService.peekSettings(raw) == null) {
       setState(() => _message = l.backupInvalid);
       return;
@@ -95,7 +106,7 @@ class _BackupScreenState extends ConsumerState<BackupScreen> {
     setState(() => _busy = true);
     try {
       final restored = await _service.restore(raw);
-      await ref.read(settingsProvider.notifier).update((_) => restored.copyWith(onboardingDone: true));
+      await settings.update((_) => restored.copyWith(onboardingDone: true));
       Haptics.success();
       if (mounted) setState(() => _message = l.backupRestored);
     } on Object {
@@ -104,6 +115,9 @@ class _BackupScreenState extends ConsumerState<BackupScreen> {
       if (mounted) setState(() => _busy = false);
     }
   }
+
+  /// Only an old backup is worth a warning colour; "none yet" stays muted.
+  bool get _stale => _lastBackup != null && DateTime.now().difference(DayKey(_lastBackup!).date).inDays > 30;
 
   @override
   Widget build(BuildContext context) {
@@ -125,7 +139,9 @@ class _BackupScreenState extends ConsumerState<BackupScreen> {
                   children: [
                     WaqtIcon(WaqtIcons.lock, color: c.onMint),
                     const SizedBox(width: 12),
-                    Expanded(child: Text(l.backupIntro, style: WaqtType.sans(14.5, color: c.onMint, height: 1.45))),
+                    Expanded(
+                      child: Text(l.backupIntro, style: WaqtType.sans(14.5, color: c.onMint, height: 1.45)),
+                    ),
                   ],
                 ),
               ),
@@ -134,7 +150,7 @@ class _BackupScreenState extends ConsumerState<BackupScreen> {
                 padding: const EdgeInsets.only(left: 6, bottom: 10),
                 child: Text(
                   _lastBackup == null ? l.backupNever : l.backupLast(l.dayMonth(DayKey(_lastBackup!).date)),
-                  style: WaqtType.sans(14, weight: 600, color: _lastBackup == null ? c.danger : c.muted),
+                  style: WaqtType.sans(14, weight: 600, color: _stale ? c.danger : c.muted),
                 ),
               ),
               PillButton(
@@ -157,7 +173,11 @@ class _BackupScreenState extends ConsumerState<BackupScreen> {
               ),
               if (_message != null) ...[
                 const SizedBox(height: 16),
-                Text(_message!, textAlign: TextAlign.center, style: WaqtType.sans(14.5, weight: 600, color: c.accent)),
+                Text(
+                  _message!,
+                  textAlign: TextAlign.center,
+                  style: WaqtType.sans(14.5, weight: 600, color: c.accent),
+                ),
               ],
             ],
           ),

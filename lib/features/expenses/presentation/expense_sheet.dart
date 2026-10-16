@@ -20,11 +20,12 @@ import '../../../shared/widgets/waqt_icon.dart';
 import '../../prayer/application/prayer_providers.dart';
 import '../../today/application/today_providers.dart';
 
-Future<void> showExpenseSheet(BuildContext context) =>
-    Adaptive.showSheet<void>(context, expand: true, builder: (_) => const ExpenseSheet());
+Future<void> showExpenseSheet(BuildContext context, {ExpenseCategory? category}) =>
+    Adaptive.showSheet<void>(context, expand: true, builder: (_) => ExpenseSheet(initialCategory: category));
 
 class ExpenseSheet extends ConsumerStatefulWidget {
-  const ExpenseSheet({super.key});
+  const ExpenseSheet({super.key, this.initialCategory});
+  final ExpenseCategory? initialCategory;
 
   @override
   ConsumerState<ExpenseSheet> createState() => _ExpenseSheetState();
@@ -32,7 +33,7 @@ class ExpenseSheet extends ConsumerStatefulWidget {
 
 class _ExpenseSheetState extends ConsumerState<ExpenseSheet> {
   AmountInput _amount = const AmountInput();
-  ExpenseCategory _category = ExpenseCategory.groceries;
+  late ExpenseCategory _category = widget.initialCategory ?? ExpenseCategory.groceries;
   DayKey? _day;
   final _note = TextEditingController();
   bool _editingNote = false;

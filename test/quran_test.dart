@@ -150,6 +150,39 @@ void main() {
       expect(after.todayDone, isTrue);
     });
 
+    test('an overdue plan asks for the usual pace and offers an extension', () {
+      final k = khatmProgress(
+        plan: const KhatmPlan(start: '2026-10-01', days: 30),
+        today: DateTime(2026, 11, 4), // day 35
+        readPages: 300,
+        readTodayPages: 0,
+      );
+      expect(k.overdue, isTrue);
+      expect(k.dayShown, 30);
+      expect(k.todayTargetPages, closeTo(totalPages / 30, 1e-9)); // not all 304 pages
+      // 304 pages at ~20.1/day = 16 more days from day 35 → plan of 50 days.
+      expect(k.extensionDays, 20);
+      final extended = khatmProgress(
+        plan: KhatmPlan(start: k.plan.start, days: k.plan.days + k.extensionDays),
+        today: DateTime(2026, 11, 4),
+        readPages: 300,
+        readTodayPages: 0,
+      );
+      expect(extended.overdue, isFalse);
+      expect(extended.daysLeft, 16);
+    });
+
+    test('far behind reports the gap in pages', () {
+      final k = khatmProgress(
+        plan: const KhatmPlan(start: '2026-10-01', days: 30),
+        today: DateTime(2026, 10, 7),
+        readPages: 0,
+        readTodayPages: 0,
+      );
+      expect(k.farBehind, isTrue);
+      expect(k.pagesBehind, closeTo(totalPages * 6 / 30, 1e-9));
+    });
+
     test('complete only when every ayah was read', () {
       final k = khatmProgress(
         plan: const KhatmPlan(start: '2026-10-01', days: 7),

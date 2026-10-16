@@ -385,6 +385,30 @@ class KhatmProgress {
   bool get complete => allRead;
   int get daysLeft => (plan.days - dayNumber + 1).clamp(0, plan.days);
 
+  /// Day for display ("Day 30 of 30" rather than "Day 35 of 30").
+  int get dayShown => dayNumber.clamp(1, plan.days);
+
+  /// The plan's last day has passed and the Quran isn't finished yet.
+  bool get overdue => !complete && dayNumber > plan.days;
+
+  /// The plan's original daily pace in pages.
+  double get pace => totalPages / plan.days;
+
+  /// Pages left as of this morning.
+  double get remainingBeforeToday => (totalPages - (readPages - readTodayPages)).clamp(0, totalPages).toDouble();
+
+  /// Days to add so the rest fits the original pace from today.
+  int get extensionDays => (dayNumber - 1 + (remainingBeforeToday / pace).ceil()).clamp(plan.days + 1, 100000) - plan.days;
+
+  /// Pages behind the straight-line schedule as of the end of yesterday.
+  double get pagesBehind {
+    final expectedYesterday = totalPages * ((dayNumber - 1).clamp(0, plan.days)) / plan.days;
+    return (expectedYesterday - (readPages - readTodayPages)).clamp(0, totalPages).toDouble();
+  }
+
+  /// More than two days' worth behind (shown with the page count).
+  bool get farBehind => !complete && pagesBehind > 2 * pace;
+
   /// Small tolerance so floating sums don't leave "0.01 pages" to go.
   bool get todayDone => complete || readTodayPages + 0.05 >= todayTargetPages;
 
@@ -397,8 +421,7 @@ class KhatmProgress {
   /// one-page grace), so today's reading can still catch up.
   bool get behind {
     if (complete) return false;
-    final expectedYesterday = totalPages * (dayNumber - 1) / plan.days;
-    return (readPages - readTodayPages) + 1 < expectedYesterday;
+    return pagesBehind > 1;
   }
 }
 
@@ -414,12 +437,16 @@ KhatmProgress khatmProgress({
   final dayNumber = (t.difference(DateTime(start.year, start.month, start.day)).inHours / 24).round() + 1;
   final remainingBeforeToday = (totalPages - (readPages - readTodayPages)).clamp(0, totalPages).toDouble();
   final daysLeft = (plan.days - dayNumber + 1).clamp(1, plan.days);
+  // Once overdue, ask for the plan's usual daily amount instead of everything left.
+  final target = dayNumber > plan.days
+      ? (totalPages / plan.days).clamp(0, remainingBeforeToday).toDouble()
+      : remainingBeforeToday / daysLeft;
   return KhatmProgress(
     plan: plan,
     dayNumber: dayNumber.clamp(1, 100000),
     readPages: readPages,
     readTodayPages: readTodayPages,
-    todayTargetPages: remainingBeforeToday / daysLeft,
+    todayTargetPages: target,
     allRead: allRead || readPages >= totalPages - 0.001,
   );
 }

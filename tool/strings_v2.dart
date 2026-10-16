@@ -28,7 +28,7 @@ const Map<String, List<String>> s2 = {
   'quranResults': ['{count, plural, one{{count} ayah} other{{count} ayahs}}', '{count} aýat', '{count} ayet', '{count, plural, one{{count} аят} few{{count} аята} other{{count} аятов}}'],
   'quranSearchIn': ['Searching Arabic and {translation}', '?Arapça we {translation} boýunça gözlenýär', 'Arapça ve {translation} içinde aranıyor', 'Поиск по арабскому тексту и переводу ({translation})'],
   'quranBookmarks': ['Bookmarks', 'Bellikler', 'Yer imleri', 'Закладки'],
-  'quranNoBookmarks': ['No bookmarks yet. Tap an ayah to save it here.', 'Entek bellik ýok. Aýaty saklamak üçin oňa basyň.', 'Henüz yer imi yok. Kaydetmek için bir ayete dokunun.', 'Закладок пока нет. Нажмите на аят, чтобы сохранить его.'],
+  'quranNoBookmarks': ['No bookmarks yet. Long-press an ayah or tap ••• to save it here.', 'Entek bellik ýok. Aýaty saklamak üçin oňa uzak basyň ýa-da ••• basyň.', 'Henüz yer imi yok. Kaydetmek için bir ayete uzun basın veya ••• simgesine dokunun.', 'Закладок пока нет. Удерживайте аят или нажмите •••, чтобы сохранить его.'],
   'quranBookmark': ['Bookmark', 'Belle', 'Yer imi ekle', 'В закладки'],
   'quranRemoveBookmark': ['Remove bookmark', 'Belligi aýyr', 'Yer imini kaldır', 'Убрать закладку'],
   'quranRemoveNoteConfirm': ['Remove this bookmark and its note?', 'Bu bellik we onuň ýazgysy aýrylsynmy?', 'Bu yer imi ve notu silinsin mi?', 'Удалить закладку вместе с заметкой?'],
@@ -120,7 +120,7 @@ const Map<String, List<String>> s2 = {
   'hifzReview': ['Review', 'Gaýtala', 'Tekrar et', 'Повторить'],
   'hifzHowWent': ['How did the review go?', 'Gaýtalamak nähili geçdi?', 'Tekrar nasıl geçti?', 'Как прошло повторение?'],
   'hifzStrong': ['Strong', 'Berk', 'Sağlam', 'Уверенно'],
-  'hifzWeak': ['Needs work', 'Ýene gaýtalamaly', 'Çalışmalı', 'Нужно поработать'],
+  'hifzWeak': ['Shaky', 'Gowşak', 'Zayıf', 'Неуверенно'],
   'hifzNext': ['Next review {date}', 'Indiki gaýtalama {date}', 'Sonraki tekrar {date}', 'Следующее повторение {date}'],
   'hifzEmpty': ['Nothing on your list yet. Short surahs from Juz ʿAmma are a great start.', 'Sanawyňyzda entek zat ýok. ʿAmma parasyndaky gysga süreler gowy başlangyç.', 'Listeniz boş. Amme cüzündeki kısa sureler harika bir başlangıç.', 'Список пока пуст. Короткие суры из джуза ʿАмма — отличное начало.'],
   'hifzRemove': ['Remove from list', 'Sanawdan aýyr', 'Listeden çıkar', 'Убрать из списка'],
@@ -295,7 +295,7 @@ const Map<String, List<String>> s2 = {
   'habitSugSleep': ['Sleep before 23:00', '23:00-dan öň ýat', '23:00’ten önce uyu', 'Лечь спать до 23:00'],
 
   // --------------------------------------------------------------- ramadan
-  'ramadanChallenge': ['Ramadan 30', 'Remezan 30', 'Ramazan 30', 'Рамадан 30'],
+  'ramadanChallenge': ['Ramadan challenge', 'Remezan synagy', 'Ramazan hedefi', 'Рамадан-челлендж'],
   'ramadanChallengeScore': ['{score} of 5 today', 'Şu gün 5-den {score}', 'Bugün 5’ten {score}', 'Сегодня {score} из 5'],
   'ramadanCoreDays': ['{count, plural, =0{Full days start with fast, prayers and Quran} one{{count} full day so far} other{{count} full days so far}}', '{count, plural, =0{Doly gün: oraza, namaz we Kuran} other{Häzire çenli {count} doly gün}}', '{count, plural, =0{Tam gün: oruç, namaz ve Kur’an} other{Şimdiye kadar {count} tam gün}}', '{count, plural, =0{Полный день: пост, намазы и Коран} one{Уже {count} полный день} few{Уже {count} полных дня} other{Уже {count} полных дней}}'],
   'ramadanItemFast': ['Fast', 'Oraza', 'Oruç', 'Пост'],
@@ -329,4 +329,18 @@ const Map<String, List<String>> s2 = {
   'shareWithArabic': ['Arabic', 'Arapça', 'Arapça', 'Арабский'],
   'shareWithTranslation': ['Translation', 'Terjime', 'Meal', 'Перевод'],
   'shareFooter': ['Waqt · your day around prayer', 'Waqt · günüňiz namazyň töwereginde', 'Waqt · gününüz namaz etrafında', 'Waqt · ваш день вокруг молитвы'],
+
+  // ------------------------------------------------------------ review pass 2
+  'quranReminderAfterIsha': ['Quran reminder after Isha', 'Ýassydan soň Kuran ýatlatmasy', 'Yatsıdan sonra Kur’an hatırlatması', 'Напоминание о Коране после иши'],
+  'khatmOverdue': ['The plan’s days are over — extend it to keep a gentle pace.', '?Meýilnamanyň möhleti doldy — rahat depginde dowam etmek üçin uzaldyň.', 'Planın süresi doldu — rahat bir tempo için uzatın.', 'Срок плана истёк — продлите его, чтобы читать в спокойном темпе.'],
+  'khatmFarBehind': ['Behind by {count, plural, one{{count} page} other{{count} pages}} — no pressure, any amount counts.', '?{count} sahypa yzda — howlukmaň, her okalan sahypa hasap.', '{count} sayfa geridesiniz — acele yok, her sayfa sayılır.', '{count, plural, one{Отставание {count} страница} few{Отставание {count} страницы} other{Отставание {count} страниц}} — без спешки, каждая страница на счету.'],
+  'khatmExtend': ['Extend by {count, plural, one{{count} day} other{{count} days}}', '?{count} gün uzalt', '{count} gün uzat', '{count, plural, one{Продлить на {count} день} few{Продлить на {count} дня} other{Продлить на {count} дней}}'],
+  'expenseAddFirst': ['Tap + to note a purchase', '?Satyn alyş goşmak üçin + basyň', 'Harcama eklemek için + simgesine dokunun', 'Нажмите +, чтобы записать покупку'],
+  'chipDone': ['marked', 'bellendi', 'işaretlendi', 'отмечен'],
+  'chipNow': ['now', 'häzir', 'şimdi', 'сейчас'],
+  'chipUnmarked': ['not marked yet', '?entek bellenmedi', 'henüz işaretlenmedi', 'ещё не отмечен'],
+  'chipUpcoming': ['upcoming', 'ýakynda', 'yaklaşan', 'предстоит'],
+  'chipMissed': ['missed, in qada', '?gaçyryldy, kazada', 'kaçırıldı, kazada', 'пропущен, в када'],
+  'chipExcused': ['excused', 'ötünçli', 'mazeretli', 'уважительная причина'],
+  'tasksAddFirst': ['Plan something around a prayer', '?Namaz wagtyna bir iş meýilleşdiriň', 'Bir namaz vaktine görev planlayın', 'Запланируйте дело вокруг намаза'],
 };
