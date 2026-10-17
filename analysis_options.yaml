@@ -4,6 +4,9 @@ analyzer:
   exclude:
     - "**/*.g.dart"
     - lib/core/l10n/gen/**
+    - build/**
+    - android/**
+    - ios/**
   language:
     strict-casts: true
     strict-raw-types: true

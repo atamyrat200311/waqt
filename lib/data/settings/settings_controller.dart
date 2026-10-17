@@ -1,6 +1,9 @@
+import 'dart:ui' show PlatformDispatcher;
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/utils/dates.dart';
+import '../../features/quran/domain/quran.dart' show KhatmPlan;
 import '../db/enums.dart';
 import 'app_settings.dart';
 import 'settings_repository.dart';
@@ -12,6 +15,19 @@ final settingsRepositoryProvider = Provider<SettingsRepository>(
 /// Loaded once in `main()` before `runApp` and injected via override, so the
 /// first frame already has the right theme, locale and location.
 final initialSettingsProvider = Provider<AppSettings>((ref) => const AppSettings());
+
+/// The language the UI is shown in (explicit setting, else the device
+/// language when supported, else English).
+final appLanguageProvider = Provider<String>((ref) {
+  final code = ref.watch(settingsProvider.select((s) => s.language));
+  return resolveLanguage(code);
+});
+
+String resolveLanguage(String? code) {
+  const supported = {'en', 'tk', 'tr', 'ru'};
+  final c = code ?? PlatformDispatcher.instance.locale.languageCode;
+  return supported.contains(c) ? c : 'en';
+}
 
 final settingsProvider =
     NotifierProvider<SettingsController, AppSettings>(SettingsController.new);
@@ -67,4 +83,10 @@ class SettingsController extends Notifier<AppSettings> {
   Future<void> setSuhoorMinutes(int m) => update((s) => s.copyWith(suhoorMinutes: m));
   Future<void> setIftarReminder(bool on) => update((s) => s.copyWith(iftarReminder: on));
   Future<void> setTaraweehReminder(bool on) => update((s) => s.copyWith(taraweehReminder: on));
+  Future<void> setReader(ReaderPrefs Function(ReaderPrefs r) change) =>
+      update((s) => s.copyWith(reader: change(s.reader)));
+  Future<void> setQuranLastRead(int index) => update((s) => s.copyWith(quranLastRead: () => index));
+  Future<void> setKhatmPlan(KhatmPlan? plan) => update((s) => s.copyWith(khatmPlan: () => plan));
+  Future<void> setQuranReminder(bool on) => update((s) => s.copyWith(quranReminder: on));
+  Future<void> setZakat(Map<String, num> values) => update((s) => s.copyWith(zakat: values));
 }

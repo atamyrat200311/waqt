@@ -55,6 +55,10 @@ dependencies:
   path_provider: ^2.1.6
   flutter_localizations:
     sdk: flutter
+  share_plus: ^13.3.1
+  scrollable_positioned_list: ^0.3.8
+  wakelock_plus: ^1.8.0
+  file_picker: ^13.1.0
 
 dev_dependencies:
   flutter_test:
@@ -95,16 +99,25 @@ flutter:
   assets:
     - assets/adhkar/
     - assets/data/
+    - assets/quran/
+    - assets/hadith/
+    - assets/library/
 
   fonts:
-    - family: Fraunces
+    - family: Literata
       fonts:
-        - asset: assets/fonts/Fraunces-Variable.ttf
-    - family: PlusJakartaSans
+        - asset: assets/fonts/Literata-Variable.ttf
+    - family: Inter
       fonts:
-        - asset: assets/fonts/PlusJakartaSans-Variable.ttf
+        - asset: assets/fonts/Inter-Variable.ttf
     - family: Amiri
       fonts:
         - asset: assets/fonts/Amiri-Regular.ttf
         - asset: assets/fonts/Amiri-Bold.ttf
           weight: 700
+    - family: AmiriQuran
+      fonts:
+        - asset: assets/fonts/AmiriQuran-Regular.ttf
+    - family: ScheherazadeNew
+      fonts:
+        - asset: assets/fonts/ScheherazadeNew-Regular.ttf

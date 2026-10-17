@@ -26,9 +26,11 @@ Future<void> loadAppFonts() async {
     await loader.load();
   }
 
-  await load('Fraunces', ['Fraunces-Variable.ttf']);
-  await load('PlusJakartaSans', ['PlusJakartaSans-Variable.ttf']);
+  await load('Literata', ['Literata-Variable.ttf']);
+  await load('Inter', ['Inter-Variable.ttf']);
   await load('Amiri', ['Amiri-Regular.ttf', 'Amiri-Bold.ttf']);
+  await load('AmiriQuran', ['AmiriQuran-Regular.ttf']);
+  await load('ScheherazadeNew', ['ScheherazadeNew-Regular.ttf']);
 }
 
 /// Default frozen "now" for widget tests: Sunday 4 Oct 2026, 16:00 in

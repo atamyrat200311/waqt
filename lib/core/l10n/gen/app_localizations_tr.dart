@@ -358,7 +358,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String homeAdhkarAfter(String window, String min) {
-    return '$window · $min dk';
+    return '$window · ≈$min dk okuma';
   }
 
   @override
@@ -564,7 +564,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get catTransport => 'Ulaşım';
 
   @override
-  String get catFood => 'Yemek';
+  String get catFood => 'Dışarıda yemek';
 
   @override
   String get catBills => 'Faturalar';
@@ -815,6 +815,9 @@ class AppLocalizationsTr extends AppLocalizations {
   String get fastTypeOther => 'Nafile oruç';
 
   @override
+  String get fastTypeQada => 'Kaza orucu';
+
+  @override
   String get ramadanTitle => 'Ramazan';
 
   @override
@@ -944,7 +947,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get toolsAdhkarDone => 'Bugün tamam';
 
   @override
-  String get toolsCalendar => 'Hicri takvim';
+  String get toolsCalendar => 'Takvim';
 
   @override
   String get toolsRamadan => 'Ramazan';
@@ -1109,7 +1112,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get alertAdhan => 'Ezan';
 
   @override
-  String get alertSilent => 'Sessiz';
+  String get alertSilent => 'Normal ses';
 
   @override
   String get alertOff => 'Kapalı';
@@ -1403,4 +1406,986 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get chanReminders => 'Hatırlatmalar';
+
+  @override
+  String get tabQuran => 'Kur’an';
+
+  @override
+  String get tabLibrary => 'Kütüphane';
+
+  @override
+  String get quranTitle => 'Kur’an-ı Kerim';
+
+  @override
+  String get quranContinue => 'Okumaya devam et';
+
+  @override
+  String get quranStart => 'Okumaya başla';
+
+  @override
+  String get quranStartHint => 'Fâtiha suresiyle başlayın.';
+
+  @override
+  String quranAyahN(String n) {
+    return 'Ayet $n';
+  }
+
+  @override
+  String quranPageN(String n) {
+    return 'Sayfa $n';
+  }
+
+  @override
+  String quranJuzN(String n) {
+    return 'Cüz $n';
+  }
+
+  @override
+  String get quranSurahs => 'Sureler';
+
+  @override
+  String get quranJuzTab => 'Cüzler';
+
+  @override
+  String quranAyahCount(int count) {
+    return '$count ayet';
+  }
+
+  @override
+  String get quranMeccan => 'Mekkî';
+
+  @override
+  String get quranMedinan => 'Medenî';
+
+  @override
+  String get quranSearch => 'Kur’an’da ara';
+
+  @override
+  String get quranSearchHint => 'Sure, 2:255 veya kelimeler';
+
+  @override
+  String quranGoTo(String ref) {
+    return '$ref git';
+  }
+
+  @override
+  String get quranNoResults => 'Sonuç yok. Daha az kelime veya Arapça deneyin.';
+
+  @override
+  String quranResults(int count) {
+    return '$count ayet';
+  }
+
+  @override
+  String quranSearchIn(String translation) {
+    return 'Arapça ve $translation içinde aranıyor';
+  }
+
+  @override
+  String get quranBookmarks => 'Yer imleri';
+
+  @override
+  String get quranNoBookmarks =>
+      'Henüz yer imi yok. Kaydetmek için bir ayete uzun basın veya ••• simgesine dokunun.';
+
+  @override
+  String get quranBookmark => 'Yer imi ekle';
+
+  @override
+  String get quranRemoveBookmark => 'Yer imini kaldır';
+
+  @override
+  String get quranRemoveNoteConfirm => 'Bu yer imi ve notu silinsin mi?';
+
+  @override
+  String translationLabel(String name) {
+    return 'Meal: $name';
+  }
+
+  @override
+  String get quranBookmarked => 'Yer imlerine eklendi';
+
+  @override
+  String get moreActions => 'Daha fazla';
+
+  @override
+  String get copy => 'Kopyala';
+
+  @override
+  String get copied => 'Kopyalandı';
+
+  @override
+  String get shareImage => 'Görsel olarak paylaş';
+
+  @override
+  String get shareText => 'Metni paylaş';
+
+  @override
+  String get share => 'Paylaş';
+
+  @override
+  String get quranAddNote => 'Not ekle';
+
+  @override
+  String get quranNoteHint => 'Bu ayet sizin için ne ifade ediyor?';
+
+  @override
+  String get quranSetLastRead => 'Burada kaldım olarak işaretle';
+
+  @override
+  String get quranReadingSettings => 'Okuma ayarları';
+
+  @override
+  String get quranArabicSize => 'Arapça boyutu';
+
+  @override
+  String get quranTextSize => 'Meal boyutu';
+
+  @override
+  String get quranShowTranslation => 'Meali göster';
+
+  @override
+  String get quranShowTranslit => 'Okunuşu göster';
+
+  @override
+  String get quranTranslation => 'Meal';
+
+  @override
+  String get quranArabicFont => 'Arapça yazı';
+
+  @override
+  String get quranFontUthmani => 'Osmanî';
+
+  @override
+  String get quranFontNaskh => 'Nesih (sade)';
+
+  @override
+  String get quranSepia => 'Sıcak kâğıt';
+
+  @override
+  String get quranKeepAwake => 'Okurken ekranı açık tut';
+
+  @override
+  String get quranMemorize => 'Ezber modu';
+
+  @override
+  String get quranMemorizeHint =>
+      'Arapça gizli. Okuyun, sonra kontrol için dokunun.';
+
+  @override
+  String get quranTapToReveal => 'Görmek için dokunun';
+
+  @override
+  String get quranModeList => 'Mealli görünüm';
+
+  @override
+  String get quranModePage => 'Mushaf sayfaları';
+
+  @override
+  String get quranSajda => 'Secde';
+
+  @override
+  String get quranToday => 'Bugün';
+
+  @override
+  String quranGoal(String read, String goal) {
+    return '$goal ayetten $read';
+  }
+
+  @override
+  String quranGoalPages(String read, String goal) {
+    return '$goal sayfadan $read';
+  }
+
+  @override
+  String get khatmLast14 => 'Son 14 gün';
+
+  @override
+  String get quranGoalDone => 'Günlük hedef tamam';
+
+  @override
+  String quranStreak(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count gün üst üste',
+      zero: 'Bugün bir seri başlatın',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get quranDailyGoal => 'Günlük hedef';
+
+  @override
+  String quranDailyGoalValue(int count) {
+    return 'Günde $count ayet';
+  }
+
+  @override
+  String get quranReadTracking =>
+      'Ayetler üzerlerinde biraz durduğunuzda okunmuş sayılır.';
+
+  @override
+  String get quranOfDay => 'Günün ayeti';
+
+  @override
+  String get quranOpenInReader => 'Kur’an’da aç';
+
+  @override
+  String quranSurahInfo(String place, String ayahs) {
+    return '$place · $ayahs';
+  }
+
+  @override
+  String quranNextSurah(String name) {
+    return 'Sonraki: $name';
+  }
+
+  @override
+  String get quranLoading => 'Kur’an açılıyor…';
+
+  @override
+  String get quranReadSurah => 'Oku';
+
+  @override
+  String get khatmTitle => 'Hatim planı';
+
+  @override
+  String get khatmShort => 'Hatim';
+
+  @override
+  String get khatmIntro =>
+      'Kur’an’ın tamamını kendi temponuzda okuyun. Waqt kalan kısmı kalan günlere dağıtır; kaçırılan bir gün planı bozmaz.';
+
+  @override
+  String get khatmChoose => 'Bitirme süresi';
+
+  @override
+  String khatmDays(int count) {
+    return '$count gün';
+  }
+
+  @override
+  String khatmPerDay(String pages) {
+    return '≈ günde $pages sayfa';
+  }
+
+  @override
+  String get khatmStart => 'Planı başlat';
+
+  @override
+  String khatmDayOf(String day, String total) {
+    return '$total günün $day. günü';
+  }
+
+  @override
+  String khatmTodayTarget(String pages, String from) {
+    return 'Bugün: $pages sayfa, $from itibaren';
+  }
+
+  @override
+  String get khatmTodayDone => 'Bugünkü kısım tamam. Barakallahu fik!';
+
+  @override
+  String get khatmBehind =>
+      'Biraz geridesiniz — bugünkü kısım biraz daha uzun.';
+
+  @override
+  String get khatmOnTrack => 'Planda';
+
+  @override
+  String get khatmEnd => 'Planı bitir';
+
+  @override
+  String get khatmEndConfirm =>
+      'Bu plan bitirilsin mi? Okuma geçmişiniz kalır.';
+
+  @override
+  String get khatmComplete => 'Hatim tamamlandı! Allah kabul etsin.';
+
+  @override
+  String khatmProgress(String read, String total) {
+    return '$total sayfadan $read';
+  }
+
+  @override
+  String khatmDaysLeft(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count gün kaldı',
+      zero: 'Son gün',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get khatmRamadan => 'Ramazan';
+
+  @override
+  String get khatmNewPlan => 'Yeni plan';
+
+  @override
+  String get khatmShareText => 'Waqt ile Kur’an’ı hatmettim. Elhamdülillah!';
+
+  @override
+  String get khatmReminder => 'Yatsıdan sonra hatırlat';
+
+  @override
+  String get notifQuranTitle => 'Bugünün Kur’an’ı';
+
+  @override
+  String get notifQuranBody => 'Uyumadan önce Kur’an ile birkaç dakika.';
+
+  @override
+  String get hifzTitle => 'Ezber';
+
+  @override
+  String get hifzIntro =>
+      'Ezberlediğiniz sureleri ekleyin. Her birini aralıklı bir düzende tekrar edin — 1, 3, 7, 14, 30 ve 90 gün — böylece sağlam kalsın.';
+
+  @override
+  String get hifzAdd => 'Sure ekle';
+
+  @override
+  String get hifzDue => 'Tekrar zamanı';
+
+  @override
+  String get hifzUpcoming => 'Yaklaşan';
+
+  @override
+  String get hifzReview => 'Tekrar et';
+
+  @override
+  String get hifzHowWent => 'Tekrar nasıl geçti?';
+
+  @override
+  String get hifzStrong => 'Sağlam';
+
+  @override
+  String get hifzWeak => 'Zayıf';
+
+  @override
+  String hifzNext(String date) {
+    return 'Sonraki tekrar $date';
+  }
+
+  @override
+  String get hifzEmpty =>
+      'Listeniz boş. Amme cüzündeki kısa sureler harika bir başlangıç.';
+
+  @override
+  String get hifzRemove => 'Listeden çıkar';
+
+  @override
+  String get hifzSuggested => 'Önerilen';
+
+  @override
+  String get hifzAllSurahs => 'Tüm sureler';
+
+  @override
+  String get hifzTileIdle => 'Aralıklı tekrar';
+
+  @override
+  String hifzDueCount(int count) {
+    return 'Bugün $count sure';
+  }
+
+  @override
+  String get khatmTileIdle => 'Planlı bitirin';
+
+  @override
+  String get hifzAgain => 'Tekrar';
+
+  @override
+  String get quranJumpTo => 'Sure, cüz veya sayfaya git';
+
+  @override
+  String get quranPages => 'Sayfalar';
+
+  @override
+  String get hifzMemorized => 'Ezberlendi';
+
+  @override
+  String get libraryHadith => 'Hadis külliyatı';
+
+  @override
+  String get libraryDuas => 'Dualar';
+
+  @override
+  String get libraryDuasSub => 'Günün her anı için';
+
+  @override
+  String get libraryNames => 'Allah’ın 99 ismi';
+
+  @override
+  String get libraryNamesSub => 'Esmâ-ül Hüsnâ';
+
+  @override
+  String get libraryLearn => 'Öğren';
+
+  @override
+  String get libraryLearnSub => 'Namaz, abdest, oruç ve daha fazlası';
+
+  @override
+  String get libraryAdhkar => 'Sabah ve akşam zikirleri';
+
+  @override
+  String get librarySaved => 'Kaydedilenler';
+
+  @override
+  String get librarySavedEmpty =>
+      'Bir hadisi, duayı veya ismi kaydedin; burada görünür.';
+
+  @override
+  String get libraryContentReview =>
+      'Metinler klasik kaynaklardan derlenmiştir. Şüphe durumunda bir âlime danışın.';
+
+  @override
+  String get hadithTitle => 'Hadis';
+
+  @override
+  String get hadithOfDay => 'Günün hadisi';
+
+  @override
+  String get hadithBookNawawi => 'Nevevî’nin 40 Hadisi';
+
+  @override
+  String get hadithBookQudsi => '40 Kudsî Hadis';
+
+  @override
+  String get hadithBookBukhari => 'Sahîh-i Buhârî';
+
+  @override
+  String get hadithBookMuslim => 'Sahîh-i Müslim';
+
+  @override
+  String hadithCount(int count) {
+    return '$count hadis';
+  }
+
+  @override
+  String hadithN(String n) {
+    return 'Hadis $n';
+  }
+
+  @override
+  String get hadithBooks => 'Kitaplar';
+
+  @override
+  String get hadithSearchHint => 'Kelime veya numara arayın';
+
+  @override
+  String get hadithSearchAll => 'Hadis ara';
+
+  @override
+  String get hadithSearchAllHint => 'Tüm külliyatlarda kelime';
+
+  @override
+  String get hadithShowArabic => 'Arapça metni göster';
+
+  @override
+  String get hadithTranslation => 'Tercüme';
+
+  @override
+  String get quranMushafStyle => 'Mushaf görünümü';
+
+  @override
+  String get quranMushafStyleSub =>
+      'Parşömen sayfa, 15 satırlı Medine düzeni (sayfa görünümü), pembe “Allah”, altın ayet işaretleri';
+
+  @override
+  String get quranTajweed => 'Tecvid renkleri';
+
+  @override
+  String get quranTajweedSub =>
+      'Okuma kurallarını renklendirir (gunne, med, kalkale…)';
+
+  @override
+  String searchResultsFor(String query) {
+    return '“$query” için sonuçlar';
+  }
+
+  @override
+  String searchNoneFor(String query) {
+    return '“$query” için sonuç bulunamadı';
+  }
+
+  @override
+  String get hadithNoResults => 'Hadis bulunamadı.';
+
+  @override
+  String get hadithFallback =>
+      'Dilinizde mevcut değil — İngilizce gösteriliyor.';
+
+  @override
+  String hadithRange(String from, String to) {
+    return 'Hadis $from–$to';
+  }
+
+  @override
+  String get hadithOpenBook => 'Külliyatı oku';
+
+  @override
+  String get langEnglish => 'İngilizce';
+
+  @override
+  String get langRussian => 'Rusça';
+
+  @override
+  String get langTurkish => 'Türkçe';
+
+  @override
+  String get duaSearchHint => 'Dua ara';
+
+  @override
+  String duaRepeat(String count) {
+    return '$count kez';
+  }
+
+  @override
+  String get duaAll => 'Tümü';
+
+  @override
+  String get duaFavorites => 'Favoriler';
+
+  @override
+  String get namesQuiz => 'Alıştırma';
+
+  @override
+  String get namesQuizQuestion => 'Bu isim ne anlama gelir?';
+
+  @override
+  String namesQuizScore(String right, String total) {
+    return '$total sorudan $right doğru';
+  }
+
+  @override
+  String get namesQuizNext => 'Sonraki';
+
+  @override
+  String get namesQuizAgain => 'Tekrar alıştırma';
+
+  @override
+  String namesLearned(String count) {
+    return '99’dan $count öğrenildi';
+  }
+
+  @override
+  String get namesHadith =>
+      '“Allah’ın doksan dokuz ismi vardır; onları ezberleyen cennete girer.” — Buhârî ve Müslim';
+
+  @override
+  String learnSteps(int count) {
+    return '$count adım';
+  }
+
+  @override
+  String learnStepN(String n) {
+    return 'Adım $n';
+  }
+
+  @override
+  String get meQuranStreak => 'Kur’an serisi';
+
+  @override
+  String get meQuranDaily => 'her gün okuma';
+
+  @override
+  String get mePrayedToday => 'bugün kılındı';
+
+  @override
+  String get meStartStreak => 'Seriyi başlatmak için bugün beş vakti kılın';
+
+  @override
+  String get meStreakShare => 'Günde beş vakit, Waqt ile';
+
+  @override
+  String get meSettingsRow => 'Ayarlar';
+
+  @override
+  String get habitsEmptyShort => 'Küçük bir günlük alışkanlık edinin';
+
+  @override
+  String get homeAddExpenseShort => 'Harcama';
+
+  @override
+  String qadaMadeUpSnack(String prayer) {
+    return '$prayer: bir kaza kılındı';
+  }
+
+  @override
+  String get qadaYearsHelper => 'Yaklaşık kaçırdığım süre…';
+
+  @override
+  String qadaMonths(int count) {
+    return '$count ay';
+  }
+
+  @override
+  String qadaYears(int count) {
+    return '$count yıl';
+  }
+
+  @override
+  String get expensesTitle => 'Harcamalar';
+
+  @override
+  String get expensesEmpty => 'Bu ay harcama kaydedilmedi.';
+
+  @override
+  String get meAyahsRead => 'Okunan ayetler';
+
+  @override
+  String get notifTestTitle => 'Test bildirimi gönder';
+
+  @override
+  String get notifTestSub =>
+      '5 saniye içinde gelir — sesi kontrol etmek için telefonu kilitleyin.';
+
+  @override
+  String get notifTestBody =>
+      'Bunu görüp duyuyorsanız namaz bildirimleri çalışacaktır.';
+
+  @override
+  String get notifTestSent => 'Test bildirimi yolda…';
+
+  @override
+  String get fastsOwedTitle => 'Kaza edilecek oruçlar';
+
+  @override
+  String fastsOwedCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count gün',
+      zero: 'Hepsi kaza edildi — elhamdülillah',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get fastsOwedSub =>
+      'Kaçırılan veya mazeretli Ramazan günleri, tuttuğunuz kaza oruçları düşülerek.';
+
+  @override
+  String get fastsLogQada => 'Bugün kaza orucu tuttum';
+
+  @override
+  String get backupTitle => 'Yedekle ve geri yükle';
+
+  @override
+  String get backupRowSub => 'Verilerinizi yeni telefona taşıyın';
+
+  @override
+  String get backupIntro =>
+      'Waqt’ta hesap ve bulut yok. Bir yedek dosyası dışa aktarın ve güvenli bir yerde saklayın (Dosyalar, Telegram “Kayıtlı mesajlar”, kendinize e-posta). Her telefonda geri yükleyin.';
+
+  @override
+  String get backupExport => 'Yedeği dışa aktar';
+
+  @override
+  String get backupImport => 'Dosyadan geri yükle';
+
+  @override
+  String get backupRestore => 'Geri yükle';
+
+  @override
+  String get backupRestoreTitle => 'Tüm veriler değiştirilsin mi?';
+
+  @override
+  String get backupRestoreBody =>
+      'Bu telefondaki her şey yedekle değiştirilecek.';
+
+  @override
+  String get backupRestored => 'Geri yüklendi. Tekrar hoş geldiniz!';
+
+  @override
+  String get backupNever => 'Henüz yedek yok';
+
+  @override
+  String backupLast(String date) {
+    return 'Son yedek: $date';
+  }
+
+  @override
+  String get backupInvalid => 'Bu dosya bir Waqt yedeği değil.';
+
+  @override
+  String get zakatTitle => 'Zekât hesaplayıcı';
+
+  @override
+  String get zakatShort => 'Zekât';
+
+  @override
+  String get zakatDue => 'Ödenecek zekât';
+
+  @override
+  String get zakatAbove => 'Nisabın üzerinde — %2,5 ödenir.';
+
+  @override
+  String get zakatBelow => 'Nisabın altında — zekât gerekmez.';
+
+  @override
+  String get zakatNeedPrice =>
+      'Nisabı bulmak için bugünkü altın veya gümüş fiyatını girin.';
+
+  @override
+  String get zakatWealth => 'Zekâta tabi servet';
+
+  @override
+  String get zakatNisab => 'Nisap';
+
+  @override
+  String get zakatNisabBasis => 'Nisap ölçüsü';
+
+  @override
+  String get zakatNisabGold => 'Altın · 85 g';
+
+  @override
+  String get zakatNisabSilver => 'Gümüş · 595 g';
+
+  @override
+  String get zakatPriceHint =>
+      'Waqt internete bağlanmaz — gram başına bugünkü yerel fiyatı yazın.';
+
+  @override
+  String get zakatGoldPrice => 'Altın fiyatı';
+
+  @override
+  String get zakatSilverPrice => 'Gümüş fiyatı';
+
+  @override
+  String get zakatPerGram => 'gram başına';
+
+  @override
+  String get zakatGrams => 'g';
+
+  @override
+  String get zakatAssets => 'Varlıklarınız';
+
+  @override
+  String get zakatLiabilities => 'Şu anki borçlarınız';
+
+  @override
+  String get zakatCash => 'Nakit ve banka';
+
+  @override
+  String get zakatGold => 'Altın';
+
+  @override
+  String get zakatSilver => 'Gümüş';
+
+  @override
+  String get zakatInvestments => 'Hisse ve yatırımlar';
+
+  @override
+  String get zakatBusiness => 'Ticari mallar';
+
+  @override
+  String get zakatReceivables => 'Size olan alacaklar';
+
+  @override
+  String get zakatDebts => 'Vadesi gelen borçlar';
+
+  @override
+  String get zakatRecord => 'Sadaka harcaması olarak kaydet';
+
+  @override
+  String get zakatRecorded => 'Harcamalara kaydedildi';
+
+  @override
+  String get zakatNote =>
+      'Zekât, bir kamerî yıl elde tutulan ve nisabı aşan servetin %2,5’idir. Ev, araba ve kişisel eşyalar sayılmaz. Durumunuz için bir âlime danışın.';
+
+  @override
+  String get timetableTitle => 'Namaz vakitleri çizelgesi';
+
+  @override
+  String get timetableShort => 'Çizelge';
+
+  @override
+  String get timetableNote =>
+      'Vakitler yönteminize, ikindi ayarınıza ve cami düzeltmelerine göredir. Cumalar vurgulanır.';
+
+  @override
+  String get habitsTitle => 'Alışkanlıklar';
+
+  @override
+  String get habitsAdd => 'Yeni alışkanlık';
+
+  @override
+  String get habitsNameHint => 'örn. Kur’an’dan bir sayfa oku';
+
+  @override
+  String get habitsEmpty =>
+      'Küçük günlük alışkanlıklar birikir. Sürdürmek istediğiniz birini ekleyin.';
+
+  @override
+  String habitsDoneToday(String done, String total) {
+    return 'Bugün $total’dan $done';
+  }
+
+  @override
+  String get habitsSuggestions => 'Fikirler';
+
+  @override
+  String get habitSugQuran => 'Kur’an’dan bir sayfa oku';
+
+  @override
+  String get habitSugDhikr => '100× Sübhanallah';
+
+  @override
+  String get habitSugWater => '8 bardak su iç';
+
+  @override
+  String get habitSugWalk => '20 dakika yürüyüş';
+
+  @override
+  String get habitSugSadaqa => 'Biraz sadaka ver';
+
+  @override
+  String get habitSugParents => 'Anne babamı ara';
+
+  @override
+  String get habitSugGratitude => 'Şükrettiğim 3 şeyi yaz';
+
+  @override
+  String get habitSugRead => 'Kitaptan 10 sayfa oku';
+
+  @override
+  String get habitSugSleep => '23:00’ten önce uyu';
+
+  @override
+  String get ramadanChallenge => 'Ramazan hedefi';
+
+  @override
+  String ramadanChallengeScore(String score) {
+    return 'Bugün 5’ten $score';
+  }
+
+  @override
+  String ramadanCoreDays(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Şimdiye kadar $count tam gün',
+      zero: 'Tam gün: oruç, namaz ve Kur’an',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get ramadanItemFast => 'Oruç';
+
+  @override
+  String get ramadanItemPrayers => '5 vakit';
+
+  @override
+  String get ramadanItemQuran => 'Kur’an';
+
+  @override
+  String get ramadanItemDhikr => 'Zikir';
+
+  @override
+  String get ramadanItemSadaqa => 'Sadaka';
+
+  @override
+  String get ramadanChallengeIntro =>
+      'Ramazan başladığında Waqt beş günlük hedefi takip eder — oruç, namaz, Kur’an, zikir ve sadaka — ve ilerlemenizi paylaşmanızı sağlar.';
+
+  @override
+  String get obGetStarted => 'Başlayalım';
+
+  @override
+  String get obTagline => 'Gününüz, beş vakit namaz etrafında.';
+
+  @override
+  String get obValuePrayer => 'Doğru namaz vakitleri';
+
+  @override
+  String get obValuePrayerSub => 'Bildirimler, kıble, takip ve kaza yardımı.';
+
+  @override
+  String get obValueQuran => 'Kur’an ve hadis, çevrimdışı';
+
+  @override
+  String get obValueQuranSub => '8 meal, hatim planı, ezber, dualar.';
+
+  @override
+  String get obValueDay => 'Bütün gününüzü planlayın';
+
+  @override
+  String get obValueDaySub =>
+      'Namaz vaktine göre görevler, harcamalar, alışkanlıklar.';
+
+  @override
+  String get obValuePrivate => 'Tamamen gizli';
+
+  @override
+  String get obValuePrivateSub =>
+      'Hesap yok, reklam yok, takip yok. Çevrimdışı çalışır.';
+
+  @override
+  String get shareThemeEmerald => 'Zümrüt';
+
+  @override
+  String get shareThemePaper => 'Kâğıt';
+
+  @override
+  String get shareThemeNight => 'Gece';
+
+  @override
+  String get shareWithArabic => 'Arapça';
+
+  @override
+  String get shareWithTranslation => 'Meal';
+
+  @override
+  String get shareFooter => 'Waqt · gününüz namaz etrafında';
+
+  @override
+  String get quranReminderAfterIsha => 'Yatsıdan sonra Kur’an hatırlatması';
+
+  @override
+  String get khatmOverdue =>
+      'Planın süresi doldu — rahat bir tempo için uzatın.';
+
+  @override
+  String khatmFarBehind(int count) {
+    return '$count sayfa geridesiniz — acele yok, her sayfa sayılır.';
+  }
+
+  @override
+  String khatmExtend(int count) {
+    return '$count gün uzat';
+  }
+
+  @override
+  String get expenseAddFirst => 'Harcama eklemek için + simgesine dokunun';
+
+  @override
+  String get tmOfficialTable => 'Türkmenistan resmî vakit cetveli';
+
+  @override
+  String get chipDone => 'işaretlendi';
+
+  @override
+  String get chipNow => 'şimdi';
+
+  @override
+  String get chipUnmarked => 'henüz işaretlenmedi';
+
+  @override
+  String get chipUpcoming => 'yaklaşan';
+
+  @override
+  String get chipMissed => 'kaçırıldı, kazada';
+
+  @override
+  String get chipExcused => 'mazeretli';
+
+  @override
+  String get tasksAddFirst => 'Bir namaz vaktine görev planlayın';
 }

@@ -295,9 +295,19 @@ class _QadaRow extends ConsumerWidget {
               semanticLabel: zero ? '${l.prayer(prayer)}: ${l.qadaAllDone}' : '${l.qadaMadeUp}: ${l.prayer(prayer)}',
               onPressed: zero
                   ? null
-                  : () {
+                  : () async {
                       Haptics.success();
-                      ref.read(prayerRepositoryProvider).makeUp(prayer);
+                      final repo = ref.read(prayerRepositoryProvider);
+                      final messenger = ScaffoldMessenger.maybeOf(context);
+                      final ok = await repo.makeUp(prayer);
+                      if (!ok || messenger == null) return;
+                      messenger
+                        ..hideCurrentSnackBar()
+                        ..showSnackBar(SnackBar(
+                          content: Text(l.qadaMadeUpSnack(l.prayer(prayer))),
+                          duration: const Duration(seconds: 5),
+                          action: SnackBarAction(label: l.undo, onPressed: () => repo.undoMakeUp(prayer)),
+                        ));
                     },
             ),
           ],
@@ -352,7 +362,35 @@ class _AddOlderSheetState extends ConsumerState<_AddOlderSheet> {
           Text(l.qadaAddOlderTitle, style: WaqtType.serif(28, tracking: -0.015, color: c.ink)),
           const SizedBox(height: 6),
           Text(l.qadaAddOlderBody, style: WaqtType.sans(14, color: c.muted, height: 1.45)),
-          const SizedBox(height: 16),
+          const SizedBox(height: 12),
+          // Estimating years of missed prayers is the common case; fill all
+          // five rows at once (365 a year), then fine-tune.
+          Text(l.qadaYearsHelper, style: WaqtType.sans(13.5, weight: 600, color: c.ink)),
+          const SizedBox(height: 8),
+          Wrap(
+            spacing: 8,
+            runSpacing: 8,
+            children: [
+              for (final (label, days) in [
+                (l.qadaMonths(1), 30),
+                (l.qadaMonths(6), 182),
+                (l.qadaYears(1), 365),
+                (l.qadaYears(3), 1095),
+                (l.qadaYears(5), 1826),
+                (l.qadaYears(10), 3652),
+              ])
+                ActionChip(
+                  label: Text(label),
+                  onPressed: () {
+                    Haptics.tap();
+                    for (final p in Prayer.values) {
+                      _set(p, days);
+                    }
+                  },
+                ),
+            ],
+          ),
+          const SizedBox(height: 12),
           for (final p in Prayer.values)
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 4),

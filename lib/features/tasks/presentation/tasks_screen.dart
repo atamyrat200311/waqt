@@ -1,3 +1,5 @@
+import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 import 'package:flutter/semantics.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -156,10 +158,10 @@ class _TaskRow extends ConsumerWidget {
       key: ValueKey('task-${task.id}'),
       direction: DismissDirection.endToStart,
       background: Container(
-        color: c.brassSoft,
+        color: c.dangerSoft,
         alignment: AlignmentDirectional.centerEnd,
         padding: const EdgeInsetsDirectional.only(end: 20),
-        child: WaqtIcon(WaqtIcons.trash, color: c.brassText),
+        child: WaqtIcon(WaqtIcons.trash, color: c.danger),
       ),
       onDismissed: (_) => delete(),
       child: Semantics(
@@ -257,7 +259,8 @@ class _AddBarState extends ConsumerState<_AddBar> {
     final c = context.colors;
     final l = context.l10n;
     final window = _window ?? defaultTaskWindow(ref.watch(prayerNowProvider));
-    final inset = MediaQuery.viewInsetsOf(context).bottom;
+    // Above the keyboard, or above the floating iOS tab bar.
+    final inset = math.max(MediaQuery.viewInsetsOf(context).bottom, MediaQuery.paddingOf(context).bottom);
     return Padding(
       padding: EdgeInsets.fromLTRB(12, 0, 12, 12 + inset),
       child: Container(

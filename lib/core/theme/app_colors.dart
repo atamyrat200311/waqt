@@ -101,6 +101,18 @@ class WaqtColors extends ThemeExtension<WaqtColors> {
     isDark: true,
   );
 
+  /// Destructive / error states (delete swipes, wrong answers). Brass stays
+  /// reserved for checks, streaks and progress.
+  Color get danger => isDark ? const Color(0xFFEE9A82) : const Color(0xFFB4472E);
+  Color get dangerSoft => isDark ? const Color(0xFF3A211A) : const Color(0xFFF8E3DC);
+
+  /// Accent text on the emerald hero (brass at ≥ 4.5:1 there).
+  Color get onHeroAccent => const Color(0xFFE0BD78);
+
+  /// Ring / bar tracks and unchecked outlines with ~3:1 contrast.
+  Color get track => isDark ? muted.withValues(alpha: 0.32) : fill;
+  Color get controlOutline => muted.withValues(alpha: isDark ? 0.55 : 0.7);
+
   /// Translucent white layers used on top of [hero] (prayer chips, tasbih).
   Color get heroLayer => Colors.white.withValues(alpha: 0.06);
   Color get heroLayerStrong => Colors.white.withValues(alpha: 0.14);

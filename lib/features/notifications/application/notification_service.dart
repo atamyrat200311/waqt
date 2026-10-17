@@ -204,6 +204,30 @@ class NotificationService {
     return at;
   }
 
+  /// Health check: a prayer-style alert in 5 seconds (lock the phone to see
+  /// it arrive with the chosen sound).
+  Future<void> sendTest(AlertType alert, {required AppLocalizations l10n, DateTime? now}) async {
+    if (!_supported) return;
+    final at = (now ?? DateTime.now()).add(const Duration(seconds: 5));
+    final n = PlannedNotification(
+      id: NotificationPlanner.reminderIdBase + 999,
+      kind: NotificationKind.prayer,
+      at: at,
+      day: DayKey.fromDate(at),
+      prayer: Prayer.dhuhr,
+      alert: alert == AlertType.off ? AlertType.silent : alert,
+    );
+    await _plugin.zonedSchedule(
+      id: n.id,
+      scheduledDate: tz.TZDateTime.from(at, tz.UTC),
+      title: l10n.notifTestTitle,
+      body: l10n.notifTestBody,
+      payload: 'today',
+      androidScheduleMode: await _scheduleMode(),
+      notificationDetails: _details(n),
+    );
+  }
+
   Future<void> cancelAll() async {
     if (_supported) await _plugin.cancelAll();
   }
@@ -265,6 +289,7 @@ class NotificationService {
       NotificationKind.taraweeh => (l.homeTaraweeh, l.homeTaraweehSub(time)),
       NotificationKind.adhkarMorning => (l.adhkarMorning, l.notifMorningBody),
       NotificationKind.adhkarEvening => (l.adhkarEvening, l.notifEveningBody),
+      NotificationKind.quran => (l.notifQuranTitle, l.notifQuranBody),
     };
   }
 }

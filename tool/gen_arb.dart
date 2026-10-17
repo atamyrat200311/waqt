@@ -9,6 +9,8 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'strings_v2.dart';
+
 const langs = ['en', 'tk', 'tr', 'ru'];
 
 /// Placeholders whose type must be int (used in plurals or numeric formatting).
@@ -20,8 +22,8 @@ const Map<String, List<String>> s = {
   // ---------------------------------------------------------------- general
   'appName': ['Waqt', 'Waqt', 'Waqt', 'Waqt'],
   'tabToday': ['Today', 'Şu gün', 'Bugün', 'Сегодня'],
-  'tabTools': ['Tools', 'Gurallar', 'Araçlar', 'Инструменты'],
-  'tabMe': ['Me', 'Men', 'Ben', 'Я'],
+  'tabTools': ['Tools', 'Gurallar', 'Araçlar', 'Сервисы'],
+  'tabMe': ['Me', 'Men', 'Ben', 'Моё'],
   'add': ['Add', 'Goş', 'Ekle', 'Добавить'],
   'save': ['Save', 'Ýatda sakla', 'Kaydet', 'Сохранить'],
   'cancel': ['Cancel', 'Ýatyr', 'İptal', 'Отмена'],
@@ -35,7 +37,7 @@ const Map<String, List<String>> s = {
   'edit': ['Edit', 'Üýtget', 'Düzenle', 'Изменить'],
   'delete': ['Delete', 'Poz', 'Sil', 'Удалить'],
   'undo': ['Undo', 'Yzyna al', 'Geri al', 'Отменить'],
-  'reset': ['Reset', 'Täzeden', 'Sıfırla', 'Сброс'],
+  'reset': ['Reset', 'Nola gaýtar', 'Sıfırla', 'Сброс'],
   'today': ['Today', 'Şu gün', 'Bugün', 'Сегодня'],
   'yesterday': ['Yesterday', 'Düýn', 'Dün', 'Вчера'],
   'pickDate': ['Pick a date', 'Sene saýla', 'Tarih seç', 'Выбрать дату'],
@@ -95,11 +97,11 @@ const Map<String, List<String>> s = {
   ],
   'dateLong': [
     '{weekday}, {day} {month}',
-    '?{day}-nji {month}, {weekday}',
+    '{day} {month}, {weekday}',
     '{day} {month} {weekday}',
     '{weekday}, {day} {month}',
   ],
-  'dateDayMonth': ['{day} {month}', '{day}-nji {month}', '{day} {month}', '{day} {month}'],
+  'dateDayMonth': ['{day} {month}', '{day} {month}', '{day} {month}', '{day} {month}'],
   'dateShortWeekday': [
     '{weekday} {day} {month}',
     '{day} {month}, {weekday}',
@@ -119,10 +121,10 @@ const Map<String, List<String>> s = {
     '{month, select, m1{Мухаррам} m2{Сафар} m3{Раби аль-авваль} m4{Раби ас-сани} m5{Джумада аль-уля} m6{Джумада ас-сани} m7{Раджаб} m8{Шаабан} m9{Рамадан} m10{Шавваль} m11{Зуль-када} other{Зуль-хиджа}}',
   ],
   'hijriDate': ['{day} {month} {year}', '{day} {month} {year}', '{day} {month} {year}', '{day} {month} {year}'],
-  'unitH': ['h', 's', 'sa', 'ч'],
+  'unitH': ['h', 'sag', 'sa', 'ч'],
   'unitM': ['m', 'm', 'dk', 'м'],
   'unitS': ['s', 'sek', 'sn', 'с'],
-  'durationHM': ['{h}h {m}m', '{h} s {m} min', '{h} sa {m} dk', '{h} ч {m} мин'],
+  'durationHM': ['{h}h {m}m', '{h} sag {m} min', '{h} sa {m} dk', '{h} ч {m} мин'],
   'durationM': ['{m}m', '{m} min', '{m} dk', '{m} мин'],
   'minutesShort': ['{m} min', '{m} min', '{m} dk', '{m} мин'],
   'inDuration': ['in {d}', '{d} soň', '{d} sonra', 'через {d}'],
@@ -140,7 +142,7 @@ const Map<String, List<String>> s = {
   ],
   'eventCountdown': [
     '{name} {days, plural, =0{today} =1{tomorrow} other{in {days} days}}',
-    '?{name} {days, plural, =0{şu gün} =1{ertir} other{{days} günden}}',
+    '{days, plural, =0{Şu gün: {name}} =1{Ertir: {name}} other{{days} günden: {name}}}',
     '{name}: {days, plural, =0{bugün} =1{yarın} other{{days} gün sonra}}',
     '{name} {days, plural, =0{сегодня} =1{завтра} few{через {days} дня} many{через {days} дней} other{через {days} дня}}',
   ],
@@ -163,7 +165,7 @@ const Map<String, List<String>> s = {
   'homeUpNext': ['Up next', 'Indiki', 'Sırada', 'Далее'],
   'homeStart': ['Start', 'Başla', 'Başla', 'Начать'],
   'homeMarkDone': ['Done', 'Taýýar', 'Bitti', 'Готово'],
-  'homeAdhkarAfter': ['{window} · {min} min', '{window} · {min} min', '{window} · {min} dk', '{window} · {min} мин'],
+  'homeAdhkarAfter': ['{window} · ≈{min} min read', '{window} · ≈{min} min okamak', '{window} · ≈{min} dk okuma', '{window} · ≈{min} мин чтения'],
   'homeTaraweeh': ['Taraweeh', 'Terawih', 'Teravih', 'Таравих'],
   'homeTaraweehSub': [
     'At the mosque · reminder {time}',
@@ -172,7 +174,7 @@ const Map<String, List<String>> s = {
     'В мечети · напоминание {time}',
   ],
   'homeSpentToday': ['Spent today', 'Şu günki çykdajy', 'Bugün harcanan', 'Потрачено сегодня'],
-  'homeInclSadaqa': ['incl. {amount} sadaqa', '?{amount} sadaka bilen', '{amount} sadaka dahil', 'вкл. {amount} садака'],
+  'homeInclSadaqa': ['incl. {amount} sadaqa', 'şol sanda {amount} sadaka', '{amount} sadaka dahil', 'в т. ч. садака {amount}'],
   'homeTasks': ['Tasks', 'Işler', 'Görevler', 'Задачи'],
   'homeTasksOf': ['of {total}', '/ {total}', '/ {total}', 'из {total}'],
   'homeQadaRemaining': [
@@ -209,17 +211,17 @@ const Map<String, List<String>> s = {
   'markCongregationSub': ['With the jamāʿah, on time', 'Jemagat bilen, wagtynda', 'Cemaatle, vaktinde', 'С джамаатом, вовремя'],
   'markLate': ['Prayed late', 'Gijä galyp okaldy', 'Geç kılındı', 'Совершён с опозданием'],
   'markLateSub': ['After the window closed', 'Wagty geçenden soň', 'Vakti çıktıktan sonra', 'После окончания времени'],
-  'markMissed': ['Missed, add to qada', 'Galdy, kaza goş', 'Kaçırıldı, kazaya ekle', 'Пропущен, добавить в када'],
+  'markMissed': ['Missed, add to qada', 'Okalmady — kaza goş', 'Kaçırıldı, kazaya ekle', 'Пропущен, добавить в када'],
   'markMissedSub': [
     'You confirm before anything is added',
     '?Bir zat goşulmazdan öň tassyklarsyňyz',
     'Bir şey eklenmeden önce onaylarsınız',
     'Вы подтвердите перед добавлением',
   ],
-  'markExcused': ['Excused', 'Ötünçli', 'Mazeretli', 'Освобождён'],
+  'markExcused': ['Excused', 'Üzürli', 'Mazeretli', 'Освобождён'],
   'markExcusedSub': [
     'Period mode is on — no qada, streak kept',
-    '?Aýbaşy tertibi açyk — kaza ýok, yzygiderlik saklanýar',
+    'Aýratyn günler açyk — kaza ýok, yzygiderlik saklanýar',
     'Özel gün modu açık — kaza yok, seri korunur',
     'Режим «особые дни» — без када, серия сохраняется',
   ],
@@ -258,12 +260,12 @@ const Map<String, List<String>> s = {
   ],
   'qadaThisWeek': ['This week', 'Şu hepde', 'Bu hafta', 'На этой неделе'],
   'qadaWeekMadeUp': ['{count} made up', '{count} kaza edildi', '{count} kaza kılındı', 'восполнено: {count}'],
-  'qadaMadeUp': ['Made up', 'Kaza etdim', 'Kıldım', 'Восполнил'],
-  'qadaAllDone': ['All done', 'Hemmesi', 'Tamamlandı', 'Всё'],
+  'qadaMadeUp': ['Made up', 'Kaza etdim', 'Kıldım', 'Восполнено'],
+  'qadaAllDone': ['All done', 'Tamam', 'Tamamlandı', 'Всё'],
   'qadaAddOlder': ['Add older missed prayers', 'Öňki galan namazlary goş', 'Eski kaçırılan namazları ekle', 'Добавить старые пропуски'],
   'qadaTip': [
     'One at a time is enough. Many people pair one qada with each daily prayer.',
-    '?Birden kaza etmek ýeterlik. Köpler her parz namaz bilen bir kaza okaýar.',
+    'Birme-bir kaza etmek ýeterlik. Köpler her parz namaz bilen bir kaza okaýar.',
     'Birer birer yeterli. Birçok kişi her vakit namazıyla bir kaza kılar.',
     'Достаточно по одному. Многие совершают одну када с каждым намазом.',
   ],
@@ -276,7 +278,7 @@ const Map<String, List<String>> s = {
   ],
   'qadaAddCount': [
     '{count, plural, =0{Add to qada} other{Add {count} to qada}}',
-    '{count, plural, =0{Kaza goş} other{Kaza {count} goş}}',
+    '{count, plural, =0{Kaza goş} other{{count} namazy kaza goş}}',
     '{count, plural, =0{Kazaya ekle} other{Kazaya {count} ekle}}',
     '{count, plural, =0{Добавить в када} other{Добавить {count} в када}}',
   ],
@@ -293,8 +295,8 @@ const Map<String, List<String>> s = {
   'expenseNoteHint': ['Note', 'Bellik', 'Not', 'Заметка'],
   'catGroceries': ['Groceries', 'Azyk', 'Market', 'Продукты'],
   'catTransport': ['Transport', 'Ulag', 'Ulaşım', 'Транспорт'],
-  'catFood': ['Food', 'Nahar', 'Yemek', 'Еда'],
-  'catBills': ['Bills', 'Tölegler', 'Faturalar', 'Счета'],
+  'catFood': ['Eating out', 'Daşarda nahar', 'Dışarıda yemek', 'Кафе и еда вне дома'],
+  'catBills': ['Bills', 'Tölegler', 'Faturalar', 'Коммунальные платежи'],
   'catSadaqa': ['Sadaqa', 'Sadaka', 'Sadaka', 'Садака'],
   'catOther': ['Other', 'Beýleki', 'Diğer', 'Другое'],
   'expenseSave': ['Save {amount} {currency}', '{amount} {currency} ýatda sakla', '{amount} {currency} kaydet', 'Сохранить {amount} {currency}'],
@@ -394,14 +396,15 @@ const Map<String, List<String>> s = {
   'evMawlid': ['Mawlid', 'Mewlit', 'Mevlid Kandili', 'Мавлид'],
   'evLastTen': ['Last ten nights begin', 'Soňky on gije başlaýar', 'Son on gece başlıyor', 'Начало последних десяти ночей'],
   'fastLogTitle': ['Fast · {date}', 'Oraza · {date}', 'Oruç · {date}', 'Пост · {date}'],
-  'fastFasted': ['Fasted', 'Oraza tutdum', 'Oruç tuttum', 'Постился'],
+  'fastFasted': ['Fasted', 'Oraza tutdum', 'Oruç tuttum', 'Пост соблюдён'],
   'fastMissed': ['Missed', 'Galdy', 'Tutamadım', 'Пропущен'],
-  'fastExcused': ['Excused', 'Ötünçli', 'Mazeretli', 'Освобождён'],
+  'fastExcused': ['Excused', 'Üzürli', 'Mazeretli', 'Освобождён'],
   'fastClear': ['Clear', 'Arassala', 'Temizle', 'Очистить'],
   'fastTypeRamadan': ['Ramadan fast', 'Remezan orazasy', 'Ramazan orucu', 'Пост Рамадана'],
   'fastTypeMonThu': ['Monday/Thursday fast', 'Duşenbe/Penşenbe orazasy', 'Pazartesi/Perşembe orucu', 'Пост в Пн/Чт'],
   'fastTypeWhiteDays': ['White day fast', 'Ak gün orazasy', 'Eyyam-ı bîd orucu', 'Пост белого дня'],
   'fastTypeOther': ['Voluntary fast', 'Nepil oraza', 'Nafile oruç', 'Добровольный пост'],
+  'fastTypeQada': ['Make-up fast', 'Kaza orazasy', 'Kaza orucu', 'Восполнение поста'],
 
   // --------------------------------------------------------------- ramadan
   'ramadanTitle': ['Ramadan', 'Remezan', 'Ramazan', 'Рамадан'],
@@ -409,8 +412,8 @@ const Map<String, List<String>> s = {
   'ramadanAuto': ['Automatic', 'Awtomatik', 'Otomatik', 'Автоматически'],
   'ramadanOn': ['On', 'Açyk', 'Açık', 'Вкл'],
   'ramadanOff': ['Off', 'Ýapyk', 'Kapalı', 'Выкл'],
-  'ramadanInDays': ['in {days} days', '{days} günden', '{days} gün sonra', 'через {days} дн.'],
-  'ramadanDayOf': ['Day {n} of {total}', '{total} günden {n}-nji', '{total} günden {n}. gün', 'День {n} из {total}'],
+  'ramadanInDays': ['in {days} days', '{days} gün galdy', '{days} gün sonra', 'через {days} дн.'],
+  'ramadanDayOf': ['Day {n} of {total}', 'Gün {n} / {total}', '{total} günden {n}. gün', 'День {n} из {total}'],
   'ramadanSuhoorReminder': ['Suhoor reminder', 'Sähri ýatlatmasy', 'Sahur hatırlatması', 'Напоминание о сухуре'],
   'ramadanSuhoorBefore': ['{min} min before Fajr', 'Ertirden {min} min öň', 'Sabahtan {min} dk önce', 'За {min} мин до фаджра'],
   'ramadanIftarReminder': ['Iftar at Maghrib', 'Agşamda agyz açmak', 'Akşamda iftar', 'Ифтар в магриб'],
@@ -455,15 +458,15 @@ const Map<String, List<String>> s = {
   'tasbihCount': ['Count', 'San', 'Say', 'Счёт'],
   'tasbihTapA11y': ['Count one', 'Bir sana', 'Bir say', 'Отсчитать один'],
   'toolsAdhkar': ['Adhkar', 'Zikirler', 'Zikirler', 'Азкары'],
-  'toolsMorningDue': ['Morning due', 'Ertirki wagty', 'Sabah vakti', 'Пора утренних'],
-  'toolsEveningDue': ['Evening due', 'Agşamky wagty', 'Akşam vakti', 'Пора вечерних'],
-  'toolsAdhkarDone': ['Done today', 'Şu gün taýýar', 'Bugün tamam', 'Сегодня готово'],
-  'toolsCalendar': ['Hijri calendar', 'Hijri senenamasy', 'Hicri takvim', 'Календарь хиджры'],
+  'toolsMorningDue': ['Morning due', 'Ertirki zikir wagty', 'Sabah vakti', 'Пора утренних'],
+  'toolsEveningDue': ['Evening due', 'Agşamky zikir wagty', 'Akşam vakti', 'Пора вечерних'],
+  'toolsAdhkarDone': ['Done today', 'Şu gün okaldy', 'Bugün tamam', 'Сегодня готово'],
+  'toolsCalendar': ['Calendar', 'Hijri aýlar', 'Takvim', 'Календарь'],
   'toolsRamadan': ['Ramadan', 'Remezan', 'Ramazan', 'Рамадан'],
-  'toolsRamadanNow': ['Day {n}', '{n}-nji gün', '{n}. gün', 'День {n}'],
+  'toolsRamadanNow': ['Day {n}', 'Gün {n}', '{n}. gün', 'День {n}'],
 
   // -------------------------------------------------------------------- me
-  'meTitle': ['Me', 'Men', 'Ben', 'Я'],
+  'meTitle': ['Me', 'Men', 'Ben', 'Моё'],
   'meAll5': ['All 5 prayers', 'Bäş wagt namaz', '5 vakit namaz', 'Все 5 намазов'],
   'meDaysInRow': [
     '{n, plural, =1{day in a row} other{days in a row}}',
@@ -544,14 +547,14 @@ const Map<String, List<String>> s = {
   'offsetMinutes': ['{value} min', '{value} min', '{value} dk', '{value} мин'],
   'secAlerts': ['Alerts', 'Duýduryşlar', 'Bildirimler', 'Уведомления'],
   'alertAdhan': ['Adhan', 'Azan', 'Ezan', 'Азан'],
-  'alertSilent': ['Silent', 'Sessiz', 'Sessiz', 'Тихо'],
+  'alertSilent': ['Sound', 'Adaty ses', 'Normal ses', 'Обычный звук'],
   'alertOff': ['Off', 'Öçük', 'Kapalı', 'Выкл'],
   'secGeneral': ['General', 'Umumy', 'Genel', 'Общие'],
   'language': ['Language', 'Dil', 'Dil', 'Язык'],
   'languageSystem': ['System', 'Ulgam', 'Sistem', 'Системный'],
   'currency': ['Currency', 'Pul birligi', 'Para birimi', 'Валюта'],
   'location': ['Location', 'Ýerleşýän ýeri', 'Konum', 'Местоположение'],
-  'periodMode': ['Period mode', 'Aýbaşy tertibi', 'Özel gün modu', 'Особые дни'],
+  'periodMode': ['Period mode', 'Aýratyn günler', 'Özel gün modu', 'Особые дни'],
   'periodModeSub': ['Pauses prayer alerts. Streaks stay intact.', '?Namaz duýduryşlaryny togtadýar. Yzygiderlik saklanýar.', 'Namaz bildirimlerini durdurur. Seriler korunur.', 'Приостанавливает уведомления. Серии сохраняются.'],
   'appearance': ['Appearance', 'Görnüş', 'Görünüm', 'Оформление'],
   'themeLight': ['Light', 'Ýagty', 'Açık', 'Светлая'],
@@ -718,7 +721,9 @@ void main() {
   for (var i = 0; i < langs.length; i++) {
     final lang = langs[i];
     final out = <String, Object>{'@@locale': lang};
-    s.forEach((key, values) {
+    final dup = s.keys.toSet().intersection(s2.keys.toSet());
+    if (dup.isNotEmpty) throw StateError('Duplicate keys: $dup');
+    <String, List<String>>{...s, ...s2}.forEach((key, values) {
       if (values.length != langs.length) {
         throw StateError('$key has ${values.length} translations');
       }
@@ -749,7 +754,7 @@ void main() {
     });
     final file = File('${outDir.path}/app_$lang.arb');
     file.writeAsStringSync('${const JsonEncoder.withIndent('  ').convert(out)}\n');
-    print('wrote ${file.path} (${s.length} keys)');
+    print('wrote ${file.path} (${s.length + s2.length} keys)');
   }
 }
 

@@ -1,0 +1,1685 @@
+[
+  {
+    "n": 1,
+    "ar": "الرَّحْمَٰنُ",
+    "translit": "Ar-Rahman",
+    "meaning": {
+      "en": "The Most Merciful",
+      "tk": "Iň Rehimli",
+      "tr": "Esirgeyen",
+      "ru": "Милостивый"
+    },
+    "note": {
+      "en": "His mercy embraces everything; begin every act with His name and show mercy to all creation.",
+      "tk": "Onuň rehmeti ähli zady gurşap alýar; her işi Onuň ady bilen başla we ähli ýaradylyşa rehim et.",
+      "tr": "Rahmeti her şeyi kuşatır; her işe O'nun adıyla başla ve tüm yaratılmışlara merhamet et.",
+      "ru": "Его милость объемлет всё; начинай каждое дело с Его имени и будь милосерден ко всем творениям."
+    }
+  },
+  {
+    "n": 2,
+    "ar": "الرَّحِيمُ",
+    "translit": "Ar-Rahim",
+    "meaning": {
+      "en": "The Especially Merciful",
+      "tk": "Merhemetli",
+      "tr": "Merhamet eden",
+      "ru": "Милосердный"
+    },
+    "note": {
+      "en": "His special mercy is for the believers; keep turning back to Him, however far you have strayed.",
+      "tk": "Onuň aýratyn rehmeti möminler üçindir; näçe daşlaşsaň-da, Oňa dolanmagy bes etme.",
+      "tr": "Özel rahmeti müminler içindir; ne kadar uzaklaşsan da O'na dönmekten vazgeçme.",
+      "ru": "Его особая милость — для верующих; возвращайся к Нему, как бы далеко ты ни ушёл."
+    }
+  },
+  {
+    "n": 3,
+    "ar": "الْمَلِكُ",
+    "translit": "Al-Malik",
+    "meaning": {
+      "en": "The King",
+      "tk": "Patyşa",
+      "tr": "Hükümdar",
+      "ru": "Царь"
+    },
+    "note": {
+      "en": "Everything you own is on loan from the true King; use it in ways that please Him.",
+      "tk": "Eýeçiligiňdäki ähli zat hakyky Patyşanyň amanatydyr; ony Onuň razy boljak görnüşinde ulan.",
+      "tr": "Sahip olduğun her şey gerçek Hükümdar'ın emanetidir; onu O'nun razı olacağı şekilde kullan.",
+      "ru": "Всё, чем ты владеешь, доверено тебе истинным Царём; распоряжайся этим так, как угодно Ему."
+    }
+  },
+  {
+    "n": 4,
+    "ar": "الْقُدُّوسُ",
+    "translit": "Al-Quddus",
+    "meaning": {
+      "en": "The Most Holy",
+      "tk": "Mukaddes",
+      "tr": "Her eksiklikten uzak",
+      "ru": "Святой"
+    },
+    "note": {
+      "en": "He is free of every flaw; purify your heart and your speech to draw closer to Him.",
+      "tk": "Ol ähli kemçilikden päkdir; Oňa ýakynlaşmak üçin ýüregiňi we sözüňi arassala.",
+      "tr": "O her kusurdan münezzehtir; O'na yaklaşmak için kalbini ve dilini temizle.",
+      "ru": "Он свободен от всякого недостатка; очищай сердце и речь, чтобы приблизиться к Нему."
+    }
+  },
+  {
+    "n": 5,
+    "ar": "السَّلَامُ",
+    "translit": "As-Salam",
+    "meaning": {
+      "en": "The Source of Peace",
+      "tk": "Parahatlyk Beriji",
+      "tr": "Esenlik veren",
+      "ru": "Дарующий мир"
+    },
+    "note": {
+      "en": "True peace comes from Him; spread salam and be a source of safety for others.",
+      "tk": "Hakyky parahatlyk Ondandyr; salamy ýaý we başgalar üçin howpsuzlyk çeşmesi bol.",
+      "tr": "Gerçek esenlik O'ndandır; selamı yay ve başkaları için güven kaynağı ol.",
+      "ru": "Истинный мир — от Него; распространяй приветствие мира и будь для других источником безопасности."
+    }
+  },
+  {
+    "n": 6,
+    "ar": "الْمُؤْمِنُ",
+    "translit": "Al-Mu'min",
+    "meaning": {
+      "en": "The Granter of Security",
+      "tk": "Aman Beriji",
+      "tr": "Güven veren",
+      "ru": "Дарующий безопасность"
+    },
+    "note": {
+      "en": "He grants faith and safety; be someone people feel safe with, in word and in deed.",
+      "tk": "Ol iman we amanlyk berýär; adamlar sözüňden-de, işiňden-de özlerini howpsuz duýar ýaly bol.",
+      "tr": "İman ve güven veren O'dur; insanların sözünden ve elinden emin olduğu biri ol.",
+      "ru": "Он дарует веру и безопасность; будь тем, рядом с кем люди чувствуют себя в безопасности."
+    }
+  },
+  {
+    "n": 7,
+    "ar": "الْمُهَيْمِنُ",
+    "translit": "Al-Muhaymin",
+    "meaning": {
+      "en": "The Guardian",
+      "tk": "Gözegçi",
+      "tr": "Gözetip koruyan",
+      "ru": "Хранитель"
+    },
+    "note": {
+      "en": "He watches over all things; act in private as one who knows He sees you.",
+      "tk": "Ol ähli zada gözegçilik edýär; ýalňyz galanyňda-da Onuň seni görýändigini ýatla.",
+      "tr": "O her şeyi gözetir; yalnızken de O'nun seni gördüğünü bilerek davran.",
+      "ru": "Он надзирает за всем; поступай наедине так, будто помнишь, что Он видит тебя."
+    }
+  },
+  {
+    "n": 8,
+    "ar": "الْعَزِيزُ",
+    "translit": "Al-'Aziz",
+    "meaning": {
+      "en": "The Almighty",
+      "tk": "Gudratly",
+      "tr": "Mutlak güç sahibi",
+      "ru": "Могущественный"
+    },
+    "note": {
+      "en": "All honour and might belong to Him; seek dignity by obeying Him, not by pleasing people.",
+      "tk": "Ähli hormat we güýç Oňa degişlidir; mertebäni adamlary razy etmekden däl, Oňa boýun bolmakdan gözle.",
+      "tr": "Bütün izzet ve güç O'nundur; şerefi insanları memnun etmekte değil, O'na itaatte ara.",
+      "ru": "Вся честь и мощь принадлежат Ему; ищи достоинство в покорности Ему, а не в угождении людям."
+    }
+  },
+  {
+    "n": 9,
+    "ar": "الْجَبَّارُ",
+    "translit": "Al-Jabbar",
+    "meaning": {
+      "en": "The Compeller, the Restorer",
+      "tk": "Boýun Egdiriji, Bejeriji",
+      "tr": "Dilediğini yaptıran",
+      "ru": "Могучий, Исправляющий"
+    },
+    "note": {
+      "en": "He also mends what is broken; bring Him your broken heart and your hardships.",
+      "tk": "Ol döwlen zady hem bejerýär; döwük ýüregiňi we kynçylyklaryňy Oňa getir.",
+      "tr": "O kırılanı da onarır; kırık kalbini ve sıkıntılarını O'na getir.",
+      "ru": "Он также исправляет сломленное; неси Ему своё разбитое сердце и свои трудности."
+    }
+  },
+  {
+    "n": 10,
+    "ar": "الْمُتَكَبِّرُ",
+    "translit": "Al-Mutakabbir",
+    "meaning": {
+      "en": "The Supreme in Greatness",
+      "tk": "Beýiklik Eýesi",
+      "tr": "Büyüklükte eşsiz",
+      "ru": "Превосходящий"
+    },
+    "note": {
+      "en": "Greatness befits Him alone; meet people with humility, never with arrogance.",
+      "tk": "Beýiklik diňe Oňa mynasypdyr; adamlar bilen tekepbirlik däl, kiçigöwünlilik bilen gatnaş.",
+      "tr": "Büyüklük yalnız O'na yakışır; insanlara kibirle değil, tevazuyla yaklaş.",
+      "ru": "Величие подобает лишь Ему; относись к людям со смирением, а не с высокомерием."
+    }
+  },
+  {
+    "n": 11,
+    "ar": "الْخَالِقُ",
+    "translit": "Al-Khaliq",
+    "meaning": {
+      "en": "The Creator",
+      "tk": "Ýaradyjy",
+      "tr": "Yaratan",
+      "ru": "Творец"
+    },
+    "note": {
+      "en": "He created everything; reflect on creation and you will see His signs everywhere.",
+      "tk": "Ol ähli zady ýaratdy; ýaradylyş hakda pikirlen, Onuň alamatlaryny her ýerde görersiň.",
+      "tr": "Her şeyi O yarattı; yaratılışı düşün, O'nun ayetlerini her yerde görürsün.",
+      "ru": "Он сотворил всё; размышляй о творении — и увидишь Его знамения повсюду."
+    }
+  },
+  {
+    "n": 12,
+    "ar": "الْبَارِئُ",
+    "translit": "Al-Bari'",
+    "meaning": {
+      "en": "The Originator",
+      "tk": "Kemsiz Ýaradyjy",
+      "tr": "Kusursuz yaratan",
+      "ru": "Создатель"
+    },
+    "note": {
+      "en": "He brings things into being in perfect proportion; thank Him for the body He gave you.",
+      "tk": "Ol zatlary kämil deňagramlylykda ýaradýar; saňa beren bedeni üçin Oňa şükür et.",
+      "tr": "Her şeyi kusursuz bir uyumla var eder; sana verdiği beden için O'na şükret.",
+      "ru": "Он создаёт всё в совершенной соразмерности; благодари Его за тело, которое Он тебе дал."
+    }
+  },
+  {
+    "n": 13,
+    "ar": "الْمُصَوِّرُ",
+    "translit": "Al-Musawwir",
+    "meaning": {
+      "en": "The Fashioner of Forms",
+      "tk": "Şekil Beriji",
+      "tr": "Şekil veren",
+      "ru": "Дарующий облик"
+    },
+    "note": {
+      "en": "He gave every face its unique form; never mock anyone's appearance.",
+      "tk": "Ol her ýüze özboluşly şekil berdi; hiç kimiň daş keşbini masgaralama.",
+      "tr": "Her yüze eşsiz bir şekil veren O'dur; kimsenin görünüşüyle alay etme.",
+      "ru": "Он придал каждому лицу неповторимый облик; никогда не насмехайся над чужой внешностью."
+    }
+  },
+  {
+    "n": 14,
+    "ar": "الْغَفَّارُ",
+    "translit": "Al-Ghaffar",
+    "meaning": {
+      "en": "The Ever-Forgiving",
+      "tk": "Köp Bagyşlaýjy",
+      "tr": "Çok bağışlayan",
+      "ru": "Прощающий"
+    },
+    "note": {
+      "en": "He forgives again and again; never despair, and forgive others as you hope to be forgiven.",
+      "tk": "Ol gaýta-gaýta bagyşlaýar; umydyňy üzme we bagyşlanmak isleýşiň ýaly başgalary-da bagyşla.",
+      "tr": "O tekrar tekrar bağışlar; ümitsizliğe düşme ve bağışlanmayı umduğun gibi sen de bağışla.",
+      "ru": "Он прощает снова и снова; не отчаивайся и прощай других, как надеешься на прощение сам."
+    }
+  },
+  {
+    "n": 15,
+    "ar": "الْقَهَّارُ",
+    "translit": "Al-Qahhar",
+    "meaning": {
+      "en": "The Subduer",
+      "tk": "Hemme zatdan Üstün",
+      "tr": "Her şeye galip",
+      "ru": "Господствующий"
+    },
+    "note": {
+      "en": "Nothing escapes His power; let this free you from fearing anyone but Him.",
+      "tk": "Hiç zat Onuň güýjünden gaçyp bilmez; bu seni Ondan başga hiç kimden gorkmazlyga ýetirsin.",
+      "tr": "Hiçbir şey O'nun gücünden kaçamaz; bu seni O'ndan başkasından korkmaktan kurtarsın.",
+      "ru": "Ничто не ускользнёт от Его власти; пусть это освободит тебя от страха перед кем-либо, кроме Него."
+    }
+  },
+  {
+    "n": 16,
+    "ar": "الْوَهَّابُ",
+    "translit": "Al-Wahhab",
+    "meaning": {
+      "en": "The Bestower",
+      "tk": "Bagyş Beriji",
+      "tr": "Karşılıksız veren",
+      "ru": "Дарующий"
+    },
+    "note": {
+      "en": "He gives freely, expecting nothing in return; give gifts without expecting anything back.",
+      "tk": "Ol hiç bir öwez garaşman berýär; sen hem hiç zat garaşman sowgat ber.",
+      "tr": "O karşılık beklemeden verir; sen de karşılık beklemeden hediye ver.",
+      "ru": "Он дарует, не ожидая ничего взамен; дари и ты, не ожидая ответа."
+    }
+  },
+  {
+    "n": 17,
+    "ar": "الرَّزَّاقُ",
+    "translit": "Ar-Razzaq",
+    "meaning": {
+      "en": "The Provider",
+      "tk": "Rysk Beriji",
+      "tr": "Rızık veren",
+      "ru": "Наделяющий уделом"
+    },
+    "note": {
+      "en": "Your provision is written by Him; work honestly and never seek it through the forbidden.",
+      "tk": "Ryskyňy Ol ýazypdyr; halal zähmet çek we ony haram ýol bilen gözleme.",
+      "tr": "Rızkını O yazmıştır; dürüstçe çalış ve onu haram yoldan arama.",
+      "ru": "Твой удел предписан Им; трудись честно и никогда не ищи его запретным путём."
+    }
+  },
+  {
+    "n": 18,
+    "ar": "الْفَتَّاحُ",
+    "translit": "Al-Fattah",
+    "meaning": {
+      "en": "The Opener",
+      "tk": "Açyjy",
+      "tr": "Açan, hükmeden",
+      "ru": "Открывающий"
+    },
+    "note": {
+      "en": "He opens closed doors of mercy and provision; ask Him when every way seems shut.",
+      "tk": "Ol rehmetiň we ryskyň ýapyk gapylaryny açýar; ähli ýol ýapyk ýaly görünende Ondan sora.",
+      "tr": "Rahmetin ve rızkın kapalı kapılarını O açar; bütün yollar kapalı göründüğünde O'na yönel.",
+      "ru": "Он открывает закрытые двери милости и удела; проси Его, когда все пути кажутся закрытыми."
+    }
+  },
+  {
+    "n": 19,
+    "ar": "الْعَلِيمُ",
+    "translit": "Al-'Alim",
+    "meaning": {
+      "en": "The All-Knowing",
+      "tk": "Hemme zady Biliji",
+      "tr": "Her şeyi bilen",
+      "ru": "Знающий"
+    },
+    "note": {
+      "en": "He knows what you hide and what you show; speak to Him honestly in your duas.",
+      "tk": "Ol seniň gizleýän we görkezýän zatlaryňy bilýär; dilegleriňde Oňa açyk ýürek bilen ýüzlen.",
+      "tr": "Gizlediğini de açığa vurduğunu da bilir; dualarında O'na samimiyetle yönel.",
+      "ru": "Он знает и скрытое тобой, и явное; обращайся к Нему искренне в своих мольбах."
+    }
+  },
+  {
+    "n": 20,
+    "ar": "الْقَابِضُ",
+    "translit": "Al-Qabid",
+    "meaning": {
+      "en": "The Withholder",
+      "tk": "Daraldyjy",
+      "tr": "Daraltan",
+      "ru": "Сжимающий"
+    },
+    "note": {
+      "en": "Times of tightness are also part of His wisdom; stay patient, for relief follows hardship.",
+      "tk": "Darlyk günleri hem Onuň hikmetindendir; sabyrly bol, kynçylykdan soň ýeňillik gelýär.",
+      "tr": "Darlık zamanları da O'nun hikmetindendir; sabret, zorluğun ardından kolaylık gelir.",
+      "ru": "Времена стеснения тоже по Его мудрости; будь терпелив — за трудностью приходит облегчение."
+    }
+  },
+  {
+    "n": 21,
+    "ar": "الْبَاسِطُ",
+    "translit": "Al-Basit",
+    "meaning": {
+      "en": "The Extender",
+      "tk": "Giňeldiji",
+      "tr": "Genişleten",
+      "ru": "Расширяющий"
+    },
+    "note": {
+      "en": "When He expands your provision, share it; generosity keeps blessings flowing.",
+      "tk": "Ol ryskyňy giňeldende, ony paýlaş; sahylyk bereketi dowam etdirýär.",
+      "tr": "Rızkını genişlettiğinde onu paylaş; cömertlik bereketi devam ettirir.",
+      "ru": "Когда Он расширяет твой удел, делись им; щедрость сохраняет благодать."
+    }
+  },
+  {
+    "n": 22,
+    "ar": "الْخَافِضُ",
+    "translit": "Al-Khafid",
+    "meaning": {
+      "en": "The Abaser",
+      "tk": "Pese Düşüriji",
+      "tr": "Alçaltan",
+      "ru": "Принижающий"
+    },
+    "note": {
+      "en": "He lowers the arrogant; never look down on anyone, for status can change in a moment.",
+      "tk": "Ol tekepbirleri pese düşürýär; hiç kime ýokardan seretme, ýagdaý bir pursatda üýtgäp biler.",
+      "tr": "Kibirlileri alçaltan O'dur; kimseyi küçümseme, durum bir anda değişebilir.",
+      "ru": "Он принижает надменных; не смотри ни на кого свысока — положение может измениться в миг."
+    }
+  },
+  {
+    "n": 23,
+    "ar": "الرَّافِعُ",
+    "translit": "Ar-Rafi'",
+    "meaning": {
+      "en": "The Exalter",
+      "tk": "Ýokary Galdyryjy",
+      "tr": "Yükselten",
+      "ru": "Возвышающий"
+    },
+    "note": {
+      "en": "He raises whom He wills through faith and knowledge; humility before Allah is the way up.",
+      "tk": "Ol islänini iman we ylym bilen ýokary galdyrýar; Allanyň öňünde kiçigöwünlilik beýiklige eltýär.",
+      "tr": "Dilediğini iman ve ilimle yükseltir; Allah'a karşı tevazu yükselmenin yoludur.",
+      "ru": "Он возвышает кого пожелает верой и знанием; смирение перед Аллахом — путь наверх."
+    }
+  },
+  {
+    "n": 24,
+    "ar": "الْمُعِزُّ",
+    "translit": "Al-Mu'izz",
+    "meaning": {
+      "en": "The Giver of Honour",
+      "tk": "Hormat Beriji",
+      "tr": "İzzet veren",
+      "ru": "Возвеличивающий"
+    },
+    "note": {
+      "en": "True honour is His gift; protect your dignity by keeping away from sin.",
+      "tk": "Hakyky hormat Onuň sowgadydyr; günälerden daş durup, mertebäňi gora.",
+      "tr": "Gerçek izzet O'nun hediyesidir; günahlardan uzak durarak onurunu koru.",
+      "ru": "Истинная честь — Его дар; береги своё достоинство, сторонясь греха."
+    }
+  },
+  {
+    "n": 25,
+    "ar": "الْمُذِلُّ",
+    "translit": "Al-Mudhill",
+    "meaning": {
+      "en": "The Giver of Disgrace",
+      "tk": "Horlaýjy",
+      "tr": "Zillete düşüren",
+      "ru": "Унижающий"
+    },
+    "note": {
+      "en": "Disgrace comes by His decree upon wrongdoing; seek His protection from shameful deeds.",
+      "tk": "?Masgaraçylyk zalymlyk edenlere Onuň hökümi bilen gelýär; utançly işlerden Onuň goragyny sora.",
+      "tr": "Zillet, zulme karşı O'nun hükmüyle gelir; utanç verici işlerden O'na sığın.",
+      "ru": "Унижение приходит по Его решению за несправедливость; проси у Него защиты от постыдных дел."
+    }
+  },
+  {
+    "n": 26,
+    "ar": "السَّمِيعُ",
+    "translit": "As-Sami'",
+    "meaning": {
+      "en": "The All-Hearing",
+      "tk": "Eşidiji",
+      "tr": "Her şeyi işiten",
+      "ru": "Слышащий"
+    },
+    "note": {
+      "en": "He hears every whisper and every dua; guard your tongue and never stop calling on Him.",
+      "tk": "Ol her pyşyrdyny we her dilegi eşidýär; diliňi gora we Oňa dileg etmegi bes etme.",
+      "tr": "Her fısıltıyı ve her duayı işitir; diline sahip ol ve O'na dua etmeyi bırakma.",
+      "ru": "Он слышит каждый шёпот и каждую мольбу; береги язык и не переставай взывать к Нему."
+    }
+  },
+  {
+    "n": 27,
+    "ar": "الْبَصِيرُ",
+    "translit": "Al-Basir",
+    "meaning": {
+      "en": "The All-Seeing",
+      "tk": "Görüji",
+      "tr": "Her şeyi gören",
+      "ru": "Видящий"
+    },
+    "note": {
+      "en": "Nothing is hidden from His sight; do good even when no one else is watching.",
+      "tk": "Onuň nazaryndan hiç zat gizlin däl; hiç kim görmese-de ýagşylyk et.",
+      "tr": "O'nun görüşünden hiçbir şey gizli değildir; kimse görmese de iyilik yap.",
+      "ru": "Ничто не скрыто от Его взора; твори добро, даже когда никто не видит."
+    }
+  },
+  {
+    "n": 28,
+    "ar": "الْحَكَمُ",
+    "translit": "Al-Hakam",
+    "meaning": {
+      "en": "The Judge",
+      "tk": "Höküm Beriji",
+      "tr": "Hükmeden",
+      "ru": "Судья"
+    },
+    "note": {
+      "en": "His judgement is final and fair; when you judge between people, be just.",
+      "tk": "Onuň hökümi soňky we adyldyr; adamlaryň arasynda höküm edeniňde adalatly bol.",
+      "tr": "O'nun hükmü kesin ve adildir; insanlar arasında hükmederken adil ol.",
+      "ru": "Его решение окончательно и справедливо; когда судишь людей, будь справедлив."
+    }
+  },
+  {
+    "n": 29,
+    "ar": "الْعَدْلُ",
+    "translit": "Al-'Adl",
+    "meaning": {
+      "en": "The Utterly Just",
+      "tk": "Adalatly",
+      "tr": "Mutlak adil",
+      "ru": "Справедливый"
+    },
+    "note": {
+      "en": "He never wrongs anyone; be fair even with those you dislike.",
+      "tk": "Ol hiç kime zulum etmeýär; halamaýan adamlaryňa-da adalatly bol.",
+      "tr": "O kimseye zulmetmez; sevmediğin kişilere karşı da adil ol.",
+      "ru": "Он никого не притесняет; будь справедлив даже к тем, кого не любишь."
+    }
+  },
+  {
+    "n": 30,
+    "ar": "اللَّطِيفُ",
+    "translit": "Al-Latif",
+    "meaning": {
+      "en": "The Subtle, the Kind",
+      "tk": "Mähirli",
+      "tr": "Lütufkâr",
+      "ru": "Добрый, Проницательный"
+    },
+    "note": {
+      "en": "His kindness reaches you in ways you do not notice; look for His gentle care in your day.",
+      "tk": "Onuň mähri saňa duýmaýan ýollaryňdan ýetýär; gündelik durmuşyňda Onuň nepis aladasyny gör.",
+      "tr": "Lütfu sana fark etmediğin yollardan ulaşır; gününde O'nun ince ihsanlarını gör.",
+      "ru": "Его доброта достигает тебя незаметными путями; замечай Его нежную заботу в каждом дне."
+    }
+  },
+  {
+    "n": 31,
+    "ar": "الْخَبِيرُ",
+    "translit": "Al-Khabir",
+    "meaning": {
+      "en": "The All-Aware",
+      "tk": "Habardar",
+      "tr": "Her şeyden haberdar",
+      "ru": "Ведающий"
+    },
+    "note": {
+      "en": "He knows the inner reality of everything; a sincere intention is never lost with Him.",
+      "tk": "Ol ähli zadyň içki hakykatyny bilýär; ýürekden edilen niýet Onuň ýanynda hiç wagt ýitmez.",
+      "tr": "Her şeyin iç yüzünü bilir; samimi bir niyet O'nun katında asla kaybolmaz.",
+      "ru": "Он знает внутреннюю суть всего; искреннее намерение никогда не пропадёт у Него."
+    }
+  },
+  {
+    "n": 32,
+    "ar": "الْحَلِيمُ",
+    "translit": "Al-Halim",
+    "meaning": {
+      "en": "The Forbearing",
+      "tk": "Halym",
+      "tr": "Yumuşak davranan",
+      "ru": "Кроткий"
+    },
+    "note": {
+      "en": "He does not rush to punish; be slow to anger with your family and with others.",
+      "tk": "Ol jeza bermäge howlukmaýar; maşgalaňa we başgalara gaharlanmaga howlukma.",
+      "tr": "Cezalandırmakta acele etmez; ailene ve başkalarına öfkelenmekte acele etme.",
+      "ru": "Он не спешит наказывать; не торопись гневаться на семью и других."
+    }
+  },
+  {
+    "n": 33,
+    "ar": "الْعَظِيمُ",
+    "translit": "Al-'Azim",
+    "meaning": {
+      "en": "The Magnificent",
+      "tk": "Beýik",
+      "tr": "Pek büyük",
+      "ru": "Великий"
+    },
+    "note": {
+      "en": "Remembering His greatness makes problems small; say Subhana Rabbiyal-'Azim with presence.",
+      "tk": "Onuň beýikligini ýatlamak kynçylyklary kiçeldýär; «Subhana Rabbiýel-Azym» sözüni ýürekden aýt.",
+      "tr": "O'nun azametini hatırlamak dertleri küçültür; 'Sübhâne Rabbiye'l-azîm'i huşu içinde söyle.",
+      "ru": "Память о Его величии умаляет беды; произноси «Субхана Раббияль-Азым» осознанно."
+    }
+  },
+  {
+    "n": 34,
+    "ar": "الْغَفُورُ",
+    "translit": "Al-Ghafur",
+    "meaning": {
+      "en": "The All-Forgiving",
+      "tk": "Bagyşlaýjy",
+      "tr": "Bağışlayan",
+      "ru": "Всепрощающий"
+    },
+    "note": {
+      "en": "He covers and erases sins; cover the faults of others as you hope He covers yours.",
+      "tk": "Ol günäleri örtýär we öçürýär; Onuň seniň aýyplaryňy örtmegini isleýşiň ýaly, başgalaryň aýyplaryny ört.",
+      "tr": "Günahları örter ve siler; O'nun senin kusurlarını örtmesini umduğun gibi başkalarının kusurlarını ört.",
+      "ru": "Он покрывает и стирает грехи; покрывай чужие недостатки, как надеешься, что Он покроет твои."
+    }
+  },
+  {
+    "n": 35,
+    "ar": "الشَّكُورُ",
+    "translit": "Ash-Shakur",
+    "meaning": {
+      "en": "The Most Appreciative",
+      "tk": "Gadyr Biliji",
+      "tr": "Az amele çok veren",
+      "ru": "Благодарный"
+    },
+    "note": {
+      "en": "He rewards small deeds greatly; never belittle any good deed, even a smile.",
+      "tk": "Ol kiçi amallar üçin uly sylag berýär; hiç bir ýagşylygy, hatda ýylgyryşy-da kiçi saýma.",
+      "tr": "Küçük amellere büyük karşılık verir; hiçbir iyiliği, bir tebessümü bile küçümseme.",
+      "ru": "Он щедро вознаграждает малые дела; не пренебрегай никаким добром, даже улыбкой."
+    }
+  },
+  {
+    "n": 36,
+    "ar": "الْعَلِيُّ",
+    "translit": "Al-'Aliyy",
+    "meaning": {
+      "en": "The Most High",
+      "tk": "Iň Ýokary",
+      "tr": "Yüceler yücesi",
+      "ru": "Высочайший"
+    },
+    "note": {
+      "en": "He is above all things; lift your aims higher than this passing world.",
+      "tk": "Ol ähli zatdan ýokarydadyr; maksatlaryňy bu geçiji dünýäden ýokary göter.",
+      "tr": "O her şeyin üstündedir; hedeflerini bu geçici dünyanın ötesine yükselt.",
+      "ru": "Он выше всего; возвышай свои стремления над этим преходящим миром."
+    }
+  },
+  {
+    "n": 37,
+    "ar": "الْكَبِيرُ",
+    "translit": "Al-Kabir",
+    "meaning": {
+      "en": "The Most Great",
+      "tk": "Iň Uly",
+      "tr": "Büyük",
+      "ru": "Величайший"
+    },
+    "note": {
+      "en": "Every “Allahu Akbar” reminds you that He is greater than any worry or desire.",
+      "tk": "Her «Allahu ekber» Onuň islendik aladadan we höwesden beýikdigini ýatladýar.",
+      "tr": "Her 'Allahu ekber', O'nun her kaygıdan ve arzudan büyük olduğunu hatırlatır.",
+      "ru": "Каждое «Аллаху акбар» напоминает, что Он больше любой тревоги и желания."
+    }
+  },
+  {
+    "n": 38,
+    "ar": "الْحَفِيظُ",
+    "translit": "Al-Hafiz",
+    "meaning": {
+      "en": "The Preserver",
+      "tk": "Gorap Saklaýjy",
+      "tr": "Koruyan",
+      "ru": "Хранящий"
+    },
+    "note": {
+      "en": "He guards you and records every deed; entrust your loved ones to His protection.",
+      "tk": "Ol seni goraýar we her amaly ýazýar; ezizleriňi Onuň goragyna amanat et.",
+      "tr": "Seni korur ve her ameli kaydeder; sevdiklerini O'nun korumasına emanet et.",
+      "ru": "Он оберегает тебя и записывает каждое дело; вверяй своих близких Его защите."
+    }
+  },
+  {
+    "n": 39,
+    "ar": "الْمُقِيتُ",
+    "translit": "Al-Muqit",
+    "meaning": {
+      "en": "The Nourisher",
+      "tk": "Iýmit Beriji",
+      "tr": "Gıdasını veren",
+      "ru": "Питающий"
+    },
+    "note": {
+      "en": "He nourishes body and soul; feed your soul with Quran and dhikr as you feed your body.",
+      "tk": "Ol bedeni-de, ruhy-da iýmitlendirýär; bedeniňi iýmitlendirişiň ýaly, ruhuňy-da Kuran we zikir bilen iýmitlendir.",
+      "tr": "Bedeni de ruhu da besler; bedenini beslediğin gibi ruhunu da Kur'an ve zikirle besle.",
+      "ru": "Он питает тело и душу; питай душу Кораном и зикром, как питаешь тело."
+    }
+  },
+  {
+    "n": 40,
+    "ar": "الْحَسِيبُ",
+    "translit": "Al-Hasib",
+    "meaning": {
+      "en": "The Reckoner, the Sufficient",
+      "tk": "Hasap Alyjy",
+      "tr": "Hesaba çeken, yeten",
+      "ru": "Достаточный"
+    },
+    "note": {
+      "en": "He is enough for you and will take account of all; review your own deeds each night.",
+      "tk": "Ol saňa ýeterlikdir we ähli zadyň hasabyny alar; her gije öz amallaryňa göz aýla.",
+      "tr": "O sana yeter ve her şeyin hesabını sorar; her gece kendini hesaba çek.",
+      "ru": "Он достаточен тебе и спросит отчёт обо всём; каждый вечер подводи итог своим делам."
+    }
+  },
+  {
+    "n": 41,
+    "ar": "الْجَلِيلُ",
+    "translit": "Al-Jalil",
+    "meaning": {
+      "en": "The Majestic",
+      "tk": "Şöhratly",
+      "tr": "Celal sahibi",
+      "ru": "Величественный"
+    },
+    "note": {
+      "en": "His majesty fills hearts with awe; let reverence for Him shape the way you pray.",
+      "tk": "Onuň şöhraty ýürekleri haýbat bilen doldurýar; Oňa bolan hormat namazyňa öz täsirini ýetirsin.",
+      "tr": "Celali kalpleri heybetle doldurur; O'na duyduğun saygı namazına yansısın.",
+      "ru": "Его величие наполняет сердца благоговением; пусть почтение к Нему определяет твою молитву."
+    }
+  },
+  {
+    "n": 42,
+    "ar": "الْكَرِيمُ",
+    "translit": "Al-Karim",
+    "meaning": {
+      "en": "The Most Generous",
+      "tk": "Sahy",
+      "tr": "Kerem sahibi",
+      "ru": "Щедрый"
+    },
+    "note": {
+      "en": "He gives beyond what is deserved; be generous with your time, your smile and your wealth.",
+      "tk": "Ol hak edilenden artyk berýär; wagtyňda, ýylgyryşyňda we malyňda sahy bol.",
+      "tr": "Hak edilenden fazlasını verir; vaktinle, tebessümünle ve malınla cömert ol.",
+      "ru": "Он даёт сверх заслуженного; будь щедр временем, улыбкой и имуществом."
+    }
+  },
+  {
+    "n": 43,
+    "ar": "الرَّقِيبُ",
+    "translit": "Ar-Raqib",
+    "meaning": {
+      "en": "The Watchful",
+      "tk": "Gözegçilik Ediji",
+      "tr": "Gözetleyen",
+      "ru": "Наблюдающий"
+    },
+    "note": {
+      "en": "He is always watching over you; this awareness is the heart of sincerity.",
+      "tk": "Ol hemişe saňa gözegçilik edýär; muny duýmak yhlasyň özenidir.",
+      "tr": "O seni daima gözetir; bu bilinç ihlasın özüdür.",
+      "ru": "Он всегда наблюдает за тобой; это осознание — сердцевина искренности."
+    }
+  },
+  {
+    "n": 44,
+    "ar": "الْمُجِيبُ",
+    "translit": "Al-Mujib",
+    "meaning": {
+      "en": "The Responsive",
+      "tk": "Jogap Beriji",
+      "tr": "Duaları kabul eden",
+      "ru": "Отвечающий"
+    },
+    "note": {
+      "en": "He answers every sincere dua — now, later, or with something better; keep asking.",
+      "tk": "Ol her ýürekden edilen dilege jogap berýär — häzir, soňra ýa-da has gowusy bilen; soramagy dowam et.",
+      "tr": "Her samimi duaya cevap verir — hemen, sonra ya da daha hayırlısıyla; istemeye devam et.",
+      "ru": "Он отвечает на каждую искреннюю мольбу — сразу, позже или лучшим; продолжай просить."
+    }
+  },
+  {
+    "n": 45,
+    "ar": "الْوَاسِعُ",
+    "translit": "Al-Wasi'",
+    "meaning": {
+      "en": "The All-Encompassing",
+      "tk": "Hemme zady Gurşaýan",
+      "tr": "Rahmeti geniş",
+      "ru": "Объемлющий"
+    },
+    "note": {
+      "en": "His mercy and knowledge have no limit; do not narrow His mercy for others.",
+      "tk": "Onuň rehmetiniň we ylmynyň çägi ýok; başgalar üçin Onuň rehmetini daraltma.",
+      "tr": "Rahmetinin ve ilminin sınırı yoktur; başkaları için O'nun rahmetini daraltma.",
+      "ru": "Его милость и знание безграничны; не суживай Его милость для других."
+    }
+  },
+  {
+    "n": 46,
+    "ar": "الْحَكِيمُ",
+    "translit": "Al-Hakim",
+    "meaning": {
+      "en": "The All-Wise",
+      "tk": "Hikmetli",
+      "tr": "Hikmet sahibi",
+      "ru": "Мудрый"
+    },
+    "note": {
+      "en": "There is wisdom in all He decrees, even when you cannot see it yet.",
+      "tk": "Onuň her kesgitlän zadynda hikmet bar, hatda sen ony entek görmeseň-de.",
+      "tr": "Takdir ettiği her şeyde hikmet vardır, sen henüz göremesen de.",
+      "ru": "Во всём, что Он предопределяет, есть мудрость, даже если ты её пока не видишь."
+    }
+  },
+  {
+    "n": 47,
+    "ar": "الْوَدُودُ",
+    "translit": "Al-Wadud",
+    "meaning": {
+      "en": "The Most Loving",
+      "tk": "Söýüji",
+      "tr": "Çok seven",
+      "ru": "Любящий"
+    },
+    "note": {
+      "en": "He loves those who turn to Him; show love to people for His sake.",
+      "tk": "Ol Oňa ýüzlenýänleri söýýär; Onuň razylygy üçin adamlara söýgi görkez.",
+      "tr": "O'na yönelenleri sever; O'nun rızası için insanlara sevgi göster.",
+      "ru": "Он любит обращающихся к Нему; проявляй любовь к людям ради Него."
+    }
+  },
+  {
+    "n": 48,
+    "ar": "الْمَجِيدُ",
+    "translit": "Al-Majid",
+    "meaning": {
+      "en": "The Most Glorious",
+      "tk": "Şan-şöhratly",
+      "tr": "Şanı yüce",
+      "ru": "Славный"
+    },
+    "note": {
+      "en": "His glory is perfect; praise Him often — the salawat ends with “Hamidun Majid”.",
+      "tk": "Onuň şöhraty kämildir; Ony köp öw — salawat hem «Hamidun Mejid» bilen tamamlanýar.",
+      "tr": "Şanı kusursuzdur; O'nu çokça an — salavat da 'Hamîdün Mecîd' ile biter.",
+      "ru": "Его слава совершенна; восхваляй Его чаще — салават завершается словами «Хамидун Маджид»."
+    }
+  },
+  {
+    "n": 49,
+    "ar": "الْبَاعِثُ",
+    "translit": "Al-Ba'ith",
+    "meaning": {
+      "en": "The Resurrector",
+      "tk": "Direldiji",
+      "tr": "Ölüleri dirilten",
+      "ru": "Воскрешающий"
+    },
+    "note": {
+      "en": "He will raise everyone after death; live today as one who will meet Him.",
+      "tk": "Ol ölümden soň hemmäni direlder; şu günüňi Oňa duşjak adam ýaly ýaşa.",
+      "tr": "Ölümden sonra herkesi diriltecektir; bugünü O'na kavuşacak biri gibi yaşa.",
+      "ru": "Он воскресит всех после смерти; живи сегодня как тот, кто встретится с Ним."
+    }
+  },
+  {
+    "n": 50,
+    "ar": "الشَّهِيدُ",
+    "translit": "Ash-Shahid",
+    "meaning": {
+      "en": "The Witness",
+      "tk": "Şaýat",
+      "tr": "Her şeye şahit",
+      "ru": "Свидетель"
+    },
+    "note": {
+      "en": "He witnesses everything; keep your promises and testify truthfully.",
+      "tk": "Ol ähli zada şaýatdyr; wadaňda dur we dogry şaýatlyk et.",
+      "tr": "Her şeye şahittir; sözünü tut ve doğru şahitlik et.",
+      "ru": "Он свидетельствует обо всём; держи обещания и свидетельствуй правдиво."
+    }
+  },
+  {
+    "n": 51,
+    "ar": "الْحَقُّ",
+    "translit": "Al-Haqq",
+    "meaning": {
+      "en": "The Truth",
+      "tk": "Hak",
+      "tr": "Hak",
+      "ru": "Истина"
+    },
+    "note": {
+      "en": "He is the ultimate Reality; stand for truth even when it is against yourself.",
+      "tk": "Ol iň soňky Hakykatdyr; özüňe garşy bolsa-da, hakykatyň tarapynda dur.",
+      "tr": "O mutlak hakikattir; kendi aleyhine olsa da haktan yana dur.",
+      "ru": "Он — высшая Истина; стой за правду, даже если она против тебя."
+    }
+  },
+  {
+    "n": 52,
+    "ar": "الْوَكِيلُ",
+    "translit": "Al-Wakil",
+    "meaning": {
+      "en": "The Trustee",
+      "tk": "Wekil",
+      "tr": "Vekil",
+      "ru": "Попечитель"
+    },
+    "note": {
+      "en": "Do your best, then rely on Him for the outcome — that is true tawakkul.",
+      "tk": "Elinden gelenini et-de, netijesini Oňa tabşyr — hakyky täwekgellik şudur.",
+      "tr": "Elinden geleni yap, sonucu O'na bırak — gerçek tevekkül budur.",
+      "ru": "Сделай всё, что можешь, и положись на Него в итоге — это и есть истинное упование."
+    }
+  },
+  {
+    "n": 53,
+    "ar": "الْقَوِيُّ",
+    "translit": "Al-Qawiyy",
+    "meaning": {
+      "en": "The All-Strong",
+      "tk": "Güýçli",
+      "tr": "Kuvvetli",
+      "ru": "Сильный"
+    },
+    "note": {
+      "en": "All strength is His; ask Him for strength when you feel weak.",
+      "tk": "Ähli güýç Oňa degişlidir; özüňi ejiz duýanyňda Ondan güýç sora.",
+      "tr": "Bütün kuvvet O'nundur; güçsüz hissettiğinde O'ndan güç iste.",
+      "ru": "Вся сила принадлежит Ему; проси у Него сил, когда чувствуешь слабость."
+    }
+  },
+  {
+    "n": 54,
+    "ar": "الْمَتِينُ",
+    "translit": "Al-Matin",
+    "meaning": {
+      "en": "The Firm",
+      "tk": "Berk",
+      "tr": "Sarsılmaz",
+      "ru": "Крепкий"
+    },
+    "note": {
+      "en": "His power never tires or weakens; hold firmly to Him when life is shaken.",
+      "tk": "Onuň güýji hiç wagt ýadamaýar we gowşamaýar; durmuş sarsanda Oňa berk ýapyş.",
+      "tr": "Gücü asla yorulmaz ve zayıflamaz; hayat sarsıldığında O'na sımsıkı tutun.",
+      "ru": "Его сила не знает усталости и слабости; держись Его крепко, когда жизнь колеблется."
+    }
+  },
+  {
+    "n": 55,
+    "ar": "الْوَلِيُّ",
+    "translit": "Al-Waliyy",
+    "meaning": {
+      "en": "The Protecting Friend",
+      "tk": "Howandar",
+      "tr": "Dost, yardımcı",
+      "ru": "Покровитель"
+    },
+    "note": {
+      "en": "He is the Ally of the believers; choose friends who bring you closer to Him.",
+      "tk": "Ol möminleriň Howandarydyr; seni Oňa ýakynlaşdyrýan dostlary saýla.",
+      "tr": "O müminlerin dostudur; seni O'na yaklaştıran dostlar seç.",
+      "ru": "Он — Покровитель верующих; выбирай друзей, которые приближают тебя к Нему."
+    }
+  },
+  {
+    "n": 56,
+    "ar": "الْحَمِيدُ",
+    "translit": "Al-Hamid",
+    "meaning": {
+      "en": "The Praiseworthy",
+      "tk": "Öwgä Mynasyp",
+      "tr": "Övülmeye layık",
+      "ru": "Достохвальный"
+    },
+    "note": {
+      "en": "He is praised in every state; let “Alhamdulillah” be your first word in joy and in hardship.",
+      "tk": "Ol her ýagdaýda öwülýär; şatlykda-da, kynçylykda-da «Elhamdulilla» ilkinji sözüň bolsun.",
+      "tr": "Her hâlde övülür; sevinçte de zorlukta da 'Elhamdülillah' ilk sözün olsun.",
+      "ru": "Его восхваляют в любом положении; пусть «Альхамдулиллях» будет твоим первым словом и в радости, и в беде."
+    }
+  },
+  {
+    "n": 57,
+    "ar": "الْمُحْصِي",
+    "translit": "Al-Muhsi",
+    "meaning": {
+      "en": "The Counter",
+      "tk": "Sanaýjy",
+      "tr": "Sayıp bilen",
+      "ru": "Учитывающий"
+    },
+    "note": {
+      "en": "He counts every breath and every deed; no good you do is ever forgotten.",
+      "tk": "Ol her demi we her amaly sanaýar; eden hiç bir ýagşylygyň unudylmaz.",
+      "tr": "Her nefesi ve her ameli sayar; yaptığın hiçbir iyilik unutulmaz.",
+      "ru": "Он ведёт счёт каждому вздоху и делу; ни одно твоё доброе дело не забудется."
+    }
+  },
+  {
+    "n": 58,
+    "ar": "الْمُبْدِئُ",
+    "translit": "Al-Mubdi'",
+    "meaning": {
+      "en": "The Initiator",
+      "tk": "Ilkinji Ýaradyjy",
+      "tr": "İlk defa yaratan",
+      "ru": "Начинающий"
+    },
+    "note": {
+      "en": "He began creation without any model; every new beginning in your life is in His hands.",
+      "tk": "Ol ýaradylyşy hiç bir nusgasyz başlady; durmuşyňdaky her täze başlangyç Onuň elindedir.",
+      "tr": "Yaratmayı örneksiz başlattı; hayatındaki her yeni başlangıç O'nun elindedir.",
+      "ru": "Он начал творение без образца; каждое новое начало в твоей жизни — в Его руках."
+    }
+  },
+  {
+    "n": 59,
+    "ar": "الْمُعِيدُ",
+    "translit": "Al-Mu'id",
+    "meaning": {
+      "en": "The Restorer",
+      "tk": "Gaýtadan Ýaradyjy",
+      "tr": "Yeniden yaratan",
+      "ru": "Возвращающий"
+    },
+    "note": {
+      "en": "He who created once will create again; it is never too late to start over with Him.",
+      "tk": "Bir gezek ýaradan gaýtadan hem ýaradar; Onuň bilen täzeden başlamak hiç wagt gijä galmaz.",
+      "tr": "Bir kez yaratan yeniden yaratacaktır; O'nunla yeniden başlamak için asla geç değildir.",
+      "ru": "Сотворивший однажды воссоздаст снова; никогда не поздно начать заново с Ним."
+    }
+  },
+  {
+    "n": 60,
+    "ar": "الْمُحْيِي",
+    "translit": "Al-Muhyi",
+    "meaning": {
+      "en": "The Giver of Life",
+      "tk": "Jan Beriji",
+      "tr": "Hayat veren",
+      "ru": "Оживляющий"
+    },
+    "note": {
+      "en": "He gives life to bodies and to hearts; revive your heart with dhikr.",
+      "tk": "Ol bedenlere-de, ýüreklere-de jan berýär; ýüregiňi zikir bilen direlt.",
+      "tr": "Bedenlere de kalplere de hayat verir; kalbini zikirle dirilt.",
+      "ru": "Он оживляет тела и сердца; оживляй своё сердце поминанием Аллаха."
+    }
+  },
+  {
+    "n": 61,
+    "ar": "الْمُمِيتُ",
+    "translit": "Al-Mumit",
+    "meaning": {
+      "en": "The Bringer of Death",
+      "tk": "Jan Alyjy",
+      "tr": "Öldüren",
+      "ru": "Умерщвляющий"
+    },
+    "note": {
+      "en": "Every soul will taste death at its appointed time; let this make your days meaningful.",
+      "tk": "Her jan kesgitlenen wagtynda ölümi dadar; bu seniň günleriňi manyly etsin.",
+      "tr": "Her nefis belirlenen vakitte ölümü tadacaktır; bu, günlerine anlam katsın.",
+      "ru": "Каждая душа вкусит смерть в назначенный срок; пусть это наполнит твои дни смыслом."
+    }
+  },
+  {
+    "n": 62,
+    "ar": "الْحَيُّ",
+    "translit": "Al-Hayy",
+    "meaning": {
+      "en": "The Ever-Living",
+      "tk": "Hemişe Diri",
+      "tr": "Diri",
+      "ru": "Живой"
+    },
+    "note": {
+      "en": "He lives and never dies; rely on the Living One who will never leave you.",
+      "tk": "Ol diridir we hiç wagt ölmeýär; seni hiç wagt taşlamajak Diri Alla bil bagla.",
+      "tr": "O diridir, asla ölmez; seni hiç bırakmayacak olan Hayy'a tevekkül et.",
+      "ru": "Он жив и никогда не умрёт; полагайся на Живого, Который никогда тебя не оставит."
+    }
+  },
+  {
+    "n": 63,
+    "ar": "الْقَيُّومُ",
+    "translit": "Al-Qayyum",
+    "meaning": {
+      "en": "The Sustainer of All",
+      "tk": "Hemme zady Saklaýan",
+      "tr": "Her şeyi ayakta tutan",
+      "ru": "Вседержитель"
+    },
+    "note": {
+      "en": "Everything stands by Him; call “Ya Hayyu ya Qayyum” when you need help.",
+      "tk": "Ähli zat Onuň bilen durýar; kömek gerek bolanda «Ýa Haýýu, ýa Kaýýum» diýip ýalbar.",
+      "tr": "Her şey O'nunla ayakta durur; yardıma ihtiyaç duyduğunda 'Yâ Hayyu yâ Kayyûm' diye yalvar.",
+      "ru": "Всё существует благодаря Ему; взывай «Йа Хаййу, йа Каййум», когда нуждаешься в помощи."
+    }
+  },
+  {
+    "n": 64,
+    "ar": "الْوَاجِدُ",
+    "translit": "Al-Wajid",
+    "meaning": {
+      "en": "The Finder",
+      "tk": "Tapyjy",
+      "tr": "Dilediğini bulan",
+      "ru": "Находящий"
+    },
+    "note": {
+      "en": "He lacks nothing and finds whatever He wills; ask your needs of the One who lacks nothing.",
+      "tk": "?Ol hiç zada mätäç däl we islän zadyny tapýar; mätäçligiňi hiç zada mätäç bolmadyk Ondan sora.",
+      "tr": "Hiçbir şeye muhtaç değildir, dilediğini bulur; ihtiyacını hiçbir şeye muhtaç olmayandan iste.",
+      "ru": "Он ни в чём не нуждается и находит всё, что пожелает; проси о нуждах Того, Кто ни в чём не нуждается."
+    }
+  },
+  {
+    "n": 65,
+    "ar": "الْمَاجِدُ",
+    "translit": "Al-Majid",
+    "meaning": {
+      "en": "The Noble",
+      "tk": "Asylly",
+      "tr": "Şerefli",
+      "ru": "Благородный"
+    },
+    "note": {
+      "en": "His nobility shows in His generosity; let nobility show in your character.",
+      "tk": "Onuň asyllylygy sahylygynda görünýär; asyllylyk seniň häsiýetiňde görünsin.",
+      "tr": "Şerefi cömertliğinde görünür; asalet senin ahlakında görünsün.",
+      "ru": "Его благородство проявляется в щедрости; пусть благородство проявляется в твоём нраве."
+    }
+  },
+  {
+    "n": 66,
+    "ar": "الْوَاحِدُ",
+    "translit": "Al-Wahid",
+    "meaning": {
+      "en": "The One",
+      "tk": "Ýeke",
+      "tr": "Tek",
+      "ru": "Единый"
+    },
+    "note": {
+      "en": "He has no partner; worship Him alone and free your heart from serving anything else.",
+      "tk": "Onuň şärigi ýok; diňe Oňa ybadat et we ýüregiňi başga zatlara gulluk etmekden azat et.",
+      "tr": "O'nun ortağı yoktur; yalnız O'na ibadet et ve kalbini başka şeylere kulluktan kurtar.",
+      "ru": "У Него нет сотоварища; поклоняйся лишь Ему и освободи сердце от служения чему-либо иному."
+    }
+  },
+  {
+    "n": 67,
+    "ar": "الْأَحَدُ",
+    "translit": "Al-Ahad",
+    "meaning": {
+      "en": "The Unique",
+      "tk": "Ýeke-täk",
+      "tr": "Eşsiz bir",
+      "ru": "Единственный"
+    },
+    "note": {
+      "en": "Nothing is like Him (Surat al-Ikhlas); reciting that surah equals a third of the Quran.",
+      "tk": "Oňa meňzeş hiç zat ýok (Yhlas süresi); bu süräni okamak Kuranyň üçden birine deňdir.",
+      "tr": "O'nun benzeri yoktur (İhlas suresi); bu sureyi okumak Kur'an'ın üçte birine denktir.",
+      "ru": "Нет ничего подобного Ему (сура «аль-Ихлас»); её чтение равно трети Корана."
+    }
+  },
+  {
+    "n": 68,
+    "ar": "الصَّمَدُ",
+    "translit": "As-Samad",
+    "meaning": {
+      "en": "The Eternal Refuge",
+      "tk": "Samat",
+      "tr": "Her şeyin muhtaç olduğu",
+      "ru": "Самодостаточный"
+    },
+    "note": {
+      "en": "All creation turns to Him in need, while He needs no one; turn to Him first.",
+      "tk": "Ähli ýaradylyş mätäçliginde Oňa ýüz tutýar, Ol bolsa hiç kime mätäç däl; ilki Oňa ýüzlen.",
+      "tr": "Bütün yaratılmışlar O'na muhtaçtır, O ise kimseye muhtaç değildir; önce O'na yönel.",
+      "ru": "Всё творение обращается к Нему в нужде, а Он ни в ком не нуждается; обращайся к Нему первым."
+    }
+  },
+  {
+    "n": 69,
+    "ar": "الْقَادِرُ",
+    "translit": "Al-Qadir",
+    "meaning": {
+      "en": "The All-Capable",
+      "tk": "Başaryjy",
+      "tr": "Gücü yeten",
+      "ru": "Могущий"
+    },
+    "note": {
+      "en": "Nothing is impossible for Him; never think a situation is beyond His help.",
+      "tk": "Onuň üçin mümkin däl zat ýok; hiç bir ýagdaýy Onuň kömeginden daşda hasaplama.",
+      "tr": "O'na imkânsız hiçbir şey yoktur; hiçbir durumu O'nun yardımının dışında sanma.",
+      "ru": "Для Него нет невозможного; не считай никакое положение недоступным для Его помощи."
+    }
+  },
+  {
+    "n": 70,
+    "ar": "الْمُقْتَدِرُ",
+    "translit": "Al-Muqtadir",
+    "meaning": {
+      "en": "The All-Powerful",
+      "tk": "Hemme zada Gadyr",
+      "tr": "Kudret sahibi",
+      "ru": "Всемогущий"
+    },
+    "note": {
+      "en": "His power is complete over every created thing; let that bring you calm, not fear.",
+      "tk": "Onuň güýji ähli ýaradylan zada doly ýetýär; bu saňa gorky däl, rahatlyk bersin.",
+      "tr": "Kudreti yaratılan her şeye tam olarak yeter; bu sana korku değil, huzur versin.",
+      "ru": "Его могущество полно над всем сотворённым; пусть это дарит тебе покой, а не страх."
+    }
+  },
+  {
+    "n": 71,
+    "ar": "الْمُقَدِّمُ",
+    "translit": "Al-Muqaddim",
+    "meaning": {
+      "en": "The Expediter",
+      "tk": "Öňe Süriji",
+      "tr": "Öne alan",
+      "ru": "Приближающий"
+    },
+    "note": {
+      "en": "He brings forward whom He wills; hasten to good deeds and to prayer on time.",
+      "tk": "Ol islänini öňe çykarýar; ýagşy işlere we wagtynda okalýan namaza howlug.",
+      "tr": "Dilediğini öne geçirir; iyiliklere ve vaktinde namaza koş.",
+      "ru": "Он выдвигает вперёд кого пожелает; спеши к добрым делам и молитве вовремя."
+    }
+  },
+  {
+    "n": 72,
+    "ar": "الْمُؤَخِّرُ",
+    "translit": "Al-Mu'akhkhir",
+    "meaning": {
+      "en": "The Delayer",
+      "tk": "Yza Süýşüriji",
+      "tr": "Geri bırakan",
+      "ru": "Отдаляющий"
+    },
+    "note": {
+      "en": "Some delays are mercy; trust His timing in what you are waiting for.",
+      "tk": "Käbir gijikmeler rehmetdir; garaşýan zadyňda Onuň wagtyna ynan.",
+      "tr": "Bazı gecikmeler rahmettir; beklediğin şeyde O'nun zamanlamasına güven.",
+      "ru": "Некоторые задержки — милость; доверяй Его времени в том, чего ждёшь."
+    }
+  },
+  {
+    "n": 73,
+    "ar": "الْأَوَّلُ",
+    "translit": "Al-Awwal",
+    "meaning": {
+      "en": "The First",
+      "tk": "Ilkinji",
+      "tr": "İlk",
+      "ru": "Первый"
+    },
+    "note": {
+      "en": "He was before everything; put Him first in your day — begin it with Fajr.",
+      "tk": "Ol ähli zatdan öň bardy; Ony gününde birinji ýere goý — günüňi ertir namazy bilen başla.",
+      "tr": "O her şeyden önce vardı; O'nu gününde ilk sıraya koy — güne sabah namazıyla başla.",
+      "ru": "Он был прежде всего; ставь Его на первое место в своём дне — начинай его с утренней молитвы."
+    }
+  },
+  {
+    "n": 74,
+    "ar": "الْآخِرُ",
+    "translit": "Al-Akhir",
+    "meaning": {
+      "en": "The Last",
+      "tk": "Soňky",
+      "tr": "Son",
+      "ru": "Последний"
+    },
+    "note": {
+      "en": "He remains after everything ends; invest in what lasts with Him.",
+      "tk": "Ähli zat gutarandan soň Ol galýar; Onuň ýanynda baky galjak zatlara maýa goý.",
+      "tr": "Her şey bittiğinde O kalır; O'nun katında kalıcı olana yatırım yap.",
+      "ru": "Он остаётся, когда всё заканчивается; вкладывай в то, что останется у Него."
+    }
+  },
+  {
+    "n": 75,
+    "ar": "الظَّاهِرُ",
+    "translit": "Az-Zahir",
+    "meaning": {
+      "en": "The Manifest",
+      "tk": "Aýan",
+      "tr": "Açık olan",
+      "ru": "Явный"
+    },
+    "note": {
+      "en": "His signs are evident in all creation; train your eyes to notice them.",
+      "tk": "Onuň alamatlary ähli ýaradylyşda aýdyňdyr; gözleriňi olary görmäge öwret.",
+      "tr": "Ayetleri tüm yaratılışta apaçıktır; gözlerini onları fark etmeye alıştır.",
+      "ru": "Его знамения очевидны во всём творении; приучай глаза замечать их."
+    }
+  },
+  {
+    "n": 76,
+    "ar": "الْبَاطِنُ",
+    "translit": "Al-Batin",
+    "meaning": {
+      "en": "The Hidden",
+      "tk": "Gizlin",
+      "tr": "Gizli olan",
+      "ru": "Скрытый"
+    },
+    "note": {
+      "en": "He is beyond perception yet closer than your thoughts; He knows your inner self.",
+      "tk": "Ol duýgudan daşda, emma pikirleriňden-de ýakyn; Ol seniň içki dünýäňi bilýär.",
+      "tr": "İdrakin ötesindedir ama düşüncelerinden daha yakındır; iç dünyanı bilir.",
+      "ru": "Он недоступен восприятию, но ближе твоих мыслей; Он знает твой внутренний мир."
+    }
+  },
+  {
+    "n": 77,
+    "ar": "الْوَالِي",
+    "translit": "Al-Wali",
+    "meaning": {
+      "en": "The Governor",
+      "tk": "Dolandyryjy",
+      "tr": "Her şeyi yöneten",
+      "ru": "Правитель"
+    },
+    "note": {
+      "en": "He manages all affairs; when you are given responsibility, govern with care.",
+      "tk": "Ol ähli işleri dolandyrýar; saňa jogapkärçilik berlende, ony aladaly dolandyr.",
+      "tr": "Bütün işleri O yönetir; sana sorumluluk verildiğinde özenle yönet.",
+      "ru": "Он управляет всеми делами; когда тебе вверена ответственность, управляй бережно."
+    }
+  },
+  {
+    "n": 78,
+    "ar": "الْمُتَعَالِي",
+    "translit": "Al-Muta'ali",
+    "meaning": {
+      "en": "The Supremely Exalted",
+      "tk": "Iň Belent",
+      "tr": "Her şeyden yüce",
+      "ru": "Превыше всего"
+    },
+    "note": {
+      "en": "He is exalted above every imperfection and comparison; glorify Him with “SubhanAllah”.",
+      "tk": "Ol ähli kemçilikden we deňeşdirmeden belentdir; Ony «Subhanalla» bilen päk tut.",
+      "tr": "Her kusurdan ve benzetmeden yücedir; O'nu 'Sübhanallah' ile tesbih et.",
+      "ru": "Он превыше всякого несовершенства и сравнения; прославляй Его словами «Субханаллах»."
+    }
+  },
+  {
+    "n": 79,
+    "ar": "الْبَرُّ",
+    "translit": "Al-Barr",
+    "meaning": {
+      "en": "The Source of Goodness",
+      "tk": "Ýagşylyk Ediji",
+      "tr": "İyilik eden",
+      "ru": "Благой"
+    },
+    "note": {
+      "en": "All goodness flows from Him; be good to your parents — “birr” shares the root of His name.",
+      "tk": "Ähli ýagşylyk Ondan gelýär; ata-eneňe ýagşylyk et.",
+      "tr": "Bütün iyilik O'ndan gelir; anne babana iyilik et — 'birr' O'nun ismiyle aynı köktendir.",
+      "ru": "Всё благо исходит от Него; будь добр к родителям — «бирр» одного корня с Его именем."
+    }
+  },
+  {
+    "n": 80,
+    "ar": "التَّوَّابُ",
+    "translit": "At-Tawwab",
+    "meaning": {
+      "en": "The Accepter of Repentance",
+      "tk": "Tobany Kabul Ediji",
+      "tr": "Tövbeleri kabul eden",
+      "ru": "Принимающий покаяние"
+    },
+    "note": {
+      "en": "He keeps accepting those who return to Him; repent sincerely, again and again.",
+      "tk": "Ol Oňa dolanýanlaryň tobasyny hemişe kabul edýär; gaýta-gaýta ýürekden toba et.",
+      "tr": "O'na dönenlerin tövbesini hep kabul eder; tekrar tekrar samimiyetle tövbe et.",
+      "ru": "Он всегда принимает возвращающихся к Нему; кайся искренне снова и снова."
+    }
+  },
+  {
+    "n": 81,
+    "ar": "الْمُنْتَقِمُ",
+    "translit": "Al-Muntaqim",
+    "meaning": {
+      "en": "The Just Requiter",
+      "tk": "Jeza Beriji",
+      "tr": "Suçluları cezalandıran",
+      "ru": "Воздающий"
+    },
+    "note": {
+      "en": "He will requite every injustice; do not take revenge in anger — leave it to His justice.",
+      "tk": "Ol her adalatsyzlygyň jezasyny berer; gahar bilen ar alma — ony Onuň adalatyna tabşyr.",
+      "tr": "Her haksızlığın karşılığını verecektir; öfkeyle intikam alma — O'nun adaletine bırak.",
+      "ru": "Он воздаст за каждую несправедливость; не мсти в гневе — оставь это Его правосудию."
+    }
+  },
+  {
+    "n": 82,
+    "ar": "الْعَفُوُّ",
+    "translit": "Al-'Afuww",
+    "meaning": {
+      "en": "The Pardoner",
+      "tk": "Günä Geçiji",
+      "tr": "Affeden",
+      "ru": "Снисходительный"
+    },
+    "note": {
+      "en": "He erases sins completely; ask His pardon, especially in the last nights of Ramadan.",
+      "tk": "Ol günäleri doly öçürýär; esasan-da Remezanyň soňky gijelerinde Ondan günäleriňi geçmegini sora.",
+      "tr": "Günahları tamamen siler; özellikle Ramazan'ın son gecelerinde O'ndan af dile.",
+      "ru": "Он полностью стирает грехи; проси Его прощения, особенно в последние ночи Рамадана."
+    }
+  },
+  {
+    "n": 83,
+    "ar": "الرَّءُوفُ",
+    "translit": "Ar-Ra'uf",
+    "meaning": {
+      "en": "The Most Kind",
+      "tk": "Şepagatly",
+      "tr": "Çok şefkatli",
+      "ru": "Сострадательный"
+    },
+    "note": {
+      "en": "His tenderness is deeper than any mother's; be gentle with the weak and with children.",
+      "tk": "Onuň şepagaty islendik enäniňkiden çuňdur; ejizlere we çagalara mylaýym bol.",
+      "tr": "Şefkati her anneninkinden derindir; zayıflara ve çocuklara karşı yumuşak ol.",
+      "ru": "Его сострадание глубже материнского; будь мягок со слабыми и детьми."
+    }
+  },
+  {
+    "n": 84,
+    "ar": "مَالِكُ الْمُلْكِ",
+    "translit": "Malik al-Mulk",
+    "meaning": {
+      "en": "Owner of All Sovereignty",
+      "tk": "Mülküň Eýesi",
+      "tr": "Mülkün mutlak sahibi",
+      "ru": "Владыка царства"
+    },
+    "note": {
+      "en": "He gives power to whom He wills and takes it away; never be deceived by worldly status.",
+      "tk": "Ol häkimiýeti islänine berýär we isländen alýar; dünýä mertebesine aldanma.",
+      "tr": "Mülkü dilediğine verir, dilediğinden alır; dünyevi makama aldanma.",
+      "ru": "Он даёт власть кому пожелает и отнимает её; не обольщайся мирским положением."
+    }
+  },
+  {
+    "n": 85,
+    "ar": "ذُو الْجَلَالِ وَالْإِكْرَامِ",
+    "translit": "Dhul-Jalali wal-Ikram",
+    "meaning": {
+      "en": "Lord of Majesty and Honour",
+      "tk": "Beýiklik we Hormat Eýesi",
+      "tr": "Celal ve ikram sahibi",
+      "ru": "Обладатель величия и щедрости"
+    },
+    "note": {
+      "en": "The Prophet ﷺ urged us to call on Him often: “Ya Dhal-Jalali wal-Ikram”.",
+      "tk": "Pygamber ﷺ Oňa «Ýa Zel-Jelali wel-Ikram» diýip köp dileg etmäge çagyrypdyr.",
+      "tr": "Peygamber ﷺ O'na 'Yâ Zel-celâli ve'l-ikrâm' diye çokça dua etmeyi tavsiye etmiştir.",
+      "ru": "Пророк ﷺ призывал чаще взывать к Нему: «Йа Заль-Джаляли валь-Икрам»."
+    }
+  },
+  {
+    "n": 86,
+    "ar": "الْمُقْسِطُ",
+    "translit": "Al-Muqsit",
+    "meaning": {
+      "en": "The Equitable",
+      "tk": "Adalatly Höküm Ediji",
+      "tr": "Adaletle hükmeden",
+      "ru": "Беспристрастный"
+    },
+    "note": {
+      "en": "He establishes fairness, and He loves those who are fair (Quran 49:9).",
+      "tk": "Ol adalaty berkarar edýär we adalatlylary söýýär (Kuran 49:9).",
+      "tr": "Adaleti O kurar ve adil olanları sever (Kur'an 49:9).",
+      "ru": "Он устанавливает справедливость и любит справедливых (Коран 49:9)."
+    }
+  },
+  {
+    "n": 87,
+    "ar": "الْجَامِعُ",
+    "translit": "Al-Jami'",
+    "meaning": {
+      "en": "The Gatherer",
+      "tk": "Jemleýji",
+      "tr": "Toplayan",
+      "ru": "Собирающий"
+    },
+    "note": {
+      "en": "He will gather all people on one Day; ask Him to unite your family in goodness.",
+      "tk": "Ol ähli adamlary bir günde jemlär; Ondan maşgalaňy ýagşylykda jemlemegini sora.",
+      "tr": "Bütün insanları bir günde toplayacaktır; O'ndan aileni hayırda bir araya getirmesini iste.",
+      "ru": "Он соберёт всех людей в один День; проси Его объединить твою семью во благе."
+    }
+  },
+  {
+    "n": 88,
+    "ar": "الْغَنِيُّ",
+    "translit": "Al-Ghaniyy",
+    "meaning": {
+      "en": "The Self-Sufficient",
+      "tk": "Baý",
+      "tr": "Muhtaç olmayan",
+      "ru": "Богатый"
+    },
+    "note": {
+      "en": "He needs nothing from us; our worship benefits only ourselves.",
+      "tk": "Onuň bizden hiç zada mätäçligi ýok; biziň ybadatymyz diňe özümize peýda berýär.",
+      "tr": "Bizden hiçbir şeye muhtaç değildir; ibadetimiz yalnızca bize fayda verir.",
+      "ru": "Он ни в чём не нуждается от нас; наше поклонение приносит пользу лишь нам самим."
+    }
+  },
+  {
+    "n": 89,
+    "ar": "الْمُغْنِي",
+    "translit": "Al-Mughni",
+    "meaning": {
+      "en": "The Enricher",
+      "tk": "Baýlaşdyryjy",
+      "tr": "Zengin kılan",
+      "ru": "Обогащающий"
+    },
+    "note": {
+      "en": "True richness is contentment of the soul; ask Him to free you from need of people.",
+      "tk": "Hakyky baýlyk göwün kanagatydyr; Ondan seni adamlara mätäç etmezligini sora.",
+      "tr": "Gerçek zenginlik gönül zenginliğidir; O'ndan seni insanlara muhtaç etmemesini iste.",
+      "ru": "Истинное богатство — довольство души; проси Его избавить тебя от нужды в людях."
+    }
+  },
+  {
+    "n": 90,
+    "ar": "الْمَانِعُ",
+    "translit": "Al-Mani'",
+    "meaning": {
+      "en": "The Withholder",
+      "tk": "Saklaýjy",
+      "tr": "Engel olan",
+      "ru": "Удерживающий"
+    },
+    "note": {
+      "en": "What He withholds may be protection; trust Him when a door closes.",
+      "tk": "Onuň saklan zady gorag bolup biler; bir gapy ýapylanda Oňa ynan.",
+      "tr": "Engel olduğu şey bir korunma olabilir; bir kapı kapandığında O'na güven.",
+      "ru": "То, что Он удерживает, может быть защитой; доверяй Ему, когда закрывается дверь."
+    }
+  },
+  {
+    "n": 91,
+    "ar": "الضَّارُّ",
+    "translit": "Ad-Darr",
+    "meaning": {
+      "en": "The Creator of Harm",
+      "tk": "Zyýan Ýetiriji",
+      "tr": "Zarar veren",
+      "ru": "Насылающий беду"
+    },
+    "note": {
+      "en": "No harm reaches you except by His permission; seek refuge in Him alone.",
+      "tk": "Onuň rugsady bolmasa, saňa hiç zyýan ýetmez; diňe Oňa sygyn.",
+      "tr": "O'nun izni olmadan sana hiçbir zarar ulaşmaz; yalnız O'na sığın.",
+      "ru": "Никакой вред не постигнет тебя без Его дозволения; ищи защиты лишь у Него."
+    }
+  },
+  {
+    "n": 92,
+    "ar": "النَّافِعُ",
+    "translit": "An-Nafi'",
+    "meaning": {
+      "en": "The Creator of Benefit",
+      "tk": "Peýda Beriji",
+      "tr": "Fayda veren",
+      "ru": "Приносящий пользу"
+    },
+    "note": {
+      "en": "All benefit is from Him; be useful to people — the best of people are the most beneficial.",
+      "tk": "Ähli peýda Ondandyr; adamlara peýdaly bol — adamlaryň iň gowusy başgalara iň peýdaly bolanydyr.",
+      "tr": "Bütün fayda O'ndandır; insanlara faydalı ol — insanların en hayırlısı onlara en faydalı olandır.",
+      "ru": "Вся польза — от Него; будь полезен людям — лучшие из людей те, кто приносит больше пользы."
+    }
+  },
+  {
+    "n": 93,
+    "ar": "النُّورُ",
+    "translit": "An-Nur",
+    "meaning": {
+      "en": "The Light",
+      "tk": "Nur",
+      "tr": "Nur",
+      "ru": "Свет"
+    },
+    "note": {
+      "en": "Allah is the Light of the heavens and the earth (24:35); ask Him for light in your heart.",
+      "tk": "Alla asmanlaryň we ýeriň Nurudyr (24:35); Ondan ýüregiňe nur sora.",
+      "tr": "Allah göklerin ve yerin nurudur (24:35); O'ndan kalbine nur iste.",
+      "ru": "Аллах — Свет небес и земли (24:35); проси у Него света для своего сердца."
+    }
+  },
+  {
+    "n": 94,
+    "ar": "الْهَادِي",
+    "translit": "Al-Hadi",
+    "meaning": {
+      "en": "The Guide",
+      "tk": "Dogry Ýola Salyjy",
+      "tr": "Hidayet veren",
+      "ru": "Ведущий прямым путём"
+    },
+    "note": {
+      "en": "Guidance is His gift; ask for it in every rak'ah: “Ihdinas-siratal-mustaqim”.",
+      "tk": "Hidaýat Onuň sowgadydyr; ony her rekagatda sora: «Ihdinas-syratal-mustakym».",
+      "tr": "Hidayet O'nun hediyesidir; onu her rekâtta iste: 'İhdine's-sırâta'l-müstakîm'.",
+      "ru": "Прямой путь — Его дар; проси о нём в каждом ракаате: «Ихдинас-сыраталь-мустакым»."
+    }
+  },
+  {
+    "n": 95,
+    "ar": "الْبَدِيعُ",
+    "translit": "Al-Badi'",
+    "meaning": {
+      "en": "The Incomparable Originator",
+      "tk": "Täsin Ýaradyjy",
+      "tr": "Eşsiz yaratan",
+      "ru": "Несравненный Творец"
+    },
+    "note": {
+      "en": "He creates wonders without precedent; let the beauty of nature lead you to praise Him.",
+      "tk": "Ol öňünde nusgasy bolmadyk täsinlikleri ýaradýar; tebigatyň gözelligi seni Ony öwmäge ýetirsin.",
+      "tr": "Eşi görülmemiş harikalar yaratır; doğanın güzelliği seni O'nu övmeye yöneltsin.",
+      "ru": "Он творит чудеса без прецедента; пусть красота природы ведёт тебя к Его восхвалению."
+    }
+  },
+  {
+    "n": 96,
+    "ar": "الْبَاقِي",
+    "translit": "Al-Baqi",
+    "meaning": {
+      "en": "The Everlasting",
+      "tk": "Baky",
+      "tr": "Ebedî olan",
+      "ru": "Вечный"
+    },
+    "note": {
+      "en": "Everything perishes except Him; attach your heart to what is everlasting.",
+      "tk": "Ondan başga ähli zat ýok bolar; ýüregiňi baky zada bagla.",
+      "tr": "O'ndan başka her şey yok olacaktır; kalbini ebedî olana bağla.",
+      "ru": "Всё погибнет, кроме Него; привязывай сердце к вечному."
+    }
+  },
+  {
+    "n": 97,
+    "ar": "الْوَارِثُ",
+    "translit": "Al-Warith",
+    "meaning": {
+      "en": "The Inheritor",
+      "tk": "Mirasdüşer",
+      "tr": "Her şeyin varisi",
+      "ru": "Наследник"
+    },
+    "note": {
+      "en": "Everything returns to Him; give in charity now what you cannot take with you.",
+      "tk": "Ähli zat Oňa gaýdyp barar; özüň bilen alyp gidip bilmejek zadyňy häzir sadaka ber.",
+      "tr": "Her şey O'na dönecektir; yanında götüremeyeceğin şeyi şimdi sadaka olarak ver.",
+      "ru": "Всё вернётся к Нему; раздай сейчас в милостыню то, что не сможешь взять с собой."
+    }
+  },
+  {
+    "n": 98,
+    "ar": "الرَّشِيدُ",
+    "translit": "Ar-Rashid",
+    "meaning": {
+      "en": "The Guide to What Is Right",
+      "tk": "Dogry Ýol Görkeziji",
+      "tr": "Doğru yolu gösteren",
+      "ru": "Правильно направляющий"
+    },
+    "note": {
+      "en": "His decrees lead to wise ends; ask Him for right guidance in every decision.",
+      "tk": "Onuň kesgitlemeleri paýhasly netijelere eltýär; her kararyňda Ondan dogry ýol sora.",
+      "tr": "Takdirleri hikmetli sonuçlara götürür; her kararında O'ndan doğru yolu iste.",
+      "ru": "Его решения ведут к мудрому итогу; проси у Него верного пути в каждом решении."
+    }
+  },
+  {
+    "n": 99,
+    "ar": "الصَّبُورُ",
+    "translit": "As-Sabur",
+    "meaning": {
+      "en": "The Most Patient",
+      "tk": "Sabyrly",
+      "tr": "Çok sabırlı",
+      "ru": "Терпеливый"
+    },
+    "note": {
+      "en": "He is patient with His servants; be patient with people and with life's tests.",
+      "tk": "Ol bendelerine sabyrlydyr; adamlara we durmuşyň synaglaryna sabyrly bol.",
+      "tr": "Kullarına karşı sabırlıdır; insanlara ve hayatın imtihanlarına karşı sabırlı ol.",
+      "ru": "Он терпелив к Своим рабам; будь терпелив к людям и к испытаниям жизни."
+    }
+  }
+]

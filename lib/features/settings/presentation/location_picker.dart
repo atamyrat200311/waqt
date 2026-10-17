@@ -61,23 +61,19 @@ class _LocationPickerState extends ConsumerState<LocationPicker> {
       final near = catalog.nearest(r.location!.latitude, r.location!.longitude);
       widget.onPicked(r.location!, countryCode: near != null && near.$2 < 300 ? near.$1.countryCode : null);
     } else {
-      setState(() => _error = switch (r.failure!) {
-            LocationFailure.denied || LocationFailure.deniedForever => l.locationDenied,
-            _ => l.locationFailed,
-          });
+      setState(
+        () => _error = switch (r.failure!) {
+          LocationFailure.denied || LocationFailure.deniedForever => l.locationDenied,
+          _ => l.locationFailed,
+        },
+      );
     }
   }
 
   void _pickCity(City c) => widget.onPicked(
-        SavedLocation(
-          latitude: c.latitude,
-          longitude: c.longitude,
-          name: c.name,
-          timezone: c.timezone,
-          manual: true,
-        ),
-        countryCode: c.countryCode,
-      );
+    SavedLocation(latitude: c.latitude, longitude: c.longitude, name: c.name, timezone: c.timezone, manual: true),
+    countryCode: c.countryCode,
+  );
 
   Future<void> _saveCoordinates() async {
     final l = context.l10n;
@@ -90,9 +86,7 @@ class _LocationPickerState extends ConsumerState<LocationPicker> {
     final catalog = await ref.read(cityCatalogProvider.future);
     final tz = await LocationService.deviceTimezone();
     final name = _name.text.trim().isEmpty ? LocationService.displayName(catalog, lat, lng) : _name.text.trim();
-    widget.onPicked(
-      SavedLocation(latitude: lat, longitude: lng, name: name, timezone: tz, manual: true),
-    );
+    widget.onPicked(SavedLocation(latitude: lat, longitude: lng, name: name, timezone: tz, manual: true));
   }
 
   @override
@@ -118,7 +112,7 @@ class _LocationPickerState extends ConsumerState<LocationPicker> {
           const SizedBox(height: 10),
           Semantics(
             liveRegion: true,
-            child: Text(_error!, style: WaqtType.sans(14, weight: 600, color: c.brassText)),
+            child: Text(_error!, style: WaqtType.sans(14, weight: 600, color: c.danger)),
           ),
         ],
         const SizedBox(height: 14),
@@ -195,14 +189,21 @@ class _LocationPickerState extends ConsumerState<LocationPicker> {
                     ),
                   ],
                 ),
-                TextField(controller: _name, decoration: InputDecoration(labelText: l.locationName)),
+                TextField(
+                  controller: _name,
+                  decoration: InputDecoration(labelText: l.locationName),
+                ),
                 const SizedBox(height: 14),
                 BigButton(label: l.save, onPressed: _saveCoordinates),
               ],
             ),
           ),
         const SizedBox(height: 14),
-        Text(l.locationPrivacy, textAlign: TextAlign.center, style: WaqtType.sans(13, color: c.muted, height: 1.5)),
+        Text(
+          l.locationPrivacy,
+          textAlign: TextAlign.center,
+          style: WaqtType.sans(13, color: c.muted, height: 1.5),
+        ),
       ],
     );
   }

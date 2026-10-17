@@ -4,6 +4,10 @@ import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_typography.dart';
 import 'waqt_icon.dart';
 
+/// Text is scaled above 1.3× (accessibility sizes): rows stack their
+/// controls under the title instead of squeezing both onto one line.
+bool isLargeText(BuildContext context) => MediaQuery.textScalerOf(context).scale(10) > 13;
+
 /// Settings-style row: title, optional subtitle, trailing widget or chevron.
 class WaqtRow extends StatelessWidget {
   const WaqtRow({
@@ -33,6 +37,7 @@ class WaqtRow extends StatelessWidget {
   Widget build(BuildContext context) {
     final c = context.colors;
     final showChevron = chevron ?? (onTap != null && trailing == null);
+    final stack = isLargeText(context) && (value != null || trailing != null);
     return InkWell(
       onTap: onTap,
       child: ConstrainedBox(
@@ -52,10 +57,15 @@ class WaqtRow extends StatelessWidget {
                       const SizedBox(height: 2),
                       Text(subtitle!, style: WaqtType.sans(13, color: c.muted, height: 1.35)),
                     ],
+                    if (stack && value != null) ...[
+                      const SizedBox(height: 2),
+                      Text(value!, style: WaqtType.sans(14, color: c.muted)),
+                    ],
+                    if (stack && trailing != null) ...[const SizedBox(height: 8), trailing!],
                   ],
                 ),
               ),
-              if (value != null) ...[
+              if (value != null && !stack) ...[
                 const SizedBox(width: 8),
                 ConstrainedBox(
                   constraints: const BoxConstraints(maxWidth: 170),
@@ -68,7 +78,7 @@ class WaqtRow extends StatelessWidget {
                   ),
                 ),
               ],
-              ?trailing,
+              if (!stack) ?trailing,
               if (showChevron) ...[
                 const SizedBox(width: 4),
                 WaqtIcon(WaqtIcons.chevronRight, size: 16, color: c.muted),

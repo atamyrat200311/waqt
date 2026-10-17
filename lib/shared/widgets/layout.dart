@@ -58,7 +58,7 @@ class IconTile extends StatelessWidget {
   }
 }
 
-/// Section title in Fraunces ("Your day", "Upcoming").
+/// Section title in Literata ("Your day", "Upcoming").
 class SectionTitle extends StatelessWidget {
   const SectionTitle(this.text, {super.key, this.size = 24, this.padding});
   final String text;
@@ -80,7 +80,7 @@ class SectionTitle extends StatelessWidget {
 
 /// Scaffold for pushed sub-screens (Qada, Tasks, Calendar, Settings…).
 ///
-/// iOS: "‹ Today" back link in accent + large Fraunces title in the scroll.
+/// iOS: "‹ Today" back link in accent + large Literata title in the scroll.
 /// Android: top app bar with back arrow and the title in it.
 class SubScreen extends StatelessWidget {
   const SubScreen({
@@ -207,10 +207,82 @@ class SubScreen extends StatelessWidget {
             slivers: [
               header,
               ...slivers,
-              SliverToBoxAdapter(child: SizedBox(height: bottom != null ? 120 : 32)),
+              SliverToBoxAdapter(child: BottomSpace(extra: bottom != null ? 120 : 32)),
             ],
           ),
           if (bottom != null) Positioned(left: 0, right: 0, bottom: 0, child: bottom!),
+        ],
+      ),
+    );
+  }
+}
+
+/// Space at the end of a scroll view: clears the floating iOS tab bar (which
+/// the shell reports as bottom padding) plus [extra].
+class BottomSpace extends StatelessWidget {
+  const BottomSpace({super.key, this.extra = 32});
+  final double extra;
+
+  @override
+  Widget build(BuildContext context) => SizedBox(height: MediaQuery.paddingOf(context).bottom + extra);
+}
+
+/// Large-title header for tab roots (Quran, Library…): optional round action
+/// buttons top-right, then the title (Literata 34), as on Me.
+class TabHeader extends StatelessWidget {
+  const TabHeader({super.key, required this.title, this.actions = const [], this.subtitle});
+  final String title;
+  final String? subtitle;
+  final List<Widget> actions;
+
+  @override
+  Widget build(BuildContext context) {
+    final c = context.colors;
+    final top = MediaQuery.paddingOf(context).top;
+    final cupertino = Adaptive.isCupertino(context);
+    return Padding(
+      padding: EdgeInsets.fromLTRB(Gap.title, top + (cupertino ? 4 : 8), 12, 14),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(
+            height: 44,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                for (final a in actions) ...[a, const SizedBox(width: 6)],
+              ],
+            ),
+          ),
+          Semantics(header: true, child: Text(title, style: WaqtType.title(color: c.ink))),
+          if (subtitle != null) ...[
+            const SizedBox(height: 4),
+            Text(subtitle!, style: WaqtType.sans(15, color: c.muted)),
+          ],
+        ],
+      ),
+    );
+  }
+}
+
+/// Friendly empty list placeholder: soft icon tile + one muted sentence.
+class EmptyState extends StatelessWidget {
+  const EmptyState({super.key, required this.icon, required this.text, this.action});
+  final WaqtIconData icon;
+  final String text;
+  final Widget? action;
+
+  @override
+  Widget build(BuildContext context) {
+    final c = context.colors;
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(32, 48, 32, 24),
+      child: Column(
+        children: [
+          IconTile(icon: icon, background: c.mint, color: c.onMint),
+          const SizedBox(height: 14),
+          Text(text, textAlign: TextAlign.center, style: WaqtType.sans(15, color: c.muted, height: 1.45)),
+          if (action != null) ...[const SizedBox(height: 16), action!],
         ],
       ),
     );

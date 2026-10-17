@@ -21,6 +21,37 @@ abstract final class Routes {
 
   static const onboarding = '/onboarding';
 
+  // ---- Quran tab
+  static const quran = '/quran';
+  static const quranSearch = '/quran/search';
+  static const quranBookmarks = '/quran/bookmarks';
+  static const khatm = '/quran/khatm';
+  static const hifz = '/quran/memorize';
+
+  /// Full-screen reader above the shell, opened at a global ayah index.
+  static const readPattern = '/read';
+  static String read(int index, {bool page = false, int? hifzSurah}) =>
+      '/read?i=$index${page ? '&mode=page' : ''}${hifzSurah != null ? '&hifz=$hifzSurah' : ''}';
+
+  // ---- Library tab
+  static const library = '/library';
+  static const hadithBooks = '/library/hadith';
+  static String hadithBook(String book) => '/library/hadith/$book';
+  static String hadithSection(String book, int section) => '/library/hadith/$book/$section';
+  static const hadithSearch = '/library/hadith-search';
+  static const duas = '/library/duas';
+  static const names = '/library/names';
+  static const learn = '/library/learn';
+  static String learnGuide(String id) => '/library/learn/$id';
+  static const libraryBookmarks = '/library/saved';
+
+  // ---- Tools additions
+  static const zakat = '/tools/zakat';
+  static const timetable = '/tools/timetable';
+  static const habits = '/today/habits';
+  static const backup = '/me/settings/backup';
+  static const expenses = '/me/expenses';
+
   /// Deep link used by notification taps: opens Today and the mark sheet.
   static String markPrayer(String prayer, String day) => '/today?mark=$prayer&day=$day';
 }

@@ -21,17 +21,12 @@ import '../../../shared/widgets/segmented.dart';
 import '../../../shared/widgets/waqt_card.dart';
 import '../../../shared/widgets/waqt_icon.dart';
 import '../../notifications/application/notification_service.dart';
+import '../../prayer/application/prayer_providers.dart';
 
 const appVersion = '1.0.0';
 
 /// Language codes offered in Settings (null = system).
-const languageNames = <String?, String>{
-  null: '',
-  'en': 'English',
-  'tk': 'Türkmen',
-  'tr': 'Türkçe',
-  'ru': 'Русский',
-};
+const languageNames = <String?, String>{null: '', 'en': 'English', 'tk': 'Türkmençe', 'tr': 'Türkçe', 'ru': 'Русский'};
 
 /// Notification permission state; refreshed when the app resumes.
 final notificationPermissionsProvider = FutureProvider<NotificationPermissions>((ref) {
@@ -53,218 +48,247 @@ class SettingsScreen extends ConsumerWidget {
 
     final offsets = [for (final p in Prayer.values) s.offsetFor(p)];
     final uniform = offsets.every((o) => o == offsets.first);
-    String signed(int v) => v > 0 ? '+$v' : v < 0 ? '−${v.abs()}' : '±0';
+    String signed(int v) => v > 0
+        ? '+$v'
+        : v < 0
+        ? '−${v.abs()}'
+        : '±0';
 
     Widget header(String text) => Padding(
-          padding: const EdgeInsets.fromLTRB(32, 22, 32, 8),
-          child: Semantics(
-            header: true,
-            child: Text(text.toUpperCase(), style: WaqtType.kicker(color: c.muted, size: 12, tracking: 0.07)),
-          ),
-        );
+      padding: const EdgeInsets.fromLTRB(32, 22, 32, 8),
+      child: Semantics(
+        header: true,
+        child: Text(text.toUpperCase(), style: WaqtType.kicker(color: c.muted, size: 12, tracking: 0.07)),
+      ),
+    );
 
     Widget group(List<Widget> rows) => Padding(
-          padding: const EdgeInsets.symmetric(horizontal: Gap.screen),
-          child: WaqtGroup(radius: Radii.listGroup, children: rows),
-        );
+      padding: const EdgeInsets.symmetric(horizontal: Gap.screen),
+      child: WaqtGroup(radius: Radii.listGroup, children: rows),
+    );
+
+    final tmTable = ref.watch(prayerEngineProvider.select((e) => e.usesTurkmenTable));
 
     return SubScreen(
       title: l.settingsTitle,
       backLabel: l.tabMe,
       slivers: [
-        SliverList.list(children: [
-          header(l.secPrayerTimes),
-          group([
-            WaqtRow(
-              title: l.location,
-              value: displayPlaceName(s.effectiveLocation.name, l),
-              onTap: () => context.push(Routes.location),
-            ),
-            WaqtRow(
-              title: l.calcMethod,
-              value: l.method(s.calcMethod),
-              onTap: () async {
-                final m = await showChoiceSheet<CalcMethod>(
-                  context,
-                  title: l.calcMethod,
-                  selected: s.calcMethod,
-                  options: [for (final m in CalcMethod.values) (m, l.method(m), null)],
-                );
-                if (m != null) await ctl.setCalcMethod(m);
-              },
-            ),
-            WaqtRow(
-              title: l.asr,
-              chevron: false,
-              trailing: SizedBox(
-                width: 200,
-                child: Segmented<AsrMadhab>(
-                  value: s.madhab,
-                  options: [(AsrMadhab.standard, l.asrStandard), (AsrMadhab.hanafi, l.asrHanafi)],
-                  onChanged: ctl.setMadhab,
-                ),
-              ),
-            ),
-            WaqtRow(
-              title: l.matchMosque,
-              subtitle: uniform ? l.matchMosqueSub : l.perPrayerOffsets,
-              onTap: () => showOffsetsSheet(context),
-              chevron: false,
-              trailing: _Stepper(
-                label: uniform ? l.offsetMinutes(signed(offsets.first)) : '…',
-                onMinus: () => ctl.shiftAllOffsets(-1),
-                onPlus: () => ctl.shiftAllOffsets(1),
-                minusLabel: '${l.matchMosque} −1',
-                plusLabel: '${l.matchMosque} +1',
-              ),
-            ),
-            WaqtRow(
-              title: l.hijriAdjust,
-              subtitle: l.hijriAdjustSub,
-              chevron: false,
-              trailing: _Stepper(
-                label: s.hijriAdjustment == 0 ? '±0' : signed(s.hijriAdjustment),
-                onMinus: s.hijriAdjustment > -2 ? () => ctl.setHijriAdjustment(s.hijriAdjustment - 1) : null,
-                onPlus: s.hijriAdjustment < 2 ? () => ctl.setHijriAdjustment(s.hijriAdjustment + 1) : null,
-                minusLabel: '${l.hijriAdjust} −1',
-                plusLabel: '${l.hijriAdjust} +1',
-              ),
-            ),
-          ]),
-          header(l.secAlerts),
-          if (perms != null && !perms.enabled)
-            _Banner(
-              text: l.notifPermissionOff,
-              action: l.obAllowNotif,
-              onAction: () async {
-                final ok = await ref.read(notificationServiceProvider).requestPermission();
-                // Permanently denied: the system won't ask again, open settings.
-                if (!ok) await SystemSettings.openNotifications();
-                ref.invalidate(notificationPermissionsProvider);
-              },
-            )
-          else if (perms != null && android && !perms.exactAlarms)
-            _Banner(
-              text: l.exactAlarmOff,
-              action: l.allowExact,
-              onAction: () async {
-                await ref.read(notificationServiceProvider).requestExactAlarms();
-                ref.invalidate(notificationPermissionsProvider);
-              },
-            ),
-          group([
-            for (final p in Prayer.values)
+        SliverList.list(
+          children: [
+            header(l.secPrayerTimes),
+            group([
               WaqtRow(
-                title: l.prayer(p),
+                title: l.location,
+                value: displayPlaceName(s.effectiveLocation.name, l),
+                onTap: () => context.push(Routes.location),
+              ),
+              // Turkmenistan uses the official table: no method or Asr choice.
+              if (tmTable)
+                WaqtRow(title: l.calcMethod, subtitle: l.tmOfficialTable)
+              else ...[
+              WaqtRow(
+                title: l.calcMethod,
+                value: l.method(s.calcMethod),
+                onTap: () async {
+                  final m = await showChoiceSheet<CalcMethod>(
+                    context,
+                    title: l.calcMethod,
+                    selected: s.calcMethod,
+                    options: [for (final m in CalcMethod.values) (m, l.method(m), null)],
+                  );
+                  if (m != null) await ctl.setCalcMethod(m);
+                },
+              ),
+              WaqtRow(
+                title: l.asr,
                 chevron: false,
                 trailing: SizedBox(
-                  width: 214,
-                  child: Segmented<AlertType>(
-                    value: s.alertFor(p),
-                    options: [for (final t in AlertType.values) (t, l.alert(t))],
-                    onChanged: (t) => ctl.setAlert(p, t),
+                  width: isLargeText(context) ? double.infinity : 200,
+                  child: Segmented<AsrMadhab>(
+                    value: s.madhab,
+                    options: [(AsrMadhab.standard, l.asrStandard), (AsrMadhab.hanafi, l.asrHanafi)],
+                    onChanged: ctl.setMadhab,
                   ),
                 ),
               ),
-            ToggleRow(
-              title: l.adhkarReminders,
-              subtitle: l.adhkarRemindersSub,
-              value: s.adhkarReminders,
-              onChanged: ctl.setAdhkarReminders,
-            ),
-          ]),
-          header(l.secGeneral),
-          group([
-            WaqtRow(
-              title: l.language,
-              value: s.language == null ? l.languageSystem : languageNames[s.language],
-              onTap: () async {
-                final picked = await showChoiceSheet<String>(
-                  context,
-                  title: l.language,
-                  selected: s.language ?? '',
-                  options: [
-                    for (final e in languageNames.entries)
-                      (e.key ?? '', e.key == null ? l.languageSystem : e.value, null),
-                  ],
-                );
-                if (picked != null) await ctl.setLanguage(picked.isEmpty ? null : picked);
-              },
-            ),
-            WaqtRow(
-              title: l.currency,
-              value: '${s.currency} · ${supportedCurrencies[s.currency] ?? ''}',
-              onTap: () async {
-                final picked = await showChoiceSheet<String>(
-                  context,
-                  title: l.currency,
-                  selected: s.currency,
-                  options: [for (final e in supportedCurrencies.entries) (e.key, e.key, e.value)],
-                );
-                if (picked != null) await ctl.setCurrency(picked);
-              },
-            ),
-            WaqtRow(
-              title: l.ramadanMode,
-              value: switch (s.ramadanMode) {
-                RamadanMode.auto => l.ramadanAuto,
-                RamadanMode.on => l.ramadanOn,
-                RamadanMode.off => l.ramadanOff,
-              },
-              onTap: () async {
-                final picked = await showChoiceSheet<RamadanMode>(
-                  context,
-                  title: l.ramadanMode,
-                  selected: s.ramadanMode,
-                  options: [
-                    (RamadanMode.auto, l.ramadanAuto, l.ramadanNotNow),
-                    (RamadanMode.on, l.ramadanOn, null),
-                    (RamadanMode.off, l.ramadanOff, null),
-                  ],
-                );
-                if (picked != null) await ctl.setRamadanMode(picked);
-              },
-            ),
-            ToggleRow(
-              title: l.periodMode,
-              subtitle: l.periodModeSub,
-              value: s.periodMode,
-              onChanged: (v) => ctl.setPeriodMode(v, now: ref.read(clockProvider)()),
-            ),
-            WaqtRow(
-              title: l.appearance,
-              chevron: false,
-              trailing: SizedBox(
-                width: 200,
-                child: Segmented<AppThemeMode>(
-                  value: s.theme,
-                  options: [
-                    (AppThemeMode.light, l.themeLight),
-                    (AppThemeMode.dark, l.themeDark),
-                    (AppThemeMode.system, l.themeAuto),
-                  ],
-                  onChanged: ctl.setTheme,
+              ],
+              WaqtRow(
+                title: l.matchMosque,
+                subtitle: uniform ? l.matchMosqueSub : l.perPrayerOffsets,
+                onTap: () => showOffsetsSheet(context),
+                chevron: false,
+                trailing: _Stepper(
+                  label: uniform ? l.offsetMinutes(signed(offsets.first)) : '…',
+                  onMinus: () => ctl.shiftAllOffsets(-1),
+                  onPlus: () => ctl.shiftAllOffsets(1),
+                  minusLabel: '${l.matchMosque} −1',
+                  plusLabel: '${l.matchMosque} +1',
                 ),
               ),
-            ),
-            WaqtRow(title: l.widgets, onTap: () => context.push(Routes.widgetsHelp)),
-          ]),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(40, 30, 40, 0),
-            child: Column(
-              children: [
-                WaqtIcon(WaqtIcons.lock, size: 18, color: c.muted),
-                const SizedBox(height: 8),
-                Text(l.privacyNote, textAlign: TextAlign.center, style: WaqtType.sans(13, color: c.muted, height: 1.5)),
-                const SizedBox(height: 8),
-                Opacity(
-                  opacity: 0.8,
-                  child: Text(l.versionLabel(appVersion), style: WaqtType.sans(12, color: c.muted)),
+              WaqtRow(
+                title: l.hijriAdjust,
+                subtitle: l.hijriAdjustSub,
+                chevron: false,
+                trailing: _Stepper(
+                  label: s.hijriAdjustment == 0 ? '±0' : signed(s.hijriAdjustment),
+                  onMinus: s.hijriAdjustment > -2 ? () => ctl.setHijriAdjustment(s.hijriAdjustment - 1) : null,
+                  onPlus: s.hijriAdjustment < 2 ? () => ctl.setHijriAdjustment(s.hijriAdjustment + 1) : null,
+                  minusLabel: '${l.hijriAdjust} −1',
+                  plusLabel: '${l.hijriAdjust} +1',
                 ),
-              ],
+              ),
+            ]),
+            header(l.secAlerts),
+            if (perms != null && !perms.enabled)
+              _Banner(
+                text: l.notifPermissionOff,
+                action: l.obAllowNotif,
+                onAction: () async {
+                  final ok = await ref.read(notificationServiceProvider).requestPermission();
+                  // Permanently denied: the system won't ask again, open settings.
+                  if (!ok) await SystemSettings.openNotifications();
+                  ref.invalidate(notificationPermissionsProvider);
+                },
+              )
+            else if (perms != null && android && !perms.exactAlarms)
+              _Banner(
+                text: l.exactAlarmOff,
+                action: l.allowExact,
+                onAction: () async {
+                  await ref.read(notificationServiceProvider).requestExactAlarms();
+                  ref.invalidate(notificationPermissionsProvider);
+                },
+              ),
+            group([
+              for (final p in Prayer.values)
+                WaqtRow(
+                  title: l.prayer(p),
+                  chevron: false,
+                  trailing: SizedBox(
+                    width: isLargeText(context) ? double.infinity : 214,
+                    child: Segmented<AlertType>(
+                      value: s.alertFor(p),
+                      options: [for (final t in AlertType.values) (t, l.alert(t))],
+                      onChanged: (t) => ctl.setAlert(p, t),
+                    ),
+                  ),
+                ),
+              ToggleRow(
+                title: l.adhkarReminders,
+                subtitle: l.adhkarRemindersSub,
+                value: s.adhkarReminders,
+                onChanged: ctl.setAdhkarReminders,
+              ),
+              ToggleRow(title: l.quranReminderAfterIsha, value: s.quranReminder, onChanged: ctl.setQuranReminder),
+              WaqtRow(
+                title: l.notifTestTitle,
+                subtitle: l.notifTestSub,
+                onTap: () async {
+                  await ref.read(notificationServiceProvider).sendTest(s.alertFor(Prayer.dhuhr), l10n: l);
+                  if (context.mounted) {
+                    ScaffoldMessenger.maybeOf(context)?.showSnackBar(SnackBar(content: Text(l.notifTestSent)));
+                  }
+                },
+              ),
+            ]),
+            header(l.secGeneral),
+            group([
+              WaqtRow(
+                title: l.language,
+                value: s.language == null ? l.languageSystem : languageNames[s.language],
+                onTap: () async {
+                  final picked = await showChoiceSheet<String>(
+                    context,
+                    title: l.language,
+                    selected: s.language ?? '',
+                    options: [
+                      for (final e in languageNames.entries)
+                        (e.key ?? '', e.key == null ? l.languageSystem : e.value, null),
+                    ],
+                  );
+                  if (picked != null) await ctl.setLanguage(picked.isEmpty ? null : picked);
+                },
+              ),
+              WaqtRow(
+                title: l.currency,
+                value: '${s.currency} · ${supportedCurrencies[s.currency] ?? ''}',
+                onTap: () async {
+                  final picked = await showChoiceSheet<String>(
+                    context,
+                    title: l.currency,
+                    selected: s.currency,
+                    options: [for (final e in supportedCurrencies.entries) (e.key, e.key, e.value)],
+                  );
+                  if (picked != null) await ctl.setCurrency(picked);
+                },
+              ),
+              WaqtRow(
+                title: l.ramadanMode,
+                value: switch (s.ramadanMode) {
+                  RamadanMode.auto => l.ramadanAuto,
+                  RamadanMode.on => l.ramadanOn,
+                  RamadanMode.off => l.ramadanOff,
+                },
+                onTap: () async {
+                  final picked = await showChoiceSheet<RamadanMode>(
+                    context,
+                    title: l.ramadanMode,
+                    selected: s.ramadanMode,
+                    options: [
+                      (RamadanMode.auto, l.ramadanAuto, l.ramadanNotNow),
+                      (RamadanMode.on, l.ramadanOn, null),
+                      (RamadanMode.off, l.ramadanOff, null),
+                    ],
+                  );
+                  if (picked != null) await ctl.setRamadanMode(picked);
+                },
+              ),
+              ToggleRow(
+                title: l.periodMode,
+                subtitle: l.periodModeSub,
+                value: s.periodMode,
+                onChanged: (v) => ctl.setPeriodMode(v, now: ref.read(clockProvider)()),
+              ),
+              WaqtRow(
+                title: l.appearance,
+                chevron: false,
+                trailing: SizedBox(
+                  width: isLargeText(context) ? double.infinity : 200,
+                  child: Segmented<AppThemeMode>(
+                    value: s.theme,
+                    options: [
+                      (AppThemeMode.light, l.themeLight),
+                      (AppThemeMode.dark, l.themeDark),
+                      (AppThemeMode.system, l.themeAuto),
+                    ],
+                    onChanged: ctl.setTheme,
+                  ),
+                ),
+              ),
+              WaqtRow(title: l.widgets, onTap: () => context.push(Routes.widgetsHelp)),
+              WaqtRow(title: l.backupTitle, subtitle: l.backupRowSub, onTap: () => context.push(Routes.backup)),
+            ]),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(40, 30, 40, 0),
+              child: Column(
+                children: [
+                  WaqtIcon(WaqtIcons.lock, size: 18, color: c.muted),
+                  const SizedBox(height: 8),
+                  Text(
+                    l.privacyNote,
+                    textAlign: TextAlign.center,
+                    style: WaqtType.sans(13, color: c.muted, height: 1.5),
+                  ),
+                  const SizedBox(height: 8),
+                  Opacity(
+                    opacity: 0.8,
+                    child: Text(l.versionLabel(appVersion), style: WaqtType.sans(12, color: c.muted)),
+                  ),
+                ],
+              ),
             ),
-          ),
-        ]),
+          ],
+        ),
       ],
     );
   }
@@ -289,25 +313,25 @@ class _Stepper extends StatelessWidget {
   Widget build(BuildContext context) {
     final c = context.colors;
     Widget btn(String glyph, VoidCallback? f, String a11y) => Semantics(
-          button: true,
-          label: a11y,
-          excludeSemantics: true,
-          child: InkWell(
-            borderRadius: BorderRadius.circular(12),
-            onTap: f == null
-                ? null
-                : () {
-                    Haptics.tap();
-                    f();
-                  },
-            child: SizedBox.square(
-              dimension: 44,
-              child: Center(
-                child: Text(glyph, style: WaqtType.sans(20, color: f == null ? c.hairline : c.ink)),
-              ),
-            ),
+      button: true,
+      label: a11y,
+      excludeSemantics: true,
+      child: InkWell(
+        borderRadius: BorderRadius.circular(12),
+        onTap: f == null
+            ? null
+            : () {
+                Haptics.tap();
+                f();
+              },
+        child: SizedBox.square(
+          dimension: 44,
+          child: Center(
+            child: Text(glyph, style: WaqtType.sans(20, color: f == null ? c.hairline : c.ink)),
           ),
-        );
+        ),
+      ),
+    );
     return Container(
       decoration: BoxDecoration(color: c.fill, borderRadius: BorderRadius.circular(12)),
       child: Row(
@@ -316,7 +340,11 @@ class _Stepper extends StatelessWidget {
           btn('−', onMinus, minusLabel),
           ConstrainedBox(
             constraints: const BoxConstraints(minWidth: 58),
-            child: Text(label, textAlign: TextAlign.center, style: WaqtType.sans(15, weight: 600, color: c.ink)),
+            child: Text(
+              label,
+              textAlign: TextAlign.center,
+              style: WaqtType.sans(15, weight: 600, color: c.ink),
+            ),
           ),
           btn('+', onPlus, plusLabel),
         ],
@@ -367,7 +395,11 @@ class _OffsetsSheet extends ConsumerWidget {
     final l = context.l10n;
     final s = ref.watch(settingsProvider);
     final ctl = ref.read(settingsProvider.notifier);
-    String signed(int v) => v > 0 ? '+$v' : v < 0 ? '−${v.abs()}' : '±0';
+    String signed(int v) => v > 0
+        ? '+$v'
+        : v < 0
+        ? '−${v.abs()}'
+        : '±0';
     return SingleChildScrollView(
       padding: EdgeInsets.fromLTRB(20, 0, 20, 20 + MediaQuery.paddingOf(context).bottom),
       child: Column(
@@ -382,7 +414,9 @@ class _OffsetsSheet extends ConsumerWidget {
               padding: const EdgeInsets.symmetric(vertical: 4),
               child: Row(
                 children: [
-                  Expanded(child: Text(l.prayer(p), style: WaqtType.sans(16, weight: 600, color: c.ink))),
+                  Expanded(
+                    child: Text(l.prayer(p), style: WaqtType.sans(16, weight: 600, color: c.ink)),
+                  ),
                   _Stepper(
                     label: l.offsetMinutes(signed(s.offsetFor(p))),
                     onMinus: s.offsetFor(p) > -30 ? () => ctl.setOffset(p, s.offsetFor(p) - 1) : null,

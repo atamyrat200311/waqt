@@ -5,10 +5,12 @@ sessions do not need to re-read `design/`.
 
 ## Product
 
-"Waqt" is a free Flutter app (iOS + Android) for Muslims that organizes the whole day
-around the five daily prayers: prayer times, prayer tracking, qada (missed prayer)
-tracking, daily expenses, to-do tasks, morning/evening adhkar, Hijri calendar, Ramadan
-mode, qibla, tasbih and home-screen widgets.
+"Waqt" is a free Flutter "super app" (iOS + Android) for Muslims that organizes the whole
+day around the five daily prayers: prayer times, prayer tracking, qada (missed prayer)
+tracking, daily expenses, to-do tasks, habits, morning/evening adhkar, **Quran reader**
+(translations, Mushaf pages, khatm planner, memorization), **hadith collections**, duas,
+99 Names, step-by-step guides, zakat calculator, monthly timetable, Hijri calendar,
+Ramadan mode, qibla, tasbih, share cards, local backup and home-screen widgets.
 
 Hard rules: **no backend, no account, no ads, no analytics, no network calls.** All data
 stays on the device. Fonts are bundled (no google_fonts package).
@@ -35,6 +37,7 @@ Asr, currency TMT, location Ashgabat until the user sets one.
 | Charts | fl_chart |
 | i18n | flutter_localizations + intl, ARB: en (template), tk, tr, ru |
 | Extra (added) | `path_drawing` (renders the design's Lucide-style SVG icon paths), `path_provider` |
+| Extra (super app) | `share_plus` (share cards / backup file), `scrollable_positioned_list` (Quran reader jump-to-ayah), `wakelock_plus` (keep screen on while reading), `file_picker` (restore backup) |
 
 Org / ids: org `tm.ofis`, Dart package `waqt`, bundle id / applicationId `tm.ofis.waqt`.
 
@@ -105,7 +108,8 @@ Theme "Emerald & brass". Artboards are 390×844.
 Spending palette (Me): Groceries=pri, Food #4F8A71, Bills #8FB8A2, Transport #C4D8CC,
 Other=ln, Sadaqa=br.
 
-Typography (tabular numbers everywhere):
+Typography (tabular numbers everywhere). Phase 9: "Fraunces" below now means **Literata** and
+"Jakarta" means **Inter** (same sizes and roles; see app_typography.dart).
 - Hero number: Fraunces 66, wght 350, opsz 144, letter-spacing −0.035em, line-height 1 ("1h 12m", unit letters 30).
 - Title: Fraunces 34, −0.015em (screen titles, date on Home iOS). Android Home date: Fraunces 24.
 - Section: Fraunces 24 ("Your day"), Fraunces 22 ("Upcoming").
@@ -143,7 +147,7 @@ draw 0.4s; sun glow pulse 3.4s; qada count bump .3s; tap ripple ring .5s; tasbih
 progress .2–.25s. App rule: keep UI transitions 150–300 ms, honour reduced motion
 (`MediaQuery.disableAnimations`).
 
-## Data model (drift, schemaVersion 1)
+## Data model (drift, schemaVersion 2)
 
 Dates are stored as **`yyyy-MM-dd` text** (`DayKey`) — see conflicts.
 
@@ -155,6 +159,10 @@ Dates are stored as **`yyyy-MM-dd` text** (`DayKey`) — see conflicts.
 - `adhkar_progress`: date, setId (morning/evening), itemId, count. UNIQUE(date, setId, itemId).
 - `fasts`: date PK, type (ramadan, monThu, whiteDays, other), status (fasted, missed, excused).
 - `tasbih_sessions`: id, phrase, count, goal, createdAt.
+- v2: `bookmarks` (kind ayah/hadith/dua/name, ref, note?, createdAt; UNIQUE(kind, ref)),
+  `quran_reads` (date, ayah global index; PK both), `hifz_items` (surah PK, status, step,
+  nextReview), `habits` (id, title, icon key, archived, sortOrder), `habit_logs` (habitId, date).
+  Bookmark refs: ayah `2:255`, hadith `bukhari:1`, dua `<id>`, name `<1…99>`.
 
 Settings (shared_preferences, `SettingsRepository`): calculation method, madhab, per-prayer
 offsets, per-prayer alert (adhan/silent/off), location (lat, lng, name, tz), language,
@@ -191,15 +199,35 @@ adhkar reminders, suhoor/iftar reminders.
 - [ ] Review tk/tr/ru ARB strings marked `"REVIEW"` in their `@` descriptions.
 - [ ] Replace placeholder adhan audio (see "Adhan sound" below).
 - [ ] iOS: install Xcode + CocoaPods (this machine had neither, so iOS was not built here).
-- [ ] iOS widget target (once, in Xcode): File ▸ New ▸ Target ▸ Widget Extension, name `WaqtWidget`,
-      bundle id `tm.ofis.waqt.WaqtWidget`, no Live Activity / no configuration intent, deployment
-      target iOS 16. Delete the generated Swift file, add `ios/WaqtWidget/WaqtWidget.swift` +
-      `Info.plist` to the target, set its entitlements to `ios/WaqtWidget/WaqtWidget.entitlements`.
-      Add the App Group `group.tm.ofis.waqt` capability to Runner (entitlements file already wired)
-      and WaqtWidget in the developer portal.
+- [x] iOS widget target `WaqtWidget` (bundle id `tm.ofis.waqt.WaqtWidget`, iOS 15+) added to
+      Runner.xcodeproj by `tool/ios/add_widget_target.rb` (idempotent; run with
+      `GEM_HOME=$(brew --prefix)/Cellar/cocoapods/<ver>/libexec ruby tool/ios/add_widget_target.rb ios/Runner.xcodeproj`).
+      Embedded via "Embed Foundation Extensions" placed before Flutter's "Thin Binary" phase.
+      Uses `Flutter/Generated.xcconfig` as base config so its version matches the app.
+- [ ] First device build: open Runner.xcworkspace once, select the WaqtWidget target ▸ Signing &
+      Capabilities and let automatic signing register `tm.ofis.waqt.WaqtWidget` + App Group
+      `group.tm.ofis.waqt` (team QGWL53YZV9) for both Runner and WaqtWidget.
 - [ ] Android: run `flutter build apk` once — Glance/Compose Gradle changes and the widget Kotlin
       were written without network access to Google's Maven (dl.google.com blocked here).
-- [ ] Consider bundling a Cyrillic-capable font (Fraunces/Jakarta have no Cyrillic; ru uses system font).
+- [ ] Verify `assets/library/duas.json`, `names.json`, `guides.json` (Arabic, sources, translations;
+      tk strings prefixed "?" in the JSON are flagged for review) and the Turkmen surah meanings in
+      `lib/features/quran/domain/surah_names.dart`.
+- [ ] Review the tk/tr/ru hadith chapter names in `lib/features/hadith/domain/hadith_section_names.dart`.
+- [ ] Turkmenistan prayer times come from the official table (`tm_wagt_default.json` → `tool/build_tm_times.dart`
+      → `lib/features/prayer/domain/tm_times_data.dart`); regenerate when a new table is published.
+- [ ] Content agent's verification list (duas/guides): sources from Abu Dawud/Tirmidhi/Ibn Majah/
+      Nasa'i were written from memory of Ḥiṣn al-Muslim (enter/leave home, toilet, dressing, after
+      eating, istiftah, between prostrations, debt, healing ×7, protection ×3, Laylat al-Qadr,
+      farewell, newlyweds, iftar…); `enter_home` (Abu Dawud 5096) is graded weak by some;
+      `enter_town` source numbers; `new_moon` wording (Tirmidhi 3451); Sayyid al-Istighfar follows
+      Bukhari 6306 while `assets/adhkar/adhkar.json` m07 omits "laka" (Ḥiṣn wording) — align one way;
+      Al-Ahad at no. 67 in names.json follows the popular list; Hanafi fiqh points in the guides
+      (wudu, ghusl, Ramadan intention, silver nisab, fidya) need an imam's check. Quranic and
+      Bukhari/Muslim texts were cross-checked against the bundled data.
+- [ ] Hadith numbering in dua `source` fields uses sunnah.com numbering; the bundled hadith files
+      number differently (e.g. istikhara Bukhari 1162 vs 1166) — don't deep-link by number.
+- [ ] Android: `flutter build apk` after the super-app release (new plugins: share_plus, wakelock_plus,
+      file_picker) — dl.google.com was still blocked in this environment.
 
 ## Adhan sound
 
@@ -234,8 +262,7 @@ sounds are fixed once a channel exists → bump the channel id in `notification_
   AnimatedSize (zero-duration AnimatedSize asserts under reduce motion).
 - Today: `features/today/domain/today_logic.dart` (pure: chip states, adhkar "up next", hero target
   incl. Ramadan iftar, countdown rounding, task windows) + `application/today_providers.dart`.
-- Fonts: Fraunces/Jakarta lack `ʿ ʾ ﷺ` → `WaqtType` falls back to Amiri. **No bundled font has
-  Cyrillic**; Russian UI uses the system font (consider bundling a Cyrillic-capable face).
+- Fonts: superseded in phase 9 (Inter + Literata cover Cyrillic; Amiri is the fallback for ﷺ).
 - `assets/adhkar/adhkar.json`: 12 morning + 12 evening items (`id, ar, translit, text{en,tk,tr,ru},
   count, source`). Written from memory of Ḥiṣn al-Muslim → owner must verify (see TODOs).
 - Screenshots for visual review: `WAQT_SCREENSHOTS=1 flutter test test/screenshots` → `build/screenshots/`.
@@ -285,6 +312,113 @@ sounds are fixed once a channel exists → bump the channel id in `notification_
 - `core/platform/system_settings.dart` uses MainActivity's `waqt/system` channel (battery list,
   notification settings).
 
+## Super-app release notes (phase 9+)
+
+Fonts: **Inter** (UI, `WaqtType.sans`, opsz 14–32) + **Literata** (display, `WaqtType.serif`,
+opsz 7–72) replaced Plus Jakarta Sans + Fraunces for readability; both cover Turkmen,
+Turkish and Cyrillic (the old "Russian uses system font" note no longer applies).
+Arabic: Amiri (duas, ﷺ fallback), **Amiri Quran** (`WaqtType.quran`, default Quran face) and
+Scheherazade New (plain Naskh option).
+
+Navigation: 5 tabs — Today · Quran · Library · Tools · Me (`shellTabs` in app_shell.dart).
+iOS uses `GlassTabBar` (floating capsule, sliding lens) with `extendBody`, so screens must
+end scroll views with `BottomSpace()` (adds MediaQuery bottom padding). Android keeps the
+M3 NavigationBar. `Glass` (shared/widgets/glass.dart) = blur + tint + sheen + rim; `solid:
+true` for Android surfaces. `TabHeader` = tab-root large title with round actions.
+
+Content (offline, generated by `dart run tool/build_content.dart [quran|hadith]`, sources:
+fawazahmed0 quran-api / hadith-api on GitHub, Unlicense, originally Tanzil / KFGQPC /
+quranenc / sunnah.com):
+- `assets/quran/ar.json.gz` (Uthmani Hafs), `translit.json.gz`, translations `en_sahih`,
+  `ru_kuliev`, `tr_diyanet`, `uz_mansour`, `kk_altai`, `ky_hakimov`, `tg_arifi`,
+  `az_musayev` (`QuranTranslations`; tk users default to Russian — no Turkmen translation exists).
+- `lib/features/quran/domain/quran_index_data.dart` (generated): ayah counts, surah/juz/604
+  page/240 rubʿ starts, sajdas. Ayahs are addressed by **global index 0…6235** everywhere.
+- `assets/hadith/<book>_<ara|eng|rus|tur>.json.gz` for nawawi, qudsi, bukhari, muslim
+  (`{s: [[id,name,first,last]], h: [[number,text,grade,section]]}`). Section names are English only.
+- `assets/library/duas.json`, `names.json`, `guides.json` — authored content (see TODOs).
+- Loaded with `loadGzJson` (core/utils/assets.dart; big files decode in an isolate).
+
+Quran (`features/quran`): `quran.dart` (AyahRef, lookups, search normalization, KhatmPlan /
+khatmProgress — remaining ayahs re-spread over remaining days, hifz ladder 1-3-7-14-30-90,
+readingStreak, daily ayah pool). Reader `/read?i=<index>[&mode=page][&hifz=<surah>]` is a
+root route: list view = ScrollablePositionedList over 6236 ayahs + 114 headers
+(`itemInfo`/`itemOfAyah`), page view = RTL PageView over 604 pages. `ReadTracker` records an
+ayah after 2 one-second ticks on screen (page mode: whole page after 4 s); flushes every 5 ticks.
+Last read is saved in settings (`quranLastRead`), reader prefs in `AppSettings.reader`
+(`ReaderPrefs`), khatm in `khatmPlan`. Quran reminder: notification slot 9 (Isha + 45 min).
+
+Library (`features/library`, `features/hadith`): hub, hadith books/sections/search, duas
+(category chips, search, favourites), 99 Names grid + quiz, guides timeline, saved items.
+Hadith of the day rotates Nawawi 40 + Qudsi 40.
+
+Tools: zakat (`features/zakat`, user-typed metal prices, inputs persisted in
+`AppSettings.zakat`, "record as sadaqa" writes an expense), timetable (`/tools/timetable`,
+share as text), habits (`/today/habits`, also on Today). Backup/restore:
+`data/backup/backup_service.dart` (JSON of settings + all tables, single-transaction restore),
+screen at `/me/settings/backup`. Settings has "Send a test alert".
+
+Share cards: `showShareCardSheet(context, ShareCardData(...))` — 3 themes, PNG via share_plus;
+texts over ~280 chars switch to a 9:16 story card; `credit` shows the translator.
+
+Review-round decisions (multi-agent UX review, phase 10):
+- Quran text: the build tool joins KFGQPC "open tanween + space + alif" splits and drops RLM
+  marks (`_fixUthmani`); Arabic search uses `assets/quran/ar_search.json.gz` (Tanzil simple text,
+  basmala prefixes stripped) — never the Uthmani text.
+- Khatm is measured in **pages** (`ayahPageWeights`, 1/ayahs-on-page, sums to 604) and counts only
+  ayahs read for the first time since the plan began (`watchFirstReadOn`). Continue = first unread.
+- Last read moves only when the reader was opened at the saved position (or none saved) or after
+  ≥ 3 ayahs were recorded; "Mark as where I stopped" pins it for the session.
+- Read dwell ≈ 0.3 s/word (2–25 s), only below the toolbar, never hidden memorize ayahs; Mushaf
+  pages 0.25 s/word (15–60 s). Single tap on an ayah does nothing (long-press / ••• for actions).
+- Colors: brass only for checks/streaks/progress/sadaqa; `danger`/`dangerSoft` for delete and wrong
+  answers; `onHeroAccent` for accent text on emerald; `track` for ring/bar tracks.
+- `WaqtType.sans(..., tabular: true)` only for times/amounts that update in place.
+- Text scale cap 1.6×; tab bars and the reader bar clamp to 1.2×, the hero to 1.25×.
+- Tools = utilities (Qibla, Tasbih, Calendar, Ramadan, Zakat, Timetable). Adhkar lives in Today
+  (up next) + Library; habits in Today (+ `/today/habits`).
+- "Silent" alert renamed "Sound" (it plays the default sound). Turkmen dates use `tkOrdinal`.
+- Surah names: `SurahInfo.translit` is localized (ru Cyrillic, tk Turkmen) via the static
+  `SurahInfo.language` set in `WaqtApp.build`; `.latin` is the Latin form.
+- Ramadan 30 (`features/ramadan/application/ramadan_challenge.dart`): fast, all prayers, ≥ 10 ayahs
+  (or khatm portion), adhkar, sadaqa; "full days" = fast + prayers + Quran.
+- Fasting qada: `FastType.qada`; owed = missed/excused Ramadan days − make-up fasts.
+- Regression pass 2: onboarding starts with **language** (no Turkmen system locale); "Advanced"
+  method/Asr survives a later city pick. Passed-but-unmarked prayers use `UnmarkedMark` (solid
+  ring) vs dashed upcoming. Overdue khatm: `overdue`, target = original pace, "Extend by N days";
+  `farBehind` shows the page gap; `dayShown` never exceeds the plan length. `isLargeText()`
+  (rows.dart, > 1.3×) makes `WaqtRow` stack value/controls under the title. Expense deletes have
+  undo. Hadith editions/search indexes are autoDispose with a 2-minute keep-alive (widget tests
+  pump 3 minutes after unmounting so the grace timer fires).
+
+Turkmenistan prayer times: `TmTable` (`features/prayer/domain/tm_times.dart`) — static official
+table, 5 cities (Ashgabat, Balkanabat, Daşoguz, Türkmenabat, Mary) × 366 rows (leap-year order,
+same day/month every year) × imsak/fajr/sunrise/dhuhr/asr/maghrib/isha in local minutes. Used by
+`PrayerEngine` instead of adhan when the zone is Asia/Ashgabat and the point is inside the country
+(nearest city); method/madhab don't apply (Settings shows "Official Turkmenistan timetable"),
+mosque offsets still do. `PrayerDay.imsak` (= Fajr elsewhere) drives suhoor times.
+
+Tajweed colours: `ReaderPrefs.tajweed` (reader settings toggle). `assets/quran/ar_tajweed.json.gz`
+(built by `dart run tool/build_tajweed.dart` from quran.com `uthmani_tajweed`, 6236 ayahs with
+`<tajweed class=…>` markup) is loaded only while the toggle is on (`QuranTexts.tajweed`);
+`features/quran/domain/tajweed.dart` parses it, `presentation/tajweed_text.dart` maps rules → colours
+(lightened on dark pages) and tints waqf signs. Same Amiri Quran / Scheherazade fonts as plain text.
+
+Mushaf style: `ReaderPrefs.mushafStyle` (reader settings). Parchment palette (`ReaderPalette.of(mushaf: true)`
+incl. `allah`/`waqf`/`medal*` colours); in page view `presentation/mushaf_page.dart` (`MushafLines`) draws the
+Madani 15-line layout from `assets/quran/mushaf_lines.json.gz` (built by `dart run tool/build_mushaf.dart` from
+quran.com `verses/by_page?mushaf=5`; `domain/mushaf.dart` parses it): one font size per page so the widest
+line fits, full lines justified, short lines centred, "Allah" pink, waqf signs red, gold ayah medallions,
+surah banner inserted before ayah 1. In list view only the palette + Allah/waqf colours apply. Tajweed colours
+take precedence in list view and are not applied in the Mushaf page layout. Amiri Quran font (not KFGQPC).
+
+Hadith language: chapter names are translated by `hadithSectionName()` (app language). Hadith of
+the day: English = Nawawi + Qudsi, Turkish = Nawawi, Russian/Turkmen = `assets/hadith/daily_rus.json.gz`
+(448 short Bukhari hadiths, built by `tool/build_daily_hadith.dart` from the bundled editions).
+
+Screenshots: `WAQT_SCREENSHOTS=1 flutter test test/screenshots` (now incl. `full_*` long
+pages and a `review_*` set in tk/ru). `shoot(..., height:, preload:)` helpers.
+
 ## Phase checklist
 
 - [x] 1. Project setup, theme, fonts, l10n, router with adaptive 3-tab shell (APK builds; iOS config written, not built — no Xcode here)
@@ -295,3 +429,5 @@ sounds are fixed once a channel exists → bump the channel id in `notification_
 - [x] 6. Adhkar, Hijri calendar, Ramadan mode, Qibla, Tasbih, Tools hub
 - [x] 7. Me (stats), Settings, Onboarding
 - [x] 8. Widgets (iOS + Android) + polish — code written; Android/iOS builds not run here (see TODOs)
+- [x] 9. Super app: fonts, 5 tabs + liquid glass, Quran, hadith, library, zakat, timetable, habits, backup
+- [x] 10. Multi-agent UX review (everyday user, Quran reader, designer) and fixes; Ramadan 30; fasting qada

@@ -90,16 +90,18 @@ TaskWindow defaultTaskWindow(PrayerNow now) {
 /// Time span of a task window on a day: (from, until); either may be null
 /// ("until 12:39", "from 15:57"); both null for "anytime".
 (DateTime?, DateTime?) taskWindowSpan(TaskWindow w, PrayerDay d) => switch (w) {
-      TaskWindow.beforeFajr => (null, d.fajr),
-      TaskWindow.afterFajr => (d.fajr, d[Prayer.dhuhr]),
-      TaskWindow.beforeDhuhr => (null, d[Prayer.dhuhr]),
-      TaskWindow.afterDhuhr => (d[Prayer.dhuhr], d[Prayer.asr]),
-      TaskWindow.afterAsr => (d[Prayer.asr], null),
-      TaskWindow.afterMaghrib => (d[Prayer.maghrib], null),
-      TaskWindow.afterIsha => (d.isha, null),
-      TaskWindow.anytime => (null, null),
-    };
+  TaskWindow.beforeFajr => (null, d.fajr),
+  TaskWindow.afterFajr => (d.fajr, d[Prayer.dhuhr]),
+  TaskWindow.beforeDhuhr => (null, d[Prayer.dhuhr]),
+  TaskWindow.afterDhuhr => (d[Prayer.dhuhr], d[Prayer.asr]),
+  TaskWindow.afterAsr => (d[Prayer.asr], null),
+  TaskWindow.afterMaghrib => (d[Prayer.maghrib], null),
+  TaskWindow.afterIsha => (d.isha, null),
+  TaskWindow.anytime => (null, null),
+};
 
 /// Prayers of a past day with no mark at all.
-List<Prayer> unmarkedPrayers(Map<Prayer, PrayerStatus> marks) =>
-    [for (final p in Prayer.values) if (!marks.containsKey(p)) p];
+List<Prayer> unmarkedPrayers(Map<Prayer, PrayerStatus> marks) => [
+  for (final p in Prayer.values)
+    if (!marks.containsKey(p)) p,
+];

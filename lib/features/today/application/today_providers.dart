@@ -84,9 +84,14 @@ final ramadanFastBarProvider = StreamProvider<({int day, int total, List<FastSta
   if (info == null) return Stream.value(null);
   final first = DayKey.fromDate(info.first);
   final last = first.addDays(info.total - 1);
-  return ref.watch(fastRepositoryProvider).watchRange(first, last).map((m) => (
-        day: info.day,
-        total: info.total,
-        fasts: [for (var i = 0; i < info.total; i++) m[first.addDays(i)]?.status],
-      ));
+  return ref
+      .watch(fastRepositoryProvider)
+      .watchRange(first, last)
+      .map(
+        (m) => (
+          day: info.day,
+          total: info.total,
+          fasts: [for (var i = 0; i < info.total; i++) m[first.addDays(i)]?.status],
+        ),
+      );
 });

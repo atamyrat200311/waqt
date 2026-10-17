@@ -19,15 +19,18 @@ void main() {
     await tester.pump(const Duration(seconds: 2));
   }
 
-  testWidgets('first launch goes to onboarding, then the 3-tab shell', (tester) async {
+  testWidgets('first launch goes to onboarding, then the 5-tab shell', (tester) async {
     await tester.pumpWidget(ProviderScope(
       overrides: settingsOverrides(const AppSettings()),
       child: const WaqtApp(),
     ));
     await tester.pumpAndSettle();
+    // Language comes first (no phone has a Turkmen system locale).
     expect(find.text('Choose your language'), findsOneWidget);
-
     await tester.tap(find.text('English'));
+    await tester.pumpAndSettle();
+    expect(find.text('Private by design'), findsOneWidget);
+    await tester.tap(find.text('Get started'));
     await tester.pumpAndSettle();
     expect(find.text('Where do you pray?'), findsOneWidget);
     expect(find.text('Muslim World League · Hanafi Asr'), findsOneWidget);
@@ -44,6 +47,8 @@ void main() {
     await tester.tap(find.text('Start'));
     await tester.pumpAndSettle();
     expect(find.text('Today'), findsWidgets);
+    expect(find.text('Quran'), findsWidgets);
+    expect(find.text('Library'), findsWidgets);
     expect(find.text('Tools'), findsWidgets);
     expect(find.text('Me'), findsWidgets);
     await dispose(tester);

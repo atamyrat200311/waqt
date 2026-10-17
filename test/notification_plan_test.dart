@@ -39,6 +39,17 @@ void main() {
     expect(p.first.alert, AlertType.silent);
   });
 
+  test('Quran reminder lands in slot 9, 45 min after Isha', () {
+    final p = plan(const AppSettings(quranReminder: true));
+    final q = p.where((n) => n.kind == NotificationKind.quran).toList();
+    expect(q, hasLength(7));
+    expect(q.first.id % 10, 9);
+    final isha = engine().day(DateTime(2026, 10, 4)).isha;
+    expect(q.first.at, isha.add(const Duration(minutes: 45)));
+    expect(NotificationPayload.parse(q.first.payload), isA<QuranPayload>());
+    expect(p.map((n) => n.id).toSet(), hasLength(p.length));
+  });
+
   test('never more than 60 pending', () {
     final p = plan(
       const AppSettings(adhkarReminders: true, suhoorReminder: true, taraweehReminder: true),
@@ -60,13 +71,14 @@ void main() {
     expect(p.where((n) => n.kind == NotificationKind.adhkarMorning), hasLength(7));
   });
 
-  test('Ramadan: iftar replaces the Maghrib alert; suhoor comes before Fajr', () {
+  test('Ramadan: iftar replaces the Maghrib alert; suhoor comes before imsak', () {
     final p = plan(const AppSettings(suhoorMinutes: 30), ramadan: true);
     expect(p.where((n) => n.kind == NotificationKind.prayer && n.prayer == Prayer.maghrib), isEmpty);
     expect(p.where((n) => n.kind == NotificationKind.iftar), hasLength(7));
     final firstSuhoor = p.firstWhere((n) => n.kind == NotificationKind.suhoor);
-    final fajr = engine().day(DateTime(2026, 10, 4)).fajr;
-    expect(fajr.difference(firstSuhoor.at), const Duration(minutes: 30));
+    final day = engine().day(DateTime(2026, 10, 4));
+    expect(day.imsak.isBefore(day.fajr), isTrue); // Turkmen table: imsak ~40 min before Fajr
+    expect(day.imsak.difference(firstSuhoor.at), const Duration(minutes: 30));
   });
 
   test('ids are stable for the same day and slot across runs', () {

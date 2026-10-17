@@ -126,6 +126,22 @@ class PrayerRepository {
         return true;
       });
 
+  /// Undo of the latest "Made up" for [prayer]: restores the count and
+  /// removes that event (so made-up stats stay honest).
+  Future<void> undoMakeUp(Prayer prayer) => _db.transaction(() async {
+        final last = await (_db.select(_db.qadaEvents)
+              ..where((t) => t.prayer.equalsValue(prayer) & t.source.equalsValue(QadaSource.madeUp))
+              ..orderBy([(t) => OrderingTerm.desc(t.id)])
+              ..limit(1))
+            .getSingleOrNull();
+        if (last == null) return;
+        final current = await _remaining(prayer);
+        await _db.into(_db.qadaCounts).insertOnConflictUpdate(
+              QadaCountsCompanion.insert(prayer: prayer, remaining: Value(current - last.delta)),
+            );
+        await (_db.delete(_db.qadaEvents)..where((t) => t.id.equals(last.id))).go();
+      });
+
   /// "+ Add older missed prayers": one event per prayer with delta = count.
   Future<void> addOlder(Map<Prayer, int> counts, {DateTime? now}) => _db.transaction(() async {
         for (final e in counts.entries) {

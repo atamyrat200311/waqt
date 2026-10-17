@@ -4,6 +4,7 @@ import 'package:adhan/adhan.dart' as adhan;
 import 'package:timezone/timezone.dart' as tz;
 
 import '../../../data/db/enums.dart';
+import 'tm_times.dart';
 
 /// Inputs for a prayer-time calculation. Pure value object.
 class PrayerConfig {
@@ -28,12 +29,16 @@ class PrayerConfig {
 
 /// The five prayers plus sunrise for one local date at the location.
 class PrayerDay {
-  const PrayerDay({required this.date, required this.times, required this.sunrise});
+  const PrayerDay({required this.date, required this.times, required this.sunrise, this._imsak});
 
   /// Local calendar date at the location (time part 00:00).
   final DateTime date;
   final Map<Prayer, tz.TZDateTime> times;
   final tz.TZDateTime sunrise;
+  final tz.TZDateTime? _imsak;
+
+  /// Start of the fast: the table's imsak where one exists, otherwise Fajr.
+  tz.TZDateTime get imsak => _imsak ?? fajr;
 
   tz.TZDateTime operator [](Prayer p) => times[p]!;
   tz.TZDateTime get fajr => times[Prayer.fajr]!;
@@ -66,10 +71,24 @@ class PrayerWindow {
 /// Pure prayer-time engine on top of `adhan`. Everything is computed in UTC
 /// and converted into the location's zone, so a manually chosen city in a
 /// different zone shows that city's wall-clock times.
+///
+/// Places in Turkmenistan use the official static table instead ([TmTable],
+/// nearest of five cities); method and madhab don't apply there, offsets do.
 class PrayerEngine {
-  PrayerEngine(this.config);
+  PrayerEngine(this.config)
+      : _tmCity = TmTable.covers(
+              latitude: config.latitude,
+              longitude: config.longitude,
+              timezone: config.location.name,
+            )
+            ? TmTable.nearestCity(config.latitude, config.longitude)
+            : null;
 
   final PrayerConfig config;
+  final int? _tmCity;
+
+  /// Times come from the official Turkmenistan table.
+  bool get usesTurkmenTable => _tmCity != null;
 
   final Map<DateTime, PrayerDay> _cache = {};
 
@@ -100,6 +119,7 @@ class PrayerEngine {
   PrayerDay day(DateTime localDate) {
     final key = DateTime(localDate.year, localDate.month, localDate.day);
     return _cache.putIfAbsent(key, () {
+      if (_tmCity != null) return _tmDay(key, _tmCity);
       final pt = adhan.PrayerTimes.utc(
         _coords,
         adhan.DateComponents(key.year, key.month, key.day),
@@ -118,6 +138,27 @@ class PrayerEngine {
         },
       );
     });
+  }
+
+  PrayerDay _tmDay(DateTime key, int city) {
+    final m = TmTable.minutes(city, key);
+    tz.TZDateTime at(int minutes, [Prayer? p]) {
+      final total = minutes + (p == null ? 0 : config.offsets[p] ?? 0);
+      return tz.TZDateTime(config.location, key.year, key.month, key.day, 0, total);
+    }
+
+    return PrayerDay(
+      date: key,
+      imsak: at(m[0]),
+      sunrise: at(m[2]),
+      times: {
+        Prayer.fajr: at(m[1], Prayer.fajr),
+        Prayer.dhuhr: at(m[3], Prayer.dhuhr),
+        Prayer.asr: at(m[4], Prayer.asr),
+        Prayer.maghrib: at(m[5], Prayer.maghrib),
+        Prayer.isha: at(m[6], Prayer.isha),
+      },
+    );
   }
 
   /// Local date at the location for an absolute instant.

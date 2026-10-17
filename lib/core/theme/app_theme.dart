@@ -75,6 +75,15 @@ abstract final class AppTheme {
       extensions: [c],
       splashFactory: InkSparkle.splashFactory,
       dividerTheme: DividerThemeData(color: c.hairline, thickness: 1, space: 1),
+      chipTheme: ChipThemeData(
+        selectedColor: c.mint,
+        backgroundColor: c.card,
+        side: BorderSide(color: c.hairline),
+        checkmarkColor: c.onMint,
+        labelStyle: WaqtType.sans(14, weight: 500, color: c.ink),
+        secondaryLabelStyle: WaqtType.sans(14, weight: 600, color: c.onMint),
+        shape: const StadiumBorder(),
+      ),
       iconTheme: IconThemeData(color: c.ink, size: 24),
       appBarTheme: AppBarTheme(
         backgroundColor: c.bg,

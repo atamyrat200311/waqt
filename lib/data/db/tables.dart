@@ -92,3 +92,66 @@ class TasbihSessions extends Table {
   IntColumn get goal => integer()();
   DateTimeColumn get createdAt => dateTime()();
 }
+
+@DataClassName('BookmarkRow')
+class Bookmarks extends Table {
+  IntColumn get id => integer().autoIncrement()();
+  TextColumn get kind => textEnum<BookmarkKind>()();
+  TextColumn get ref => text()();
+  TextColumn get note => text().nullable()();
+  DateTimeColumn get createdAt => dateTime()();
+
+  @override
+  List<Set<Column>> get uniqueKeys => [
+        {kind, ref},
+      ];
+}
+
+/// One row per ayah read on a day (global ayah index 0…6235). Drives the
+/// reading streak, daily goal and khatm progress.
+@DataClassName('QuranReadRow')
+class QuranReads extends Table {
+  TextColumn get date => text().withLength(min: 10, max: 10)();
+  IntColumn get ayah => integer()();
+
+  @override
+  Set<Column> get primaryKey => {date, ayah};
+}
+
+/// Surahs on the memorization ladder.
+@DataClassName('HifzRow')
+class HifzItems extends Table {
+  IntColumn get surah => integer()();
+  TextColumn get status => textEnum<HifzStatus>()();
+
+  /// Index into the review ladder (1-3-7-14-30-90 days).
+  IntColumn get step => integer().withDefault(const Constant(0))();
+
+  /// `yyyy-MM-dd` of the next review.
+  TextColumn get nextReview => text().withLength(min: 10, max: 10)();
+  DateTimeColumn get updatedAt => dateTime()();
+
+  @override
+  Set<Column> get primaryKey => {surah};
+}
+
+@DataClassName('HabitRow')
+class Habits extends Table {
+  IntColumn get id => integer().autoIncrement()();
+  TextColumn get title => text().withLength(min: 1, max: 120)();
+
+  /// Icon key from the habit icon palette (see habits feature).
+  TextColumn get icon => text().withDefault(const Constant('star'))();
+  BoolColumn get archived => boolean().withDefault(const Constant(false))();
+  IntColumn get sortOrder => integer().withDefault(const Constant(0))();
+  DateTimeColumn get createdAt => dateTime()();
+}
+
+@DataClassName('HabitLogRow')
+class HabitLogs extends Table {
+  IntColumn get habitId => integer().references(Habits, #id, onDelete: KeyAction.cascade)();
+  TextColumn get date => text().withLength(min: 10, max: 10)();
+
+  @override
+  Set<Column> get primaryKey => {habitId, date};
+}

@@ -146,6 +146,23 @@ class CurrentMark extends StatelessWidget {
   }
 }
 
+/// Passed but not marked: a solid ring (upcoming is dashed, current has a dot).
+class UnmarkedMark extends StatelessWidget {
+  const UnmarkedMark({super.key, this.size = 26, this.color});
+  final double size;
+  final Color? color;
+
+  @override
+  Widget build(BuildContext context) => Container(
+        width: size,
+        height: size,
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          border: Border.all(color: color ?? context.colors.muted, width: 1.8),
+        ),
+      );
+}
+
 /// Upcoming: dashed circle.
 class UpcomingMark extends StatelessWidget {
   const UpcomingMark({super.key, this.size = 26, this.color, this.strokeWidth = 1.5});

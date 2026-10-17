@@ -22,26 +22,32 @@ class WidgetsHelpScreen extends StatelessWidget {
       slivers: [
         SliverPadding(
           padding: const EdgeInsets.fromLTRB(Gap.screen, 18, Gap.screen, 0),
-          sliver: SliverList.list(children: [
-            WaqtCard(
-              padding: const EdgeInsets.all(18),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  IconTile(icon: WaqtIcons.widgets, background: c.mint, color: c.onMint),
-                  const SizedBox(width: 14),
-                  Expanded(
-                    child: Text(
-                      Adaptive.isCupertino(context) ? l.widgetsHelpIos : l.widgetsHelpAndroid,
-                      style: WaqtType.sans(15, color: c.ink, height: 1.5),
+          sliver: SliverList.list(
+            children: [
+              WaqtCard(
+                padding: const EdgeInsets.all(18),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    IconTile(icon: WaqtIcons.widgets, background: c.mint, color: c.onMint),
+                    const SizedBox(width: 14),
+                    Expanded(
+                      child: Text(
+                        Adaptive.isCupertino(context) ? l.widgetsHelpIos : l.widgetsHelpAndroid,
+                        style: WaqtType.sans(15, color: c.ink, height: 1.5),
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-            const SizedBox(height: 12),
-            Text(l.widgetsHelpData, textAlign: TextAlign.center, style: WaqtType.sans(13, color: c.muted, height: 1.5)),
-          ]),
+              const SizedBox(height: 12),
+              Text(
+                l.widgetsHelpData,
+                textAlign: TextAlign.center,
+                style: WaqtType.sans(13, color: c.muted, height: 1.5),
+              ),
+            ],
+          ),
         ),
       ],
     );

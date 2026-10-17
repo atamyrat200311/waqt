@@ -21,11 +21,13 @@ class PillButton extends StatelessWidget {
     this.fontSize = 15,
     this.expand = false,
     this.semanticLabel,
+    this.maxLines = 1,
   });
 
   final String label;
   final VoidCallback? onPressed;
   final PillStyle style;
+  final int maxLines;
   final WaqtIconData? icon;
   final double height;
   final double minWidth;
@@ -76,10 +78,10 @@ class PillButton extends StatelessWidget {
                   Flexible(
                     child: Text(
                       label,
-                      maxLines: 1,
+                      maxLines: maxLines,
                       overflow: TextOverflow.ellipsis,
                       textAlign: TextAlign.center,
-                      style: WaqtType.sans(fontSize, weight: 600, color: effectiveFg),
+                      style: WaqtType.sans(fontSize, weight: 600, color: effectiveFg, height: maxLines > 1 ? 1.15 : null),
                     ),
                   ),
                 ],

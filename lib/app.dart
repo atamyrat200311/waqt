@@ -12,6 +12,7 @@ import 'data/settings/settings_controller.dart';
 import 'features/notifications/application/notification_scheduler.dart';
 import 'features/notifications/application/notification_taps.dart';
 import 'features/prayer/application/period_mode_sync.dart';
+import 'features/quran/domain/quran.dart';
 import 'features/widgets/application/widget_sync.dart';
 
 class WaqtApp extends ConsumerWidget {
@@ -27,6 +28,7 @@ class WaqtApp extends ConsumerWidget {
     final router = ref.watch(appRouterProvider);
     final theme = ref.watch(settingsProvider.select((s) => s.theme));
     final language = ref.watch(settingsProvider.select((s) => s.language));
+    SurahInfo.language = ref.watch(appLanguageProvider);
 
     return MaterialApp.router(
       title: 'Waqt',
@@ -51,11 +53,11 @@ class WaqtApp extends ConsumerWidget {
         FallbackCupertinoLocalizationsDelegate(),
       ],
       builder: (context, child) {
-        // Cap text scaling at 1.3× (accessibility bar) so layouts never break.
+        // Cap text scaling at 1.6× (large accessibility sizes) so layouts never break.
         final mq = MediaQuery.of(context);
         return MediaQuery(
           data: mq.copyWith(
-            textScaler: mq.textScaler.clamp(minScaleFactor: 0.85, maxScaleFactor: 1.3),
+            textScaler: mq.textScaler.clamp(minScaleFactor: 0.85, maxScaleFactor: 1.6),
           ),
           child: child!,
         );

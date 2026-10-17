@@ -126,6 +126,156 @@ abstract final class WaqtIcons {
   static const listCheck = WaqtIconData([
     'M11 18H3M15 18l2 2 4-4M16 12H3M16 6H3',
   ]);
+
+  // ---- Added for Quran, Library and the new tools (Lucide shapes) ----
+  static const quran = WaqtIconData([
+    'M12 7v14',
+    'M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z',
+    'M6 8h2M6 12h2M16 8h2M16 12h2',
+  ]);
+  static const library = WaqtIconData(['m16 6 4 14', 'M12 6v14', 'M8 8v12', 'M4 4v16']);
+  static final search = WaqtIconData([_circle(11, 11, 7.5), 'm21 21-4.3-4.3']);
+  static const bookmark = WaqtIconData(['m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z']);
+  static const bookmarkFilled =
+      WaqtIconData(['m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z'], filled: true);
+  static const share = WaqtIconData([
+    'M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8',
+    'M16 6l-4-4-4 4',
+    'M12 2v13',
+  ]);
+  static final copy = WaqtIconData([
+    _rect(8, 8, 14, 14, 2),
+    'M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2',
+  ]);
+  static const textSize = WaqtIconData(['M4 7V4h16v3', 'M9 20h6', 'M12 4v16']);
+  static final eye = WaqtIconData([
+    'M2.06 12.35a1 1 0 0 1 0-.7 10.75 10.75 0 0 1 19.88 0 1 1 0 0 1 0 .7 10.75 10.75 0 0 1-19.88 0',
+    _circle(12, 12, 3),
+  ]);
+  static const eyeOff = WaqtIconData([
+    'M10.73 5.08a10.74 10.74 0 0 1 11.2 6.57 1 1 0 0 1 0 .7 10.75 10.75 0 0 1-1.44 2.49',
+    'M14.08 14.16a3 3 0 0 1-4.24-4.24',
+    'M17.48 17.5a10.75 10.75 0 0 1-15.42-5.15 1 1 0 0 1 0-.7 10.75 10.75 0 0 1 4.45-5.14',
+    'm2 2 20 20',
+  ]);
+  static final target = WaqtIconData([_circle(12, 12, 10), _circle(12, 12, 6), _circle(12, 12, 2)]);
+  static const flame = WaqtIconData([
+    'M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.07-2.14-.22-4.05 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.15.43-2.29 1-3a2.5 2.5 0 0 0 2.5 2.5z',
+  ]);
+  static const sparkles = WaqtIconData([
+    'M9.94 15.5A2 2 0 0 0 8.5 14.06l-6.14-1.58a.5.5 0 0 1 0-.96L8.5 9.94A2 2 0 0 0 9.94 8.5l1.58-6.14a.5.5 0 0 1 .96 0L14.06 8.5A2 2 0 0 0 15.5 9.94l6.14 1.58a.5.5 0 0 1 0 .96L15.5 14.06a2 2 0 0 0-1.44 1.44l-1.58 6.14a.5.5 0 0 1-.96 0z',
+    'M20 3v4M22 5h-4',
+  ]);
+  static const handHeart = WaqtIconData([
+    'M11 14h2a2 2 0 1 0 0-4h-3c-.6 0-1.1.2-1.4.6L3 16',
+    'm7 20 1.6-1.4c.3-.4.8-.6 1.4-.6h4c1.1 0 2.1-.4 2.8-1.2l4.6-4.4a2 2 0 0 0-2.75-2.91l-4.2 3.9',
+    'm2 15 6 6',
+    'M19.5 8.5c.7-.7 1.5-1.6 1.5-2.7A2.73 2.73 0 0 0 16 4a2.78 2.78 0 0 0-5 1.8c0 1.2.8 2 1.5 2.8L16 12Z',
+  ]);
+  static const star = WaqtIconData([
+    'M11.53 2.3a.53.53 0 0 1 .95 0l2.31 4.68a2.12 2.12 0 0 0 1.6 1.16l5.16.76a.53.53 0 0 1 .3.9l-3.74 3.64a2.12 2.12 0 0 0-.61 1.88l.88 5.14a.53.53 0 0 1-.77.56l-4.62-2.43a2.12 2.12 0 0 0-1.97 0L6.4 21.01a.53.53 0 0 1-.77-.56l.88-5.14a2.12 2.12 0 0 0-.61-1.88L2.16 9.8a.53.53 0 0 1 .3-.91l5.16-.75a2.12 2.12 0 0 0 1.6-1.16z',
+  ]);
+  static const learn = WaqtIconData([
+    'M21.42 10.92a1 1 0 0 0-.02-1.84L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.83l8.57 3.91a2 2 0 0 0 1.66 0z',
+    'M22 10v6',
+    'M6 12.5V16a6 3 0 0 0 12 0v-3.5',
+  ]);
+  static const scroll = WaqtIconData([
+    'M15 12h-5M15 8h-5',
+    'M19 17V5a2 2 0 0 0-2-2H4',
+    'M8 21h12a2 2 0 0 0 2-2v-1a1 1 0 0 0-1-1H11a1 1 0 0 0-1 1v1a2 2 0 1 1-4 0V5a2 2 0 1 0-4 0v2a1 1 0 0 0 1 1h3',
+  ]);
+  static final calculator = WaqtIconData([
+    _rect(4, 2, 16, 20, 2),
+    'M8 6h8M16 14v4M16 10h.01M12 10h.01M8 10h.01M12 14h.01M8 14h.01M12 18h.01M8 18h.01',
+  ]);
+  static final table = WaqtIconData([_rect(3, 3, 18, 18, 2), 'M3 9h18M3 15h18M9 3v18']);
+  static const download = WaqtIconData(['M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4', 'm7 10 5 5 5-5', 'M12 15V3']);
+  static const upload = WaqtIconData(['M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4', 'm17 8-5-5-5 5', 'M12 3v12']);
+  static const list = WaqtIconData(['M3 12h.01M3 18h.01M3 6h.01M8 12h13M8 18h13M8 6h13']);
+  static const repeat = WaqtIconData(['m17 2 4 4-4 4', 'M3 11v-1a4 4 0 0 1 4-4h14', 'm7 22-4-4 4-4', 'M21 13v1a4 4 0 0 1-4 4H3']);
+  static const droplet = WaqtIconData(['M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z']);
+  static const dumbbell = WaqtIconData([
+    'M14.4 14.4 9.6 9.6',
+    'M18.66 21.51a2 2 0 1 1-2.83-2.83l-1.77 1.77a2 2 0 1 1-2.83-2.83l6.37-6.37a2 2 0 1 1 2.83 2.83l-1.77 1.77a2 2 0 1 1 2.83 2.83z',
+    'm21.5 21.5-1.4-1.4M3.9 3.9 2.5 2.5',
+    'M6.4 12.77a2 2 0 1 1-2.83-2.83l1.77-1.77a2 2 0 1 1-2.83-2.83l2.83-2.83a2 2 0 1 1 2.83 2.83l1.77-1.77a2 2 0 1 1 2.83 2.83z',
+  ]);
+  static const leaf = WaqtIconData([
+    'M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z',
+    'M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12',
+  ]);
+  static const pen = WaqtIconData([
+    'M21.17 6.81a1 1 0 0 0-3.99-3.99L3.84 16.17a2 2 0 0 0-.5.83l-1.32 4.35a.5.5 0 0 0 .62.62l4.35-1.32a2 2 0 0 0 .83-.5z',
+  ]);
+  static final smile = WaqtIconData([_circle(12, 12, 10), 'M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01']);
+  static const kaaba = WaqtIconData([
+    'M4 7.5 12 4l8 3.5v10L12 21l-8-3.5z',
+    'M4 7.5 12 11l8-3.5M12 11v10',
+    'M4 10.5l8 3.5 8-3.5',
+  ]);
+  static const hourglass = WaqtIconData([
+    'M5 22h14M5 2h14',
+    'M17 22v-4.17a2 2 0 0 0-.59-1.42L12 12l-4.41 4.41A2 2 0 0 0 7 17.83V22',
+    'M7 2v4.17a2 2 0 0 0 .59 1.42L12 12l4.41-4.41A2 2 0 0 0 17 6.17V2',
+  ]);
+  static const play = WaqtIconData(['M6 3l14 9-14 9z']);
+  static const home = WaqtIconData([
+    'M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8',
+    'M3 10a2 2 0 0 1 .71-1.53l7-6a2 2 0 0 1 2.58 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z',
+  ]);
+  static const food = WaqtIconData([
+    'M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2',
+    'M7 2v20',
+    'M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7',
+  ]);
+  static const plane = WaqtIconData([
+    'M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z',
+  ]);
+  static const mosque = WaqtIconData([
+    'M3 21h18',
+    'M5 21V11M19 21V11M5 11V8M19 11V8',
+    'M8 21v-5a4 4 0 0 1 8 0v5',
+    'M12 3c-2 2-6 3.5-6 7h12c0-3.5-4-5-6-7z',
+  ]);
+  static const shield = WaqtIconData([
+    'M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z',
+  ]);
+  static const heartOutline = WaqtIconData([
+    'M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z',
+  ]);
+
+  /// Icon by content key (duas.json / guides.json / habits).
+  static WaqtIconData byKey(String key) => switch (key) {
+        'sun' => sun,
+        'moon' => moon,
+        'home' => home,
+        'food' => food,
+        'travel' => plane,
+        'mosque' => mosque,
+        'heart' => heartOutline,
+        'shield' => shield,
+        'family' => users,
+        'book' => book,
+        'star' => star,
+        'droplet' => droplet,
+        'hands' => handHeart,
+        'kaaba' => kaaba,
+        'quran' => quran,
+        'dumbbell' => dumbbell,
+        'leaf' => leaf,
+        'pen' => pen,
+        'smile' => smile,
+        'wallet' => wallet,
+        'beads' => beads,
+        'clock' => clock,
+        _ => star,
+      };
+  static final medal = WaqtIconData([
+    'M7.21 15 2.66 7.14a2 2 0 0 1 .13-2.2L4.4 2.8A2 2 0 0 1 6 2h12a2 2 0 0 1 1.6.8l1.6 2.14a2 2 0 0 1 .14 2.2L16.79 15',
+    'M11 12 5.12 2.2M13 12l5.88-9.8M8 7h8',
+    _circle(12, 17, 5),
+  ]);
 }
 
 class WaqtIcon extends StatelessWidget {

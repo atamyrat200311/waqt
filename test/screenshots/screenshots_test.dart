@@ -26,6 +26,10 @@ import 'package:waqt/data/repositories/prayer_repository.dart';
 import 'package:waqt/data/repositories/task_repository.dart';
 import 'package:waqt/data/settings/app_settings.dart';
 import 'package:waqt/features/adhkar/application/adhkar_providers.dart';
+import 'package:waqt/features/hadith/application/hadith_providers.dart';
+import 'package:waqt/features/library/application/library_providers.dart';
+import 'package:waqt/features/quran/application/quran_providers.dart';
+import 'package:waqt/features/quran/domain/quran.dart';
 
 import '../helpers/test_app.dart';
 
@@ -70,8 +74,12 @@ Future<void> shoot(
   AppSettings settings = const AppSettings(onboardingDone: true),
   DateTime? now,
   Future<void> Function(WidgetTester t)? act,
+  Future<void> Function(ProviderContainer c)? preload,
+  double height = 844,
+  double textScale = 1,
 }) async {
-  tester.view.physicalSize = const Size(390 * 3, 844 * 3);
+  tester.platformDispatcher.textScaleFactorTestValue = textScale;
+  tester.view.physicalSize = Size(390 * 3, height * 3);
   tester.view.devicePixelRatio = 3;
   tester.platformDispatcher.platformBrightnessTestValue = dark ? Brightness.dark : Brightness.light;
   debugDefaultTargetPlatformOverride = platform;
@@ -83,6 +91,8 @@ Future<void> shoot(
   await tester.runAsync(() async {
     await seed(container);
     await container.read(adhkarCatalogProvider.future);
+    await container.read(quranTextsProvider.future);
+    await preload?.call(container);
   });
   final key = GlobalKey();
   await tester.pumpWidget(
@@ -108,11 +118,12 @@ Future<void> shoot(
     f.writeAsBytesSync(bytes!.buffer.asUint8List());
   });
   await tester.pumpWidget(const SizedBox());
-  await tester.pump(const Duration(seconds: 2));
+  await tester.pump(const Duration(minutes: 3));
   debugDefaultTargetPlatformOverride = null;
   tester.view.reset();
   tester.platformDispatcher.clearPlatformBrightnessTestValue();
   tester.platformDispatcher.clearAccessibilityFeaturesTestValue();
+  tester.platformDispatcher.clearTextScaleFactorTestValue();
 }
 
 void main() {
@@ -124,7 +135,48 @@ void main() {
     await shoot(t, 'home_android', platform: TargetPlatform.android);
   }, skip: !_enabled);
 
+  testWidgets('full pages', (t) async {
+    await shoot(t, 'full_home', height: 2300);
+    await shoot(t, 'full_me', location: '/me', height: 1900);
+    await shoot(t, 'full_library', location: '/library', height: 1700);
+    await shoot(t, 'full_quran', location: '/quran', height: 1500);
+  }, skip: !_enabled);
+
+  testWidgets('large text', (t) async {
+    for (final (name, loc) in [
+      ('home', '/today'),
+      ('quran', '/quran'),
+      ('library', '/library'),
+      ('tools', '/tools'),
+      ('me', '/me'),
+      ('qada', '/today/qada'),
+      ('tasks', '/today/tasks'),
+      ('settings', '/me/settings'),
+      ('zakat', '/tools/zakat'),
+      ('timetable', '/tools/timetable'),
+      ('reader', '/read?i=261'),
+    ]) {
+      await shoot(t, 'big_$name', location: loc, textScale: 1.6, height: 1400);
+    }
+    await shoot(t, 'big_android_home', textScale: 1.6, platform: TargetPlatform.android, height: 1400);
+  }, skip: !_enabled);
+
   testWidgets('home ramadan', (t) async {
+    await shoot(
+      t,
+      'ramadan_challenge_screen',
+      location: '/tools/ramadan',
+      settings: const AppSettings(onboardingDone: true, ramadanMode: RamadanMode.on),
+      now: DateTime.utc(2027, 2, 20, 11),
+      height: 1400,
+    );
+    await shoot(
+      t,
+      'home_ramadan_challenge',
+      settings: const AppSettings(onboardingDone: true, ramadanMode: RamadanMode.on),
+      now: DateTime.utc(2027, 2, 20, 11),
+      height: 1600,
+    );
     await shoot(
       t,
       'home_ramadan',
@@ -167,9 +219,117 @@ void main() {
     await shoot(t, 'settings_android', location: '/me/settings', platform: TargetPlatform.android);
     await shoot(t, 'location', location: '/location');
     await shoot(t, 'onboarding_language', settings: const AppSettings());
-    await shoot(t, 'onboarding_location', settings: const AppSettings(), act: (t) async {
+    await shoot(t, 'onboarding_welcome', settings: const AppSettings(), act: (t) async {
       await t.tap(find.text('English'));
     });
+    await shoot(t, 'onboarding_location', settings: const AppSettings(), act: (t) async {
+      await t.tap(find.text('English'));
+      await t.pumpAndSettle();
+      await t.tap(find.text('Get started'));
+    });
+  }, skip: !_enabled);
+
+  testWidgets('quran', (t) async {
+    const reading = AppSettings(onboardingDone: true, quranLastRead: 261);
+    await shoot(t, 'quran_home', settings: reading, location: '/quran');
+    await shoot(t, 'quran_home_android_dark', settings: reading, location: '/quran', platform: TargetPlatform.android, dark: true);
+    await shoot(t, 'quran_reader', location: '/read?i=261');
+    await shoot(t, 'quran_reader_fatiha_dark', location: '/read?i=0', dark: true);
+    await shoot(t, 'quran_reader_page', location: '/read?i=261&mode=page');
+    await shoot(t, 'quran_reader_hifz', location: '/read?i=6221&hifz=112');
+    const tajweedOn = AppSettings(onboardingDone: true, reader: ReaderPrefs(tajweed: true, showTranslation: false));
+    await shoot(t, 'quran_reader_tajweed', settings: tajweedOn, location: '/read?i=261', dark: true);
+    await shoot(t, 'quran_reader_tajweed_light', settings: tajweedOn, location: '/read?i=261');
+    const mushafOn = AppSettings(onboardingDone: true, reader: ReaderPrefs(mushafStyle: true, arabicSize: 30));
+    await shoot(t, 'quran_mushaf_p42', settings: mushafOn, location: '/read?i=261&mode=page', preload: (c) => c.read(mushafPagesProvider.future));
+    await shoot(t, 'quran_mushaf_p42_dark', settings: mushafOn, location: '/read?i=261&mode=page', preload: (c) => c.read(mushafPagesProvider.future), dark: true);
+    await shoot(t, 'quran_mushaf_p1', settings: mushafOn, location: '/read?i=0&mode=page', preload: (c) => c.read(mushafPagesProvider.future));
+    await shoot(t, 'quran_mushaf_p582', settings: mushafOn, location: '/read?i=6221&mode=page', preload: (c) => c.read(mushafPagesProvider.future));
+    await shoot(t, 'quran_mushaf_list', settings: mushafOn, location: '/read?i=261');
+    await shoot(t, 'quran_reader_tajweed_page', settings: tajweedOn, location: '/read?i=261&mode=page', dark: true);
+    await shoot(t, 'quran_khatm_setup', location: '/quran/khatm');
+    await shoot(t, 'quran_hifz', location: '/quran/memorize');
+    await shoot(t, 'quran_search', location: '/quran/search', preload: (c) => c.read(quranSearchIndexProvider.future), act: (t) async {
+      await t.enterText(find.byType(TextField), 'mercy');
+      await t.pump(const Duration(milliseconds: 400));
+      await t.runAsync(() => Future<void>.delayed(const Duration(seconds: 2)));
+      await t.pump();
+    });
+  }, skip: !_enabled);
+
+  testWidgets('library', (t) async {
+    Future<void> hadith(ProviderContainer c) async {
+      await c.read(hadithOfDayProvider.future);
+      for (final b in ['bukhari', 'nawawi']) {
+        await c.read(hadithEditionProvider((b, 'eng')).future);
+        await c.read(hadithEditionProvider((b, 'ara')).future);
+      }
+    }
+
+    await shoot(t, 'library', location: '/library', preload: hadith);
+    await shoot(t, 'library_android_dark', location: '/library', preload: hadith, platform: TargetPlatform.android, dark: true);
+    await shoot(t, 'hadith_bukhari', location: '/library/hadith/bukhari', preload: hadith);
+    await shoot(t, 'hadith_bukhari_section', location: '/library/hadith/bukhari/2', preload: hadith);
+    await shoot(t, 'hadith_nawawi', location: '/library/hadith/nawawi', preload: hadith);
+    Future<void> content(ProviderContainer c) async {
+      await c.read(duaCatalogProvider.future);
+      await c.read(allahNamesProvider.future);
+      await c.read(guidesProvider.future);
+    }
+
+    await shoot(t, 'duas', location: '/library/duas', preload: content, height: 1500);
+    await shoot(t, 'names', location: '/library/names', preload: content);
+    await shoot(t, 'learn', location: '/library/learn', preload: content);
+    await shoot(t, 'guide_salah', location: '/library/learn/salah', preload: content, height: 2400);
+    await shoot(t, 'guide_islam_ru', location: '/library/learn/islam', preload: content, height: 1600,
+        settings: const AppSettings(onboardingDone: true, language: 'ru'));
+  }, skip: !_enabled);
+
+  testWidgets('new tools', (t) async {
+    await shoot(t, 'tools_ios_v2', location: '/tools');
+    await shoot(
+      t,
+      'zakat',
+      location: '/tools/zakat',
+      settings: const AppSettings(
+        onboardingDone: true,
+        zakat: {'cash': 2500000, 'goldGrams': 20, 'silverPrice': 1650, 'goldPrice': 140000},
+      ),
+    );
+    await shoot(t, 'timetable', location: '/tools/timetable');
+    await shoot(t, 'habits_empty', location: '/today/habits');
+  }, skip: !_enabled);
+
+  testWidgets('review set', (t) async {
+    const tk = AppSettings(onboardingDone: true, language: 'tk', quranLastRead: 261);
+    const ru = AppSettings(onboardingDone: true, language: 'ru', quranLastRead: 261);
+    await shoot(t, 'review_home_tk', settings: tk, height: 1800);
+    await shoot(t, 'review_quran_ru', settings: ru, location: '/quran', height: 1300);
+    await shoot(t, 'review_reader_ru', settings: ru, location: '/read?i=261');
+    await shoot(t, 'review_tools_tk', settings: tk, location: '/tools', height: 1300);
+    await shoot(t, 'review_reader_settings', location: '/read?i=261', act: (t) async {
+      await t.tap(find.text('Aa'));
+    });
+    await shoot(t, 'review_ayah_actions', location: '/read?i=261', act: (t) async {
+      await t.longPress(find.textContaining('Allah - there is no deity'));
+    });
+    await shoot(
+      t,
+      'review_khatm_active',
+      location: '/quran/khatm',
+      settings: const AppSettings(onboardingDone: true, khatmPlan: KhatmPlan(start: '2026-09-28', days: 30)),
+      height: 1300,
+    );
+    await shoot(t, 'review_share_sheet', location: '/read?i=261', act: (t) async {
+      await t.longPress(find.textContaining('Allah - there is no deity'));
+      await t.pumpAndSettle();
+      await t.tap(find.text('Share as image'));
+    });
+    await shoot(t, 'review_habit_editor', location: '/today/habits', act: (t) async {
+      await t.tap(find.bySemanticsLabel('New habit').first);
+    });
+    await shoot(t, 'review_settings_full', location: '/me/settings', height: 2600);
+    await shoot(t, 'review_backup', location: '/me/settings/backup');
   }, skip: !_enabled);
 
   testWidgets('expense sheet', (t) async {

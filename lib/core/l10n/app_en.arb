@@ -273,7 +273,7 @@
   "homeUpNext": "Up next",
   "homeStart": "Start",
   "homeMarkDone": "Done",
-  "homeAdhkarAfter": "{window} · {min} min",
+  "homeAdhkarAfter": "{window} · ≈{min} min read",
   "@homeAdhkarAfter": {
     "placeholders": {
       "window": {
@@ -438,7 +438,7 @@
   "expenseNoteHint": "Note",
   "catGroceries": "Groceries",
   "catTransport": "Transport",
-  "catFood": "Food",
+  "catFood": "Eating out",
   "catBills": "Bills",
   "catSadaqa": "Sadaqa",
   "catOther": "Other",
@@ -623,6 +623,7 @@
   "fastTypeMonThu": "Monday/Thursday fast",
   "fastTypeWhiteDays": "White day fast",
   "fastTypeOther": "Voluntary fast",
+  "fastTypeQada": "Make-up fast",
   "ramadanTitle": "Ramadan",
   "ramadanMode": "Ramadan mode",
   "ramadanAuto": "Automatic",
@@ -719,7 +720,7 @@
   "toolsMorningDue": "Morning due",
   "toolsEveningDue": "Evening due",
   "toolsAdhkarDone": "Done today",
-  "toolsCalendar": "Hijri calendar",
+  "toolsCalendar": "Calendar",
   "toolsRamadan": "Ramadan",
   "toolsRamadanNow": "Day {n}",
   "@toolsRamadanNow": {
@@ -822,7 +823,7 @@
   },
   "secAlerts": "Alerts",
   "alertAdhan": "Adhan",
-  "alertSilent": "Silent",
+  "alertSilent": "Sound",
   "alertOff": "Off",
   "secGeneral": "General",
   "language": "Language",
@@ -1001,5 +1002,608 @@
   },
   "chanAdhan": "Prayer times · adhan",
   "chanStandard": "Prayer times · standard sound",
-  "chanReminders": "Reminders"
+  "chanReminders": "Reminders",
+  "tabQuran": "Quran",
+  "tabLibrary": "Library",
+  "quranTitle": "Quran",
+  "quranContinue": "Continue reading",
+  "quranStart": "Start reading",
+  "quranStartHint": "Begin with Al-Fatihah, the Opening.",
+  "quranAyahN": "Ayah {n}",
+  "@quranAyahN": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "quranPageN": "Page {n}",
+  "@quranPageN": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "quranJuzN": "Juz {n}",
+  "@quranJuzN": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "quranSurahs": "Surahs",
+  "quranJuzTab": "Juz",
+  "quranAyahCount": "{count, plural, one{{count} ayah} other{{count} ayahs}}",
+  "@quranAyahCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "quranMeccan": "Meccan",
+  "quranMedinan": "Medinan",
+  "quranSearch": "Search the Quran",
+  "quranSearchHint": "Surah, 2:255 or any words",
+  "quranGoTo": "Go to {ref}",
+  "@quranGoTo": {
+    "placeholders": {
+      "ref": {
+        "type": "String"
+      }
+    }
+  },
+  "quranNoResults": "No matches. Try fewer words or Arabic.",
+  "quranResults": "{count, plural, one{{count} ayah} other{{count} ayahs}}",
+  "@quranResults": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "quranSearchIn": "Searching Arabic and {translation}",
+  "@quranSearchIn": {
+    "placeholders": {
+      "translation": {
+        "type": "String"
+      }
+    }
+  },
+  "quranBookmarks": "Bookmarks",
+  "quranNoBookmarks": "No bookmarks yet. Long-press an ayah or tap ••• to save it here.",
+  "quranBookmark": "Bookmark",
+  "quranRemoveBookmark": "Remove bookmark",
+  "quranRemoveNoteConfirm": "Remove this bookmark and its note?",
+  "translationLabel": "Translation: {name}",
+  "@translationLabel": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "quranBookmarked": "Saved to bookmarks",
+  "moreActions": "More",
+  "copy": "Copy",
+  "copied": "Copied",
+  "shareImage": "Share as image",
+  "shareText": "Share text",
+  "share": "Share",
+  "quranAddNote": "Add a note",
+  "quranNoteHint": "What does this ayah mean to you?",
+  "quranSetLastRead": "Mark as where I stopped",
+  "quranReadingSettings": "Reading settings",
+  "quranArabicSize": "Arabic size",
+  "quranTextSize": "Translation size",
+  "quranShowTranslation": "Show translation",
+  "quranShowTranslit": "Show transliteration",
+  "quranTranslation": "Translation",
+  "quranArabicFont": "Arabic script",
+  "quranFontUthmani": "Uthmani",
+  "quranFontNaskh": "Naskh (plain)",
+  "quranSepia": "Warm paper",
+  "quranKeepAwake": "Keep screen on while reading",
+  "quranMemorize": "Memorize mode",
+  "quranMemorizeHint": "Arabic is hidden. Recite, then tap to check.",
+  "quranTapToReveal": "Tap to reveal",
+  "quranModeList": "Translation view",
+  "quranModePage": "Mushaf pages",
+  "quranSajda": "Sajdah",
+  "quranToday": "Today",
+  "quranGoal": "{read} of {goal} ayahs",
+  "@quranGoal": {
+    "placeholders": {
+      "read": {
+        "type": "String"
+      },
+      "goal": {
+        "type": "String"
+      }
+    }
+  },
+  "quranGoalPages": "{read} of {goal} pages",
+  "@quranGoalPages": {
+    "placeholders": {
+      "read": {
+        "type": "String"
+      },
+      "goal": {
+        "type": "String"
+      }
+    }
+  },
+  "khatmLast14": "Last 14 days",
+  "quranGoalDone": "Daily goal reached",
+  "quranStreak": "{count, plural, =0{Start a streak today} one{{count} day in a row} other{{count} days in a row}}",
+  "@quranStreak": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "quranDailyGoal": "Daily goal",
+  "quranDailyGoalValue": "{count, plural, one{{count} ayah a day} other{{count} ayahs a day}}",
+  "@quranDailyGoalValue": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "quranReadTracking": "Ayahs count as read after you spend a moment on them.",
+  "quranOfDay": "Ayah of the day",
+  "quranOpenInReader": "Open in Quran",
+  "quranSurahInfo": "{place} · {ayahs}",
+  "@quranSurahInfo": {
+    "placeholders": {
+      "place": {
+        "type": "String"
+      },
+      "ayahs": {
+        "type": "String"
+      }
+    }
+  },
+  "quranNextSurah": "Next: {name}",
+  "@quranNextSurah": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "quranLoading": "Opening the Quran…",
+  "quranReadSurah": "Read",
+  "khatmTitle": "Khatm plan",
+  "khatmShort": "Khatm",
+  "khatmIntro": "Read the whole Quran at your pace. Waqt spreads what’s left over the remaining days, so a missed day never ruins the plan.",
+  "khatmChoose": "Finish in",
+  "khatmDays": "{count, plural, one{{count} day} other{{count} days}}",
+  "@khatmDays": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "khatmPerDay": "≈ {pages} pages a day",
+  "@khatmPerDay": {
+    "placeholders": {
+      "pages": {
+        "type": "String"
+      }
+    }
+  },
+  "khatmStart": "Start plan",
+  "khatmDayOf": "Day {day} of {total}",
+  "@khatmDayOf": {
+    "placeholders": {
+      "day": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      }
+    }
+  },
+  "khatmTodayTarget": "Today: {pages} pages, from {from}",
+  "@khatmTodayTarget": {
+    "placeholders": {
+      "pages": {
+        "type": "String"
+      },
+      "from": {
+        "type": "String"
+      }
+    }
+  },
+  "khatmTodayDone": "Today’s portion is done. Barakallahu fik!",
+  "khatmBehind": "A little behind — today’s portion is a bit bigger.",
+  "khatmOnTrack": "On track",
+  "khatmEnd": "End plan",
+  "khatmEndConfirm": "End this plan? Your reading history stays.",
+  "khatmComplete": "Khatm complete! May Allah accept it from you.",
+  "khatmProgress": "{read} of {total} pages",
+  "@khatmProgress": {
+    "placeholders": {
+      "read": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      }
+    }
+  },
+  "khatmDaysLeft": "{count, plural, =0{Last day} one{{count} day left} other{{count} days left}}",
+  "@khatmDaysLeft": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "khatmRamadan": "Ramadan",
+  "khatmNewPlan": "Start a new plan",
+  "khatmShareText": "I completed a khatm of the Quran with Waqt. Alhamdulillah!",
+  "khatmReminder": "Remind me after Isha",
+  "notifQuranTitle": "Today’s Quran",
+  "notifQuranBody": "A few minutes with the Quran before sleep.",
+  "hifzTitle": "Memorize",
+  "hifzIntro": "Add surahs you’re memorizing. Review each on a spaced schedule — 1, 3, 7, 14, 30 and 90 days — so it stays strong.",
+  "hifzAdd": "Add surah",
+  "hifzDue": "Due for review",
+  "hifzUpcoming": "Coming up",
+  "hifzReview": "Review",
+  "hifzHowWent": "How did the review go?",
+  "hifzStrong": "Strong",
+  "hifzWeak": "Shaky",
+  "hifzNext": "Next review {date}",
+  "@hifzNext": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "hifzEmpty": "Nothing on your list yet. Short surahs from Juz ʿAmma are a great start.",
+  "hifzRemove": "Remove from list",
+  "hifzSuggested": "Suggested",
+  "hifzAllSurahs": "All surahs",
+  "hifzTileIdle": "Spaced review",
+  "hifzDueCount": "{count, plural, one{{count} due today} other{{count} due today}}",
+  "@hifzDueCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "khatmTileIdle": "Finish on a schedule",
+  "hifzAgain": "Again",
+  "quranJumpTo": "Jump to surah, juz or page",
+  "quranPages": "Pages",
+  "hifzMemorized": "Memorized",
+  "libraryHadith": "Hadith collections",
+  "libraryDuas": "Duas",
+  "libraryDuasSub": "For every moment of the day",
+  "libraryNames": "99 Names of Allah",
+  "libraryNamesSub": "Asmaʾ al-Husna",
+  "libraryLearn": "Learn",
+  "libraryLearnSub": "Prayer, wudu, fasting and more",
+  "libraryAdhkar": "Morning & evening adhkar",
+  "librarySaved": "Saved",
+  "librarySavedEmpty": "Bookmark a hadith, dua or Name and it will appear here.",
+  "libraryContentReview": "Texts are compiled from classical sources. Please verify with a scholar when in doubt.",
+  "hadithTitle": "Hadith",
+  "hadithOfDay": "Hadith of the day",
+  "hadithBookNawawi": "40 Hadith of an-Nawawi",
+  "hadithBookQudsi": "40 Hadith Qudsi",
+  "hadithBookBukhari": "Sahih al-Bukhari",
+  "hadithBookMuslim": "Sahih Muslim",
+  "hadithCount": "{count, plural, one{{count} hadith} other{{count} hadith}}",
+  "@hadithCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "hadithN": "Hadith {n}",
+  "@hadithN": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "hadithBooks": "Books",
+  "hadithSearchHint": "Search words or a number",
+  "hadithSearchAll": "Search hadith",
+  "hadithSearchAllHint": "Words in any collection",
+  "hadithShowArabic": "Show Arabic text",
+  "hadithTranslation": "Translation",
+  "quranMushafStyle": "Mushaf style",
+  "quranMushafStyleSub": "Parchment page, 15-line Madani layout (page view), pink “Allah”, gold verse markers",
+  "quranTajweed": "Tajweed colors",
+  "quranTajweedSub": "Colors the recitation rules (ghunna, madd, qalqala…)",
+  "searchResultsFor": "Results for “{query}”",
+  "@searchResultsFor": {
+    "placeholders": {
+      "query": {
+        "type": "String"
+      }
+    }
+  },
+  "searchNoneFor": "No results for “{query}”",
+  "@searchNoneFor": {
+    "placeholders": {
+      "query": {
+        "type": "String"
+      }
+    }
+  },
+  "hadithNoResults": "No hadith found.",
+  "hadithFallback": "Not available in your language — showing English.",
+  "hadithRange": "Hadith {from}–{to}",
+  "@hadithRange": {
+    "placeholders": {
+      "from": {
+        "type": "String"
+      },
+      "to": {
+        "type": "String"
+      }
+    }
+  },
+  "hadithOpenBook": "Read the collection",
+  "langEnglish": "English",
+  "langRussian": "Russian",
+  "langTurkish": "Turkish",
+  "duaSearchHint": "Search duas",
+  "duaRepeat": "Repeat {count}×",
+  "@duaRepeat": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "duaAll": "All",
+  "duaFavorites": "Favorites",
+  "namesQuiz": "Practice",
+  "namesQuizQuestion": "What does this Name mean?",
+  "namesQuizScore": "{right} of {total} correct",
+  "@namesQuizScore": {
+    "placeholders": {
+      "right": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      }
+    }
+  },
+  "namesQuizNext": "Next",
+  "namesQuizAgain": "Practice again",
+  "namesLearned": "{count} of 99 learned",
+  "@namesLearned": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "namesHadith": "“Allah has ninety-nine names; whoever learns them will enter Paradise.” — Bukhari & Muslim",
+  "learnSteps": "{count, plural, one{{count} step} other{{count} steps}}",
+  "@learnSteps": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "learnStepN": "Step {n}",
+  "@learnStepN": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "meQuranStreak": "Quran streak",
+  "meQuranDaily": "reading every day",
+  "mePrayedToday": "prayed today",
+  "meStartStreak": "Pray all five today to start your streak",
+  "meStreakShare": "Five prayers a day, with Waqt",
+  "meSettingsRow": "Settings",
+  "habitsEmptyShort": "Build a small daily habit",
+  "homeAddExpenseShort": "Expense",
+  "qadaMadeUpSnack": "{prayer}: one made up",
+  "@qadaMadeUpSnack": {
+    "placeholders": {
+      "prayer": {
+        "type": "String"
+      }
+    }
+  },
+  "qadaYearsHelper": "I missed about…",
+  "qadaMonths": "{count, plural, one{{count} month} other{{count} months}}",
+  "@qadaMonths": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "qadaYears": "{count, plural, one{{count} year} other{{count} years}}",
+  "@qadaYears": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "expensesTitle": "Spending",
+  "expensesEmpty": "No spending recorded this month.",
+  "meAyahsRead": "Ayahs read",
+  "notifTestTitle": "Send a test alert",
+  "notifTestSub": "Arrives in 5 seconds — lock your phone to check sound and banner.",
+  "notifTestBody": "If you can see and hear this, prayer alerts will work.",
+  "notifTestSent": "Test alert on its way…",
+  "fastsOwedTitle": "Fasts to make up",
+  "fastsOwedCount": "{count, plural, =0{All made up — alhamdulillah} one{{count} day} other{{count} days}}",
+  "@fastsOwedCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "fastsOwedSub": "Missed or excused Ramadan days, minus make-up fasts you log.",
+  "fastsLogQada": "I fasted a make-up day today",
+  "backupTitle": "Backup & restore",
+  "backupRowSub": "Move your data to a new phone",
+  "backupIntro": "Waqt has no account and no cloud. Export a backup file and keep it safe (Files, Telegram “Saved messages”, email to yourself). Restore it on any phone.",
+  "backupExport": "Export backup",
+  "backupImport": "Restore from file",
+  "backupRestore": "Restore",
+  "backupRestoreTitle": "Replace all data?",
+  "backupRestoreBody": "Everything on this phone will be replaced by the backup.",
+  "backupRestored": "Restored. Welcome back!",
+  "backupNever": "No backup yet",
+  "backupLast": "Last backup: {date}",
+  "@backupLast": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "backupInvalid": "This file isn’t a Waqt backup.",
+  "zakatTitle": "Zakat calculator",
+  "zakatShort": "Zakat",
+  "zakatDue": "Zakat due",
+  "zakatAbove": "Above nisab — 2.5% is due.",
+  "zakatBelow": "Below nisab — no zakat is due.",
+  "zakatNeedPrice": "Enter today’s gold or silver price to find the nisab.",
+  "zakatWealth": "Zakatable wealth",
+  "zakatNisab": "Nisab",
+  "zakatNisabBasis": "Nisab based on",
+  "zakatNisabGold": "Gold · 85 g",
+  "zakatNisabSilver": "Silver · 595 g",
+  "zakatPriceHint": "Waqt never goes online — type today’s local price per gram.",
+  "zakatGoldPrice": "Gold price",
+  "zakatSilverPrice": "Silver price",
+  "zakatPerGram": "per gram",
+  "zakatGrams": "g",
+  "zakatAssets": "What you own",
+  "zakatLiabilities": "What you owe now",
+  "zakatCash": "Cash & bank",
+  "zakatGold": "Gold",
+  "zakatSilver": "Silver",
+  "zakatInvestments": "Shares & savings",
+  "zakatBusiness": "Business stock",
+  "zakatReceivables": "Money owed to you",
+  "zakatDebts": "Debts due now",
+  "zakatRecord": "Record as sadaqa expense",
+  "zakatRecorded": "Recorded in expenses",
+  "zakatNote": "Zakat is 2.5% of wealth above the nisab held for one lunar year. Your home, car and personal items are not counted. Ask a scholar for your situation.",
+  "timetableTitle": "Prayer timetable",
+  "timetableShort": "Timetable",
+  "timetableNote": "Times use your method, Asr setting and mosque offsets. Fridays are highlighted.",
+  "habitsTitle": "Habits",
+  "habitsAdd": "New habit",
+  "habitsNameHint": "e.g. Read one page of Quran",
+  "habitsEmpty": "Small daily habits add up. Add one you want to keep — prayer-related or not.",
+  "habitsDoneToday": "{done} of {total} today",
+  "@habitsDoneToday": {
+    "placeholders": {
+      "done": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      }
+    }
+  },
+  "habitsSuggestions": "Ideas",
+  "habitSugQuran": "Read one page of Quran",
+  "habitSugDhikr": "100× SubhanAllah",
+  "habitSugWater": "Drink 8 glasses of water",
+  "habitSugWalk": "20-minute walk",
+  "habitSugSadaqa": "Give a little sadaqa",
+  "habitSugParents": "Call my parents",
+  "habitSugGratitude": "Write 3 things I’m grateful for",
+  "habitSugRead": "Read 10 pages of a book",
+  "habitSugSleep": "Sleep before 23:00",
+  "ramadanChallenge": "Ramadan challenge",
+  "ramadanChallengeScore": "{score} of 5 today",
+  "@ramadanChallengeScore": {
+    "placeholders": {
+      "score": {
+        "type": "String"
+      }
+    }
+  },
+  "ramadanCoreDays": "{count, plural, =0{Full days start with fast, prayers and Quran} one{{count} full day so far} other{{count} full days so far}}",
+  "@ramadanCoreDays": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "ramadanItemFast": "Fast",
+  "ramadanItemPrayers": "5 prayers",
+  "ramadanItemQuran": "Quran",
+  "ramadanItemDhikr": "Dhikr",
+  "ramadanItemSadaqa": "Sadaqa",
+  "ramadanChallengeIntro": "When Ramadan begins, Waqt tracks five daily goals — fast, prayers, Quran, dhikr and sadaqa — and lets you share your progress.",
+  "obGetStarted": "Get started",
+  "obTagline": "Your day, around the five prayers.",
+  "obValuePrayer": "Prayer times that just work",
+  "obValuePrayerSub": "Alerts, qibla, tracking and gentle qada help.",
+  "obValueQuran": "Quran & hadith, offline",
+  "obValueQuranSub": "8 translations, khatm planner, memorization, duas.",
+  "obValueDay": "Plan your whole day",
+  "obValueDaySub": "Tasks by prayer time, spending, habits and streaks.",
+  "obValuePrivate": "Private by design",
+  "obValuePrivateSub": "No account, no ads, no tracking. Works offline.",
+  "shareThemeEmerald": "Emerald",
+  "shareThemePaper": "Paper",
+  "shareThemeNight": "Night",
+  "shareWithArabic": "Arabic",
+  "shareWithTranslation": "Translation",
+  "shareFooter": "Waqt · your day around prayer",
+  "quranReminderAfterIsha": "Quran reminder after Isha",
+  "khatmOverdue": "The plan’s days are over — extend it to keep a gentle pace.",
+  "khatmFarBehind": "Behind by {count, plural, one{{count} page} other{{count} pages}} — no pressure, any amount counts.",
+  "@khatmFarBehind": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "khatmExtend": "Extend by {count, plural, one{{count} day} other{{count} days}}",
+  "@khatmExtend": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "expenseAddFirst": "Tap + to note a purchase",
+  "tmOfficialTable": "Official Turkmenistan timetable",
+  "chipDone": "marked",
+  "chipNow": "now",
+  "chipUnmarked": "not marked yet",
+  "chipUpcoming": "upcoming",
+  "chipMissed": "missed, in qada",
+  "chipExcused": "excused",
+  "tasksAddFirst": "Plan something around a prayer"
 }
