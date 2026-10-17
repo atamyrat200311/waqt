@@ -631,6 +631,7 @@
   "khatmFarBehind": "{count, plural, one{Отставание {count} страница} few{Отставание {count} страницы} other{Отставание {count} страниц}} — без спешки, каждая страница на счету.",
   "khatmExtend": "{count, plural, one{Продлить на {count} день} few{Продлить на {count} дня} other{Продлить на {count} дней}}",
   "expenseAddFirst": "Нажмите +, чтобы записать покупку",
+  "tmOfficialTable": "Официальное расписание Туркменистана",
   "chipDone": "отмечен",
   "chipNow": "сейчас",
   "chipUnmarked": "ещё не отмечен",

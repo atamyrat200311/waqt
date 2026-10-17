@@ -38,7 +38,7 @@ class RamadanScreen extends ConsumerWidget {
     final active = ref.watch(ramadanTodayProvider);
     final bar = ref.watch(ramadanFastBarProvider).value;
     final todayFast = (ref.watch(fastsInRangeProvider((today, today))).value ?? const {})[today];
-    final fajr = ref.watch(prayerNowProvider).today.fajr;
+    final fajr = ref.watch(prayerNowProvider).today.imsak;
 
     return SubScreen(
       title: l.ramadanTitle,

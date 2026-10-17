@@ -850,6 +850,7 @@
   "@expenseAddFirst": {
     "description": "REVIEW"
   },
+  "tmOfficialTable": "Türkmenistanyň resmi namaz wagtlary",
   "chipDone": "bellendi",
   "chipNow": "häzir",
   "chipUnmarked": "entek bellenmedi",

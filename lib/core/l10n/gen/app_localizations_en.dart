@@ -2425,6 +2425,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get expenseAddFirst => 'Tap + to note a purchase';
 
   @override
+  String get tmOfficialTable => 'Official Turkmenistan timetable';
+
+  @override
   String get chipDone => 'marked';
 
   @override

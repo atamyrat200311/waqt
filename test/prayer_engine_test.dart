@@ -6,6 +6,7 @@ import 'package:waqt/features/prayer/application/prayer_providers.dart';
 import 'package:waqt/features/prayer/domain/method_presets.dart';
 import 'package:waqt/features/prayer/domain/period_mode.dart';
 import 'package:waqt/features/prayer/domain/prayer_engine.dart';
+import 'package:waqt/features/prayer/domain/tm_times.dart';
 
 PrayerEngine ashgabat({Map<Prayer, int> offsets = const {}, AsrMadhab madhab = AsrMadhab.hanafi}) =>
     PrayerEngine(PrayerConfig(
@@ -36,15 +37,51 @@ void main() {
       expect(day.fajr.timeZoneOffset, const Duration(hours: 5));
     });
 
-    test('Dhuhr is near solar noon (≈12:56 in early October)', () {
-      final d = day[Prayer.dhuhr];
-      final minutes = d.hour * 60 + d.minute;
-      expect(minutes, inInclusiveRange(12 * 60 + 52, 13 * 60 + 1));
+    String hm(DateTime t) => '${t.hour.toString().padLeft(2, '0')}:${t.minute.toString().padLeft(2, '0')}';
+
+    test('Turkmenistan uses the official table, not calculation', () {
+      expect(e.usesTurkmenTable, isTrue);
+      // tm_wagt_default.json, Ashgabat, 1 July.
+      final july = e.day(DateTime(2026, 7, 1));
+      expect(
+        [july.imsak, july.fajr, july.sunrise, july[Prayer.dhuhr], july[Prayer.asr], july[Prayer.maghrib], july.isha]
+            .map(hm),
+        ['03:57', '04:37', '05:47', '13:30', '19:05', '20:45', '22:05'],
+      );
+      // Dhuhr is 13:30 all year in Ashgabat.
+      expect(hm(day[Prayer.dhuhr]), '13:30');
     });
 
-    test('Hanafi Asr is later than standard Asr', () {
+    test('method and madhab do not change table times', () {
       final std = ashgabat(madhab: AsrMadhab.standard).day(DateTime(2026, 10, 4));
-      expect(day[Prayer.asr].isAfter(std[Prayer.asr]), isTrue);
+      expect(std[Prayer.asr], day[Prayer.asr]);
+    });
+
+    test('nearest of the five table cities; 29 February has its own row', () {
+      PrayerEngine at(double lat, double lng) =>
+          PrayerEngine(PrayerConfig(latitude: lat, longitude: lng, location: locationFor('Asia/Ashgabat')));
+      final mary = at(37.5936, 61.8303).day(DateTime(2026, 7, 1));
+      final bayramaly = at(37.6185, 62.1673).day(DateTime(2026, 7, 1)); // nearest: Mary
+      expect(bayramaly.fajr, mary.fajr);
+      expect(mary.fajr, isNot(e.day(DateTime(2026, 7, 1)).fajr));
+      final feb28 = e.day(DateTime(2028, 2, 28));
+      final feb29 = e.day(DateTime(2028, 2, 29));
+      final mar1 = e.day(DateTime(2028, 3, 1));
+      expect(feb29.fajr.day, 29);
+      expect(hm(e.day(DateTime(2027, 3, 1)).fajr), hm(mar1.fajr)); // same row in non-leap years
+      expect(TmTable.dayIndex(DateTime(2028, 2, 29)), 59);
+      expect(TmTable.dayIndex(DateTime(2027, 3, 1)), 60);
+      expect(feb28.fajr.day, 28);
+    });
+
+    test('a place outside Turkmenistan is calculated', () {
+      final tashkent = PrayerEngine(PrayerConfig(
+        latitude: 41.2995,
+        longitude: 69.2401,
+        location: locationFor('Asia/Tashkent'),
+      ));
+      expect(tashkent.usesTurkmenTable, isFalse);
+      expect(tashkent.day(DateTime(2026, 7, 1)).imsak, tashkent.day(DateTime(2026, 7, 1)).fajr);
     });
 
     test('per-prayer offsets shift only that prayer', () {

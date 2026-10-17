@@ -21,6 +21,7 @@ import '../../../shared/widgets/segmented.dart';
 import '../../../shared/widgets/waqt_card.dart';
 import '../../../shared/widgets/waqt_icon.dart';
 import '../../notifications/application/notification_service.dart';
+import '../../prayer/application/prayer_providers.dart';
 
 const appVersion = '1.0.0';
 
@@ -66,6 +67,8 @@ class SettingsScreen extends ConsumerWidget {
       child: WaqtGroup(radius: Radii.listGroup, children: rows),
     );
 
+    final tmTable = ref.watch(prayerEngineProvider.select((e) => e.usesTurkmenTable));
+
     return SubScreen(
       title: l.settingsTitle,
       backLabel: l.tabMe,
@@ -79,6 +82,10 @@ class SettingsScreen extends ConsumerWidget {
                 value: displayPlaceName(s.effectiveLocation.name, l),
                 onTap: () => context.push(Routes.location),
               ),
+              // Turkmenistan uses the official table: no method or Asr choice.
+              if (tmTable)
+                WaqtRow(title: l.calcMethod, subtitle: l.tmOfficialTable)
+              else ...[
               WaqtRow(
                 title: l.calcMethod,
                 value: l.method(s.calcMethod),
@@ -104,6 +111,7 @@ class SettingsScreen extends ConsumerWidget {
                   ),
                 ),
               ),
+              ],
               WaqtRow(
                 title: l.matchMosque,
                 subtitle: uniform ? l.matchMosqueSub : l.perPrayerOffsets,

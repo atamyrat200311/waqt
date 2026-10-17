@@ -2447,6 +2447,9 @@ class AppLocalizationsRu extends AppLocalizations {
   String get expenseAddFirst => 'Нажмите +, чтобы записать покупку';
 
   @override
+  String get tmOfficialTable => 'Официальное расписание Туркменистана';
+
+  @override
   String get chipDone => 'отмечен';
 
   @override

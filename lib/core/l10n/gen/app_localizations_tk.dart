@@ -2341,6 +2341,9 @@ class AppLocalizationsTk extends AppLocalizations {
   String get expenseAddFirst => 'Satyn alyş goşmak üçin + basyň';
 
   @override
+  String get tmOfficialTable => 'Türkmenistanyň resmi namaz wagtlary';
+
+  @override
   String get chipDone => 'bellendi';
 
   @override

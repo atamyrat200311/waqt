@@ -109,11 +109,12 @@ class HeroCard extends ConsumerWidget {
   }
 
   /// Suhoor ends at the *next* Fajr once today's has passed.
+  /// Suhoor ends at imsak (Fajr where the table has no imsak).
   DateTime _tomorrowFajrIfPast(WidgetRef ref, PrayerNow now) {
-    if (now.now.isBefore(now.today.fajr)) return now.today.fajr;
+    if (now.now.isBefore(now.today.imsak)) return now.today.imsak;
     final engine = ref.read(prayerEngineProvider);
     final d = now.today.date;
-    return engine.day(DateTime(d.year, d.month, d.day + 1)).fajr;
+    return engine.day(DateTime(d.year, d.month, d.day + 1)).imsak;
   }
 }
 

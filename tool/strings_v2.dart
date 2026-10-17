@@ -336,6 +336,7 @@ const Map<String, List<String>> s2 = {
   'khatmFarBehind': ['Behind by {count, plural, one{{count} page} other{{count} pages}} — no pressure, any amount counts.', '?{count} sahypa yzda — howlukmaň, her okalan sahypa hasap.', '{count} sayfa geridesiniz — acele yok, her sayfa sayılır.', '{count, plural, one{Отставание {count} страница} few{Отставание {count} страницы} other{Отставание {count} страниц}} — без спешки, каждая страница на счету.'],
   'khatmExtend': ['Extend by {count, plural, one{{count} day} other{{count} days}}', '?{count} gün uzalt', '{count} gün uzat', '{count, plural, one{Продлить на {count} день} few{Продлить на {count} дня} other{Продлить на {count} дней}}'],
   'expenseAddFirst': ['Tap + to note a purchase', '?Satyn alyş goşmak üçin + basyň', 'Harcama eklemek için + simgesine dokunun', 'Нажмите +, чтобы записать покупку'],
+  'tmOfficialTable': ['Official Turkmenistan timetable', 'Türkmenistanyň resmi namaz wagtlary', 'Türkmenistan resmî vakit cetveli', 'Официальное расписание Туркменистана'],
   'chipDone': ['marked', 'bellendi', 'işaretlendi', 'отмечен'],
   'chipNow': ['now', 'häzir', 'şimdi', 'сейчас'],
   'chipUnmarked': ['not marked yet', '?entek bellenmedi', 'henüz işaretlenmedi', 'ещё не отмечен'],

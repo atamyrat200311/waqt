@@ -2342,6 +2342,9 @@ class AppLocalizationsTr extends AppLocalizations {
   String get expenseAddFirst => 'Harcama eklemek için + simgesine dokunun';
 
   @override
+  String get tmOfficialTable => 'Türkmenistan resmî vakit cetveli';
+
+  @override
   String get chipDone => 'işaretlendi';
 
   @override

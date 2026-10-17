@@ -3888,6 +3888,12 @@ abstract class AppLocalizations {
   /// **'Tap + to note a purchase'**
   String get expenseAddFirst;
 
+  /// No description provided for @tmOfficialTable.
+  ///
+  /// In en, this message translates to:
+  /// **'Official Turkmenistan timetable'**
+  String get tmOfficialTable;
+
   /// No description provided for @chipDone.
   ///
   /// In en, this message translates to:

@@ -147,7 +147,7 @@ abstract final class NotificationPlanner {
         out.add(PlannedNotification(
           id: id(),
           kind: NotificationKind.suhoor,
-          at: d.fajr.subtract(Duration(minutes: settings.suhoorMinutes)),
+          at: d.imsak.subtract(Duration(minutes: settings.suhoorMinutes)),
           day: key,
           prayer: Prayer.fajr,
         ));
