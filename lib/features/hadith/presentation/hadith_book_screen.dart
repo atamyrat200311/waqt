@@ -18,6 +18,7 @@ import '../../../shared/widgets/waqt_card.dart';
 import '../../../shared/widgets/waqt_icon.dart';
 import '../application/hadith_providers.dart';
 import '../domain/hadith.dart';
+import '../domain/hadith_section_names.dart';
 import 'hadith_widgets.dart';
 
 /// A collection: chapters (or the full list for 40-hadith books) + search.
@@ -146,7 +147,10 @@ class _HadithBookScreenState extends ConsumerState<HadithBookScreen> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(s.name, style: WaqtType.sans(15.5, weight: 600, color: c.ink)),
+                              Text(
+                                hadithSectionName(book.id, s, l.localeName),
+                                style: WaqtType.sans(15.5, weight: 600, color: c.ink),
+                              ),
                               const SizedBox(height: 2),
                               Text(
                                 l.hadithRange(_n(s.first), _n(s.last)),
@@ -234,7 +238,7 @@ class HadithSectionScreen extends ConsumerWidget {
     final list = e?.inSection(sectionId) ?? const <Hadith>[];
 
     return SubScreen(
-      title: section?.name ?? hadithBookName(l, bookId),
+      title: section == null ? hadithBookName(l, bookId) : hadithSectionName(bookId, section, l.localeName),
       backLabel: hadithBookName(l, bookId),
       slivers: [
         if (e == null)

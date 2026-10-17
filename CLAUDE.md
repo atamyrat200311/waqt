@@ -210,7 +210,9 @@ adhkar reminders, suhoor/iftar reminders.
 - [ ] Verify `assets/library/duas.json`, `names.json`, `guides.json` (Arabic, sources, translations;
       tk strings prefixed "?" in the JSON are flagged for review) and the Turkmen surah meanings in
       `lib/features/quran/domain/surah_names.dart`.
-- [ ] Translate hadith chapter (section) names (English only today) if desired.
+- [ ] Review the tk/tr/ru hadith chapter names in `lib/features/hadith/domain/hadith_section_names.dart`.
+- [ ] Turkmenistan prayer times come from the official table (`tm_wagt_default.json` → `tool/build_tm_times.dart`
+      → `lib/features/prayer/domain/tm_times_data.dart`); regenerate when a new table is published.
 - [ ] Content agent's verification list (duas/guides): sources from Abu Dawud/Tirmidhi/Ibn Majah/
       Nasa'i were written from memory of Ḥiṣn al-Muslim (enter/leave home, toilet, dressing, after
       eating, istiftah, between prostrations, debt, healing ×7, protection ×3, Laylat al-Qadr,
@@ -386,6 +388,17 @@ Review-round decisions (multi-agent UX review, phase 10):
   (rows.dart, > 1.3×) makes `WaqtRow` stack value/controls under the title. Expense deletes have
   undo. Hadith editions/search indexes are autoDispose with a 2-minute keep-alive (widget tests
   pump 3 minutes after unmounting so the grace timer fires).
+
+Turkmenistan prayer times: `TmTable` (`features/prayer/domain/tm_times.dart`) — static official
+table, 5 cities (Ashgabat, Balkanabat, Daşoguz, Türkmenabat, Mary) × 366 rows (leap-year order,
+same day/month every year) × imsak/fajr/sunrise/dhuhr/asr/maghrib/isha in local minutes. Used by
+`PrayerEngine` instead of adhan when the zone is Asia/Ashgabat and the point is inside the country
+(nearest city); method/madhab don't apply (Settings shows "Official Turkmenistan timetable"),
+mosque offsets still do. `PrayerDay.imsak` (= Fajr elsewhere) drives suhoor times.
+
+Hadith language: chapter names are translated by `hadithSectionName()` (app language). Hadith of
+the day: English = Nawawi + Qudsi, Turkish = Nawawi, Russian/Turkmen = `assets/hadith/daily_rus.json.gz`
+(448 short Bukhari hadiths, built by `tool/build_daily_hadith.dart` from the bundled editions).
 
 Screenshots: `WAQT_SCREENSHOTS=1 flutter test test/screenshots` (now incl. `full_*` long
 pages and a `review_*` set in tk/ru). `shoot(..., height:, preload:)` helpers.

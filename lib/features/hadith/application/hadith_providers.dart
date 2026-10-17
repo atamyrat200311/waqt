@@ -64,13 +64,33 @@ class DailyHadith {
   final Hadith? arabic;
 }
 
+/// Today's hadith in the reader's language: Nawawi 40 + Qudsi 40 in English,
+/// Nawawi 40 in Turkish, and a pool of short Bukhari hadiths in Russian (also
+/// Turkmen), where neither 40-hadith collection is translated.
 final hadithOfDayProvider = FutureProvider<DailyHadith?>((ref) async {
   final day = ref.watch(todayKeyProvider).date;
   final pref = ref.watch(hadithLanguageProvider);
-  final nawawi = await ref.watch(hadithEditionProvider(('nawawi', HadithBooks.languageFor(HadithBooks.nawawi, pref))).future);
-  final qudsi = await ref.watch(hadithEditionProvider(('qudsi', HadithBooks.languageFor(HadithBooks.qudsi, pref))).future);
-  final pick = hadithOfDay(day, nawawiCount: nawawi.hadiths.length, qudsiCount: qudsi.hadiths.length);
-  final edition = pick.book == 'nawawi' ? nawawi : qudsi;
+  final hasNawawi = HadithBooks.nawawi.languages.contains(pref);
+  if (!hasNawawi && pref == 'rus') {
+    final j = (await loadGzJson('assets/hadith/daily_rus.json.gz'))! as Map<String, Object?>;
+    final pool = (j['h']! as List).cast<List<Object?>>();
+    if (pool.isEmpty) return null;
+    final n = DateTime.utc(day.year, day.month, day.day).millisecondsSinceEpoch ~/ Duration.millisecondsPerDay;
+    final e = pool[n % pool.length];
+    final number = e[0]! as num;
+    final section = (e[1] as num?)?.toInt() ?? 0;
+    return DailyHadith(
+      HadithBooks.bukhari,
+      Hadith(number, e[2]! as String, '', section),
+      Hadith(number, e[3]! as String, '', section),
+    );
+  }
+  final lang = hasNawawi ? pref : 'eng';
+  final nawawi = await ref.watch(hadithEditionProvider(('nawawi', lang)).future);
+  final withQudsi = HadithBooks.qudsi.languages.contains(lang);
+  final qudsi = withQudsi ? await ref.watch(hadithEditionProvider(('qudsi', lang)).future) : null;
+  final pick = hadithOfDay(day, nawawiCount: nawawi.hadiths.length, qudsiCount: qudsi?.hadiths.length ?? 0);
+  final edition = pick.book == 'nawawi' ? nawawi : qudsi!;
   final h = edition.byNumber(pick.number) ?? edition.hadiths.first;
   final ar = await ref.watch(hadithEditionProvider((pick.book, 'ara')).future);
   return DailyHadith(edition.book, h, ar.byNumber(h.number));
