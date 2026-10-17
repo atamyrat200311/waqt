@@ -3102,6 +3102,18 @@ abstract class AppLocalizations {
   /// **'Translation'**
   String get hadithTranslation;
 
+  /// No description provided for @quranMushafStyle.
+  ///
+  /// In en, this message translates to:
+  /// **'Mushaf style'**
+  String get quranMushafStyle;
+
+  /// No description provided for @quranMushafStyleSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Parchment page, 15-line Madani layout (page view), pink “Allah”, gold verse markers'**
+  String get quranMushafStyleSub;
+
   /// No description provided for @quranTajweed.
   ///
   /// In en, this message translates to:

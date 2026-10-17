@@ -404,6 +404,14 @@ Tajweed colours: `ReaderPrefs.tajweed` (reader settings toggle). `assets/quran/a
 `features/quran/domain/tajweed.dart` parses it, `presentation/tajweed_text.dart` maps rules → colours
 (lightened on dark pages) and tints waqf signs. Same Amiri Quran / Scheherazade fonts as plain text.
 
+Mushaf style: `ReaderPrefs.mushafStyle` (reader settings). Parchment palette (`ReaderPalette.of(mushaf: true)`
+incl. `allah`/`waqf`/`medal*` colours); in page view `presentation/mushaf_page.dart` (`MushafLines`) draws the
+Madani 15-line layout from `assets/quran/mushaf_lines.json.gz` (built by `dart run tool/build_mushaf.dart` from
+quran.com `verses/by_page?mushaf=5`; `domain/mushaf.dart` parses it): one font size per page so the widest
+line fits, full lines justified, short lines centred, "Allah" pink, waqf signs red, gold ayah medallions,
+surah banner inserted before ayah 1. In list view only the palette + Allah/waqf colours apply. Tajweed colours
+take precedence in list view and are not applied in the Mushaf page layout. Amiri Quran font (not KFGQPC).
+
 Hadith language: chapter names are translated by `hadithSectionName()` (app language). Hadith of
 the day: English = Nawawi + Qudsi, Turkish = Nawawi, Russian/Turkmen = `assets/hadith/daily_rus.json.gz`
 (448 short Bukhari hadiths, built by `tool/build_daily_hadith.dart` from the bundled editions).

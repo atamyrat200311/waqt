@@ -1887,6 +1887,13 @@ class AppLocalizationsTk extends AppLocalizations {
   String get hadithTranslation => 'Terjime';
 
   @override
+  String get quranMushafStyle => 'Mushaf görnüşi';
+
+  @override
+  String get quranMushafStyleSub =>
+      'Parşemin sahypa, 15 setirli Medine tertibi (sahypa görnüşi), gülgüne “Alla”, altyn aýat nyşanlary';
+
+  @override
   String get quranTajweed => 'Tejwid reňkleri';
 
   @override

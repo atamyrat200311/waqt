@@ -124,6 +124,12 @@ class _ReaderSettingsState extends ConsumerState<_ReaderSettings> {
                   ),
                 ),
                 ToggleRow(
+                  title: l.quranMushafStyle,
+                  subtitle: l.quranMushafStyleSub,
+                  value: prefs.mushafStyle,
+                  onChanged: (v) => _set((r) => r.copyWith(mushafStyle: v)),
+                ),
+                ToggleRow(
                   title: l.quranTajweed,
                   subtitle: l.quranTajweedSub,
                   value: prefs.tajweed,

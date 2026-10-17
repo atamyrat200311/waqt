@@ -8,6 +8,7 @@ import '../../../data/repositories/bookmark_repository.dart';
 import '../../../data/repositories/quran_repository.dart';
 import '../../../data/settings/settings_controller.dart';
 import '../../prayer/application/prayer_providers.dart';
+import '../domain/mushaf.dart';
 import '../domain/quran.dart';
 import '../domain/translations.dart';
 
@@ -16,6 +17,11 @@ final quranArabicProvider = FutureProvider<List<String>>((ref) => loadGzStrings(
 
 final quranTajweedProvider =
     FutureProvider<List<String>>((ref) => loadGzStrings('assets/quran/ar_tajweed.json.gz'));
+
+/// Madani Mushaf line layout (604 pages), for the Mushaf style.
+final mushafPagesProvider = FutureProvider<List<List<MushafLine>>>(
+  (ref) async => parseMushaf(await loadGzJson('assets/quran/mushaf_lines.json.gz')),
+);
 
 final quranTranslitProvider = FutureProvider<List<String>>((ref) => loadGzStrings('assets/quran/translit.json.gz'));
 

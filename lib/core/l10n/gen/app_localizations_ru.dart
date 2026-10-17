@@ -1957,6 +1957,13 @@ class AppLocalizationsRu extends AppLocalizations {
   String get hadithTranslation => 'Перевод';
 
   @override
+  String get quranMushafStyle => 'Стиль мусхафа';
+
+  @override
+  String get quranMushafStyleSub =>
+      'Пергаментная страница, 15 строк (режим страниц), розовое «Аллах», золотые знаки аятов';
+
+  @override
   String get quranTajweed => 'Цвета таджвида';
 
   @override

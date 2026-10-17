@@ -500,6 +500,8 @@
   "hadithSearchAllHint": "Tüm külliyatlarda kelime",
   "hadithShowArabic": "Arapça metni göster",
   "hadithTranslation": "Tercüme",
+  "quranMushafStyle": "Mushaf görünümü",
+  "quranMushafStyleSub": "Parşömen sayfa, 15 satırlı Medine düzeni (sayfa görünümü), pembe “Allah”, altın ayet işaretleri",
   "quranTajweed": "Tecvid renkleri",
   "quranTajweedSub": "Okuma kurallarını renklendirir (gunne, med, kalkale…)",
   "searchResultsFor": "“{query}” için sonuçlar",

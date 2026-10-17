@@ -1326,6 +1326,8 @@
   "hadithSearchAllHint": "Words in any collection",
   "hadithShowArabic": "Show Arabic text",
   "hadithTranslation": "Translation",
+  "quranMushafStyle": "Mushaf style",
+  "quranMushafStyleSub": "Parchment page, 15-line Madani layout (page view), pink “Allah”, gold verse markers",
   "quranTajweed": "Tajweed colors",
   "quranTajweedSub": "Colors the recitation rules (ghunna, madd, qalqala…)",
   "searchResultsFor": "Results for “{query}”",

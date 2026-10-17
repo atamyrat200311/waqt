@@ -26,6 +26,7 @@ import '../application/read_tracker.dart';
 import '../domain/quran.dart';
 import '../domain/quran_index_data.dart';
 import 'ayah_actions.dart';
+import 'mushaf_page.dart';
 import 'reader_settings_sheet.dart';
 import 'reader_widgets.dart';
 import 'tajweed_text.dart';
@@ -294,7 +295,7 @@ class _QuranReaderScreenState extends ConsumerState<QuranReaderScreen> with Widg
     ref.listen(settingsProvider.select((s) => s.reader.keepAwake), (_, on) {
       (on ? WakelockPlus.enable() : WakelockPlus.disable()).catchError((Object _) {});
     });
-    final palette = ReaderPalette.of(context, sepia: prefs.sepia);
+    final palette = ReaderPalette.of(context, sepia: prefs.sepia, mushaf: prefs.mushafStyle);
     final texts = ref.watch(quranTextsProvider);
     final top = MediaQuery.paddingOf(context).top;
     final bottom = MediaQuery.paddingOf(context).bottom;
@@ -788,7 +789,7 @@ class _MushafPagerState extends State<_MushafPager> {
   );
 }
 
-class _MushafPage extends StatefulWidget {
+class _MushafPage extends ConsumerStatefulWidget {
   const _MushafPage({
     required this.page,
     required this.texts,
@@ -808,10 +809,10 @@ class _MushafPage extends StatefulWidget {
   final ValueChanged<int> onAyah;
 
   @override
-  State<_MushafPage> createState() => _MushafPageState();
+  ConsumerState<_MushafPage> createState() => _MushafPageState();
 }
 
-class _MushafPageState extends State<_MushafPage> {
+class _MushafPageState extends ConsumerState<_MushafPage> {
   final _recognizers = <int, LongPressGestureRecognizer>{};
 
   LongPressGestureRecognizer _recognizer(int index) =>
@@ -851,32 +852,52 @@ class _MushafPageState extends State<_MushafPage> {
       spans = [];
     }
 
-    for (var i = start; i <= end; i++) {
-      final r = AyahRef.fromIndex(i);
-      if (r.ayah == 1) {
-        flush();
-        children.add(
-          SurahHeader(
-            surah: SurahInfo(r.surah),
+    final mushaf = prefs.mushafStyle ? ref.watch(mushafPagesProvider).value : null;
+    if (mushaf != null) {
+      children.add(
+        MushafLines(
+          page: widget.page,
+          lines: mushaf[widget.page - 1],
+          prefs: prefs,
+          palette: p,
+          onAyah: widget.onAyah,
+          surahHeader: (surah) => SurahHeader(
+            surah: SurahInfo(surah),
             palette: p,
             basmala: widget.texts.arabic.first,
             prefs: prefs,
             compact: true,
           ),
-        );
+        ),
+      );
+    } else {
+      for (var i = start; i <= end; i++) {
+        final r = AyahRef.fromIndex(i);
+        if (r.ayah == 1) {
+          flush();
+          children.add(
+            SurahHeader(
+              surah: SurahInfo(r.surah),
+              palette: p,
+              basmala: widget.texts.arabic.first,
+              prefs: prefs,
+              compact: true,
+            ),
+          );
+        }
+        final tagged = widget.texts.tajweed?[i];
+        spans
+          ..add(tagged == null
+              ? TextSpan(text: widget.texts.arabic[i], recognizer: _recognizer(i))
+              : TextSpan(children: tajweedSpans(tagged, dark: isDarkPalette(p), recognizer: _recognizer(i))))
+          ..add(TextSpan(text: ' ۝${arabicDigits(r.ayah)} ', style: markStyle));
       }
-      final tagged = widget.texts.tajweed?[i];
-      spans
-        ..add(tagged == null
-            ? TextSpan(text: widget.texts.arabic[i], recognizer: _recognizer(i))
-            : TextSpan(children: tajweedSpans(tagged, dark: isDarkPalette(p), recognizer: _recognizer(i))))
-        ..add(TextSpan(text: ' ۝${arabicDigits(r.ayah)} ', style: markStyle));
+      flush();
     }
-    flush();
 
     final first = AyahRef.fromIndex(start);
     return SingleChildScrollView(
-      padding: EdgeInsets.fromLTRB(18, widget.topPadding, 18, widget.bottomPadding),
+      padding: EdgeInsets.fromLTRB(mushaf != null ? 8 : 18, widget.topPadding, mushaf != null ? 8 : 18, widget.bottomPadding),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [

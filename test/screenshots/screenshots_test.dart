@@ -240,6 +240,12 @@ void main() {
     const tajweedOn = AppSettings(onboardingDone: true, reader: ReaderPrefs(tajweed: true, showTranslation: false));
     await shoot(t, 'quran_reader_tajweed', settings: tajweedOn, location: '/read?i=261', dark: true);
     await shoot(t, 'quran_reader_tajweed_light', settings: tajweedOn, location: '/read?i=261');
+    const mushafOn = AppSettings(onboardingDone: true, reader: ReaderPrefs(mushafStyle: true, arabicSize: 30));
+    await shoot(t, 'quran_mushaf_p42', settings: mushafOn, location: '/read?i=261&mode=page', preload: (c) => c.read(mushafPagesProvider.future));
+    await shoot(t, 'quran_mushaf_p42_dark', settings: mushafOn, location: '/read?i=261&mode=page', preload: (c) => c.read(mushafPagesProvider.future), dark: true);
+    await shoot(t, 'quran_mushaf_p1', settings: mushafOn, location: '/read?i=0&mode=page', preload: (c) => c.read(mushafPagesProvider.future));
+    await shoot(t, 'quran_mushaf_p582', settings: mushafOn, location: '/read?i=6221&mode=page', preload: (c) => c.read(mushafPagesProvider.future));
+    await shoot(t, 'quran_mushaf_list', settings: mushafOn, location: '/read?i=261');
     await shoot(t, 'quran_reader_tajweed_page', settings: tajweedOn, location: '/read?i=261&mode=page', dark: true);
     await shoot(t, 'quran_khatm_setup', location: '/quran/khatm');
     await shoot(t, 'quran_hifz', location: '/quran/memorize');

@@ -500,6 +500,8 @@
   "hadithSearchAllHint": "Слова во всех сборниках",
   "hadithShowArabic": "Показывать арабский текст",
   "hadithTranslation": "Перевод",
+  "quranMushafStyle": "Стиль мусхафа",
+  "quranMushafStyleSub": "Пергаментная страница, 15 строк (режим страниц), розовое «Аллах», золотые знаки аятов",
   "quranTajweed": "Цвета таджвида",
   "quranTajweedSub": "Выделяет правила чтения цветом (гунна, мадд, калькаля…)",
   "searchResultsFor": "Результаты по запросу «{query}»",

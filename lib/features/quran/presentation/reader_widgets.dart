@@ -9,6 +9,7 @@ import '../../../data/settings/app_settings.dart';
 import '../../../shared/widgets/ornaments.dart';
 import '../../../shared/widgets/waqt_icon.dart';
 import '../domain/quran.dart';
+import 'mushaf_page.dart';
 import 'tajweed_text.dart';
 
 /// Colours for the reading surfaces (normal or warm "paper").
@@ -23,6 +24,11 @@ class ReaderPalette {
     required this.accent,
     required this.brass,
     required this.highlight,
+    this.allah = const Color(0xFFE0409A),
+    this.waqf = const Color(0xFFC62828),
+    this.medal = const Color(0xFFC99A47),
+    this.medalRing = const Color(0xFF9A6F25),
+    this.medalInk = const Color(0xFF2E2108),
   });
 
   final Color bg;
@@ -34,8 +40,43 @@ class ReaderPalette {
   final Color brass;
   final Color highlight;
 
-  factory ReaderPalette.of(BuildContext context, {required bool sepia}) {
+  /// Mushaf style: the name of Allah, pause signs and ayah medallions.
+  final Color allah;
+  final Color waqf;
+  final Color medal;
+  final Color medalRing;
+  final Color medalInk;
+
+  factory ReaderPalette.of(BuildContext context, {required bool sepia, bool mushaf = false}) {
     final c = context.colors;
+    if (mushaf) {
+      return c.isDark
+          ? const ReaderPalette(
+              bg: Color(0xFF16150E),
+              card: Color(0xFF1F1D13),
+              ink: Color(0xFFEFE8CE),
+              muted: Color(0xFFB5AE8A),
+              hairline: Color(0xFF353120),
+              accent: Color(0xFFE0BD78),
+              brass: Color(0xFFE0BD78),
+              highlight: Color(0xFF2B2814),
+              allah: Color(0xFFFF7BB8),
+              waqf: Color(0xFFFF8A7A),
+              medal: Color(0xFFB88A3E),
+              medalRing: Color(0xFFE0BD78),
+              medalInk: Color(0xFF16150E),
+            )
+          : const ReaderPalette(
+              bg: Color(0xFFDDD8A5),
+              card: Color(0xFFE6E1B4),
+              ink: Color(0xFF111111),
+              muted: Color(0xFF6B6740),
+              hairline: Color(0xFFC1BB83),
+              accent: Color(0xFF7A5A1E),
+              brass: Color(0xFFB07A2A),
+              highlight: Color(0xFFD0CA8C),
+            );
+    }
     if (!sepia) {
       return ReaderPalette(
         bg: c.bg,
@@ -208,7 +249,14 @@ class AyahTile extends StatelessWidget {
     final sajda = isSajda(index);
     final arabicStyle = WaqtType.quran(prefs.arabicSize, family: quranFamily(prefs), height: 2.05, color: p.ink);
     final arabicText = tajweed == null
-        ? Text(arabic, textAlign: TextAlign.right, textDirection: TextDirection.rtl, style: arabicStyle)
+        ? (prefs.mushafStyle
+            ? Text.rich(
+                TextSpan(children: mushafTextSpans(arabic, p)),
+                textAlign: TextAlign.right,
+                textDirection: TextDirection.rtl,
+                style: arabicStyle,
+              )
+            : Text(arabic, textAlign: TextAlign.right, textDirection: TextDirection.rtl, style: arabicStyle))
         : Text.rich(
             TextSpan(children: tajweedSpans(tajweed!, dark: isDarkPalette(p))),
             textAlign: TextAlign.right,

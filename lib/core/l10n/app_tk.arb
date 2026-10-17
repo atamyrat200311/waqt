@@ -692,6 +692,11 @@
   "hadithSearchAllHint": "Ähli ýygyndylarda söz",
   "hadithShowArabic": "Arapça teksti görkez",
   "hadithTranslation": "Terjime",
+  "quranMushafStyle": "Mushaf görnüşi",
+  "quranMushafStyleSub": "Parşemin sahypa, 15 setirli Medine tertibi (sahypa görnüşi), gülgüne “Alla”, altyn aýat nyşanlary",
+  "@quranMushafStyleSub": {
+    "description": "REVIEW"
+  },
   "quranTajweed": "Tejwid reňkleri",
   "quranTajweedSub": "Okaýyş düzgünlerini reňklendirýär (gunna, med, galgala…)",
   "@quranTajweedSub": {

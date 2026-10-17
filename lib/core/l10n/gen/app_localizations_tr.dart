@@ -1889,6 +1889,13 @@ class AppLocalizationsTr extends AppLocalizations {
   String get hadithTranslation => 'Tercüme';
 
   @override
+  String get quranMushafStyle => 'Mushaf görünümü';
+
+  @override
+  String get quranMushafStyleSub =>
+      'Parşömen sayfa, 15 satırlı Medine düzeni (sayfa görünümü), pembe “Allah”, altın ayet işaretleri';
+
+  @override
   String get quranTajweed => 'Tecvid renkleri';
 
   @override

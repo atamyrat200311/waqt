@@ -163,6 +163,8 @@ const Map<String, List<String>> s2 = {
   'hadithSearchAllHint': ['Words in any collection', 'Ähli ýygyndylarda söz', 'Tüm külliyatlarda kelime', 'Слова во всех сборниках'],
   'hadithShowArabic': ['Show Arabic text', 'Arapça teksti görkez', 'Arapça metni göster', 'Показывать арабский текст'],
   'hadithTranslation': ['Translation', 'Terjime', 'Tercüme', 'Перевод'],
+  'quranMushafStyle': ['Mushaf style', 'Mushaf görnüşi', 'Mushaf görünümü', 'Стиль мусхафа'],
+  'quranMushafStyleSub': ['Parchment page, 15-line Madani layout (page view), pink “Allah”, gold verse markers', '?Parşemin sahypa, 15 setirli Medine tertibi (sahypa görnüşi), gülgüne “Alla”, altyn aýat nyşanlary', 'Parşömen sayfa, 15 satırlı Medine düzeni (sayfa görünümü), pembe “Allah”, altın ayet işaretleri', 'Пергаментная страница, 15 строк (режим страниц), розовое «Аллах», золотые знаки аятов'],
   'quranTajweed': ['Tajweed colors', 'Tejwid reňkleri', 'Tecvid renkleri', 'Цвета таджвида'],
   'quranTajweedSub': ['Colors the recitation rules (ghunna, madd, qalqala…)', '?Okaýyş düzgünlerini reňklendirýär (gunna, med, galgala…)', 'Okuma kurallarını renklendirir (gunne, med, kalkale…)', 'Выделяет правила чтения цветом (гунна, мадд, калькаля…)'],
   'searchResultsFor': ['Results for “{query}”', '“{query}” üçin netijeler', '“{query}” için sonuçlar', 'Результаты по запросу «{query}»'],

@@ -1938,6 +1938,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get hadithTranslation => 'Translation';
 
   @override
+  String get quranMushafStyle => 'Mushaf style';
+
+  @override
+  String get quranMushafStyleSub =>
+      'Parchment page, 15-line Madani layout (page view), pink “Allah”, gold verse markers';
+
+  @override
   String get quranTajweed => 'Tajweed colors';
 
   @override
