@@ -199,12 +199,14 @@ adhkar reminders, suhoor/iftar reminders.
 - [ ] Review tk/tr/ru ARB strings marked `"REVIEW"` in their `@` descriptions.
 - [ ] Replace placeholder adhan audio (see "Adhan sound" below).
 - [ ] iOS: install Xcode + CocoaPods (this machine had neither, so iOS was not built here).
-- [ ] iOS widget target (once, in Xcode): File ▸ New ▸ Target ▸ Widget Extension, name `WaqtWidget`,
-      bundle id `tm.ofis.waqt.WaqtWidget`, no Live Activity / no configuration intent, deployment
-      target iOS 16. Delete the generated Swift file, add `ios/WaqtWidget/WaqtWidget.swift` +
-      `Info.plist` to the target, set its entitlements to `ios/WaqtWidget/WaqtWidget.entitlements`.
-      Add the App Group `group.tm.ofis.waqt` capability to Runner (entitlements file already wired)
-      and WaqtWidget in the developer portal.
+- [x] iOS widget target `WaqtWidget` (bundle id `tm.ofis.waqt.WaqtWidget`, iOS 15+) added to
+      Runner.xcodeproj by `tool/ios/add_widget_target.rb` (idempotent; run with
+      `GEM_HOME=$(brew --prefix)/Cellar/cocoapods/<ver>/libexec ruby tool/ios/add_widget_target.rb ios/Runner.xcodeproj`).
+      Embedded via "Embed Foundation Extensions" placed before Flutter's "Thin Binary" phase.
+      Uses `Flutter/Generated.xcconfig` as base config so its version matches the app.
+- [ ] First device build: open Runner.xcworkspace once, select the WaqtWidget target ▸ Signing &
+      Capabilities and let automatic signing register `tm.ofis.waqt.WaqtWidget` + App Group
+      `group.tm.ofis.waqt` (team QGWL53YZV9) for both Runner and WaqtWidget.
 - [ ] Android: run `flutter build apk` once — Glance/Compose Gradle changes and the widget Kotlin
       were written without network access to Google's Maven (dl.google.com blocked here).
 - [ ] Verify `assets/library/duas.json`, `names.json`, `guides.json` (Arabic, sources, translations;
@@ -395,6 +397,12 @@ same day/month every year) × imsak/fajr/sunrise/dhuhr/asr/maghrib/isha in local
 `PrayerEngine` instead of adhan when the zone is Asia/Ashgabat and the point is inside the country
 (nearest city); method/madhab don't apply (Settings shows "Official Turkmenistan timetable"),
 mosque offsets still do. `PrayerDay.imsak` (= Fajr elsewhere) drives suhoor times.
+
+Tajweed colours: `ReaderPrefs.tajweed` (reader settings toggle). `assets/quran/ar_tajweed.json.gz`
+(built by `dart run tool/build_tajweed.dart` from quran.com `uthmani_tajweed`, 6236 ayahs with
+`<tajweed class=…>` markup) is loaded only while the toggle is on (`QuranTexts.tajweed`);
+`features/quran/domain/tajweed.dart` parses it, `presentation/tajweed_text.dart` maps rules → colours
+(lightened on dark pages) and tints waqf signs. Same Amiri Quran / Scheherazade fonts as plain text.
 
 Hadith language: chapter names are translated by `hadithSectionName()` (app language). Hadith of
 the day: English = Nawawi + Qudsi, Turkish = Nawawi, Russian/Turkmen = `assets/hadith/daily_rus.json.gz`

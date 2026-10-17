@@ -1889,6 +1889,23 @@ class AppLocalizationsTr extends AppLocalizations {
   String get hadithTranslation => 'Tercüme';
 
   @override
+  String get quranTajweed => 'Tecvid renkleri';
+
+  @override
+  String get quranTajweedSub =>
+      'Okuma kurallarını renklendirir (gunne, med, kalkale…)';
+
+  @override
+  String searchResultsFor(String query) {
+    return '“$query” için sonuçlar';
+  }
+
+  @override
+  String searchNoneFor(String query) {
+    return '“$query” için sonuç bulunamadı';
+  }
+
+  @override
   String get hadithNoResults => 'Hadis bulunamadı.';
 
   @override

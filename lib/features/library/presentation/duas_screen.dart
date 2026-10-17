@@ -105,6 +105,16 @@ class _DuasScreenState extends ConsumerState<DuasScreen> {
             ),
           ),
         ),
+        if (_query.trim().isNotEmpty)
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(Gap.title, 12, Gap.title, 0),
+              child: Text(
+                list.isEmpty ? l.searchNoneFor(_query.trim()) : l.searchResultsFor(_query.trim()),
+                style: WaqtType.sans(14, weight: 600, color: c.ink),
+              ),
+            ),
+          ),
         if (list.isEmpty)
           SliverToBoxAdapter(
             child: EmptyState(

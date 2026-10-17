@@ -14,6 +14,9 @@ import '../domain/translations.dart';
 /// Uthmani text, 6236 ayahs.
 final quranArabicProvider = FutureProvider<List<String>>((ref) => loadGzStrings('assets/quran/ar.json.gz'));
 
+final quranTajweedProvider =
+    FutureProvider<List<String>>((ref) => loadGzStrings('assets/quran/ar_tajweed.json.gz'));
+
 final quranTranslitProvider = FutureProvider<List<String>>((ref) => loadGzStrings('assets/quran/translit.json.gz'));
 
 final quranTranslationTextProvider = FutureProvider.family<List<String>, String>(
@@ -30,8 +33,17 @@ final activeTranslationProvider = Provider<QuranTranslation>((ref) {
 /// Everything the reader needs, loaded together.
 @immutable
 class QuranTexts {
-  const QuranTexts({required this.arabic, required this.translit, required this.translation, this.translationCredit});
+  const QuranTexts({
+    required this.arabic,
+    required this.translit,
+    required this.translation,
+    this.translationCredit,
+    this.tajweed,
+  });
   final List<String> arabic;
+
+  /// Same ayahs with tajweed markup; null unless the reader turned it on.
+  final List<String>? tajweed;
   final List<String> translit;
   final List<String> translation;
 
@@ -41,12 +53,20 @@ class QuranTexts {
 
 final quranTextsProvider = FutureProvider<QuranTexts>((ref) async {
   final t = ref.watch(activeTranslationProvider);
+  final tajweed = ref.watch(settingsProvider.select((s) => s.reader.tajweed));
   final results = await Future.wait([
     ref.watch(quranArabicProvider.future),
     ref.watch(quranTranslitProvider.future),
     ref.watch(quranTranslationTextProvider(t.id).future),
+    if (tajweed) ref.watch(quranTajweedProvider.future),
   ]);
-  return QuranTexts(arabic: results[0], translit: results[1], translation: results[2], translationCredit: t.author);
+  return QuranTexts(
+    arabic: results[0],
+    translit: results[1],
+    translation: results[2],
+    translationCredit: t.author,
+    tajweed: tajweed ? results[3] : null,
+  );
 });
 
 /// Normalized copies for search (built in a background isolate).

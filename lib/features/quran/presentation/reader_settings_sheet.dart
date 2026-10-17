@@ -123,6 +123,12 @@ class _ReaderSettingsState extends ConsumerState<_ReaderSettings> {
                     ],
                   ),
                 ),
+                ToggleRow(
+                  title: l.quranTajweed,
+                  subtitle: l.quranTajweedSub,
+                  value: prefs.tajweed,
+                  onChanged: (v) => _set((r) => r.copyWith(tajweed: v)),
+                ),
               ],
             ),
           ),

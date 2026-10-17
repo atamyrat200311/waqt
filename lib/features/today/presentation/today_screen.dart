@@ -82,7 +82,7 @@ class _TodayScreenState extends ConsumerState<TodayScreen> {
       backgroundColor: c.bg,
       floatingActionButton: cupertino
           ? null
-          : _AddFab(label: l.homeAddExpenseShort, onPressed: () => showExpenseSheet(context)),
+          : _AddFab(label: l.homeAddExpense, onPressed: () => showExpenseSheet(context)),
       body: CustomScrollView(
         slivers: [
           SliverToBoxAdapter(
@@ -151,11 +151,11 @@ class _Header extends ConsumerWidget {
                   Flexible(child: chip),
                   const SizedBox(width: 12),
                   const Spacer(),
-                  CircleIconButton(
+                  PillButton(
+                    label: l.homeAddExpense,
                     icon: WaqtIcons.plus,
-                    semanticLabel: l.homeAddExpense,
-                    background: c.card,
-                    border: true,
+                    style: PillStyle.mint,
+                    fontSize: 14.5,
                     onPressed: () => showExpenseSheet(context),
                   ),
                 ],

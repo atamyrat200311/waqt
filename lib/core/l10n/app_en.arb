@@ -1326,6 +1326,24 @@
   "hadithSearchAllHint": "Words in any collection",
   "hadithShowArabic": "Show Arabic text",
   "hadithTranslation": "Translation",
+  "quranTajweed": "Tajweed colors",
+  "quranTajweedSub": "Colors the recitation rules (ghunna, madd, qalqala…)",
+  "searchResultsFor": "Results for “{query}”",
+  "@searchResultsFor": {
+    "placeholders": {
+      "query": {
+        "type": "String"
+      }
+    }
+  },
+  "searchNoneFor": "No results for “{query}”",
+  "@searchNoneFor": {
+    "placeholders": {
+      "query": {
+        "type": "String"
+      }
+    }
+  },
   "hadithNoResults": "No hadith found.",
   "hadithFallback": "Not available in your language — showing English.",
   "hadithRange": "Hadith {from}–{to}",

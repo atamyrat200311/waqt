@@ -114,8 +114,10 @@ class _HadithBookScreenState extends ConsumerState<HadithBookScreen> {
       if (hits == null) {
         slivers.add(const SliverToBoxAdapter(child: HadithLoading()));
       } else if (hits.isEmpty) {
+        slivers.add(SliverToBoxAdapter(child: _resultsHeader(c, l.searchNoneFor(_query))));
         slivers.add(SliverToBoxAdapter(child: EmptyState(icon: WaqtIcons.search, text: l.hadithNoResults)));
       } else {
+        slivers.add(SliverToBoxAdapter(child: _resultsHeader(c, '${l.searchResultsFor(_query)} · ${l.hadithCount(hits.length)}')));
         slivers.add(_hadithList(book.id, hits, arabic, pref, highlight: _query));
       }
     } else if (e.flat) {
@@ -148,7 +150,7 @@ class _HadithBookScreenState extends ConsumerState<HadithBookScreen> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                hadithSectionName(book.id, s, l.localeName),
+                                hadithSectionName(book.id, s, hadithNameLanguage(lang)),
                                 style: WaqtType.sans(15.5, weight: 600, color: c.ink),
                               ),
                               const SizedBox(height: 2),
@@ -197,6 +199,11 @@ class _HadithBookScreenState extends ConsumerState<HadithBookScreen> {
     );
   }
 
+  Widget _resultsHeader(WaqtColors c, String text) => Padding(
+        padding: const EdgeInsets.fromLTRB(Gap.title, 0, Gap.title, 10),
+        child: Text(text, style: WaqtType.sans(14, weight: 600, color: c.ink)),
+      );
+
   String _n(num v) => v == v.roundToDouble() ? '${v.toInt()}' : '$v';
 
   Widget _hadithList(String bookId, List<Hadith> list, HadithEdition? arabic, HadithEdition? pref, {String? highlight}) =>
@@ -238,7 +245,7 @@ class HadithSectionScreen extends ConsumerWidget {
     final list = e?.inSection(sectionId) ?? const <Hadith>[];
 
     return SubScreen(
-      title: section == null ? hadithBookName(l, bookId) : hadithSectionName(bookId, section, l.localeName),
+      title: section == null ? hadithBookName(l, bookId) : hadithSectionName(bookId, section, hadithNameLanguage(lang)),
       backLabel: hadithBookName(l, bookId),
       slivers: [
         if (e == null)

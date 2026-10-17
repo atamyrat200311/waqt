@@ -3102,6 +3102,30 @@ abstract class AppLocalizations {
   /// **'Translation'**
   String get hadithTranslation;
 
+  /// No description provided for @quranTajweed.
+  ///
+  /// In en, this message translates to:
+  /// **'Tajweed colors'**
+  String get quranTajweed;
+
+  /// No description provided for @quranTajweedSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Colors the recitation rules (ghunna, madd, qalqala…)'**
+  String get quranTajweedSub;
+
+  /// No description provided for @searchResultsFor.
+  ///
+  /// In en, this message translates to:
+  /// **'Results for “{query}”'**
+  String searchResultsFor(String query);
+
+  /// No description provided for @searchNoneFor.
+  ///
+  /// In en, this message translates to:
+  /// **'No results for “{query}”'**
+  String searchNoneFor(String query);
+
   /// No description provided for @hadithNoResults.
   ///
   /// In en, this message translates to:

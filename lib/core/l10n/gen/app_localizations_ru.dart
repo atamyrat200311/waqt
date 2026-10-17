@@ -1957,6 +1957,23 @@ class AppLocalizationsRu extends AppLocalizations {
   String get hadithTranslation => 'Перевод';
 
   @override
+  String get quranTajweed => 'Цвета таджвида';
+
+  @override
+  String get quranTajweedSub =>
+      'Выделяет правила чтения цветом (гунна, мадд, калькаля…)';
+
+  @override
+  String searchResultsFor(String query) {
+    return 'Результаты по запросу «$query»';
+  }
+
+  @override
+  String searchNoneFor(String query) {
+    return 'По запросу «$query» ничего не найдено';
+  }
+
+  @override
   String get hadithNoResults => 'Хадисы не найдены.';
 
   @override

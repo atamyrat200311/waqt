@@ -3,7 +3,15 @@
 
 import 'hadith.dart';
 
-/// Chapter name in the app language (English when no translation exists).
+/// Language code (`en`/`tr`/`ru`) of the chapter names matching a hadith
+/// edition language, so chapter titles always match the text shown.
+String hadithNameLanguage(String editionLang) => switch (editionLang) {
+      'tur' => 'tr',
+      'rus' => 'ru',
+      _ => 'en',
+    };
+
+/// Chapter name in [language] (English when no translation exists).
 String hadithSectionName(String bookId, HadithSection s, String language) {
   final i = switch (language) {
     'tk' => 0,

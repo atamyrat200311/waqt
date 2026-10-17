@@ -1938,6 +1938,23 @@ class AppLocalizationsEn extends AppLocalizations {
   String get hadithTranslation => 'Translation';
 
   @override
+  String get quranTajweed => 'Tajweed colors';
+
+  @override
+  String get quranTajweedSub =>
+      'Colors the recitation rules (ghunna, madd, qalqala…)';
+
+  @override
+  String searchResultsFor(String query) {
+    return 'Results for “$query”';
+  }
+
+  @override
+  String searchNoneFor(String query) {
+    return 'No results for “$query”';
+  }
+
+  @override
   String get hadithNoResults => 'No hadith found.';
 
   @override

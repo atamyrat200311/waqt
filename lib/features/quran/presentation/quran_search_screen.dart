@@ -141,9 +141,20 @@ class _QuranSearchScreenState extends ConsumerState<QuranSearchScreen> {
               padding: const EdgeInsets.fromLTRB(Gap.title, 18, Gap.title, 8),
               child: index.isLoading
                   ? const LinearProgressIndicator()
-                  : Text(
-                      hits.isEmpty && surahs.isEmpty ? l.quranNoResults : hits.length >= 200 ? '${l.quranResults(200)}+' : l.quranResults(hits.length),
-                      style: WaqtType.kicker(color: c.muted, size: 12),
+                  : Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          hits.isEmpty && surahs.isEmpty
+                              ? l.searchNoneFor(_query)
+                              : '${l.searchResultsFor(_query)} · ${hits.length >= 200 ? '${l.quranResults(200)}+' : l.quranResults(hits.length)}',
+                          style: WaqtType.sans(14, weight: 600, color: c.ink),
+                        ),
+                        if (hits.isEmpty && surahs.isEmpty) ...[
+                          const SizedBox(height: 4),
+                          Text(l.quranNoResults, style: WaqtType.sans(13, color: c.muted)),
+                        ],
+                      ],
                     ),
             ),
           ),

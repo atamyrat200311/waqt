@@ -692,6 +692,13 @@
   "hadithSearchAllHint": "Ähli ýygyndylarda söz",
   "hadithShowArabic": "Arapça teksti görkez",
   "hadithTranslation": "Terjime",
+  "quranTajweed": "Tejwid reňkleri",
+  "quranTajweedSub": "Okaýyş düzgünlerini reňklendirýär (gunna, med, galgala…)",
+  "@quranTajweedSub": {
+    "description": "REVIEW"
+  },
+  "searchResultsFor": "“{query}” üçin netijeler",
+  "searchNoneFor": "“{query}” boýunça hiç zat tapylmady",
   "hadithNoResults": "Hadys tapylmady.",
   "hadithFallback": "Siziň diliňizde ýok — iňlisçe görkezilýär.",
   "@hadithFallback": {

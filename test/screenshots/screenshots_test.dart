@@ -237,6 +237,10 @@ void main() {
     await shoot(t, 'quran_reader_fatiha_dark', location: '/read?i=0', dark: true);
     await shoot(t, 'quran_reader_page', location: '/read?i=261&mode=page');
     await shoot(t, 'quran_reader_hifz', location: '/read?i=6221&hifz=112');
+    const tajweedOn = AppSettings(onboardingDone: true, reader: ReaderPrefs(tajweed: true, showTranslation: false));
+    await shoot(t, 'quran_reader_tajweed', settings: tajweedOn, location: '/read?i=261', dark: true);
+    await shoot(t, 'quran_reader_tajweed_light', settings: tajweedOn, location: '/read?i=261');
+    await shoot(t, 'quran_reader_tajweed_page', settings: tajweedOn, location: '/read?i=261&mode=page', dark: true);
     await shoot(t, 'quran_khatm_setup', location: '/quran/khatm');
     await shoot(t, 'quran_hifz', location: '/quran/memorize');
     await shoot(t, 'quran_search', location: '/quran/search', preload: (c) => c.read(quranSearchIndexProvider.future), act: (t) async {

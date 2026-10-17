@@ -9,6 +9,7 @@ import '../../../data/settings/app_settings.dart';
 import '../../../shared/widgets/ornaments.dart';
 import '../../../shared/widgets/waqt_icon.dart';
 import '../domain/quran.dart';
+import 'tajweed_text.dart';
 
 /// Colours for the reading surfaces (normal or warm "paper").
 @immutable
@@ -70,6 +71,8 @@ class ReaderPalette {
           );
   }
 }
+
+bool isDarkPalette(ReaderPalette p) => ThemeData.estimateBrightnessForColor(p.bg) == Brightness.dark;
 
 String quranFamily(ReaderPrefs p) => p.quranFont == 'scheherazade' ? WaqtType.quranAltFamily : WaqtType.quranFamily;
 
@@ -164,6 +167,7 @@ class AyahTile extends StatelessWidget {
     super.key,
     required this.index,
     required this.arabic,
+    this.tajweed,
     required this.translit,
     required this.translation,
     required this.prefs,
@@ -179,6 +183,9 @@ class AyahTile extends StatelessWidget {
 
   final int index;
   final String arabic;
+
+  /// Tajweed markup of [arabic] (see [parseTajweed]); null = plain text.
+  final String? tajweed;
   final String? translit;
   final String? translation;
   final ReaderPrefs prefs;
@@ -199,12 +206,15 @@ class AyahTile extends StatelessWidget {
     final p = palette;
     final ref = AyahRef.fromIndex(index);
     final sajda = isSajda(index);
-    final arabicText = Text(
-      arabic,
-      textAlign: TextAlign.right,
-      textDirection: TextDirection.rtl,
-      style: WaqtType.quran(prefs.arabicSize, family: quranFamily(prefs), height: 2.05, color: p.ink),
-    );
+    final arabicStyle = WaqtType.quran(prefs.arabicSize, family: quranFamily(prefs), height: 2.05, color: p.ink);
+    final arabicText = tajweed == null
+        ? Text(arabic, textAlign: TextAlign.right, textDirection: TextDirection.rtl, style: arabicStyle)
+        : Text.rich(
+            TextSpan(children: tajweedSpans(tajweed!, dark: isDarkPalette(p))),
+            textAlign: TextAlign.right,
+            textDirection: TextDirection.rtl,
+            style: arabicStyle,
+          );
 
     return Semantics(
       label: '${l.quranAyahN('${ref.ayah}')}. ${translation ?? ''}',

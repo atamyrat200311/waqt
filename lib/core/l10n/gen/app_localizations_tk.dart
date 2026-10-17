@@ -1887,6 +1887,23 @@ class AppLocalizationsTk extends AppLocalizations {
   String get hadithTranslation => 'Terjime';
 
   @override
+  String get quranTajweed => 'Tejwid reňkleri';
+
+  @override
+  String get quranTajweedSub =>
+      'Okaýyş düzgünlerini reňklendirýär (gunna, med, galgala…)';
+
+  @override
+  String searchResultsFor(String query) {
+    return '“$query” üçin netijeler';
+  }
+
+  @override
+  String searchNoneFor(String query) {
+    return '“$query” boýunça hiç zat tapylmady';
+  }
+
+  @override
   String get hadithNoResults => 'Hadys tapylmady.';
 
   @override

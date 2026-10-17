@@ -28,6 +28,7 @@ import '../domain/quran_index_data.dart';
 import 'ayah_actions.dart';
 import 'reader_settings_sheet.dart';
 import 'reader_widgets.dart';
+import 'tajweed_text.dart';
 
 /// Opens the full-screen reader at a global ayah index.
 void openReader(BuildContext context, int index, {bool page = false, int? hifzSurah}) {
@@ -456,6 +457,7 @@ class _QuranReaderScreenState extends ConsumerState<QuranReaderScreen> with Widg
         AyahTile(
           index: index,
           arabic: t.arabic[index],
+          tajweed: t.tajweed?[index],
           translit: prefs.showTranslit ? t.translit[index] : null,
           translation: prefs.showTranslation ? t.translation[index] : null,
           prefs: prefs,
@@ -863,8 +865,11 @@ class _MushafPageState extends State<_MushafPage> {
           ),
         );
       }
+      final tagged = widget.texts.tajweed?[i];
       spans
-        ..add(TextSpan(text: widget.texts.arabic[i], recognizer: _recognizer(i)))
+        ..add(tagged == null
+            ? TextSpan(text: widget.texts.arabic[i], recognizer: _recognizer(i))
+            : TextSpan(children: tajweedSpans(tagged, dark: isDarkPalette(p), recognizer: _recognizer(i))))
         ..add(TextSpan(text: ' ۝${arabicDigits(r.ayah)} ', style: markStyle));
     }
     flush();

@@ -79,6 +79,7 @@ class ReaderPrefs {
     this.arabicSize = 30,
     this.textSize = 17,
     this.quranFont = 'amiri',
+    this.tajweed = false,
     this.sepia = false,
     this.keepAwake = true,
     this.dailyGoal = 10,
@@ -96,6 +97,9 @@ class ReaderPrefs {
 
   /// `amiri` (Amiri Quran) or `scheherazade` (Scheherazade New).
   final String quranFont;
+
+  /// Colour the tajweed rules in the Arabic text.
+  final bool tajweed;
 
   /// Warm paper background in the readers.
   final bool sepia;
@@ -119,6 +123,7 @@ class ReaderPrefs {
     double? arabicSize,
     double? textSize,
     String? quranFont,
+    bool? tajweed,
     bool? sepia,
     bool? keepAwake,
     int? dailyGoal,
@@ -132,6 +137,7 @@ class ReaderPrefs {
       arabicSize: (arabicSize ?? this.arabicSize).clamp(minArabic, maxArabic),
       textSize: (textSize ?? this.textSize).clamp(minText, maxText),
       quranFont: quranFont ?? this.quranFont,
+      tajweed: tajweed ?? this.tajweed,
       sepia: sepia ?? this.sepia,
       keepAwake: keepAwake ?? this.keepAwake,
       dailyGoal: (dailyGoal ?? this.dailyGoal).clamp(1, 1000),
@@ -147,6 +153,7 @@ class ReaderPrefs {
         'arabicSize': arabicSize,
         'textSize': textSize,
         'quranFont': quranFont,
+        'tajweed': tajweed,
         'sepia': sepia,
         'keepAwake': keepAwake,
         'dailyGoal': dailyGoal,
@@ -164,6 +171,7 @@ class ReaderPrefs {
       arabicSize: num0(raw['arabicSize'], 30).clamp(minArabic, maxArabic),
       textSize: num0(raw['textSize'], 17).clamp(minText, maxText),
       quranFont: raw['quranFont'] as String? ?? 'amiri',
+      tajweed: raw['tajweed'] as bool? ?? false,
       sepia: raw['sepia'] as bool? ?? false,
       keepAwake: raw['keepAwake'] as bool? ?? true,
       dailyGoal: ((raw['dailyGoal'] as num?)?.toInt() ?? 10).clamp(1, 1000),
@@ -184,6 +192,7 @@ class ReaderPrefs {
       other.arabicSize == arabicSize &&
       other.textSize == textSize &&
       other.quranFont == quranFont &&
+      other.tajweed == tajweed &&
       other.sepia == sepia &&
       other.keepAwake == keepAwake &&
       other.dailyGoal == dailyGoal &&
@@ -192,7 +201,7 @@ class ReaderPrefs {
 
   @override
   int get hashCode => Object.hash(translation, showTranslation, showTranslit, arabicSize, textSize, quranFont,
-      sepia, keepAwake, dailyGoal, hadithArabic, hadithLanguage);
+      tajweed, sepia, keepAwake, dailyGoal, hadithArabic, hadithLanguage);
 }
 
 /// All user preferences. Persisted as one JSON blob by [SettingsRepository].

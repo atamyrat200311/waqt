@@ -88,9 +88,18 @@ void main() {
     await tester.tap(find.text('Aa'));
     await tester.pumpAndSettle();
     expect(find.text('Reading settings'), findsOneWidget);
+    // The sheet scrolls; the toggles sit below the fold on a 390×844 screen.
+    await tester.ensureVisible(find.text('Show transliteration'));
+    await tester.pumpAndSettle();
     await tester.tap(find.text('Show transliteration'));
     await tester.pumpAndSettle();
     expect(c.read(settingsProvider).reader.showTranslit, isTrue);
+
+    await tester.ensureVisible(find.text('Tajweed colors'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Tajweed colors'));
+    await tester.pump(); // the tajweed text loads off-thread; no need to wait
+    expect(c.read(settingsProvider).reader.tajweed, isTrue);
     await done(tester);
   });
 

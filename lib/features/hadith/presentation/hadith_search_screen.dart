@@ -109,6 +109,7 @@ class _HadithSearchScreenState extends ConsumerState<HadithSearchScreen> {
           ));
       }
       if (loading) slivers.insert(1, const SliverToBoxAdapter(child: HadithLoading()));
+      if (!loading) slivers.insert(1, SliverToBoxAdapter(child: _SearchHeader(any ? l.searchResultsFor(_query) : l.searchNoneFor(_query))));
       if (!any && !loading) {
         slivers.add(SliverToBoxAdapter(child: EmptyState(icon: WaqtIcons.search, text: l.hadithNoResults)));
       }
@@ -116,4 +117,16 @@ class _HadithSearchScreenState extends ConsumerState<HadithSearchScreen> {
 
     return SubScreen(title: l.hadithSearchAll, backLabel: l.tabLibrary, slivers: slivers);
   }
+}
+
+/// "Results for “query”" line shown above search results.
+class _SearchHeader extends StatelessWidget {
+  const _SearchHeader(this.text);
+  final String text;
+
+  @override
+  Widget build(BuildContext context) => Padding(
+        padding: const EdgeInsets.fromLTRB(Gap.title, 4, Gap.title, 0),
+        child: Text(text, style: WaqtType.sans(14, weight: 600, color: context.colors.ink)),
+      );
 }
