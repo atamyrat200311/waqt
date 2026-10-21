@@ -8,9 +8,7 @@ import '../db/enums.dart';
 import 'app_settings.dart';
 import 'settings_repository.dart';
 
-final settingsRepositoryProvider = Provider<SettingsRepository>(
-  (ref) => SettingsRepository(SharedPrefsStore()),
-);
+final settingsRepositoryProvider = Provider<SettingsRepository>((ref) => SettingsRepository(SharedPrefsStore()));
 
 /// Loaded once in `main()` before `runApp` and injected via override, so the
 /// first frame already has the right theme, locale and location.
@@ -29,8 +27,7 @@ String resolveLanguage(String? code) {
   return supported.contains(c) ? c : 'en';
 }
 
-final settingsProvider =
-    NotifierProvider<SettingsController, AppSettings>(SettingsController.new);
+final settingsProvider = NotifierProvider<SettingsController, AppSettings>(SettingsController.new);
 
 class SettingsController extends Notifier<AppSettings> {
   @override
@@ -46,35 +43,56 @@ class SettingsController extends Notifier<AppSettings> {
   Future<void> setCalcMethod(CalcMethod m) => update((s) => s.copyWith(calcMethod: m));
   Future<void> setMadhab(AsrMadhab m) => update((s) => s.copyWith(madhab: m));
 
-  Future<void> setOffset(Prayer p, int minutes) => update(
-        (s) => s.copyWith(offsets: {...s.offsets, p: minutes.clamp(-30, 30)}),
-      );
+  Future<void> setOffset(Prayer p, int minutes) =>
+      update((s) => s.copyWith(offsets: {...s.offsets, p: minutes.clamp(-30, 30)}));
 
   /// "Match my mosque" stepper: shifts all five by [delta].
-  Future<void> shiftAllOffsets(int delta) => update(
-        (s) => s.copyWith(offsets: {
-          for (final p in Prayer.values) p: (s.offsetFor(p) + delta).clamp(-30, 30),
-        }),
-      );
+  Future<void> shiftAllOffsets(int delta) =>
+      update((s) => s.copyWith(offsets: {for (final p in Prayer.values) p: (s.offsetFor(p) + delta).clamp(-30, 30)}));
 
-  Future<void> setAlert(Prayer p, AlertType t) =>
-      update((s) => s.copyWith(alerts: {...s.alerts, p: t}));
+  Future<void> setAlert(Prayer p, AlertType t) => update((s) => s.copyWith(alerts: {...s.alerts, p: t}));
 
   Future<void> setLocation(SavedLocation l) => update((s) => s.copyWith(location: l));
   Future<void> setLanguage(String? code) => update((s) => s.copyWith(language: () => code));
   Future<void> setCurrency(String code) => update((s) => s.copyWith(currency: code));
 
-  Future<void> setHijriAdjustment(int days) =>
-      update((s) => s.copyWith(hijriAdjustment: days.clamp(-2, 2)));
+  Future<void> addExpenseCategory(String value) {
+    final name = value.trim();
+    if (name.isEmpty || name.length > 30) return Future.value();
+    return update((s) {
+      if (s.expenseCategories.any((e) => e.toLowerCase() == name.toLowerCase())) return s;
+      return s.copyWith(expenseCategories: [...s.expenseCategories, name]);
+    });
+  }
+
+  Future<void> removeExpenseCategory(String value) {
+    return update((s) => s.copyWith(
+      expenseCategories: s.expenseCategories.where((e) => e != value).toList(),
+    ));
+  }
+
+  Future<void> addIncomeCategory(String value) {
+    final name = value.trim();
+    if (name.isEmpty || name.length > 30) return Future.value();
+    return update((s) {
+      if (s.incomeCategories.any((e) => e.toLowerCase() == name.toLowerCase())) return s;
+      return s.copyWith(incomeCategories: [...s.incomeCategories, name]);
+    });
+  }
+
+  Future<void> removeIncomeCategory(String value) {
+    return update((s) => s.copyWith(
+      incomeCategories: s.incomeCategories.where((e) => e != value).toList(),
+    ));
+  }
+
+  Future<void> setHijriAdjustment(int days) => update((s) => s.copyWith(hijriAdjustment: days.clamp(-2, 2)));
 
   Future<void> setRamadanMode(RamadanMode m) => update((s) => s.copyWith(ramadanMode: m));
 
   Future<void> setPeriodMode(bool on, {DateTime? now}) => update(
-        (s) => s.copyWith(
-          periodMode: on,
-          periodSince: () => on ? DayKey.fromDate(now ?? DateTime.now()).value : null,
-        ),
-      );
+    (s) => s.copyWith(periodMode: on, periodSince: () => on ? DayKey.fromDate(now ?? DateTime.now()).value : null),
+  );
 
   Future<void> setTheme(AppThemeMode t) => update((s) => s.copyWith(theme: t));
   Future<void> setOnboardingDone() => update((s) => s.copyWith(onboardingDone: true));

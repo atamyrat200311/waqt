@@ -29,6 +29,8 @@ struct WDay: Decodable {
 
 struct WStrings: Decodable {
   let next: String
+  let remaining: String?
+  let todayRecord: String?
   let `in`: String
   let inAfter: String
   let h: String
@@ -41,6 +43,7 @@ struct WStrings: Decodable {
 struct WPayload: Decodable {
   let v: Int
   let place: String
+  let sunrise: String?
   let names: [String]
   let s: WStrings
   let days: [WDay]
@@ -63,7 +66,9 @@ struct Snapshot {
   let dayIndex: Int
   /// Prayer whose window is open, if any.
   let current: Int?
-  let next: Int
+  /// Prayer index for the next event, or nil when the next event is sunrise.
+  let next: Int?
+  let nextName: String
   let nextAt: Date
   /// Start of the window the countdown runs in (for the lock-screen bar).
   let since: Date
@@ -81,22 +86,29 @@ struct Snapshot {
     if n >= day.t[0] {
       for i in 0..<5 where n >= day.t[i] && n < ends[i] { current = i }
     }
-    var next = 0
+    var next: Int? = 0
+    var nextName = p.names[0]
     var nextAt = nextFajr
     var previous = day.t[0]
     outer: for i in idx..<p.days.count {
-      for k in 0..<5 {
-        if p.days[i].t[k] > n {
-          next = k
-          nextAt = p.days[i].t[k]
+      var events: [(time: Int, name: String, prayer: Int?)] =
+        (0..<5).map { (time: p.days[i].t[$0], name: p.names[$0], prayer: $0) }
+      events.append((time: p.days[i].sunrise, name: p.sunrise ?? "Sunrise", prayer: nil))
+      events.sort { $0.time < $1.time }
+      for event in events {
+        if event.time > n {
+          next = event.prayer
+          nextName = event.name
+          nextAt = event.time
           break outer
         }
-        previous = p.days[i].t[k]
+        previous = event.time
       }
     }
     self.dayIndex = idx
     self.current = current
     self.next = next
+    self.nextName = nextName
     self.nextAt = Date(timeIntervalSince1970: TimeInterval(nextAt))
     self.since = Date(timeIntervalSince1970: TimeInterval(previous))
     // Marks are only known for the day the app last wrote (index 0).
@@ -200,7 +212,7 @@ struct SmallView: View {
           Text(p.s.next.uppercased()).font(.system(size: 11, weight: .bold)).kerning(0.9)
             .foregroundColor(Color.wOnHero.opacity(0.74))
         }
-        Text(p.names[s.next]).font(serif(26)).foregroundColor(.wOnHero).padding(.top, 8)
+        Text(s.nextName).font(serif(26)).foregroundColor(.wOnHero).padding(.top, 8)
         Text(hhmm(Int(s.nextAt.timeIntervalSince1970))).font(.system(size: 14))
           .foregroundColor(Color.wOnHero.opacity(0.74)).padding(.top, 3)
         Spacer(minLength: 0)
@@ -225,21 +237,26 @@ struct MediumView: View {
           Text("\(p.place) · \(s.day.hijri)").font(.system(size: 13, weight: .semibold))
             .foregroundColor(.wMuted).lineLimit(1)
           Spacer()
-          Text("\(p.names[s.next]) \(s.inCountdown(p.s, now: entry.date))")
+          Text("\(s.nextName) \(s.inCountdown(p.s, now: entry.date))")
             .font(.system(size: 13, weight: .bold)).foregroundColor(.wAccent).lineLimit(1)
         }
         .padding(.horizontal, 4)
         Spacer(minLength: 0)
         HStack(spacing: 4) {
-          ForEach(0..<5, id: \.self) { i in
-            let highlighted = i == s.next && s.dayIndex == 0 && s.nextAt.timeIntervalSince(entry.date) < 24 * 3600
+          ForEach(0..<6, id: \.self) { i in
+            let prayer = i == 1 ? nil : (i == 0 ? 0 : i - 1)
+            let eventTime = i == 1 ? s.day.sunrise : s.day.t[prayer!]
+            let name = i == 1 ? (p.sunrise ?? "Sunrise") : p.names[prayer!]
+            let highlighted = eventTime == Int(s.nextAt.timeIntervalSince1970) && s.dayIndex == 0 && s.nextAt.timeIntervalSince(entry.date) < 24 * 3600
+            let done = prayer.map { s.marks[$0] == "done" } ?? false
+            let current = prayer == s.current
             VStack(spacing: 4) {
-              mark(i, s: s, onHero: highlighted)
-              Text(p.names[i]).font(.system(size: 12, weight: highlighted ? .bold : .semibold))
+              mark(prayer, s: s, onHero: highlighted)
+              Text(name).font(.system(size: 11, weight: highlighted ? .bold : .semibold))
                 .lineLimit(1).minimumScaleFactor(0.7)
-              Text(hhmm(s.day.t[i])).font(serif(17))
+              Text(hhmm(eventTime)).font(serif(15))
             }
-            .foregroundColor(highlighted ? .wOnHero : (s.marks[i] == "done" || i == s.current ? .wInk : .wMuted))
+            .foregroundColor(highlighted ? .wOnHero : (done || current ? .wInk : .wMuted))
             .frame(maxWidth: .infinity)
             .padding(.vertical, 12)
             .background(highlighted ? Color.wHero : Color.clear)
@@ -254,16 +271,135 @@ struct MediumView: View {
   }
 
   @ViewBuilder
-  func mark(_ i: Int, s: Snapshot, onHero: Bool) -> some View {
-    if s.marks[i] == "done" {
+  func mark(_ prayer: Int?, s: Snapshot, onHero: Bool) -> some View {
+    if prayer == nil {
+      Image(systemName: "sun.max.fill").font(.system(size: 16, weight: .semibold))
+        .foregroundColor(onHero ? .wOnHero : .wBrass).frame(width: 18, height: 18)
+    } else if s.marks[prayer!] == "done" {
       Circle().fill(Color.wBrass).frame(width: 18, height: 18)
         .overlay(Image(systemName: "checkmark").font(.system(size: 9, weight: .heavy)).foregroundColor(.wHero))
-    } else if i == s.current {
+    } else if prayer == s.current {
       Circle().stroke(Color.wBrass, lineWidth: 2).frame(width: 18, height: 18)
     } else {
       Circle().stroke(style: StrokeStyle(lineWidth: 1.5, dash: [2.5, 2.5]))
         .foregroundColor(onHero ? Color.wOnHero.opacity(0.7) : Color.wMuted.opacity(0.7))
         .frame(width: 18, height: 18)
+    }
+  }
+}
+
+/// Detailed home-screen widget: live countdown plus today's full timetable.
+struct LargeView: View {
+  let entry: Entry
+
+  var body: some View {
+    if let p = entry.payload {
+      let s = Snapshot(p, at: entry.date)
+      let total = s.nextAt.timeIntervalSince(s.since)
+      let progress = total > 0 ? min(1, max(0, entry.date.timeIntervalSince(s.since) / total)) : 0
+      let recorded = s.marks.filter { !$0.isEmpty }.count
+
+      VStack(spacing: 0) {
+        HStack(alignment: .bottom, spacing: 12) {
+          VStack(alignment: .leading, spacing: 2) {
+            Text(p.s.next.uppercased())
+              .font(.system(size: 11, weight: .bold)).kerning(0.8)
+              .foregroundColor(Color.wOnHero.opacity(0.68))
+            HStack(alignment: .firstTextBaseline, spacing: 8) {
+              Text(s.nextName).font(.system(size: 24, weight: .semibold))
+              Text(hhmm(Int(s.nextAt.timeIntervalSince1970)))
+                .font(.system(size: 16, weight: .medium)).foregroundColor(Color.wOnHero.opacity(0.72))
+            }
+          }
+          Spacer(minLength: 4)
+          VStack(alignment: .trailing, spacing: 2) {
+            Text(p.s.remaining ?? "Remaining time")
+              .font(.system(size: 12, weight: .medium)).foregroundColor(Color.wOnHero.opacity(0.68))
+            liveCountdown(s, strings: p.s)
+              .font(.system(size: 28, weight: .bold, design: .rounded)).monospacedDigit()
+              .foregroundColor(.wBrass).lineLimit(1).minimumScaleFactor(0.72)
+          }
+        }
+
+        GeometryReader { geometry in
+          ZStack(alignment: .leading) {
+            Capsule().fill(Color.wOnHero.opacity(0.16))
+            Capsule().fill(Color.wBrass).frame(width: geometry.size.width * progress)
+          }
+        }
+        .frame(height: 4).padding(.top, 13).padding(.bottom, 8)
+
+        ForEach(0..<6, id: \.self) { i in
+          eventRow(i, payload: p, snapshot: s)
+        }
+
+        Spacer(minLength: 5)
+        HStack {
+          Text("\(p.s.todayRecord ?? "Today's record") · \(recorded)/5")
+          Spacer()
+          Text(p.place).lineLimit(1)
+        }
+        .font(.system(size: 12, weight: .medium)).foregroundColor(Color.wOnHero.opacity(0.7))
+      }
+      .frame(maxWidth: .infinity, maxHeight: .infinity)
+      .widgetURL(s.url)
+    } else {
+      Text("Waqt").font(serif(28)).foregroundColor(.wOnHero)
+    }
+  }
+
+  @ViewBuilder
+  private func liveCountdown(_ snapshot: Snapshot, strings: WStrings) -> some View {
+    if #available(iOSApplicationExtension 16.0, *) {
+      Text(timerInterval: entry.date...max(entry.date, snapshot.nextAt), countsDown: true)
+    } else {
+      Text(snapshot.countdown(strings, now: entry.date))
+    }
+  }
+
+  @ViewBuilder
+  private func eventRow(_ displayIndex: Int, payload p: WPayload, snapshot s: Snapshot) -> some View {
+    let prayer = displayIndex == 1 ? nil : (displayIndex == 0 ? 0 : displayIndex - 1)
+    let eventTime = displayIndex == 1 ? s.day.sunrise : s.day.t[prayer!]
+    let name = displayIndex == 1 ? (p.sunrise ?? "Sunrise") : p.names[prayer!]
+    let highlighted = eventTime == Int(s.nextAt.timeIntervalSince1970) && s.dayIndex == 0
+
+    HStack(spacing: 10) {
+      Image(systemName: eventIcon(displayIndex))
+        .font(.system(size: 17, weight: .medium)).frame(width: 25)
+        .foregroundColor(highlighted ? .wBrass : Color.wOnHero.opacity(0.72))
+      Text(name).font(.system(size: 17, weight: highlighted ? .bold : .medium))
+      Spacer()
+      Text(hhmm(eventTime)).font(.system(size: 16, weight: highlighted ? .bold : .regular)).monospacedDigit()
+      if let prayer {
+        statusMark(s.marks[prayer])
+      } else {
+        Color.clear.frame(width: 22, height: 22)
+      }
+    }
+    .foregroundColor(highlighted ? .wOnHero : Color.wOnHero.opacity(0.76))
+    .padding(.horizontal, 10).frame(height: 38)
+    .background(highlighted ? Color.wOnHero.opacity(0.14) : Color.clear)
+    .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+  }
+
+  private func eventIcon(_ index: Int) -> String {
+    ["sun.horizon", "sunrise", "sun.max", "sun.max", "sunset", "moon.stars"][index]
+  }
+
+  @ViewBuilder
+  private func statusMark(_ status: String) -> some View {
+    if status == "done" {
+      Circle().fill(Color.wBrass).frame(width: 22, height: 22)
+        .overlay(Image(systemName: "checkmark").font(.system(size: 10, weight: .bold)).foregroundColor(.wHero))
+    } else if status == "missed" {
+      Circle().stroke(Color.wOnHero.opacity(0.5), lineWidth: 1.5).frame(width: 22, height: 22)
+        .overlay(Image(systemName: "xmark").font(.system(size: 9, weight: .bold)).foregroundColor(Color.wOnHero.opacity(0.65)))
+    } else if status == "excused" {
+      Circle().stroke(Color.wOnHero.opacity(0.5), lineWidth: 1.5).frame(width: 22, height: 22)
+        .overlay(Image(systemName: "minus").font(.system(size: 9, weight: .bold)).foregroundColor(Color.wOnHero.opacity(0.65)))
+    } else {
+      Circle().stroke(Color.wOnHero.opacity(0.5), lineWidth: 1.5).frame(width: 22, height: 22)
     }
   }
 }
@@ -278,7 +414,7 @@ struct LockRectangularView: View {
       let done = total > 0 ? min(1, max(0, entry.date.timeIntervalSince(s.since) / total)) : 0
       VStack(alignment: .leading, spacing: 1) {
         HStack(spacing: 6) {
-          Text(p.names[s.next]).font(.system(size: 15, weight: .bold))
+          Text(s.nextName).font(.system(size: 15, weight: .bold))
           Text(hhmm(Int(s.nextAt.timeIntervalSince1970))).font(.system(size: 15, weight: .medium)).opacity(0.8)
         }
         Text(s.inCountdown(p.s, now: entry.date)).font(.system(size: 20, weight: .bold)).lineLimit(1)
@@ -302,6 +438,8 @@ struct WaqtWidgetEntryView: View {
       SmallView(entry: entry).widgetBackground(.wHero)
     case .systemMedium:
       MediumView(entry: entry).widgetBackground(.wBg)
+    case .systemLarge:
+      LargeView(entry: entry).widgetBackground(.wHero)
     default:
       if #available(iOSApplicationExtension 16.0, *) {
         LockRectangularView(entry: entry).widgetBackground(.clear)
@@ -330,9 +468,9 @@ struct WaqtWidget: Widget {
 
   private var families: [WidgetFamily] {
     if #available(iOSApplicationExtension 16.0, *) {
-      return [.systemSmall, .systemMedium, .accessoryRectangular]
+      return [.systemSmall, .systemMedium, .systemLarge, .accessoryRectangular]
     }
-    return [.systemSmall, .systemMedium]
+    return [.systemSmall, .systemMedium, .systemLarge]
   }
 
   var body: some WidgetConfiguration {
@@ -340,7 +478,7 @@ struct WaqtWidget: Widget {
       WaqtWidgetEntryView(entry: entry)
     }
     .configurationDisplayName("Waqt")
-    .description("Next prayer and today's times.")
+    .description("Next prayer, live countdown and today's times.")
     .supportedFamilies(families)
   }
 }

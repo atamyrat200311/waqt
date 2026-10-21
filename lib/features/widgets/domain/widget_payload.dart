@@ -12,16 +12,19 @@ const widgetDataKey = 'waqt_widget';
 /// ```json
 /// {
 ///   "v": 1, "place": "Ashgabat", "dark": false,
+///   "sunrise": "Sunrise",
 ///   "names": ["Fajr", …5],
-///   "s": {"next": "Next", "in": "in", "inAfter": "", "h": "h", "m": "m",
+///   "s": {"next": "Next", "remaining": "Remaining time", "todayRecord": "Today's record",
+///         "in": "in", "inAfter": "", "h": "h", "m": "m",
 ///         "windowOpen": "%s · window open", "mark": "Mark as prayed", "marked": "%s marked"},
 ///   "days": [{"d": "2026-10-04", "hijri": "22 Rabīʿ II",
 ///             "t": [epochSeconds ×5], "sunrise": epochSeconds,
 ///             "m": ["done" | "missed" | "excused" | "", ×5]}, …7]
 /// }
 /// ```
-/// Native code derives "next" / "window open" / countdown from `t` and the
-/// current time, so the widget stays right for a week without the app.
+/// Native code derives the next boundary / open window / countdown from `t`,
+/// `sunrise`, and the current time, so the widget stays right for a week
+/// without the app.
 Map<String, Object?> buildWidgetPayload({
   required PrayerEngine engine,
   required HijriService hijri,
@@ -44,9 +47,12 @@ Map<String, Object?> buildWidgetPayload({
   return {
     'v': 1,
     'place': placeName,
+    'sunrise': l10n.prayerSunrise,
     'names': [for (final p in Prayer.values) l10n.prayer(p)],
     's': {
       'next': l10n.widgetNext,
+      'remaining': l10n.widgetRemainingTime,
+      'todayRecord': l10n.widgetTodayRecord,
       'in': l10n.homeIn,
       'inAfter': l10n.homeInAfter,
       'h': l10n.unitH,
@@ -67,10 +73,7 @@ Map<String, Object?> buildWidgetPayload({
             'hijri': l10n.dayMonthHijri(h.day, h.month),
             't': [for (final p in Prayer.values) sec(d[p])],
             'sunrise': sec(d.sunrise),
-            'm': [
-              for (final p in Prayer.values)
-                key == today ? mark(todayMarks[p]) : '',
-            ],
+            'm': [for (final p in Prayer.values) key == today ? mark(todayMarks[p]) : ''],
           };
         }(),
     ],
@@ -91,13 +94,10 @@ List<DateTime> widgetUpdateTimes(
     for (final t in (day['t']! as List).cast<int>()) {
       out.add(DateTime.fromMillisecondsSinceEpoch(t * 1000));
     }
-    out.add(
-      DateTime.fromMillisecondsSinceEpoch((day['sunrise']! as int) * 1000),
-    );
+    out.add(DateTime.fromMillisecondsSinceEpoch((day['sunrise']! as int) * 1000));
   }
   final first = DateTime.fromMillisecondsSinceEpoch(
-    now.millisecondsSinceEpoch -
-        now.millisecondsSinceEpoch % step.inMilliseconds,
+    now.millisecondsSinceEpoch - now.millisecondsSinceEpoch % step.inMilliseconds,
   ).add(step);
   for (var t = first; t.isBefore(now.add(dense)); t = t.add(step)) {
     out.add(t);

@@ -34,13 +34,7 @@ class SavedLocation {
     manual: true,
   );
 
-  Map<String, Object?> toJson() => {
-        'lat': latitude,
-        'lng': longitude,
-        'name': name,
-        'tz': timezone,
-        'manual': manual,
-      };
+  Map<String, Object?> toJson() => {'lat': latitude, 'lng': longitude, 'name': name, 'tz': timezone, 'manual': manual};
 
   static SavedLocation? fromJson(Object? json) {
     if (json is! Map) return null;
@@ -153,20 +147,20 @@ class ReaderPrefs {
   }
 
   Map<String, Object?> toJson() => {
-        'translation': translation,
-        'showTranslation': showTranslation,
-        'showTranslit': showTranslit,
-        'arabicSize': arabicSize,
-        'textSize': textSize,
-        'quranFont': quranFont,
-        'tajweed': tajweed,
-        'mushafStyle': mushafStyle,
-        'sepia': sepia,
-        'keepAwake': keepAwake,
-        'dailyGoal': dailyGoal,
-        'hadithArabic': hadithArabic,
-        'hadithLanguage': hadithLanguage,
-      };
+    'translation': translation,
+    'showTranslation': showTranslation,
+    'showTranslit': showTranslit,
+    'arabicSize': arabicSize,
+    'textSize': textSize,
+    'quranFont': quranFont,
+    'tajweed': tajweed,
+    'mushafStyle': mushafStyle,
+    'sepia': sepia,
+    'keepAwake': keepAwake,
+    'dailyGoal': dailyGoal,
+    'hadithArabic': hadithArabic,
+    'hadithLanguage': hadithLanguage,
+  };
 
   factory ReaderPrefs.fromJson(Object? raw) {
     if (raw is! Map) return const ReaderPrefs();
@@ -209,8 +203,21 @@ class ReaderPrefs {
       other.hadithLanguage == hadithLanguage;
 
   @override
-  int get hashCode => Object.hash(translation, showTranslation, showTranslit, arabicSize, textSize, quranFont,
-      tajweed, mushafStyle, sepia, keepAwake, dailyGoal, hadithArabic, hadithLanguage);
+  int get hashCode => Object.hash(
+    translation,
+    showTranslation,
+    showTranslit,
+    arabicSize,
+    textSize,
+    quranFont,
+    tajweed,
+    mushafStyle,
+    sepia,
+    keepAwake,
+    dailyGoal,
+    hadithArabic,
+    hadithLanguage,
+  );
 }
 
 /// All user preferences. Persisted as one JSON blob by [SettingsRepository].
@@ -224,6 +231,8 @@ class AppSettings {
     this.location,
     this.language,
     this.currency = 'TMT',
+    this.expenseCategories = const [],
+    this.incomeCategories = const [],
     this.hijriAdjustment = 0,
     this.ramadanMode = RamadanMode.auto,
     this.periodMode = false,
@@ -255,6 +264,12 @@ class AppSettings {
   /// Language code (en/tk/tr/ru) or null for the system language.
   final String? language;
   final String currency;
+
+  /// User-defined expense category names, in creation order.
+  final List<String> expenseCategories;
+
+  /// User-defined income category names, in creation order.
+  final List<String> incomeCategories;
 
   /// −2…+2 days applied to the Umm al-Qura date.
   final int hijriAdjustment;
@@ -296,6 +311,8 @@ class AppSettings {
     SavedLocation? location,
     String? Function()? language,
     String? currency,
+    List<String>? expenseCategories,
+    List<String>? incomeCategories,
     int? hijriAdjustment,
     RamadanMode? ramadanMode,
     bool? periodMode,
@@ -321,6 +338,8 @@ class AppSettings {
       location: location ?? this.location,
       language: language != null ? language() : this.language,
       currency: currency ?? this.currency,
+      expenseCategories: expenseCategories ?? this.expenseCategories,
+      incomeCategories: incomeCategories ?? this.incomeCategories,
       hijriAdjustment: hijriAdjustment ?? this.hijriAdjustment,
       ramadanMode: ramadanMode ?? this.ramadanMode,
       periodMode: periodMode ?? this.periodMode,
@@ -341,31 +360,33 @@ class AppSettings {
   }
 
   Map<String, Object?> toJson() => {
-        'v': 1,
-        'calcMethod': calcMethod.name,
-        'madhab': madhab.name,
-        'offsets': {for (final e in offsets.entries) e.key.name: e.value},
-        'alerts': {for (final e in alerts.entries) e.key.name: e.value.name},
-        'location': location?.toJson(),
-        'language': language,
-        'currency': currency,
-        'hijriAdjustment': hijriAdjustment,
-        'ramadanMode': ramadanMode.name,
-        'periodMode': periodMode,
-        'periodSince': periodSince,
-        'theme': theme.name,
-        'onboardingDone': onboardingDone,
-        'adhkarReminders': adhkarReminders,
-        'suhoorReminder': suhoorReminder,
-        'suhoorMinutes': suhoorMinutes,
-        'iftarReminder': iftarReminder,
-        'taraweehReminder': taraweehReminder,
-        'reader': reader.toJson(),
-        'quranLastRead': quranLastRead,
-        'khatmPlan': khatmPlan?.toJson(),
-        'quranReminder': quranReminder,
-        'zakat': zakat,
-      };
+    'v': 1,
+    'calcMethod': calcMethod.name,
+    'madhab': madhab.name,
+    'offsets': {for (final e in offsets.entries) e.key.name: e.value},
+    'alerts': {for (final e in alerts.entries) e.key.name: e.value.name},
+    'location': location?.toJson(),
+    'language': language,
+    'currency': currency,
+    'expenseCategories': expenseCategories,
+    'incomeCategories': incomeCategories,
+    'hijriAdjustment': hijriAdjustment,
+    'ramadanMode': ramadanMode.name,
+    'periodMode': periodMode,
+    'periodSince': periodSince,
+    'theme': theme.name,
+    'onboardingDone': onboardingDone,
+    'adhkarReminders': adhkarReminders,
+    'suhoorReminder': suhoorReminder,
+    'suhoorMinutes': suhoorMinutes,
+    'iftarReminder': iftarReminder,
+    'taraweehReminder': taraweehReminder,
+    'reader': reader.toJson(),
+    'quranLastRead': quranLastRead,
+    'khatmPlan': khatmPlan?.toJson(),
+    'quranReminder': quranReminder,
+    'zakat': zakat,
+  };
 
   factory AppSettings.fromJson(Map<String, Object?> j) {
     final offsets = <Prayer, int>{};
@@ -392,6 +413,8 @@ class AppSettings {
       location: SavedLocation.fromJson(j['location']),
       language: j['language'] as String?,
       currency: j['currency'] as String? ?? 'TMT',
+      expenseCategories: _expenseCategoriesFromJson(j['expenseCategories']),
+      incomeCategories: _expenseCategoriesFromJson(j['incomeCategories']),
       hijriAdjustment: ((j['hijriAdjustment'] as num?)?.toInt() ?? 0).clamp(-2, 2),
       ramadanMode: enumByName(RamadanMode.values, j['ramadanMode'] as String?, RamadanMode.auto),
       periodMode: j['periodMode'] as bool? ?? false,
@@ -417,4 +440,16 @@ class AppSettings {
       },
     );
   }
+}
+
+List<String> _expenseCategoriesFromJson(Object? raw) {
+  if (raw is! List) return const [];
+  final result = <String>[];
+  final seen = <String>{};
+  for (final value in raw.whereType<String>()) {
+    final name = value.trim();
+    final key = name.toLowerCase();
+    if (name.isNotEmpty && name.length <= 30 && seen.add(key)) result.add(name);
+  }
+  return List.unmodifiable(result);
 }

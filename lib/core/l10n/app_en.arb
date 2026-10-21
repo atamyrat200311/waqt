@@ -20,6 +20,9 @@
   "reset": "Reset",
   "today": "Today",
   "yesterday": "Yesterday",
+  "tomorrow": "Tomorrow",
+  "previousDay": "Previous day",
+  "nextDay": "Next day",
   "pickDate": "Pick a date",
   "listAnd": "{a} and {b}",
   "@listAnd": {
@@ -229,6 +232,7 @@
     }
   },
   "homeNextPrayer": "Next prayer",
+  "homePrayerTimes": "Prayer times",
   "homeIn": "in",
   "@homeIn": {
     "description": "Word before the countdown on the hero card (\"in 1h 12m\"). Empty if the language puts it after."
@@ -270,6 +274,9 @@
     }
   },
   "homeYourDay": "Your day",
+  "homeWorshipTitle": "Today’s worship",
+  "homeWorshipHint": "Tap the ones you completed",
+  "homePrayers": "Prayers",
   "homeUpNext": "Up next",
   "homeStart": "Start",
   "homeMarkDone": "Done",
@@ -436,6 +443,9 @@
   "expenseAdd": "Add expense",
   "expenseAddNote": "Add a note",
   "expenseNoteHint": "Note",
+  "expenseAddCategory": "Add category",
+  "expenseCategoryName": "Category name",
+  "expenseCategoryExists": "This category already exists.",
   "catGroceries": "Groceries",
   "catTransport": "Transport",
   "catFood": "Eating out",
@@ -595,6 +605,18 @@
       }
     }
   },
+  "calendarTrackerTitle": "Prayer times & tracker",
+  "calendarOpenTracker": "Open prayer tracker",
+  "calendarTogglePrayer": "Mark {prayer} as prayed",
+  "@calendarTogglePrayer": {
+    "placeholders": {
+      "prayer": {
+        "type": "String"
+      }
+    }
+  },
+  "calendarFast": "Fast",
+  "calendarToggleFast": "Mark the fast as kept",
   "evRajab": "Rajab begins",
   "evMiraj": "Laylat al-Miʿrāj",
   "evBaraah": "Laylat al-Barāʾah",
@@ -869,10 +891,12 @@
   "methodTurkey": "Diyanet (Turkey)",
   "methodTehran": "Tehran",
   "widgetsHelpTitle": "Home-screen widgets",
-  "widgetsHelpIos": "Touch and hold an empty area of the Home Screen, tap +, search for Waqt and choose the small, medium or lock-screen widget.",
+  "widgetsHelpIos": "Touch and hold an empty area of the Home Screen, tap +, search for Waqt and choose the small, medium, large or lock-screen widget.",
   "widgetsHelpAndroid": "Touch and hold an empty area of the home screen, tap Widgets, find Waqt and drag the widget onto the screen. Its button marks the current prayer.",
   "widgetsHelpData": "Widgets show the next seven days of times even if you don't open the app.",
   "widgetNext": "Next",
+  "widgetRemainingTime": "Remaining time",
+  "widgetTodayRecord": "Today's record",
   "widgetWindowOpen": "{prayer} · window open",
   "@widgetWindowOpen": {
     "placeholders": {
@@ -1449,6 +1473,46 @@
   },
   "expensesTitle": "Spending",
   "expensesEmpty": "No spending recorded this month.",
+  "incomeTitle": "Income",
+  "incomeAdd": "Add income",
+  "incomeSaved": "Income saved",
+  "incomeDeleted": "Income deleted",
+  "incomeSave": "Save {amount} {currency}",
+  "@incomeSave": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      },
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "incomeEmpty": "No income recorded this month.",
+  "catSalary": "Salary",
+  "catBusiness": "Business",
+  "catGift": "Gift",
+  "catInvestment": "Investment",
+  "transactionExpense": "Expense",
+  "transactionIncome": "Income",
+  "financeTitle": "Spending & Income",
+  "netBalance": "Net balance",
+  "totalIncome": "Income",
+  "totalExpense": "Expenses",
+  "filterAll": "All",
+  "filterExpenses": "Expenses",
+  "filterIncome": "Income",
+  "todayIncome": "Income today",
+  "noTransactions": "No transactions recorded this month.",
+  "categoryDelete": "Delete category",
+  "categoryDeleteConfirm": "Delete “{name}”? Existing transactions will keep this name.",
+  "@categoryDeleteConfirm": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "meAyahsRead": "Ayahs read",
   "notifTestTitle": "Send a test alert",
   "notifTestSub": "Arrives in 5 seconds — lock your phone to check sound and banner.",

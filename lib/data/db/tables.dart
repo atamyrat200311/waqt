@@ -14,8 +14,8 @@ class PrayerLogs extends Table {
 
   @override
   List<Set<Column>> get uniqueKeys => [
-        {date, prayer},
-      ];
+    {date, prayer},
+  ];
 }
 
 @DataClassName('QadaCountRow')
@@ -48,6 +48,21 @@ class Expenses extends Table {
   IntColumn get amountMinor => integer().check(amountMinor.isBiggerThanValue(0))();
   TextColumn get currency => text().withDefault(const Constant('TMT'))();
   TextColumn get category => textEnum<ExpenseCategory>()();
+  TextColumn get customCategory => text().withLength(min: 1, max: 30).nullable()();
+  TextColumn get note => text().nullable()();
+  DateTimeColumn get occurredAt => dateTime()();
+}
+
+@DataClassName('IncomeRow')
+class Incomes extends Table {
+  IntColumn get id => integer().autoIncrement()();
+
+  /// Minor units (1/100). Never floats.
+  // ignore: recursive_getters
+  IntColumn get amountMinor => integer().check(amountMinor.isBiggerThanValue(0))();
+  TextColumn get currency => text().withDefault(const Constant('TMT'))();
+  TextColumn get category => textEnum<IncomeCategory>()();
+  TextColumn get customCategory => text().withLength(min: 1, max: 30).nullable()();
   TextColumn get note => text().nullable()();
   DateTimeColumn get occurredAt => dateTime()();
 }
@@ -103,8 +118,8 @@ class Bookmarks extends Table {
 
   @override
   List<Set<Column>> get uniqueKeys => [
-        {kind, ref},
-      ];
+    {kind, ref},
+  ];
 }
 
 /// One row per ayah read on a day (global ayah index 0…6235). Drives the

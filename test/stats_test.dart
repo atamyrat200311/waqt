@@ -11,6 +11,7 @@ void main() {
 
   group('classifyDay', () {
     test('kept / broken / skipped / pending', () {
+      expect(classifyDay(all(PrayerStatus.prayed)), StreakDay.kept);
       expect(classifyDay(all(PrayerStatus.late)), StreakDay.kept);
       expect(classifyDay({...all(PrayerStatus.onTime), Prayer.asr: PrayerStatus.missed}), StreakDay.broken);
       expect(classifyDay(all(PrayerStatus.excused)), StreakDay.skipped);
@@ -81,19 +82,23 @@ void main() {
       ago(1): {...all(PrayerStatus.late), Prayer.fajr: PrayerStatus.excused},
       today: {Prayer.fajr: PrayerStatus.onTime},
     };
-    final c = consistency(
-      byDay,
-      from: ago(2),
-      to: today,
-      hasStarted: (d, p) => d != today || p == Prayer.fajr,
-    );
+    final c = consistency(byDay, from: ago(2), to: today, hasStarted: (d, p) => d != today || p == Prayer.fajr);
     expect(c[Prayer.fajr], 0.5); // missed, (excused skipped), prayed
     expect(c[Prayer.dhuhr], 1.0); // two days; today's Dhuhr hasn't started
     expect(weakestPrayer(c), Prayer.fajr);
   });
 
-  test('on-time share ignores excused', () {
-    expect(onTimeShare([PrayerStatus.onTime, PrayerStatus.late, PrayerStatus.excused, PrayerStatus.congregation]), 2 / 3);
+  test('on-time share ignores excused and quick checks with unknown timing', () {
+    expect(
+      onTimeShare([
+        PrayerStatus.onTime,
+        PrayerStatus.late,
+        PrayerStatus.excused,
+        PrayerStatus.prayed,
+        PrayerStatus.congregation,
+      ]),
+      2 / 3,
+    );
     expect(onTimeShare(const []), isNull);
   });
 

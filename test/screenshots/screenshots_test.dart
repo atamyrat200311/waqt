@@ -133,6 +133,9 @@ void main() {
     await shoot(t, 'home_ios_light');
     await shoot(t, 'home_ios_dark', dark: true);
     await shoot(t, 'home_android', platform: TargetPlatform.android);
+    await shoot(t, 'home_tomorrow', act: (t) async {
+      await t.tap(find.bySemanticsLabel('Next day'));
+    });
   }, skip: !_enabled);
 
   testWidgets('full pages', (t) async {

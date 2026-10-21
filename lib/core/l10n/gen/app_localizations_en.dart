@@ -69,6 +69,15 @@ class AppLocalizationsEn extends AppLocalizations {
   String get yesterday => 'Yesterday';
 
   @override
+  String get tomorrow => 'Tomorrow';
+
+  @override
+  String get previousDay => 'Previous day';
+
+  @override
+  String get nextDay => 'Next day';
+
+  @override
   String get pickDate => 'Pick a date';
 
   @override
@@ -324,6 +333,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get homeNextPrayer => 'Next prayer';
 
   @override
+  String get homePrayerTimes => 'Prayer times';
+
+  @override
   String get homeIn => 'in';
 
   @override
@@ -352,6 +364,15 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get homeYourDay => 'Your day';
+
+  @override
+  String get homeWorshipTitle => 'Today’s worship';
+
+  @override
+  String get homeWorshipHint => 'Tap the ones you completed';
+
+  @override
+  String get homePrayers => 'Prayers';
 
   @override
   String get homeUpNext => 'Up next';
@@ -565,6 +586,15 @@ class AppLocalizationsEn extends AppLocalizations {
   String get expenseNoteHint => 'Note';
 
   @override
+  String get expenseAddCategory => 'Add category';
+
+  @override
+  String get expenseCategoryName => 'Category name';
+
+  @override
+  String get expenseCategoryExists => 'This category already exists.';
+
+  @override
   String get catGroceries => 'Groceries';
 
   @override
@@ -757,6 +787,23 @@ class AppLocalizationsEn extends AppLocalizations {
   String calendarEveningOf(String date) {
     return 'evening of $date';
   }
+
+  @override
+  String get calendarTrackerTitle => 'Prayer times & tracker';
+
+  @override
+  String get calendarOpenTracker => 'Open prayer tracker';
+
+  @override
+  String calendarTogglePrayer(String prayer) {
+    return 'Mark $prayer as prayed';
+  }
+
+  @override
+  String get calendarFast => 'Fast';
+
+  @override
+  String get calendarToggleFast => 'Mark the fast as kept';
 
   @override
   String get evRajab => 'Rajab begins';
@@ -1245,7 +1292,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get widgetsHelpIos =>
-      'Touch and hold an empty area of the Home Screen, tap +, search for Waqt and choose the small, medium or lock-screen widget.';
+      'Touch and hold an empty area of the Home Screen, tap +, search for Waqt and choose the small, medium, large or lock-screen widget.';
 
   @override
   String get widgetsHelpAndroid =>
@@ -1257,6 +1304,12 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get widgetNext => 'Next';
+
+  @override
+  String get widgetRemainingTime => 'Remaining time';
+
+  @override
+  String get widgetTodayRecord => 'Today\'s record';
 
   @override
   String widgetWindowOpen(String prayer) {
@@ -2100,6 +2153,79 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get expensesEmpty => 'No spending recorded this month.';
+
+  @override
+  String get incomeTitle => 'Income';
+
+  @override
+  String get incomeAdd => 'Add income';
+
+  @override
+  String get incomeSaved => 'Income saved';
+
+  @override
+  String get incomeDeleted => 'Income deleted';
+
+  @override
+  String incomeSave(String amount, String currency) {
+    return 'Save $amount $currency';
+  }
+
+  @override
+  String get incomeEmpty => 'No income recorded this month.';
+
+  @override
+  String get catSalary => 'Salary';
+
+  @override
+  String get catBusiness => 'Business';
+
+  @override
+  String get catGift => 'Gift';
+
+  @override
+  String get catInvestment => 'Investment';
+
+  @override
+  String get transactionExpense => 'Expense';
+
+  @override
+  String get transactionIncome => 'Income';
+
+  @override
+  String get financeTitle => 'Spending & Income';
+
+  @override
+  String get netBalance => 'Net balance';
+
+  @override
+  String get totalIncome => 'Income';
+
+  @override
+  String get totalExpense => 'Expenses';
+
+  @override
+  String get filterAll => 'All';
+
+  @override
+  String get filterExpenses => 'Expenses';
+
+  @override
+  String get filterIncome => 'Income';
+
+  @override
+  String get todayIncome => 'Income today';
+
+  @override
+  String get noTransactions => 'No transactions recorded this month.';
+
+  @override
+  String get categoryDelete => 'Delete category';
+
+  @override
+  String categoryDeleteConfirm(String name) {
+    return 'Delete “$name”? Existing transactions will keep this name.';
+  }
 
   @override
   String get meAyahsRead => 'Ayahs read';

@@ -154,7 +154,7 @@ Dates are stored as **`yyyy-MM-dd` text** (`DayKey`) — see conflicts.
 - `prayer_logs`: id, date, prayer (fajr…isha), status (onTime, congregation, late, missed, excused), markedAt. UNIQUE(date, prayer).
 - `qada_counts`: prayer PK, remaining ≥ 0.
 - `qada_events`: id, prayer, delta (+1/−1), source (missedMarked, manualAdd, madeUp), createdAt.
-- `expenses`: id, amountMinor INTEGER, currency (default TMT), category (groceries, transport, food, bills, sadaqa, other), note?, occurredAt.
+- `expenses`: id, amountMinor INTEGER, currency (default TMT), category (groceries, transport, food, bills, sadaqa, other), customCategory?, note?, occurredAt. User-defined category names are kept in settings and each expense stores its selected custom name.
 - `tasks`: id, title, date, window (beforeFajr, afterFajr, beforeDhuhr, afterDhuhr, afterAsr, afterMaghrib, afterIsha, anytime), done, doneAt?, sortOrder.
 - `adhkar_progress`: date, setId (morning/evening), itemId, count. UNIQUE(date, setId, itemId).
 - `fasts`: date PK, type (ramadan, monThu, whiteDays, other), status (fasted, missed, excused).
@@ -298,15 +298,16 @@ sounds are fixed once a channel exists → bump the channel id in `notification_
 
 - Dart builds a 7-day JSON payload (`features/widgets/domain/widget_payload.dart`, key `waqt_widget`)
   → `home_widget` shared storage (App Group `group.tm.ofis.waqt` on iOS). Native code derives
-  next prayer / open window / countdown from it, so widgets stay right for a week offline.
+  the next prayer or sunrise boundary / open window / countdown from it, so widgets stay right
+  for a week offline.
 - Pushed by `widgetSyncProvider` (engine, today's marks, language changes), by the workmanager
   refresh (`runBackgroundRefresh` → `refreshWidgetsFromDisk`) and after widget actions.
 - Android (Glance): `android/app/src/main/kotlin/tm/ofis/waqt/widget/` (`WaqtWidgetReceiver`,
   `WidgetData` logic), `res/xml/waqt_widget_info.xml` (4×2). "Mark as prayed" → broadcast →
   Dart `widgetInteraction` (background isolate) marks on time and refreshes. Refreshes are
   scheduled at prayer times + every 15 min for 6 h (`HomeWidget.scheduleWidgetUpdates`).
-- iOS (WidgetKit): `ios/WaqtWidget/WaqtWidget.swift` — small (hero), medium (5 columns),
-  lock-screen rectangular; minute entries for 3 h + state changes. Taps open
+- iOS (WidgetKit): `ios/WaqtWidget/WaqtWidget.swift` — small (hero), medium (6 columns including sunrise),
+  large (live countdown + 6-row timetable), lock-screen rectangular; minute entries for 3 h + state changes. Taps open
   `waqt://today?homeWidget[&mark=…&day=…]` (URL scheme `waqt` in Runner/Info.plist).
 - Drift DB opens with `shareAcrossIsolates: true` so background writes reach the app's streams.
 - `core/platform/system_settings.dart` uses MainActivity's `waqt/system` channel (battery list,

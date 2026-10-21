@@ -51,6 +51,29 @@ String _book(GoRouterState state) {
 /// Last path segment of a full route ('/today/qada' → 'qada').
 String _child(String full) => full.substring(full.lastIndexOf('/') + 1);
 
+/// A route whose page is always a Flutter [MaterialPage]. go_router decides
+/// the page type by looking for a `MaterialApp` from its own `material_ui`
+/// dependency, which never matches ours, so without this every page would be
+/// a `NoTransitionPage`: no slide animation and no iOS edge-swipe back.
+GoRoute _route({
+  required String path,
+  required Widget Function(BuildContext, GoRouterState) builder,
+  List<RouteBase> routes = const [],
+  GlobalKey<NavigatorState>? parentNavigatorKey,
+}) =>
+    GoRoute(
+      path: path,
+      parentNavigatorKey: parentNavigatorKey,
+      routes: routes,
+      pageBuilder: (context, state) => MaterialPage<void>(
+        key: state.pageKey,
+        name: state.name ?? state.path,
+        arguments: <String, String>{...state.pathParameters, ...state.uri.queryParameters},
+        restorationId: state.pageKey.value,
+        child: builder(context, state),
+      ),
+    );
+
 final appRouterProvider = Provider<GoRouter>((ref) {
   // Rebuild redirects only when onboarding completes, not on every setting.
   final onboarding = ValueNotifier<bool>(ref.read(settingsProvider).onboardingDone);
@@ -73,41 +96,41 @@ final appRouterProvider = Provider<GoRouter>((ref) {
         builder: (context, state, shell) => AppShell(shell: shell),
         branches: [
           StatefulShellBranch(routes: [
-            GoRoute(
+            _route(
               path: Routes.today,
               builder: (context, state) => TodayScreen(
                 markPrayer: state.uri.queryParameters['mark'],
                 markDay: state.uri.queryParameters['day'],
               ),
               routes: [
-                GoRoute(path: _child(Routes.qada), builder: (context, state) => const QadaScreen()),
-                GoRoute(path: _child(Routes.tasks), builder: (context, state) => const TasksScreen()),
-                GoRoute(path: _child(Routes.habits), builder: (context, state) => const HabitsScreen()),
+                _route(path: _child(Routes.qada), builder: (context, state) => const QadaScreen()),
+                _route(path: _child(Routes.tasks), builder: (context, state) => const TasksScreen()),
+                _route(path: _child(Routes.habits), builder: (context, state) => const HabitsScreen()),
               ],
             ),
           ]),
           StatefulShellBranch(routes: [
-            GoRoute(
+            _route(
               path: Routes.quran,
               builder: (context, state) => const QuranHomeScreen(),
               routes: [
-                GoRoute(path: _child(Routes.quranSearch), builder: (context, state) => const QuranSearchScreen()),
-                GoRoute(path: _child(Routes.quranBookmarks), builder: (context, state) => const QuranBookmarksScreen()),
-                GoRoute(path: _child(Routes.khatm), builder: (context, state) => const KhatmScreen()),
-                GoRoute(path: _child(Routes.hifz), builder: (context, state) => const HifzScreen()),
+                _route(path: _child(Routes.quranSearch), builder: (context, state) => const QuranSearchScreen()),
+                _route(path: _child(Routes.quranBookmarks), builder: (context, state) => const QuranBookmarksScreen()),
+                _route(path: _child(Routes.khatm), builder: (context, state) => const KhatmScreen()),
+                _route(path: _child(Routes.hifz), builder: (context, state) => const HifzScreen()),
               ],
             ),
           ]),
           StatefulShellBranch(routes: [
-            GoRoute(
+            _route(
               path: Routes.library,
               builder: (context, state) => const LibraryScreen(),
               routes: [
-                GoRoute(
+                _route(
                   path: 'hadith/:book',
                   builder: (context, state) => HadithBookScreen(bookId: _book(state)),
                   routes: [
-                    GoRoute(
+                    _route(
                       path: ':section',
                       builder: (context, state) => HadithSectionScreen(
                         bookId: _book(state),
@@ -116,45 +139,45 @@ final appRouterProvider = Provider<GoRouter>((ref) {
                     ),
                   ],
                 ),
-                GoRoute(path: _child(Routes.duas), builder: (context, state) => const DuasScreen()),
-                GoRoute(path: _child(Routes.hadithSearch), builder: (context, state) => const HadithSearchScreen()),
-                GoRoute(path: _child(Routes.names), builder: (context, state) => const NamesScreen()),
-                GoRoute(
+                _route(path: _child(Routes.duas), builder: (context, state) => const DuasScreen()),
+                _route(path: _child(Routes.hadithSearch), builder: (context, state) => const HadithSearchScreen()),
+                _route(path: _child(Routes.names), builder: (context, state) => const NamesScreen()),
+                _route(
                   path: _child(Routes.learn),
                   builder: (context, state) => const LearnScreen(),
                   routes: [
-                    GoRoute(path: ':id', builder: (context, state) => GuideScreen(id: state.pathParameters['id'] ?? '')),
+                    _route(path: ':id', builder: (context, state) => GuideScreen(id: state.pathParameters['id'] ?? '')),
                   ],
                 ),
-                GoRoute(path: _child(Routes.libraryBookmarks), builder: (context, state) => const SavedScreen()),
+                _route(path: _child(Routes.libraryBookmarks), builder: (context, state) => const SavedScreen()),
               ],
             ),
           ]),
           StatefulShellBranch(routes: [
-            GoRoute(
+            _route(
               path: Routes.tools,
               builder: (context, state) => const ToolsScreen(),
               routes: [
-                GoRoute(path: _child(Routes.calendar), builder: (context, state) => const CalendarScreen()),
-                GoRoute(path: _child(Routes.qiblaFull), builder: (context, state) => const QiblaScreen()),
-                GoRoute(path: _child(Routes.ramadan), builder: (context, state) => const RamadanScreen()),
-                GoRoute(path: _child(Routes.zakat), builder: (context, state) => const ZakatScreen()),
-                GoRoute(path: _child(Routes.timetable), builder: (context, state) => const TimetableScreen()),
+                _route(path: _child(Routes.calendar), builder: (context, state) => const CalendarScreen()),
+                _route(path: _child(Routes.qiblaFull), builder: (context, state) => const QiblaScreen()),
+                _route(path: _child(Routes.ramadan), builder: (context, state) => const RamadanScreen()),
+                _route(path: _child(Routes.zakat), builder: (context, state) => const ZakatScreen()),
+                _route(path: _child(Routes.timetable), builder: (context, state) => const TimetableScreen()),
               ],
             ),
           ]),
           StatefulShellBranch(routes: [
-            GoRoute(
+            _route(
               path: Routes.me,
               builder: (context, state) => const MeScreen(),
               routes: [
-                GoRoute(path: _child(Routes.expenses), builder: (context, state) => const ExpenseHistoryScreen()),
-                GoRoute(
+                _route(path: _child(Routes.expenses), builder: (context, state) => const ExpenseHistoryScreen()),
+                _route(
                   path: _child(Routes.settings),
                   builder: (context, state) => const SettingsScreen(),
                   routes: [
-                    GoRoute(path: _child(Routes.widgetsHelp), builder: (context, state) => const WidgetsHelpScreen()),
-                    GoRoute(path: _child(Routes.backup), builder: (context, state) => const BackupScreen()),
+                    _route(path: _child(Routes.widgetsHelp), builder: (context, state) => const WidgetsHelpScreen()),
+                    _route(path: _child(Routes.backup), builder: (context, state) => const BackupScreen()),
                   ],
                 ),
               ],
@@ -162,14 +185,14 @@ final appRouterProvider = Provider<GoRouter>((ref) {
           ]),
         ],
       ),
-      GoRoute(
+      _route(
         path: Routes.adhkarPattern,
         parentNavigatorKey: rootNavigatorKey,
         builder: (context, state) => AdhkarReader(
           set: state.pathParameters['set'] == 'evening' ? AdhkarSet.evening : AdhkarSet.morning,
         ),
       ),
-      GoRoute(
+      _route(
         path: Routes.readPattern,
         parentNavigatorKey: rootNavigatorKey,
         builder: (context, state) {
@@ -181,12 +204,12 @@ final appRouterProvider = Provider<GoRouter>((ref) {
           );
         },
       ),
-      GoRoute(
+      _route(
         path: Routes.location,
         parentNavigatorKey: rootNavigatorKey,
         builder: (context, state) => const LocationScreen(),
       ),
-      GoRoute(
+      _route(
         path: Routes.onboarding,
         parentNavigatorKey: rootNavigatorKey,
         builder: (context, state) => const OnboardingScreen(),

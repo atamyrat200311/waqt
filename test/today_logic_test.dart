@@ -1,5 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:timezone/timezone.dart' as tz;
+import 'package:waqt/core/utils/dates.dart';
 import 'package:waqt/data/db/enums.dart';
 import 'package:waqt/features/adhkar/domain/adhkar.dart';
 import 'package:waqt/features/prayer/application/prayer_providers.dart';
@@ -42,6 +43,13 @@ void main() {
     test("after midnight, yesterday's Isha window does not ring today's Isha", () {
       final n = at(tz.TZDateTime(locationFor('Asia/Ashgabat'), 2026, 10, 5, 1));
       expect(chipState(Prayer.isha, null, n), ChipState.upcoming);
+    });
+
+    test('browsed days use past/future states and preserve marks', () {
+      final n = at(after(Prayer.asr));
+      expect(chipStateForDay(Prayer.fajr, null, n, const DayKey('2026-10-03')), ChipState.unmarked);
+      expect(chipStateForDay(Prayer.fajr, null, n, const DayKey('2026-10-05')), ChipState.upcoming);
+      expect(chipStateForDay(Prayer.fajr, PrayerStatus.onTime, n, const DayKey('2026-10-03')), ChipState.done);
     });
   });
 

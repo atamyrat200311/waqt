@@ -992,6 +992,21 @@ class $ExpensesTable extends Expenses
     type: DriftSqlType.string,
     requiredDuringInsert: true,
   ).withConverter<ExpenseCategory>($ExpensesTable.$convertercategory);
+  static const VerificationMeta _customCategoryMeta = const VerificationMeta(
+    'customCategory',
+  );
+  @override
+  late final GeneratedColumn<String> customCategory = GeneratedColumn<String>(
+    'custom_category',
+    aliasedName,
+    true,
+    additionalChecks: GeneratedColumn.checkTextLength(
+      minTextLength: 1,
+      maxTextLength: 30,
+    ),
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
   static const VerificationMeta _noteMeta = const VerificationMeta('note');
   @override
   late final GeneratedColumn<String> note = GeneratedColumn<String>(
@@ -1018,6 +1033,7 @@ class $ExpensesTable extends Expenses
     amountMinor,
     currency,
     category,
+    customCategory,
     note,
     occurredAt,
   ];
@@ -1051,6 +1067,15 @@ class $ExpensesTable extends Expenses
       context.handle(
         _currencyMeta,
         currency.isAcceptableOrUnknown(data['currency']!, _currencyMeta),
+      );
+    }
+    if (data.containsKey('custom_category')) {
+      context.handle(
+        _customCategoryMeta,
+        customCategory.isAcceptableOrUnknown(
+          data['custom_category']!,
+          _customCategoryMeta,
+        ),
       );
     }
     if (data.containsKey('note')) {
@@ -1094,6 +1119,10 @@ class $ExpensesTable extends Expenses
           data['${effectivePrefix}category'],
         )!,
       ),
+      customCategory: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}custom_category'],
+      ),
       note: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}note'],
@@ -1123,6 +1152,7 @@ class ExpenseRow extends DataClass implements Insertable<ExpenseRow> {
   final int amountMinor;
   final String currency;
   final ExpenseCategory category;
+  final String? customCategory;
   final String? note;
   final DateTime occurredAt;
   const ExpenseRow({
@@ -1130,6 +1160,7 @@ class ExpenseRow extends DataClass implements Insertable<ExpenseRow> {
     required this.amountMinor,
     required this.currency,
     required this.category,
+    this.customCategory,
     this.note,
     required this.occurredAt,
   });
@@ -1144,6 +1175,9 @@ class ExpenseRow extends DataClass implements Insertable<ExpenseRow> {
         $ExpensesTable.$convertercategory.toSql(category),
       );
     }
+    if (!nullToAbsent || customCategory != null) {
+      map['custom_category'] = Variable<String>(customCategory);
+    }
     if (!nullToAbsent || note != null) {
       map['note'] = Variable<String>(note);
     }
@@ -1157,6 +1191,9 @@ class ExpenseRow extends DataClass implements Insertable<ExpenseRow> {
       amountMinor: Value(amountMinor),
       currency: Value(currency),
       category: Value(category),
+      customCategory: customCategory == null && nullToAbsent
+          ? const Value.absent()
+          : Value(customCategory),
       note: note == null && nullToAbsent ? const Value.absent() : Value(note),
       occurredAt: Value(occurredAt),
     );
@@ -1174,6 +1211,7 @@ class ExpenseRow extends DataClass implements Insertable<ExpenseRow> {
       category: $ExpensesTable.$convertercategory.fromJson(
         serializer.fromJson<String>(json['category']),
       ),
+      customCategory: serializer.fromJson<String?>(json['customCategory']),
       note: serializer.fromJson<String?>(json['note']),
       occurredAt: serializer.fromJson<DateTime>(json['occurredAt']),
     );
@@ -1188,6 +1226,7 @@ class ExpenseRow extends DataClass implements Insertable<ExpenseRow> {
       'category': serializer.toJson<String>(
         $ExpensesTable.$convertercategory.toJson(category),
       ),
+      'customCategory': serializer.toJson<String?>(customCategory),
       'note': serializer.toJson<String?>(note),
       'occurredAt': serializer.toJson<DateTime>(occurredAt),
     };
@@ -1198,6 +1237,7 @@ class ExpenseRow extends DataClass implements Insertable<ExpenseRow> {
     int? amountMinor,
     String? currency,
     ExpenseCategory? category,
+    Value<String?> customCategory = const Value.absent(),
     Value<String?> note = const Value.absent(),
     DateTime? occurredAt,
   }) => ExpenseRow(
@@ -1205,6 +1245,9 @@ class ExpenseRow extends DataClass implements Insertable<ExpenseRow> {
     amountMinor: amountMinor ?? this.amountMinor,
     currency: currency ?? this.currency,
     category: category ?? this.category,
+    customCategory: customCategory.present
+        ? customCategory.value
+        : this.customCategory,
     note: note.present ? note.value : this.note,
     occurredAt: occurredAt ?? this.occurredAt,
   );
@@ -1216,6 +1259,9 @@ class ExpenseRow extends DataClass implements Insertable<ExpenseRow> {
           : this.amountMinor,
       currency: data.currency.present ? data.currency.value : this.currency,
       category: data.category.present ? data.category.value : this.category,
+      customCategory: data.customCategory.present
+          ? data.customCategory.value
+          : this.customCategory,
       note: data.note.present ? data.note.value : this.note,
       occurredAt: data.occurredAt.present
           ? data.occurredAt.value
@@ -1230,6 +1276,7 @@ class ExpenseRow extends DataClass implements Insertable<ExpenseRow> {
           ..write('amountMinor: $amountMinor, ')
           ..write('currency: $currency, ')
           ..write('category: $category, ')
+          ..write('customCategory: $customCategory, ')
           ..write('note: $note, ')
           ..write('occurredAt: $occurredAt')
           ..write(')'))
@@ -1237,8 +1284,15 @@ class ExpenseRow extends DataClass implements Insertable<ExpenseRow> {
   }
 
   @override
-  int get hashCode =>
-      Object.hash(id, amountMinor, currency, category, note, occurredAt);
+  int get hashCode => Object.hash(
+    id,
+    amountMinor,
+    currency,
+    category,
+    customCategory,
+    note,
+    occurredAt,
+  );
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
@@ -1247,6 +1301,7 @@ class ExpenseRow extends DataClass implements Insertable<ExpenseRow> {
           other.amountMinor == this.amountMinor &&
           other.currency == this.currency &&
           other.category == this.category &&
+          other.customCategory == this.customCategory &&
           other.note == this.note &&
           other.occurredAt == this.occurredAt);
 }
@@ -1256,6 +1311,7 @@ class ExpensesCompanion extends UpdateCompanion<ExpenseRow> {
   final Value<int> amountMinor;
   final Value<String> currency;
   final Value<ExpenseCategory> category;
+  final Value<String?> customCategory;
   final Value<String?> note;
   final Value<DateTime> occurredAt;
   const ExpensesCompanion({
@@ -1263,6 +1319,7 @@ class ExpensesCompanion extends UpdateCompanion<ExpenseRow> {
     this.amountMinor = const Value.absent(),
     this.currency = const Value.absent(),
     this.category = const Value.absent(),
+    this.customCategory = const Value.absent(),
     this.note = const Value.absent(),
     this.occurredAt = const Value.absent(),
   });
@@ -1271,6 +1328,7 @@ class ExpensesCompanion extends UpdateCompanion<ExpenseRow> {
     required int amountMinor,
     this.currency = const Value.absent(),
     required ExpenseCategory category,
+    this.customCategory = const Value.absent(),
     this.note = const Value.absent(),
     required DateTime occurredAt,
   }) : amountMinor = Value(amountMinor),
@@ -1281,6 +1339,7 @@ class ExpensesCompanion extends UpdateCompanion<ExpenseRow> {
     Expression<int>? amountMinor,
     Expression<String>? currency,
     Expression<String>? category,
+    Expression<String>? customCategory,
     Expression<String>? note,
     Expression<DateTime>? occurredAt,
   }) {
@@ -1289,6 +1348,7 @@ class ExpensesCompanion extends UpdateCompanion<ExpenseRow> {
       if (amountMinor != null) 'amount_minor': amountMinor,
       if (currency != null) 'currency': currency,
       if (category != null) 'category': category,
+      if (customCategory != null) 'custom_category': customCategory,
       if (note != null) 'note': note,
       if (occurredAt != null) 'occurred_at': occurredAt,
     });
@@ -1299,6 +1359,7 @@ class ExpensesCompanion extends UpdateCompanion<ExpenseRow> {
     Value<int>? amountMinor,
     Value<String>? currency,
     Value<ExpenseCategory>? category,
+    Value<String?>? customCategory,
     Value<String?>? note,
     Value<DateTime>? occurredAt,
   }) {
@@ -1307,6 +1368,7 @@ class ExpensesCompanion extends UpdateCompanion<ExpenseRow> {
       amountMinor: amountMinor ?? this.amountMinor,
       currency: currency ?? this.currency,
       category: category ?? this.category,
+      customCategory: customCategory ?? this.customCategory,
       note: note ?? this.note,
       occurredAt: occurredAt ?? this.occurredAt,
     );
@@ -1329,6 +1391,9 @@ class ExpensesCompanion extends UpdateCompanion<ExpenseRow> {
         $ExpensesTable.$convertercategory.toSql(category.value),
       );
     }
+    if (customCategory.present) {
+      map['custom_category'] = Variable<String>(customCategory.value);
+    }
     if (note.present) {
       map['note'] = Variable<String>(note.value);
     }
@@ -1345,6 +1410,482 @@ class ExpensesCompanion extends UpdateCompanion<ExpenseRow> {
           ..write('amountMinor: $amountMinor, ')
           ..write('currency: $currency, ')
           ..write('category: $category, ')
+          ..write('customCategory: $customCategory, ')
+          ..write('note: $note, ')
+          ..write('occurredAt: $occurredAt')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $IncomesTable extends Incomes with TableInfo<$IncomesTable, IncomeRow> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $IncomesTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<int> id = GeneratedColumn<int>(
+    'id',
+    aliasedName,
+    false,
+    hasAutoIncrement: true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'PRIMARY KEY AUTOINCREMENT',
+    ),
+  );
+  static const VerificationMeta _amountMinorMeta = const VerificationMeta(
+    'amountMinor',
+  );
+  @override
+  late final GeneratedColumn<int> amountMinor = GeneratedColumn<int>(
+    'amount_minor',
+    aliasedName,
+    false,
+    check: () => ComparableExpr(amountMinor).isBiggerThanValue(0),
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _currencyMeta = const VerificationMeta(
+    'currency',
+  );
+  @override
+  late final GeneratedColumn<String> currency = GeneratedColumn<String>(
+    'currency',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    defaultValue: const Constant('TMT'),
+  );
+  @override
+  late final GeneratedColumnWithTypeConverter<IncomeCategory, String> category =
+      GeneratedColumn<String>(
+        'category',
+        aliasedName,
+        false,
+        type: DriftSqlType.string,
+        requiredDuringInsert: true,
+      ).withConverter<IncomeCategory>($IncomesTable.$convertercategory);
+  static const VerificationMeta _customCategoryMeta = const VerificationMeta(
+    'customCategory',
+  );
+  @override
+  late final GeneratedColumn<String> customCategory = GeneratedColumn<String>(
+    'custom_category',
+    aliasedName,
+    true,
+    additionalChecks: GeneratedColumn.checkTextLength(
+      minTextLength: 1,
+      maxTextLength: 30,
+    ),
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _noteMeta = const VerificationMeta('note');
+  @override
+  late final GeneratedColumn<String> note = GeneratedColumn<String>(
+    'note',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _occurredAtMeta = const VerificationMeta(
+    'occurredAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> occurredAt = GeneratedColumn<DateTime>(
+    'occurred_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: true,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    id,
+    amountMinor,
+    currency,
+    category,
+    customCategory,
+    note,
+    occurredAt,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'incomes';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<IncomeRow> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    }
+    if (data.containsKey('amount_minor')) {
+      context.handle(
+        _amountMinorMeta,
+        amountMinor.isAcceptableOrUnknown(
+          data['amount_minor']!,
+          _amountMinorMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_amountMinorMeta);
+    }
+    if (data.containsKey('currency')) {
+      context.handle(
+        _currencyMeta,
+        currency.isAcceptableOrUnknown(data['currency']!, _currencyMeta),
+      );
+    }
+    if (data.containsKey('custom_category')) {
+      context.handle(
+        _customCategoryMeta,
+        customCategory.isAcceptableOrUnknown(
+          data['custom_category']!,
+          _customCategoryMeta,
+        ),
+      );
+    }
+    if (data.containsKey('note')) {
+      context.handle(
+        _noteMeta,
+        note.isAcceptableOrUnknown(data['note']!, _noteMeta),
+      );
+    }
+    if (data.containsKey('occurred_at')) {
+      context.handle(
+        _occurredAtMeta,
+        occurredAt.isAcceptableOrUnknown(data['occurred_at']!, _occurredAtMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_occurredAtMeta);
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  IncomeRow map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return IncomeRow(
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}id'],
+      )!,
+      amountMinor: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}amount_minor'],
+      )!,
+      currency: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}currency'],
+      )!,
+      category: $IncomesTable.$convertercategory.fromSql(
+        attachedDatabase.typeMapping.read(
+          DriftSqlType.string,
+          data['${effectivePrefix}category'],
+        )!,
+      ),
+      customCategory: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}custom_category'],
+      ),
+      note: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}note'],
+      ),
+      occurredAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}occurred_at'],
+      )!,
+    );
+  }
+
+  @override
+  $IncomesTable createAlias(String alias) {
+    return $IncomesTable(attachedDatabase, alias);
+  }
+
+  static JsonTypeConverter2<IncomeCategory, String, String> $convertercategory =
+      const EnumNameConverter<IncomeCategory>(IncomeCategory.values);
+}
+
+class IncomeRow extends DataClass implements Insertable<IncomeRow> {
+  final int id;
+
+  /// Minor units (1/100). Never floats.
+  final int amountMinor;
+  final String currency;
+  final IncomeCategory category;
+  final String? customCategory;
+  final String? note;
+  final DateTime occurredAt;
+  const IncomeRow({
+    required this.id,
+    required this.amountMinor,
+    required this.currency,
+    required this.category,
+    this.customCategory,
+    this.note,
+    required this.occurredAt,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<int>(id);
+    map['amount_minor'] = Variable<int>(amountMinor);
+    map['currency'] = Variable<String>(currency);
+    {
+      map['category'] = Variable<String>(
+        $IncomesTable.$convertercategory.toSql(category),
+      );
+    }
+    if (!nullToAbsent || customCategory != null) {
+      map['custom_category'] = Variable<String>(customCategory);
+    }
+    if (!nullToAbsent || note != null) {
+      map['note'] = Variable<String>(note);
+    }
+    map['occurred_at'] = Variable<DateTime>(occurredAt);
+    return map;
+  }
+
+  IncomesCompanion toCompanion(bool nullToAbsent) {
+    return IncomesCompanion(
+      id: Value(id),
+      amountMinor: Value(amountMinor),
+      currency: Value(currency),
+      category: Value(category),
+      customCategory: customCategory == null && nullToAbsent
+          ? const Value.absent()
+          : Value(customCategory),
+      note: note == null && nullToAbsent ? const Value.absent() : Value(note),
+      occurredAt: Value(occurredAt),
+    );
+  }
+
+  factory IncomeRow.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return IncomeRow(
+      id: serializer.fromJson<int>(json['id']),
+      amountMinor: serializer.fromJson<int>(json['amountMinor']),
+      currency: serializer.fromJson<String>(json['currency']),
+      category: $IncomesTable.$convertercategory.fromJson(
+        serializer.fromJson<String>(json['category']),
+      ),
+      customCategory: serializer.fromJson<String?>(json['customCategory']),
+      note: serializer.fromJson<String?>(json['note']),
+      occurredAt: serializer.fromJson<DateTime>(json['occurredAt']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<int>(id),
+      'amountMinor': serializer.toJson<int>(amountMinor),
+      'currency': serializer.toJson<String>(currency),
+      'category': serializer.toJson<String>(
+        $IncomesTable.$convertercategory.toJson(category),
+      ),
+      'customCategory': serializer.toJson<String?>(customCategory),
+      'note': serializer.toJson<String?>(note),
+      'occurredAt': serializer.toJson<DateTime>(occurredAt),
+    };
+  }
+
+  IncomeRow copyWith({
+    int? id,
+    int? amountMinor,
+    String? currency,
+    IncomeCategory? category,
+    Value<String?> customCategory = const Value.absent(),
+    Value<String?> note = const Value.absent(),
+    DateTime? occurredAt,
+  }) => IncomeRow(
+    id: id ?? this.id,
+    amountMinor: amountMinor ?? this.amountMinor,
+    currency: currency ?? this.currency,
+    category: category ?? this.category,
+    customCategory: customCategory.present
+        ? customCategory.value
+        : this.customCategory,
+    note: note.present ? note.value : this.note,
+    occurredAt: occurredAt ?? this.occurredAt,
+  );
+  IncomeRow copyWithCompanion(IncomesCompanion data) {
+    return IncomeRow(
+      id: data.id.present ? data.id.value : this.id,
+      amountMinor: data.amountMinor.present
+          ? data.amountMinor.value
+          : this.amountMinor,
+      currency: data.currency.present ? data.currency.value : this.currency,
+      category: data.category.present ? data.category.value : this.category,
+      customCategory: data.customCategory.present
+          ? data.customCategory.value
+          : this.customCategory,
+      note: data.note.present ? data.note.value : this.note,
+      occurredAt: data.occurredAt.present
+          ? data.occurredAt.value
+          : this.occurredAt,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('IncomeRow(')
+          ..write('id: $id, ')
+          ..write('amountMinor: $amountMinor, ')
+          ..write('currency: $currency, ')
+          ..write('category: $category, ')
+          ..write('customCategory: $customCategory, ')
+          ..write('note: $note, ')
+          ..write('occurredAt: $occurredAt')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+    id,
+    amountMinor,
+    currency,
+    category,
+    customCategory,
+    note,
+    occurredAt,
+  );
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is IncomeRow &&
+          other.id == this.id &&
+          other.amountMinor == this.amountMinor &&
+          other.currency == this.currency &&
+          other.category == this.category &&
+          other.customCategory == this.customCategory &&
+          other.note == this.note &&
+          other.occurredAt == this.occurredAt);
+}
+
+class IncomesCompanion extends UpdateCompanion<IncomeRow> {
+  final Value<int> id;
+  final Value<int> amountMinor;
+  final Value<String> currency;
+  final Value<IncomeCategory> category;
+  final Value<String?> customCategory;
+  final Value<String?> note;
+  final Value<DateTime> occurredAt;
+  const IncomesCompanion({
+    this.id = const Value.absent(),
+    this.amountMinor = const Value.absent(),
+    this.currency = const Value.absent(),
+    this.category = const Value.absent(),
+    this.customCategory = const Value.absent(),
+    this.note = const Value.absent(),
+    this.occurredAt = const Value.absent(),
+  });
+  IncomesCompanion.insert({
+    this.id = const Value.absent(),
+    required int amountMinor,
+    this.currency = const Value.absent(),
+    required IncomeCategory category,
+    this.customCategory = const Value.absent(),
+    this.note = const Value.absent(),
+    required DateTime occurredAt,
+  }) : amountMinor = Value(amountMinor),
+       category = Value(category),
+       occurredAt = Value(occurredAt);
+  static Insertable<IncomeRow> custom({
+    Expression<int>? id,
+    Expression<int>? amountMinor,
+    Expression<String>? currency,
+    Expression<String>? category,
+    Expression<String>? customCategory,
+    Expression<String>? note,
+    Expression<DateTime>? occurredAt,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (amountMinor != null) 'amount_minor': amountMinor,
+      if (currency != null) 'currency': currency,
+      if (category != null) 'category': category,
+      if (customCategory != null) 'custom_category': customCategory,
+      if (note != null) 'note': note,
+      if (occurredAt != null) 'occurred_at': occurredAt,
+    });
+  }
+
+  IncomesCompanion copyWith({
+    Value<int>? id,
+    Value<int>? amountMinor,
+    Value<String>? currency,
+    Value<IncomeCategory>? category,
+    Value<String?>? customCategory,
+    Value<String?>? note,
+    Value<DateTime>? occurredAt,
+  }) {
+    return IncomesCompanion(
+      id: id ?? this.id,
+      amountMinor: amountMinor ?? this.amountMinor,
+      currency: currency ?? this.currency,
+      category: category ?? this.category,
+      customCategory: customCategory ?? this.customCategory,
+      note: note ?? this.note,
+      occurredAt: occurredAt ?? this.occurredAt,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<int>(id.value);
+    }
+    if (amountMinor.present) {
+      map['amount_minor'] = Variable<int>(amountMinor.value);
+    }
+    if (currency.present) {
+      map['currency'] = Variable<String>(currency.value);
+    }
+    if (category.present) {
+      map['category'] = Variable<String>(
+        $IncomesTable.$convertercategory.toSql(category.value),
+      );
+    }
+    if (customCategory.present) {
+      map['custom_category'] = Variable<String>(customCategory.value);
+    }
+    if (note.present) {
+      map['note'] = Variable<String>(note.value);
+    }
+    if (occurredAt.present) {
+      map['occurred_at'] = Variable<DateTime>(occurredAt.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('IncomesCompanion(')
+          ..write('id: $id, ')
+          ..write('amountMinor: $amountMinor, ')
+          ..write('currency: $currency, ')
+          ..write('category: $category, ')
+          ..write('customCategory: $customCategory, ')
           ..write('note: $note, ')
           ..write('occurredAt: $occurredAt')
           ..write(')'))
@@ -4277,6 +4818,7 @@ abstract class _$AppDatabase extends GeneratedDatabase {
   late final $QadaCountsTable qadaCounts = $QadaCountsTable(this);
   late final $QadaEventsTable qadaEvents = $QadaEventsTable(this);
   late final $ExpensesTable expenses = $ExpensesTable(this);
+  late final $IncomesTable incomes = $IncomesTable(this);
   late final $TasksTable tasks = $TasksTable(this);
   late final $AdhkarProgressTable adhkarProgress = $AdhkarProgressTable(this);
   late final $FastsTable fasts = $FastsTable(this);
@@ -4295,6 +4837,7 @@ abstract class _$AppDatabase extends GeneratedDatabase {
     qadaCounts,
     qadaEvents,
     expenses,
+    incomes,
     tasks,
     adhkarProgress,
     fasts,
@@ -4886,6 +5429,7 @@ typedef $$ExpensesTableCreateCompanionBuilder =
       required int amountMinor,
       Value<String> currency,
       required ExpenseCategory category,
+      Value<String?> customCategory,
       Value<String?> note,
       required DateTime occurredAt,
     });
@@ -4895,6 +5439,7 @@ typedef $$ExpensesTableUpdateCompanionBuilder =
       Value<int> amountMinor,
       Value<String> currency,
       Value<ExpenseCategory> category,
+      Value<String?> customCategory,
       Value<String?> note,
       Value<DateTime> occurredAt,
     });
@@ -4927,6 +5472,11 @@ class $$ExpensesTableFilterComposer
   get category => $composableBuilder(
     column: $table.category,
     builder: (column) => ColumnWithTypeConverterFilters(column),
+  );
+
+  ColumnFilters<String> get customCategory => $composableBuilder(
+    column: $table.customCategory,
+    builder: (column) => ColumnFilters(column),
   );
 
   ColumnFilters<String> get note => $composableBuilder(
@@ -4969,6 +5519,11 @@ class $$ExpensesTableOrderingComposer
     builder: (column) => ColumnOrderings(column),
   );
 
+  ColumnOrderings<String> get customCategory => $composableBuilder(
+    column: $table.customCategory,
+    builder: (column) => ColumnOrderings(column),
+  );
+
   ColumnOrderings<String> get note => $composableBuilder(
     column: $table.note,
     builder: (column) => ColumnOrderings(column),
@@ -5002,6 +5557,11 @@ class $$ExpensesTableAnnotationComposer
 
   GeneratedColumnWithTypeConverter<ExpenseCategory, String> get category =>
       $composableBuilder(column: $table.category, builder: (column) => column);
+
+  GeneratedColumn<String> get customCategory => $composableBuilder(
+    column: $table.customCategory,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<String> get note =>
       $composableBuilder(column: $table.note, builder: (column) => column);
@@ -5047,6 +5607,7 @@ class $$ExpensesTableTableManager
                 Value<int> amountMinor = const Value.absent(),
                 Value<String> currency = const Value.absent(),
                 Value<ExpenseCategory> category = const Value.absent(),
+                Value<String?> customCategory = const Value.absent(),
                 Value<String?> note = const Value.absent(),
                 Value<DateTime> occurredAt = const Value.absent(),
               }) => ExpensesCompanion(
@@ -5054,6 +5615,7 @@ class $$ExpensesTableTableManager
                 amountMinor: amountMinor,
                 currency: currency,
                 category: category,
+                customCategory: customCategory,
                 note: note,
                 occurredAt: occurredAt,
               ),
@@ -5063,6 +5625,7 @@ class $$ExpensesTableTableManager
                 required int amountMinor,
                 Value<String> currency = const Value.absent(),
                 required ExpenseCategory category,
+                Value<String?> customCategory = const Value.absent(),
                 Value<String?> note = const Value.absent(),
                 required DateTime occurredAt,
               }) => ExpensesCompanion.insert(
@@ -5070,6 +5633,7 @@ class $$ExpensesTableTableManager
                 amountMinor: amountMinor,
                 currency: currency,
                 category: category,
+                customCategory: customCategory,
                 note: note,
                 occurredAt: occurredAt,
               ),
@@ -5102,6 +5666,248 @@ typedef $$ExpensesTableProcessedTableManager =
       $$ExpensesTableUpdateCompanionBuilder,
       (ExpenseRow, BaseReferences<_$AppDatabase, $ExpensesTable, ExpenseRow>),
       ExpenseRow,
+      PrefetchHooks Function()
+    >;
+typedef $$IncomesTableCreateCompanionBuilder =
+    IncomesCompanion Function({
+      Value<int> id,
+      required int amountMinor,
+      Value<String> currency,
+      required IncomeCategory category,
+      Value<String?> customCategory,
+      Value<String?> note,
+      required DateTime occurredAt,
+    });
+typedef $$IncomesTableUpdateCompanionBuilder =
+    IncomesCompanion Function({
+      Value<int> id,
+      Value<int> amountMinor,
+      Value<String> currency,
+      Value<IncomeCategory> category,
+      Value<String?> customCategory,
+      Value<String?> note,
+      Value<DateTime> occurredAt,
+    });
+
+class $$IncomesTableFilterComposer
+    extends Composer<_$AppDatabase, $IncomesTable> {
+  $$IncomesTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<int> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get amountMinor => $composableBuilder(
+    column: $table.amountMinor,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get currency => $composableBuilder(
+    column: $table.currency,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnWithTypeConverterFilters<IncomeCategory, IncomeCategory, String>
+  get category => $composableBuilder(
+    column: $table.category,
+    builder: (column) => ColumnWithTypeConverterFilters(column),
+  );
+
+  ColumnFilters<String> get customCategory => $composableBuilder(
+    column: $table.customCategory,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get note => $composableBuilder(
+    column: $table.note,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get occurredAt => $composableBuilder(
+    column: $table.occurredAt,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$IncomesTableOrderingComposer
+    extends Composer<_$AppDatabase, $IncomesTable> {
+  $$IncomesTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<int> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get amountMinor => $composableBuilder(
+    column: $table.amountMinor,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get currency => $composableBuilder(
+    column: $table.currency,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get category => $composableBuilder(
+    column: $table.category,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get customCategory => $composableBuilder(
+    column: $table.customCategory,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get note => $composableBuilder(
+    column: $table.note,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get occurredAt => $composableBuilder(
+    column: $table.occurredAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$IncomesTableAnnotationComposer
+    extends Composer<_$AppDatabase, $IncomesTable> {
+  $$IncomesTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<int> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<int> get amountMinor => $composableBuilder(
+    column: $table.amountMinor,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get currency =>
+      $composableBuilder(column: $table.currency, builder: (column) => column);
+
+  GeneratedColumnWithTypeConverter<IncomeCategory, String> get category =>
+      $composableBuilder(column: $table.category, builder: (column) => column);
+
+  GeneratedColumn<String> get customCategory => $composableBuilder(
+    column: $table.customCategory,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get note =>
+      $composableBuilder(column: $table.note, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get occurredAt => $composableBuilder(
+    column: $table.occurredAt,
+    builder: (column) => column,
+  );
+}
+
+class $$IncomesTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $IncomesTable,
+          IncomeRow,
+          $$IncomesTableFilterComposer,
+          $$IncomesTableOrderingComposer,
+          $$IncomesTableAnnotationComposer,
+          $$IncomesTableCreateCompanionBuilder,
+          $$IncomesTableUpdateCompanionBuilder,
+          (IncomeRow, BaseReferences<_$AppDatabase, $IncomesTable, IncomeRow>),
+          IncomeRow,
+          PrefetchHooks Function()
+        > {
+  $$IncomesTableTableManager(_$AppDatabase db, $IncomesTable table)
+    : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$IncomesTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$IncomesTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$IncomesTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<int> id = const Value.absent(),
+                Value<int> amountMinor = const Value.absent(),
+                Value<String> currency = const Value.absent(),
+                Value<IncomeCategory> category = const Value.absent(),
+                Value<String?> customCategory = const Value.absent(),
+                Value<String?> note = const Value.absent(),
+                Value<DateTime> occurredAt = const Value.absent(),
+              }) => IncomesCompanion(
+                id: id,
+                amountMinor: amountMinor,
+                currency: currency,
+                category: category,
+                customCategory: customCategory,
+                note: note,
+                occurredAt: occurredAt,
+              ),
+          createCompanionCallback:
+              ({
+                Value<int> id = const Value.absent(),
+                required int amountMinor,
+                Value<String> currency = const Value.absent(),
+                required IncomeCategory category,
+                Value<String?> customCategory = const Value.absent(),
+                Value<String?> note = const Value.absent(),
+                required DateTime occurredAt,
+              }) => IncomesCompanion.insert(
+                id: id,
+                amountMinor: amountMinor,
+                currency: currency,
+                category: category,
+                customCategory: customCategory,
+                note: note,
+                occurredAt: occurredAt,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable<$IncomesTable, IncomeRow>(table),
+                  BaseReferences<_$AppDatabase, $IncomesTable, IncomeRow>(
+                    db,
+                    table,
+                    e,
+                  ),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$IncomesTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $IncomesTable,
+      IncomeRow,
+      $$IncomesTableFilterComposer,
+      $$IncomesTableOrderingComposer,
+      $$IncomesTableAnnotationComposer,
+      $$IncomesTableCreateCompanionBuilder,
+      $$IncomesTableUpdateCompanionBuilder,
+      (IncomeRow, BaseReferences<_$AppDatabase, $IncomesTable, IncomeRow>),
+      IncomeRow,
       PrefetchHooks Function()
     >;
 typedef $$TasksTableCreateCompanionBuilder =
@@ -7045,6 +7851,8 @@ class $AppDatabaseManager {
       $$QadaEventsTableTableManager(_db, _db.qadaEvents);
   $$ExpensesTableTableManager get expenses =>
       $$ExpensesTableTableManager(_db, _db.expenses);
+  $$IncomesTableTableManager get incomes =>
+      $$IncomesTableTableManager(_db, _db.incomes);
   $$TasksTableTableManager get tasks =>
       $$TasksTableTableManager(_db, _db.tasks);
   $$AdhkarProgressTableTableManager get adhkarProgress =>

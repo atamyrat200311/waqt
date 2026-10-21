@@ -7,10 +7,11 @@ import 'package:waqt/core/utils/dates.dart';
 import 'package:waqt/data/db/enums.dart';
 import 'package:waqt/data/repositories/adhkar_repository.dart';
 import 'package:waqt/data/repositories/fast_repository.dart';
+import 'package:waqt/data/repositories/prayer_repository.dart';
 import 'package:waqt/data/settings/app_settings.dart';
 import 'package:waqt/features/adhkar/application/adhkar_providers.dart';
+import 'package:waqt/features/calendar/domain/fast_day.dart';
 import 'package:waqt/features/calendar/domain/hijri_service.dart';
-import 'package:waqt/features/calendar/presentation/calendar_screen.dart';
 import 'package:waqt/features/tools/domain/tasbih.dart';
 
 import 'helpers/test_app.dart';
@@ -140,12 +141,22 @@ void main() {
       await close(t);
     });
 
-    testWidgets('calendar: tapping a day logs a fast', (t) async {
+    testWidgets('calendar tracker quickly logs a prayer and a fast', (t) async {
       final c = await open(t, '/tools/calendar');
       expect(find.text('Rabīʿ al-Thānī'), findsOneWidget);
-      await t.tap(find.bySemanticsLabel(RegExp(r'^23 .* Sunday, 4 October')));
+      await t.scrollUntilVisible(find.text('Prayer times & tracker'), 220, scrollable: find.byType(Scrollable).first);
+
+      await t.ensureVisible(find.byTooltip('Mark Fajr as prayed'));
       await t.pumpAndSettle();
-      await t.tap(find.text('Fasted'));
+      await t.tap(find.byTooltip('Mark Fajr as prayed'));
+      await settle(t);
+      final marks = await t.runAsync(() => c.read(prayerRepositoryProvider).getDay(const DayKey('2026-10-04')));
+      expect(marks![Prayer.fajr], PrayerStatus.prayed);
+      expect(find.text('1/5'), findsOneWidget);
+
+      await t.ensureVisible(find.byTooltip('Mark the fast as kept'));
+      await t.pumpAndSettle();
+      await t.tap(find.byTooltip('Mark the fast as kept'));
       await settle(t);
       final fasts = await t.runAsync(
         () => c.read(fastRepositoryProvider).watchRange(const DayKey('2026-10-04'), const DayKey('2026-10-04')).first,

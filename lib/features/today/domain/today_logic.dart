@@ -1,3 +1,4 @@
+import '../../../core/utils/dates.dart';
 import '../../../data/db/enums.dart';
 import '../../prayer/application/prayer_providers.dart';
 import '../../prayer/domain/prayer_engine.dart';
@@ -30,8 +31,22 @@ ChipState chipState(Prayer p, PrayerStatus? status, PrayerNow now) {
     return ChipState.excused;
   }
   final w = now.current;
-  if (w != null && w.prayer == p && w.day == now.today.date) return ChipState.current;
+  if (w != null && w.prayer == p && w.day == now.today.date) {
+    return ChipState.current;
+  }
   return now.hasStarted(p) ? ChipState.unmarked : ChipState.upcoming;
+}
+
+/// Visual state for a prayer on a browsed calendar day. Only today can have
+/// a live "current" window; unmarked past/future days stay visually distinct.
+ChipState chipStateForDay(Prayer p, PrayerStatus? status, PrayerNow now, DayKey day) {
+  if (day == now.dayKey) return chipState(p, status, now);
+  if (status != null) {
+    if (status.isPrayed) return ChipState.done;
+    if (status == PrayerStatus.missed) return ChipState.missed;
+    return ChipState.excused;
+  }
+  return day.isBefore(now.dayKey) ? ChipState.unmarked : ChipState.upcoming;
 }
 
 /// Which adhkar set the "Up next" card offers, or null for none.

@@ -29,25 +29,17 @@ const iosWidgetKind = 'WaqtWidget';
 const androidWidgetReceiver = 'tm.ofis.waqt.widget.WaqtWidgetReceiver';
 
 bool get _widgetsSupported =>
-    !kIsWeb &&
-    (defaultTargetPlatform == TargetPlatform.android ||
-        defaultTargetPlatform == TargetPlatform.iOS);
+    !kIsWeb && (defaultTargetPlatform == TargetPlatform.android || defaultTargetPlatform == TargetPlatform.iOS);
 
 /// Writes the payload to shared storage and asks the OS to redraw.
-Future<void> pushWidgetPayload(
-  Map<String, Object?> payload, {
-  DateTime? now,
-}) async {
+Future<void> pushWidgetPayload(Map<String, Object?> payload, {DateTime? now}) async {
   if (!_widgetsSupported) return;
   try {
     if (defaultTargetPlatform == TargetPlatform.iOS) {
       await HomeWidget.setAppGroupId(appGroupId);
     }
     await HomeWidget.saveWidgetData<String>(widgetDataKey, jsonEncode(payload));
-    await HomeWidget.updateWidget(
-      iOSName: iosWidgetKind,
-      qualifiedAndroidName: androidWidgetReceiver,
-    );
+    await HomeWidget.updateWidget(iOSName: iosWidgetKind, qualifiedAndroidName: androidWidgetReceiver);
     if (defaultTargetPlatform == TargetPlatform.android) {
       await HomeWidget.scheduleWidgetUpdates(
         widgetUpdateTimes(payload, now ?? DateTime.now()),
@@ -109,17 +101,36 @@ Future<void> widgetInteraction(Uri? uri) async {
   final prayer = Prayer.tryParse(uri.queryParameters['prayer']);
   final day = uri.queryParameters['day'];
   if (prayer == null || day == null) return;
+  final dayKey = DayKey(day);
+  final settings = await SettingsRepository(SharedPrefsStore()).load();
+  final engine = _engineFor(settings);
+  if (!widgetMarkIsCurrent(engine: engine, prayer: prayer, day: dayKey, now: DateTime.now())) {
+    await refreshWidgetsFromDisk();
+    return;
+  }
   final db = AppDatabase();
   try {
     final repo = PrayerRepository(db);
-    final current = (await repo.getDay(DayKey(day)))[prayer];
+    final current = (await repo.getDay(dayKey))[prayer];
     if (current == null) {
-      await repo.mark(DayKey(day), prayer, PrayerStatus.onTime);
+      await repo.mark(dayKey, prayer, PrayerStatus.onTime);
     }
     await refreshWidgetsFromDisk(db: db);
   } finally {
     await db.close();
   }
+}
+
+/// Rejects stale widget actions after a prayer window has closed. In
+/// particular, Fajr stops being current at sunrise rather than at Dhuhr.
+bool widgetMarkIsCurrent({
+  required PrayerEngine engine,
+  required Prayer prayer,
+  required DayKey day,
+  required DateTime now,
+}) {
+  final window = engine.currentWindow(now);
+  return window != null && window.prayer == prayer && DayKey.fromDate(window.day) == day;
 }
 
 /// Route for a widget tap URI (`waqt://today?mark=asr&day=…` or `waqt://today`).
@@ -163,28 +174,15 @@ final widgetSyncProvider = Provider<void>((ref) {
   ref.listen(prayerEngineProvider, (_, _) => push());
   ref.listen(todayKeyProvider, (_, _) => push());
   ref.listen(todayMarksProvider, (_, _) => push());
-  ref.listen(
-    settingsProvider.select((s) => (s.language, s.hijriAdjustment)),
-    (_, _) => push(),
-    fireImmediately: true,
-  );
+  ref.listen(settingsProvider.select((s) => (s.language, s.hijriAdjustment)), (_, _) => push(), fireImmediately: true);
 
   void go(Uri? uri) {
     final route = routeForWidgetUri(uri);
     if (route != null) ref.read(appRouterProvider).go(route);
   }
 
-  unawaited(
-    HomeWidget.registerInteractivityCallback(
-      widgetInteraction,
-    ).catchError((Object _) => null),
-  );
-  unawaited(
-    HomeWidget.initiallyLaunchedFromHomeWidget().then(
-      go,
-      onError: (Object _) {},
-    ),
-  );
+  unawaited(HomeWidget.registerInteractivityCallback(widgetInteraction).catchError((Object _) => null));
+  unawaited(HomeWidget.initiallyLaunchedFromHomeWidget().then(go, onError: (Object _) {}));
   final sub = HomeWidget.widgetClicked.listen(go, onError: (Object _) {});
   ref.onDispose(() {
     debounce?.cancel();

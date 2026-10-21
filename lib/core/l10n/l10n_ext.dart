@@ -41,6 +41,14 @@ extension L10nNames on AppLocalizations {
         ExpenseCategory.other => catOther,
       };
 
+  String incomeCategory(IncomeCategory c) => switch (c) {
+        IncomeCategory.salary => catSalary,
+        IncomeCategory.business => catBusiness,
+        IncomeCategory.gift => catGift,
+        IncomeCategory.investment => catInvestment,
+        IncomeCategory.other => catOther,
+      };
+
   String window(TaskWindow w) => switch (w) {
         TaskWindow.beforeFajr => winBeforeFajr,
         TaskWindow.afterFajr => winAfterFajr,

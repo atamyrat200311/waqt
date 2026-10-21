@@ -5,6 +5,7 @@ import '../../../core/utils/dates.dart';
 import '../../../data/db/enums.dart';
 import '../../../data/repositories/expense_repository.dart';
 import '../../../data/repositories/fast_repository.dart';
+import '../../../data/repositories/income_repository.dart';
 import '../../../data/repositories/prayer_repository.dart';
 import '../../../data/repositories/task_repository.dart';
 import '../../../data/settings/settings_controller.dart';
@@ -20,6 +21,14 @@ final dayMarksProvider = StreamProvider.family<Map<Prayer, PrayerStatus>, DayKey
 
 final todayMarksProvider = Provider<AsyncValue<Map<Prayer, PrayerStatus>>>(
   (ref) => ref.watch(dayMarksProvider(ref.watch(todayKeyProvider))),
+);
+
+final dayFastProvider = StreamProvider.family<FastLog?, DayKey>((ref, day) {
+  return ref.watch(fastRepositoryProvider).watchRange(day, day).map((fasts) => fasts[day]);
+});
+
+final todayFastProvider = Provider<AsyncValue<FastLog?>>(
+  (ref) => ref.watch(dayFastProvider(ref.watch(todayKeyProvider))),
 );
 
 final qadaCountsProvider = StreamProvider<Map<Prayer, int>>(
@@ -53,6 +62,13 @@ final todayExpensesProvider = StreamProvider<List<Expense>>((ref) {
   final loc = ref.watch(prayerEngineProvider).config.location;
   final (from, to) = dayBounds(loc, day);
   return ref.watch(expenseRepositoryProvider).watchBetween(from, to);
+});
+
+final todayIncomesProvider = StreamProvider<List<Income>>((ref) {
+  final day = ref.watch(todayKeyProvider);
+  final loc = ref.watch(prayerEngineProvider).config.location;
+  final (from, to) = dayBounds(loc, day);
+  return ref.watch(incomeRepositoryProvider).watchBetween(from, to);
 });
 
 final dayTasksProvider = StreamProvider.family<List<Task>, DayKey>(

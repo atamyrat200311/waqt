@@ -69,6 +69,15 @@ class AppLocalizationsTk extends AppLocalizations {
   String get yesterday => 'Düýn';
 
   @override
+  String get tomorrow => 'Ertir';
+
+  @override
+  String get previousDay => 'Öňki gün';
+
+  @override
+  String get nextDay => 'Indiki gün';
+
+  @override
   String get pickDate => 'Sene saýla';
 
   @override
@@ -318,6 +327,9 @@ class AppLocalizationsTk extends AppLocalizations {
   String get homeNextPrayer => 'Indiki namaz';
 
   @override
+  String get homePrayerTimes => 'Namaz wagtlary';
+
+  @override
   String get homeIn => '';
 
   @override
@@ -346,6 +358,15 @@ class AppLocalizationsTk extends AppLocalizations {
 
   @override
   String get homeYourDay => 'Siziň günüňiz';
+
+  @override
+  String get homeWorshipTitle => 'Şu günki ybadatlar';
+
+  @override
+  String get homeWorshipHint => 'Ýerine ýetirenleriňizi belläň';
+
+  @override
+  String get homePrayers => 'Namazlar';
 
   @override
   String get homeUpNext => 'Indiki';
@@ -559,6 +580,15 @@ class AppLocalizationsTk extends AppLocalizations {
   String get expenseNoteHint => 'Bellik';
 
   @override
+  String get expenseAddCategory => 'Kategoriýa goş';
+
+  @override
+  String get expenseCategoryName => 'Kategoriýanyň ady';
+
+  @override
+  String get expenseCategoryExists => 'Bu kategoriýa eýýäm bar.';
+
+  @override
   String get catGroceries => 'Azyk';
 
   @override
@@ -750,6 +780,23 @@ class AppLocalizationsTk extends AppLocalizations {
   String calendarEveningOf(String date) {
     return '$date agşamy';
   }
+
+  @override
+  String get calendarTrackerTitle => 'Namaz wagtlary we hasaby';
+
+  @override
+  String get calendarOpenTracker => 'Namaz hasabyny aç';
+
+  @override
+  String calendarTogglePrayer(String prayer) {
+    return '$prayer namazyny okaldy diýip belle';
+  }
+
+  @override
+  String get calendarFast => 'Oraza';
+
+  @override
+  String get calendarToggleFast => 'Oraza tutuldy diýip belle';
 
   @override
   String get evRajab => 'Rejep aýy başlaýar';
@@ -1235,7 +1282,7 @@ class AppLocalizationsTk extends AppLocalizations {
 
   @override
   String get widgetsHelpIos =>
-      'Baş ekranyň boş ýerine basyp saklaň, + basyň, Waqt gözläň we kiçi, orta ýa-da gulp ekrany widžetini saýlaň.';
+      'Baş ekranyň boş ýerine basyp saklaň, + basyň, Waqt gözläň we kiçi, orta, uly ýa-da gulp ekrany widžetini saýlaň.';
 
   @override
   String get widgetsHelpAndroid =>
@@ -1247,6 +1294,12 @@ class AppLocalizationsTk extends AppLocalizations {
 
   @override
   String get widgetNext => 'Indiki';
+
+  @override
+  String get widgetRemainingTime => 'Galan wagt';
+
+  @override
+  String get widgetTodayRecord => 'Şu günüň ýazgysy';
 
   @override
   String widgetWindowOpen(String prayer) {
@@ -2031,6 +2084,79 @@ class AppLocalizationsTk extends AppLocalizations {
 
   @override
   String get expensesEmpty => 'Bu aý çykdajy ýazylmady.';
+
+  @override
+  String get incomeTitle => 'Girdeji';
+
+  @override
+  String get incomeAdd => 'Girdeji goş';
+
+  @override
+  String get incomeSaved => 'Girdeji saklandy';
+
+  @override
+  String get incomeDeleted => 'Girdeji pozuldy';
+
+  @override
+  String incomeSave(String amount, String currency) {
+    return '$amount $currency ýatda sakla';
+  }
+
+  @override
+  String get incomeEmpty => 'Bu aý girdeji ýazylmady.';
+
+  @override
+  String get catSalary => 'Aýlyk';
+
+  @override
+  String get catBusiness => 'Biznes / Söwda';
+
+  @override
+  String get catGift => 'Sowgat';
+
+  @override
+  String get catInvestment => 'Maýa goýum';
+
+  @override
+  String get transactionExpense => 'Çykdajy';
+
+  @override
+  String get transactionIncome => 'Girdeji';
+
+  @override
+  String get financeTitle => 'Çykdajylar we girdejiler';
+
+  @override
+  String get netBalance => 'Arassa balans';
+
+  @override
+  String get totalIncome => 'Girdeji';
+
+  @override
+  String get totalExpense => 'Çykdajylar';
+
+  @override
+  String get filterAll => 'Hemmesi';
+
+  @override
+  String get filterExpenses => 'Çykdajylar';
+
+  @override
+  String get filterIncome => 'Girdejiler';
+
+  @override
+  String get todayIncome => 'Şu günki girdeji';
+
+  @override
+  String get noTransactions => 'Bu aý hiç hili amallar ýazylmady.';
+
+  @override
+  String get categoryDelete => 'Kategoriýany poz';
+
+  @override
+  String categoryDeleteConfirm(String name) {
+    return '“$name” pozulsynmy? Öňki amallarda bu at saklanar.';
+  }
 
   @override
   String get meAyahsRead => 'Okalan aýatlar';

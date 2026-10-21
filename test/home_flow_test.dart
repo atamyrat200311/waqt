@@ -6,9 +6,11 @@ import 'package:waqt/core/router/app_router.dart';
 import 'package:waqt/core/utils/dates.dart';
 import 'package:waqt/data/db/enums.dart';
 import 'package:waqt/data/repositories/expense_repository.dart';
+import 'package:waqt/data/repositories/fast_repository.dart';
 import 'package:waqt/data/repositories/prayer_repository.dart';
 import 'package:waqt/data/repositories/task_repository.dart';
 import 'package:waqt/data/settings/app_settings.dart';
+import 'package:waqt/data/settings/settings_controller.dart';
 import 'package:waqt/features/today/application/today_providers.dart';
 
 import 'helpers/test_app.dart';
@@ -51,6 +53,7 @@ void main() {
     final c = await pumpApp(t);
     expect(find.text('NEXT PRAYER'), findsOneWidget);
     expect(find.text('Maghrib'), findsWidgets);
+    expect(find.text('Sunrise'), findsOneWidget);
 
     await t.tap(find.bySemanticsLabel(RegExp(r'^Asr \d')));
     await t.pumpAndSettle();
@@ -62,6 +65,74 @@ void main() {
 
     final marks = await t.runAsync(() => c.read(prayerRepositoryProvider).getDay(const DayKey('2026-10-04')));
     expect(marks![Prayer.asr], PrayerStatus.onTime);
+    await disposeApp(t);
+  });
+
+  testWidgets('Home prayer card browses yesterday and tomorrow', (t) async {
+    await pumpApp(t);
+    expect(find.text('Today'), findsWidgets);
+
+    await t.tap(find.bySemanticsLabel('Previous day'));
+    await t.pumpAndSettle();
+    expect(find.text('Yesterday'), findsOneWidget);
+    expect(find.text('PRAYER TIMES'), findsOneWidget);
+    expect(find.text('Saturday, 3 October'), findsOneWidget);
+
+    await t.tap(find.bySemanticsLabel('Next day'));
+    await t.pumpAndSettle();
+    expect(find.text('Today'), findsWidgets);
+    expect(find.text('NEXT PRAYER'), findsOneWidget);
+
+    await t.tap(find.bySemanticsLabel('Next day'));
+    await t.pumpAndSettle();
+    expect(find.text('Tomorrow'), findsOneWidget);
+    expect(find.text('Monday, 5 October'), findsOneWidget);
+    await disposeApp(t);
+  });
+
+  testWidgets('Daily worship card quickly checks a prayer and today’s fast', (t) async {
+    final c = await pumpApp(t);
+    await t.scrollUntilVisible(find.text('Today’s worship'), 220, scrollable: find.byType(Scrollable).first);
+
+    await t.tap(find.bySemanticsLabel('Fajr'));
+    await settle(t);
+    var marks = await t.runAsync(() => c.read(prayerRepositoryProvider).getDay(const DayKey('2026-10-04')));
+    expect(marks![Prayer.fajr], PrayerStatus.prayed);
+    expect(find.text('1/5'), findsOneWidget);
+
+    await t.ensureVisible(find.text("Today's fast"));
+    await t.pumpAndSettle();
+    await t.tap(find.text("Today's fast"));
+    await settle(t);
+    var fasts = await t.runAsync(
+      () => c.read(fastRepositoryProvider).watchRange(const DayKey('2026-10-04'), const DayKey('2026-10-04')).first,
+    );
+    expect(fasts![const DayKey('2026-10-04')]!.status, FastStatus.fasted);
+    expect(fasts[const DayKey('2026-10-04')]!.type, FastType.other);
+
+    await t.ensureVisible(find.bySemanticsLabel('Fajr'));
+    await t.pumpAndSettle();
+    await t.tap(find.bySemanticsLabel('Fajr'));
+    await t.ensureVisible(find.text("Today's fast"));
+    await t.pumpAndSettle();
+    await t.tap(find.text("Today's fast"));
+    await settle(t);
+    marks = await t.runAsync(() => c.read(prayerRepositoryProvider).getDay(const DayKey('2026-10-04')));
+    fasts = await t.runAsync(
+      () => c.read(fastRepositoryProvider).watchRange(const DayKey('2026-10-04'), const DayKey('2026-10-04')).first,
+    );
+    expect(marks, isEmpty);
+    expect(fasts, isEmpty);
+    await disposeApp(t);
+  });
+
+  testWidgets('Daily worship card opens the prayer tracker', (t) async {
+    await pumpApp(t);
+    await t.scrollUntilVisible(find.text('Today’s worship'), 220, scrollable: find.byType(Scrollable).first);
+    await t.tap(find.bySemanticsLabel('Open prayer tracker'));
+    await t.pumpAndSettle();
+    expect(find.text('Prayer times & tracker'), findsOneWidget);
+    expect(find.text('Sunrise 07:04'), findsOneWidget);
     await disposeApp(t);
   });
 
@@ -107,6 +178,48 @@ void main() {
     await disposeApp(t);
   });
 
+  testWidgets('User can create and reuse an expense category', (t) async {
+    final c = await pumpApp(t);
+    await t.tap(find.bySemanticsLabel('Add expense').first);
+    await t.pumpAndSettle();
+    await t.tap(find.bySemanticsLabel('Add category'));
+    await t.pumpAndSettle();
+    await t.enterText(find.byType(TextField).last, 'Coffee');
+    await t.tap(find.text('Add'));
+    await t.pumpAndSettle();
+
+    expect(find.text('Coffee'), findsOneWidget);
+    expect(c.read(settingsProvider).expenseCategories, ['Coffee']);
+    await t.tap(find.text('2').last);
+    await t.pump();
+    await t.tap(find.text('Save 2 TMT'));
+    await settle(t);
+
+    final list = await t.runAsync(() => c.read(todayExpensesProvider.future));
+    expect(list!.single.customCategory, 'Coffee');
+    await disposeApp(t);
+  });
+
+  testWidgets('User can delete a custom expense category', (t) async {
+    final c = await pumpApp(t);
+    await c.read(settingsProvider.notifier).addExpenseCategory('Books');
+    await t.tap(find.bySemanticsLabel('Add expense').first);
+    await t.pumpAndSettle();
+
+    expect(find.text('Books'), findsOneWidget);
+    await t.tap(find.bySemanticsLabel('Delete Books'));
+    await t.pumpAndSettle();
+
+    // Confirmation dialog appears
+    expect(find.text('Delete category'), findsOneWidget);
+    await t.tap(find.text('Delete'));
+    await t.pumpAndSettle();
+
+    expect(c.read(settingsProvider).expenseCategories, isEmpty);
+    expect(find.text('Books'), findsNothing);
+    await disposeApp(t);
+  });
+
   testWidgets('Tasks: add one to the current window and tick it off', (t) async {
     final c = await pumpApp(t, location: '/today/tasks');
     expect(find.text('Nothing planned yet. Add a task to a prayer window.'), findsOneWidget);
@@ -140,13 +253,14 @@ void main() {
 
   testWidgets('Expense repository is used through the provider', (t) async {
     final c = await pumpApp(t);
-    await t.runAsync(() => c.read(expenseRepositoryProvider).add(
-          amountMinor: 1200,
-          currency: 'TMT',
-          category: ExpenseCategory.food,
-          occurredAt: asrTime,
-        ));
+    await t.runAsync(
+      () => c
+          .read(expenseRepositoryProvider)
+          .add(amountMinor: 1200, currency: 'TMT', category: ExpenseCategory.food, occurredAt: asrTime),
+    );
     await settle(t);
+    await t.drag(find.byType(Scrollable).first, const Offset(0, -600));
+    await t.pumpAndSettle();
     expect(find.text('12'), findsOneWidget);
     await disposeApp(t);
   });

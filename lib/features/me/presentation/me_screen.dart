@@ -11,6 +11,7 @@ import '../../../core/utils/dates.dart';
 import '../../../core/utils/money.dart';
 import '../../../data/db/enums.dart';
 import '../../../data/repositories/expense_repository.dart';
+import '../../../data/repositories/income_repository.dart';
 import '../../../data/settings/settings_controller.dart';
 import '../../../shared/widgets/buttons.dart';
 import '../../../shared/widgets/layout.dart';
@@ -444,7 +445,11 @@ class _ConsistencyBar extends StatelessWidget {
             child: FittedBox(
               fit: BoxFit.scaleDown,
               alignment: AlignmentDirectional.centerStart,
-              child: Text(name, softWrap: false, style: WaqtType.sans(14, weight: 600, color: weak ? c.brassText : c.ink)),
+              child: Text(
+                name,
+                softWrap: false,
+                style: WaqtType.sans(14, weight: 600, color: weak ? c.brassText : c.ink),
+              ),
             ),
           ),
           const SizedBox(width: 10),
@@ -544,8 +549,11 @@ class _SpendingCard extends ConsumerWidget {
     final c = context.colors;
     final l = context.l10n;
     final sum = ref.watch(monthExpensesProvider).value ?? ExpenseSummary.empty;
+    final incSum = ref.watch(monthIncomesProvider).value ?? IncomeSummary.empty;
     final currency = ref.watch(settingsProvider.select((s) => s.currency));
     final today = ref.watch(todayKeyProvider).date;
+    final hasIncome = incSum.totalMinor > 0;
+    final netBalance = incSum.totalMinor - sum.totalMinor;
     Color color(ExpenseCategory k) => switch (k) {
       ExpenseCategory.groceries => c.primary,
       ExpenseCategory.food => c.spendFood(),
@@ -554,9 +562,14 @@ class _SpendingCard extends ConsumerWidget {
       ExpenseCategory.other => c.hairline,
       ExpenseCategory.sadaqa => c.brass,
     };
-    final cats = sum.byCategory.entries.where((e) => e.key != ExpenseCategory.sadaqa).toList()
-      ..sort((a, b) => b.value.compareTo(a.value));
-    if (sum.sadaqaMinor > 0) cats.add(MapEntry(ExpenseCategory.sadaqa, sum.sadaqaMinor));
+    final cats = <({String label, int value, Color color})>[
+      for (final e in sum.byCategory.entries)
+        if (e.key != ExpenseCategory.sadaqa) (label: l.category(e.key), value: e.value, color: color(e.key)),
+      for (final e in sum.byCustomCategory.entries) (label: e.key, value: e.value, color: c.accent),
+    ]..sort((a, b) => b.value.compareTo(a.value));
+    if (sum.sadaqaMinor > 0) {
+      cats.add((label: l.category(ExpenseCategory.sadaqa), value: sum.sadaqaMinor, color: c.brass));
+    }
 
     return WaqtCard(
       onTap: () => context.push(Routes.expenses),
@@ -569,7 +582,7 @@ class _SpendingCard extends ConsumerWidget {
             textBaseline: TextBaseline.alphabetic,
             children: [
               Expanded(
-                child: Text(l.meSpending, style: WaqtType.sans(15, weight: 600, color: c.ink)),
+                child: Text(hasIncome ? l.financeTitle : l.meSpending, style: WaqtType.sans(15, weight: 600, color: c.ink)),
               ),
               Text(l.monthStandalone(monthKey(today)), style: WaqtType.sans(13, color: c.muted)),
             ],
@@ -579,8 +592,10 @@ class _SpendingCard extends ConsumerWidget {
             TextSpan(
               children: [
                 TextSpan(
-                  text: '${formatMinor(sum.totalMinor)} ',
-                  style: WaqtType.serif(40, tracking: -0.03, color: c.ink),
+                  text: hasIncome
+                      ? '${netBalance >= 0 ? '+' : ''}${formatMinor(netBalance)} '
+                      : '${formatMinor(sum.totalMinor)} ',
+                  style: WaqtType.serif(40, tracking: -0.03, color: (hasIncome && netBalance < 0) ? c.danger : c.ink),
                 ),
                 TextSpan(
                   text: currency,
@@ -589,7 +604,23 @@ class _SpendingCard extends ConsumerWidget {
               ],
             ),
           ),
-          if (cats.isEmpty) ...[
+          if (hasIncome) ...[
+            const SizedBox(height: 4),
+            Row(
+              children: [
+                Text(
+                  '+${formatMinor(incSum.totalMinor)} ${l.totalIncome}',
+                  style: WaqtType.sans(12.5, weight: 600, color: c.primary),
+                ),
+                Text('  ·  ', style: WaqtType.sans(12.5, color: c.muted)),
+                Text(
+                  '-${formatMinor(sum.totalMinor)} ${l.totalExpense}',
+                  style: WaqtType.sans(12.5, weight: 600, color: c.muted),
+                ),
+              ],
+            ),
+          ],
+          if (cats.isEmpty && !hasIncome) ...[
             const SizedBox(height: 6),
             Text(l.meNoSpending, style: WaqtType.sans(14, color: c.muted)),
           ] else ...[
@@ -605,7 +636,7 @@ class _SpendingCard extends ConsumerWidget {
                       Expanded(
                         flex: (cats[i].value * 1000 / sum.totalMinor).round().clamp(8, 1000),
                         child: Container(
-                          decoration: BoxDecoration(color: color(cats[i].key), borderRadius: BorderRadius.circular(3)),
+                          decoration: BoxDecoration(color: cats[i].color, borderRadius: BorderRadius.circular(3)),
                         ),
                       ),
                     ],
@@ -627,11 +658,11 @@ class _SpendingCard extends ConsumerWidget {
                           Container(
                             width: 8,
                             height: 8,
-                            decoration: BoxDecoration(color: color(e.key), borderRadius: BorderRadius.circular(2)),
+                            decoration: BoxDecoration(color: e.color, borderRadius: BorderRadius.circular(2)),
                           ),
                           const SizedBox(width: 8),
                           Expanded(
-                            child: Text(l.category(e.key), style: WaqtType.sans(13, color: c.muted)),
+                            child: Text(e.label, style: WaqtType.sans(13, color: c.muted)),
                           ),
                           Text(formatMinor(e.value), style: WaqtType.sans(13, weight: 600, color: c.ink)),
                         ],

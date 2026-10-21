@@ -28,6 +28,7 @@ data class Snapshot(
 class WidgetData(
     val place: String,
     val names: List<String>,
+    val sunriseName: String,
     private val strings: JSONObject,
     val days: List<WidgetDay>,
 ) {
@@ -45,15 +46,21 @@ class WidgetData(
       for (p in 0 until 5) if (now >= day.times[p] && now < ends[p]) current = p
     }
 
-    // Next prayer strictly after now.
+    // Next visible boundary after now. Sunrise must come after Fajr so the
+    // widget does not imply that the Fajr window remains open until Dhuhr.
     var nextName = names[0]
     var nextAt = nextFajr
     run loop@{
-      for (i in dayIdx until days.size) for (p in 0 until 5) {
-        if (days[i].times[p] > now) {
-          nextName = names[p]
-          nextAt = days[i].times[p]
-          return@loop
+      for (i in dayIdx until days.size) {
+        val events = mutableListOf<Pair<String, Long>>()
+        for (p in 0 until 5) events.add(names[p] to days[i].times[p])
+        events.add(sunriseName to days[i].sunrise)
+        for ((name, at) in events.sortedBy { it.second }) {
+          if (at > now) {
+            nextName = name
+            nextAt = at
+            return@loop
+          }
         }
       }
     }
@@ -103,7 +110,15 @@ class WidgetData(
                 )
               }
             }
-        if (days.isEmpty()) null else WidgetData(o.optString("place"), names, o.getJSONObject("s"), days)
+        if (days.isEmpty()) null
+        else
+            WidgetData(
+                o.optString("place"),
+                names,
+                o.optString("sunrise", "Sunrise"),
+                o.getJSONObject("s"),
+                days,
+            )
       } catch (_: Exception) {
         null
       }

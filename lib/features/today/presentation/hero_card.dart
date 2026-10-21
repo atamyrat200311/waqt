@@ -13,6 +13,7 @@ import '../../../core/utils/dates.dart';
 import '../../../data/db/enums.dart';
 import '../../../shared/widgets/ornaments.dart';
 import '../../../shared/widgets/status_marks.dart';
+import '../../../shared/widgets/waqt_icon.dart';
 import '../../prayer/application/prayer_providers.dart';
 import '../../prayer/domain/prayer_engine.dart';
 import '../application/today_providers.dart';
@@ -20,20 +21,38 @@ import '../domain/today_logic.dart';
 
 /// The emerald hero: next prayer (or iftar), big countdown, day arc and the
 /// five prayer chips.
-class HeroCard extends ConsumerWidget {
+class HeroCard extends ConsumerStatefulWidget {
   const HeroCard({super.key, required this.onChip});
 
   final void Function(Prayer prayer) onChip;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<HeroCard> createState() => _HeroCardState();
+}
+
+class _HeroCardState extends ConsumerState<HeroCard> {
+  DayKey? _selectedDay;
+
+  void _moveDay(int amount, DayKey today) {
+    final next = (_selectedDay ?? today).addDays(amount);
+    setState(() => _selectedDay = next == today ? null : next);
+  }
+
+  void _showToday() => setState(() => _selectedDay = null);
+
+  @override
+  Widget build(BuildContext context) {
     final c = context.colors;
     final l = context.l10n;
     final now = ref.watch(prayerNowProvider);
+    final today = now.dayKey;
+    final selectedKey = _selectedDay ?? today;
+    final isToday = selectedKey == today;
+    final selectedPrayerDay = isToday ? now.today : ref.watch(prayerEngineProvider).day(selectedKey.date);
     final ramadan = ref.watch(ramadanTodayProvider);
-    final marks = ref.watch(todayMarksProvider).value ?? const {};
+    final marks = ref.watch(dayMarksProvider(selectedKey)).value ?? const {};
     final target = heroTarget(now, ramadan: ramadan);
-    final fastBar = ramadan ? ref.watch(ramadanFastBarProvider).value : null;
+    final fastBar = isToday && ramadan ? ref.watch(ramadanFastBarProvider).value : null;
 
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: Gap.screen),
@@ -47,32 +66,51 @@ class HeroCard extends ConsumerWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  (target.iftar ? l.homeRamadanKicker : l.homeNextPrayer).toUpperCase(),
-                  style: WaqtType.kicker(color: c.onHeroMuted),
+                _DayNavigator(
+                  day: selectedKey,
+                  today: today,
+                  onPrevious: () => _moveDay(-1, today),
+                  onNext: () => _moveDay(1, today),
+                  onToday: isToday ? null : _showToday,
                 ),
-                const SizedBox(height: 10),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.baseline,
-                  textBaseline: TextBaseline.alphabetic,
-                  children: [
-                    Flexible(
-                      child: Text(
-                        target.iftar ? l.homeIftar : l.prayer(target.prayer),
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: WaqtType.serif(28, height: 1, color: c.onHero),
+                const SizedBox(height: 14),
+                if (isToday) ...[
+                  Text(
+                    (target.iftar ? l.homeRamadanKicker : l.homeNextPrayer).toUpperCase(),
+                    style: WaqtType.kicker(color: c.onHeroMuted),
+                  ),
+                  const SizedBox(height: 10),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.baseline,
+                    textBaseline: TextBaseline.alphabetic,
+                    children: [
+                      Flexible(
+                        child: Text(
+                          target.iftar ? l.homeIftar : l.prayer(target.prayer),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: WaqtType.serif(28, height: 1, color: c.onHero),
+                        ),
                       ),
-                    ),
-                    const SizedBox(width: 10),
-                    Text(
-                      target.iftar ? l.homeMaghribAt(hhmm(target.time)) : hhmm(target.time),
-                      style: WaqtType.sans(16, weight: 500, color: c.onHeroMuted),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 6),
-                _Countdown(target: target.time),
+                      const SizedBox(width: 10),
+                      Text(
+                        target.iftar ? l.homeMaghribAt(hhmm(target.time)) : hhmm(target.time),
+                        style: WaqtType.sans(16, weight: 500, color: c.onHeroMuted),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 6),
+                  _Countdown(target: target.time),
+                ] else ...[
+                  Text(l.homePrayerTimes.toUpperCase(), style: WaqtType.kicker(color: c.onHeroMuted)),
+                  const SizedBox(height: 8),
+                  Text(
+                    l.longDate(selectedKey.date),
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: WaqtType.serif(28, height: 1.12, color: c.onHero),
+                  ),
+                ],
                 if (fastBar != null) ...[
                   const SizedBox(height: 12),
                   Text(
@@ -82,21 +120,30 @@ class HeroCard extends ConsumerWidget {
                   const SizedBox(height: 9),
                   _FastBar(day: fastBar.day, fasts: fastBar.fasts),
                 ],
-                const SizedBox(height: 14),
-                _DayArc(day: now.today, now: now.now),
+                if (isToday) ...[const SizedBox(height: 14), _DayArc(day: now.today, now: now.now)],
                 const SizedBox(height: 10),
                 Row(
                   children: [
                     for (final p in Prayer.values) ...[
-                      if (p != Prayer.fajr) const SizedBox(width: 6),
+                      if (p != Prayer.fajr) const SizedBox(width: 4),
                       Expanded(
                         child: PrayerChip(
                           prayer: p,
-                          time: now.today[p],
-                          state: chipState(p, marks[p], now),
-                          onTap: () => onChip(p),
+                          time: selectedPrayerDay[p],
+                          state: chipStateForDay(p, marks[p], now, selectedKey),
+                          onTap: isToday ? () => widget.onChip(p) : null,
                         ),
                       ),
+                      if (p == Prayer.fajr) ...[
+                        const SizedBox(width: 4),
+                        Expanded(
+                          child: _SunriseChip(
+                            time: selectedPrayerDay.sunrise,
+                            passed:
+                                selectedKey.isBefore(today) || (isToday && !selectedPrayerDay.sunrise.isAfter(now.now)),
+                          ),
+                        ),
+                      ],
                     ],
                   ],
                 ),
@@ -115,6 +162,129 @@ class HeroCard extends ConsumerWidget {
     final engine = ref.read(prayerEngineProvider);
     final d = now.today.date;
     return engine.day(DateTime(d.year, d.month, d.day + 1)).imsak;
+  }
+}
+
+/// Sunrise is a boundary, not a prayer: it closes the Fajr window and cannot
+/// be marked. It still belongs in the day's time strip so that boundary is
+/// visible to the user.
+class _SunriseChip extends StatelessWidget {
+  const _SunriseChip({required this.time, required this.passed});
+
+  final DateTime time;
+  final bool passed;
+
+  @override
+  Widget build(BuildContext context) {
+    final c = context.colors;
+    final l = context.l10n;
+    return Semantics(
+      label: '${l.prayerSunrise} ${hhmm(time)}',
+      excludeSemantics: true,
+      child: Container(
+        constraints: const BoxConstraints(minHeight: kMinTouch),
+        decoration: BoxDecoration(color: c.heroLayer, borderRadius: BorderRadius.circular(18)),
+        padding: const EdgeInsets.fromLTRB(2, 10, 2, 9),
+        child: Opacity(
+          opacity: passed ? 1 : 0.74,
+          child: Column(
+            children: [
+              SizedBox.square(
+                dimension: 26,
+                child: Center(child: WaqtIcon(WaqtIcons.sun, size: 22, color: c.brass)),
+              ),
+              const SizedBox(height: 6),
+              FittedBox(
+                fit: BoxFit.scaleDown,
+                child: Text(l.prayerSunrise, maxLines: 1, style: WaqtType.sans(13, weight: 600, color: c.onHero)),
+              ),
+              const SizedBox(height: 1),
+              Text(hhmm(time), style: WaqtType.sans(12, color: c.onHeroMuted, tabular: true)),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _DayNavigator extends StatelessWidget {
+  const _DayNavigator({
+    required this.day,
+    required this.today,
+    required this.onPrevious,
+    required this.onNext,
+    required this.onToday,
+  });
+
+  final DayKey day;
+  final DayKey today;
+  final VoidCallback onPrevious;
+  final VoidCallback onNext;
+  final VoidCallback? onToday;
+
+  @override
+  Widget build(BuildContext context) {
+    final c = context.colors;
+    final l = context.l10n;
+    final relative = day == today
+        ? l.today
+        : day == today.addDays(-1)
+        ? l.yesterday
+        : day == today.addDays(1)
+        ? l.tomorrow
+        : l.shortWeekdayDate(day.date);
+    final date = l.dayMonth(day.date);
+
+    Widget arrow(WaqtIconData icon, String label, VoidCallback onTap) => Semantics(
+      button: true,
+      label: label,
+      excludeSemantics: true,
+      child: Material(
+        color: c.heroLayer,
+        shape: const CircleBorder(),
+        clipBehavior: Clip.antiAlias,
+        child: InkWell(
+          onTap: onTap,
+          child: SizedBox.square(
+            dimension: kMinTouch,
+            child: Center(child: WaqtIcon(icon, size: 20, color: c.onHero)),
+          ),
+        ),
+      ),
+    );
+
+    final label = Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Text(relative, style: WaqtType.sans(15, weight: 700, color: c.onHero)),
+        if (day == today || day == today.addDays(-1) || day == today.addDays(1))
+          Text(date, style: WaqtType.sans(12, color: c.onHeroMuted)),
+      ],
+    );
+
+    return Row(
+      children: [
+        arrow(WaqtIcons.chevronLeft, l.previousDay, onPrevious),
+        Expanded(
+          child: onToday == null
+              ? Center(child: label)
+              : Semantics(
+                  button: true,
+                  label: l.today,
+                  child: InkWell(
+                    borderRadius: BorderRadius.circular(14),
+                    onTap: onToday,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 3),
+                      child: Center(child: label),
+                    ),
+                  ),
+                ),
+        ),
+        arrow(WaqtIcons.chevronRight, l.nextDay, onNext),
+      ],
+    );
   }
 }
 
@@ -197,7 +367,7 @@ class PrayerChip extends StatelessWidget {
   final Prayer prayer;
   final DateTime time;
   final ChipState state;
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -213,15 +383,16 @@ class PrayerChip extends StatelessWidget {
       ChipState.excused => ExcusedMark(color: c.onHeroMuted),
     };
     return Semantics(
-      button: true,
-      label: '${l.prayer(prayer)} ${hhmm(time)}, ${switch (state) {
-        ChipState.done => l.chipDone,
-        ChipState.current => l.chipNow,
-        ChipState.upcoming => l.chipUpcoming,
-        ChipState.unmarked => l.chipUnmarked,
-        ChipState.missed => l.chipMissed,
-        ChipState.excused => l.chipExcused,
-      }}',
+      button: onTap != null,
+      label:
+          '${l.prayer(prayer)} ${hhmm(time)}, ${switch (state) {
+            ChipState.done => l.chipDone,
+            ChipState.current => l.chipNow,
+            ChipState.upcoming => l.chipUpcoming,
+            ChipState.unmarked => l.chipUnmarked,
+            ChipState.missed => l.chipMissed,
+            ChipState.excused => l.chipExcused,
+          }}',
       excludeSemantics: true,
       child: AnimatedContainer(
         duration: Adaptive.motion(context, 250),

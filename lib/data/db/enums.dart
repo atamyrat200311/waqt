@@ -18,6 +18,7 @@ enum Prayer {
 }
 
 enum PrayerStatus {
+  prayed,
   onTime,
   congregation,
   late,
@@ -25,7 +26,7 @@ enum PrayerStatus {
   excused;
 
   /// The prayer was performed (in any form).
-  bool get isPrayed => this == onTime || this == congregation || this == late;
+  bool get isPrayed => this == prayed || this == onTime || this == congregation || this == late;
 
   /// Prayed within its window.
   bool get isOnTime => this == onTime || this == congregation;
@@ -35,17 +36,10 @@ enum QadaSource { missedMarked, manualAdd, madeUp }
 
 enum ExpenseCategory { groceries, transport, food, bills, sadaqa, other }
 
+enum IncomeCategory { salary, business, gift, investment, other }
+
 /// Task windows in display order.
-enum TaskWindow {
-  beforeFajr,
-  afterFajr,
-  beforeDhuhr,
-  afterDhuhr,
-  afterAsr,
-  afterMaghrib,
-  afterIsha,
-  anytime,
-}
+enum TaskWindow { beforeFajr, afterFajr, beforeDhuhr, afterDhuhr, afterAsr, afterMaghrib, afterIsha, anytime }
 
 enum AdhkarSet { morning, evening }
 

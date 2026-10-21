@@ -3,6 +3,7 @@ import 'dart:ui';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:waqt/core/l10n/l10n_ext.dart';
+import 'package:waqt/core/utils/dates.dart';
 import 'package:waqt/data/db/enums.dart';
 import 'package:waqt/features/calendar/domain/hijri_service.dart';
 import 'package:waqt/features/prayer/application/prayer_providers.dart';
@@ -13,21 +14,19 @@ import 'package:waqt/features/widgets/domain/widget_payload.dart';
 void main() {
   setUpAll(ensureTimeZones);
 
-  final engine = PrayerEngine(PrayerConfig(
-    latitude: 37.9601,
-    longitude: 58.3261,
-    location: locationFor('Asia/Ashgabat'),
-  ));
+  final engine = PrayerEngine(
+    PrayerConfig(latitude: 37.9601, longitude: 58.3261, location: locationFor('Asia/Ashgabat')),
+  );
   final now = DateTime.utc(2026, 10, 4, 11); // 16:00 Ashgabat
 
   Map<String, Object?> build({String lang = 'en'}) => buildWidgetPayload(
-        engine: engine,
-        hijri: const HijriService(),
-        l10n: lookupAppLocalizations(Locale(lang)),
-        placeName: 'Ashgabat',
-        now: now,
-        todayMarks: {Prayer.fajr: PrayerStatus.onTime, Prayer.dhuhr: PrayerStatus.missed},
-      );
+    engine: engine,
+    hijri: const HijriService(),
+    l10n: lookupAppLocalizations(Locale(lang)),
+    placeName: 'Ashgabat',
+    now: now,
+    todayMarks: {Prayer.fajr: PrayerStatus.onTime, Prayer.dhuhr: PrayerStatus.missed},
+  );
 
   test('payload: 7 days of epoch-second times, marks only for today, JSON-safe', () {
     final p = build();
@@ -41,7 +40,10 @@ void main() {
     expect(t, hasLength(5));
     expect(t[1] * 1000, engine.day(DateTime(2026, 10, 4))[Prayer.dhuhr].millisecondsSinceEpoch);
     expect(json['names'], ['Fajr', 'Dhuhr', 'Asr', 'Maghrib', 'Isha']);
+    expect(json['sunrise'], 'Sunrise');
     final s = json['s']! as Map<String, Object?>;
+    expect(s['remaining'], 'Remaining time');
+    expect(s['todayRecord'], "Today's record");
     expect(s['windowOpen'], '%s · window open');
     expect(s['marked'], '%s marked');
   });
@@ -60,9 +62,36 @@ void main() {
   });
 
   test('widget tap URIs map to routes', () {
-    expect(routeForWidgetUri(Uri.parse('waqt://today?homeWidget&mark=asr&day=2026-10-04')),
-        '/today?mark=asr&day=2026-10-04');
+    expect(
+      routeForWidgetUri(Uri.parse('waqt://today?homeWidget&mark=asr&day=2026-10-04')),
+      '/today?mark=asr&day=2026-10-04',
+    );
     expect(routeForWidgetUri(Uri.parse('waqt://today?homeWidget')), '/today');
     expect(routeForWidgetUri(null), isNull);
+  });
+
+  test('widget marking accepts Fajr only until sunrise', () {
+    final day = engine.day(DateTime(2026, 10, 4));
+    const key = DayKey('2026-10-04');
+    expect(
+      widgetMarkIsCurrent(engine: engine, prayer: Prayer.fajr, day: key, now: day.fajr.add(const Duration(minutes: 5))),
+      isTrue,
+    );
+    expect(widgetMarkIsCurrent(engine: engine, prayer: Prayer.fajr, day: key, now: day.sunrise), isFalse);
+    expect(
+      widgetMarkIsCurrent(
+        engine: engine,
+        prayer: Prayer.fajr,
+        day: key,
+        now: day.sunrise.add(const Duration(minutes: 5)),
+      ),
+      isFalse,
+    );
+  });
+
+  test('large widget labels follow the selected language', () {
+    final strings = build(lang: 'tr')['s']! as Map<String, Object?>;
+    expect(strings['remaining'], 'Kalan süre');
+    expect(strings['todayRecord'], 'Bugünün kaydı');
   });
 }

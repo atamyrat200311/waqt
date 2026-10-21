@@ -6,6 +6,7 @@ import '../../../data/db/enums.dart';
 import '../../../data/repositories/adhkar_repository.dart';
 import '../../../data/repositories/expense_repository.dart';
 import '../../../data/repositories/fast_repository.dart';
+import '../../../data/repositories/income_repository.dart';
 import '../../../data/repositories/prayer_repository.dart';
 import '../../adhkar/application/adhkar_providers.dart';
 import '../../adhkar/domain/adhkar.dart';
@@ -96,4 +97,12 @@ final monthExpensesProvider = StreamProvider<ExpenseSummary>((ref) {
   final from = tz.TZDateTime(loc, start.year, start.month);
   final to = tz.TZDateTime(loc, start.year, start.month + 1);
   return ref.watch(expenseRepositoryProvider).watchBetween(from, to).map(ExpenseSummary.of);
+});
+
+final monthIncomesProvider = StreamProvider<IncomeSummary>((ref) {
+  final start = ref.watch(monthStartProvider).date;
+  final loc = ref.watch(prayerEngineProvider).config.location;
+  final from = tz.TZDateTime(loc, start.year, start.month);
+  final to = tz.TZDateTime(loc, start.year, start.month + 1);
+  return ref.watch(incomeRepositoryProvider).watchBetween(from, to).map(IncomeSummary.of);
 });

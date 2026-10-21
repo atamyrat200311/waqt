@@ -12,6 +12,7 @@ import '../../../core/utils/dates.dart';
 import '../../../core/utils/money.dart';
 import '../../../data/db/enums.dart';
 import '../../../data/repositories/expense_repository.dart';
+import '../../../data/repositories/income_repository.dart';
 import '../../../data/repositories/prayer_repository.dart';
 import '../../../data/settings/settings_controller.dart';
 import '../../../shared/widgets/buttons.dart';
@@ -29,6 +30,7 @@ import '../../quran/application/quran_providers.dart';
 import '../../ramadan/presentation/ramadan_challenge_card.dart';
 import '../application/today_providers.dart';
 import '../domain/today_logic.dart';
+import 'daily_worship_card.dart';
 import 'hero_card.dart';
 import 'mark_sheet.dart';
 import 'today_extras.dart';
@@ -99,6 +101,7 @@ class _TodayScreenState extends ConsumerState<TodayScreen> {
             padding: const EdgeInsets.symmetric(horizontal: Gap.screen),
             sliver: SliverList.list(
               children: const [
+                _Spaced(child: DailyWorshipCard()),
                 RamadanChallengeCard(),
                 _UpNextCard(),
                 _TaraweehCard(),
@@ -591,7 +594,9 @@ class _Tiles extends ConsumerWidget {
     final c = context.colors;
     final l = context.l10n;
     final expenses = ref.watch(todayExpensesProvider).value ?? const <Expense>[];
+    final incomes = ref.watch(todayIncomesProvider).value ?? const <Income>[];
     final sum = ExpenseSummary.of(expenses);
+    final incSum = IncomeSummary.of(incomes);
     final currency = ref.watch(settingsProvider.select((s) => s.currency));
     final tasks = ref.watch(todayTasksProvider).value ?? const [];
     final done = tasks.where((t) => t.done).length;
@@ -660,12 +665,29 @@ class _Tiles extends ConsumerWidget {
                       Text(currency, style: WaqtType.sans(13, weight: 600, color: c.muted)),
                     ],
                   ),
-                  if (sum.count == 0) ...[
+                  if (sum.count == 0 && incSum.count == 0) ...[
                     const SizedBox(height: 8),
                     Text(l.expenseAddFirst, style: WaqtType.sans(12, color: c.muted, height: 1.3)),
                   ],
+                  if (incSum.totalMinor > 0) ...[
+                    const SizedBox(height: 6),
+                    Row(
+                      children: [
+                        WaqtIcon(WaqtIcons.arrowUpRight, size: 13, color: c.primary),
+                        const SizedBox(width: 4),
+                        Flexible(
+                          child: Text(
+                            '+${formatMinor(incSum.totalMinor)} $currency ${l.totalIncome.toLowerCase()}',
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: WaqtType.sans(12, weight: 600, color: c.primary),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
                   if (sum.sadaqaMinor > 0) ...[
-                    const SizedBox(height: 8),
+                    const SizedBox(height: 6),
                     Row(
                       children: [
                         WaqtIcon(WaqtIcons.heart, size: 13, color: c.brass),

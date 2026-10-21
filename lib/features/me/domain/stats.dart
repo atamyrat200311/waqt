@@ -109,13 +109,13 @@ Map<Prayer, double?> consistency(
   return out;
 }
 
-/// Share of marked prayers (excluding excused) prayed on time or in
-/// congregation. Null with no data.
+/// Share of marks with a known timing (excluding excused and quick checks)
+/// prayed on time or in congregation. Null with no timing data.
 double? onTimeShare(Iterable<PrayerStatus> marks) {
   var onTime = 0;
   var total = 0;
   for (final s in marks) {
-    if (s == PrayerStatus.excused) continue;
+    if (s == PrayerStatus.excused || s == PrayerStatus.prayed) continue;
     total++;
     if (s.isOnTime) onTime++;
   }

@@ -9,27 +9,32 @@ import '../../../core/theme/dimens.dart';
 import '../../../core/utils/dates.dart';
 import '../../../data/db/enums.dart';
 import '../../../data/repositories/fast_repository.dart';
+import '../../../data/repositories/prayer_repository.dart';
 import '../../../shared/widgets/buttons.dart';
 import '../../../shared/widgets/layout.dart';
 import '../../../shared/widgets/waqt_card.dart';
 import '../../../shared/widgets/waqt_icon.dart';
 import '../../prayer/application/prayer_providers.dart';
 import '../../today/application/today_providers.dart';
+import '../domain/fast_day.dart';
 import '../domain/hijri_service.dart';
+import 'prayer_tracker_card.dart';
 
 /// Fasts logged in an inclusive day range.
 final fastsInRangeProvider = StreamProvider.family<Map<DayKey, FastLog>, (DayKey, DayKey)>(
   (ref, r) => ref.watch(fastRepositoryProvider).watchRange(r.$1, r.$2),
 );
 
-/// The voluntary-fast type that fits a day (Ramadan > white days > Mon/Thu).
-FastType fastTypeFor(HijriService hijri, DateTime day, {required bool ramadan}) {
-  final h = hijri.fromGregorian(day);
-  if (ramadan || h.isRamadan) return FastType.ramadan;
-  if (h.isWhiteDay) return FastType.whiteDays;
-  if (day.weekday == DateTime.monday || day.weekday == DateTime.thursday) return FastType.monThu;
-  return FastType.other;
-}
+/// Prayer marks grouped by day for calendar progress rings.
+final prayerMarksInRangeProvider = StreamProvider.family<Map<DayKey, Map<Prayer, PrayerStatus>>, (DayKey, DayKey)>(
+  (ref, range) => ref.watch(prayerRepositoryProvider).watchRange(range.$1, range.$2).map((logs) {
+    final result = <DayKey, Map<Prayer, PrayerStatus>>{};
+    for (final log in logs) {
+      result.putIfAbsent(log.day, () => {})[log.prayer] = log.status;
+    }
+    return result;
+  }),
+);
 
 class CalendarScreen extends ConsumerStatefulWidget {
   const CalendarScreen({super.key});
@@ -41,6 +46,7 @@ class CalendarScreen extends ConsumerStatefulWidget {
 class _CalendarScreenState extends ConsumerState<CalendarScreen> {
   /// (Hijri year, month) shown; null = month of today.
   (int, int)? _month;
+  DayKey? _selectedDay;
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +59,10 @@ class _CalendarScreenState extends ConsumerState<CalendarScreen> {
     final first = hijri.toGregorian(year, month, 1);
     final length = hijri.monthLength(year, month);
     final last = DateTime(first.year, first.month, first.day + length - 1);
-    final fasts = ref.watch(fastsInRangeProvider((DayKey.fromDate(first), DayKey.fromDate(last)))).value ?? const {};
+    final rangeKeys = (DayKey.fromDate(first), DayKey.fromDate(last));
+    final fasts = ref.watch(fastsInRangeProvider(rangeKeys)).value ?? const {};
+    final prayerMarks = ref.watch(prayerMarksInRangeProvider(rangeKeys)).value ?? const {};
+    final selectedDay = _selectedDay ?? today;
 
     void shift(int delta) {
       var m = month + delta;
@@ -65,8 +74,16 @@ class _CalendarScreenState extends ConsumerState<CalendarScreen> {
         m = 1;
         y++;
       }
-      setState(() => _month = (y, m));
+      setState(() {
+        _month = (y, m);
+        _selectedDay = DayKey.fromDate(hijri.toGregorian(y, m, 1));
+      });
     }
+
+    void showToday() => setState(() {
+      _month = null;
+      _selectedDay = null;
+    });
 
     String short(DateTime d) => '${d.day} ${l.monthShort(monthKey(d))}';
     final range = l.calendarRange('$year', short(first), '${short(last)} ${last.year}');
@@ -75,13 +92,23 @@ class _CalendarScreenState extends ConsumerState<CalendarScreen> {
     return SubScreen(
       title: l.hijriMonthName(month, long: true),
       backLabel: l.tabTools,
+      trailing: selectedDay != today || _month != null
+          ? CircleIconButton(
+              icon: WaqtIcons.moveToday,
+              semanticLabel: l.today,
+              foreground: c.accent,
+              onPressed: showToday,
+            )
+          : null,
       slivers: [
         SliverToBoxAdapter(
           child: Padding(
             padding: const EdgeInsets.fromLTRB(Gap.title, 4, 12, 0),
             child: Row(
               children: [
-                Expanded(child: Text(range, style: WaqtType.sans(14, color: c.muted))),
+                Expanded(
+                  child: Text(range, style: WaqtType.sans(14, color: c.muted)),
+                ),
                 CircleIconButton(
                   icon: WaqtIcons.chevronLeft,
                   border: true,
@@ -129,8 +156,10 @@ class _CalendarScreenState extends ConsumerState<CalendarScreen> {
                     first: first,
                     length: length,
                     today: today,
+                    selected: selectedDay,
                     fasts: fasts,
-                    onDay: (d) => showFastSheet(context, DayKey.fromDate(d)),
+                    prayerMarks: prayerMarks,
+                    onDay: (d) => setState(() => _selectedDay = DayKey.fromDate(d)),
                   ),
                   const SizedBox(height: 10),
                   Wrap(
@@ -147,7 +176,15 @@ class _CalendarScreenState extends ConsumerState<CalendarScreen> {
             ),
           ),
         ),
-        SliverToBoxAdapter(child: SectionTitle(l.calendarUpcoming, size: 22, padding: const EdgeInsets.fromLTRB(22, 26, 22, 10))),
+        SliverToBoxAdapter(
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(12, 12, 12, 0),
+            child: PrayerTrackerCard(day: selectedDay, onFastDetails: () => showFastSheet(context, selectedDay)),
+          ),
+        ),
+        SliverToBoxAdapter(
+          child: SectionTitle(l.calendarUpcoming, size: 22, padding: const EdgeInsets.fromLTRB(22, 26, 22, 10)),
+        ),
         SliverToBoxAdapter(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 12),
@@ -175,16 +212,18 @@ class _CalendarScreenState extends ConsumerState<CalendarScreen> {
                             ),
                           ),
                           Text.rich(
-                            TextSpan(children: [
-                              TextSpan(
-                                text: '${e.daysAway}',
-                                style: WaqtType.serif(26, tracking: -0.02, color: c.ink),
-                              ),
-                              TextSpan(
-                                text: ' ${l.daysUnit(e.daysAway)}',
-                                style: WaqtType.sans(12, color: c.muted),
-                              ),
-                            ]),
+                            TextSpan(
+                              children: [
+                                TextSpan(
+                                  text: '${e.daysAway}',
+                                  style: WaqtType.serif(26, tracking: -0.02, color: c.ink),
+                                ),
+                                TextSpan(
+                                  text: ' ${l.daysUnit(e.daysAway)}',
+                                  style: WaqtType.sans(12, color: c.muted),
+                                ),
+                              ],
+                            ),
                           ),
                         ],
                       ),
@@ -231,17 +270,17 @@ class _Legend extends StatelessWidget {
 }
 
 Widget _dotWidget(WaqtColors c, _Dot dot, double size, {double opacity = 1}) => Opacity(
-      opacity: opacity,
-      child: Container(
-        width: size,
-        height: size,
-        decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          color: dot == _Dot.white ? c.brass : null,
-          border: dot == _Dot.monThu ? Border.all(color: c.accent, width: 1.5) : null,
-        ),
-      ),
-    );
+  opacity: opacity,
+  child: Container(
+    width: size,
+    height: size,
+    decoration: BoxDecoration(
+      shape: BoxShape.circle,
+      color: dot == _Dot.white ? c.brass : null,
+      border: dot == _Dot.monThu ? Border.all(color: c.accent, width: 1.5) : null,
+    ),
+  ),
+);
 
 class _MonthGrid extends ConsumerWidget {
   const _MonthGrid({
@@ -250,7 +289,9 @@ class _MonthGrid extends ConsumerWidget {
     required this.first,
     required this.length,
     required this.today,
+    required this.selected,
     required this.fasts,
+    required this.prayerMarks,
     required this.onDay,
   });
 
@@ -259,7 +300,9 @@ class _MonthGrid extends ConsumerWidget {
   final DateTime first;
   final int length;
   final DayKey today;
+  final DayKey selected;
   final Map<DayKey, FastLog> fasts;
+  final Map<DayKey, Map<Prayer, PrayerStatus>> prayerMarks;
   final ValueChanged<DateTime> onDay;
 
   @override
@@ -278,98 +321,123 @@ class _MonthGrid extends ConsumerWidget {
               children: [
                 for (var col = 0; col < 7; col++)
                   Expanded(
-                    child: Builder(builder: (context) {
-                      final i = r * 7 + col - lead;
-                      if (i < 0 || i >= length) return const SizedBox(height: 52);
-                      final g = DateTime(first.year, first.month, first.day + i);
-                      final key = DayKey.fromDate(g);
-                      final hDay = i + 1;
-                      final isToday = key == today;
-                      final white = hDay >= 13 && hDay <= 15;
-                      final monThu = col == 0 || col == 3;
-                      final past = key.isBefore(today);
-                      final fast = fasts[key];
-                      final gLabel = g.day == 1 ? '${l.monthShort(monthKey(g))} 1' : '${g.day}';
-                      return Semantics(
-                        button: true,
-                        selected: isToday,
-                        label: '${l.hijriFull(hDay, hMonth, hYear)} · ${l.longDate(g)}',
-                        excludeSemantics: true,
-                        child: InkWell(
-                          borderRadius: BorderRadius.circular(16),
-                          onTap: () => onDay(g),
-                          child: SizedBox(
-                            height: 52,
-                            child: Center(
-                              child: Container(
-                                width: 46,
-                                height: 48,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(16),
-                                  color: isToday ? c.primary : white ? c.brassSoft : null,
-                                ),
-                                child: Stack(
-                                  children: [
-                                    Center(
-                                      child: Column(
-                                        mainAxisSize: MainAxisSize.min,
-                                        children: [
-                                          Text(
-                                            '$hDay',
-                                            style: WaqtType.serif(
-                                              19,
-                                              height: 1,
-                                              color: isToday
-                                                  ? c.onPrimary
-                                                  : white
-                                                      ? c.brassText
-                                                      : past
-                                                          ? c.muted
-                                                          : c.ink,
+                    child: Builder(
+                      builder: (context) {
+                        final i = r * 7 + col - lead;
+                        if (i < 0 || i >= length) return const SizedBox(height: 52);
+                        final g = DateTime(first.year, first.month, first.day + i);
+                        final key = DayKey.fromDate(g);
+                        final hDay = i + 1;
+                        final isToday = key == today;
+                        final isSelected = key == selected;
+                        final white = hDay >= 13 && hDay <= 15;
+                        final monThu = col == 0 || col == 3;
+                        final past = key.isBefore(today);
+                        final fast = fasts[key];
+                        final completed = prayerMarks[key]?.values.where((status) => status.isPrayed).length ?? 0;
+                        final gLabel = g.day == 1 ? '${l.monthShort(monthKey(g))} 1' : '${g.day}';
+                        return Semantics(
+                          button: true,
+                          selected: isSelected,
+                          label: '${l.hijriFull(hDay, hMonth, hYear)} · ${l.longDate(g)}',
+                          excludeSemantics: true,
+                          child: InkWell(
+                            borderRadius: BorderRadius.circular(16),
+                            onTap: () => onDay(g),
+                            child: SizedBox(
+                              height: 52,
+                              child: Center(
+                                child: Container(
+                                  width: 46,
+                                  height: 46,
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: isSelected
+                                        ? c.primary
+                                        : isToday
+                                        ? c.mint
+                                        : white
+                                        ? c.brassSoft
+                                        : null,
+                                  ),
+                                  child: Stack(
+                                    children: [
+                                      Center(
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: [
+                                            Text(
+                                              '$hDay',
+                                              style: WaqtType.serif(
+                                                19,
+                                                height: 1,
+                                                color: isSelected
+                                                    ? c.onPrimary
+                                                    : isToday
+                                                    ? c.onMint
+                                                    : white
+                                                    ? c.brassText
+                                                    : past
+                                                    ? c.muted
+                                                    : c.ink,
+                                              ),
                                             ),
-                                          ),
-                                          const SizedBox(height: 3),
-                                          Text(
-                                            gLabel,
-                                            maxLines: 1,
-                                            style: WaqtType.sans(
-                                              10,
-                                              color: isToday ? c.onPrimary.withValues(alpha: 0.85) : c.muted,
+                                            const SizedBox(height: 3),
+                                            Text(
+                                              gLabel,
+                                              maxLines: 1,
+                                              style: WaqtType.sans(
+                                                10,
+                                                color: isSelected ? c.onPrimary.withValues(alpha: 0.85) : c.muted,
+                                              ),
                                             ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                    if (fast != null)
-                                      Positioned(
-                                        top: 4,
-                                        right: 5,
-                                        child: WaqtIcon(
-                                          fast.status == FastStatus.fasted ? WaqtIcons.check : WaqtIcons.minus,
-                                          size: 11,
-                                          strokeWidth: 3,
-                                          color: isToday ? c.onPrimary : c.brass,
-                                        ),
-                                      )
-                                    else if (!isToday && (white || monThu))
-                                      Positioned(
-                                        top: 5,
-                                        right: 7,
-                                        child: _dotWidget(
-                                          c,
-                                          white ? _Dot.white : _Dot.monThu,
-                                          5,
-                                          opacity: past && !white ? 0.45 : 1,
+                                          ],
                                         ),
                                       ),
-                                  ],
+                                      if (completed > 0)
+                                        Positioned.fill(
+                                          child: Padding(
+                                            padding: const EdgeInsets.all(1),
+                                            child: CircularProgressIndicator(
+                                              value: completed / Prayer.values.length,
+                                              strokeWidth: 2.2,
+                                              strokeCap: StrokeCap.round,
+                                              color: isSelected ? c.onPrimary : c.brass,
+                                              backgroundColor: Colors.transparent,
+                                            ),
+                                          ),
+                                        ),
+                                      if (fast != null)
+                                        Positioned(
+                                          top: 4,
+                                          right: 5,
+                                          child: WaqtIcon(
+                                            fast.status == FastStatus.fasted ? WaqtIcons.check : WaqtIcons.minus,
+                                            size: 11,
+                                            strokeWidth: 3,
+                                            color: isSelected ? c.onPrimary : c.brass,
+                                          ),
+                                        )
+                                      else if (!isSelected && (white || monThu))
+                                        Positioned(
+                                          top: 5,
+                                          right: 7,
+                                          child: _dotWidget(
+                                            c,
+                                            white ? _Dot.white : _Dot.monThu,
+                                            5,
+                                            opacity: past && !white ? 0.45 : 1,
+                                          ),
+                                        ),
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),
                           ),
-                        ),
-                      );
-                    }),
+                        );
+                      },
+                    ),
                   ),
               ],
             ),
@@ -400,9 +468,14 @@ class _FastSheetState extends ConsumerState<_FastSheet> {
     final l = context.l10n;
     final hijri = ref.watch(hijriServiceProvider);
     final existing = (ref.watch(fastsInRangeProvider((widget.day, widget.day))).value ?? const {})[widget.day];
-    final type = _type ??
+    final type =
+        _type ??
         existing?.type ??
-        fastTypeFor(hijri, widget.day.date, ramadan: ref.read(ramadanTodayProvider) && widget.day == ref.read(todayKeyProvider));
+        fastTypeFor(
+          hijri,
+          widget.day.date,
+          ramadan: ref.read(ramadanTodayProvider) && widget.day == ref.read(todayKeyProvider),
+        );
     final future = widget.day.isAfter(ref.watch(todayKeyProvider));
     final repo = ref.read(fastRepositoryProvider);
 
@@ -419,13 +492,10 @@ class _FastSheetState extends ConsumerState<_FastSheet> {
         children: [
           Text(l.fastLogTitle(l.dayMonth(widget.day.date)), style: WaqtType.serif(28, tracking: -0.015, color: c.ink)),
           const SizedBox(height: 4),
-          Text(
-            () {
-              final h = hijri.fromGregorian(widget.day.date);
-              return l.hijriFull(h.day, h.month, h.year);
-            }(),
-            style: WaqtType.sans(14, color: c.muted),
-          ),
+          Text(() {
+            final h = hijri.fromGregorian(widget.day.date);
+            return l.hijriFull(h.day, h.month, h.year);
+          }(), style: WaqtType.sans(14, color: c.muted)),
           const SizedBox(height: 16),
           Wrap(
             spacing: 6,

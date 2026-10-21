@@ -69,6 +69,15 @@ class AppLocalizationsTr extends AppLocalizations {
   String get yesterday => 'Dün';
 
   @override
+  String get tomorrow => 'Yarın';
+
+  @override
+  String get previousDay => 'Önceki gün';
+
+  @override
+  String get nextDay => 'Sonraki gün';
+
+  @override
   String get pickDate => 'Tarih seç';
 
   @override
@@ -318,6 +327,9 @@ class AppLocalizationsTr extends AppLocalizations {
   String get homeNextPrayer => 'Sıradaki namaz';
 
   @override
+  String get homePrayerTimes => 'Namaz vakitleri';
+
+  @override
   String get homeIn => '';
 
   @override
@@ -346,6 +358,15 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get homeYourDay => 'Gününüz';
+
+  @override
+  String get homeWorshipTitle => 'Bugünün ibadetleri';
+
+  @override
+  String get homeWorshipHint => 'Yaptıklarınızı işaretleyin';
+
+  @override
+  String get homePrayers => 'Namazlar';
 
   @override
   String get homeUpNext => 'Sırada';
@@ -558,6 +579,15 @@ class AppLocalizationsTr extends AppLocalizations {
   String get expenseNoteHint => 'Not';
 
   @override
+  String get expenseAddCategory => 'Kategori ekle';
+
+  @override
+  String get expenseCategoryName => 'Kategori adı';
+
+  @override
+  String get expenseCategoryExists => 'Bu kategori zaten mevcut.';
+
+  @override
   String get catGroceries => 'Market';
 
   @override
@@ -748,6 +778,23 @@ class AppLocalizationsTr extends AppLocalizations {
   String calendarEveningOf(String date) {
     return '$date akşamı';
   }
+
+  @override
+  String get calendarTrackerTitle => 'Namaz vakitleri ve takibi';
+
+  @override
+  String get calendarOpenTracker => 'Namaz takibini aç';
+
+  @override
+  String calendarTogglePrayer(String prayer) {
+    return '$prayer namazını kılındı olarak işaretle';
+  }
+
+  @override
+  String get calendarFast => 'Oruç';
+
+  @override
+  String get calendarToggleFast => 'Orucu tutuldu olarak işaretle';
 
   @override
   String get evRajab => 'Recep ayı başlıyor';
@@ -1236,7 +1283,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get widgetsHelpIos =>
-      'Ana ekranda boş bir alana basılı tutun, + simgesine dokunun, Waqt\'ı arayın ve küçük, orta ya da kilit ekranı widget\'ını seçin.';
+      'Ana ekranda boş bir alana basılı tutun, + simgesine dokunun, Waqt\'ı arayın ve küçük, orta, büyük ya da kilit ekranı widget\'ını seçin.';
 
   @override
   String get widgetsHelpAndroid =>
@@ -1248,6 +1295,12 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get widgetNext => 'Sıradaki';
+
+  @override
+  String get widgetRemainingTime => 'Kalan süre';
+
+  @override
+  String get widgetTodayRecord => 'Bugünün kaydı';
 
   @override
   String widgetWindowOpen(String prayer) {
@@ -2033,6 +2086,79 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get expensesEmpty => 'Bu ay harcama kaydedilmedi.';
+
+  @override
+  String get incomeTitle => 'Gelir';
+
+  @override
+  String get incomeAdd => 'Gelir ekle';
+
+  @override
+  String get incomeSaved => 'Gelir kaydedildi';
+
+  @override
+  String get incomeDeleted => 'Gelir silindi';
+
+  @override
+  String incomeSave(String amount, String currency) {
+    return '$amount $currency kaydet';
+  }
+
+  @override
+  String get incomeEmpty => 'Bu ay gelir kaydedilmedi.';
+
+  @override
+  String get catSalary => 'Maaş';
+
+  @override
+  String get catBusiness => 'İş / Ticaret';
+
+  @override
+  String get catGift => 'Hediye';
+
+  @override
+  String get catInvestment => 'Yatırım';
+
+  @override
+  String get transactionExpense => 'Harcama';
+
+  @override
+  String get transactionIncome => 'Gelir';
+
+  @override
+  String get financeTitle => 'Harcama ve Gelir';
+
+  @override
+  String get netBalance => 'Net bakiye';
+
+  @override
+  String get totalIncome => 'Gelir';
+
+  @override
+  String get totalExpense => 'Harcamalar';
+
+  @override
+  String get filterAll => 'Tümü';
+
+  @override
+  String get filterExpenses => 'Harcamalar';
+
+  @override
+  String get filterIncome => 'Gelirler';
+
+  @override
+  String get todayIncome => 'Bugünkü gelir';
+
+  @override
+  String get noTransactions => 'Bu ay hiç işlem kaydedilmedi.';
+
+  @override
+  String get categoryDelete => 'Kategoriyi sil';
+
+  @override
+  String categoryDeleteConfirm(String name) {
+    return '“$name” silinsin mi? Mevcut işlemler bu adı koruyacaktır.';
+  }
 
   @override
   String get meAyahsRead => 'Okunan ayetler';

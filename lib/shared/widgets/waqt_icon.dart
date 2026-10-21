@@ -108,6 +108,8 @@ abstract final class WaqtIcons {
   ]);
   static const arrowRight = WaqtIconData(['M5 12h14M12 5l7 7-7 7']);
   static const arrowLeft = WaqtIconData(['M19 12H5M12 19l-7-7 7-7']);
+  static const arrowUpRight = WaqtIconData(['M7 17L17 7M7 7h10v10']);
+  static const arrowDownLeft = WaqtIconData(['M17 7L7 17M17 17H7V7']);
   static const edit = WaqtIconData([
     'M12 20h9',
     'M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z',

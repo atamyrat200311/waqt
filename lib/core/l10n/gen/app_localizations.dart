@@ -222,6 +222,24 @@ abstract class AppLocalizations {
   /// **'Yesterday'**
   String get yesterday;
 
+  /// No description provided for @tomorrow.
+  ///
+  /// In en, this message translates to:
+  /// **'Tomorrow'**
+  String get tomorrow;
+
+  /// No description provided for @previousDay.
+  ///
+  /// In en, this message translates to:
+  /// **'Previous day'**
+  String get previousDay;
+
+  /// No description provided for @nextDay.
+  ///
+  /// In en, this message translates to:
+  /// **'Next day'**
+  String get nextDay;
+
   /// No description provided for @pickDate.
   ///
   /// In en, this message translates to:
@@ -420,6 +438,12 @@ abstract class AppLocalizations {
   /// **'Next prayer'**
   String get homeNextPrayer;
 
+  /// No description provided for @homePrayerTimes.
+  ///
+  /// In en, this message translates to:
+  /// **'Prayer times'**
+  String get homePrayerTimes;
+
   /// Word before the countdown on the hero card ("in 1h 12m"). Empty if the language puts it after.
   ///
   /// In en, this message translates to:
@@ -467,6 +491,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Your day'**
   String get homeYourDay;
+
+  /// No description provided for @homeWorshipTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Today’s worship'**
+  String get homeWorshipTitle;
+
+  /// No description provided for @homeWorshipHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap the ones you completed'**
+  String get homeWorshipHint;
+
+  /// No description provided for @homePrayers.
+  ///
+  /// In en, this message translates to:
+  /// **'Prayers'**
+  String get homePrayers;
 
   /// No description provided for @homeUpNext.
   ///
@@ -798,6 +840,24 @@ abstract class AppLocalizations {
   /// **'Note'**
   String get expenseNoteHint;
 
+  /// No description provided for @expenseAddCategory.
+  ///
+  /// In en, this message translates to:
+  /// **'Add category'**
+  String get expenseAddCategory;
+
+  /// No description provided for @expenseCategoryName.
+  ///
+  /// In en, this message translates to:
+  /// **'Category name'**
+  String get expenseCategoryName;
+
+  /// No description provided for @expenseCategoryExists.
+  ///
+  /// In en, this message translates to:
+  /// **'This category already exists.'**
+  String get expenseCategoryExists;
+
   /// No description provided for @catGroceries.
   ///
   /// In en, this message translates to:
@@ -1121,6 +1181,36 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'evening of {date}'**
   String calendarEveningOf(String date);
+
+  /// No description provided for @calendarTrackerTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Prayer times & tracker'**
+  String get calendarTrackerTitle;
+
+  /// No description provided for @calendarOpenTracker.
+  ///
+  /// In en, this message translates to:
+  /// **'Open prayer tracker'**
+  String get calendarOpenTracker;
+
+  /// No description provided for @calendarTogglePrayer.
+  ///
+  /// In en, this message translates to:
+  /// **'Mark {prayer} as prayed'**
+  String calendarTogglePrayer(String prayer);
+
+  /// No description provided for @calendarFast.
+  ///
+  /// In en, this message translates to:
+  /// **'Fast'**
+  String get calendarFast;
+
+  /// No description provided for @calendarToggleFast.
+  ///
+  /// In en, this message translates to:
+  /// **'Mark the fast as kept'**
+  String get calendarToggleFast;
 
   /// No description provided for @evRajab.
   ///
@@ -1995,7 +2085,7 @@ abstract class AppLocalizations {
   /// No description provided for @widgetsHelpIos.
   ///
   /// In en, this message translates to:
-  /// **'Touch and hold an empty area of the Home Screen, tap +, search for Waqt and choose the small, medium or lock-screen widget.'**
+  /// **'Touch and hold an empty area of the Home Screen, tap +, search for Waqt and choose the small, medium, large or lock-screen widget.'**
   String get widgetsHelpIos;
 
   /// No description provided for @widgetsHelpAndroid.
@@ -2015,6 +2105,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Next'**
   String get widgetNext;
+
+  /// No description provided for @widgetRemainingTime.
+  ///
+  /// In en, this message translates to:
+  /// **'Remaining time'**
+  String get widgetRemainingTime;
+
+  /// No description provided for @widgetTodayRecord.
+  ///
+  /// In en, this message translates to:
+  /// **'Today\'s record'**
+  String get widgetTodayRecord;
 
   /// No description provided for @widgetWindowOpen.
   ///
@@ -3341,6 +3443,144 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'No spending recorded this month.'**
   String get expensesEmpty;
+
+  /// No description provided for @incomeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Income'**
+  String get incomeTitle;
+
+  /// No description provided for @incomeAdd.
+  ///
+  /// In en, this message translates to:
+  /// **'Add income'**
+  String get incomeAdd;
+
+  /// No description provided for @incomeSaved.
+  ///
+  /// In en, this message translates to:
+  /// **'Income saved'**
+  String get incomeSaved;
+
+  /// No description provided for @incomeDeleted.
+  ///
+  /// In en, this message translates to:
+  /// **'Income deleted'**
+  String get incomeDeleted;
+
+  /// No description provided for @incomeSave.
+  ///
+  /// In en, this message translates to:
+  /// **'Save {amount} {currency}'**
+  String incomeSave(String amount, String currency);
+
+  /// No description provided for @incomeEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No income recorded this month.'**
+  String get incomeEmpty;
+
+  /// No description provided for @catSalary.
+  ///
+  /// In en, this message translates to:
+  /// **'Salary'**
+  String get catSalary;
+
+  /// No description provided for @catBusiness.
+  ///
+  /// In en, this message translates to:
+  /// **'Business'**
+  String get catBusiness;
+
+  /// No description provided for @catGift.
+  ///
+  /// In en, this message translates to:
+  /// **'Gift'**
+  String get catGift;
+
+  /// No description provided for @catInvestment.
+  ///
+  /// In en, this message translates to:
+  /// **'Investment'**
+  String get catInvestment;
+
+  /// No description provided for @transactionExpense.
+  ///
+  /// In en, this message translates to:
+  /// **'Expense'**
+  String get transactionExpense;
+
+  /// No description provided for @transactionIncome.
+  ///
+  /// In en, this message translates to:
+  /// **'Income'**
+  String get transactionIncome;
+
+  /// No description provided for @financeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Spending & Income'**
+  String get financeTitle;
+
+  /// No description provided for @netBalance.
+  ///
+  /// In en, this message translates to:
+  /// **'Net balance'**
+  String get netBalance;
+
+  /// No description provided for @totalIncome.
+  ///
+  /// In en, this message translates to:
+  /// **'Income'**
+  String get totalIncome;
+
+  /// No description provided for @totalExpense.
+  ///
+  /// In en, this message translates to:
+  /// **'Expenses'**
+  String get totalExpense;
+
+  /// No description provided for @filterAll.
+  ///
+  /// In en, this message translates to:
+  /// **'All'**
+  String get filterAll;
+
+  /// No description provided for @filterExpenses.
+  ///
+  /// In en, this message translates to:
+  /// **'Expenses'**
+  String get filterExpenses;
+
+  /// No description provided for @filterIncome.
+  ///
+  /// In en, this message translates to:
+  /// **'Income'**
+  String get filterIncome;
+
+  /// No description provided for @todayIncome.
+  ///
+  /// In en, this message translates to:
+  /// **'Income today'**
+  String get todayIncome;
+
+  /// No description provided for @noTransactions.
+  ///
+  /// In en, this message translates to:
+  /// **'No transactions recorded this month.'**
+  String get noTransactions;
+
+  /// No description provided for @categoryDelete.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete category'**
+  String get categoryDelete;
+
+  /// No description provided for @categoryDeleteConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete “{name}”? Existing transactions will keep this name.'**
+  String categoryDeleteConfirm(String name);
 
   /// No description provided for @meAyahsRead.
   ///

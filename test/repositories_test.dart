@@ -4,6 +4,7 @@ import 'package:waqt/data/db/app_database.dart';
 import 'package:waqt/data/repositories/adhkar_repository.dart';
 import 'package:waqt/data/repositories/expense_repository.dart';
 import 'package:waqt/data/repositories/fast_repository.dart';
+import 'package:waqt/data/repositories/income_repository.dart';
 import 'package:waqt/data/repositories/prayer_repository.dart';
 import 'package:waqt/data/repositories/task_repository.dart';
 import 'package:waqt/data/settings/app_settings.dart';
@@ -22,7 +23,12 @@ void main() {
       final day = DateTime(2026, 10, 4, 12);
       await repo.add(amountMinor: 22000, currency: 'TMT', category: ExpenseCategory.groceries, occurredAt: day);
       await repo.add(amountMinor: 2000, currency: 'TMT', category: ExpenseCategory.sadaqa, occurredAt: day);
-      await repo.add(amountMinor: 999, currency: 'TMT', category: ExpenseCategory.food, occurredAt: day.add(const Duration(days: 1)));
+      await repo.add(
+        amountMinor: 999,
+        currency: 'TMT',
+        category: ExpenseCategory.food,
+        occurredAt: day.add(const Duration(days: 1)),
+      );
 
       final today = await repo.watchBetween(DateTime(2026, 10, 4), DateTime(2026, 10, 5)).first;
       final sum = ExpenseSummary.of(today);
@@ -31,10 +37,63 @@ void main() {
       expect(sum.sadaqaMinor, 2000);
     });
 
+    test('stores and summarises a custom category', () async {
+      final repo = ExpenseRepository(db);
+      final day = DateTime(2026, 10, 4, 12);
+      await repo.add(
+        amountMinor: 3500,
+        currency: 'TMT',
+        category: ExpenseCategory.other,
+        customCategory: 'Coffee',
+        occurredAt: day,
+      );
+
+      final item = (await repo.watchBetween(DateTime(2026, 10, 4), DateTime(2026, 10, 5)).first).single;
+      expect(item.customCategory, 'Coffee');
+      expect(item.category, ExpenseCategory.other);
+      expect(ExpenseSummary.of([item]).byCustomCategory, {'Coffee': 3500});
+    });
+
     test('rejects zero amounts', () {
       final repo = ExpenseRepository(db);
       expect(
         () => repo.add(amountMinor: 0, currency: 'TMT', category: ExpenseCategory.other, occurredAt: DateTime(2026)),
+        throwsArgumentError,
+      );
+    });
+  });
+
+  group('IncomeRepository', () {
+    test('stores integer minor units and summarises sources', () async {
+      final repo = IncomeRepository(db);
+      final day = DateTime(2026, 10, 4, 12);
+      await repo.add(amountMinor: 500000, currency: 'TMT', category: IncomeCategory.salary, occurredAt: day);
+      await repo.add(amountMinor: 50000, currency: 'TMT', category: IncomeCategory.gift, occurredAt: day);
+      await repo.add(
+        amountMinor: 20000,
+        currency: 'TMT',
+        category: IncomeCategory.other,
+        customCategory: 'Freelance',
+        occurredAt: day,
+      );
+
+      final today = await repo.watchBetween(DateTime(2026, 10, 4), DateTime(2026, 10, 5)).first;
+      final sum = IncomeSummary.of(today);
+      expect(sum.totalMinor, 570000);
+      expect(sum.count, 3);
+      expect(sum.byCategory[IncomeCategory.salary], 500000);
+      expect(sum.byCategory[IncomeCategory.gift], 50000);
+      expect(sum.byCustomCategory['Freelance'], 20000);
+    });
+
+    test('rejects zero or negative amounts', () {
+      final repo = IncomeRepository(db);
+      expect(
+        () => repo.add(amountMinor: 0, currency: 'TMT', category: IncomeCategory.salary, occurredAt: DateTime(2026)),
+        throwsArgumentError,
+      );
+      expect(
+        () => repo.add(amountMinor: -100, currency: 'TMT', category: IncomeCategory.salary, occurredAt: DateTime(2026)),
         throwsArgumentError,
       );
     });
@@ -107,6 +166,7 @@ void main() {
         location: SavedLocation(latitude: 41.0, longitude: 29.0, name: 'Istanbul', timezone: 'Europe/Istanbul'),
         language: 'ru',
         currency: 'TRY',
+        expenseCategories: ['Coffee', 'School'],
         hijriAdjustment: -1,
         ramadanMode: RamadanMode.on,
         periodMode: true,

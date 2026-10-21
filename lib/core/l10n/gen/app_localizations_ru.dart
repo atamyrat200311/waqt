@@ -69,6 +69,15 @@ class AppLocalizationsRu extends AppLocalizations {
   String get yesterday => 'Вчера';
 
   @override
+  String get tomorrow => 'Завтра';
+
+  @override
+  String get previousDay => 'Предыдущий день';
+
+  @override
+  String get nextDay => 'Следующий день';
+
+  @override
   String get pickDate => 'Выбрать дату';
 
   @override
@@ -330,6 +339,9 @@ class AppLocalizationsRu extends AppLocalizations {
   String get homeNextPrayer => 'Следующий намаз';
 
   @override
+  String get homePrayerTimes => 'Время намазов';
+
+  @override
   String get homeIn => 'через';
 
   @override
@@ -358,6 +370,15 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get homeYourDay => 'Ваш день';
+
+  @override
+  String get homeWorshipTitle => 'Поклонение сегодня';
+
+  @override
+  String get homeWorshipHint => 'Отметьте выполненное';
+
+  @override
+  String get homePrayers => 'Намазы';
 
   @override
   String get homeUpNext => 'Далее';
@@ -575,6 +596,15 @@ class AppLocalizationsRu extends AppLocalizations {
   String get expenseNoteHint => 'Заметка';
 
   @override
+  String get expenseAddCategory => 'Добавить категорию';
+
+  @override
+  String get expenseCategoryName => 'Название категории';
+
+  @override
+  String get expenseCategoryExists => 'Такая категория уже существует.';
+
+  @override
   String get catGroceries => 'Продукты';
 
   @override
@@ -768,6 +798,23 @@ class AppLocalizationsRu extends AppLocalizations {
   String calendarEveningOf(String date) {
     return 'вечер $date';
   }
+
+  @override
+  String get calendarTrackerTitle => 'Время и учёт намазов';
+
+  @override
+  String get calendarOpenTracker => 'Открыть трекер намазов';
+
+  @override
+  String calendarTogglePrayer(String prayer) {
+    return 'Отметить намаз $prayer совершённым';
+  }
+
+  @override
+  String get calendarFast => 'Пост';
+
+  @override
+  String get calendarToggleFast => 'Отметить пост соблюдённым';
 
   @override
   String get evRajab => 'Начало Раджаба';
@@ -1258,7 +1305,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get widgetsHelpIos =>
-      'Нажмите и удерживайте пустое место на экране «Домой», нажмите +, найдите Waqt и выберите малый, средний виджет или виджет экрана блокировки.';
+      'Нажмите и удерживайте пустое место на экране «Домой», нажмите +, найдите Waqt и выберите малый, средний, большой виджет или виджет экрана блокировки.';
 
   @override
   String get widgetsHelpAndroid =>
@@ -1270,6 +1317,12 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get widgetNext => 'Далее';
+
+  @override
+  String get widgetRemainingTime => 'Осталось';
+
+  @override
+  String get widgetTodayRecord => 'Сегодня отмечено';
 
   @override
   String widgetWindowOpen(String prayer) {
@@ -2121,6 +2174,79 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get expensesEmpty => 'В этом месяце расходов нет.';
+
+  @override
+  String get incomeTitle => 'Доход';
+
+  @override
+  String get incomeAdd => 'Добавить доход';
+
+  @override
+  String get incomeSaved => 'Доход сохранён';
+
+  @override
+  String get incomeDeleted => 'Доход удалён';
+
+  @override
+  String incomeSave(String amount, String currency) {
+    return 'Сохранить $amount $currency';
+  }
+
+  @override
+  String get incomeEmpty => 'В этом месяце доходов нет.';
+
+  @override
+  String get catSalary => 'Зарплата';
+
+  @override
+  String get catBusiness => 'Бизнес';
+
+  @override
+  String get catGift => 'Подарок';
+
+  @override
+  String get catInvestment => 'Инвестиции';
+
+  @override
+  String get transactionExpense => 'Расход';
+
+  @override
+  String get transactionIncome => 'Доход';
+
+  @override
+  String get financeTitle => 'Финансы';
+
+  @override
+  String get netBalance => 'Баланс';
+
+  @override
+  String get totalIncome => 'Доходы';
+
+  @override
+  String get totalExpense => 'Расходы';
+
+  @override
+  String get filterAll => 'Все';
+
+  @override
+  String get filterExpenses => 'Расходы';
+
+  @override
+  String get filterIncome => 'Доходы';
+
+  @override
+  String get todayIncome => 'Доход за сегодня';
+
+  @override
+  String get noTransactions => 'В этом месяце операций нет.';
+
+  @override
+  String get categoryDelete => 'Удалить категорию';
+
+  @override
+  String categoryDeleteConfirm(String name) {
+    return 'Удалить «$name»? В существующих записях это название сохранится.';
+  }
 
   @override
   String get meAyahsRead => 'Прочитано аятов';
