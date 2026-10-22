@@ -36,6 +36,8 @@
 	</array>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Waqt uses your location only to calculate prayer times and the Qibla direction. It never leaves your phone.</string>
+	<key>NSSupportsLiveActivities</key>
+	<true/>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>fetch</string>

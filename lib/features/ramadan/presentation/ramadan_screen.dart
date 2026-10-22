@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../core/l10n/l10n_ext.dart';
 import '../../../core/platform/adaptive.dart';
+import '../../../core/router/routes.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_typography.dart';
 import '../../../core/theme/dimens.dart';
@@ -233,11 +235,19 @@ class _FastsOwedCard extends ConsumerWidget {
     return WaqtCard(
       color: c.brassSoft,
       border: false,
+      onTap: () => context.push('${Routes.qada}?tab=fasts'),
       padding: const EdgeInsets.all(16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(l.fastsOwedTitle, style: WaqtType.sans(14, weight: 600, color: c.brassText)),
+          Row(
+            children: [
+              Expanded(
+                child: Text(l.fastsOwedTitle, style: WaqtType.sans(14, weight: 600, color: c.brassText)),
+              ),
+              WaqtIcon(WaqtIcons.chevronRight, size: 16, color: c.brassText, strokeWidth: 2.2),
+            ],
+          ),
           const SizedBox(height: 4),
           Text(l.fastsOwedCount(owed), style: WaqtType.serif(30, weight: 500, color: c.ink)),
           const SizedBox(height: 4),

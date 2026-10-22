@@ -45,7 +45,13 @@ group.new_reference('Info.plist')
 group.new_reference('WaqtWidget.entitlements')
 widget.source_build_phase.add_file_reference(swift)
 
-%w[WidgetKit SwiftUI].each do |fw|
+# Live Activity attributes are compiled into both the app and extension.
+shared = project.main_group.new_group('Shared', 'Shared')
+activity_attributes = shared.new_reference('PrayerActivityAttributes.swift')
+widget.source_build_phase.add_file_reference(activity_attributes)
+runner.source_build_phase.add_file_reference(activity_attributes)
+
+%w[WidgetKit SwiftUI ActivityKit].each do |fw|
   ref = project.frameworks_group.new_file("System/Library/Frameworks/#{fw}.framework", :sdk_root)
   widget.frameworks_build_phase.add_file_reference(ref, true)
 end

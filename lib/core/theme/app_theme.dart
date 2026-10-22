@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
+import '../platform/swipe_back.dart';
 import 'app_colors.dart';
 import 'app_typography.dart';
 
@@ -165,7 +166,7 @@ abstract final class AppTheme {
       pageTransitionsTheme: const PageTransitionsTheme(
         builders: {
           TargetPlatform.android: PredictiveBackPageTransitionsBuilder(),
-          TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
+          TargetPlatform.iOS: FullSwipeBackPageTransitionsBuilder(),
         },
       ),
     );

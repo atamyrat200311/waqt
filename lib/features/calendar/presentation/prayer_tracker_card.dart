@@ -41,7 +41,7 @@ class PrayerTrackerCard extends ConsumerWidget {
           day.date,
           ramadan: day == today && ref.watch(ramadanTodayProvider),
         );
-    final completed = marks.values.where((status) => status.isPrayed).length;
+    final completed = Prayer.obligatory.where((p) => marks[p]?.isPrayed == true).length;
 
     bool canEditPrayer(Prayer prayer) {
       if (marks[prayer] != null) return true;
@@ -105,7 +105,7 @@ class PrayerTrackerCard extends ConsumerWidget {
             ),
           ),
           Divider(height: 1, thickness: 1, color: c.hairline),
-          for (final prayer in Prayer.values) ...[
+          for (final prayer in Prayer.obligatory) ...[
             _PrayerTrackerRow(
               prayer: prayer,
               time: times[prayer],
@@ -116,6 +116,16 @@ class PrayerTrackerCard extends ConsumerWidget {
             ),
             Divider(height: 1, thickness: 1, indent: 18, color: c.hairline),
           ],
+          _PrayerTrackerRow(
+            prayer: Prayer.witr,
+            time: times[Prayer.witr],
+            subtitle: l.witrSeparateHint,
+            state: chipStateForDay(Prayer.witr, marks[Prayer.witr], now, day),
+            enabled: canEditPrayer(Prayer.witr),
+            onDetails: () => showMarkSheet(context, Prayer.witr, day),
+            onToggle: () => togglePrayer(Prayer.witr),
+          ),
+          Divider(height: 1, thickness: 1, indent: 18, color: c.hairline),
           _FastTrackerRow(
             type: fastType,
             status: fast?.status,
@@ -133,6 +143,7 @@ class _PrayerTrackerRow extends StatelessWidget {
   const _PrayerTrackerRow({
     required this.prayer,
     required this.time,
+    this.subtitle,
     required this.state,
     required this.enabled,
     required this.onDetails,
@@ -141,6 +152,7 @@ class _PrayerTrackerRow extends StatelessWidget {
 
   final Prayer prayer;
   final DateTime time;
+  final String? subtitle;
   final ChipState state;
   final bool enabled;
   final VoidCallback onDetails;
@@ -156,7 +168,7 @@ class _PrayerTrackerRow extends StatelessWidget {
       child: InkWell(
         onTap: enabled ? onDetails : null,
         child: SizedBox(
-          height: 58,
+          height: subtitle == null ? 58 : 64,
           child: Opacity(
             opacity: enabled ? 1 : 0.5,
             child: Padding(
@@ -164,9 +176,21 @@ class _PrayerTrackerRow extends StatelessWidget {
               child: Row(
                 children: [
                   Expanded(
-                    child: Text(l.prayer(prayer), style: WaqtType.sans(16, weight: 600, color: c.ink)),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(l.prayer(prayer), style: WaqtType.sans(16, weight: 600, color: c.ink)),
+                        if (subtitle != null)
+                          Text(subtitle!, maxLines: 1, overflow: TextOverflow.ellipsis,
+                              style: WaqtType.sans(11, color: c.muted)),
+                      ],
+                    ),
                   ),
-                  Text(hhmm(time), style: WaqtType.sans(16, weight: 500, color: c.muted, tabular: true)),
+                  Text(
+                    prayer == Prayer.witr ? l.homeAfterIshaKicker(hhmm(time)) : hhmm(time),
+                    style: WaqtType.sans(13, weight: 500, color: c.muted, tabular: true),
+                  ),
                   const SizedBox(width: 7),
                   _QuickCheck(
                     label: l.calendarTogglePrayer(l.prayer(prayer)),

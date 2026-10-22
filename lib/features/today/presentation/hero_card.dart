@@ -124,7 +124,7 @@ class _HeroCardState extends ConsumerState<HeroCard> {
                 const SizedBox(height: 10),
                 Row(
                   children: [
-                    for (final p in Prayer.values) ...[
+                    for (final p in Prayer.obligatory) ...[
                       if (p != Prayer.fajr) const SizedBox(width: 4),
                       Expanded(
                         child: PrayerChip(

@@ -121,7 +121,7 @@ abstract final class NotificationPlanner {
       int id() => i * 10 + slot++;
 
       if (!paused) {
-        for (final p in Prayer.values) {
+        for (final p in Prayer.obligatory) {
           final alert = settings.alertFor(p);
           final iftar = ramadan && settings.iftarReminder && p == Prayer.maghrib;
           if (alert == AlertType.off && !iftar) {
@@ -138,7 +138,7 @@ abstract final class NotificationPlanner {
           ));
         }
       } else {
-        slot += Prayer.values.length;
+        slot += Prayer.obligatory.length;
       }
 
       // Slots 5–9: extras.

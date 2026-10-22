@@ -108,7 +108,8 @@ class _StreakCard extends ConsumerWidget {
         );
     final n = s.lastDays.length;
     // Day one (or after a break): show today's progress instead of a big 0.
-    final prayedToday = (ref.watch(todayMarksProvider).value ?? const {}).values.where((v) => v.isPrayed).length;
+    final todayMarks = ref.watch(todayMarksProvider).value ?? const <Prayer, PrayerStatus>{};
+    final prayedToday = Prayer.obligatory.where((p) => todayMarks[p]?.isPrayed == true).length;
     final fresh = s.current == 0;
     return Semantics(
       label: fresh
@@ -370,6 +371,7 @@ class _ConsistencyCard extends ConsumerWidget {
       Prayer.asr => (l.tipAsrTitle, l.tipAsrBody),
       Prayer.maghrib => (l.tipMaghribTitle, l.tipMaghribBody),
       Prayer.isha => (l.tipIshaTitle, l.tipIshaBody),
+      Prayer.witr => ('', ''),
       null => ('', ''),
     };
 
@@ -392,7 +394,7 @@ class _ConsistencyCard extends ConsumerWidget {
           if (!hasData)
             Text(l.meNoPrayerData, style: WaqtType.sans(14, color: c.muted, height: 1.45))
           else ...[
-            for (final p in Prayer.values) ...[
+            for (final p in Prayer.obligatory) ...[
               _ConsistencyBar(name: l.prayer(p), value: cons[p], weak: p == weak && !allStrong),
               if (p != Prayer.isha) const SizedBox(height: 12),
             ],

@@ -2,7 +2,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:timezone/timezone.dart' as tz;
 
 import '../../../core/utils/dates.dart';
-import '../../../data/db/enums.dart';
+import '../../../data/db/app_database.dart';
 import '../../../data/repositories/expense_repository.dart';
 import '../../../data/repositories/fast_repository.dart';
 import '../../../data/repositories/income_repository.dart';
@@ -38,6 +38,27 @@ final qadaCountsProvider = StreamProvider<Map<Prayer, int>>(
 final qadaTotalProvider = Provider<int>((ref) {
   final m = ref.watch(qadaCountsProvider).value ?? const {};
   return m.values.fold(0, (a, b) => a + b);
+});
+
+final qadaLastMadeUpEventProvider = StreamProvider<QadaEventRow?>(
+  (ref) => ref.watch(prayerRepositoryProvider).watchLastMadeUpEvent(),
+);
+
+final qadaLastActivityEventProvider = StreamProvider<QadaEventRow?>(
+  (ref) => ref.watch(prayerRepositoryProvider).watchLastActivityEvent(),
+);
+
+final qadaFastLastMadeUpDateProvider = StreamProvider<DayKey?>(
+  (ref) => ref.watch(fastRepositoryProvider).watchLastMadeUpDate(),
+);
+
+final qadaFastMadeUpTotalProvider = StreamProvider<int>(
+  (ref) => ref.watch(fastRepositoryProvider).watchMadeUpTotal(),
+);
+
+final qadaFastLastModifiedProvider = FutureProvider<DateTime?>((ref) async {
+  ref.watch(fastsOwedProvider);
+  return ref.watch(fastRepositoryProvider).getLastModified();
 });
 
 final hijriServiceProvider = Provider<HijriService>(

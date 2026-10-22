@@ -40,7 +40,9 @@ class PrayerDay {
   /// Start of the fast: the table's imsak where one exists, otherwise Fajr.
   tz.TZDateTime get imsak => _imsak ?? fajr;
 
-  tz.TZDateTime operator [](Prayer p) => times[p]!;
+  /// Witr has no separate astronomical start; its independent tracking window
+  /// opens at Isha and lasts until the next Fajr.
+  tz.TZDateTime operator [](Prayer p) => p == Prayer.witr ? isha : times[p]!;
   tz.TZDateTime get fajr => times[Prayer.fajr]!;
   tz.TZDateTime get isha => times[Prayer.isha]!;
 }
@@ -174,7 +176,7 @@ class PrayerEngine {
   /// Next prayer strictly after [now]. After Isha → tomorrow's Fajr.
   NextPrayer next(DateTime now) {
     final d = today(now);
-    for (final p in Prayer.values) {
+    for (final p in Prayer.obligatory) {
       if (d[p].isAfter(now)) return NextPrayer(p, d[p], tomorrow: false);
     }
     final t = day(_addDays(d.date, 1));
@@ -208,15 +210,20 @@ class PrayerEngine {
     ];
   }
 
-  PrayerWindow window(DateTime localDate, Prayer p) =>
-      windowsFor(day(localDate)).firstWhere((w) => w.prayer == p);
+  PrayerWindow window(DateTime localDate, Prayer p) {
+    final d = day(localDate);
+    if (p == Prayer.witr) {
+      return PrayerWindow(Prayer.witr, d.isha, day(_addDays(d.date, 1)).fajr, d.date);
+    }
+    return windowsFor(d).firstWhere((w) => w.prayer == p);
+  }
 
   /// Position of "now" on the day arc between Fajr (0) and Isha (1).
   static double arcProgress(PrayerDay d, DateTime now) => _fraction(d.fajr, d.isha, now);
 
   /// Positions of the five prayers on the arc (Fajr 0 … Isha 1).
   static Map<Prayer, double> arcPoints(PrayerDay d) =>
-      {for (final p in Prayer.values) p: _fraction(d.fajr, d.isha, d[p])};
+      {for (final p in Prayer.obligatory) p: _fraction(d.fajr, d.isha, d[p])};
 
   static double _fraction(DateTime a, DateTime b, DateTime t) {
     final total = b.difference(a).inSeconds;

@@ -43,7 +43,7 @@ class RamadanChallengeCard extends ConsumerWidget {
       (WaqtIcons.mosque, l.ramadanItemPrayers, t.prayers, () {
         // Open the first prayer whose time has come and isn't marked yet.
         final marks = ref.read(todayMarksProvider).value ?? const <Prayer, PrayerStatus>{};
-        final open = Prayer.values.where((p) => now.hasStarted(p) && !marks.containsKey(p));
+        final open = Prayer.obligatory.where((p) => now.hasStarted(p) && !marks.containsKey(p));
         if (open.isNotEmpty) {
           showMarkSheet(context, open.first, now.dayKey);
         } else {

@@ -334,7 +334,8 @@ class _MonthGrid extends ConsumerWidget {
                         final monThu = col == 0 || col == 3;
                         final past = key.isBefore(today);
                         final fast = fasts[key];
-                        final completed = prayerMarks[key]?.values.where((status) => status.isPrayed).length ?? 0;
+                        final dayMarks = prayerMarks[key] ?? const <Prayer, PrayerStatus>{};
+                        final completed = Prayer.obligatory.where((p) => dayMarks[p]?.isPrayed == true).length;
                         final gLabel = g.day == 1 ? '${l.monthShort(monthKey(g))} 1' : '${g.day}';
                         return Semantics(
                           button: true,
@@ -399,7 +400,7 @@ class _MonthGrid extends ConsumerWidget {
                                           child: Padding(
                                             padding: const EdgeInsets.all(1),
                                             child: CircularProgressIndicator(
-                                              value: completed / Prayer.values.length,
+                                              value: completed / Prayer.obligatory.length,
                                               strokeWidth: 2.2,
                                               strokeCap: StrokeCap.round,
                                               color: isSelected ? c.onPrimary : c.brass,

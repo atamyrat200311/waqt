@@ -23,7 +23,7 @@ List<(DayKey, Prayer)> prayersToExcuse({
   while (!day.isAfter(today)) {
     final times = engine.day(day.date);
     final done = marked[day] ?? const {};
-    for (final p in Prayer.values) {
+    for (final p in Prayer.obligatory) {
       if (!times[p].isAfter(now) && !done.contains(p)) out.add((day, p));
     }
     day = day.addDays(1);

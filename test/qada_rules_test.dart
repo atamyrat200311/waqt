@@ -54,6 +54,16 @@ void main() {
       expect((await repo.getDay(day))[Prayer.isha], PrayerStatus.onTime);
     });
 
+    test('Witr has its own mark and qada balance, independent from Isha', () async {
+      await repo.mark(day, Prayer.witr, PrayerStatus.missed);
+      final marks = await repo.getDay(day);
+      final counts = await repo.getQadaCounts();
+      expect(marks[Prayer.witr], PrayerStatus.missed);
+      expect(marks[Prayer.isha], isNull);
+      expect(counts[Prayer.witr], 1);
+      expect(counts[Prayer.isha], 0);
+    });
+
     test('unique (date, prayer): one row per prayer per day', () async {
       await repo.mark(day, Prayer.fajr, PrayerStatus.late);
       await repo.mark(day, Prayer.fajr, PrayerStatus.congregation);
@@ -82,6 +92,20 @@ void main() {
       expect(await repo.watchMadeUpTotal().first, 2);
     });
 
+    test('remaining balances can be replaced without changing made-up stats', () async {
+      await repo.addOlder({Prayer.fajr: 10, Prayer.witr: 4});
+      await repo.makeUp(Prayer.fajr);
+
+      await repo.setQadaCounts({
+        for (final prayer in Prayer.tracked) prayer: prayer == Prayer.fajr ? 25 : 0,
+      });
+
+      final counts = await repo.getQadaCounts();
+      expect(counts[Prayer.fajr], 25);
+      expect(counts[Prayer.witr], 0);
+      expect(await repo.watchMadeUpTotal().first, 1);
+    });
+
     test('undoing a missed mark after making it up does not go negative', () async {
       await repo.mark(day, Prayer.maghrib, PrayerStatus.missed);
       await repo.makeUp(Prayer.maghrib);
@@ -100,5 +124,27 @@ void main() {
       expect(byDay[const DayKey('2026-10-04')], 1);
       expect(byDay[const DayKey('2026-10-05')], 1);
     });
+
+    test('watchLastMadeUpEvent and watchLastActivityEvent track recent events', () async {
+      expect(await repo.watchLastMadeUpEvent().first, isNull);
+      expect(await repo.watchLastActivityEvent().first, isNull);
+
+      final t1 = DateTime(2026, 10, 10, 12);
+      await repo.addOlder({Prayer.fajr: 5}, now: t1);
+      final act1 = await repo.watchLastActivityEvent().first;
+      expect(act1?.prayer, Prayer.fajr);
+      expect(act1?.createdAt, t1);
+      expect(await repo.watchLastMadeUpEvent().first, isNull);
+
+      final t2 = DateTime(2026, 10, 15, 14);
+      await repo.makeUp(Prayer.fajr, now: t2);
+      final made = await repo.watchLastMadeUpEvent().first;
+      expect(made?.prayer, Prayer.fajr);
+      expect(made?.createdAt, t2);
+
+      final act2 = await repo.watchLastActivityEvent().first;
+      expect(act2?.createdAt, t2);
+    });
   });
 }
+

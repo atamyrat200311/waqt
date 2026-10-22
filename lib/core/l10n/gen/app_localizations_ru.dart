@@ -110,6 +110,12 @@ class AppLocalizationsRu extends AppLocalizations {
   String get prayerIsha => 'Иша';
 
   @override
+  String get prayerWitr => 'Витр';
+
+  @override
+  String get witrSeparateHint => 'Отмечается отдельно после иши';
+
+  @override
   String weekdayName(String day) {
     String _temp0 = intl.Intl.selectLogic(day, {
       'mon': 'понедельник',
@@ -536,7 +542,23 @@ class AppLocalizationsRu extends AppLocalizations {
   String get qadaTitle => 'Када';
 
   @override
-  String get qadaLeft => 'намазов\nк восполнению';
+  String get qadaLeft => 'намазов к восполнению';
+
+  @override
+  String get qadaEditBalances => 'Изменить остаток';
+
+  @override
+  String get qadaEditBalancesTitle => 'Оставшиеся када-намазы';
+
+  @override
+  String get qadaEditBalancesBody =>
+      'Введите точное количество для каждого намаза. Эти значения заменят текущие.';
+
+  @override
+  String get qadaSaveBalances => 'Сохранить остаток';
+
+  @override
+  String get qadaBalancesSaved => 'Остаток обновлён';
 
   @override
   String qadaMadeUpSince(String count) {
@@ -585,6 +607,135 @@ class AppLocalizationsRu extends AppLocalizations {
   @override
   String get qadaEmpty =>
       'Када нет. Если есть старые пропуски, добавьте их здесь.';
+
+  @override
+  String get qadaTabPrayers => 'Намаз';
+
+  @override
+  String get qadaTabFasts => 'Пост';
+
+  @override
+  String qadaLastMadeUp(String time) {
+    return 'Последнее: $time';
+  }
+
+  @override
+  String qadaLastUpdated(String time) {
+    return 'Последнее изменение: $time';
+  }
+
+  @override
+  String qadaDaysAgoWarning(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count дней без када-намаза',
+      few: '$count дня без када-намаза',
+      one: '$count день без када-намаза',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String qadaFastDaysAgoWarning(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count дней без восполнения поста',
+      few: '$count дня без восполнения поста',
+      one: '$count день без восполнения поста',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get qadaDaysAgoHint => 'Совершите один када с сегодняшним намазом.';
+
+  @override
+  String get qadaFastDaysAgoHint =>
+      'Запланируйте пост на понедельник или четверг.';
+
+  @override
+  String get qadaTodayMadeUp => 'Восполнено сегодня';
+
+  @override
+  String get qadaYesterdayMadeUp => 'Восполнено вчера';
+
+  @override
+  String qadaTimeAgoDays(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count дней назад',
+      few: '$count дня назад',
+      one: '$count день назад',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get qadaNoActivityYet =>
+      'Пока нет восполненных — начните с Бисмиллях!';
+
+  @override
+  String get qadaFastsLeft => 'дней поста к восполнению';
+
+  @override
+  String qadaFastsMadeUpSince(String count) {
+    return 'С начала вы восполнили $count постов';
+  }
+
+  @override
+  String get qadaEditFastBalancesTitle => 'Оставшиеся дни поста';
+
+  @override
+  String get qadaEditFastBalancesBody =>
+      'Введите точное количество оставшихся дней поста. Это значение заменит текущий остаток.';
+
+  @override
+  String get qadaAddOlderFastsTitle => 'Старые пропущенные посты';
+
+  @override
+  String get qadaAddOlderFastsBody =>
+      'Укажите количество пропущенных дней поста за прошлые годы. Они добавятся к остатку.';
+
+  @override
+  String get qadaAddOlderFasts => 'Добавить старые пропуски поста';
+
+  @override
+  String qadaAddFastCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Добавить $count дней',
+      few: 'Добавить $count дня',
+      one: 'Добавить $count день',
+      zero: 'Добавить посты',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get qadaFastTip =>
+      'Пост по понедельникам и четвергам — сунна. Восполнение поста в эти дни приносит большую награду.';
+
+  @override
+  String get qadaLogFastMadeUp => 'Восполнить 1 день поста';
+
+  @override
+  String get qadaFastMadeUpSnack => '1 восполненный пост записан';
+
+  @override
+  String get qadaFastUndoneSnack => 'Восполненный пост отменён';
+
+  @override
+  String get qadaFastLoggedToday => 'Сегодня восполнен пост';
+
+  @override
+  String get qadaRamadanMonth => '1 Рамадан (30 дней)';
+
+  @override
+  String get qadaRamadanTwoMonths => '2 Рамадана (60 дней)';
 
   @override
   String get expenseAdd => 'Новый расход';
@@ -645,7 +796,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get expenseDeleted => 'Расход удалён';
 
   @override
-  String get tasksTitle => 'Задачи';
+  String get tasksTitle => 'План дня';
 
   @override
   String tasksDoneOf(String done, String total) {
@@ -657,6 +808,81 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get tasksAddA11y => 'Добавить задачу';
+
+  @override
+  String get tasksAll => 'Все';
+
+  @override
+  String get tasksDunya => 'Мирское';
+
+  @override
+  String get tasksAkhirah => 'Ахират';
+
+  @override
+  String get tasksBalanceTitle => 'Баланс дня';
+
+  @override
+  String get tasksBalanceBody =>
+      'Мирские дела и дела для ахирата — в одном плане.';
+
+  @override
+  String tasksProgress(String done, String total) {
+    return 'Выполнено $done из $total';
+  }
+
+  @override
+  String get tasksHighPriority => 'Важная';
+
+  @override
+  String get tasksNormalPriority => 'Обычная';
+
+  @override
+  String get tasksPlanDetails => 'Детали плана';
+
+  @override
+  String get tasksNewTitle => 'Запланировать задачу';
+
+  @override
+  String get tasksEditTitle => 'Изменить задачу';
+
+  @override
+  String get tasksTitleHint => 'Что вы хотите сделать?';
+
+  @override
+  String get tasksAreaLabel => 'Направление';
+
+  @override
+  String get tasksPriorityLabel => 'Приоритет';
+
+  @override
+  String get tasksDateLabel => 'День';
+
+  @override
+  String get tasksWindowLabel => 'Промежуток намаза';
+
+  @override
+  String get tasksTimeLabel => 'Точное время (необязательно)';
+
+  @override
+  String get tasksNoTime => 'Без точного времени';
+
+  @override
+  String get tasksClearTime => 'Убрать время';
+
+  @override
+  String get tasksNoteHint => 'Заметки (необязательно)';
+
+  @override
+  String get tasksPreviousDay => 'Предыдущий день';
+
+  @override
+  String get tasksNextDay => 'Следующий день';
+
+  @override
+  String get tasksChooseDay => 'Выбрать день';
+
+  @override
+  String get tasksFilteredEmpty => 'В этой части плана задач нет.';
 
   @override
   String get winBeforeFajr => 'До фаджра';
@@ -714,7 +940,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get tasksMoveToday => 'Перенести на сегодня';
 
   @override
-  String get tasksEmpty => 'Пока пусто. Добавьте задачу к времени намаза.';
+  String get tasksEmpty =>
+      'День пока свободен. Добавьте мирское дело или дело для ахирата.';
 
   @override
   String get tasksDeleted => 'Задача удалена';
@@ -2619,4 +2846,38 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get tasksAddFirst => 'Запланируйте дело вокруг намаза';
+
+  @override
+  String watchPrayedOf(String done, String total) {
+    return 'Совершено $done из $total';
+  }
+
+  @override
+  String watchStreak(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Серия $count дней',
+      few: 'Серия $count дня',
+      one: 'Серия $count день',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get watchTitle => 'Apple Watch';
+
+  @override
+  String get watchHelp =>
+      'Установите Waqt на часы в приложении Watch на iPhone (Мои часы ▸ Доступные программы). Время намазов на 30 дней, отметки, тасбих и азкары синхронизируются, а расширение Waqt подходит к любому циферблату.';
+
+  @override
+  String get watchStatusReady => 'Установлено и синхронизируется';
+
+  @override
+  String get watchStatusNotInstalled =>
+      'Часы подключены, Waqt ещё не установлен';
+
+  @override
+  String get watchDhikrFree => 'Один зикр · 100';
 }

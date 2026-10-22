@@ -117,6 +117,6 @@ TaskWindow defaultTaskWindow(PrayerNow now) {
 
 /// Prayers of a past day with no mark at all.
 List<Prayer> unmarkedPrayers(Map<Prayer, PrayerStatus> marks) => [
-  for (final p in Prayer.values)
+  for (final p in Prayer.obligatory)
     if (!marks.containsKey(p)) p,
 ];

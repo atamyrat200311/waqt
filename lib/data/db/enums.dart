@@ -7,7 +7,17 @@ enum Prayer {
   dhuhr,
   asr,
   maghrib,
-  isha;
+  isha,
+  witr;
+
+  /// The five obligatory prayers. Witr is tracked independently and must not
+  /// change five-prayer times, streaks, notifications, or completion scores.
+  static const obligatory = [fajr, dhuhr, asr, maghrib, isha];
+
+  /// All prayers that can be marked and can have a qada balance.
+  static const tracked = values;
+
+  bool get isObligatory => this != witr;
 
   static Prayer? tryParse(String? s) {
     for (final p in values) {
@@ -26,7 +36,8 @@ enum PrayerStatus {
   excused;
 
   /// The prayer was performed (in any form).
-  bool get isPrayed => this == prayed || this == onTime || this == congregation || this == late;
+  bool get isPrayed =>
+      this == prayed || this == onTime || this == congregation || this == late;
 
   /// Prayed within its window.
   bool get isOnTime => this == onTime || this == congregation;
@@ -39,7 +50,22 @@ enum ExpenseCategory { groceries, transport, food, bills, sadaqa, other }
 enum IncomeCategory { salary, business, gift, investment, other }
 
 /// Task windows in display order.
-enum TaskWindow { beforeFajr, afterFajr, beforeDhuhr, afterDhuhr, afterAsr, afterMaghrib, afterIsha, anytime }
+enum TaskWindow {
+  beforeFajr,
+  afterFajr,
+  beforeDhuhr,
+  afterDhuhr,
+  afterAsr,
+  afterMaghrib,
+  afterIsha,
+  anytime,
+}
+
+/// Keeps the daily plan balanced between worldly responsibilities and deeds
+/// intended for the hereafter.
+enum TaskArea { dunya, akhirah }
+
+enum TaskPriority { normal, high }
 
 enum AdhkarSet { morning, evening }
 

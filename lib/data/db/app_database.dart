@@ -18,6 +18,7 @@ part 'app_database.g.dart';
     Tasks,
     AdhkarProgress,
     Fasts,
+    QadaFastBalances,
     TasbihSessions,
     Bookmarks,
     QuranReads,
@@ -31,16 +32,24 @@ class AppDatabase extends _$AppDatabase {
 
   /// Bump and add a step in [migration] for every schema change.
   @override
-  int get schemaVersion => 4;
+  int get schemaVersion => 6;
 
   @override
   MigrationStrategy get migration => MigrationStrategy(
     onCreate: (m) async {
       await m.createAll();
-      await customStatement('CREATE INDEX IF NOT EXISTS idx_prayer_logs_date ON prayer_logs(date)');
-      await customStatement('CREATE INDEX IF NOT EXISTS idx_expenses_occurred ON expenses(occurred_at)');
-      await customStatement('CREATE INDEX IF NOT EXISTS idx_incomes_occurred ON incomes(occurred_at)');
-      await customStatement('CREATE INDEX IF NOT EXISTS idx_tasks_date ON tasks(date)');
+      await customStatement(
+        'CREATE INDEX IF NOT EXISTS idx_prayer_logs_date ON prayer_logs(date)',
+      );
+      await customStatement(
+        'CREATE INDEX IF NOT EXISTS idx_expenses_occurred ON expenses(occurred_at)',
+      );
+      await customStatement(
+        'CREATE INDEX IF NOT EXISTS idx_incomes_occurred ON incomes(occurred_at)',
+      );
+      await customStatement(
+        'CREATE INDEX IF NOT EXISTS idx_tasks_date ON tasks(date)',
+      );
     },
     onUpgrade: (m, from, to) async {
       if (from < 2) {
@@ -58,7 +67,20 @@ class AppDatabase extends _$AppDatabase {
       if (from < 4) {
         // v4: income tracking.
         await m.createTable(incomes);
-        await customStatement('CREATE INDEX IF NOT EXISTS idx_incomes_occurred ON incomes(occurred_at)');
+        await customStatement(
+          'CREATE INDEX IF NOT EXISTS idx_incomes_occurred ON incomes(occurred_at)',
+        );
+      }
+      if (from < 5) {
+        // v5: daily planning metadata. Defaults preserve existing tasks.
+        await m.addColumn(tasks, tasks.area);
+        await m.addColumn(tasks, tasks.priority);
+        await m.addColumn(tasks, tasks.plannedMinute);
+        await m.addColumn(tasks, tasks.note);
+      }
+      if (from < 6) {
+        // v6: exact, manually editable balance for legacy qada fasts.
+        await m.createTable(qadaFastBalances);
       }
     },
     beforeOpen: (details) async {
@@ -68,6 +90,8 @@ class AppDatabase extends _$AppDatabase {
 
   /// Shared across isolates (widget actions and background work run in their
   /// own isolates) so writes there reach the app's live queries.
-  static QueryExecutor _openConnection() =>
-      driftDatabase(name: 'waqt', native: const DriftNativeOptions(shareAcrossIsolates: true));
+  static QueryExecutor _openConnection() => driftDatabase(
+    name: 'waqt',
+    native: const DriftNativeOptions(shareAcrossIsolates: true),
+  );
 }

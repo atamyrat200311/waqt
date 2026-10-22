@@ -373,4 +373,13 @@ const Map<String, List<String>> s2 = {
   'chipMissed': ['missed, in qada', '?gaçyryldy, kazada', 'kaçırıldı, kazada', 'пропущен, в када'],
   'chipExcused': ['excused', 'ötünçli', 'mazeretli', 'уважительная причина'],
   'tasksAddFirst': ['Plan something around a prayer', '?Namaz wagtyna bir iş meýilleşdiriň', 'Bir namaz vaktine görev planlayın', 'Запланируйте дело вокруг намаза'],
+
+  // ------------------------------------------------------------ apple watch
+  'watchPrayedOf': ['{done} of {total} prayed', '?{done}/{total} okaldy', '{done}/{total} kılındı', 'Совершено {done} из {total}'],
+  'watchStreak': ['{count, plural, one{{count}-day streak} other{{count}-day streak}}', '?{count} gün yzygiderli', '{count} günlük seri', '{count, plural, one{Серия {count} день} few{Серия {count} дня} other{Серия {count} дней}}'],
+  'watchTitle': ['Apple Watch', 'Apple Watch', 'Apple Watch', 'Apple Watch'],
+  'watchHelp': ['Install Waqt on your watch from the Watch app on iPhone (My Watch ▸ Available Apps). Thirty days of prayer times, your marks, tasbih and adhkar stay in sync, and a Waqt complication fits any watch face.', '?Waqt-y sagadyňyza iPhone-daky Watch programmasyndan guruň (Meniň sagadym ▸ Elýeterli programmalar). Otuz günüň namaz wagtlary, bellikleriňiz, täsbih we zikirler sinhronlaşýar; Waqt ýüzi islendik sagat ýüzüne goşulýar.', 'Waqt’ı saatinize iPhone’daki Watch uygulamasından yükleyin (Saatim ▸ Kullanılabilir Uygulamalar). Otuz günlük vakitler, işaretleriniz, tesbih ve zikirler senkronize kalır; Waqt komplikasyonu her saat yüzüne eklenebilir.', 'Установите Waqt на часы в приложении Watch на iPhone (Мои часы ▸ Доступные программы). Время намазов на 30 дней, отметки, тасбих и азкары синхронизируются, а расширение Waqt подходит к любому циферблату.'],
+  'watchStatusReady': ['Installed and syncing', '?Guruldy we sinhronlaşýar', 'Yüklü ve senkronize', 'Установлено и синхронизируется'],
+  'watchStatusNotInstalled': ['Paired, Waqt not installed on the watch yet', '?Birikdirildi, Waqt sagatda entek gurulmady', 'Eşleşti, Waqt saatte henüz yüklü değil', 'Часы подключены, Waqt ещё не установлен'],
+  'watchDhikrFree': ['Single dhikr · 100', '?Ýeke zikir · 100', 'Tek zikir · 100', 'Один зикр · 100'],
 };

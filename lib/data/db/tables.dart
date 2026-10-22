@@ -1,5 +1,8 @@
 import 'package:drift/drift.dart';
 
+// Drift check constraints intentionally refer to the column getter itself.
+// ignore_for_file: recursive_getters
+
 import 'enums.dart';
 
 /// Dates are `yyyy-MM-dd` text (see DayKey). Enums are stored by name.
@@ -21,8 +24,9 @@ class PrayerLogs extends Table {
 @DataClassName('QadaCountRow')
 class QadaCounts extends Table {
   TextColumn get prayer => textEnum<Prayer>()();
-  // ignore: recursive_getters
-  IntColumn get remaining => integer().withDefault(const Constant(0)).check(remaining.isBiggerOrEqualValue(0))();
+  IntColumn get remaining => integer()
+      .withDefault(const Constant(0))
+      .check(remaining.isBiggerOrEqualValue(0))();
 
   @override
   Set<Column> get primaryKey => {prayer};
@@ -44,11 +48,12 @@ class Expenses extends Table {
   IntColumn get id => integer().autoIncrement()();
 
   /// Minor units (1/100). Never floats.
-  // ignore: recursive_getters
-  IntColumn get amountMinor => integer().check(amountMinor.isBiggerThanValue(0))();
+  IntColumn get amountMinor =>
+      integer().check(amountMinor.isBiggerThanValue(0))();
   TextColumn get currency => text().withDefault(const Constant('TMT'))();
   TextColumn get category => textEnum<ExpenseCategory>()();
-  TextColumn get customCategory => text().withLength(min: 1, max: 30).nullable()();
+  TextColumn get customCategory =>
+      text().withLength(min: 1, max: 30).nullable()();
   TextColumn get note => text().nullable()();
   DateTimeColumn get occurredAt => dateTime()();
 }
@@ -58,11 +63,12 @@ class Incomes extends Table {
   IntColumn get id => integer().autoIncrement()();
 
   /// Minor units (1/100). Never floats.
-  // ignore: recursive_getters
-  IntColumn get amountMinor => integer().check(amountMinor.isBiggerThanValue(0))();
+  IntColumn get amountMinor =>
+      integer().check(amountMinor.isBiggerThanValue(0))();
   TextColumn get currency => text().withDefault(const Constant('TMT'))();
   TextColumn get category => textEnum<IncomeCategory>()();
-  TextColumn get customCategory => text().withLength(min: 1, max: 30).nullable()();
+  TextColumn get customCategory =>
+      text().withLength(min: 1, max: 30).nullable()();
   TextColumn get note => text().nullable()();
   DateTimeColumn get occurredAt => dateTime()();
 }
@@ -73,6 +79,12 @@ class Tasks extends Table {
   TextColumn get title => text().withLength(min: 1, max: 500)();
   TextColumn get date => text().withLength(min: 10, max: 10)();
   TextColumn get window => textEnum<TaskWindow>()();
+  TextColumn get area =>
+      textEnum<TaskArea>().withDefault(const Constant('dunya'))();
+  TextColumn get priority =>
+      textEnum<TaskPriority>().withDefault(const Constant('normal'))();
+  IntColumn get plannedMinute => integer().nullable()();
+  TextColumn get note => text().nullable()();
   BoolColumn get done => boolean().withDefault(const Constant(false))();
   DateTimeColumn get doneAt => dateTime().nullable()();
   IntColumn get sortOrder => integer().withDefault(const Constant(0))();
@@ -97,6 +109,20 @@ class Fasts extends Table {
 
   @override
   Set<Column> get primaryKey => {date};
+}
+
+/// A signed correction applied to the debt inferred from [Fasts].
+///
+/// Keeping the correction separate means the user can enter an exact legacy
+/// balance while future Ramadan misses and completed qada fasts still update
+/// the remaining total automatically.
+@DataClassName('QadaFastBalanceRow')
+class QadaFastBalances extends Table {
+  IntColumn get id => integer().withDefault(const Constant(1))();
+  IntColumn get adjustment => integer().withDefault(const Constant(0))();
+
+  @override
+  Set<Column> get primaryKey => {id};
 }
 
 @DataClassName('TasbihSessionRow')
@@ -164,7 +190,8 @@ class Habits extends Table {
 
 @DataClassName('HabitLogRow')
 class HabitLogs extends Table {
-  IntColumn get habitId => integer().references(Habits, #id, onDelete: KeyAction.cascade)();
+  IntColumn get habitId =>
+      integer().references(Habits, #id, onDelete: KeyAction.cascade)();
   TextColumn get date => text().withLength(min: 10, max: 10)();
 
   @override

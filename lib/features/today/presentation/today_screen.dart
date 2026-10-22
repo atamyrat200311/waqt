@@ -12,6 +12,7 @@ import '../../../core/utils/dates.dart';
 import '../../../core/utils/money.dart';
 import '../../../data/db/enums.dart';
 import '../../../data/repositories/expense_repository.dart';
+import '../../../data/repositories/fast_repository.dart';
 import '../../../data/repositories/income_repository.dart';
 import '../../../data/repositories/prayer_repository.dart';
 import '../../../data/settings/settings_controller.dart';
@@ -767,9 +768,23 @@ class _QadaBanner extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final total = ref.watch(qadaTotalProvider);
-    if (total == 0) return const SizedBox.shrink();
+    final fastsOwed = ref.watch(fastsOwedProvider).value ?? 0;
     final c = context.colors;
     final l = context.l10n;
+
+    final String text;
+    if (total > 0 && fastsOwed > 0) {
+      text = '${l.homeQadaRemaining(total)} · $fastsOwed ${l.qadaTabFasts.toLowerCase()}';
+    } else if (total > 0) {
+      text = l.homeQadaRemaining(total);
+    } else if (fastsOwed > 0) {
+      text = '$fastsOwed ${l.qadaTabFasts.toLowerCase()}';
+    } else {
+      text = l.qadaTitle;
+    }
+
+    final hasAny = total > 0 || fastsOwed > 0;
+
     return _Spaced(
       child: WaqtCard(
         color: c.brassSoft,
@@ -783,9 +798,12 @@ class _QadaBanner extends ConsumerWidget {
               WaqtIcon(WaqtIcons.qada, size: 20, color: c.brassText),
               const SizedBox(width: 12),
               Expanded(
-                child: Text(l.homeQadaRemaining(total), style: WaqtType.sans(15, weight: 600, color: c.brassText)),
+                child: Text(
+                  text,
+                  style: WaqtType.sans(15, weight: 600, color: c.brassText),
+                ),
               ),
-              Text(l.homeMakeUp, style: WaqtType.sans(14, weight: 600, color: c.brassText)),
+              Text(hasAny ? l.homeMakeUp : l.add, style: WaqtType.sans(14, weight: 600, color: c.brassText)),
               const SizedBox(width: 2),
               WaqtIcon(WaqtIcons.chevronRight, size: 16, color: c.brassText, strokeWidth: 2.2),
             ],

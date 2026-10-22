@@ -18,17 +18,27 @@ import 'helpers/test_app.dart';
 /// 4 Oct 2026 17:30 in Ashgabat — inside the Asr window.
 final asrTime = DateTime.utc(2026, 10, 4, 12, 30);
 
-Future<ProviderContainer> pumpApp(WidgetTester t, {DateTime? now, String? location}) async {
+Future<ProviderContainer> pumpApp(
+  WidgetTester t, {
+  DateTime? now,
+  String? location,
+}) async {
   t.view.physicalSize = const Size(390 * 3, 844 * 3);
   t.view.devicePixelRatio = 3;
   addTearDown(t.view.reset);
-  t.platformDispatcher.accessibilityFeaturesTestValue = const FakeAccessibilityFeatures(disableAnimations: true);
+  t.platformDispatcher.accessibilityFeaturesTestValue =
+      const FakeAccessibilityFeatures(disableAnimations: true);
   addTearDown(t.platformDispatcher.clearAccessibilityFeaturesTestValue);
   final c = ProviderContainer(
-    overrides: settingsOverrides(const AppSettings(onboardingDone: true), now: now ?? asrTime),
+    overrides: settingsOverrides(
+      const AppSettings(onboardingDone: true),
+      now: now ?? asrTime,
+    ),
   );
   addTearDown(c.dispose);
-  await t.pumpWidget(UncontrolledProviderScope(container: c, child: const WaqtApp()));
+  await t.pumpWidget(
+    UncontrolledProviderScope(container: c, child: const WaqtApp()),
+  );
   await t.pumpAndSettle();
   if (location != null) {
     c.read(appRouterProvider).go(location);
@@ -39,7 +49,9 @@ Future<ProviderContainer> pumpApp(WidgetTester t, {DateTime? now, String? locati
 
 /// Lets drift's stream queries deliver (they complete on real timers).
 Future<void> settle(WidgetTester t) async {
-  await t.runAsync(() => Future<void>.delayed(const Duration(milliseconds: 50)));
+  await t.runAsync(
+    () => Future<void>.delayed(const Duration(milliseconds: 50)),
+  );
   await t.pumpAndSettle();
 }
 
@@ -49,7 +61,19 @@ Future<void> disposeApp(WidgetTester t) async {
 }
 
 void main() {
-  testWidgets('Home shows the next prayer and marking Asr on time records it', (t) async {
+  testWidgets('root deep link safely opens Today', (t) async {
+    final c = await pumpApp(t);
+    c.read(appRouterProvider).go('/');
+    await t.pumpAndSettle();
+
+    expect(find.text('NEXT PRAYER'), findsOneWidget);
+    expect(find.textContaining('Page Not Found'), findsNothing);
+    await disposeApp(t);
+  });
+
+  testWidgets('Home shows the next prayer and marking Asr on time records it', (
+    t,
+  ) async {
     final c = await pumpApp(t);
     expect(find.text('NEXT PRAYER'), findsOneWidget);
     expect(find.text('Maghrib'), findsWidgets);
@@ -63,7 +87,9 @@ void main() {
     await t.pump(const Duration(seconds: 1));
     await t.pumpAndSettle();
 
-    final marks = await t.runAsync(() => c.read(prayerRepositoryProvider).getDay(const DayKey('2026-10-04')));
+    final marks = await t.runAsync(
+      () => c.read(prayerRepositoryProvider).getDay(const DayKey('2026-10-04')),
+    );
     expect(marks![Prayer.asr], PrayerStatus.onTime);
     await disposeApp(t);
   });
@@ -90,13 +116,21 @@ void main() {
     await disposeApp(t);
   });
 
-  testWidgets('Daily worship card quickly checks a prayer and today’s fast', (t) async {
+  testWidgets('Daily worship card quickly checks a prayer and today’s fast', (
+    t,
+  ) async {
     final c = await pumpApp(t);
-    await t.scrollUntilVisible(find.text('Today’s worship'), 220, scrollable: find.byType(Scrollable).first);
+    await t.scrollUntilVisible(
+      find.text('Today’s worship'),
+      220,
+      scrollable: find.byType(Scrollable).first,
+    );
 
     await t.tap(find.bySemanticsLabel('Fajr'));
     await settle(t);
-    var marks = await t.runAsync(() => c.read(prayerRepositoryProvider).getDay(const DayKey('2026-10-04')));
+    var marks = await t.runAsync(
+      () => c.read(prayerRepositoryProvider).getDay(const DayKey('2026-10-04')),
+    );
     expect(marks![Prayer.fajr], PrayerStatus.prayed);
     expect(find.text('1/5'), findsOneWidget);
 
@@ -105,7 +139,10 @@ void main() {
     await t.tap(find.text("Today's fast"));
     await settle(t);
     var fasts = await t.runAsync(
-      () => c.read(fastRepositoryProvider).watchRange(const DayKey('2026-10-04'), const DayKey('2026-10-04')).first,
+      () => c
+          .read(fastRepositoryProvider)
+          .watchRange(const DayKey('2026-10-04'), const DayKey('2026-10-04'))
+          .first,
     );
     expect(fasts![const DayKey('2026-10-04')]!.status, FastStatus.fasted);
     expect(fasts[const DayKey('2026-10-04')]!.type, FastType.other);
@@ -117,9 +154,14 @@ void main() {
     await t.pumpAndSettle();
     await t.tap(find.text("Today's fast"));
     await settle(t);
-    marks = await t.runAsync(() => c.read(prayerRepositoryProvider).getDay(const DayKey('2026-10-04')));
+    marks = await t.runAsync(
+      () => c.read(prayerRepositoryProvider).getDay(const DayKey('2026-10-04')),
+    );
     fasts = await t.runAsync(
-      () => c.read(fastRepositoryProvider).watchRange(const DayKey('2026-10-04'), const DayKey('2026-10-04')).first,
+      () => c
+          .read(fastRepositoryProvider)
+          .watchRange(const DayKey('2026-10-04'), const DayKey('2026-10-04'))
+          .first,
     );
     expect(marks, isEmpty);
     expect(fasts, isEmpty);
@@ -128,7 +170,11 @@ void main() {
 
   testWidgets('Daily worship card opens the prayer tracker', (t) async {
     await pumpApp(t);
-    await t.scrollUntilVisible(find.text('Today’s worship'), 220, scrollable: find.byType(Scrollable).first);
+    await t.scrollUntilVisible(
+      find.text('Today’s worship'),
+      220,
+      scrollable: find.byType(Scrollable).first,
+    );
     await t.tap(find.bySemanticsLabel('Open prayer tracker'));
     await t.pumpAndSettle();
     expect(find.text('Prayer times & tracker'), findsOneWidget);
@@ -144,16 +190,28 @@ void main() {
     await t.pumpAndSettle();
     expect(find.text('Add 1 Asr to your qada?'), findsOneWidget);
 
-    var counts = await t.runAsync(() => c.read(prayerRepositoryProvider).getQadaCounts());
-    expect(counts![Prayer.asr], 0, reason: 'nothing is added before confirming');
+    var counts = await t.runAsync(
+      () => c.read(prayerRepositoryProvider).getQadaCounts(),
+    );
+    expect(
+      counts![Prayer.asr],
+      0,
+      reason: 'nothing is added before confirming',
+    );
 
     await t.tap(find.text('Add to qada'));
     await settle(t);
-    counts = await t.runAsync(() => c.read(prayerRepositoryProvider).getQadaCounts());
+    counts = await t.runAsync(
+      () => c.read(prayerRepositoryProvider).getQadaCounts(),
+    );
     expect(counts![Prayer.asr], 1);
     await t.pump(const Duration(seconds: 1));
     await settle(t);
-    await t.scrollUntilVisible(find.text('1 qada remaining'), 200, scrollable: find.byType(Scrollable).first);
+    await t.scrollUntilVisible(
+      find.text('1 qada remaining'),
+      200,
+      scrollable: find.byType(Scrollable).first,
+    );
     expect(find.text('1 qada remaining'), findsOneWidget);
     await disposeApp(t);
   });
@@ -220,9 +278,16 @@ void main() {
     await disposeApp(t);
   });
 
-  testWidgets('Tasks: add one to the current window and tick it off', (t) async {
+  testWidgets('Tasks: add one to the current window and tick it off', (
+    t,
+  ) async {
     final c = await pumpApp(t, location: '/today/tasks');
-    expect(find.text('Nothing planned yet. Add a task to a prayer window.'), findsOneWidget);
+    expect(
+      find.text(
+        'Your day is open. Add a worldly responsibility or a deed for the hereafter.',
+      ),
+      findsOneWidget,
+    );
     await t.enterText(find.byType(TextField), 'Buy bread');
     await t.tap(find.bySemanticsLabel('Add task'));
     await settle(t);
@@ -231,7 +296,12 @@ void main() {
 
     await t.tap(find.text('Buy bread'));
     await settle(t);
-    final tasks = await t.runAsync(() => c.read(taskRepositoryProvider).watchDay(const DayKey('2026-10-04')).first);
+    final tasks = await t.runAsync(
+      () => c
+          .read(taskRepositoryProvider)
+          .watchDay(const DayKey('2026-10-04'))
+          .first,
+    );
     expect(tasks!.single.done, isTrue);
     expect(tasks.single.window, TaskWindow.afterAsr);
     await disposeApp(t);
@@ -239,15 +309,74 @@ void main() {
 
   testWidgets('Qada: made up decrements the count', (t) async {
     final c = await pumpApp(t);
-    await t.runAsync(() => c.read(prayerRepositoryProvider).addOlder({Prayer.fajr: 2}));
+    await t.runAsync(
+      () => c.read(prayerRepositoryProvider).addOlder({Prayer.fajr: 2}),
+    );
     c.read(appRouterProvider).go('/today/qada');
     await settle(t);
+    expect(find.text('Witr'), findsOneWidget);
     expect(find.text('2'), findsWidgets);
     await t.tap(find.bySemanticsLabel('Made up: Fajr'));
     await settle(t);
-    final counts = await t.runAsync(() => c.read(prayerRepositoryProvider).getQadaCounts());
+    final counts = await t.runAsync(
+      () => c.read(prayerRepositoryProvider).getQadaCounts(),
+    );
     expect(counts![Prayer.fajr], 1);
     expect(find.text("You've made up 1 since you started"), findsOneWidget);
+    await disposeApp(t);
+  });
+
+  testWidgets('Qada: large balances stay readable and can be edited exactly', (t) async {
+    final c = await pumpApp(t);
+    await t.runAsync(
+      () => c.read(prayerRepositoryProvider).setQadaCounts({
+        for (final prayer in Prayer.tracked) prayer: 1826,
+      }),
+    );
+    c.read(appRouterProvider).go('/today/qada');
+    await settle(t);
+
+    expect(find.text('10956'), findsOneWidget);
+    await t.tap(find.bySemanticsLabel('Edit remaining counts'));
+    await t.pumpAndSettle();
+    expect(find.text('Remaining qada'), findsOneWidget);
+
+    await t.enterText(find.byType(TextField).first, '25');
+    t.testTextInput.hide();
+    await t.pumpAndSettle();
+    await t.ensureVisible(find.text('Save remaining counts'));
+    await t.tap(find.text('Save remaining counts'));
+    await settle(t);
+
+    final counts = await t.runAsync(
+      () => c.read(prayerRepositoryProvider).getQadaCounts(),
+    );
+    expect(counts![Prayer.fajr], 25);
+    expect(counts[Prayer.witr], 1826);
+    await disposeApp(t);
+  });
+
+  testWidgets('Qada: fasts tab shows remaining fasts and allows logging', (t) async {
+    final c = await pumpApp(t);
+    await t.runAsync(
+      () => c.read(fastRepositoryProvider).setQadaRemaining(7),
+    );
+    c.read(appRouterProvider).go('/today/qada?tab=fasts');
+    await settle(t);
+
+    expect(find.text('Fasting'), findsOneWidget);
+    expect(find.text('7'), findsOneWidget);
+    expect(find.text('fasting days left to make up'), findsOneWidget);
+
+    await t.tap(find.text('I fasted a make-up day today'));
+    await settle(t);
+
+    final remaining = await t.runAsync(
+      () => c.read(fastRepositoryProvider).watchQadaRemaining().first,
+    );
+    expect(remaining, 6);
+    expect(find.text('Made up today'), findsOneWidget);
+
     await disposeApp(t);
   });
 
@@ -256,7 +385,12 @@ void main() {
     await t.runAsync(
       () => c
           .read(expenseRepositoryProvider)
-          .add(amountMinor: 1200, currency: 'TMT', category: ExpenseCategory.food, occurredAt: asrTime),
+          .add(
+            amountMinor: 1200,
+            currency: 'TMT',
+            category: ExpenseCategory.food,
+            occurredAt: asrTime,
+          ),
     );
     await settle(t);
     await t.drag(find.byType(Scrollable).first, const Offset(0, -600));

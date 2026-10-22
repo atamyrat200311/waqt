@@ -7,6 +7,7 @@ import '../l10n/l10n_ext.dart';
 import '../platform/adaptive.dart';
 import '../theme/app_colors.dart';
 import '../theme/app_typography.dart';
+import 'app_router.dart' show branchNavigatorKeys;
 
 /// One entry per bottom tab (order = StatefulShellBranch order).
 class ShellTab {
@@ -23,6 +24,35 @@ final shellTabs = <ShellTab>[
   ShellTab(WaqtIcons.me, (l) => l.tabMe),
 ];
 
+/// Animates the first attached primary scroll controller below [root] (the
+/// visible page of a tab navigator) back to offset 0.
+void scrollPrimaryToTop(BuildContext root) {
+  ScrollController? found;
+  void visit(Element e) {
+    if (found != null) return;
+    final w = e.widget;
+    final c = w is PrimaryScrollController ? w.controller : null;
+    if (c != null && c.hasClients) {
+      found = c;
+      return;
+    }
+    e.visitChildElements(visit);
+  }
+
+  root.visitChildElements(visit);
+  final controller = found;
+  if (controller == null || controller.positions.every((p) => p.pixels <= 0)) return;
+  Haptics.light();
+  final reduce = MediaQuery.maybeDisableAnimationsOf(root) ?? false;
+  for (final p in controller.positions) {
+    if (reduce) {
+      p.jumpTo(0);
+    } else {
+      p.animateTo(0, duration: const Duration(milliseconds: 450), curve: Curves.easeOutCubic);
+    }
+  }
+}
+
 /// Adaptive tab scaffold: a floating "liquid glass" tab bar on iOS (content
 /// scrolls underneath it), Material 3 NavigationBar with pill indicator on
 /// Android.
@@ -32,9 +62,19 @@ class AppShell extends StatelessWidget {
   final StatefulNavigationShell shell;
 
   void _go(int index) {
-    // Re-tapping the active tab pops to its root, like native tab bars.
-    if (index != shell.currentIndex) Haptics.tap();
-    shell.goBranch(index, initialLocation: index == shell.currentIndex);
+    if (index != shell.currentIndex) {
+      Haptics.tap();
+      shell.goBranch(index);
+      return;
+    }
+    // Re-tapping the active tab pops to its root, and at the root scrolls
+    // back to the top, like UITabBarController.
+    final navigator = branchNavigatorKeys[index].currentState;
+    if (navigator != null && !navigator.canPop()) {
+      scrollPrimaryToTop(navigator.context);
+    } else {
+      shell.goBranch(index, initialLocation: true);
+    }
   }
 
   @override

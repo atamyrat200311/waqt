@@ -48,7 +48,7 @@ Map<String, Object?> buildWidgetPayload({
     'v': 1,
     'place': placeName,
     'sunrise': l10n.prayerSunrise,
-    'names': [for (final p in Prayer.values) l10n.prayer(p)],
+    'names': [for (final p in Prayer.obligatory) l10n.prayer(p)],
     's': {
       'next': l10n.widgetNext,
       'remaining': l10n.widgetRemainingTime,
@@ -71,9 +71,9 @@ Map<String, Object?> buildWidgetPayload({
           return {
             'd': key.value,
             'hijri': l10n.dayMonthHijri(h.day, h.month),
-            't': [for (final p in Prayer.values) sec(d[p])],
+            't': [for (final p in Prayer.obligatory) sec(d[p])],
             'sunrise': sec(d.sunrise),
-            'm': [for (final p in Prayer.values) key == today ? mark(todayMarks[p]) : ''],
+            'm': [for (final p in Prayer.obligatory) key == today ? mark(todayMarks[p]) : ''],
           };
         }(),
     ],

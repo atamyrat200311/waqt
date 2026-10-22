@@ -7,22 +7,43 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0046595EDB3CC4604979DE60 /* WaqtWatchWidgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC976F266FADB0F51D82C7EC /* WaqtWatchWidgets.swift */; };
 		08E4F84FA9308DD0EA62C581 /* WaqtWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 52F26B061F8B2B606107BCFE /* WaqtWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		1498D2341E8E89220040F4C2 /* GeneratedPluginRegistrant.m in Sources */ = {isa = PBXBuildFile; fileRef = 1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */; };
 		331C808B294A63AB00263BE5 /* RunnerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331C807B294A618700263BE5 /* RunnerTests.swift */; };
 		3B3967161E833CAA004F5970 /* AppFrameworkInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */; };
+		47150A44F35D458A430F0301 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B3D95CAEAAC7A2A68CDF8A /* HomeView.swift */; };
+		4D10725856B1AABA4F992851 /* adhkar.json in Resources */ = {isa = PBXBuildFile; fileRef = 5F0D625BD421F79DA679BC34 /* adhkar.json */; };
+		4D13F17C2AD2F29D6F2EF778 /* WaqtTimes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3C598FFEEBEAD0F10F1885 /* WaqtTimes.swift */; };
+		50A22A3AFEC874AE07341B7F /* WaqtWatchWidgets.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 6176C7C842D26E93E92125A0 /* WaqtWatchWidgets.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		5EEB6E7FA474551A08560ED7 /* WaqtTimes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3C598FFEEBEAD0F10F1885 /* WaqtTimes.swift */; };
+		688A06C86FDD7BD3EA5D1B9F /* AdhkarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAA4DD3843751A9ED05C78D /* AdhkarView.swift */; };
+		6B2A603CF115ADFEA6ECE4A9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E73DA2B5019741F98D68035 /* Assets.xcassets */; };
 		74858FAF1ED2DC5600515810 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74858FAE1ED2DC5600515810 /* AppDelegate.swift */; };
 		7884E8682EC3CC0700C636F2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7884E8672EC3CC0400C636F2 /* SceneDelegate.swift */; };
 		78A318202AECB46A00862997 /* FlutterGeneratedPluginSwiftPackage in Frameworks */ = {isa = PBXBuildFile; productRef = 78A3181F2AECB46A00862997 /* FlutterGeneratedPluginSwiftPackage */; };
+		87C222835424A36DB6B5F283 /* QiblaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B9BD1674F81A1918139685 /* QiblaView.swift */; };
+		88E8153CCBC966E30C5EF07E /* WatchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFFF5ECB2E0530AFCA573DE8 /* WatchData.swift */; };
 		8A54CD55AB6473CFAF1A5D6A /* Pods_RunnerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD84FB7667CD0294C83822DC /* Pods_RunnerTests.framework */; };
+		8F209C1F46162D7EA2B26A9C /* Amiri-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 93D9943A58E620907C52C9B0 /* Amiri-Regular.ttf */; };
 		90D5CDB3514EDE4B81444F15 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F54A6BAA5622DF0FF7976C6 /* SwiftUI.framework */; };
 		97C146FC1CF9000F007C117D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FA1CF9000F007C117D /* Main.storyboard */; };
 		97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FD1CF9000F007C117D /* Assets.xcassets */; };
 		97C147011CF9000F007C117D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FF1CF9000F007C117D /* LaunchScreen.storyboard */; };
 		A1D4A7E02E9A000100AD4A01 /* adhan.wav in Resources */ = {isa = PBXBuildFile; fileRef = A1D4A7E12E9A000100AD4A01 /* adhan.wav */; };
+		A2F000000000000000000001 /* PrayerActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F000000000000000000003 /* PrayerActivityAttributes.swift */; };
+		A2F000000000000000000002 /* PrayerActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F000000000000000000003 /* PrayerActivityAttributes.swift */; };
+		B83813366E3C8C93669A6B3B /* WatchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFFF5ECB2E0530AFCA573DE8 /* WatchData.swift */; };
+		C5B7C77167B495B18B347582 /* WaqtTimes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3C598FFEEBEAD0F10F1885 /* WaqtTimes.swift */; };
 		C99D6E8A75F23A5615E43277 /* Pods_Runner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF7C2FDF5AAC81BF1A75F142 /* Pods_Runner.framework */; };
+		D191F1BEF0BCD78A73DEBC26 /* QuickActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13DD6B6359F9B51068230E3 /* QuickActions.swift */; };
+		D2FF48AC389D9A85BB9C88F9 /* WaqtWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 92D49FD659E7BDCCC09DA2F2 /* WaqtWatch.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		DA349D4467B85442B6CAA933 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 717BC311C116AC3F196ADA57 /* WidgetKit.framework */; };
+		DD0A0764D098FEA72909A9EE /* WatchStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF21FFE0436C5A2821E17372 /* WatchStore.swift */; };
+		E30960CFBB3A2432C3684834 /* WatchBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7258B4F08776C5168A91E80B /* WatchBridge.swift */; };
 		EAAC131D4A4A43A08809FA62 /* WaqtWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8E4B2CEFF43DA8D6A2D1E2 /* WaqtWidget.swift */; };
+		F0B0240FDA8305BEC87EECB6 /* WaqtWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE137E0B3478E01E2F9DC5B /* WaqtWatchApp.swift */; };
+		FA92F858A7F5E45E55D01F1F /* TasbihView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E989E06FEAF0D1FAC14AE5B6 /* TasbihView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,9 +61,34 @@
 			remoteGlobalIDString = 6EEB0E1655FBB09C2837EE65;
 			remoteInfo = WaqtWidget;
 		};
+		CD4D9AA5021F2F7041D5D6CB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 97C146E61CF9000F007C117D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3816D98D9D1277D349ABCDA0;
+			remoteInfo = WaqtWatchWidgets;
+		};
+		F6D02A206AEC3A83F0DF391D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 97C146E61CF9000F007C117D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F9853BA55B23743131D61929;
+			remoteInfo = WaqtWatch;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		20E30AFCAB17F060265438F5 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				D2FF48AC389D9A85BB9C88F9 /* WaqtWatch.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		25AE2DA9995A116E3FFA818A /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -50,6 +96,17 @@
 			dstSubfolderSpec = 13;
 			files = (
 				08E4F84FA9308DD0EA62C581 /* WaqtWidget.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4F1641584D7EDBEA38B9F7FB /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				50A22A3AFEC874AE07341B7F /* WaqtWatchWidgets.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -67,26 +124,35 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0E73DA2B5019741F98D68035 /* Assets.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1498D2321E8E86230040F4C2 /* GeneratedPluginRegistrant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GeneratedPluginRegistrant.h; sourceTree = "<group>"; };
 		1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeneratedPluginRegistrant.m; sourceTree = "<group>"; };
 		2F54A6BAA5622DF0FF7976C6 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		331C807B294A618700263BE5 /* RunnerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunnerTests.swift; sourceTree = "<group>"; };
 		331C8081294A63A400263BE5 /* RunnerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RunnerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = AppFrameworkInfo.plist; path = Flutter/AppFrameworkInfo.plist; sourceTree = "<group>"; };
+		3B3C598FFEEBEAD0F10F1885 /* WaqtTimes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WaqtTimes.swift; sourceTree = "<group>"; };
 		415880DCB057540659E388A6 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4BD29A90DDD19D2C3ED07419 /* Pods-Runner.profile.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile.xcconfig"; sourceTree = "<group>"; };
+		4D2AE8B6530AB4B8E08F8A9E /* WaqtWatch.entitlements */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.entitlements; path = WaqtWatch.entitlements; sourceTree = "<group>"; };
 		52F26B061F8B2B606107BCFE /* WaqtWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WaqtWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BC877E7B53B2C7F388E2922 /* Pods-RunnerTests.profile.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunnerTests.profile.xcconfig"; path = "Target Support Files/Pods-RunnerTests/Pods-RunnerTests.profile.xcconfig"; sourceTree = "<group>"; };
+		5F0D625BD421F79DA679BC34 /* adhkar.json */ = {isa = PBXFileReference; includeInIndex = 1; name = adhkar.json; path = ../../assets/adhkar/adhkar.json; sourceTree = "<group>"; };
 		600E12C62B804022C90AEE6F /* Pods-Runner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug.xcconfig"; sourceTree = "<group>"; };
+		6176C7C842D26E93E92125A0 /* WaqtWatchWidgets.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WaqtWatchWidgets.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AB2DDC7D7DF09869358EF3A /* Pods-RunnerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunnerTests.release.xcconfig"; path = "Target Support Files/Pods-RunnerTests/Pods-RunnerTests.release.xcconfig"; sourceTree = "<group>"; };
 		717BC311C116AC3F196ADA57 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		7258B4F08776C5168A91E80B /* WatchBridge.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WatchBridge.swift; sourceTree = "<group>"; };
 		74858FAD1ED2DC5600515810 /* Runner-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Runner-Bridging-Header.h"; sourceTree = "<group>"; };
 		74858FAE1ED2DC5600515810 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		76278171CAA2F8DEA3BC1F3A /* WaqtWidget.entitlements */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.entitlements; path = WaqtWidget.entitlements; sourceTree = "<group>"; };
 		7884E8672EC3CC0400C636F2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		78E0A7A72DC9AD7400C4905E /* FlutterGeneratedPluginSwiftPackage */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = FlutterGeneratedPluginSwiftPackage; path = Flutter/ephemeral/Packages/FlutterGeneratedPluginSwiftPackage; sourceTree = "<group>"; };
 		7AFA3C8E1D35360C0083082E /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Release.xcconfig; path = Flutter/Release.xcconfig; sourceTree = "<group>"; };
+		85B3D95CAEAAC7A2A68CDF8A /* HomeView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		8E792DEE1B8B0DDF8BD18E50 /* Pods-Runner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release.xcconfig"; sourceTree = "<group>"; };
+		92D49FD659E7BDCCC09DA2F2 /* WaqtWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WaqtWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		93D9943A58E620907C52C9B0 /* Amiri-Regular.ttf */ = {isa = PBXFileReference; includeInIndex = 1; name = "Amiri-Regular.ttf"; path = "../../assets/fonts/Amiri-Regular.ttf"; sourceTree = "<group>"; };
 		9740EEB21CF90195004384FC /* Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Debug.xcconfig; path = Flutter/Debug.xcconfig; sourceTree = "<group>"; };
 		9740EEB31CF90195004384FC /* Generated.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Generated.xcconfig; path = Flutter/Generated.xcconfig; sourceTree = "<group>"; };
 		97C146EE1CF9000F007C117D /* Runner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Runner.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -94,14 +160,33 @@
 		97C146FD1CF9000F007C117D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		97C147001CF9000F007C117D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		97C147021CF9000F007C117D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A0B9BD1674F81A1918139685 /* QiblaView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = QiblaView.swift; sourceTree = "<group>"; };
 		A1D4A7E12E9A000100AD4A01 /* adhan.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = adhan.wav; sourceTree = "<group>"; };
+		A2F000000000000000000003 /* PrayerActivityAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerActivityAttributes.swift; sourceTree = "<group>"; };
+		AF21FFE0436C5A2821E17372 /* WatchStore.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WatchStore.swift; sourceTree = "<group>"; };
+		B560BD2DD64390D58AE2D271 /* WaqtWatchWidgets.entitlements */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.entitlements; path = WaqtWatchWidgets.entitlements; sourceTree = "<group>"; };
 		BD84FB7667CD0294C83822DC /* Pods_RunnerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RunnerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE8E4B2CEFF43DA8D6A2D1E2 /* WaqtWidget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WaqtWidget.swift; sourceTree = "<group>"; };
 		C11961C5B19F81EABBDC390C /* Pods-RunnerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunnerTests.debug.xcconfig"; path = "Target Support Files/Pods-RunnerTests/Pods-RunnerTests.debug.xcconfig"; sourceTree = "<group>"; };
+		C31005D33079EC1B2430F240 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CC976F266FADB0F51D82C7EC /* WaqtWatchWidgets.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WaqtWatchWidgets.swift; sourceTree = "<group>"; };
+		CFFF5ECB2E0530AFCA573DE8 /* WatchData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WatchData.swift; sourceTree = "<group>"; };
+		D13DD6B6359F9B51068230E3 /* QuickActions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = QuickActions.swift; sourceTree = "<group>"; };
+		E0BABE5884B44D27BA1D0B47 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E989E06FEAF0D1FAC14AE5B6 /* TasbihView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TasbihView.swift; sourceTree = "<group>"; };
 		EF7C2FDF5AAC81BF1A75F142 /* Pods_Runner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Runner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EFE137E0B3478E01E2F9DC5B /* WaqtWatchApp.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WaqtWatchApp.swift; sourceTree = "<group>"; };
+		FBAA4DD3843751A9ED05C78D /* AdhkarView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AdhkarView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		654DD98924FC826F0F724FFE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		67355F6A05810DC090CF8A60 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -125,6 +210,13 @@
 			files = (
 				78A318202AECB46A00862997 /* FlutterGeneratedPluginSwiftPackage in Frameworks */,
 				C99D6E8A75F23A5615E43277 /* Pods_Runner.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B12A1A7FC67AB1AFA65BD0CC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -153,6 +245,17 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		46BF5B89B861C42DD6C3983B /* WaqtWatchWidgets */ = {
+			isa = PBXGroup;
+			children = (
+				CC976F266FADB0F51D82C7EC /* WaqtWatchWidgets.swift */,
+				C31005D33079EC1B2430F240 /* Info.plist */,
+				B560BD2DD64390D58AE2D271 /* WaqtWatchWidgets.entitlements */,
+			);
+			name = WaqtWatchWidgets;
+			path = WaqtWatchWidgets;
+			sourceTree = "<group>";
+		};
 		4EF335078DEC3B7C9AA0A83A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -173,6 +276,25 @@
 			);
 			name = WaqtWidget;
 			path = WaqtWidget;
+			sourceTree = "<group>";
+		};
+		911F12B576B6B5F6538F7C9F /* WaqtWatch */ = {
+			isa = PBXGroup;
+			children = (
+				EFE137E0B3478E01E2F9DC5B /* WaqtWatchApp.swift */,
+				AF21FFE0436C5A2821E17372 /* WatchStore.swift */,
+				85B3D95CAEAAC7A2A68CDF8A /* HomeView.swift */,
+				E989E06FEAF0D1FAC14AE5B6 /* TasbihView.swift */,
+				A0B9BD1674F81A1918139685 /* QiblaView.swift */,
+				FBAA4DD3843751A9ED05C78D /* AdhkarView.swift */,
+				E0BABE5884B44D27BA1D0B47 /* Info.plist */,
+				4D2AE8B6530AB4B8E08F8A9E /* WaqtWatch.entitlements */,
+				0E73DA2B5019741F98D68035 /* Assets.xcassets */,
+				5F0D625BD421F79DA679BC34 /* adhkar.json */,
+				93D9943A58E620907C52C9B0 /* Amiri-Regular.ttf */,
+			);
+			name = WaqtWatch;
+			path = WaqtWatch;
 			sourceTree = "<group>";
 		};
 		9740EEB11CF90186004384FC /* Flutter */ = {
@@ -197,6 +319,10 @@
 				44196C5DAC0EF9CAC3A59783 /* Pods */,
 				4EF335078DEC3B7C9AA0A83A /* Frameworks */,
 				641F3BF0DE95D28453507B0D /* WaqtWidget */,
+				A2F000000000000000000004 /* Shared */,
+				EA626EB15A265278B33A125C /* WatchShared */,
+				46BF5B89B861C42DD6C3983B /* WaqtWatchWidgets */,
+				911F12B576B6B5F6538F7C9F /* WaqtWatch */,
 			);
 			sourceTree = "<group>";
 		};
@@ -206,6 +332,8 @@
 				97C146EE1CF9000F007C117D /* Runner.app */,
 				331C8081294A63A400263BE5 /* RunnerTests.xctest */,
 				52F26B061F8B2B606107BCFE /* WaqtWidget.appex */,
+				6176C7C842D26E93E92125A0 /* WaqtWatchWidgets.appex */,
+				92D49FD659E7BDCCC09DA2F2 /* WaqtWatch.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -223,8 +351,28 @@
 				A1D4A7E12E9A000100AD4A01 /* adhan.wav */,
 				7884E8672EC3CC0400C636F2 /* SceneDelegate.swift */,
 				74858FAD1ED2DC5600515810 /* Runner-Bridging-Header.h */,
+				7258B4F08776C5168A91E80B /* WatchBridge.swift */,
+				D13DD6B6359F9B51068230E3 /* QuickActions.swift */,
 			);
 			path = Runner;
+			sourceTree = "<group>";
+		};
+		A2F000000000000000000004 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				A2F000000000000000000003 /* PrayerActivityAttributes.swift */,
+				3B3C598FFEEBEAD0F10F1885 /* WaqtTimes.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		EA626EB15A265278B33A125C /* WatchShared */ = {
+			isa = PBXGroup;
+			children = (
+				CFFF5ECB2E0530AFCA573DE8 /* WatchData.swift */,
+			);
+			name = WatchShared;
+			path = WatchShared;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -248,6 +396,23 @@
 			productName = RunnerTests;
 			productReference = 331C8081294A63A400263BE5 /* RunnerTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		3816D98D9D1277D349ABCDA0 /* WaqtWatchWidgets */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 19628A5EB391E047A9770CCB /* Build configuration list for PBXNativeTarget "WaqtWatchWidgets" */;
+			buildPhases = (
+				98BE9493A53A79ACEDC0B81C /* Sources */,
+				654DD98924FC826F0F724FFE /* Frameworks */,
+				C90BA00FEE70CDE85A438EA5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WaqtWatchWidgets;
+			productName = WaqtWatchWidgets;
+			productReference = 6176C7C842D26E93E92125A0 /* WaqtWatchWidgets.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 		6EEB0E1655FBB09C2837EE65 /* WaqtWidget */ = {
 			isa = PBXNativeTarget;
@@ -276,6 +441,7 @@
 				97C146EB1CF9000F007C117D /* Frameworks */,
 				97C146EC1CF9000F007C117D /* Resources */,
 				25AE2DA9995A116E3FFA818A /* Embed Foundation Extensions */,
+				20E30AFCAB17F060265438F5 /* Embed Watch Content */,
 				9705A1C41CF9048500538489 /* Embed Frameworks */,
 				3B06AD1E1E4923F5004D2608 /* Thin Binary */,
 				433270C68CEE102D97417019 /* [CP] Embed Pods Frameworks */,
@@ -284,6 +450,7 @@
 			);
 			dependencies = (
 				C5DF29A131ECE4FC88971D8B /* PBXTargetDependency */,
+				E11E545C6AD493A432BCABEF /* PBXTargetDependency */,
 			);
 			name = Runner;
 			packageProductDependencies = (
@@ -291,6 +458,25 @@
 			);
 			productName = Runner;
 			productReference = 97C146EE1CF9000F007C117D /* Runner.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F9853BA55B23743131D61929 /* WaqtWatch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A63CFF8779044022E0C0A936 /* Build configuration list for PBXNativeTarget "WaqtWatch" */;
+			buildPhases = (
+				BF9C40FEED50FD1F7E55E284 /* Sources */,
+				B12A1A7FC67AB1AFA65BD0CC /* Frameworks */,
+				B723BEE7D1DA376C4652DF98 /* Resources */,
+				4F1641584D7EDBEA38B9F7FB /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D9195F490E4D1BD3AD917DAA /* PBXTargetDependency */,
+			);
+			name = WaqtWatch;
+			productName = WaqtWatch;
+			productReference = 92D49FD659E7BDCCC09DA2F2 /* WaqtWatch.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -307,12 +493,18 @@
 						CreatedOnToolsVersion = 14.0;
 						TestTargetID = 97C146ED1CF9000F007C117D;
 					};
+					3816D98D9D1277D349ABCDA0 = {
+						CreatedOnToolsVersion = 16.0;
+					};
 					6EEB0E1655FBB09C2837EE65 = {
 						CreatedOnToolsVersion = 16.0;
 					};
 					97C146ED1CF9000F007C117D = {
 						CreatedOnToolsVersion = 7.3.1;
 						LastSwiftMigration = 1100;
+					};
+					F9853BA55B23743131D61929 = {
+						CreatedOnToolsVersion = 16.0;
 					};
 				};
 			};
@@ -335,6 +527,8 @@
 				97C146ED1CF9000F007C117D /* Runner */,
 				331C8080294A63A400263BE5 /* RunnerTests */,
 				6EEB0E1655FBB09C2837EE65 /* WaqtWidget */,
+				3816D98D9D1277D349ABCDA0 /* WaqtWatchWidgets */,
+				F9853BA55B23743131D61929 /* WaqtWatch */,
 			);
 		};
 /* End PBXProject section */
@@ -363,6 +557,23 @@
 				3B3967161E833CAA004F5970 /* AppFrameworkInfo.plist in Resources */,
 				97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */,
 				97C146FC1CF9000F007C117D /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B723BEE7D1DA376C4652DF98 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6B2A603CF115ADFEA6ECE4A9 /* Assets.xcassets in Resources */,
+				4D10725856B1AABA4F992851 /* adhkar.json in Resources */,
+				8F209C1F46162D7EA2B26A9C /* Amiri-Regular.ttf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C90BA00FEE70CDE85A438EA5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -477,6 +688,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				EAAC131D4A4A43A08809FA62 /* WaqtWidget.swift in Sources */,
+				A2F000000000000000000002 /* PrayerActivityAttributes.swift in Sources */,
+				C5B7C77167B495B18B347582 /* WaqtTimes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -484,9 +697,37 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A2F000000000000000000001 /* PrayerActivityAttributes.swift in Sources */,
 				74858FAF1ED2DC5600515810 /* AppDelegate.swift in Sources */,
 				1498D2341E8E89220040F4C2 /* GeneratedPluginRegistrant.m in Sources */,
 				7884E8682EC3CC0700C636F2 /* SceneDelegate.swift in Sources */,
+				E30960CFBB3A2432C3684834 /* WatchBridge.swift in Sources */,
+				D191F1BEF0BCD78A73DEBC26 /* QuickActions.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		98BE9493A53A79ACEDC0B81C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0046595EDB3CC4604979DE60 /* WaqtWatchWidgets.swift in Sources */,
+				5EEB6E7FA474551A08560ED7 /* WaqtTimes.swift in Sources */,
+				88E8153CCBC966E30C5EF07E /* WatchData.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF9C40FEED50FD1F7E55E284 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F0B0240FDA8305BEC87EECB6 /* WaqtWatchApp.swift in Sources */,
+				DD0A0764D098FEA72909A9EE /* WatchStore.swift in Sources */,
+				47150A44F35D458A430F0301 /* HomeView.swift in Sources */,
+				FA92F858A7F5E45E55D01F1F /* TasbihView.swift in Sources */,
+				87C222835424A36DB6B5F283 /* QiblaView.swift in Sources */,
+				688A06C86FDD7BD3EA5D1B9F /* AdhkarView.swift in Sources */,
+				4D13F17C2AD2F29D6F2EF778 /* WaqtTimes.swift in Sources */,
+				B83813366E3C8C93669A6B3B /* WatchData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -503,6 +744,18 @@
 			name = WaqtWidget;
 			target = 6EEB0E1655FBB09C2837EE65 /* WaqtWidget */;
 			targetProxy = 88C5937BE58C2F705CA1BD49 /* PBXContainerItemProxy */;
+		};
+		D9195F490E4D1BD3AD917DAA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = WaqtWatchWidgets;
+			target = 3816D98D9D1277D349ABCDA0 /* WaqtWatchWidgets */;
+			targetProxy = CD4D9AA5021F2F7041D5D6CB /* PBXContainerItemProxy */;
+		};
+		E11E545C6AD493A432BCABEF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = WaqtWatch;
+			target = F9853BA55B23743131D61929 /* WaqtWatch */;
+			targetProxy = F6D02A206AEC3A83F0DF391D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -556,6 +809,70 @@
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
+		};
+		0DB790FA7E0B152E66F1DB62 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9740EEB31CF90195004384FC /* Generated.xcconfig */;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_ENTITLEMENTS = WaqtWatchWidgets/WaqtWatchWidgets.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
+				DEVELOPMENT_TEAM = QGWL53YZV9;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = WaqtWatchWidgets/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = "$(FLUTTER_BUILD_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = tm.ofis.waqt.watchkitapp.widgets;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "watchos watchsimulator";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Debug;
+		};
+		1EAA903CA355B980FDFBA1ED /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9740EEB31CF90195004384FC /* Generated.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = WaqtWatch/WaqtWatch.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
+				DEVELOPMENT_TEAM = QGWL53YZV9;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = WaqtWatch/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = "$(FLUTTER_BUILD_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = tm.ofis.waqt.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "watchos watchsimulator";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Debug;
 		};
 		249021D3217E4FDB00AE95B9 /* Profile */ = {
 			isa = XCBuildConfiguration;
@@ -682,6 +999,40 @@
 			};
 			name = Profile;
 		};
+		44366ED8B3B7AC9F904D66DC /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9740EEB31CF90195004384FC /* Generated.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = WaqtWatch/WaqtWatch.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
+				DEVELOPMENT_TEAM = QGWL53YZV9;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = WaqtWatch/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = "$(FLUTTER_BUILD_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = tm.ofis.waqt.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "watchos watchsimulator";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Release;
+		};
 		6E5F2FD5E7F14383D1EC8AD8 /* Profile */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9740EEB31CF90195004384FC /* Generated.xcconfig */;
@@ -712,6 +1063,72 @@
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Profile;
+		};
+		73E0B44A9A0A1A043AEEE3EF /* Profile */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9740EEB31CF90195004384FC /* Generated.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = WaqtWatch/WaqtWatch.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
+				DEVELOPMENT_TEAM = QGWL53YZV9;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = WaqtWatch/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = "$(FLUTTER_BUILD_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = tm.ofis.waqt.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "watchos watchsimulator";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Profile;
+		};
+		95FE3F5E0EFE78A6335F40E5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9740EEB31CF90195004384FC /* Generated.xcconfig */;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_ENTITLEMENTS = WaqtWatchWidgets/WaqtWatchWidgets.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
+				DEVELOPMENT_TEAM = QGWL53YZV9;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = WaqtWatchWidgets/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = "$(FLUTTER_BUILD_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = tm.ofis.waqt.watchkitapp.widgets;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "watchos watchsimulator";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Release;
 		};
 		97C147031CF9000F007C117D /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -901,9 +1318,51 @@
 			};
 			name = Debug;
 		};
+		F0B4F59FE743F012056CD785 /* Profile */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9740EEB31CF90195004384FC /* Generated.xcconfig */;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_ENTITLEMENTS = WaqtWatchWidgets/WaqtWatchWidgets.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
+				DEVELOPMENT_TEAM = QGWL53YZV9;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = WaqtWatchWidgets/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = "$(FLUTTER_BUILD_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = tm.ofis.waqt.watchkitapp.widgets;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "watchos watchsimulator";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Profile;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		19628A5EB391E047A9770CCB /* Build configuration list for PBXNativeTarget "WaqtWatchWidgets" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				95FE3F5E0EFE78A6335F40E5 /* Release */,
+				0DB790FA7E0B152E66F1DB62 /* Debug */,
+				F0B4F59FE743F012056CD785 /* Profile */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		331C8087294A63A400263BE5 /* Build configuration list for PBXNativeTarget "RunnerTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -930,6 +1389,16 @@
 				97C147061CF9000F007C117D /* Debug */,
 				97C147071CF9000F007C117D /* Release */,
 				249021D4217E4FDB00AE95B9 /* Profile */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A63CFF8779044022E0C0A936 /* Build configuration list for PBXNativeTarget "WaqtWatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				44366ED8B3B7AC9F904D66DC /* Release */,
+				1EAA903CA355B980FDFBA1ED /* Debug */,
+				73E0B44A9A0A1A043AEEE3EF /* Profile */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

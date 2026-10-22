@@ -110,6 +110,12 @@ class AppLocalizationsTk extends AppLocalizations {
   String get prayerIsha => 'Ýassy';
 
   @override
+  String get prayerWitr => 'Witir';
+
+  @override
+  String get witrSeparateHint => 'Ýassydan soň aýratyn bellenýär';
+
+  @override
   String weekdayName(String day) {
     String _temp0 = intl.Intl.selectLogic(day, {
       'mon': 'Duşenbe',
@@ -520,7 +526,23 @@ class AppLocalizationsTk extends AppLocalizations {
   String get qadaTitle => 'Kaza';
 
   @override
-  String get qadaLeft => 'kaza edilmeli\nnamaz';
+  String get qadaLeft => 'kaza edilmeli namaz';
+
+  @override
+  String get qadaEditBalances => 'Galan sanlary üýtget';
+
+  @override
+  String get qadaEditBalancesTitle => 'Galan kaza namazlary';
+
+  @override
+  String get qadaEditBalancesBody =>
+      'Her namaz üçin galan takyk sany giriziň. Bu sanlar häzirki sanlaryň ýerine geçer.';
+
+  @override
+  String get qadaSaveBalances => 'Galan sanlary sakla';
+
+  @override
+  String get qadaBalancesSaved => 'Galan sanlar täzelendi';
 
   @override
   String qadaMadeUpSince(String count) {
@@ -569,6 +591,127 @@ class AppLocalizationsTk extends AppLocalizations {
   @override
   String get qadaEmpty =>
       'Kaza ýok. Öňki galan namazlaryňyz bar bolsa, şu ýere goşuň.';
+
+  @override
+  String get qadaTabPrayers => 'Namaz';
+
+  @override
+  String get qadaTabFasts => 'Oraza';
+
+  @override
+  String qadaLastMadeUp(String time) {
+    return 'Soňky kaza: $time';
+  }
+
+  @override
+  String qadaLastUpdated(String time) {
+    return 'Soňky üýtgeşme: $time';
+  }
+
+  @override
+  String qadaDaysAgoWarning(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count gün bäri kaza namazy okalmady',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String qadaFastDaysAgoWarning(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count gün bäri kaza orazasy tutulmady',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get qadaDaysAgoHint => 'Şu gün bir namaz bilen kaza okaň.';
+
+  @override
+  String get qadaFastDaysAgoHint =>
+      'Duşenbe ýa-da penşenbe gününe oraza meýilleşdiriň.';
+
+  @override
+  String get qadaTodayMadeUp => 'Şu gün kaza edildi';
+
+  @override
+  String get qadaYesterdayMadeUp => 'Düýn kaza edildi';
+
+  @override
+  String qadaTimeAgoDays(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count gün öň',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get qadaNoActivityYet =>
+      'Entek kaza edilmedi — bismillah diýip başlaň!';
+
+  @override
+  String get qadaFastsLeft => 'kaza edilmeli oraza güni';
+
+  @override
+  String qadaFastsMadeUpSince(String count) {
+    return 'Başlanyňyzdan bäri $count oraza kaza etdiňiz';
+  }
+
+  @override
+  String get qadaEditFastBalancesTitle => 'Galan kaza orazalary';
+
+  @override
+  String get qadaEditFastBalancesBody =>
+      'Galan kaza oraza günleriniň takyk sanyny giriziň. Bu san häzirki galyndynyň ýerine geçer.';
+
+  @override
+  String get qadaAddOlderFastsTitle => 'Öňki galan orazalar';
+
+  @override
+  String get qadaAddOlderFastsBody =>
+      'Öňki ýyllardan galan oraza günlerini giriziň. Olar häzirki galynda goşular.';
+
+  @override
+  String get qadaAddOlderFasts => 'Öňki galan orazalary goş';
+
+  @override
+  String qadaAddFastCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count gün oraza goş',
+      zero: 'Oraza goş',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get qadaFastTip =>
+      'Duşenbe we penşenbe günleri oraza tutmak sünnetdir. Kaza orazasyny bu günlerde tutmak sogaplydyr.';
+
+  @override
+  String get qadaLogFastMadeUp => '1 kaza orazasyny tutdum';
+
+  @override
+  String get qadaFastMadeUpSnack => '1 kaza orazasy bellenildi';
+
+  @override
+  String get qadaFastUndoneSnack => 'Kaza orazasy aýryldy';
+
+  @override
+  String get qadaFastLoggedToday => 'Şu gün kaza tutuldy';
+
+  @override
+  String get qadaRamadanMonth => '1 Remezan (30 gün)';
+
+  @override
+  String get qadaRamadanTwoMonths => '2 Remezan (60 gün)';
 
   @override
   String get expenseAdd => 'Çykdajy goş';
@@ -629,7 +772,7 @@ class AppLocalizationsTk extends AppLocalizations {
   String get expenseDeleted => 'Çykdajy pozuldy';
 
   @override
-  String get tasksTitle => 'Işler';
+  String get tasksTitle => 'Günlük meýilnama';
 
   @override
   String tasksDoneOf(String done, String total) {
@@ -641,6 +784,81 @@ class AppLocalizationsTk extends AppLocalizations {
 
   @override
   String get tasksAddA11y => 'Iş goş';
+
+  @override
+  String get tasksAll => 'Hemmesi';
+
+  @override
+  String get tasksDunya => 'Dünýä';
+
+  @override
+  String get tasksAkhirah => 'Ahyret';
+
+  @override
+  String get tasksBalanceTitle => 'Günüň deňagramlylygy';
+
+  @override
+  String get tasksBalanceBody =>
+      'Dünýä işleri bilen ahyret amallaryny bir meýilnamada görüň.';
+
+  @override
+  String tasksProgress(String done, String total) {
+    return '$total işden $done tamam';
+  }
+
+  @override
+  String get tasksHighPriority => 'Möhüm';
+
+  @override
+  String get tasksNormalPriority => 'Adaty';
+
+  @override
+  String get tasksPlanDetails => 'Meýilnama maglumatlary';
+
+  @override
+  String get tasksNewTitle => 'Işi meýilleşdir';
+
+  @override
+  String get tasksEditTitle => 'Işi üýtget';
+
+  @override
+  String get tasksTitleHint => 'Näme etmek isleýärsiňiz?';
+
+  @override
+  String get tasksAreaLabel => 'Niýet';
+
+  @override
+  String get tasksPriorityLabel => 'Möhümlik';
+
+  @override
+  String get tasksDateLabel => 'Gün';
+
+  @override
+  String get tasksWindowLabel => 'Namaz aralygy';
+
+  @override
+  String get tasksTimeLabel => 'Takyk wagt (hökmany däl)';
+
+  @override
+  String get tasksNoTime => 'Takyk wagt ýok';
+
+  @override
+  String get tasksClearTime => 'Wagty aýyr';
+
+  @override
+  String get tasksNoteHint => 'Bellik (hökmany däl)';
+
+  @override
+  String get tasksPreviousDay => 'Öňki gün';
+
+  @override
+  String get tasksNextDay => 'Indiki gün';
+
+  @override
+  String get tasksChooseDay => 'Güni saýla';
+
+  @override
+  String get tasksFilteredEmpty => 'Meýilnamanyň bu böleginde iş ýok.';
 
   @override
   String get winBeforeFajr => 'Ertirden öň';
@@ -696,7 +914,7 @@ class AppLocalizationsTk extends AppLocalizations {
 
   @override
   String get tasksEmpty =>
-      'Entek hiç zat meýilleşdirilmedi. Namaz wagtyna iş goşuň.';
+      'Günüňiz entek boş. Dünýä jogapkärçiligini ýa-da ahyret amalyny goşuň.';
 
   @override
   String get tasksDeleted => 'Iş pozuldy';
@@ -2513,4 +2731,31 @@ class AppLocalizationsTk extends AppLocalizations {
 
   @override
   String get tasksAddFirst => 'Namaz wagtyna bir iş meýilleşdiriň';
+
+  @override
+  String watchPrayedOf(String done, String total) {
+    return '$done/$total okaldy';
+  }
+
+  @override
+  String watchStreak(int count) {
+    return '$count gün yzygiderli';
+  }
+
+  @override
+  String get watchTitle => 'Apple Watch';
+
+  @override
+  String get watchHelp =>
+      'Waqt-y sagadyňyza iPhone-daky Watch programmasyndan guruň (Meniň sagadym ▸ Elýeterli programmalar). Otuz günüň namaz wagtlary, bellikleriňiz, täsbih we zikirler sinhronlaşýar; Waqt ýüzi islendik sagat ýüzüne goşulýar.';
+
+  @override
+  String get watchStatusReady => 'Guruldy we sinhronlaşýar';
+
+  @override
+  String get watchStatusNotInstalled =>
+      'Birikdirildi, Waqt sagatda entek gurulmady';
+
+  @override
+  String get watchDhikrFree => 'Ýeke zikir · 100';
 }

@@ -27,7 +27,7 @@ class RamadanChallenge {
 }
 
 bool _allPrayed(Map<Prayer, PrayerStatus>? m) =>
-    m != null && m.length == Prayer.values.length && m.values.every((s) => s.isPrayed || s == PrayerStatus.excused);
+    m != null && Prayer.obligatory.every((p) => m[p]?.isPrayed == true || m[p] == PrayerStatus.excused);
 
 final _ramadanQuranProvider = StreamProvider<Map<DayKey, int>>((ref) {
   final today = ref.watch(todayKeyProvider);

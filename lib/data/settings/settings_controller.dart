@@ -48,7 +48,7 @@ class SettingsController extends Notifier<AppSettings> {
 
   /// "Match my mosque" stepper: shifts all five by [delta].
   Future<void> shiftAllOffsets(int delta) =>
-      update((s) => s.copyWith(offsets: {for (final p in Prayer.values) p: (s.offsetFor(p) + delta).clamp(-30, 30)}));
+      update((s) => s.copyWith(offsets: {for (final p in Prayer.obligatory) p: (s.offsetFor(p) + delta).clamp(-30, 30)}));
 
   Future<void> setAlert(Prayer p, AlertType t) => update((s) => s.copyWith(alerts: {...s.alerts, p: t}));
 

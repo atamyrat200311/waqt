@@ -110,6 +110,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get prayerIsha => 'Isha';
 
   @override
+  String get prayerWitr => 'Witr';
+
+  @override
+  String get witrSeparateHint => 'Tracked separately after Isha';
+
+  @override
   String weekdayName(String day) {
     String _temp0 = intl.Intl.selectLogic(day, {
       'mon': 'Monday',
@@ -526,7 +532,23 @@ class AppLocalizationsEn extends AppLocalizations {
   String get qadaTitle => 'Qada';
 
   @override
-  String get qadaLeft => 'prayers left\nto make up';
+  String get qadaLeft => 'prayers left to make up';
+
+  @override
+  String get qadaEditBalances => 'Edit remaining counts';
+
+  @override
+  String get qadaEditBalancesTitle => 'Remaining qada';
+
+  @override
+  String get qadaEditBalancesBody =>
+      'Enter the exact number remaining for each prayer. These values replace the current counts.';
+
+  @override
+  String get qadaSaveBalances => 'Save remaining counts';
+
+  @override
+  String get qadaBalancesSaved => 'Remaining counts updated';
 
   @override
   String qadaMadeUpSince(String count) {
@@ -575,6 +597,128 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get qadaEmpty =>
       'No qada recorded. If you have older missed prayers, add them here.';
+
+  @override
+  String get qadaTabPrayers => 'Prayers';
+
+  @override
+  String get qadaTabFasts => 'Fasting';
+
+  @override
+  String qadaLastMadeUp(String time) {
+    return 'Last made up: $time';
+  }
+
+  @override
+  String qadaLastUpdated(String time) {
+    return 'Last change: $time';
+  }
+
+  @override
+  String qadaDaysAgoWarning(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count days without a qada prayer',
+      one: '1 day without a qada prayer',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String qadaFastDaysAgoWarning(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count days without a make-up fast',
+      one: '1 day without a make-up fast',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get qadaDaysAgoHint => 'Pair one with your next prayer today.';
+
+  @override
+  String get qadaFastDaysAgoHint => 'Plan a fast for Monday or Thursday.';
+
+  @override
+  String get qadaTodayMadeUp => 'Made up today';
+
+  @override
+  String get qadaYesterdayMadeUp => 'Made up yesterday';
+
+  @override
+  String qadaTimeAgoDays(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count days ago',
+      one: '1 day ago',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get qadaNoActivityYet => 'No qada made up yet — start with Bismillah!';
+
+  @override
+  String get qadaFastsLeft => 'fasting days left to make up';
+
+  @override
+  String qadaFastsMadeUpSince(String count) {
+    return 'You\'ve made up $count fasts since you started';
+  }
+
+  @override
+  String get qadaEditFastBalancesTitle => 'Remaining fasts';
+
+  @override
+  String get qadaEditFastBalancesBody =>
+      'Enter the exact number of missed fasting days remaining. This replaces your current balance.';
+
+  @override
+  String get qadaAddOlderFastsTitle => 'Older missed fasts';
+
+  @override
+  String get qadaAddOlderFastsBody =>
+      'Enter how many fasting days you owe from previous years. They are added to your balance.';
+
+  @override
+  String get qadaAddOlderFasts => 'Add older missed fasts';
+
+  @override
+  String qadaAddFastCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Add $count days to fasts',
+      zero: 'Add fasts',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get qadaFastTip =>
+      'Fasting on Mondays and Thursdays is Sunnah. Pairing make-up fasts with them brings great reward.';
+
+  @override
+  String get qadaLogFastMadeUp => 'I fasted a make-up day';
+
+  @override
+  String get qadaFastMadeUpSnack => '1 make-up fast recorded';
+
+  @override
+  String get qadaFastUndoneSnack => 'Make-up fast removed';
+
+  @override
+  String get qadaFastLoggedToday => 'Fasted today (qada)';
+
+  @override
+  String get qadaRamadanMonth => '1 Ramadan (30 days)';
+
+  @override
+  String get qadaRamadanTwoMonths => '2 Ramadans (60 days)';
 
   @override
   String get expenseAdd => 'Add expense';
@@ -635,7 +779,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get expenseDeleted => 'Expense deleted';
 
   @override
-  String get tasksTitle => 'Tasks';
+  String get tasksTitle => 'Daily plan';
 
   @override
   String tasksDoneOf(String done, String total) {
@@ -647,6 +791,81 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get tasksAddA11y => 'Add task';
+
+  @override
+  String get tasksAll => 'All';
+
+  @override
+  String get tasksDunya => 'Worldly';
+
+  @override
+  String get tasksAkhirah => 'Hereafter';
+
+  @override
+  String get tasksBalanceTitle => 'Balance your day';
+
+  @override
+  String get tasksBalanceBody =>
+      'See worldly responsibilities and deeds for the hereafter in one plan.';
+
+  @override
+  String tasksProgress(String done, String total) {
+    return '$done of $total complete';
+  }
+
+  @override
+  String get tasksHighPriority => 'Important';
+
+  @override
+  String get tasksNormalPriority => 'Normal';
+
+  @override
+  String get tasksPlanDetails => 'Plan details';
+
+  @override
+  String get tasksNewTitle => 'Plan a task';
+
+  @override
+  String get tasksEditTitle => 'Edit task';
+
+  @override
+  String get tasksTitleHint => 'What do you want to do?';
+
+  @override
+  String get tasksAreaLabel => 'Intention';
+
+  @override
+  String get tasksPriorityLabel => 'Priority';
+
+  @override
+  String get tasksDateLabel => 'Day';
+
+  @override
+  String get tasksWindowLabel => 'Prayer window';
+
+  @override
+  String get tasksTimeLabel => 'Exact time (optional)';
+
+  @override
+  String get tasksNoTime => 'No exact time';
+
+  @override
+  String get tasksClearTime => 'Clear time';
+
+  @override
+  String get tasksNoteHint => 'Notes (optional)';
+
+  @override
+  String get tasksPreviousDay => 'Previous day';
+
+  @override
+  String get tasksNextDay => 'Next day';
+
+  @override
+  String get tasksChooseDay => 'Choose day';
+
+  @override
+  String get tasksFilteredEmpty => 'No tasks in this part of the plan.';
 
   @override
   String get winBeforeFajr => 'Before Fajr';
@@ -703,7 +922,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get tasksEmpty =>
-      'Nothing planned yet. Add a task to a prayer window.';
+      'Your day is open. Add a worldly responsibility or a deed for the hereafter.';
 
   @override
   String get tasksDeleted => 'Task deleted';
@@ -2597,4 +2816,37 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get tasksAddFirst => 'Plan something around a prayer';
+
+  @override
+  String watchPrayedOf(String done, String total) {
+    return '$done of $total prayed';
+  }
+
+  @override
+  String watchStreak(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count-day streak',
+      one: '$count-day streak',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get watchTitle => 'Apple Watch';
+
+  @override
+  String get watchHelp =>
+      'Install Waqt on your watch from the Watch app on iPhone (My Watch ▸ Available Apps). Thirty days of prayer times, your marks, tasbih and adhkar stay in sync, and a Waqt complication fits any watch face.';
+
+  @override
+  String get watchStatusReady => 'Installed and syncing';
+
+  @override
+  String get watchStatusNotInstalled =>
+      'Paired, Waqt not installed on the watch yet';
+
+  @override
+  String get watchDhikrFree => 'Single dhikr · 100';
 }

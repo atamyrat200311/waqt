@@ -12,128 +12,19 @@
 
 import SwiftUI
 import WidgetKit
+import ActivityKit
 
-private let appGroup = "group.tm.ofis.waqt"
-private let dataKey = "waqt_widget"
-private let prayerIds = ["fajr", "dhuhr", "asr", "maghrib", "isha"]
+private let prayerIds = waqtPrayerIds
 
-// MARK: - Payload
+// MARK: - Payload (ios/Shared/WaqtTimes.swift)
 
-struct WDay: Decodable {
-  let d: String
-  let hijri: String
-  let t: [Int]
-  let sunrise: Int
-  let m: [String]
-}
-
-struct WStrings: Decodable {
-  let next: String
-  let remaining: String?
-  let todayRecord: String?
-  let `in`: String
-  let inAfter: String
-  let h: String
-  let m: String
-  let windowOpen: String
-  let mark: String
-  let marked: String
-}
-
-struct WPayload: Decodable {
-  let v: Int
-  let place: String
-  let sunrise: String?
-  let names: [String]
-  let s: WStrings
-  let days: [WDay]
-
-  static func load() -> WPayload? {
-    guard let json = UserDefaults(suiteName: appGroup)?.string(forKey: dataKey),
-      let data = json.data(using: .utf8)
-    else { return nil }
-    return try? JSONDecoder().decode(WPayload.self, from: data)
-  }
-
-  /// Instants where the visible state changes (prayer times and sunrise).
-  var boundaries: [Date] {
-    days.flatMap { d in (d.t + [d.sunrise]).map { Date(timeIntervalSince1970: TimeInterval($0)) } }
-  }
-}
-
-/// What to show at one instant.
-struct Snapshot {
-  let dayIndex: Int
-  /// Prayer whose window is open, if any.
-  let current: Int?
-  /// Prayer index for the next event, or nil when the next event is sunrise.
-  let next: Int?
-  let nextName: String
-  let nextAt: Date
-  /// Start of the window the countdown runs in (for the lock-screen bar).
-  let since: Date
-  let marks: [String]
-  let day: WDay
-
-  init(_ p: WPayload, at now: Date) {
-    let n = Int(now.timeIntervalSince1970)
-    var idx = 0
-    for (i, d) in p.days.enumerated() where d.t[0] <= n { idx = i }
-    let day = p.days[idx]
-    let nextFajr = idx + 1 < p.days.count ? p.days[idx + 1].t[0] : day.t[4] + 6 * 3600
-    let ends = [day.sunrise, day.t[2], day.t[3], day.t[4], nextFajr]
-    var current: Int?
-    if n >= day.t[0] {
-      for i in 0..<5 where n >= day.t[i] && n < ends[i] { current = i }
-    }
-    var next: Int? = 0
-    var nextName = p.names[0]
-    var nextAt = nextFajr
-    var previous = day.t[0]
-    outer: for i in idx..<p.days.count {
-      var events: [(time: Int, name: String, prayer: Int?)] =
-        (0..<5).map { (time: p.days[i].t[$0], name: p.names[$0], prayer: $0) }
-      events.append((time: p.days[i].sunrise, name: p.sunrise ?? "Sunrise", prayer: nil))
-      events.sort { $0.time < $1.time }
-      for event in events {
-        if event.time > n {
-          next = event.prayer
-          nextName = event.name
-          nextAt = event.time
-          break outer
-        }
-        previous = event.time
-      }
-    }
-    self.dayIndex = idx
-    self.current = current
-    self.next = next
-    self.nextName = nextName
-    self.nextAt = Date(timeIntervalSince1970: TimeInterval(nextAt))
-    self.since = Date(timeIntervalSince1970: TimeInterval(previous))
-    // Marks are only known for the day the app last wrote (index 0).
-    self.marks = idx == 0 ? day.m : Array(repeating: "", count: 5)
-    self.day = day
-  }
-
-  func countdown(_ s: WStrings, now: Date) -> String {
-    let total = max(0, Int(ceil(nextAt.timeIntervalSince(now) / 60)))
-    let h = total / 60
-    let m = total % 60
-    return h > 0 ? "\(h)\(s.h) \(m)\(s.m)" : "\(m)\(s.m)"
-  }
-
-  func inCountdown(_ s: WStrings, now: Date) -> String {
-    [s.in.isEmpty ? nil : s.in, countdown(s, now: now) + (s.inAfter.isEmpty ? "" : " \(s.inAfter)")]
-      .compactMap { $0 }.joined(separator: " ")
-  }
-
+extension Snapshot {
   /// Tap target: open the mark sheet for the open, unmarked prayer.
   var url: URL {
     if let c = current, marks[c].isEmpty {
-      return URL(string: "waqt://today?homeWidget&mark=\(prayerIds[c])&day=\(day.d)")!
+      return URL(string: "waqt:///today?homeWidget&mark=\(prayerIds[c])&day=\(day.d)")!
     }
-    return URL(string: "waqt://today?homeWidget")!
+    return URL(string: "waqt:///today?homeWidget")!
   }
 }
 
@@ -462,7 +353,6 @@ private extension View {
   }
 }
 
-@main
 struct WaqtWidget: Widget {
   let kind = "WaqtWidget"
 
@@ -480,5 +370,104 @@ struct WaqtWidget: Widget {
     .configurationDisplayName("Waqt")
     .description("Next prayer, live countdown and today's times.")
     .supportedFamilies(families)
+  }
+}
+
+// MARK: - Live Activity / Dynamic Island
+
+@available(iOSApplicationExtension 16.1, *)
+struct WaqtPrayerLiveActivity: Widget {
+  var body: some WidgetConfiguration {
+    ActivityConfiguration(for: PrayerActivityAttributes.self) { context in
+      HStack(spacing: 14) {
+        prayerIcon(context.state.prayerId)
+          .font(.system(size: 24, weight: .semibold))
+          .foregroundColor(.wBrass)
+          .frame(width: 44, height: 44)
+          .background(Color.wAccent.opacity(0.14), in: Circle())
+        VStack(alignment: .leading, spacing: 3) {
+          Text(context.attributes.title.uppercased())
+            .font(.system(size: 11, weight: .bold)).kerning(0.8).foregroundColor(.secondary)
+          Text(context.state.prayerName).font(.system(size: 19, weight: .bold))
+          Text(context.state.place).font(.system(size: 12, weight: .medium)).foregroundColor(.secondary)
+        }
+        Spacer(minLength: 6)
+        activityTimer(context.state.target, size: 24)
+          .foregroundColor(.wAccent)
+      }
+      .padding(16)
+      .activityBackgroundTint(.wBg)
+      .activitySystemActionForegroundColor(.wAccent)
+      .widgetURL(URL(string: "waqt:///today"))
+    } dynamicIsland: { context in
+      DynamicIsland {
+        DynamicIslandExpandedRegion(.leading) {
+          HStack(spacing: 7) {
+            prayerIcon(context.state.prayerId)
+            Text(context.attributes.title.uppercased())
+              .font(.system(size: 11, weight: .bold)).foregroundColor(.secondary)
+          }
+        }
+        DynamicIslandExpandedRegion(.trailing) {
+          activityTimer(context.state.target, size: 17)
+            .foregroundColor(.wAccent)
+        }
+        DynamicIslandExpandedRegion(.bottom) {
+          HStack {
+            Text(context.state.prayerName).font(.system(size: 18, weight: .bold))
+            Spacer()
+            Text(context.state.place).font(.system(size: 12, weight: .medium)).foregroundColor(.secondary)
+              .lineLimit(1)
+          }
+          .padding(.top, 4)
+        }
+      } compactLeading: {
+        prayerIcon(context.state.prayerId)
+      } compactTrailing: {
+        activityTimer(context.state.target, size: 13)
+          .foregroundColor(.wAccent)
+          .frame(width: 48)
+      } minimal: {
+        prayerIcon(context.state.prayerId)
+      }
+      .widgetURL(URL(string: "waqt:///today"))
+      .keylineTint(.wAccent)
+    }
+  }
+
+  @ViewBuilder
+  private func prayerIcon(_ prayerId: String?) -> some View {
+    Image(systemName: prayerSymbol(prayerId))
+      .foregroundColor(.wBrass)
+  }
+
+  private func prayerSymbol(_ prayerId: String?) -> String {
+    switch prayerId {
+    case "fajr": "sunrise.fill"
+    case "dhuhr": "sun.max.fill"
+    case "asr": "sun.haze.fill"
+    case "maghrib": "sunset.fill"
+    case "isha", "witr": "moon.stars.fill"
+    default: "clock.fill"
+    }
+  }
+
+  private func activityTimer(_ target: Date, size: CGFloat) -> some View {
+    Text(timerInterval: Date()...max(Date(), target), countsDown: true)
+      .font(.system(size: size, weight: .bold, design: .rounded))
+      .monospacedDigit()
+      .lineLimit(1)
+      .minimumScaleFactor(0.65)
+  }
+}
+
+@main
+struct WaqtWidgets: WidgetBundle {
+  @WidgetBundleBuilder
+  var body: some Widget {
+    WaqtWidget()
+    if #available(iOSApplicationExtension 16.1, *) {
+      WaqtPrayerLiveActivity()
+    }
   }
 }

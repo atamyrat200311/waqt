@@ -19,6 +19,12 @@ void main() {
       expect(classifyDay({Prayer.fajr: PrayerStatus.onTime}), StreakDay.broken);
       expect(classifyDay({Prayer.fajr: PrayerStatus.onTime}, isToday: true), StreakDay.pending);
     });
+
+    test('Witr stays independent from the five-prayer streak', () {
+      final five = {for (final p in Prayer.obligatory) p: PrayerStatus.onTime};
+      expect(classifyDay(five), StreakDay.kept);
+      expect(classifyDay({...five, Prayer.witr: PrayerStatus.missed}), StreakDay.kept);
+    });
   });
 
   group('computeStreak', () {

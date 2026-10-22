@@ -102,6 +102,17 @@ void main() {
       expect(n.time.day, 5);
     });
 
+    test('Witr is separately trackable after Isha but is not a sixth prayer time', () {
+      expect(day[Prayer.witr], day.isha);
+      final witr = e.window(day.date, Prayer.witr);
+      expect(witr.prayer, Prayer.witr);
+      expect(witr.start, day.isha);
+      expect(witr.end, e.day(DateTime(2026, 10, 5)).fajr);
+      expect(e.next(day.isha.subtract(const Duration(minutes: 1))).prayer, Prayer.isha);
+      expect(e.next(day.isha.add(const Duration(minutes: 1))).prayer, Prayer.fajr);
+      expect(PrayerEngine.arcPoints(day), isNot(contains(Prayer.witr)));
+    });
+
     test('windows: Fajr→sunrise, none between sunrise and Dhuhr, Isha past midnight', () {
       expect(e.currentWindow(day.fajr.add(const Duration(minutes: 5)))!.prayer, Prayer.fajr);
       expect(e.currentWindow(day.sunrise.add(const Duration(minutes: 5))), isNull);

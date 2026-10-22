@@ -46,7 +46,7 @@ class SettingsScreen extends ConsumerWidget {
     final perms = ref.watch(notificationPermissionsProvider).value;
     final android = !Adaptive.isCupertino(context);
 
-    final offsets = [for (final p in Prayer.values) s.offsetFor(p)];
+    final offsets = [for (final p in Prayer.obligatory) s.offsetFor(p)];
     final uniform = offsets.every((o) => o == offsets.first);
     String signed(int v) => v > 0
         ? '+$v'
@@ -160,7 +160,7 @@ class SettingsScreen extends ConsumerWidget {
                 },
               ),
             group([
-              for (final p in Prayer.values)
+              for (final p in Prayer.obligatory)
                 WaqtRow(
                   title: l.prayer(p),
                   chevron: false,
@@ -409,7 +409,7 @@ class _OffsetsSheet extends ConsumerWidget {
           const SizedBox(height: 4),
           Text(l.matchMosqueSub, style: WaqtType.sans(14, color: c.muted)),
           const SizedBox(height: 14),
-          for (final p in Prayer.values)
+          for (final p in Prayer.obligatory)
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 4),
               child: Row(

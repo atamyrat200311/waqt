@@ -111,7 +111,7 @@ class PrayerRepository {
   Future<Map<Prayer, int>> getQadaCounts() async => _countsMap(await _db.select(_db.qadaCounts).get());
 
   Map<Prayer, int> _countsMap(List<QadaCountRow> rows) {
-    final m = {for (final p in Prayer.values) p: 0};
+    final m = {for (final p in Prayer.tracked) p: 0};
     for (final r in rows) {
       m[r.prayer] = r.remaining;
     }
@@ -149,6 +149,25 @@ class PrayerRepository {
         }
       });
 
+  /// Replaces the visible remaining balance for each prayer. Manual changes
+  /// are recorded as adjustment events, without inflating the made-up total.
+  Future<void> setQadaCounts(Map<Prayer, int> counts, {DateTime? now}) =>
+      _db.transaction(() async {
+        for (final prayer in Prayer.tracked) {
+          final target = counts[prayer] ?? 0;
+          if (target < 0) throw ArgumentError.value(target, prayer.name);
+          final current = await _remaining(prayer);
+          if (target != current) {
+            await _changeQada(
+              prayer,
+              target - current,
+              QadaSource.manualAdd,
+              now: now,
+            );
+          }
+        }
+      });
+
   /// Total prayers made up since the user started (sum of madeUp events).
   Stream<int> watchMadeUpTotal() {
     final count = _db.qadaEvents.id.count();
@@ -156,6 +175,23 @@ class PrayerRepository {
       ..addColumns([count])
       ..where(_db.qadaEvents.source.equalsValue(QadaSource.madeUp));
     return q.watchSingle().map((r) => r.read(count) ?? 0);
+  }
+
+  /// Most recent qada event where a prayer was made up.
+  Stream<QadaEventRow?> watchLastMadeUpEvent() {
+    final q = _db.select(_db.qadaEvents)
+      ..where((t) => t.source.equalsValue(QadaSource.madeUp))
+      ..orderBy([(t) => OrderingTerm.desc(t.createdAt), (t) => OrderingTerm.desc(t.id)])
+      ..limit(1);
+    return q.watchSingleOrNull();
+  }
+
+  /// Most recent qada event of any source (made up, manual add, missed marked).
+  Stream<QadaEventRow?> watchLastActivityEvent() {
+    final q = _db.select(_db.qadaEvents)
+      ..orderBy([(t) => OrderingTerm.desc(t.createdAt), (t) => OrderingTerm.desc(t.id)])
+      ..limit(1);
+    return q.watchSingleOrNull();
   }
 
   /// Made-up counts per local day in [from, toExclusive).

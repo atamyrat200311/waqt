@@ -58,7 +58,9 @@ final monthPrayerStatsProvider = Provider<MonthPrayerStats?>((ref) {
   final to = now.dayKey;
   final inMonth = byDay.entries.where((e) => !e.key.isBefore(from));
   return MonthPrayerStats(
-    onTime: onTimeShare(inMonth.expand((e) => e.value.values)),
+    onTime: onTimeShare(
+      inMonth.expand((e) => Prayer.obligatory.map((p) => e.value[p]).whereType<PrayerStatus>()),
+    ),
     consistency: consistency(
       byDay,
       from: from,

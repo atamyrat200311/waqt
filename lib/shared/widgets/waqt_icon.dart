@@ -221,6 +221,12 @@ abstract final class WaqtIcons {
     'M17 22v-4.17a2 2 0 0 0-.59-1.42L12 12l-4.41 4.41A2 2 0 0 0 7 17.83V22',
     'M7 2v4.17a2 2 0 0 0 .59 1.42L12 12l4.41-4.41A2 2 0 0 0 17 6.17V2',
   ]);
+  static const watch = WaqtIconData([
+    'M18 12a6 6 0 1 1-12 0 6 6 0 0 1 12 0z',
+    'M12 10v2l1 1',
+    'M16.13 7.66l-.81-4.05a2 2 0 0 0-2-1.61h-2.68a2 2 0 0 0-2 1.61l-.78 4.05',
+    'M7.88 16.36l.8 4a2 2 0 0 0 2 1.61h2.72a2 2 0 0 0 2-1.61l.81-4.05',
+  ]);
   static const play = WaqtIconData(['M6 3l14 9-14 9z']);
   static const home = WaqtIconData([
     'M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8',

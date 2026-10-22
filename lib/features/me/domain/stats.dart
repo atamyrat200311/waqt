@@ -19,7 +19,7 @@ enum StreakDay {
 StreakDay classifyDay(Map<Prayer, PrayerStatus> marks, {bool isToday = false}) {
   var prayed = 0;
   var excused = 0;
-  for (final p in Prayer.values) {
+  for (final p in Prayer.obligatory) {
     final s = marks[p];
     if (s == null || s == PrayerStatus.missed) {
       return isToday ? StreakDay.pending : StreakDay.broken;
@@ -27,7 +27,7 @@ StreakDay classifyDay(Map<Prayer, PrayerStatus> marks, {bool isToday = false}) {
     if (s.isPrayed) prayed++;
     if (s == PrayerStatus.excused) excused++;
   }
-  if (prayed == 0 && excused == Prayer.values.length) return StreakDay.skipped;
+  if (prayed == 0 && excused == Prayer.obligatory.length) return StreakDay.skipped;
   return StreakDay.kept;
 }
 
@@ -92,7 +92,7 @@ Map<Prayer, double?> consistency(
   required bool Function(DayKey day, Prayer p) hasStarted,
 }) {
   final out = <Prayer, double?>{};
-  for (final p in Prayer.values) {
+  for (final p in Prayer.obligatory) {
     var prayed = 0;
     var total = 0;
     var d = from;
@@ -126,7 +126,7 @@ double? onTimeShare(Iterable<PrayerStatus> marks) {
 Prayer? weakestPrayer(Map<Prayer, double?> c) {
   Prayer? weakest;
   double? low;
-  for (final p in Prayer.values) {
+  for (final p in Prayer.obligatory) {
     final v = c[p];
     if (v == null) continue;
     if (low == null || v < low) {

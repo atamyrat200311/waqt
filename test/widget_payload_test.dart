@@ -25,7 +25,11 @@ void main() {
     l10n: lookupAppLocalizations(Locale(lang)),
     placeName: 'Ashgabat',
     now: now,
-    todayMarks: {Prayer.fajr: PrayerStatus.onTime, Prayer.dhuhr: PrayerStatus.missed},
+    todayMarks: {
+      Prayer.fajr: PrayerStatus.onTime,
+      Prayer.dhuhr: PrayerStatus.missed,
+      Prayer.witr: PrayerStatus.onTime,
+    },
   );
 
   test('payload: 7 days of epoch-second times, marks only for today, JSON-safe', () {
@@ -63,10 +67,10 @@ void main() {
 
   test('widget tap URIs map to routes', () {
     expect(
-      routeForWidgetUri(Uri.parse('waqt://today?homeWidget&mark=asr&day=2026-10-04')),
+      routeForWidgetUri(Uri.parse('waqt:///today?homeWidget&mark=asr&day=2026-10-04')),
       '/today?mark=asr&day=2026-10-04',
     );
-    expect(routeForWidgetUri(Uri.parse('waqt://today?homeWidget')), '/today');
+    expect(routeForWidgetUri(Uri.parse('waqt:///today?homeWidget')), '/today');
     expect(routeForWidgetUri(null), isNull);
   });
 

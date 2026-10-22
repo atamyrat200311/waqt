@@ -1,3 +1,6 @@
+import 'dart:ui' show ImageFilter;
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -80,9 +83,11 @@ class SectionTitle extends StatelessWidget {
 
 /// Scaffold for pushed sub-screens (Qada, Tasks, Calendar, Settings…).
 ///
-/// iOS: "‹ Today" back link in accent + large Literata title in the scroll.
+/// iOS: pinned navigation bar ("‹ Today" back link in accent) that turns
+/// frosted once content scrolls under it, a large Literata title in the
+/// scroll that hands over to a small centred title, as in UIKit.
 /// Android: top app bar with back arrow and the title in it.
-class SubScreen extends StatelessWidget {
+class SubScreen extends StatefulWidget {
   const SubScreen({
     super.key,
     required this.title,
@@ -110,108 +115,267 @@ class SubScreen extends StatelessWidget {
   final Widget? bottom;
   final Widget? floatingActionButton;
 
+  @override
+  State<SubScreen> createState() => _SubScreenState();
+}
+
+class _SubScreenState extends State<SubScreen> {
+  /// Scroll offset of the page, read by the iOS bar (no rebuild of slivers).
+  final _offset = ValueNotifier<double>(0);
+
+  @override
+  void dispose() {
+    _offset.dispose();
+    super.dispose();
+  }
+
   void _back(BuildContext context) {
     if (context.canPop()) {
       context.pop();
     }
   }
 
+  bool _onScroll(ScrollNotification n) {
+    if (n.depth == 0 && n.metrics.axis == Axis.vertical) _offset.value = n.metrics.pixels;
+    return false;
+  }
+
   @override
   Widget build(BuildContext context) {
     final c = context.colors;
     final cupertino = Adaptive.isCupertino(context);
-    final top = MediaQuery.paddingOf(context).top;
 
-    final header = cupertino
-        ? SliverToBoxAdapter(
-            child: Padding(
-              padding: EdgeInsets.only(top: top),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(
-                    height: 44,
-                    child: Row(
-                      children: [
-                        Semantics(
-                          button: true,
-                          label: backLabel,
-                          excludeSemantics: true,
-                          child: InkWell(
-                            onTap: () => _back(context),
-                            borderRadius: BorderRadius.circular(12),
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 6),
-                              child: SizedBox(
-                                height: 44,
-                                child: Row(
-                                  children: [
-                                    WaqtIcon(WaqtIcons.chevronLeft, size: 26, color: c.accent, strokeWidth: 2.4),
-                                    Text(backLabel, style: WaqtType.sans(17, weight: 500, color: c.accent)),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                        const Spacer(),
-                        ?trailing,
-                        const SizedBox(width: 10),
-                      ],
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(Gap.title, 4, Gap.title, 0),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.baseline,
-                      textBaseline: TextBaseline.alphabetic,
-                      children: [
-                        Expanded(
-                          child: Semantics(
-                            header: true,
-                            child: Text(title, style: WaqtType.title(color: c.ink)),
-                          ),
-                        ),
-                        ?titleTrailing,
-                      ],
-                    ),
-                  ),
-                ],
+    final List<Widget> header = cupertino
+        ? [
+            SliverPersistentHeader(
+              pinned: true,
+              delegate: _CupertinoBarDelegate(
+                top: MediaQuery.paddingOf(context).top,
+                // Large title height (4 pt gap + one Literata 34 line).
+                titleExtent: 4 + MediaQuery.textScalerOf(context).scale(41),
+                offset: _offset,
+                title: widget.title,
+                backLabel: widget.backLabel,
+                onBack: () => _back(context),
+                trailing: widget.trailing,
               ),
             ),
-          )
-        : SliverAppBar(
-            pinned: true,
-            backgroundColor: c.bg,
-            surfaceTintColor: Colors.transparent,
-            leading: IconButton(
-              tooltip: MaterialLocalizations.of(context).backButtonTooltip,
-              icon: WaqtIcon(WaqtIcons.arrowLeft, color: c.ink),
-              onPressed: () => _back(context),
+            SliverToBoxAdapter(
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(Gap.title, 4, Gap.title, 0),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.baseline,
+                  textBaseline: TextBaseline.alphabetic,
+                  children: [
+                    Expanded(
+                      child: Semantics(
+                        header: true,
+                        child: Text(widget.title, style: WaqtType.title(color: c.ink)),
+                      ),
+                    ),
+                    ?widget.titleTrailing,
+                  ],
+                ),
+              ),
             ),
-            title: Text(title),
-            titleTextStyle: WaqtType.serif(24, tracking: -0.01, color: c.ink),
-            actions: [
-              if (titleTrailing != null) Center(child: titleTrailing),
-              ?trailing,
-              const SizedBox(width: 8),
-            ],
-          );
+          ]
+        : [
+            SliverAppBar(
+              pinned: true,
+              backgroundColor: c.bg,
+              surfaceTintColor: Colors.transparent,
+              leading: IconButton(
+                tooltip: MaterialLocalizations.of(context).backButtonTooltip,
+                icon: WaqtIcon(WaqtIcons.arrowLeft, color: c.ink),
+                onPressed: () => _back(context),
+              ),
+              title: Text(widget.title),
+              titleTextStyle: WaqtType.serif(24, tracking: -0.01, color: c.ink),
+              actions: [
+                if (widget.titleTrailing != null) Center(child: widget.titleTrailing),
+                ?widget.trailing,
+                const SizedBox(width: 8),
+              ],
+            ),
+          ];
 
     return Scaffold(
       backgroundColor: c.bg,
-      floatingActionButton: floatingActionButton,
+      floatingActionButton: widget.floatingActionButton,
       body: Stack(
         children: [
-          CustomScrollView(
-            slivers: [
-              header,
-              ...slivers,
-              SliverToBoxAdapter(child: BottomSpace(extra: bottom != null ? 120 : 32)),
-            ],
+          NotificationListener<ScrollNotification>(
+            onNotification: _onScroll,
+            child: CustomScrollView(
+              keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+              slivers: [
+                ...header,
+                ...widget.slivers,
+                SliverToBoxAdapter(child: BottomSpace(extra: widget.bottom != null ? 120 : 32)),
+              ],
+            ),
           ),
-          if (bottom != null) Positioned(left: 0, right: 0, bottom: 0, child: bottom!),
+          if (widget.bottom != null) Positioned(left: 0, right: 0, bottom: 0, child: widget.bottom!),
         ],
+      ),
+    );
+  }
+}
+
+/// The pinned iOS bar: transparent over the large title, frosted with a
+/// hairline once content passes under it; the inline title fades in as the
+/// large one scrolls away.
+class _CupertinoBarDelegate extends SliverPersistentHeaderDelegate {
+  _CupertinoBarDelegate({
+    required this.top,
+    required this.titleExtent,
+    required this.offset,
+    required this.title,
+    required this.backLabel,
+    required this.onBack,
+    required this.trailing,
+  });
+
+  final double top;
+  final double titleExtent;
+  final ValueListenable<double> offset;
+  final String title;
+  final String backLabel;
+  final VoidCallback onBack;
+  final Widget? trailing;
+
+  static const _barHeight = 44.0;
+
+  @override
+  double get minExtent => top + _barHeight;
+
+  @override
+  double get maxExtent => top + _barHeight;
+
+  @override
+  Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {
+    final c = context.colors;
+    return ValueListenableBuilder<double>(
+      valueListenable: offset,
+      builder: (context, y, _) {
+        final material = (y / 12).clamp(0.0, 1.0);
+        final inline = ((y - titleExtent * 0.6) / (titleExtent * 0.5)).clamp(0.0, 1.0);
+        final bar = SizedBox(
+          height: _barHeight,
+          child: NavigationToolbar(
+            leading: Semantics(
+              button: true,
+              label: backLabel,
+              excludeSemantics: true,
+              child: PressFade(
+                onTap: onBack,
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 6, right: 8),
+                  child: SizedBox(
+                    height: _barHeight,
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        WaqtIcon(WaqtIcons.chevronLeft, size: 26, color: c.accent, strokeWidth: 2.4),
+                        ConstrainedBox(
+                          constraints: const BoxConstraints(maxWidth: 120),
+                          child: Text(
+                            backLabel,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: WaqtType.sans(17, weight: 500, color: c.accent),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            middle: ExcludeSemantics(
+              child: Opacity(
+                opacity: inline,
+                child: Transform.translate(
+                  offset: Offset(0, 6 * (1 - inline)),
+                  child: Text(
+                    title,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: WaqtType.sans(17, weight: 600, color: c.ink),
+                  ),
+                ),
+              ),
+            ),
+            trailing: trailing == null
+                ? null
+                : Padding(padding: const EdgeInsets.only(right: 10), child: trailing),
+          ),
+        );
+        return Stack(
+          fit: StackFit.expand,
+          children: [
+            if (material > 0)
+              Opacity(
+                opacity: material,
+                child: ClipRect(
+                  child: BackdropFilter(
+                    filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
+                    child: DecoratedBox(
+                      decoration: BoxDecoration(
+                        color: c.bg.withValues(alpha: 0.82),
+                        border: Border(bottom: BorderSide(color: c.hairline, width: 0.5)),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            Padding(padding: EdgeInsets.only(top: top), child: bar),
+          ],
+        );
+      },
+    );
+  }
+
+  @override
+  bool shouldRebuild(_CupertinoBarDelegate old) =>
+      old.top != top ||
+      old.titleExtent != titleExtent ||
+      old.offset != offset ||
+      old.title != title ||
+      old.backLabel != backLabel ||
+      old.trailing != trailing;
+}
+
+/// iOS press feedback for text-like buttons: the child dims while held
+/// (UIKit's highlighted state) instead of a Material ripple.
+class PressFade extends StatefulWidget {
+  const PressFade({super.key, required this.onTap, required this.child});
+  final VoidCallback onTap;
+  final Widget child;
+
+  @override
+  State<PressFade> createState() => _PressFadeState();
+}
+
+class _PressFadeState extends State<PressFade> {
+  bool _down = false;
+
+  void _set(bool v) {
+    if (v != _down) setState(() => _down = v);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      behavior: HitTestBehavior.opaque,
+      onTapDown: (_) => _set(true),
+      onTapCancel: () => _set(false),
+      onTapUp: (_) => _set(false),
+      onTap: widget.onTap,
+      child: AnimatedOpacity(
+        opacity: _down ? 0.35 : 1,
+        duration: Duration(milliseconds: _down ? 0 : 180),
+        child: widget.child,
       ),
     );
   }

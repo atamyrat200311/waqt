@@ -42,6 +42,13 @@ import 'routes.dart';
 
 final rootNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'root');
 
+/// One navigator per tab (same order as [shellTabs]); the shell uses them to
+/// tell whether a re-tapped tab is already at its root.
+final branchNavigatorKeys = [
+  for (final name in ['today', 'quran', 'library', 'tools', 'me'])
+    GlobalKey<NavigatorState>(debugLabel: name),
+];
+
 /// Known hadith book id from the path (falls back to the 40 Nawawi).
 String _book(GoRouterState state) {
   final id = state.pathParameters['book'] ?? '';
@@ -86,6 +93,11 @@ final appRouterProvider = Provider<GoRouter>((ref) {
     refreshListenable: onboarding,
     redirect: (context, state) {
       final done = onboarding.value;
+      // ActivityKit may deliver a custom-scheme tap as `/` on some iOS
+      // versions. Never expose GoRouter's error page for that valid app-open.
+      if (state.uri.path == '/') {
+        return done ? Routes.today : Routes.onboarding;
+      }
       final atOnboarding = state.matchedLocation == Routes.onboarding;
       if (!done && !atOnboarding) return Routes.onboarding;
       if (done && atOnboarding) return Routes.today;
@@ -95,7 +107,7 @@ final appRouterProvider = Provider<GoRouter>((ref) {
       StatefulShellRoute.indexedStack(
         builder: (context, state, shell) => AppShell(shell: shell),
         branches: [
-          StatefulShellBranch(routes: [
+          StatefulShellBranch(navigatorKey: branchNavigatorKeys[0], routes: [
             _route(
               path: Routes.today,
               builder: (context, state) => TodayScreen(
@@ -103,13 +115,21 @@ final appRouterProvider = Provider<GoRouter>((ref) {
                 markDay: state.uri.queryParameters['day'],
               ),
               routes: [
-                _route(path: _child(Routes.qada), builder: (context, state) => const QadaScreen()),
+                _route(
+                  path: _child(Routes.qada),
+                  builder: (context, state) {
+                    final tab = state.uri.queryParameters['tab'] == 'fasts'
+                        ? QadaTab.fasts
+                        : QadaTab.prayers;
+                    return QadaScreen(initialTab: tab);
+                  },
+                ),
                 _route(path: _child(Routes.tasks), builder: (context, state) => const TasksScreen()),
                 _route(path: _child(Routes.habits), builder: (context, state) => const HabitsScreen()),
               ],
             ),
           ]),
-          StatefulShellBranch(routes: [
+          StatefulShellBranch(navigatorKey: branchNavigatorKeys[1], routes: [
             _route(
               path: Routes.quran,
               builder: (context, state) => const QuranHomeScreen(),
@@ -121,7 +141,7 @@ final appRouterProvider = Provider<GoRouter>((ref) {
               ],
             ),
           ]),
-          StatefulShellBranch(routes: [
+          StatefulShellBranch(navigatorKey: branchNavigatorKeys[2], routes: [
             _route(
               path: Routes.library,
               builder: (context, state) => const LibraryScreen(),
@@ -153,7 +173,7 @@ final appRouterProvider = Provider<GoRouter>((ref) {
               ],
             ),
           ]),
-          StatefulShellBranch(routes: [
+          StatefulShellBranch(navigatorKey: branchNavigatorKeys[3], routes: [
             _route(
               path: Routes.tools,
               builder: (context, state) => const ToolsScreen(),
@@ -166,7 +186,7 @@ final appRouterProvider = Provider<GoRouter>((ref) {
               ],
             ),
           ]),
-          StatefulShellBranch(routes: [
+          StatefulShellBranch(navigatorKey: branchNavigatorKeys[4], routes: [
             _route(
               path: Routes.me,
               builder: (context, state) => const MeScreen(),

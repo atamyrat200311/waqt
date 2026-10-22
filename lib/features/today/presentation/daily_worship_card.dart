@@ -30,7 +30,7 @@ class DailyWorshipCard extends ConsumerWidget {
     final fast = ref.watch(todayFastProvider).value;
     final fastType =
         fast?.type ?? fastTypeFor(ref.watch(hijriServiceProvider), day.date, ramadan: ref.watch(ramadanTodayProvider));
-    final prayerCount = marks.values.where((status) => status.isPrayed).length;
+    final prayerCount = Prayer.obligatory.where((p) => marks[p]?.isPrayed == true).length;
 
     Future<void> togglePrayer(Prayer prayer) async {
       final current = marks[prayer];
@@ -87,7 +87,7 @@ class DailyWorshipCard extends ConsumerWidget {
           const SizedBox(height: 14),
           Row(
             children: [
-              for (final prayer in Prayer.values)
+              for (final prayer in Prayer.obligatory)
                 Expanded(
                   child: _PrayerCheck(
                     label: l.prayer(prayer),
@@ -102,6 +102,57 @@ class DailyWorshipCard extends ConsumerWidget {
             padding: const EdgeInsets.only(top: 12),
             child: Divider(height: 1, thickness: 1, color: c.hairline),
           ),
+          Semantics(
+            label: '${l.prayer(Prayer.witr)}. ${l.witrSeparateHint}',
+            button: true,
+            checked: marks[Prayer.witr]?.isPrayed == true,
+            enabled: now.hasStarted(Prayer.witr) || marks[Prayer.witr] != null,
+            excludeSemantics: true,
+            child: Material(
+              color: Colors.transparent,
+              child: InkWell(
+                borderRadius: BorderRadius.circular(14),
+                onTap: now.hasStarted(Prayer.witr) || marks[Prayer.witr] != null
+                    ? () => togglePrayer(Prayer.witr)
+                    : null,
+                child: SizedBox(
+                  height: 62,
+                  child: Opacity(
+                    opacity: now.hasStarted(Prayer.witr) || marks[Prayer.witr] != null ? 1 : 0.5,
+                    child: Row(
+                      children: [
+                        Container(
+                          width: 36,
+                          height: 36,
+                          decoration: BoxDecoration(color: c.mint, shape: BoxShape.circle),
+                          alignment: Alignment.center,
+                          child: WaqtIcon(WaqtIcons.moon, size: 18, color: c.onMint),
+                        ),
+                        const SizedBox(width: 11),
+                        Expanded(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(l.prayer(Prayer.witr), style: WaqtType.sans(15, weight: 600, color: c.ink)),
+                              const SizedBox(height: 2),
+                              Text(l.witrSeparateHint, style: WaqtType.sans(12, color: c.muted)),
+                            ],
+                          ),
+                        ),
+                        _CheckCircle(
+                          checked: marks[Prayer.witr]?.isPrayed == true,
+                          enabled: now.hasStarted(Prayer.witr) || marks[Prayer.witr] != null,
+                          size: 30,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+          Divider(height: 1, thickness: 1, color: c.hairline),
           Semantics(
             label: l.ramadanTodayFast,
             button: true,

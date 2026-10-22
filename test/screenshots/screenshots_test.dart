@@ -219,6 +219,9 @@ void main() {
     await shoot(t, 'me', location: '/me');
     await shoot(t, 'me_dark_android', location: '/me', platform: TargetPlatform.android, dark: true);
     await shoot(t, 'settings', location: '/me/settings');
+    // iOS: pinned frosted bar with the inline title once the large one is gone.
+    await shoot(t, 'settings_scrolled_ios', location: '/me/settings', act: (t) => t.drag(find.byType(CustomScrollView).last, const Offset(0, -260)));
+    await shoot(t, 'settings_scrolled_dark_ios', location: '/me/settings', dark: true, act: (t) => t.drag(find.byType(CustomScrollView).last, const Offset(0, -260)));
     await shoot(t, 'settings_android', location: '/me/settings', platform: TargetPlatform.android);
     await shoot(t, 'location', location: '/location');
     await shoot(t, 'onboarding_language', settings: const AppSettings());

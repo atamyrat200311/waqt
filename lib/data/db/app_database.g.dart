@@ -1946,6 +1946,46 @@ class $TasksTable extends Tasks with TableInfo<$TasksTable, TaskRow> {
         type: DriftSqlType.string,
         requiredDuringInsert: true,
       ).withConverter<TaskWindow>($TasksTable.$converterwindow);
+  @override
+  late final GeneratedColumnWithTypeConverter<TaskArea, String> area =
+      GeneratedColumn<String>(
+        'area',
+        aliasedName,
+        false,
+        type: DriftSqlType.string,
+        requiredDuringInsert: false,
+        defaultValue: const Constant('dunya'),
+      ).withConverter<TaskArea>($TasksTable.$converterarea);
+  @override
+  late final GeneratedColumnWithTypeConverter<TaskPriority, String> priority =
+      GeneratedColumn<String>(
+        'priority',
+        aliasedName,
+        false,
+        type: DriftSqlType.string,
+        requiredDuringInsert: false,
+        defaultValue: const Constant('normal'),
+      ).withConverter<TaskPriority>($TasksTable.$converterpriority);
+  static const VerificationMeta _plannedMinuteMeta = const VerificationMeta(
+    'plannedMinute',
+  );
+  @override
+  late final GeneratedColumn<int> plannedMinute = GeneratedColumn<int>(
+    'planned_minute',
+    aliasedName,
+    true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _noteMeta = const VerificationMeta('note');
+  @override
+  late final GeneratedColumn<String> note = GeneratedColumn<String>(
+    'note',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
   static const VerificationMeta _doneMeta = const VerificationMeta('done');
   @override
   late final GeneratedColumn<bool> done = GeneratedColumn<bool>(
@@ -1986,6 +2026,10 @@ class $TasksTable extends Tasks with TableInfo<$TasksTable, TaskRow> {
     title,
     date,
     window,
+    area,
+    priority,
+    plannedMinute,
+    note,
     done,
     doneAt,
     sortOrder,
@@ -2020,6 +2064,21 @@ class $TasksTable extends Tasks with TableInfo<$TasksTable, TaskRow> {
       );
     } else if (isInserting) {
       context.missing(_dateMeta);
+    }
+    if (data.containsKey('planned_minute')) {
+      context.handle(
+        _plannedMinuteMeta,
+        plannedMinute.isAcceptableOrUnknown(
+          data['planned_minute']!,
+          _plannedMinuteMeta,
+        ),
+      );
+    }
+    if (data.containsKey('note')) {
+      context.handle(
+        _noteMeta,
+        note.isAcceptableOrUnknown(data['note']!, _noteMeta),
+      );
     }
     if (data.containsKey('done')) {
       context.handle(
@@ -2066,6 +2125,26 @@ class $TasksTable extends Tasks with TableInfo<$TasksTable, TaskRow> {
           data['${effectivePrefix}window'],
         )!,
       ),
+      area: $TasksTable.$converterarea.fromSql(
+        attachedDatabase.typeMapping.read(
+          DriftSqlType.string,
+          data['${effectivePrefix}area'],
+        )!,
+      ),
+      priority: $TasksTable.$converterpriority.fromSql(
+        attachedDatabase.typeMapping.read(
+          DriftSqlType.string,
+          data['${effectivePrefix}priority'],
+        )!,
+      ),
+      plannedMinute: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}planned_minute'],
+      ),
+      note: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}note'],
+      ),
       done: attachedDatabase.typeMapping.read(
         DriftSqlType.bool,
         data['${effectivePrefix}done'],
@@ -2088,6 +2167,10 @@ class $TasksTable extends Tasks with TableInfo<$TasksTable, TaskRow> {
 
   static JsonTypeConverter2<TaskWindow, String, String> $converterwindow =
       const EnumNameConverter<TaskWindow>(TaskWindow.values);
+  static JsonTypeConverter2<TaskArea, String, String> $converterarea =
+      const EnumNameConverter<TaskArea>(TaskArea.values);
+  static JsonTypeConverter2<TaskPriority, String, String> $converterpriority =
+      const EnumNameConverter<TaskPriority>(TaskPriority.values);
 }
 
 class TaskRow extends DataClass implements Insertable<TaskRow> {
@@ -2095,6 +2178,10 @@ class TaskRow extends DataClass implements Insertable<TaskRow> {
   final String title;
   final String date;
   final TaskWindow window;
+  final TaskArea area;
+  final TaskPriority priority;
+  final int? plannedMinute;
+  final String? note;
   final bool done;
   final DateTime? doneAt;
   final int sortOrder;
@@ -2103,6 +2190,10 @@ class TaskRow extends DataClass implements Insertable<TaskRow> {
     required this.title,
     required this.date,
     required this.window,
+    required this.area,
+    required this.priority,
+    this.plannedMinute,
+    this.note,
     required this.done,
     this.doneAt,
     required this.sortOrder,
@@ -2118,6 +2209,20 @@ class TaskRow extends DataClass implements Insertable<TaskRow> {
         $TasksTable.$converterwindow.toSql(window),
       );
     }
+    {
+      map['area'] = Variable<String>($TasksTable.$converterarea.toSql(area));
+    }
+    {
+      map['priority'] = Variable<String>(
+        $TasksTable.$converterpriority.toSql(priority),
+      );
+    }
+    if (!nullToAbsent || plannedMinute != null) {
+      map['planned_minute'] = Variable<int>(plannedMinute);
+    }
+    if (!nullToAbsent || note != null) {
+      map['note'] = Variable<String>(note);
+    }
     map['done'] = Variable<bool>(done);
     if (!nullToAbsent || doneAt != null) {
       map['done_at'] = Variable<DateTime>(doneAt);
@@ -2132,6 +2237,12 @@ class TaskRow extends DataClass implements Insertable<TaskRow> {
       title: Value(title),
       date: Value(date),
       window: Value(window),
+      area: Value(area),
+      priority: Value(priority),
+      plannedMinute: plannedMinute == null && nullToAbsent
+          ? const Value.absent()
+          : Value(plannedMinute),
+      note: note == null && nullToAbsent ? const Value.absent() : Value(note),
       done: Value(done),
       doneAt: doneAt == null && nullToAbsent
           ? const Value.absent()
@@ -2152,6 +2263,14 @@ class TaskRow extends DataClass implements Insertable<TaskRow> {
       window: $TasksTable.$converterwindow.fromJson(
         serializer.fromJson<String>(json['window']),
       ),
+      area: $TasksTable.$converterarea.fromJson(
+        serializer.fromJson<String>(json['area']),
+      ),
+      priority: $TasksTable.$converterpriority.fromJson(
+        serializer.fromJson<String>(json['priority']),
+      ),
+      plannedMinute: serializer.fromJson<int?>(json['plannedMinute']),
+      note: serializer.fromJson<String?>(json['note']),
       done: serializer.fromJson<bool>(json['done']),
       doneAt: serializer.fromJson<DateTime?>(json['doneAt']),
       sortOrder: serializer.fromJson<int>(json['sortOrder']),
@@ -2167,6 +2286,14 @@ class TaskRow extends DataClass implements Insertable<TaskRow> {
       'window': serializer.toJson<String>(
         $TasksTable.$converterwindow.toJson(window),
       ),
+      'area': serializer.toJson<String>(
+        $TasksTable.$converterarea.toJson(area),
+      ),
+      'priority': serializer.toJson<String>(
+        $TasksTable.$converterpriority.toJson(priority),
+      ),
+      'plannedMinute': serializer.toJson<int?>(plannedMinute),
+      'note': serializer.toJson<String?>(note),
       'done': serializer.toJson<bool>(done),
       'doneAt': serializer.toJson<DateTime?>(doneAt),
       'sortOrder': serializer.toJson<int>(sortOrder),
@@ -2178,6 +2305,10 @@ class TaskRow extends DataClass implements Insertable<TaskRow> {
     String? title,
     String? date,
     TaskWindow? window,
+    TaskArea? area,
+    TaskPriority? priority,
+    Value<int?> plannedMinute = const Value.absent(),
+    Value<String?> note = const Value.absent(),
     bool? done,
     Value<DateTime?> doneAt = const Value.absent(),
     int? sortOrder,
@@ -2186,6 +2317,12 @@ class TaskRow extends DataClass implements Insertable<TaskRow> {
     title: title ?? this.title,
     date: date ?? this.date,
     window: window ?? this.window,
+    area: area ?? this.area,
+    priority: priority ?? this.priority,
+    plannedMinute: plannedMinute.present
+        ? plannedMinute.value
+        : this.plannedMinute,
+    note: note.present ? note.value : this.note,
     done: done ?? this.done,
     doneAt: doneAt.present ? doneAt.value : this.doneAt,
     sortOrder: sortOrder ?? this.sortOrder,
@@ -2196,6 +2333,12 @@ class TaskRow extends DataClass implements Insertable<TaskRow> {
       title: data.title.present ? data.title.value : this.title,
       date: data.date.present ? data.date.value : this.date,
       window: data.window.present ? data.window.value : this.window,
+      area: data.area.present ? data.area.value : this.area,
+      priority: data.priority.present ? data.priority.value : this.priority,
+      plannedMinute: data.plannedMinute.present
+          ? data.plannedMinute.value
+          : this.plannedMinute,
+      note: data.note.present ? data.note.value : this.note,
       done: data.done.present ? data.done.value : this.done,
       doneAt: data.doneAt.present ? data.doneAt.value : this.doneAt,
       sortOrder: data.sortOrder.present ? data.sortOrder.value : this.sortOrder,
@@ -2209,6 +2352,10 @@ class TaskRow extends DataClass implements Insertable<TaskRow> {
           ..write('title: $title, ')
           ..write('date: $date, ')
           ..write('window: $window, ')
+          ..write('area: $area, ')
+          ..write('priority: $priority, ')
+          ..write('plannedMinute: $plannedMinute, ')
+          ..write('note: $note, ')
           ..write('done: $done, ')
           ..write('doneAt: $doneAt, ')
           ..write('sortOrder: $sortOrder')
@@ -2217,8 +2364,19 @@ class TaskRow extends DataClass implements Insertable<TaskRow> {
   }
 
   @override
-  int get hashCode =>
-      Object.hash(id, title, date, window, done, doneAt, sortOrder);
+  int get hashCode => Object.hash(
+    id,
+    title,
+    date,
+    window,
+    area,
+    priority,
+    plannedMinute,
+    note,
+    done,
+    doneAt,
+    sortOrder,
+  );
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
@@ -2227,6 +2385,10 @@ class TaskRow extends DataClass implements Insertable<TaskRow> {
           other.title == this.title &&
           other.date == this.date &&
           other.window == this.window &&
+          other.area == this.area &&
+          other.priority == this.priority &&
+          other.plannedMinute == this.plannedMinute &&
+          other.note == this.note &&
           other.done == this.done &&
           other.doneAt == this.doneAt &&
           other.sortOrder == this.sortOrder);
@@ -2237,6 +2399,10 @@ class TasksCompanion extends UpdateCompanion<TaskRow> {
   final Value<String> title;
   final Value<String> date;
   final Value<TaskWindow> window;
+  final Value<TaskArea> area;
+  final Value<TaskPriority> priority;
+  final Value<int?> plannedMinute;
+  final Value<String?> note;
   final Value<bool> done;
   final Value<DateTime?> doneAt;
   final Value<int> sortOrder;
@@ -2245,6 +2411,10 @@ class TasksCompanion extends UpdateCompanion<TaskRow> {
     this.title = const Value.absent(),
     this.date = const Value.absent(),
     this.window = const Value.absent(),
+    this.area = const Value.absent(),
+    this.priority = const Value.absent(),
+    this.plannedMinute = const Value.absent(),
+    this.note = const Value.absent(),
     this.done = const Value.absent(),
     this.doneAt = const Value.absent(),
     this.sortOrder = const Value.absent(),
@@ -2254,6 +2424,10 @@ class TasksCompanion extends UpdateCompanion<TaskRow> {
     required String title,
     required String date,
     required TaskWindow window,
+    this.area = const Value.absent(),
+    this.priority = const Value.absent(),
+    this.plannedMinute = const Value.absent(),
+    this.note = const Value.absent(),
     this.done = const Value.absent(),
     this.doneAt = const Value.absent(),
     this.sortOrder = const Value.absent(),
@@ -2265,6 +2439,10 @@ class TasksCompanion extends UpdateCompanion<TaskRow> {
     Expression<String>? title,
     Expression<String>? date,
     Expression<String>? window,
+    Expression<String>? area,
+    Expression<String>? priority,
+    Expression<int>? plannedMinute,
+    Expression<String>? note,
     Expression<bool>? done,
     Expression<DateTime>? doneAt,
     Expression<int>? sortOrder,
@@ -2274,6 +2452,10 @@ class TasksCompanion extends UpdateCompanion<TaskRow> {
       if (title != null) 'title': title,
       if (date != null) 'date': date,
       if (window != null) 'window': window,
+      if (area != null) 'area': area,
+      if (priority != null) 'priority': priority,
+      if (plannedMinute != null) 'planned_minute': plannedMinute,
+      if (note != null) 'note': note,
       if (done != null) 'done': done,
       if (doneAt != null) 'done_at': doneAt,
       if (sortOrder != null) 'sort_order': sortOrder,
@@ -2285,6 +2467,10 @@ class TasksCompanion extends UpdateCompanion<TaskRow> {
     Value<String>? title,
     Value<String>? date,
     Value<TaskWindow>? window,
+    Value<TaskArea>? area,
+    Value<TaskPriority>? priority,
+    Value<int?>? plannedMinute,
+    Value<String?>? note,
     Value<bool>? done,
     Value<DateTime?>? doneAt,
     Value<int>? sortOrder,
@@ -2294,6 +2480,10 @@ class TasksCompanion extends UpdateCompanion<TaskRow> {
       title: title ?? this.title,
       date: date ?? this.date,
       window: window ?? this.window,
+      area: area ?? this.area,
+      priority: priority ?? this.priority,
+      plannedMinute: plannedMinute ?? this.plannedMinute,
+      note: note ?? this.note,
       done: done ?? this.done,
       doneAt: doneAt ?? this.doneAt,
       sortOrder: sortOrder ?? this.sortOrder,
@@ -2317,6 +2507,22 @@ class TasksCompanion extends UpdateCompanion<TaskRow> {
         $TasksTable.$converterwindow.toSql(window.value),
       );
     }
+    if (area.present) {
+      map['area'] = Variable<String>(
+        $TasksTable.$converterarea.toSql(area.value),
+      );
+    }
+    if (priority.present) {
+      map['priority'] = Variable<String>(
+        $TasksTable.$converterpriority.toSql(priority.value),
+      );
+    }
+    if (plannedMinute.present) {
+      map['planned_minute'] = Variable<int>(plannedMinute.value);
+    }
+    if (note.present) {
+      map['note'] = Variable<String>(note.value);
+    }
     if (done.present) {
       map['done'] = Variable<bool>(done.value);
     }
@@ -2336,6 +2542,10 @@ class TasksCompanion extends UpdateCompanion<TaskRow> {
           ..write('title: $title, ')
           ..write('date: $date, ')
           ..write('window: $window, ')
+          ..write('area: $area, ')
+          ..write('priority: $priority, ')
+          ..write('plannedMinute: $plannedMinute, ')
+          ..write('note: $note, ')
           ..write('done: $done, ')
           ..write('doneAt: $doneAt, ')
           ..write('sortOrder: $sortOrder')
@@ -2926,6 +3136,204 @@ class FastsCompanion extends UpdateCompanion<FastRow> {
           ..write('type: $type, ')
           ..write('status: $status, ')
           ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $QadaFastBalancesTable extends QadaFastBalances
+    with TableInfo<$QadaFastBalancesTable, QadaFastBalanceRow> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $QadaFastBalancesTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<int> id = GeneratedColumn<int>(
+    'id',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(1),
+  );
+  static const VerificationMeta _adjustmentMeta = const VerificationMeta(
+    'adjustment',
+  );
+  @override
+  late final GeneratedColumn<int> adjustment = GeneratedColumn<int>(
+    'adjustment',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(0),
+  );
+  @override
+  List<GeneratedColumn> get $columns => [id, adjustment];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'qada_fast_balances';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<QadaFastBalanceRow> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    }
+    if (data.containsKey('adjustment')) {
+      context.handle(
+        _adjustmentMeta,
+        adjustment.isAcceptableOrUnknown(data['adjustment']!, _adjustmentMeta),
+      );
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  QadaFastBalanceRow map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return QadaFastBalanceRow(
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}id'],
+      )!,
+      adjustment: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}adjustment'],
+      )!,
+    );
+  }
+
+  @override
+  $QadaFastBalancesTable createAlias(String alias) {
+    return $QadaFastBalancesTable(attachedDatabase, alias);
+  }
+}
+
+class QadaFastBalanceRow extends DataClass
+    implements Insertable<QadaFastBalanceRow> {
+  final int id;
+  final int adjustment;
+  const QadaFastBalanceRow({required this.id, required this.adjustment});
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<int>(id);
+    map['adjustment'] = Variable<int>(adjustment);
+    return map;
+  }
+
+  QadaFastBalancesCompanion toCompanion(bool nullToAbsent) {
+    return QadaFastBalancesCompanion(
+      id: Value(id),
+      adjustment: Value(adjustment),
+    );
+  }
+
+  factory QadaFastBalanceRow.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return QadaFastBalanceRow(
+      id: serializer.fromJson<int>(json['id']),
+      adjustment: serializer.fromJson<int>(json['adjustment']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<int>(id),
+      'adjustment': serializer.toJson<int>(adjustment),
+    };
+  }
+
+  QadaFastBalanceRow copyWith({int? id, int? adjustment}) => QadaFastBalanceRow(
+    id: id ?? this.id,
+    adjustment: adjustment ?? this.adjustment,
+  );
+  QadaFastBalanceRow copyWithCompanion(QadaFastBalancesCompanion data) {
+    return QadaFastBalanceRow(
+      id: data.id.present ? data.id.value : this.id,
+      adjustment: data.adjustment.present
+          ? data.adjustment.value
+          : this.adjustment,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('QadaFastBalanceRow(')
+          ..write('id: $id, ')
+          ..write('adjustment: $adjustment')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(id, adjustment);
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is QadaFastBalanceRow &&
+          other.id == this.id &&
+          other.adjustment == this.adjustment);
+}
+
+class QadaFastBalancesCompanion extends UpdateCompanion<QadaFastBalanceRow> {
+  final Value<int> id;
+  final Value<int> adjustment;
+  const QadaFastBalancesCompanion({
+    this.id = const Value.absent(),
+    this.adjustment = const Value.absent(),
+  });
+  QadaFastBalancesCompanion.insert({
+    this.id = const Value.absent(),
+    this.adjustment = const Value.absent(),
+  });
+  static Insertable<QadaFastBalanceRow> custom({
+    Expression<int>? id,
+    Expression<int>? adjustment,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (adjustment != null) 'adjustment': adjustment,
+    });
+  }
+
+  QadaFastBalancesCompanion copyWith({Value<int>? id, Value<int>? adjustment}) {
+    return QadaFastBalancesCompanion(
+      id: id ?? this.id,
+      adjustment: adjustment ?? this.adjustment,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<int>(id.value);
+    }
+    if (adjustment.present) {
+      map['adjustment'] = Variable<int>(adjustment.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('QadaFastBalancesCompanion(')
+          ..write('id: $id, ')
+          ..write('adjustment: $adjustment')
           ..write(')'))
         .toString();
   }
@@ -4822,6 +5230,9 @@ abstract class _$AppDatabase extends GeneratedDatabase {
   late final $TasksTable tasks = $TasksTable(this);
   late final $AdhkarProgressTable adhkarProgress = $AdhkarProgressTable(this);
   late final $FastsTable fasts = $FastsTable(this);
+  late final $QadaFastBalancesTable qadaFastBalances = $QadaFastBalancesTable(
+    this,
+  );
   late final $TasbihSessionsTable tasbihSessions = $TasbihSessionsTable(this);
   late final $BookmarksTable bookmarks = $BookmarksTable(this);
   late final $QuranReadsTable quranReads = $QuranReadsTable(this);
@@ -4841,6 +5252,7 @@ abstract class _$AppDatabase extends GeneratedDatabase {
     tasks,
     adhkarProgress,
     fasts,
+    qadaFastBalances,
     tasbihSessions,
     bookmarks,
     quranReads,
@@ -5916,6 +6328,10 @@ typedef $$TasksTableCreateCompanionBuilder =
       required String title,
       required String date,
       required TaskWindow window,
+      Value<TaskArea> area,
+      Value<TaskPriority> priority,
+      Value<int?> plannedMinute,
+      Value<String?> note,
       Value<bool> done,
       Value<DateTime?> doneAt,
       Value<int> sortOrder,
@@ -5926,6 +6342,10 @@ typedef $$TasksTableUpdateCompanionBuilder =
       Value<String> title,
       Value<String> date,
       Value<TaskWindow> window,
+      Value<TaskArea> area,
+      Value<TaskPriority> priority,
+      Value<int?> plannedMinute,
+      Value<String?> note,
       Value<bool> done,
       Value<DateTime?> doneAt,
       Value<int> sortOrder,
@@ -5959,6 +6379,28 @@ class $$TasksTableFilterComposer extends Composer<_$AppDatabase, $TasksTable> {
         column: $table.window,
         builder: (column) => ColumnWithTypeConverterFilters(column),
       );
+
+  ColumnWithTypeConverterFilters<TaskArea, TaskArea, String> get area =>
+      $composableBuilder(
+        column: $table.area,
+        builder: (column) => ColumnWithTypeConverterFilters(column),
+      );
+
+  ColumnWithTypeConverterFilters<TaskPriority, TaskPriority, String>
+  get priority => $composableBuilder(
+    column: $table.priority,
+    builder: (column) => ColumnWithTypeConverterFilters(column),
+  );
+
+  ColumnFilters<int> get plannedMinute => $composableBuilder(
+    column: $table.plannedMinute,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get note => $composableBuilder(
+    column: $table.note,
+    builder: (column) => ColumnFilters(column),
+  );
 
   ColumnFilters<bool> get done => $composableBuilder(
     column: $table.done,
@@ -6005,6 +6447,26 @@ class $$TasksTableOrderingComposer
     builder: (column) => ColumnOrderings(column),
   );
 
+  ColumnOrderings<String> get area => $composableBuilder(
+    column: $table.area,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get priority => $composableBuilder(
+    column: $table.priority,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get plannedMinute => $composableBuilder(
+    column: $table.plannedMinute,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get note => $composableBuilder(
+    column: $table.note,
+    builder: (column) => ColumnOrderings(column),
+  );
+
   ColumnOrderings<bool> get done => $composableBuilder(
     column: $table.done,
     builder: (column) => ColumnOrderings(column),
@@ -6041,6 +6503,20 @@ class $$TasksTableAnnotationComposer
 
   GeneratedColumnWithTypeConverter<TaskWindow, String> get window =>
       $composableBuilder(column: $table.window, builder: (column) => column);
+
+  GeneratedColumnWithTypeConverter<TaskArea, String> get area =>
+      $composableBuilder(column: $table.area, builder: (column) => column);
+
+  GeneratedColumnWithTypeConverter<TaskPriority, String> get priority =>
+      $composableBuilder(column: $table.priority, builder: (column) => column);
+
+  GeneratedColumn<int> get plannedMinute => $composableBuilder(
+    column: $table.plannedMinute,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get note =>
+      $composableBuilder(column: $table.note, builder: (column) => column);
 
   GeneratedColumn<bool> get done =>
       $composableBuilder(column: $table.done, builder: (column) => column);
@@ -6084,6 +6560,10 @@ class $$TasksTableTableManager
                 Value<String> title = const Value.absent(),
                 Value<String> date = const Value.absent(),
                 Value<TaskWindow> window = const Value.absent(),
+                Value<TaskArea> area = const Value.absent(),
+                Value<TaskPriority> priority = const Value.absent(),
+                Value<int?> plannedMinute = const Value.absent(),
+                Value<String?> note = const Value.absent(),
                 Value<bool> done = const Value.absent(),
                 Value<DateTime?> doneAt = const Value.absent(),
                 Value<int> sortOrder = const Value.absent(),
@@ -6092,6 +6572,10 @@ class $$TasksTableTableManager
                 title: title,
                 date: date,
                 window: window,
+                area: area,
+                priority: priority,
+                plannedMinute: plannedMinute,
+                note: note,
                 done: done,
                 doneAt: doneAt,
                 sortOrder: sortOrder,
@@ -6102,6 +6586,10 @@ class $$TasksTableTableManager
                 required String title,
                 required String date,
                 required TaskWindow window,
+                Value<TaskArea> area = const Value.absent(),
+                Value<TaskPriority> priority = const Value.absent(),
+                Value<int?> plannedMinute = const Value.absent(),
+                Value<String?> note = const Value.absent(),
                 Value<bool> done = const Value.absent(),
                 Value<DateTime?> doneAt = const Value.absent(),
                 Value<int> sortOrder = const Value.absent(),
@@ -6110,6 +6598,10 @@ class $$TasksTableTableManager
                 title: title,
                 date: date,
                 window: window,
+                area: area,
+                priority: priority,
+                plannedMinute: plannedMinute,
+                note: note,
                 done: done,
                 doneAt: doneAt,
                 sortOrder: sortOrder,
@@ -6506,6 +6998,157 @@ typedef $$FastsTableProcessedTableManager =
       $$FastsTableUpdateCompanionBuilder,
       (FastRow, BaseReferences<_$AppDatabase, $FastsTable, FastRow>),
       FastRow,
+      PrefetchHooks Function()
+    >;
+typedef $$QadaFastBalancesTableCreateCompanionBuilder =
+    QadaFastBalancesCompanion Function({Value<int> id, Value<int> adjustment});
+typedef $$QadaFastBalancesTableUpdateCompanionBuilder =
+    QadaFastBalancesCompanion Function({Value<int> id, Value<int> adjustment});
+
+class $$QadaFastBalancesTableFilterComposer
+    extends Composer<_$AppDatabase, $QadaFastBalancesTable> {
+  $$QadaFastBalancesTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<int> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get adjustment => $composableBuilder(
+    column: $table.adjustment,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$QadaFastBalancesTableOrderingComposer
+    extends Composer<_$AppDatabase, $QadaFastBalancesTable> {
+  $$QadaFastBalancesTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<int> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get adjustment => $composableBuilder(
+    column: $table.adjustment,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$QadaFastBalancesTableAnnotationComposer
+    extends Composer<_$AppDatabase, $QadaFastBalancesTable> {
+  $$QadaFastBalancesTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<int> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<int> get adjustment => $composableBuilder(
+    column: $table.adjustment,
+    builder: (column) => column,
+  );
+}
+
+class $$QadaFastBalancesTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $QadaFastBalancesTable,
+          QadaFastBalanceRow,
+          $$QadaFastBalancesTableFilterComposer,
+          $$QadaFastBalancesTableOrderingComposer,
+          $$QadaFastBalancesTableAnnotationComposer,
+          $$QadaFastBalancesTableCreateCompanionBuilder,
+          $$QadaFastBalancesTableUpdateCompanionBuilder,
+          (
+            QadaFastBalanceRow,
+            BaseReferences<
+              _$AppDatabase,
+              $QadaFastBalancesTable,
+              QadaFastBalanceRow
+            >,
+          ),
+          QadaFastBalanceRow,
+          PrefetchHooks Function()
+        > {
+  $$QadaFastBalancesTableTableManager(
+    _$AppDatabase db,
+    $QadaFastBalancesTable table,
+  ) : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$QadaFastBalancesTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$QadaFastBalancesTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$QadaFastBalancesTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<int> id = const Value.absent(),
+                Value<int> adjustment = const Value.absent(),
+              }) => QadaFastBalancesCompanion(id: id, adjustment: adjustment),
+          createCompanionCallback:
+              ({
+                Value<int> id = const Value.absent(),
+                Value<int> adjustment = const Value.absent(),
+              }) => QadaFastBalancesCompanion.insert(
+                id: id,
+                adjustment: adjustment,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable<$QadaFastBalancesTable, QadaFastBalanceRow>(
+                    table,
+                  ),
+                  BaseReferences<
+                    _$AppDatabase,
+                    $QadaFastBalancesTable,
+                    QadaFastBalanceRow
+                  >(db, table, e),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$QadaFastBalancesTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $QadaFastBalancesTable,
+      QadaFastBalanceRow,
+      $$QadaFastBalancesTableFilterComposer,
+      $$QadaFastBalancesTableOrderingComposer,
+      $$QadaFastBalancesTableAnnotationComposer,
+      $$QadaFastBalancesTableCreateCompanionBuilder,
+      $$QadaFastBalancesTableUpdateCompanionBuilder,
+      (
+        QadaFastBalanceRow,
+        BaseReferences<
+          _$AppDatabase,
+          $QadaFastBalancesTable,
+          QadaFastBalanceRow
+        >,
+      ),
+      QadaFastBalanceRow,
       PrefetchHooks Function()
     >;
 typedef $$TasbihSessionsTableCreateCompanionBuilder =
@@ -7859,6 +8502,8 @@ class $AppDatabaseManager {
       $$AdhkarProgressTableTableManager(_db, _db.adhkarProgress);
   $$FastsTableTableManager get fasts =>
       $$FastsTableTableManager(_db, _db.fasts);
+  $$QadaFastBalancesTableTableManager get qadaFastBalances =>
+      $$QadaFastBalancesTableTableManager(_db, _db.qadaFastBalances);
   $$TasbihSessionsTableTableManager get tasbihSessions =>
       $$TasbihSessionsTableTableManager(_db, _db.tasbihSessions);
   $$BookmarksTableTableManager get bookmarks =>

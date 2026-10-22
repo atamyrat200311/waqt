@@ -151,7 +151,7 @@ progress .2–.25s. App rule: keep UI transitions 150–300 ms, honour reduced m
 
 Dates are stored as **`yyyy-MM-dd` text** (`DayKey`) — see conflicts.
 
-- `prayer_logs`: id, date, prayer (fajr…isha), status (onTime, congregation, late, missed, excused), markedAt. UNIQUE(date, prayer).
+- `prayer_logs`: id, date, prayer (fajr…isha + separately tracked witr), status (onTime, congregation, late, missed, excused), markedAt. UNIQUE(date, prayer).
 - `qada_counts`: prayer PK, remaining ≥ 0.
 - `qada_events`: id, prayer, delta (+1/−1), source (missedMarked, manualAdd, madeUp), createdAt.
 - `expenses`: id, amountMinor INTEGER, currency (default TMT), category (groceries, transport, food, bills, sadaqa, other), customCategory?, note?, occurredAt. User-defined category names are kept in settings and each expense stores its selected custom name.
@@ -173,6 +173,10 @@ adhkar reminders, suhoor/iftar reminders.
 
 - Prayer windows: Fajr→Sunrise, Dhuhr→Asr, Asr→Maghrib, Maghrib→Isha, Isha→next Fajr. Between
   sunrise and Dhuhr there is no current window.
+- Witr is an independent tracker/qada balance whose window is Isha→next Fajr. It is not a sixth
+  prayer time and does not affect five-prayer streaks, completion scores, alerts, or timetable widgets.
+- iOS 16.1+ starts/updates a Live Activity while the app runs. ActivityKit keeps the next-prayer
+  countdown live on the Lock Screen and Dynamic Island while Flutter is suspended.
 - Times are computed in UTC with `PrayerTimes.utc` and converted to the location's IANA tz with
   the `timezone` package, so a manual city in another zone shows that city's local times.
 - Unmarked prayers are never auto-added to qada. A gentle card on Home lists yesterday's unmarked prayers.
@@ -226,6 +230,10 @@ adhkar reminders, suhoor/iftar reminders.
       Bukhari/Muslim texts were cross-checked against the bundled data.
 - [ ] Hadith numbering in dua `source` fields uses sunnah.com numbering; the bundled hadith files
       number differently (e.g. istikhara Bukhari 1162 vs 1166) — don't deep-link by number.
+- [ ] Apple Watch on a device: enable Developer Mode on the watch (Settings ▸ Privacy & Security), open Xcode ▸
+      Devices once so it registers the watch with team QGWL53YZV9, then rebuild — until then the watch app's
+      development profile lists only the iPhone and the watch refuses to install it.
+- [ ] Review the tk watch strings (`watch*` keys, flagged "?").
 - [ ] Android: `flutter build apk` after the super-app release (new plugins: share_plus, wakelock_plus,
       file_picker) — dl.google.com was still blocked in this environment.
 
@@ -420,6 +428,46 @@ the day: English = Nawawi + Qudsi, Turkish = Nawawi, Russian/Turkmen = `assets/h
 Screenshots: `WAQT_SCREENSHOTS=1 flutter test test/screenshots` (now incl. `full_*` long
 pages and a `review_*` set in tk/ru). `shoot(..., height:, preload:)` helpers.
 
+## iOS feel + Apple Watch (phase 11)
+
+iOS gestures/chrome:
+- `core/platform/swipe_back.dart`: `FullSwipeBackPageTransitionsBuilder` (iOS in `app_theme.dart`) — iOS 26
+  back swipe from anywhere on a pushed page. Leading 24 pt edge always wins; inside the page any
+  horizontal scroller/PageView/slider/Dismissible below the finger wins (arena order); leftward drags
+  are never claimed. Tests: `test/swipe_back_test.dart` (use flings — the test screen is 800 px wide).
+- `SubScreen` (iOS): pinned 44 pt bar (back link stays), frosted + hairline once content scrolls,
+  inline title fades in as the large title leaves; `PressFade` = UIKit highlight for text buttons;
+  scroll views dismiss the keyboard on drag. Screenshot: `settings_scrolled_ios`.
+- Tab re-tap: pops to root, or at root scrolls to top (`scrollPrimaryToTop`, `branchNavigatorKeys`
+  in app_router.dart). Status-bar tap works through each screen's Scaffold + primary controller —
+  don't give tab-root scroll views explicit controllers.
+- Home Screen quick actions: `features/shortcuts/application/quick_actions.dart` ↔
+  `ios/Runner/QuickActions.swift` (`FlutterSceneLifeCycleDelegate`, channel `tm.ofis.waqt/quick_actions`):
+  mark the open prayer, continue Quran, Qibla, morning/evening adhkar (evening from Asr).
+
+Apple Watch (watchOS 10+, SwiftUI, no extra packages):
+- Targets added by `tool/ios/add_watch_targets.rb` (idempotent, same GEM_HOME as the widget script):
+  `WaqtWatch` (`tm.ofis.waqt.watchkitapp`, embedded via "Embed Watch Content") and `WaqtWatchWidgets`
+  (`tm.ofis.waqt.watchkitapp.widgets`). `SUPPORTED_PLATFORMS` must be set on them (Flutter's project
+  Release/Profile pin iphoneos). Flutter detects the companion from `ios/WaqtWatch/Info.plist`
+  (`WKCompanionAppBundleIdentifier`); simulator builds then need `-d <device id>`.
+- Shared Swift: `ios/Shared/WaqtTimes.swift` (payload + `Snapshot`, also used by the iPhone widget),
+  `ios/WatchShared/WatchData.swift` (overrides, colours, symbols). adhkar.json and Amiri are bundled
+  straight from `assets/`.
+- Data: Dart `buildWatchPayload` (`features/watch/domain/watch_payload.dart`) = widget payload for 30
+  days + `lang`, `qibla`, `streak`, today's adhkar counts and `w` strings (app language — Turkmen is not
+  an iOS language). `watchSyncProvider` sends it over `tm.ofis.waqt/watch` → `ios/Runner/WatchBridge.swift`
+  → `updateApplicationContext`. Watch events (`mark` onTime/congregation/late/clear, `tasbih`, `adhkar`)
+  come back by `sendMessage` (wakes the phone) or `transferUserInfo`, are queued natively (deduped),
+  drained by Dart and applied through the repositories; `ack` (newest drained `at`) lets the watch drop
+  its pending marks. Missed/excused are phone-only (qada confirmation).
+- Watch UI: home (next-prayer hero with live countdown/progress, today's rows with shape-coded marks,
+  mark sheet, prayed x/5 + streak), tasbih (tap, Digital Crown, Double Tap on watchOS 11+, haptics,
+  33·33·34 or single dhikr ×100, sessions go to the phone), Qibla (magnetometer, haptic on alignment,
+  bearing text without a compass), adhkar (vertical pages, counters synced), timetable (7 days).
+- Complications: next prayer (circular/rectangular/inline/corner, live timers, Smart Stack relevance),
+  today x/5, Tasbih and Qibla launchers (`waqtwatch://tasbih|qibla`).
+
 ## Phase checklist
 
 - [x] 1. Project setup, theme, fonts, l10n, router with adaptive 3-tab shell (APK builds; iOS config written, not built — no Xcode here)
@@ -432,3 +480,4 @@ pages and a `review_*` set in tk/ru). `shoot(..., height:, preload:)` helpers.
 - [x] 8. Widgets (iOS + Android) + polish — code written; Android/iOS builds not run here (see TODOs)
 - [x] 9. Super app: fonts, 5 tabs + liquid glass, Quran, hadith, library, zakat, timetable, habits, backup
 - [x] 10. Multi-agent UX review (everyday user, Quran reader, designer) and fixes; Ramadan 30; fasting qada
+- [x] 11. iOS native feel (full swipe back, pinned nav bar, tab re-tap, quick actions) + Apple Watch app & complications

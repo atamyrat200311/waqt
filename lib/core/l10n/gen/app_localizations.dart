@@ -300,6 +300,18 @@ abstract class AppLocalizations {
   /// **'Isha'**
   String get prayerIsha;
 
+  /// No description provided for @prayerWitr.
+  ///
+  /// In en, this message translates to:
+  /// **'Witr'**
+  String get prayerWitr;
+
+  /// No description provided for @witrSeparateHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Tracked separately after Isha'**
+  String get witrSeparateHint;
+
   /// No description provided for @weekdayName.
   ///
   /// In en, this message translates to:
@@ -753,8 +765,38 @@ abstract class AppLocalizations {
   /// Two lines next to the huge qada number.
   ///
   /// In en, this message translates to:
-  /// **'prayers left\nto make up'**
+  /// **'prayers left to make up'**
   String get qadaLeft;
+
+  /// No description provided for @qadaEditBalances.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit remaining counts'**
+  String get qadaEditBalances;
+
+  /// No description provided for @qadaEditBalancesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Remaining qada'**
+  String get qadaEditBalancesTitle;
+
+  /// No description provided for @qadaEditBalancesBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the exact number remaining for each prayer. These values replace the current counts.'**
+  String get qadaEditBalancesBody;
+
+  /// No description provided for @qadaSaveBalances.
+  ///
+  /// In en, this message translates to:
+  /// **'Save remaining counts'**
+  String get qadaSaveBalances;
+
+  /// No description provided for @qadaBalancesSaved.
+  ///
+  /// In en, this message translates to:
+  /// **'Remaining counts updated'**
+  String get qadaBalancesSaved;
 
   /// No description provided for @qadaMadeUpSince.
   ///
@@ -821,6 +863,168 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'No qada recorded. If you have older missed prayers, add them here.'**
   String get qadaEmpty;
+
+  /// No description provided for @qadaTabPrayers.
+  ///
+  /// In en, this message translates to:
+  /// **'Prayers'**
+  String get qadaTabPrayers;
+
+  /// No description provided for @qadaTabFasts.
+  ///
+  /// In en, this message translates to:
+  /// **'Fasting'**
+  String get qadaTabFasts;
+
+  /// No description provided for @qadaLastMadeUp.
+  ///
+  /// In en, this message translates to:
+  /// **'Last made up: {time}'**
+  String qadaLastMadeUp(String time);
+
+  /// No description provided for @qadaLastUpdated.
+  ///
+  /// In en, this message translates to:
+  /// **'Last change: {time}'**
+  String qadaLastUpdated(String time);
+
+  /// No description provided for @qadaDaysAgoWarning.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 day without a qada prayer} other{{count} days without a qada prayer}}'**
+  String qadaDaysAgoWarning(int count);
+
+  /// No description provided for @qadaFastDaysAgoWarning.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 day without a make-up fast} other{{count} days without a make-up fast}}'**
+  String qadaFastDaysAgoWarning(int count);
+
+  /// No description provided for @qadaDaysAgoHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Pair one with your next prayer today.'**
+  String get qadaDaysAgoHint;
+
+  /// No description provided for @qadaFastDaysAgoHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Plan a fast for Monday or Thursday.'**
+  String get qadaFastDaysAgoHint;
+
+  /// No description provided for @qadaTodayMadeUp.
+  ///
+  /// In en, this message translates to:
+  /// **'Made up today'**
+  String get qadaTodayMadeUp;
+
+  /// No description provided for @qadaYesterdayMadeUp.
+  ///
+  /// In en, this message translates to:
+  /// **'Made up yesterday'**
+  String get qadaYesterdayMadeUp;
+
+  /// No description provided for @qadaTimeAgoDays.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 day ago} other{{count} days ago}}'**
+  String qadaTimeAgoDays(int count);
+
+  /// No description provided for @qadaNoActivityYet.
+  ///
+  /// In en, this message translates to:
+  /// **'No qada made up yet — start with Bismillah!'**
+  String get qadaNoActivityYet;
+
+  /// No description provided for @qadaFastsLeft.
+  ///
+  /// In en, this message translates to:
+  /// **'fasting days left to make up'**
+  String get qadaFastsLeft;
+
+  /// No description provided for @qadaFastsMadeUpSince.
+  ///
+  /// In en, this message translates to:
+  /// **'You\'ve made up {count} fasts since you started'**
+  String qadaFastsMadeUpSince(String count);
+
+  /// No description provided for @qadaEditFastBalancesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Remaining fasts'**
+  String get qadaEditFastBalancesTitle;
+
+  /// No description provided for @qadaEditFastBalancesBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the exact number of missed fasting days remaining. This replaces your current balance.'**
+  String get qadaEditFastBalancesBody;
+
+  /// No description provided for @qadaAddOlderFastsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Older missed fasts'**
+  String get qadaAddOlderFastsTitle;
+
+  /// No description provided for @qadaAddOlderFastsBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter how many fasting days you owe from previous years. They are added to your balance.'**
+  String get qadaAddOlderFastsBody;
+
+  /// No description provided for @qadaAddOlderFasts.
+  ///
+  /// In en, this message translates to:
+  /// **'Add older missed fasts'**
+  String get qadaAddOlderFasts;
+
+  /// No description provided for @qadaAddFastCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =0{Add fasts} other{Add {count} days to fasts}}'**
+  String qadaAddFastCount(int count);
+
+  /// No description provided for @qadaFastTip.
+  ///
+  /// In en, this message translates to:
+  /// **'Fasting on Mondays and Thursdays is Sunnah. Pairing make-up fasts with them brings great reward.'**
+  String get qadaFastTip;
+
+  /// No description provided for @qadaLogFastMadeUp.
+  ///
+  /// In en, this message translates to:
+  /// **'I fasted a make-up day'**
+  String get qadaLogFastMadeUp;
+
+  /// No description provided for @qadaFastMadeUpSnack.
+  ///
+  /// In en, this message translates to:
+  /// **'1 make-up fast recorded'**
+  String get qadaFastMadeUpSnack;
+
+  /// No description provided for @qadaFastUndoneSnack.
+  ///
+  /// In en, this message translates to:
+  /// **'Make-up fast removed'**
+  String get qadaFastUndoneSnack;
+
+  /// No description provided for @qadaFastLoggedToday.
+  ///
+  /// In en, this message translates to:
+  /// **'Fasted today (qada)'**
+  String get qadaFastLoggedToday;
+
+  /// No description provided for @qadaRamadanMonth.
+  ///
+  /// In en, this message translates to:
+  /// **'1 Ramadan (30 days)'**
+  String get qadaRamadanMonth;
+
+  /// No description provided for @qadaRamadanTwoMonths.
+  ///
+  /// In en, this message translates to:
+  /// **'2 Ramadans (60 days)'**
+  String get qadaRamadanTwoMonths;
 
   /// No description provided for @expenseAdd.
   ///
@@ -933,7 +1137,7 @@ abstract class AppLocalizations {
   /// No description provided for @tasksTitle.
   ///
   /// In en, this message translates to:
-  /// **'Tasks'**
+  /// **'Daily plan'**
   String get tasksTitle;
 
   /// No description provided for @tasksDoneOf.
@@ -953,6 +1157,150 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Add task'**
   String get tasksAddA11y;
+
+  /// No description provided for @tasksAll.
+  ///
+  /// In en, this message translates to:
+  /// **'All'**
+  String get tasksAll;
+
+  /// No description provided for @tasksDunya.
+  ///
+  /// In en, this message translates to:
+  /// **'Worldly'**
+  String get tasksDunya;
+
+  /// No description provided for @tasksAkhirah.
+  ///
+  /// In en, this message translates to:
+  /// **'Hereafter'**
+  String get tasksAkhirah;
+
+  /// No description provided for @tasksBalanceTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Balance your day'**
+  String get tasksBalanceTitle;
+
+  /// No description provided for @tasksBalanceBody.
+  ///
+  /// In en, this message translates to:
+  /// **'See worldly responsibilities and deeds for the hereafter in one plan.'**
+  String get tasksBalanceBody;
+
+  /// No description provided for @tasksProgress.
+  ///
+  /// In en, this message translates to:
+  /// **'{done} of {total} complete'**
+  String tasksProgress(String done, String total);
+
+  /// No description provided for @tasksHighPriority.
+  ///
+  /// In en, this message translates to:
+  /// **'Important'**
+  String get tasksHighPriority;
+
+  /// No description provided for @tasksNormalPriority.
+  ///
+  /// In en, this message translates to:
+  /// **'Normal'**
+  String get tasksNormalPriority;
+
+  /// No description provided for @tasksPlanDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'Plan details'**
+  String get tasksPlanDetails;
+
+  /// No description provided for @tasksNewTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Plan a task'**
+  String get tasksNewTitle;
+
+  /// No description provided for @tasksEditTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit task'**
+  String get tasksEditTitle;
+
+  /// No description provided for @tasksTitleHint.
+  ///
+  /// In en, this message translates to:
+  /// **'What do you want to do?'**
+  String get tasksTitleHint;
+
+  /// No description provided for @tasksAreaLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Intention'**
+  String get tasksAreaLabel;
+
+  /// No description provided for @tasksPriorityLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Priority'**
+  String get tasksPriorityLabel;
+
+  /// No description provided for @tasksDateLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Day'**
+  String get tasksDateLabel;
+
+  /// No description provided for @tasksWindowLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Prayer window'**
+  String get tasksWindowLabel;
+
+  /// No description provided for @tasksTimeLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Exact time (optional)'**
+  String get tasksTimeLabel;
+
+  /// No description provided for @tasksNoTime.
+  ///
+  /// In en, this message translates to:
+  /// **'No exact time'**
+  String get tasksNoTime;
+
+  /// No description provided for @tasksClearTime.
+  ///
+  /// In en, this message translates to:
+  /// **'Clear time'**
+  String get tasksClearTime;
+
+  /// No description provided for @tasksNoteHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Notes (optional)'**
+  String get tasksNoteHint;
+
+  /// No description provided for @tasksPreviousDay.
+  ///
+  /// In en, this message translates to:
+  /// **'Previous day'**
+  String get tasksPreviousDay;
+
+  /// No description provided for @tasksNextDay.
+  ///
+  /// In en, this message translates to:
+  /// **'Next day'**
+  String get tasksNextDay;
+
+  /// No description provided for @tasksChooseDay.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose day'**
+  String get tasksChooseDay;
+
+  /// No description provided for @tasksFilteredEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No tasks in this part of the plan.'**
+  String get tasksFilteredEmpty;
 
   /// No description provided for @winBeforeFajr.
   ///
@@ -1035,7 +1383,7 @@ abstract class AppLocalizations {
   /// No description provided for @tasksEmpty.
   ///
   /// In en, this message translates to:
-  /// **'Nothing planned yet. Add a task to a prayer window.'**
+  /// **'Your day is open. Add a worldly responsibility or a deed for the hereafter.'**
   String get tasksEmpty;
 
   /// No description provided for @tasksDeleted.
@@ -4211,6 +4559,48 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Plan something around a prayer'**
   String get tasksAddFirst;
+
+  /// No description provided for @watchPrayedOf.
+  ///
+  /// In en, this message translates to:
+  /// **'{done} of {total} prayed'**
+  String watchPrayedOf(String done, String total);
+
+  /// No description provided for @watchStreak.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, one{{count}-day streak} other{{count}-day streak}}'**
+  String watchStreak(int count);
+
+  /// No description provided for @watchTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Apple Watch'**
+  String get watchTitle;
+
+  /// No description provided for @watchHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'Install Waqt on your watch from the Watch app on iPhone (My Watch ▸ Available Apps). Thirty days of prayer times, your marks, tasbih and adhkar stay in sync, and a Waqt complication fits any watch face.'**
+  String get watchHelp;
+
+  /// No description provided for @watchStatusReady.
+  ///
+  /// In en, this message translates to:
+  /// **'Installed and syncing'**
+  String get watchStatusReady;
+
+  /// No description provided for @watchStatusNotInstalled.
+  ///
+  /// In en, this message translates to:
+  /// **'Paired, Waqt not installed on the watch yet'**
+  String get watchStatusNotInstalled;
+
+  /// No description provided for @watchDhikrFree.
+  ///
+  /// In en, this message translates to:
+  /// **'Single dhikr · 100'**
+  String get watchDhikrFree;
 }
 
 class _AppLocalizationsDelegate

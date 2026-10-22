@@ -43,6 +43,8 @@
   "prayerAsr": "Asr",
   "prayerMaghrib": "Maghrib",
   "prayerIsha": "Isha",
+  "prayerWitr": "Witr",
+  "witrSeparateHint": "Tracked separately after Isha",
   "weekdayName": "{day, select, mon{Monday} tue{Tuesday} wed{Wednesday} thu{Thursday} fri{Friday} sat{Saturday} other{Sunday}}",
   "@weekdayName": {
     "placeholders": {
@@ -404,10 +406,15 @@
   "markClear": "Clear mark",
   "markNotStarted": "This prayer's time hasn't started yet.",
   "qadaTitle": "Qada",
-  "qadaLeft": "prayers left\nto make up",
+  "qadaLeft": "prayers left to make up",
   "@qadaLeft": {
     "description": "Two lines next to the huge qada number."
   },
+  "qadaEditBalances": "Edit remaining counts",
+  "qadaEditBalancesTitle": "Remaining qada",
+  "qadaEditBalancesBody": "Enter the exact number remaining for each prayer. These values replace the current counts.",
+  "qadaSaveBalances": "Save remaining counts",
+  "qadaBalancesSaved": "Remaining counts updated",
   "qadaMadeUpSince": "You've made up {count} since you started",
   "@qadaMadeUpSince": {
     "placeholders": {
@@ -440,6 +447,82 @@
     }
   },
   "qadaEmpty": "No qada recorded. If you have older missed prayers, add them here.",
+  "qadaTabPrayers": "Prayers",
+  "qadaTabFasts": "Fasting",
+  "qadaLastMadeUp": "Last made up: {time}",
+  "@qadaLastMadeUp": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "qadaLastUpdated": "Last change: {time}",
+  "@qadaLastUpdated": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "qadaDaysAgoWarning": "{count, plural, =1{1 day without a qada prayer} other{{count} days without a qada prayer}}",
+  "@qadaDaysAgoWarning": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "qadaFastDaysAgoWarning": "{count, plural, =1{1 day without a make-up fast} other{{count} days without a make-up fast}}",
+  "@qadaFastDaysAgoWarning": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "qadaDaysAgoHint": "Pair one with your next prayer today.",
+  "qadaFastDaysAgoHint": "Plan a fast for Monday or Thursday.",
+  "qadaTodayMadeUp": "Made up today",
+  "qadaYesterdayMadeUp": "Made up yesterday",
+  "qadaTimeAgoDays": "{count, plural, =1{1 day ago} other{{count} days ago}}",
+  "@qadaTimeAgoDays": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "qadaNoActivityYet": "No qada made up yet — start with Bismillah!",
+  "qadaFastsLeft": "fasting days left to make up",
+  "qadaFastsMadeUpSince": "You've made up {count} fasts since you started",
+  "@qadaFastsMadeUpSince": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "qadaEditFastBalancesTitle": "Remaining fasts",
+  "qadaEditFastBalancesBody": "Enter the exact number of missed fasting days remaining. This replaces your current balance.",
+  "qadaAddOlderFastsTitle": "Older missed fasts",
+  "qadaAddOlderFastsBody": "Enter how many fasting days you owe from previous years. They are added to your balance.",
+  "qadaAddOlderFasts": "Add older missed fasts",
+  "qadaAddFastCount": "{count, plural, =0{Add fasts} other{Add {count} days to fasts}}",
+  "@qadaAddFastCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "qadaFastTip": "Fasting on Mondays and Thursdays is Sunnah. Pairing make-up fasts with them brings great reward.",
+  "qadaLogFastMadeUp": "I fasted a make-up day",
+  "qadaFastMadeUpSnack": "1 make-up fast recorded",
+  "qadaFastUndoneSnack": "Make-up fast removed",
+  "qadaFastLoggedToday": "Fasted today (qada)",
+  "qadaRamadanMonth": "1 Ramadan (30 days)",
+  "qadaRamadanTwoMonths": "2 Ramadans (60 days)",
   "expenseAdd": "Add expense",
   "expenseAddNote": "Add a note",
   "expenseNoteHint": "Note",
@@ -478,7 +561,7 @@
   "expenseSaved": "Saved",
   "expenseTodayList": "Today's entries",
   "expenseDeleted": "Expense deleted",
-  "tasksTitle": "Tasks",
+  "tasksTitle": "Daily plan",
   "tasksDoneOf": "{done} of {total} done",
   "@tasksDoneOf": {
     "placeholders": {
@@ -492,6 +575,40 @@
   },
   "tasksAddHint": "Add a task…",
   "tasksAddA11y": "Add task",
+  "tasksAll": "All",
+  "tasksDunya": "Worldly",
+  "tasksAkhirah": "Hereafter",
+  "tasksBalanceTitle": "Balance your day",
+  "tasksBalanceBody": "See worldly responsibilities and deeds for the hereafter in one plan.",
+  "tasksProgress": "{done} of {total} complete",
+  "@tasksProgress": {
+    "placeholders": {
+      "done": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      }
+    }
+  },
+  "tasksHighPriority": "Important",
+  "tasksNormalPriority": "Normal",
+  "tasksPlanDetails": "Plan details",
+  "tasksNewTitle": "Plan a task",
+  "tasksEditTitle": "Edit task",
+  "tasksTitleHint": "What do you want to do?",
+  "tasksAreaLabel": "Intention",
+  "tasksPriorityLabel": "Priority",
+  "tasksDateLabel": "Day",
+  "tasksWindowLabel": "Prayer window",
+  "tasksTimeLabel": "Exact time (optional)",
+  "tasksNoTime": "No exact time",
+  "tasksClearTime": "Clear time",
+  "tasksNoteHint": "Notes (optional)",
+  "tasksPreviousDay": "Previous day",
+  "tasksNextDay": "Next day",
+  "tasksChooseDay": "Choose day",
+  "tasksFilteredEmpty": "No tasks in this part of the plan.",
   "winBeforeFajr": "Before Fajr",
   "winAfterFajr": "After Fajr",
   "winBeforeDhuhr": "Before Dhuhr",
@@ -536,7 +653,7 @@
     }
   },
   "tasksMoveToday": "Move to today",
-  "tasksEmpty": "Nothing planned yet. Add a task to a prayer window.",
+  "tasksEmpty": "Your day is open. Add a worldly responsibility or a deed for the hereafter.",
   "tasksDeleted": "Task deleted",
   "tasksAllDone": "All done for today",
   "adhkarMorning": "Morning adhkar",
@@ -1669,5 +1786,29 @@
   "chipUpcoming": "upcoming",
   "chipMissed": "missed, in qada",
   "chipExcused": "excused",
-  "tasksAddFirst": "Plan something around a prayer"
+  "tasksAddFirst": "Plan something around a prayer",
+  "watchPrayedOf": "{done} of {total} prayed",
+  "@watchPrayedOf": {
+    "placeholders": {
+      "done": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      }
+    }
+  },
+  "watchStreak": "{count, plural, one{{count}-day streak} other{{count}-day streak}}",
+  "@watchStreak": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "watchTitle": "Apple Watch",
+  "watchHelp": "Install Waqt on your watch from the Watch app on iPhone (My Watch ▸ Available Apps). Thirty days of prayer times, your marks, tasbih and adhkar stay in sync, and a Waqt complication fits any watch face.",
+  "watchStatusReady": "Installed and syncing",
+  "watchStatusNotInstalled": "Paired, Waqt not installed on the watch yet",
+  "watchDhikrFree": "Single dhikr · 100"
 }

@@ -13,6 +13,9 @@ import 'features/notifications/application/notification_scheduler.dart';
 import 'features/notifications/application/notification_taps.dart';
 import 'features/prayer/application/period_mode_sync.dart';
 import 'features/quran/domain/quran.dart';
+import 'features/shortcuts/application/quick_actions.dart';
+import 'features/watch/application/watch_sync.dart';
+import 'features/widgets/application/live_activity_sync.dart';
 import 'features/widgets/application/widget_sync.dart';
 
 class WaqtApp extends ConsumerWidget {
@@ -25,6 +28,9 @@ class WaqtApp extends ConsumerWidget {
     ref.watch(periodModeSyncProvider);
     ref.watch(notificationTapRouterProvider);
     ref.watch(widgetSyncProvider);
+    ref.watch(liveActivitySyncProvider);
+    ref.watch(watchSyncProvider);
+    ref.watch(quickActionsProvider);
     final router = ref.watch(appRouterProvider);
     final theme = ref.watch(settingsProvider.select((s) => s.theme));
     final language = ref.watch(settingsProvider.select((s) => s.language));

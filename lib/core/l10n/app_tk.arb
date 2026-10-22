@@ -33,6 +33,8 @@
   "prayerAsr": "Ikindi",
   "prayerMaghrib": "Agşam",
   "prayerIsha": "Ýassy",
+  "prayerWitr": "Witir",
+  "witrSeparateHint": "Ýassydan soň aýratyn bellenýär",
   "weekdayName": "{day, select, mon{Duşenbe} tue{Sişenbe} wed{Çarşenbe} thu{Penşenbe} fri{Anna} sat{Şenbe} other{Ýekşenbe}}",
   "weekdayShort": "{day, select, mon{Duş} tue{Siş} wed{Çar} thu{Pen} fri{Ann} sat{Şen} other{Ýek}}",
   "weekdayInitial": "{day, select, mon{D} tue{S} wed{Ç} thu{P} fri{A} sat{Ş} other{Ý}}",
@@ -144,10 +146,15 @@
     "description": "REVIEW"
   },
   "qadaTitle": "Kaza",
-  "qadaLeft": "kaza edilmeli\nnamaz",
+  "qadaLeft": "kaza edilmeli namaz",
   "@qadaLeft": {
     "description": "REVIEW"
   },
+  "qadaEditBalances": "Galan sanlary üýtget",
+  "qadaEditBalancesTitle": "Galan kaza namazlary",
+  "qadaEditBalancesBody": "Her namaz üçin galan takyk sany giriziň. Bu sanlar häzirki sanlaryň ýerine geçer.",
+  "qadaSaveBalances": "Galan sanlary sakla",
+  "qadaBalancesSaved": "Galan sanlar täzelendi",
   "qadaMadeUpSince": "Başlanyňyzdan bäri {count} kaza etdiňiz",
   "@qadaMadeUpSince": {
     "description": "REVIEW"
@@ -168,6 +175,33 @@
   "@qadaEmpty": {
     "description": "REVIEW"
   },
+  "qadaTabPrayers": "Namaz",
+  "qadaTabFasts": "Oraza",
+  "qadaLastMadeUp": "Soňky kaza: {time}",
+  "qadaLastUpdated": "Soňky üýtgeşme: {time}",
+  "qadaDaysAgoWarning": "{count, plural, other{{count} gün bäri kaza namazy okalmady}}",
+  "qadaFastDaysAgoWarning": "{count, plural, other{{count} gün bäri kaza orazasy tutulmady}}",
+  "qadaDaysAgoHint": "Şu gün bir namaz bilen kaza okaň.",
+  "qadaFastDaysAgoHint": "Duşenbe ýa-da penşenbe gününe oraza meýilleşdiriň.",
+  "qadaTodayMadeUp": "Şu gün kaza edildi",
+  "qadaYesterdayMadeUp": "Düýn kaza edildi",
+  "qadaTimeAgoDays": "{count, plural, other{{count} gün öň}}",
+  "qadaNoActivityYet": "Entek kaza edilmedi — bismillah diýip başlaň!",
+  "qadaFastsLeft": "kaza edilmeli oraza güni",
+  "qadaFastsMadeUpSince": "Başlanyňyzdan bäri {count} oraza kaza etdiňiz",
+  "qadaEditFastBalancesTitle": "Galan kaza orazalary",
+  "qadaEditFastBalancesBody": "Galan kaza oraza günleriniň takyk sanyny giriziň. Bu san häzirki galyndynyň ýerine geçer.",
+  "qadaAddOlderFastsTitle": "Öňki galan orazalar",
+  "qadaAddOlderFastsBody": "Öňki ýyllardan galan oraza günlerini giriziň. Olar häzirki galynda goşular.",
+  "qadaAddOlderFasts": "Öňki galan orazalary goş",
+  "qadaAddFastCount": "{count, plural, =0{Oraza goş} other{{count} gün oraza goş}}",
+  "qadaFastTip": "Duşenbe we penşenbe günleri oraza tutmak sünnetdir. Kaza orazasyny bu günlerde tutmak sogaplydyr.",
+  "qadaLogFastMadeUp": "1 kaza orazasyny tutdum",
+  "qadaFastMadeUpSnack": "1 kaza orazasy bellenildi",
+  "qadaFastUndoneSnack": "Kaza orazasy aýryldy",
+  "qadaFastLoggedToday": "Şu gün kaza tutuldy",
+  "qadaRamadanMonth": "1 Remezan (30 gün)",
+  "qadaRamadanTwoMonths": "2 Remezan (60 gün)",
   "expenseAdd": "Çykdajy goş",
   "expenseAddNote": "Bellik goş",
   "expenseNoteHint": "Bellik",
@@ -189,10 +223,34 @@
   "expenseSaved": "Saklandy",
   "expenseTodayList": "Şu günki ýazgylar",
   "expenseDeleted": "Çykdajy pozuldy",
-  "tasksTitle": "Işler",
+  "tasksTitle": "Günlük meýilnama",
   "tasksDoneOf": "{total} işden {done} taýýar",
   "tasksAddHint": "Iş goş…",
   "tasksAddA11y": "Iş goş",
+  "tasksAll": "Hemmesi",
+  "tasksDunya": "Dünýä",
+  "tasksAkhirah": "Ahyret",
+  "tasksBalanceTitle": "Günüň deňagramlylygy",
+  "tasksBalanceBody": "Dünýä işleri bilen ahyret amallaryny bir meýilnamada görüň.",
+  "tasksProgress": "{total} işden {done} tamam",
+  "tasksHighPriority": "Möhüm",
+  "tasksNormalPriority": "Adaty",
+  "tasksPlanDetails": "Meýilnama maglumatlary",
+  "tasksNewTitle": "Işi meýilleşdir",
+  "tasksEditTitle": "Işi üýtget",
+  "tasksTitleHint": "Näme etmek isleýärsiňiz?",
+  "tasksAreaLabel": "Niýet",
+  "tasksPriorityLabel": "Möhümlik",
+  "tasksDateLabel": "Gün",
+  "tasksWindowLabel": "Namaz aralygy",
+  "tasksTimeLabel": "Takyk wagt (hökmany däl)",
+  "tasksNoTime": "Takyk wagt ýok",
+  "tasksClearTime": "Wagty aýyr",
+  "tasksNoteHint": "Bellik (hökmany däl)",
+  "tasksPreviousDay": "Öňki gün",
+  "tasksNextDay": "Indiki gün",
+  "tasksChooseDay": "Güni saýla",
+  "tasksFilteredEmpty": "Meýilnamanyň bu böleginde iş ýok.",
   "winBeforeFajr": "Ertirden öň",
   "winAfterFajr": "Ertirden soň",
   "winBeforeDhuhr": "Öýläden öň",
@@ -209,10 +267,7 @@
     "description": "REVIEW"
   },
   "tasksMoveToday": "Şu güne geçir",
-  "tasksEmpty": "Entek hiç zat meýilleşdirilmedi. Namaz wagtyna iş goşuň.",
-  "@tasksEmpty": {
-    "description": "REVIEW"
-  },
+  "tasksEmpty": "Günüňiz entek boş. Dünýä jogapkärçiligini ýa-da ahyret amalyny goşuň.",
   "tasksDeleted": "Iş pozuldy",
   "tasksAllDone": "Şu günlük hemmesi taýýar",
   "adhkarMorning": "Ertirki zikirler",
@@ -917,6 +972,31 @@
   "chipExcused": "ötünçli",
   "tasksAddFirst": "Namaz wagtyna bir iş meýilleşdiriň",
   "@tasksAddFirst": {
+    "description": "REVIEW"
+  },
+  "watchPrayedOf": "{done}/{total} okaldy",
+  "@watchPrayedOf": {
+    "description": "REVIEW"
+  },
+  "watchStreak": "{count} gün yzygiderli",
+  "@watchStreak": {
+    "description": "REVIEW"
+  },
+  "watchTitle": "Apple Watch",
+  "watchHelp": "Waqt-y sagadyňyza iPhone-daky Watch programmasyndan guruň (Meniň sagadym ▸ Elýeterli programmalar). Otuz günüň namaz wagtlary, bellikleriňiz, täsbih we zikirler sinhronlaşýar; Waqt ýüzi islendik sagat ýüzüne goşulýar.",
+  "@watchHelp": {
+    "description": "REVIEW"
+  },
+  "watchStatusReady": "Guruldy we sinhronlaşýar",
+  "@watchStatusReady": {
+    "description": "REVIEW"
+  },
+  "watchStatusNotInstalled": "Birikdirildi, Waqt sagatda entek gurulmady",
+  "@watchStatusNotInstalled": {
+    "description": "REVIEW"
+  },
+  "watchDhikrFree": "Ýeke zikir · 100",
+  "@watchDhikrFree": {
     "description": "REVIEW"
   }
 }

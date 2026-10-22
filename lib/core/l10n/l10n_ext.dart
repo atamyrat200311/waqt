@@ -13,7 +13,9 @@ export 'gen/app_localizations.dart';
 String tkOrdinal(int n) {
   final units = n % 10;
   final tens = (n % 100) ~/ 10;
-  final back = units != 0 ? (units == 6 || units == 9) : (tens != 0 && const {1, 3, 4, 6, 9}.contains(tens));
+  final back = units != 0
+      ? (units == 6 || units == 9)
+      : (tens != 0 && const {1, 3, 4, 6, 9}.contains(tens));
   return '$n-${back ? 'njy' : 'nji'}';
 }
 
@@ -25,119 +27,143 @@ extension L10nContext on BuildContext {
 /// switch over enums for strings.
 extension L10nNames on AppLocalizations {
   String prayer(Prayer p) => switch (p) {
-        Prayer.fajr => prayerFajr,
-        Prayer.dhuhr => prayerDhuhr,
-        Prayer.asr => prayerAsr,
-        Prayer.maghrib => prayerMaghrib,
-        Prayer.isha => prayerIsha,
-      };
+    Prayer.fajr => prayerFajr,
+    Prayer.dhuhr => prayerDhuhr,
+    Prayer.asr => prayerAsr,
+    Prayer.maghrib => prayerMaghrib,
+    Prayer.isha => prayerIsha,
+    Prayer.witr => prayerWitr,
+  };
 
   String category(ExpenseCategory c) => switch (c) {
-        ExpenseCategory.groceries => catGroceries,
-        ExpenseCategory.transport => catTransport,
-        ExpenseCategory.food => catFood,
-        ExpenseCategory.bills => catBills,
-        ExpenseCategory.sadaqa => catSadaqa,
-        ExpenseCategory.other => catOther,
-      };
+    ExpenseCategory.groceries => catGroceries,
+    ExpenseCategory.transport => catTransport,
+    ExpenseCategory.food => catFood,
+    ExpenseCategory.bills => catBills,
+    ExpenseCategory.sadaqa => catSadaqa,
+    ExpenseCategory.other => catOther,
+  };
 
   String incomeCategory(IncomeCategory c) => switch (c) {
-        IncomeCategory.salary => catSalary,
-        IncomeCategory.business => catBusiness,
-        IncomeCategory.gift => catGift,
-        IncomeCategory.investment => catInvestment,
-        IncomeCategory.other => catOther,
-      };
+    IncomeCategory.salary => catSalary,
+    IncomeCategory.business => catBusiness,
+    IncomeCategory.gift => catGift,
+    IncomeCategory.investment => catInvestment,
+    IncomeCategory.other => catOther,
+  };
 
   String window(TaskWindow w) => switch (w) {
-        TaskWindow.beforeFajr => winBeforeFajr,
-        TaskWindow.afterFajr => winAfterFajr,
-        TaskWindow.beforeDhuhr => winBeforeDhuhr,
-        TaskWindow.afterDhuhr => winAfterDhuhr,
-        TaskWindow.afterAsr => winAfterAsr,
-        TaskWindow.afterMaghrib => winAfterMaghrib,
-        TaskWindow.afterIsha => winAfterIsha,
-        TaskWindow.anytime => winAnytime,
-      };
+    TaskWindow.beforeFajr => winBeforeFajr,
+    TaskWindow.afterFajr => winAfterFajr,
+    TaskWindow.beforeDhuhr => winBeforeDhuhr,
+    TaskWindow.afterDhuhr => winAfterDhuhr,
+    TaskWindow.afterAsr => winAfterAsr,
+    TaskWindow.afterMaghrib => winAfterMaghrib,
+    TaskWindow.afterIsha => winAfterIsha,
+    TaskWindow.anytime => winAnytime,
+  };
 
-  String adhkarSet(AdhkarSet s) => s == AdhkarSet.morning ? adhkarMorning : adhkarEvening;
+  String taskArea(TaskArea area) => switch (area) {
+    TaskArea.dunya => tasksDunya,
+    TaskArea.akhirah => tasksAkhirah,
+  };
+
+  String taskPriority(TaskPriority priority) => switch (priority) {
+    TaskPriority.normal => tasksNormalPriority,
+    TaskPriority.high => tasksHighPriority,
+  };
+
+  String adhkarSet(AdhkarSet s) =>
+      s == AdhkarSet.morning ? adhkarMorning : adhkarEvening;
 
   String method(CalcMethod m) => switch (m) {
-        CalcMethod.muslimWorldLeague => methodMwl,
-        CalcMethod.egyptian => methodEgyptian,
-        CalcMethod.karachi => methodKarachi,
-        CalcMethod.ummAlQura => methodUmmAlQura,
-        CalcMethod.dubai => methodDubai,
-        CalcMethod.moonSightingCommittee => methodMoonSighting,
-        CalcMethod.northAmerica => methodNorthAmerica,
-        CalcMethod.kuwait => methodKuwait,
-        CalcMethod.qatar => methodQatar,
-        CalcMethod.singapore => methodSingapore,
-        CalcMethod.turkey => methodTurkey,
-        CalcMethod.tehran => methodTehran,
-      };
+    CalcMethod.muslimWorldLeague => methodMwl,
+    CalcMethod.egyptian => methodEgyptian,
+    CalcMethod.karachi => methodKarachi,
+    CalcMethod.ummAlQura => methodUmmAlQura,
+    CalcMethod.dubai => methodDubai,
+    CalcMethod.moonSightingCommittee => methodMoonSighting,
+    CalcMethod.northAmerica => methodNorthAmerica,
+    CalcMethod.kuwait => methodKuwait,
+    CalcMethod.qatar => methodQatar,
+    CalcMethod.singapore => methodSingapore,
+    CalcMethod.turkey => methodTurkey,
+    CalcMethod.tehran => methodTehran,
+  };
 
-  String madhabName(AsrMadhab m) => m == AsrMadhab.hanafi ? asrHanafi : asrStandard;
+  String madhabName(AsrMadhab m) =>
+      m == AsrMadhab.hanafi ? asrHanafi : asrStandard;
 
   String alert(AlertType t) => switch (t) {
-        AlertType.adhan => alertAdhan,
-        AlertType.silent => alertSilent,
-        AlertType.off => alertOff,
-      };
+    AlertType.adhan => alertAdhan,
+    AlertType.silent => alertSilent,
+    AlertType.off => alertOff,
+  };
 
   String fastType(FastType t) => switch (t) {
-        FastType.ramadan => fastTypeRamadan,
-        FastType.monThu => fastTypeMonThu,
-        FastType.whiteDays => fastTypeWhiteDays,
-        FastType.other => fastTypeOther,
-        FastType.qada => fastTypeQada,
-      };
+    FastType.ramadan => fastTypeRamadan,
+    FastType.monThu => fastTypeMonThu,
+    FastType.whiteDays => fastTypeWhiteDays,
+    FastType.other => fastTypeOther,
+    FastType.qada => fastTypeQada,
+  };
 
   String fastStatus(FastStatus s) => switch (s) {
-        FastStatus.fasted => fastFasted,
-        FastStatus.missed => fastMissed,
-        FastStatus.excused => fastExcused,
-      };
+    FastStatus.fasted => fastFasted,
+    FastStatus.missed => fastMissed,
+    FastStatus.excused => fastExcused,
+  };
 
   String event(IslamicEvent e) => switch (e) {
-        IslamicEvent.newYear => evNewYear,
-        IslamicEvent.ashura => evAshura,
-        IslamicEvent.mawlid => evMawlid,
-        IslamicEvent.rajab => evRajab,
-        IslamicEvent.miraj => evMiraj,
-        IslamicEvent.baraah => evBaraah,
-        IslamicEvent.ramadan => evRamadan,
-        IslamicEvent.lastTen => evLastTen,
-        IslamicEvent.qadr => evQadr,
-        IslamicEvent.eidFitr => evEidFitr,
-        IslamicEvent.arafah => evArafah,
-        IslamicEvent.eidAdha => evEidAdha,
-      };
+    IslamicEvent.newYear => evNewYear,
+    IslamicEvent.ashura => evAshura,
+    IslamicEvent.mawlid => evMawlid,
+    IslamicEvent.rajab => evRajab,
+    IslamicEvent.miraj => evMiraj,
+    IslamicEvent.baraah => evBaraah,
+    IslamicEvent.ramadan => evRamadan,
+    IslamicEvent.lastTen => evLastTen,
+    IslamicEvent.qadr => evQadr,
+    IslamicEvent.eidFitr => evEidFitr,
+    IslamicEvent.arafah => evArafah,
+    IslamicEvent.eidAdha => evEidAdha,
+  };
 
   // ---- dates ----
 
   /// "Sunday, 4 October" (localized order). Sentence-cased (Russian weekday
   /// names are lower-case on their own).
-  String longDate(DateTime d) =>
-      _capitalize(dateLong(weekdayName(weekdayKey(d)), _dayOrdinal(d.day), monthName(monthKey(d))));
+  String longDate(DateTime d) => _capitalize(
+    dateLong(
+      weekdayName(weekdayKey(d)),
+      _dayOrdinal(d.day),
+      monthName(monthKey(d)),
+    ),
+  );
 
   /// "4 October".
-  String dayMonth(DateTime d) => dateDayMonth(_dayOrdinal(d.day), monthName(monthKey(d)));
+  String dayMonth(DateTime d) =>
+      dateDayMonth(_dayOrdinal(d.day), monthName(monthKey(d)));
 
   /// Turkmen writes dates as ordinals ("4-nji", "6-njy"); others plain.
   String _dayOrdinal(int day) => localeName == 'tk' ? tkOrdinal(day) : '$day';
 
-  String _capitalize(String s) => s.isEmpty ? s : s[0].toUpperCase() + s.substring(1);
+  String _capitalize(String s) =>
+      s.isEmpty ? s : s[0].toUpperCase() + s.substring(1);
 
   /// "Thu 10 Dec".
-  String shortWeekdayDate(DateTime d) =>
-      dateShortWeekday(weekdayShort(weekdayKey(d)), '${d.day}', monthShort(monthKey(d)));
+  String shortWeekdayDate(DateTime d) => dateShortWeekday(
+    weekdayShort(weekdayKey(d)),
+    '${d.day}',
+    monthShort(monthKey(d)),
+  );
 
   String hijriMonthName(int month, {bool long = false}) =>
       long ? hijriMonthLong('m$month') : hijriMonth('m$month');
 
   /// "22 Rabīʿ II".
-  String dayMonthHijri(int day, int month) => dateDayMonth('$day', hijriMonth('m$month'));
+  String dayMonthHijri(int day, int month) =>
+      dateDayMonth('$day', hijriMonth('m$month'));
 
   /// "22 Rabīʿ II 1448".
   String hijriFull(int day, int month, int year) =>
